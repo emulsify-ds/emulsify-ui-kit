@@ -1,0 +1,16 @@
+<div>
+  <h2 class="token-title">Border Radius Tokens</h2>
+
+  <ul class="radius-list">
+    {% for radius, value in _context.radius %}
+      <li class="radius-list__item">
+        <span class="radius-label">{{radius}}</span>
+        <span class="radius-value">{{value.value}}px</span>
+        <span class="radius-custom-property">
+          <code>var(--radius-{{radius}})</code>
+        </span>
+        <span class="radius-visualization" style="border-radius: {{value.value}}px"></span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

@@ -1,0 +1,37 @@
+{
+    "name": "emulsify-ds/emulsify-drupal",
+    "description": "Storybook development + Webpack Build + Drupal 8 theme",
+    "type": "drupal-theme",
+    "homepage": "http://emulsify.info",
+    "license": "GPL-2.0-only",
+    "authors": [
+      {
+        "name": "Brian Lewis",
+        "email": "brian@fourkitchens.com"
+      },
+      {
+          "name": "Chris Martin",
+          "email": "chris.martin@fourkitchens.com"
+      },
+      {
+          "name": "Evan Willhite",
+          "email": "evan@fourkitchens.com"
+      },
+      {
+          "name": "Randy Oest",
+          "email": "randy@fourkitchens.com"
+      }
+    ],
+    "repositories": {
+        "drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "drupal/components": "^2.1",
+        "drupal/emulsify_twig": "^2.0"
+    }
+}

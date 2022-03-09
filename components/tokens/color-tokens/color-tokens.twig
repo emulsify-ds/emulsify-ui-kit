@@ -1,0 +1,30 @@
+<div>
+  {% for color, value in _context.colors %}
+    <h2 class="token-title">{{color}}</h2>
+    {% if value.value is defined %}
+      <ul class="token-list">
+        <li style="background: var(--colors-{{color}});" class="token-card">
+          <span>
+            {{color}}
+            <span>
+              <code>var(--color-{{color}})</code>
+            </span>
+          </span>
+        </li>
+      </ul>
+    {% else %}
+      <ul class="token-list">
+        {% for nestedColor, nestedValue in value %}
+          <li style="background: var(--colors-{{color}}-{{nestedColor}});" class="token-card">
+            <span>
+              {{nestedColor}}
+              <span>
+                <code>var(--color-{{color}}-{{nestedColor}})</code>
+              </span>
+            </span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endfor %}
+</div>

@@ -1,0 +1,16 @@
+<div>
+  <h2 class="token-title">Opacity Tokens</h2>
+
+  <ul class="radius-list">
+    {% for opacity, value in _context.opacity %}
+      <li class="radius-list__item">
+        <span class="radius-label">{{opacity}}</span>
+        <span class="radius-value">{{value.value}}px</span>
+        <span class="radius-custom-property">
+          <code>var(--radius-{{opacity}})</code>
+        </span>
+        <span class="radius-visualization" style="opacity: {{value.value}}"></span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

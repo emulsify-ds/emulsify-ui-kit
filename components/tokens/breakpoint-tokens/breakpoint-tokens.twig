@@ -1,0 +1,16 @@
+<div>
+  <h2 class="token-title">Breakpoint Tokens</h2>
+
+  <ul class="breakpoint-list">
+    {% for breakpoint, value in _context.breakpoint %}
+      <li class="breakpoint-list__item">
+        <span class="breakpoint-label">{{breakpoint}}</span>
+        <span class="breakpoint-value">{{value.value}}px</span>
+        <span class="breakpoint-custom-property">
+          <code>var(--breakpoint-{{breakpoint}})</code>
+        </span>
+        <span class="breakpoint-visualization" style="width: {{value.value}}px"></span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

@@ -1,0 +1,23 @@
+<div>
+  <h2 class="token-title">Spacing Tokens</h2>
+
+  <ul class="spacing-list">
+    {% for spacing, value in _context.spacing %}
+      <li class="spacing-list__item">
+        <span class="spacing-label">{{spacing}}</span>
+        <span class="spacing-value">{{value.value}}px</span>
+        <span class="spacing-custom-property">
+          <code>var(--spacing-{{spacing}})</code>
+        </span>
+        <span class="spacing-visualization__wrapper" style="gap: {{value.value}}px">
+          <span class="spacing-visualization"></span>
+          <span class="spacing-visualization"></span>
+          <span class="spacing-visualization"></span>
+          <span class="spacing-visualization"></span>
+          <span class="spacing-visualization"></span>
+        </span>
+
+      </li>
+    {% endfor %}
+  </ul>
+</div>

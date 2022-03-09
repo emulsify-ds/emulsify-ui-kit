@@ -1,0 +1,16 @@
+<div>
+  <h2 class="token-title">Size Tokens</h2>
+
+  <ul class="size-list">
+    {% for size, value in _context.size %}
+      <li class="size-list__item">
+        <span class="size-label">{{size}}</span>
+        <span class="size-value">{{value.value}}px</span>
+        <span class="size-custom-property">
+          <code>var(--size-{{size}})</code>
+        </span>
+        <span class="size-visualization" style="width: {{value.value}}px; height: {{value.value}}px;"></span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
