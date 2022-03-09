@@ -34,7 +34,7 @@
     "test": "jest --coverage",
     "twatch": "jest --no-coverage --watch --verbose",
     "webpack": "webpack --watch --config ./webpack/webpack.dev.js",
-    "tokens:convert": "token-transformer tokens/figma.tokens.json tokens/sd.tokens.json",
+    "tokens:convert": "npx token-transformer tokens/figma.tokens.json tokens/sd.tokens.json",
     "tokens:css": "npx style-dictionary build --config tokens.config.js"
   },
   "dependencies": {
