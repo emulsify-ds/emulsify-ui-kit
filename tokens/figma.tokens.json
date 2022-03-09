@@ -1,5 +1,37 @@
 {
   "global": {
+    "colors": {
+      "red": {
+        "300": {
+          "value": "#FCA5A5",
+          "type": "color"
+        },
+        "500": {
+          "value": "#EF4444",
+          "type": "color"
+        },
+        "700": {
+          "value": "#B91C1C",
+          "type": "color"
+        }
+      },
+      "black": {
+        "value": "#000000",
+        "type": "color"
+      },
+      "white": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "green": {
+        "value": "#35aa4e",
+        "type": "color"
+      },
+      "primary": {
+        "value": "{colors.red.700}",
+        "type": "color"
+      }
+    },
     "spacing": {
       "xs": {
         "value": "{spacing.sm}/2",
@@ -134,21 +166,41 @@
         "value": "100%",
         "type": "opacity"
       }
-    },
-    "colors": {
-      "storybook": {
-        "green": {
-          "value": "#35AA4F",
+    }
+  },
+  "button": {
+    "button": {
+      "color": {
+        "bkg": {
+          "value": "{colors.green}",
           "type": "color"
         },
-        "dark": {
-          "value": "#382F30",
+        "label": {
+          "value": "{colors.white}",
           "type": "color"
         },
-        "magenta": {
-          "value": "#D606C1",
+        "bkg-hover": {
+          "value": "red",
+          "type": "color"
+        },
+        "label-hover": {
+          "value": "{colors.white}",
           "type": "color"
         }
+      },
+      "padding": {
+        "x": {
+          "value": "{spacing.xl}",
+          "type": "spacing"
+        },
+        "y": {
+          "value": "{spacing.md}",
+          "type": "spacing"
+        }
+      },
+      "radius": {
+        "value": "{radius.md}",
+        "type": "borderRadius"
       }
     }
   }
