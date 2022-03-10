@@ -1,0 +1,21 @@
+{
+  "source": ["tokens/sd.tokens.json"],
+  "platforms": {
+    "css": {
+      "transforms": [
+        "attribute/cti",
+        "name/cti/kebab",
+        "time/seconds",
+        "content/icon",
+        "color/css",
+        "toRem/pxToRem"
+      ],
+      "files": [
+        {
+          "destination": "components/tokens/_tokens.scss",
+          "format": "css/variables"
+        }
+      ]
+    }
+  }
+}

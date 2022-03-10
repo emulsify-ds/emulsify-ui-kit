@@ -12,7 +12,7 @@ jobs:
       # Transform Figma Tokens JSON to something Style Dictionary can read
       - run: npx token-transformer tokens/figma.tokens.json tokens/sd.tokens.json
       # Convert tokens according to Style Dictionary config
-      - run: npx style-dictionary build --config config.json
+      - run: npm run tokens:css
       # Add files that were created during a run, e.g. created files from style dictionary or token-transformer.
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
