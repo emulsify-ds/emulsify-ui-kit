@@ -166,6 +166,44 @@
         "value": "100%",
         "type": "opacity"
       }
+    },
+    "border": {
+      "1": {
+        "value": "1",
+        "type": "borderWidth"
+      },
+      "2": {
+        "value": "2",
+        "type": "borderWidth"
+      },
+      "3": {
+        "value": "3",
+        "type": "borderWidth"
+      },
+      "4": {
+        "value": "4",
+        "type": "borderWidth"
+      },
+      "5": {
+        "value": "5",
+        "type": "borderWidth"
+      },
+      "10": {
+        "value": "10",
+        "type": "borderWidth"
+      },
+      "sm": {
+        "value": "{border.1}",
+        "type": "borderWidth"
+      },
+      "md": {
+        "value": "{border.3}",
+        "type": "borderWidth"
+      },
+      "lg": {
+        "value": "{border.5}",
+        "type": "borderWidth"
+      }
     }
   },
   "button": {
