@@ -32,12 +32,16 @@
         "type": "color"
       },
       "storybook": {
-        "dark": {
+        "bkg": {
           "value": "#382F30",
           "type": "color"
         },
-        "green": {
+        "headingColor": {
           "value": "#35AA4F",
+          "type": "color"
+        },
+        "textColor": {
+          "value": "#FFF",
           "type": "color"
         }
       }
