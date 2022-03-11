@@ -1,9 +1,23 @@
 /**
  * Do not edit directly
- * Generated on Wed, 09 Mar 2022 23:54:20 GMT
+ * Generated on Thu, 10 Mar 2022 00:02:11 GMT
  */
 
 :root {
+  --button-color-bkg: #35aa4e;
+  --button-color-label: #fff;
+  --button-color-bkg-hover: red;
+  --button-color-label-hover: #fff;
+  --button-padding-x: 2rem;
+  --button-padding-y: 0.5rem;
+  --button-radius: 10;
+  --colors-red-300: #fca5a5;
+  --colors-red-500: #ef4444;
+  --colors-red-700: #b91c1c;
+  --colors-black: #000;
+  --colors-white: #fff;
+  --colors-green: #35aa4e;
+  --colors-primary: #b91c1c;
   --spacing-xs: 0.125rem;
   --spacing-sm: 0.25rem;
   --spacing-md: 0.5rem;
@@ -35,7 +49,4 @@
   --opacity-80: 80%;
   --opacity-90: 90%;
   --opacity-100: 100%;
-  --colors-storybook-green: #35aa4f;
-  --colors-storybook-dark: #382f30;
-  --colors-storybook-magenta: #d606c1;
 }

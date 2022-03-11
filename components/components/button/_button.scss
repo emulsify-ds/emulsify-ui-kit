@@ -1,0 +1,11 @@
+.button {
+  background-color: var(--button-color-bkg);
+  padding: var(--button-padding-y) var(--button-padding-x);
+  color: var(--button-color-label);
+  border-radius: calc(1px * var(--button-radius));
+
+  &:hover {
+    background-color: var(--button-color-bkg-hover);
+    color: var(--button-color-label-hover);
+  }
+}
