@@ -238,6 +238,10 @@
         "label-hover": {
           "value": "{colors.white}",
           "type": "color"
+        },
+        "focused": {
+          "value": "rgba(255,255,255,0.85)",
+          "type": "color"
         }
       },
       "padding": {
