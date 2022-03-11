@@ -35,13 +35,14 @@
     "twatch": "jest --no-coverage --watch --verbose",
     "webpack": "webpack --watch --config ./webpack/webpack.dev.js",
     "tokens:convert": "npx token-transformer tokens/figma.tokens.json tokens/sd.tokens.json",
-    "tokens:css": "node ./tokensTransform.js"
+    "tokens:css": "node ./tokensTransform.js",
+    "tokens": "npx token-transformer tokens/figma.tokens.json tokens/sd.tokens.json && node ./tokensTransform.js"
   },
   "dependencies": {
+    "@storybook/addon-docs": "^6.4.19",
     "add-attributes-twig-extension": "^0.1.0",
     "bem-twig-extension": "^0.1.1",
     "normalize.css": "^8.0.1",
-    "style-dictionary": "^3.7.0",
     "token-transformer": "0.0.17",
     "twig-drupal-filters": "^3.1.0"
   },
@@ -50,7 +51,7 @@
     "@babel/eslint-parser": "^7.12.17",
     "@storybook/addon-a11y": "^6.1.18",
     "@storybook/addon-actions": "^6.3.8",
-    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/addon-essentials": "^6.4.19",
     "@storybook/addon-links": "^6.3.8",
     "@storybook/html": "^6.3.8",
     "@storybook/storybook-deployer": "^2.8.10",
@@ -89,6 +90,7 @@
     "ramda": "^0.27.1",
     "sass": "^1.42.1",
     "sass-loader": "^10.1.0",
+    "style-dictionary": "^3.7.0",
     "style-loader": "^2.0.0",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^9.0.3",

@@ -1,16 +1,16 @@
 <div>
-  <h2 class="token-title">Breakpoint Tokens</h2>
+  <h2 class="sb-title">Breakpoint Tokens</h2>
 
-  <ul class="breakpoint-list">
+  <ul class="sb-list" style="overflow: scroll;">
     {% for breakpoint, value in _context.breakpoint %}
-      <li class="breakpoint-list__item">
-        <span class="breakpoint-label">{{breakpoint}}</span>
-        <span class="breakpoint-value">{{value.value}}px</span>
-        <span class="breakpoint-custom-property">
-          <code>var(--breakpoint-{{breakpoint}})</code>
+      <li class="sb-list__item" style="min-width: max-content;">
+        <span class="sb-list__label">{{breakpoint}}</span>
+        <span class="sb-list__value">{{value.value}}px</span>
+        <span class="sb-list__custom-property">
+          <code class=" sb-custom-property-name">var(--breakpoint-{{breakpoint}})</code>
         </span>
-        <span class="breakpoint-visualization" style="width: {{value.value}}px"></span>
+        <span class="sb-list__visualization" style="width: {{value.value}}px; height: 25px; background: var(--colors-white); display: block; border-radius: var(--radius-sm);"></span>
       </li>
-    {% endfor %}
-  </ul>
-</div>
+    </li>
+  </li>
+{% endfor %}</ul></div>

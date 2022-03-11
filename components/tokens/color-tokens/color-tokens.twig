@@ -1,25 +1,25 @@
 <div>
   {% for color, value in _context.colors %}
-    <h2 class="token-title">{{color}}</h2>
+    <h2 class="sb-title">{{color}}</h2>
     {% if value.value is defined %}
-      <ul class="token-list">
+      <ul class="sb-list">
         <li style="background: var(--colors-{{color}});" class="token-card">
           <span>
             {{color}}
             <span>
-              <code>var(--color-{{color}})</code>
+              <code class="sb-custom-property-name">var(--color-{{color}})</code>
             </span>
           </span>
         </li>
       </ul>
     {% else %}
-      <ul class="token-list">
+      <ul class="sb-list">
         {% for nestedColor, nestedValue in value %}
           <li style="background: var(--colors-{{color}}-{{nestedColor}});" class="token-card">
             <span>
               {{nestedColor}}
               <span>
-                <code>var(--color-{{color}}-{{nestedColor}})</code>
+                <code class="sb-custom-property-name">var(--color-{{color}}-{{nestedColor}})</code>
               </span>
             </span>
           </li>
