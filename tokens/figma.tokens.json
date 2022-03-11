@@ -246,7 +246,7 @@
       },
       "padding": {
         "x": {
-          "value": "{spacing.xl}",
+          "value": "{spacing.lg}",
           "type": "spacing"
         },
         "y": {
@@ -255,7 +255,7 @@
         }
       },
       "radius": {
-        "value": "{radius.md}",
+        "value": "{radius.lg}",
         "type": "borderRadius"
       }
     }
