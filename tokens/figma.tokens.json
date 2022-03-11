@@ -44,6 +44,10 @@
           "value": "#FFF",
           "type": "color"
         }
+      },
+      "greenDark": {
+        "value": "#2C8932",
+        "type": "color"
       }
     },
     "spacing": {
@@ -232,7 +236,7 @@
           "type": "color"
         },
         "bkg-hover": {
-          "value": "red",
+          "value": "{colors.greenDark}",
           "type": "color"
         },
         "label-hover": {
