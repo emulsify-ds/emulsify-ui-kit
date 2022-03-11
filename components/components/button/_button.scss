@@ -3,9 +3,17 @@
   padding: var(--button-padding-y) var(--button-padding-x);
   color: var(--button-color-label);
   border-radius: calc(1px * var(--button-radius));
+  text-decoration: none;
 
-  &:hover {
+  &:hover,
+  &.button--hover {
     background-color: var(--button-color-bkg-hover);
     color: var(--button-color-label-hover);
+    text-decoration: underline;
+  }
+
+  &:focus,
+  &.button--focus {
+    outline: 2px solid var(--button-color-focused);
   }
 }

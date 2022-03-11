@@ -1,15 +1,15 @@
 <div>
-  <h2 class="token-title">Opacity Tokens</h2>
+  <h2 class="sb-title">Opacity Tokens</h2>
 
-  <ul class="radius-list">
+  <ul class="sb-list">
     {% for opacity, value in _context.opacity %}
-      <li class="radius-list__item">
-        <span class="radius-label">{{opacity}}</span>
-        <span class="radius-value">{{value.value}}px</span>
-        <span class="radius-custom-property">
-          <code>var(--radius-{{opacity}})</code>
+      <li class="sb-list__item">
+        <span class="sb-list__label">{{opacity}}</span>
+        <span class="sb-list__value">{{value.value}}px</span>
+        <span class="sb-list__custom-property">
+          <code class=" sb-custom-property-name">var(--radius-{{opacity}})</code>
         </span>
-        <span class="radius-visualization" style="opacity: {{value.value}}"></span>
+        <span class="sb-list__visualization" style="opacity: {{value.value}}; display: block; width: 50px; height: 50px; background-color: var(--colors-white); border-radius: var(--radius-sm);"></span>
       </li>
     {% endfor %}
   </ul>

@@ -1,6 +1,6 @@
 @import '../tokens/tokens';
 
-@mixin listReset() {
+@mixin sbListReset() {
   padding: 0;
   margin: 0;
 
@@ -12,13 +12,13 @@
 }
 
 .sb-show-main {
-  background: var(--colors-storybook-dark);
-  color: white;
+  background: var(--colors-storybook-bkg);
+  color: var(--colors-storybook-text-color);
   font-family: 'Inter', serif !important;
 }
 
-.token-title {
-  color: var(--colors-storybook-green);
+.sb-title {
+  color: var(--colors-storybook-heading-color);
   text-transform: uppercase;
   font-size: 3rem;
   margin: 0 0 var(--spacing-xxl);
@@ -31,17 +31,24 @@
     position: absolute;
     left: 0;
     bottom: calc(-1 * var(--spacing-lg));
-    border-bottom: 10px solid var(--colors-storybook-green);
+    border-bottom: 10px solid var(--colors-storybook-heading-color);
     width: 100px;
   }
+}
+
+.sb-subtitle {
+  font-family: 'Sentinel', serif;
+  font-size: 1.5rem;
+  opacity: var(--opacity-80);
+  margin: var(--spacing-xxl) 0 var(--spacing-md);
 }
 
 #root > div {
   padding: var(--spacing-xl);
 }
 
-.size-list {
-  @include listReset;
+.sb-list {
+  @include sbListReset();
 
   &__item {
     display: flex;
@@ -53,87 +60,22 @@
     padding-left: var(--spacing-md) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
-
-  .size-label,
-  .size-value {
-    width: 50px;
-  }
-
-  .size-visualization {
-    background-color: white;
-    display: block;
-  }
 }
 
-.spacing-list {
-  @include listReset;
-
-  &__item {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    gap: var(--spacing-xl);
-    margin-bottom: var(--spacing-xl) !important;
-    padding-bottom: var(--spacing-xl) !important;
-    padding-left: var(--spacing-md) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .spacing-label,
-  .spacing-value {
-    width: 50px;
-  }
-
-  .spacing-visualization__wrapper {
-    display: flex;
-    flex-flow: row nowrap;
-    background-color: var(--colors-storybook-magenta);
-  }
-
-  .spacing-visualization {
-    background-color: white;
-    display: block;
-    width: 50px;
-    height: 50px;
-  }
+.sb-custom-property-name {
+  white-space: nowrap;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
 }
 
-.breakpoint-list {
-  @include listReset;
-
-  overflow: scroll;
-
-  &__item {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    gap: var(--spacing-xl);
-    margin-bottom: var(--spacing-xl) !important;
-    padding-bottom: var(--spacing-xl) !important;
-    padding-left: var(--spacing-md) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    min-width: max-content;
-  }
-
-  .breakpoint-label,
-  .breakpoint-value {
-    width: 50px;
-    display: block;
-  }
-
-  .breakpoint-custom-property {
-    width: 200px;
-    display: block;
-  }
-
-  .breakpoint-visualization {
-    background-color: white;
-    display: block;
-    height: 30px;
-  }
+.sb-spacing-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  background-color: #d606c1;
 }
 
-.cover {
+.sb-cover {
   position: absolute;
   top: 0;
   left: 0;
@@ -159,32 +101,5 @@
 
   &__photo-source {
     opacity: var(--opacity-40);
-  }
-}
-
-.radius-list {
-  @include listReset;
-
-  &__item {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    gap: var(--spacing-xl);
-    margin-bottom: var(--spacing-xl) !important;
-    padding-bottom: var(--spacing-xl) !important;
-    padding-left: var(--spacing-md) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .radius-label,
-  .radius-value {
-    width: 50px;
-  }
-
-  .radius-visualization {
-    background-color: white;
-    display: block;
-    width: 75px;
-    height: 75px;
   }
 }

@@ -5,7 +5,7 @@ import logo from '../../../images/4klogo.svg';
 const data = { backgroundImage, logo };
 
 export default {
-  title: 'Cover',
+  title: '0 Cover/Cover',
 };
 
 export const Cover = () => template(data);

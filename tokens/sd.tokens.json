@@ -10,17 +10,21 @@
         "type": "color"
       },
       "bkg-hover": {
-        "value": "red",
+        "value": "#2C8932",
         "type": "color"
       },
       "label-hover": {
         "value": "#ffffff",
         "type": "color"
+      },
+      "focused": {
+        "value": "#ffffffd9",
+        "type": "color"
       }
     },
     "padding": {
       "x": {
-        "value": 32,
+        "value": 16,
         "type": "spacing"
       },
       "y": {
@@ -29,7 +33,7 @@
       }
     },
     "radius": {
-      "value": 10,
+      "value": 20,
       "type": "borderRadius"
     }
   },
@@ -62,6 +66,24 @@
     },
     "primary": {
       "value": "#B91C1C",
+      "type": "color"
+    },
+    "storybook": {
+      "bkg": {
+        "value": "#382F30",
+        "type": "color"
+      },
+      "headingColor": {
+        "value": "#35AA4F",
+        "type": "color"
+      },
+      "textColor": {
+        "value": "#FFF",
+        "type": "color"
+      }
+    },
+    "greenDark": {
+      "value": "#2C8932",
       "type": "color"
     }
   },
