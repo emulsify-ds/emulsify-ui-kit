@@ -30,6 +30,16 @@
       "primary": {
         "value": "{colors.red.700}",
         "type": "color"
+      },
+      "storybook": {
+        "dark": {
+          "value": "#382F30",
+          "type": "color"
+        },
+        "green": {
+          "value": "#35AA4F",
+          "type": "color"
+        }
       }
     },
     "spacing": {
