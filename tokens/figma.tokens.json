@@ -228,11 +228,11 @@
     "button": {
       "color": {
         "bkg": {
-          "value": "{colors.green}",
+          "value": "{colors.white}",
           "type": "color"
         },
         "label": {
-          "value": "{colors.white}",
+          "value": "{colors.green}",
           "type": "color"
         },
         "bkg-hover": {
