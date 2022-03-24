@@ -427,7 +427,7 @@
           "value": {
             "fontFamily": "{fontFamilies.primary}",
             "fontWeight": "{fontWeights.primary-regular}",
-            "lineHeight": "{lineHeights.normal}",
+            "lineHeight": "{lineHeights.tight}",
             "fontSize": "{fontSize.hero}",
             "letterSpacing": "$letterSpacing.0",
             "paragraphSpacing": "$paragraphSpacing.0",
@@ -440,7 +440,7 @@
           "value": {
             "fontFamily": "{fontFamilies.primary}",
             "fontWeight": "{fontWeights.primary-bold}",
-            "lineHeight": "{lineHeights.normal}",
+            "lineHeight": "{lineHeights.tight}",
             "fontSize": "{fontSize.hero}",
             "letterSpacing": "$letterSpacing.0",
             "paragraphSpacing": "$paragraphSpacing.0",
