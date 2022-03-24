@@ -320,6 +320,10 @@
       }
     },
     "fontSize": {
+      "tiny": {
+        "value": "10",
+        "type": "fontSizes"
+      },
       "x-small": {
         "value": "12",
         "type": "fontSizes"
@@ -336,12 +340,12 @@
         "value": "18",
         "type": "fontSizes"
       },
-      "h5": {
-        "value": "21",
-        "type": "fontSizes"
-      },
       "lead": {
         "value": "24",
+        "type": "fontSizes"
+      },
+      "h5": {
+        "value": "21",
         "type": "fontSizes"
       },
       "h4": {
@@ -374,10 +378,6 @@
       },
       "colossus": {
         "value": "140",
-        "type": "fontSizes"
-      },
-      "tiny": {
-        "value": "8",
         "type": "fontSizes"
       }
     },
