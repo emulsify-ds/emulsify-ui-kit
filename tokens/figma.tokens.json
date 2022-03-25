@@ -1242,43 +1242,41 @@
   },
   "button": {
     "button": {
-      "button": {
-        "color": {
-          "bkg": {
-            "value": "{colors.green}",
-            "type": "color"
-          },
-          "label": {
-            "value": "{colors.white}",
-            "type": "color"
-          },
-          "bkg-hover": {
-            "value": "{colors.green}",
-            "type": "color"
-          },
-          "label-hover": {
-            "value": "{colors.white}",
-            "type": "color"
-          },
-          "focused": {
-            "value": "rgba(255,255,255,0.85)",
-            "type": "color"
-          }
+      "color": {
+        "bkg": {
+          "value": "{colors.green}",
+          "type": "color"
         },
-        "padding": {
-          "x": {
-            "value": "{spacing.lg}",
-            "type": "spacing"
-          },
-          "y": {
-            "value": "{spacing.md}",
-            "type": "spacing"
-          }
+        "label": {
+          "value": "{colors.white}",
+          "type": "color"
         },
-        "radius": {
-          "value": "{radius.lg}",
-          "type": "borderRadius"
+        "bkg-hover": {
+          "value": "{colors.green}",
+          "type": "color"
+        },
+        "label-hover": {
+          "value": "{colors.white}",
+          "type": "color"
+        },
+        "focused": {
+          "value": "rgba(255,255,255,0.85)",
+          "type": "color"
         }
+      },
+      "padding": {
+        "x": {
+          "value": "{spacing.lg}",
+          "type": "spacing"
+        },
+        "y": {
+          "value": "{spacing.md}",
+          "type": "spacing"
+        }
+      },
+      "radius": {
+        "value": "{radius.lg}",
+        "type": "borderRadius"
       }
     }
   }
