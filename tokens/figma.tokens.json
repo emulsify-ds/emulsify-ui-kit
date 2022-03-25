@@ -211,30 +211,6 @@
         "type": "color"
       }
     },
-    "button": {
-      "color": {
-        "bkg": {
-          "value": "#35aa4e",
-          "type": "color"
-        },
-        "label": {
-          "value": "#ffffff",
-          "type": "color"
-        },
-        "bkg-hover": {
-          "value": "#2c8932",
-          "type": "color"
-        },
-        "label-hover": {
-          "value": "#ffffff",
-          "type": "color"
-        },
-        "focused": {
-          "value": "#ffffffd9",
-          "type": "color"
-        }
-      }
-    },
     "storybook": {
       "bkg": {
         "value": "#382f30",
@@ -1261,6 +1237,48 @@
       "none": {
         "value": "none",
         "type": "textDecoration"
+      }
+    }
+  },
+  "button": {
+    "button": {
+      "button": {
+        "color": {
+          "bkg": {
+            "value": "{colors.green}",
+            "type": "color"
+          },
+          "label": {
+            "value": "{colors.white}",
+            "type": "color"
+          },
+          "bkg-hover": {
+            "value": "{colors.green}",
+            "type": "color"
+          },
+          "label-hover": {
+            "value": "{colors.white}",
+            "type": "color"
+          },
+          "focused": {
+            "value": "rgba(255,255,255,0.85)",
+            "type": "color"
+          }
+        },
+        "padding": {
+          "x": {
+            "value": "{spacing.lg}",
+            "type": "spacing"
+          },
+          "y": {
+            "value": "{spacing.md}",
+            "type": "spacing"
+          }
+        },
+        "radius": {
+          "value": "{radius.lg}",
+          "type": "borderRadius"
+        }
       }
     }
   }
