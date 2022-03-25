@@ -231,7 +231,7 @@
         "type": "fontFamilies"
       },
       "secondary": {
-        "value": "Playfair Display",
+        "value": "Sentinel",
         "type": "fontFamilies"
       }
     },
@@ -271,7 +271,7 @@
         "type": "fontWeights"
       },
       "secondary-regular": {
-        "value": "Regular",
+        "value": "Medium",
         "type": "fontWeights"
       },
       "secondary-bold": {
