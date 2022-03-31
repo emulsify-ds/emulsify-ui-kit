@@ -14,7 +14,7 @@ const {
   pa11y: pa11yConfig,
   ignore,
   components,
-} = require('../a11y.config.js');
+} = require('../a11y.config');
 
 const STORYBOOK_BUILD_DIR = path.resolve(__dirname, '../', storybookBuildDir);
 const STORYBOOK_IFRAME = path.join(STORYBOOK_BUILD_DIR, 'iframe.html');
@@ -26,9 +26,7 @@ const severityToColor = R.cond([
 ]);
 
 const issueIsValid = ({ code, runnerExtras: { description } }) =>
-  ignore.codes.includes(code) || ignore.descriptions.includes(description)
-    ? false
-    : true;
+  !(ignore.codes.includes(code) || ignore.descriptions.includes(description));
 
 const logIssue = ({ type: severity, message, context, selector }) => {
   console.log(`

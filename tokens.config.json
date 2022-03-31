@@ -1,5 +1,5 @@
 {
-  "source": ["tokens/sd.tokens.json"],
+  "source": ["src/tokens/sd.tokens.json"],
   "platforms": {
     "css": {
       "transforms": [

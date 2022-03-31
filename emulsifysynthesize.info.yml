@@ -13,7 +13,7 @@ regions:
   content: Content
   sidebar: Sidebar
   footer: Footer
-logo: images/logo.png
+logo: src/images/logo.png
 components:
   namespaces:
     base:

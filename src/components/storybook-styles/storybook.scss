@@ -12,13 +12,13 @@
 }
 
 .sb-show-main {
-  background: var(--colors-storybook-bkg);
-  color: var(--colors-storybook-text-color);
+  background: var(--storybook-bkg);
+  color: var(--storybook-text-color);
   font-family: var(--font-families-primary), serif !important;
 }
 
 .sb-title {
-  color: var(--colors-storybook-heading-color);
+  color: var(--storybook-heading-color);
   text-transform: uppercase;
   font-size: 3rem;
   margin: 0 0 var(--spacing-xxl);
@@ -31,7 +31,7 @@
     position: absolute;
     left: 0;
     bottom: calc(-1 * var(--spacing-lg));
-    border-bottom: 10px solid var(--colors-storybook-heading-color);
+    border-bottom: 10px solid var(--storybook-heading-color);
     width: 100px;
   }
 }
