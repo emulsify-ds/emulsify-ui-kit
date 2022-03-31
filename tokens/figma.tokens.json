@@ -219,8 +219,6 @@
           "value": "#165559",
           "type": "color"
         },
-        "value": "#35aa4e",
-        "type": "color",
         "050": {
           "value": "#eef0d4",
           "type": "color"
@@ -243,7 +241,7 @@
         "type": "color"
       },
       "headingColor": {
-        "value": "#35aa4f",
+        "value": "{colors.green.500}",
         "type": "color"
       },
       "textColor": {
