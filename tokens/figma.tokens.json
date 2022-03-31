@@ -185,20 +185,6 @@
       "green": {
         "value": "#35aa4e",
         "type": "color"
-      },
-      "storybook": {
-        "bkg": {
-          "value": "#382f30",
-          "type": "color"
-        },
-        "headingColor": {
-          "value": "#35aa4f",
-          "type": "color"
-        },
-        "textColor": {
-          "value": "#ffffff",
-          "type": "color"
-        }
       }
     },
     "typography": {
