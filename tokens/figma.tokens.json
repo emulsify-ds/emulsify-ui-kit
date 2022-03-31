@@ -1268,7 +1268,7 @@
     "button": {
       "color": {
         "bkg": {
-          "value": "{colors.green}",
+          "value": "{colors.green.500}",
           "type": "color"
         },
         "label": {
@@ -1276,7 +1276,7 @@
           "type": "color"
         },
         "bkg-hover": {
-          "value": "{colors.green}",
+          "value": "{colors.green.700}",
           "type": "color"
         },
         "label-hover": {
