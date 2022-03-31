@@ -1,12 +1,12 @@
 /**
  * Do not edit directly
- * Generated on Fri, 25 Mar 2022 20:28:20 GMT
+ * Generated on Thu, 31 Mar 2022 20:17:16 GMT
  */
 
 :root {
-  --button-color-bkg: #35aa4e;
+  --button-color-bkg: [object object];
   --button-color-label: #fff;
-  --button-color-bkg-hover: #35aa4e;
+  --button-color-bkg-hover: [object object];
   --button-color-label-hover: #fff;
   --button-color-focused: #ffffffd9;
   --button-padding-x: 1rem;
@@ -54,14 +54,20 @@
   --border-lg: 5;
   --colors-black: #000;
   --colors-white: #fff;
-  --colors-green: #35aa4e;
-  --colors-storybook-bkg: #382f30;
-  --colors-storybook-heading-color: #35aa4f;
-  --colors-storybook-text-color: #fff;
+  --colors-green-100: #d4e4b3;
+  --colors-green-200: #b1d792;
+  --colors-green-300: #87c873;
+  --colors-green-400: #54ba53;
+  --colors-green-500: #35aa4e;
+  --colors-green-600: #2d975a;
+  --colors-green-700: #258361;
+  --colors-green-800: #1d6e62;
+  --colors-green-900: #165559;
+  --colors-green-050: #eef0d4;
   --typography-text-color: #fff;
   --typography-heading-color: #fff;
   --storybook-bkg: #382f30;
-  --storybook-heading-color: #35aa4f;
+  --storybook-heading-color: #35aa4e;
   --storybook-text-color: #fff;
   --font-families-primary: inter;
   --font-families-secondary: sentinel;

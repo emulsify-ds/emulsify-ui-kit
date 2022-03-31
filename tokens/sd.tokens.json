@@ -2,16 +2,18 @@
   "button": {
     "color": {
       "bkg": {
-        "value": "#35aa4e",
-        "type": "color"
+        "value": "{colors.green}",
+        "type": "color",
+        "failedToResolve": true
       },
       "label": {
         "value": "#ffffff",
         "type": "color"
       },
       "bkg-hover": {
-        "value": "#35aa4e",
-        "type": "color"
+        "value": "{colors.green}",
+        "type": "color",
+        "failedToResolve": true
       },
       "label-hover": {
         "value": "#ffffff",
@@ -220,20 +222,44 @@
       "type": "color"
     },
     "green": {
-      "value": "#35aa4e",
-      "type": "color"
-    },
-    "storybook": {
-      "bkg": {
-        "value": "#382f30",
+      "100": {
+        "value": "#d4e4b3",
         "type": "color"
       },
-      "headingColor": {
-        "value": "#35aa4f",
+      "200": {
+        "value": "#b1d792",
         "type": "color"
       },
-      "textColor": {
-        "value": "#ffffff",
+      "300": {
+        "value": "#87c873",
+        "type": "color"
+      },
+      "400": {
+        "value": "#54ba53",
+        "type": "color"
+      },
+      "500": {
+        "value": "#35aa4e",
+        "type": "color"
+      },
+      "600": {
+        "value": "#2d975a",
+        "type": "color"
+      },
+      "700": {
+        "value": "#258361",
+        "type": "color"
+      },
+      "800": {
+        "value": "#1d6e62",
+        "type": "color"
+      },
+      "900": {
+        "value": "#165559",
+        "type": "color"
+      },
+      "050": {
+        "value": "#eef0d4",
         "type": "color"
       }
     }
@@ -254,7 +280,7 @@
       "type": "color"
     },
     "headingColor": {
-      "value": "#35aa4f",
+      "value": "#35aa4e",
       "type": "color"
     },
     "textColor": {
