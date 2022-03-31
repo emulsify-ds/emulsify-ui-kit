@@ -16,23 +16,23 @@ const fetchVariantConfig = () => {
     return [
       {
         name: 'base',
-        directory: './components/00-base',
+        directory: './src/components/00-base',
       },
       {
         name: 'atoms',
-        directory: './components/01-atoms',
+        directory: './src/components/01-atoms',
       },
       {
         name: 'molecules',
-        directory: './components/02-molecules',
+        directory: './src/components/02-molecules',
       },
       {
         name: 'organisms',
-        directory: './components/03-organisms',
+        directory: './src/components/03-organisms',
       },
       {
         name: 'pages',
-        directory: './components/04-pages',
+        directory: './src/components/04-pages',
       },
     ];
   }

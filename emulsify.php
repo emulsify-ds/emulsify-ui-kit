@@ -444,9 +444,9 @@ function _emulsify_get_directories_to_make() {
       'components/03-organisms',
       'components/04-templates',
       'components/05-pages',
-      'images',
-      'images/icons',
-      'images/icons/src',
+      'src/images',
+      'src/images/icons',
+      'src/images/icons/src',
       'templates',
     );
   }

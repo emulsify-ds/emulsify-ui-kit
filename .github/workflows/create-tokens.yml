@@ -8,7 +8,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node.js environment
-        uses: actions/setup-node@v2.4.0
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.10'
+      - run: npm install
       # Transform Figma Tokens JSON to something Style Dictionary can read
       - run: npx token-transformer tokens/figma.tokens.json tokens/sd.tokens.json
       # Convert tokens according to Style Dictionary config

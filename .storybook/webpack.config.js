@@ -45,8 +45,8 @@ module.exports = async ({ config }) => {
 
   config.plugins.push(
     new _StyleLintPlugin({
-      configFile: path.resolve(__dirname, '../', 'webpack/.stylelintrc'),
-      context: path.resolve(__dirname, '../', 'components'),
+      configFile: path.resolve(__dirname, '../', '.stylelintrc.json'),
+      context: path.resolve(__dirname, '../', 'src/components'),
       files: '**/*.scss',
       failOnError: false,
       quiet: false,

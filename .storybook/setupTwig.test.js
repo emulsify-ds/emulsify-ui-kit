@@ -23,10 +23,10 @@ describe('setupTwig', () => {
 
   it('exports emulsifys namespaces', () => {
     expect(namespaces).toEqual({
-      atoms: '../components/01-atoms',
-      molecules: '../components/02-molecules',
-      organisms: '../components/03-organisms',
-      templates: '../components/04-templates',
+      atoms: '../src/components/01-atoms',
+      molecules: '../src/components/02-molecules',
+      organisms: '../src/components/03-organisms',
+      templates: '../src/components/04-templates',
     });
   });
 });
