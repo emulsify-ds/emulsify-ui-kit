@@ -1,4 +1,5 @@
 import template from './border-tokens.twig';
+import figma from '../../../../.storybook/configma.json';
 
 import tokens from '../../../tokens/sd.tokens.json';
 
@@ -9,3 +10,10 @@ export default {
 };
 
 export const Border = () => template(data);
+
+Border.parameters = {
+  design: {
+    type: 'figma',
+    url: figma.url + figma.border,
+  },
+};

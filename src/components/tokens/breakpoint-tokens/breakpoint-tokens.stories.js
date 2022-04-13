@@ -1,4 +1,5 @@
 import template from './breakpoint-tokens.twig';
+import figma from '../../../../.storybook/configma.json';
 
 import tokens from '../../../tokens/sd.tokens.json';
 
@@ -9,3 +10,10 @@ export default {
 };
 
 export const Breakpoints = () => template(data);
+
+Breakpoints.parameters = {
+  design: {
+    type: 'figma',
+    url: figma.url + figma.breakpoint,
+  },
+};

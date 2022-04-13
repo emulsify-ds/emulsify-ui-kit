@@ -2,6 +2,7 @@ import { addDecorator } from '@storybook/html';
 import { useEffect } from '@storybook/client-api';
 import Twig from 'twig';
 import { setupTwig } from './setupTwig';
+import { withDesign } from 'storybook-addon-designs';
 
 // GLOBAL CSS
 import '../src/components/style.scss';
@@ -14,6 +15,8 @@ addDecorator((storyFn) => {
   useEffect(() => Drupal.attachBehaviors(), []);
   return storyFn();
 });
+
+export const decorators = [withDesign];
 
 setupTwig(Twig);
 
