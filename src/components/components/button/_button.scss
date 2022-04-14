@@ -3,6 +3,7 @@
   padding: var(--button-padding-y) var(--button-padding-x);
   color: var(--button-color-label);
   border-radius: calc(1px * var(--button-radius));
+  font-size: var(--font-size-small);
   text-decoration: none;
 
   &:hover,

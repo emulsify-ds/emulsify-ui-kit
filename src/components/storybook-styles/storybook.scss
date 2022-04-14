@@ -20,7 +20,7 @@
 .sb-title {
   color: var(--storybook-heading-color);
   text-transform: uppercase;
-  font-size: calc(var(--font-size-hero) * 1px);
+  font-size: var(--font-size-hero);
   margin: 0 0 var(--spacing-xxl);
   position: relative;
   font-family: var(--font-families-secondary), serif !important;
@@ -38,7 +38,7 @@
 
 .sb-subtitle {
   font-family: var(--font-families-secondary), serif !important;
-  font-size: 1.5rem;
+  font-size: var(--font-size-h4);
   opacity: var(--opacity-80);
   margin: var(--spacing-xxl) 0 var(--spacing-md);
 }
@@ -95,7 +95,7 @@
 
   &__title {
     font-family: var(--font-families-secondary), serif !important;
-    font-size: 9rem;
+    font-size: var(--font-size-colossus);
     margin: 0;
   }
 
