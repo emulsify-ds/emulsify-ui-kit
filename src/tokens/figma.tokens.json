@@ -1334,9 +1334,31 @@
         "value": "{radius.lg}",
         "type": "borderRadius"
       },
-      "outline-focus": {
-        "value": "{border.md}",
-        "type": "borderWidth"
+      "radius-hover": {
+        "value": "{button.radius}",
+        "type": "borderRadius"
+      },
+      "radius-focus": {
+        "value": "{button.radius}",
+        "type": "borderRadius"
+      },
+      "borderWidth": {
+        "outline-focus": {
+          "value": "{border.md}",
+          "type": "borderWidth"
+        },
+        "border": {
+          "value": "0",
+          "type": "borderWidth"
+        },
+        "border-hover": {
+          "value": "{button.borderWidth.border}",
+          "type": "borderWidth"
+        },
+        "border-focus": {
+          "value": "{button.borderWidth.border}",
+          "type": "borderWidth"
+        }
       },
       "textCase": {
         "value": "{textCase.upper}",
