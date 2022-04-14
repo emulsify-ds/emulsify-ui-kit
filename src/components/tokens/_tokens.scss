@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 14 Apr 2022 19:54:08 GMT
+ * Generated on Thu, 14 Apr 2022 20:42:34 GMT
  */
 
 :root {
@@ -16,18 +16,18 @@
   --button-padding-y: 0.5rem;
   --button-padding-y-hover: 0.5rem;
   --button-padding-y-focus: 0.5rem;
-  --button-radius: 20;
+  --button-radius: 1.25rem;
+  --button-radius-hover: 1.25rem;
+  --button-radius-focus: 1.25rem;
+  --button-border-width-outline-focus: 3px;
+  --button-border-width-border: 3px;
+  --button-border-width-border-hover: 3px;
+  --button-border-width-border-focus: 3px;
   --button-text-case: uppercase;
-  --border-1: 1;
-  --border-2: 2;
-  --border-3: 3;
-  --border-4: 4;
-  --border-5: 5;
-  --border-10: 10;
-  --border-focus: 3;
-  --border-sm: 1;
-  --border-md: 3;
-  --border-lg: 5;
+  --button-border-color: #2d975a;
+  --button-border-color-hover: #1d6e62;
+  --button-border-color-focus: #2d975a;
+  --button-font-weight-label: Bold;
   --spacing-xs: 0.125rem;
   --spacing-sm: 0.25rem;
   --spacing-md: 0.5rem;
@@ -59,6 +59,15 @@
   --opacity-80: 80%;
   --opacity-90: 90%;
   --opacity-100: 100%;
+  --border-1: 1px;
+  --border-2: 2px;
+  --border-3: 3px;
+  --border-4: 4px;
+  --border-5: 5px;
+  --border-10: 10px;
+  --border-sm: 1px;
+  --border-md: 3px;
+  --border-lg: 5px;
   --colors-black: #000000;
   --colors-white: #ffffff;
   --colors-green-100: #d4e4b3;

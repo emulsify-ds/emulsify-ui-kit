@@ -6,6 +6,10 @@ const pixelsToRem = (px) => {
   return `${px / rem}rem`;
 };
 
+const appendPX = (value) => {
+  return `${value}px`;
+};
+
 StyleDictionary.registerTransform({
   name: 'toRem/pxToRem',
   type: 'value',
@@ -13,13 +17,24 @@ StyleDictionary.registerTransform({
     return (
       token.type === 'sizing' ||
       token.type === 'spacing' ||
-      token.path[0] === 'radius' ||
+      token.type === 'borderRadius' ||
       token.path[0] === 'breakpoint' ||
       token.path[0] === 'fontSize'
     );
   },
   transformer(token) {
     return pixelsToRem(token.value);
+  },
+});
+
+StyleDictionary.registerTransform({
+  name: 'toPX/appendPX',
+  type: 'value',
+  matcher(token) {
+    return token.type === 'borderWidth';
+  },
+  transformer(token) {
+    return appendPX(token.value);
   },
 });
 
