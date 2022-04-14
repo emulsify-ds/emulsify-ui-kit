@@ -9,12 +9,15 @@
   &:hover,
   &.button--hover {
     background-color: var(--button-color-bkg-hover);
+    padding: var(--button-padding-y-hover) var(--button-padding-x-hover);
     color: var(--button-color-label-hover);
     text-decoration: underline;
   }
 
   &:focus,
   &.button--focus {
+    padding: var(--button-padding-y-focus) var(--button-padding-x-focus);
+    color: var(--button-color-label-focus);
     outline: 2px solid var(--button-color-focused);
   }
 }
