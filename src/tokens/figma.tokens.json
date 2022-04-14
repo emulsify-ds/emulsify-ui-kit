@@ -1378,6 +1378,12 @@
           "type": "color"
         }
       }
+    },
+    "fontWeight": {
+      "label": {
+        "value": "{fontWeights.primary-bold}",
+        "type": "fontWeights"
+      }
     }
   }
 }
