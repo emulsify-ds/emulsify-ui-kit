@@ -1334,15 +1334,13 @@
         "value": "{radius.lg}",
         "type": "borderRadius"
       },
-      "textCase": {
-        "value": "{textCase.upper}",
-        "type": "textCase"
-      }
-    },
-    "border": {
       "focus": {
         "value": "{border.md}",
         "type": "borderWidth"
+      },
+      "textCase": {
+        "value": "{textCase.upper}",
+        "type": "textCase"
       }
     }
   }
