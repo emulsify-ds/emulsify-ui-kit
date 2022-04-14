@@ -1348,7 +1348,7 @@
           "type": "borderWidth"
         },
         "border": {
-          "value": "0",
+          "value": "{border.md}",
           "type": "borderWidth"
         },
         "border-hover": {
@@ -1363,6 +1363,20 @@
       "textCase": {
         "value": "{textCase.upper}",
         "type": "textCase"
+      },
+      "border": {
+        "color": {
+          "value": "{colors.green.500}",
+          "type": "color"
+        },
+        "color-hover": {
+          "value": "{colors.green.700}",
+          "type": "color"
+        },
+        "color-focus": {
+          "value": "{colors.green.700}",
+          "type": "color"
+        }
       }
     }
   }
