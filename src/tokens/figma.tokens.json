@@ -1377,12 +1377,12 @@
           "value": "{colors.green.600}",
           "type": "color"
         }
-      }
-    },
-    "fontWeight": {
-      "label": {
-        "value": "{fontWeights.primary-bold}",
-        "type": "fontWeights"
+      },
+      "fontWeight": {
+        "label": {
+          "value": "{fontWeights.primary-bold}",
+          "type": "fontWeights"
+        }
       }
     }
   }
