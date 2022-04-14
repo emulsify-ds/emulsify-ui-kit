@@ -12,7 +12,7 @@
       ],
       "files": [
         {
-          "destination": "components/tokens/_tokens.scss",
+          "destination": "src/components/tokens/_tokens.scss",
           "format": "css/variables"
         }
       ]

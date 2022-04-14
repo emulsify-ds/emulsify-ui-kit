@@ -2,18 +2,16 @@
   "button": {
     "color": {
       "bkg": {
-        "value": "{colors.green}",
-        "type": "color",
-        "failedToResolve": true
+        "value": "#35aa4e",
+        "type": "color"
       },
       "label": {
         "value": "#ffffff",
         "type": "color"
       },
       "bkg-hover": {
-        "value": "{colors.green}",
-        "type": "color",
-        "failedToResolve": true
+        "value": "#258361",
+        "type": "color"
       },
       "label-hover": {
         "value": "#ffffff",

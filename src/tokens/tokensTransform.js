@@ -14,7 +14,8 @@ StyleDictionary.registerTransform({
       token.type === 'sizing' ||
       token.type === 'spacing' ||
       token.path[0] === 'radius' ||
-      token.path[0] === 'breakpoint'
+      token.path[0] === 'breakpoint' ||
+      token.path[0] === 'fontSize'
     );
   },
   transformer(token) {
