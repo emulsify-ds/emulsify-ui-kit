@@ -1302,6 +1302,12 @@
         "value": "{radius.lg}",
         "type": "borderRadius"
       }
+    },
+    "focus": {
+      "border": {
+        "value": "{border.md}",
+        "type": "borderWidth"
+      }
     }
   }
 }
