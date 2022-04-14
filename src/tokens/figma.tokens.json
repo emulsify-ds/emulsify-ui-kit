@@ -1334,7 +1334,7 @@
         "value": "{radius.lg}",
         "type": "borderRadius"
       },
-      "focus": {
+      "outline-focus": {
         "value": "{border.md}",
         "type": "borderWidth"
       },
