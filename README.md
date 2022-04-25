@@ -1,48 +1,24 @@
-<p align="center"><img src="https://raw.githubusercontent.com/emulsify-ds/documentation/master/.gitbook/assets/logo.png" width="400"/></p>
+![Four Kitchens Badge](/src/images/4K-CI-style badge.svg)
 
-Emulsify is an open-source tool for creating design systems with reusable components and clear guidelines for teams. Emulsify helps organizations scale their design while reducing cost, streamlining workflows, and improving accessibility.
+# UI Kit Vision
 
-# Emulsify Drupal
+The Four Kitchens UI Kit is a tool for designers and front-end engineers to build high-quality user interfaces effectively and efficiently while maintaining WCAG 2.1 AA standards and project performance goals.
 
-### Storybook development, Webpack build, and Drupal 8 theme
+The Four Kitchens UI Kit gives users access to a library of prebuilt tokens and components that follow accessibility best practices and are easy to customize. The components in the kit are fully responsive, carefully designed, and can be implemented for modification for every project.
 
-**Emulsify Drupal** provides a [Storybook](https://storybook.js.org/) component library, a [Webpack](https://webpack.js.org/) development environment, and a Drupal 8 starterkit theme. It can be used as a standalone prototyping tool or inside a Drupal installation.
+The goals of the Four Kitchens UI Kit are to:
 
-## Documentation
+- Create efficiency in the user interface design process
+- Establish consistency in user interface design
+- Maintain high accessibility standards
 
-[docs.emulsify.info](https://docs.emulsify.info/)
+The Four Kitchens UI Kit has two distinct building blocks: the Figma and the code repo. These two items are kept in alignment for a seamless experience.
 
-### Quick Links
+The Creative Team uses the Four Kitchens UI Kit for every design project, modifying it to create great user interfaces. When a new component is made for a project, that new component is added back into the kit for future reuse. Tokens are managed in Figma and shared with the code repo.
 
-1. [Installation](https://docs.emulsify.info/installation/design-system)
-2. [Usage](https://docs.emulsify.info/usage/commands)
+The Frontend Engineering team uses the Four Kitchens UI Kit for every project. With tokens synced from Figma and a comprehensive component library, the Frontend team focuses their energy on building custom interfaces, streamlining performance, etc.
 
-## Demo
+What the Four Kitchens UI Kit is not:
 
-1. [Storybook](http://storybook.emulsify.info/)
-
-## Contributing
-
-### [Code of Conduct](https://github.com/emulsify-ds/emulsify-drupal/blob/master/CODE_OF_CONDUCT.md)
-
-The project maintainers have adopted a Code of Conduct that we expect project participants to adhere to. Please read the full text so that you can understand what actions will and will not be tolerated.
-
-### Contribution Guide
-
-Please also follow the issue template and pull request templates provided. See below for the correct places to post issues:
-
-1. [Emulsify Drupal](https://github.com/emulsify-ds/emulsify-drupal/issues)
-2. [Emulsify Twig Extensions](https://github.com/emulsify-ds/emulsify-twig-extensions/issues)
-3. [Emulsify Twig Drupal Module](https://www.drupal.org/project/issues/emulsify_twig)
-
-### Committing Changes
-
-To facilitate automatic semantic release versioning, we utilize the [Conventional Changelog](https://github.com/conventional-changelog/conventional-changelog) standard through Commitizen. Follow these steps when commiting your work to ensure semantic release can version correctly.
-
-1. Stage your changes, ensuring they encompass exactly what you wish to change, no more.
-2. Run the `commit` script via `yarn commit` or `npm run commit` and follow the prompts to craft the perfect commit message.
-3. Your commit message will be used to create the changelog for the next version that includes that commit.
-
-## Author
-
-Emulsify&reg; is a product of [Four Kitchens &mdash; We make BIG websites](https://fourkitchens.com).
+- Handcuffs. If using the kit is a barrier to a successful project, do what you need to for your project to be successful and provide feedback on why the kit was a barrier.
+- A "default" visual design. Our visual design work is tailor-made for each of our clients and projects.
