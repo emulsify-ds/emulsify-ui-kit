@@ -22,3 +22,8 @@ What the Four Kitchens UI Kit is not:
 
 - Handcuffs. If using the kit is a barrier to a successful project, do what you need to for your project to be successful and provide feedback on why the kit was a barrier.
 - A "default" visual design. Our visual design work is tailor-made for each of our clients and projects.
+
+## Components of this UI Kit
+
+- [Figma UI Kit](https://www.figma.com/file/eo87m50yAw3P8iXTypxw4I/Four-Kitchens-UI-Kit?node-id=22073%3A26)
+- [Storybook](https://four-kitchens-ui-kit.netlify.app/?path=/story/docs-cover--cover)
