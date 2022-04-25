@@ -1,4 +1,4 @@
-![Four Kitchens Badge](/src/images/4K-CI-style badge.svg)
+![4K-CI-style badge](https://user-images.githubusercontent.com/409903/165123883-03452ea9-76ec-4319-9d82-b2dcba785d2b.svg)
 
 # UI Kit Vision
 
