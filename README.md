@@ -1,6 +1,6 @@
 ![4K-CI-style badge](https://user-images.githubusercontent.com/409903/165123883-03452ea9-76ec-4319-9d82-b2dcba785d2b.svg)
 
-# UI Kit Vision
+# UI kit vision
 
 The Four Kitchens UI Kit is a tool for designers and front-end engineers to build high-quality user interfaces effectively and efficiently while maintaining WCAG 2.1 AA standards and project performance goals.
 
@@ -23,12 +23,12 @@ What the Four Kitchens UI Kit is not:
 - Handcuffs. If using the kit is a barrier to a successful project, do what you need to for your project to be successful and provide feedback on why the kit was a barrier.
 - A "default" visual design. Our visual design work is tailor-made for each of our clients and projects.
 
-## Components of this UI Kit
+## There are two parts of this UI Kit
 
 - [Figma UI Kit](https://www.figma.com/file/eo87m50yAw3P8iXTypxw4I/Four-Kitchens-UI-Kit?node-id=22073%3A26)
 - [Storybook](https://four-kitchens-ui-kit.netlify.app/?path=/story/docs-cover--cover)
 
-## Connecting Components with Figma
+## Connecting components with Figma
 
 The strength of this UI kit leans on its connection with Figma.
 
@@ -36,7 +36,7 @@ The strength of this UI kit leans on its connection with Figma.
 2. These tokens are transformed into standard [Amazon Style Dictionary](https://amzn.github.io/style-dictionary/#/) syntax.
 3. These new tokens, `./src/tokens/sd.tokens.json` is converted into the preferred CSS format.
 
-### Example
+### Example component
 
 The [button component](https://four-kitchens-ui-kit.netlify.app/?path=/story/components-button--button) serves as an example of how variables are used to connect Figma with the code.
 
@@ -77,4 +77,39 @@ The [button component](https://four-kitchens-ui-kit.netlify.app/?path=/story/com
     text-transform: var(--button-text-case);
   }
 }
+```
+
+## Creating a component
+
+A complete component meets the following criteria:
+
+1. Design tokens are defined as their own set in Figma, in the Figma Tokens plugin, and they use references to values defined in `global` as much as possible.
+2. The component has an independent frame in Figma.
+3. The component's CSS file uses the design tokens generated as much as possible. See button example above.
+4. A component's story connects to the corresponding Figma frame, defined in `.storybook/configma.json`.
+5. A component passes WCAG 2 AA.
+
+### Defining design tokens as their own set in Figma
+
+<div style="position: relative; padding-bottom: 50.75187969924813%; height: 0;"><iframe src="https://www.loom.com/embed/9816128e1bdd48f99b11fc34d522b7ad" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+### Connecting a component's story to the corresponding Figma frame
+
+1. In Figma, select the frame to share and activate the Share button (in the upper right hand corner).
+2. In the share modal make sure that "Link to selected frame" is checked and activate "Copy link".
+3. Open `.storybook/configma.json` and confirm the following:
+4. Using this example: `https://www.figma.com/file/[FIGMA_FILE_ID]/[FIGMA_FILE_NAME]?node-id=[NODE_ID]`
+5. Confirm that `url` has the correct `FIGMA_FILE_ID` and `FIGMA_FILE_NAME`.
+6. Add your component name to the file as a key with the `NODE_ID` being the value.
+7. Import `configma.json` into your story.
+
+8. In the parameters of your story, include `figma.COMPONENT_KEY` as shown below.
+
+```js
+Button.parameters = {
+  design: {
+    type: 'figma',
+    url: figma.url + figma.button,
+  },
+};
 ```
