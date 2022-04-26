@@ -85,13 +85,13 @@ A complete component meets the following criteria:
 
 1. Design tokens are defined as their own set in Figma, in the Figma Tokens plugin, and they use references to values defined in `global` as much as possible.
 2. The component has an independent frame in Figma.
-3. The component's CSS file uses the design tokens generated as much as possible. See button example above.
+3. The component's CSS file uses the generated design tokens as much as possible. See button example above.
 4. A component's story connects to the corresponding Figma frame, defined in `.storybook/configma.json`.
 5. A component passes WCAG 2 AA.
 
 ### Defining design tokens as their own set in Figma
 
-<div style="position: relative; padding-bottom: 50.75187969924813%; height: 0;"><iframe src="https://www.loom.com/embed/9816128e1bdd48f99b11fc34d522b7ad" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+https://user-images.githubusercontent.com/409903/165324471-6c16eee2-0fa2-461f-9f84-42b5862658d2.mp4
 
 ### Connecting a component's story to the corresponding Figma frame
 
