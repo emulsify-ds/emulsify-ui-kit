@@ -1,0 +1,34 @@
+{#
+/**
+ * Available Variables:
+ * audio_content - An array with the audio file(s) to be played. This is an array
+   to support multiple formats.
+ * preload - Determines if the audio file should be loaded on page load. This is the
+   audio equivilant of lazy load. Defaults to 'none'.
+ * autoplay - Whether the audio should automatically play. Defaults to false.
+ * loop - Plays the audio in a loop. Defaults to false.
+ * muted - Mutes audio. Defaults to false.
+ * no_download - Disallows users from downloading the audio file.
+ */
+#}
+
+{% set audio_player__base_class = 'audio-player' %}
+{% set audio_player__modifiers = audio_player__modifiers|default([]) %}
+{% set additional_attributes = additional_attributes|default() %}
+
+<div {{ bem(audio_player__base_class, audio_player__blockname, audio_player__modifiers)}} {{ add_attributes(additional_attributes) }}>
+  <audio {{ bem('player', [], audio_player__base_class) }} controls 
+    preload="{{preload|default('none')}}" 
+    {{ (autoplay) ? 'autoplay' : ''}}
+    {{ (loop) ? 'loop' : ''}}
+    {{ (muted) ? 'muted' : ''}}
+    {% if no_download %} controlsList="nodownload"{% endif %}>
+    {% for audio_file in audio_content %}
+      <source src="{{ audio_file }}" type="audio/{{ audio_file|split('.')|last }}">
+    {% endfor %}
+    <p>Your browser doesn't support HTML5 audio.</p> 
+    {% if not no_download %}
+      <p>Here is a <a href={{ audio_content|first }}>link to the audio</a> instead.</p>
+    {% endif %}
+  </audio>
+</div>
