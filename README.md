@@ -4,7 +4,7 @@
 
 The Four Kitchens UI Kit is a tool for designers and front-end engineers to build high-quality user interfaces effectively and efficiently while maintaining WCAG 2.1 AA standards and project performance goals.
 
-The Four Kitchens UI Kit gives users access to a library of prebuilt tokens and components that follow accessibility best practices and are easy to customize. The components in the kit are fully responsive, carefully designed, and can be implemented for modification for every project.
+The Four Kitchens UI Kit gives users access to a library of prebuilt tokens and components that follow accessibility best practices and are easy to customize. The components in the kit are fully responsive, carefully designed, and can be implemented for modification in every project.
 
 The goals of the Four Kitchens UI Kit are to:
 
@@ -34,7 +34,7 @@ The strength of this UI kit leans on its connection with Figma.
 
 1. In Figma, a series of design tokens for a component are defined and exported to this project as `./src/tokens/figma.tokens.json`.
 2. These tokens are transformed into standard [Amazon Style Dictionary](https://amzn.github.io/style-dictionary/#/) syntax.
-3. These new tokens, `./src/tokens/sd.tokens.json` is converted into the preferred CSS format.
+3. These new tokens are converted into the preferred CSS format from the `./src/tokens/sd.tokens.json` file.
 
 ### Example component
 
