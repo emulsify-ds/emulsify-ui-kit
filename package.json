@@ -29,7 +29,7 @@
     "chromatic": "npx chromatic --project-token=decfb1743eec"
   },
   "dependencies": {
-    "@storybook/addon-docs": "^6.4.19",
+    "@storybook/addon-docs": "^6.4.22",
     "add-attributes-twig-extension": "^0.1.0",
     "bem-twig-extension": "^0.1.1",
     "normalize.css": "^8.0.1",
@@ -38,11 +38,11 @@
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
-    "@storybook/addon-a11y": "^6.4.19",
-    "@storybook/addon-actions": "^6.4.19",
-    "@storybook/addon-essentials": "^6.4.19",
-    "@storybook/addon-links": "^6.4.19",
-    "@storybook/html": "^6.4.19",
+    "@storybook/addon-a11y": "^6.4.22",
+    "@storybook/addon-actions": "^6.4.22",
+    "@storybook/addon-essentials": "^6.4.22",
+    "@storybook/addon-links": "^6.4.22",
+    "@storybook/html": "^6.4.22",
     "@storybook/storybook-deployer": "^2.8.11",
     "babel-loader": "^8.2.3",
     "chromatic": "^6.5.3",
