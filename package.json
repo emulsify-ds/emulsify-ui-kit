@@ -29,17 +29,15 @@
     "chromatic": "npx chromatic --project-token=decfb1743eec"
   },
   "dependencies": {
-    "@storybook/addon-docs": "^6.4.22",
     "add-attributes-twig-extension": "^0.1.0",
     "bem-twig-extension": "^0.1.1",
-    "normalize.css": "^8.0.1",
-    "token-transformer": "0.0.17",
-    "twig-drupal-filters": "^3.1.2"
+    "normalize.css": "^8.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
     "@storybook/addon-a11y": "^6.4.22",
     "@storybook/addon-actions": "^6.4.22",
+    "@storybook/addon-docs": "^6.4.22",
     "@storybook/addon-essentials": "^6.4.22",
     "@storybook/addon-links": "^6.4.22",
     "@storybook/html": "^6.4.22",
@@ -60,6 +58,8 @@
     "style-dictionary": "^3.7.0",
     "style-loader": "^2.0.0",
     "svg-sprite-loader": "^6.0.11",
+    "twig-drupal-filters": "^3.1.2",
+    "token-transformer": "0.0.17",
     "twig-loader": "https://github.com/fourkitchens/twig-loader",
     "webpack": "4.46.0",
     "webpack-cli": "^4.9.2",
