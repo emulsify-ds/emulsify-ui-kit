@@ -13,20 +13,22 @@
   "license": "ISC",
   "scripts": {
     "build": "webpack --config ./webpack/webpack.prod.js",
+    "chromatic": "npx chromatic --project-token=decfb1743eec",
     "develop": "concurrently --raw \"npm run webpack\" \"npm run storybook\"",
+    "husky:commit-msg": "commitlint --edit $1",
     "husky:pre-commit": "lint-staged",
+    "lint:js": "eslint src/components",
+    "lint:styles": "stylelint 'src/components/**/*.scss'",
     "postinstall": "npx patch-package",
     "prepare": "husky install",
     "prettier": "prettier src/components --ignore-unknown --list-different",
-    "storybook": "start-storybook --ci -s ./dist,./src/images,./src/fonts -p 6006",
-    "storybook-build": "npm run build && build-storybook -s ./dist,./src/images,./src/fonts -o .out",
-    "build-storybook": "npm run build && build-storybook -s ./dist,./src/images,./src/fonts -o .out",
-    "storybook-deploy": "storybook-to-ghpages -o .out",
-    "webpack": "webpack --watch --config ./webpack/webpack.dev.js",
-    "tokens": "token-transformer src/tokens/figma.tokens.json src/tokens/sd.tokens.json && node ./src/tokens/tokensTransform.js",
-    "tokens:convert": "token-transformer src/tokens/figma.tokens.json src/tokens/sd.tokens.json",
-    "tokens:css": "node ./src/tokens/tokensTransform.js",
-    "chromatic": "npx chromatic --project-token=decfb1743eec"
+    "storybook": "start-storybook --ci -s dist,src/images,src/fonts -p 6006",
+    "storybook:build": "npm run build && build-storybook -s dist,src/images,src/fonts -o .out",
+    "storybook:deploy": "storybook-to-ghpages -o .out",
+    "style-dictionary:build": "node ./src/tokens/tokensTransform.js",
+    "tokens:build": "npm run tokens:transform && npm run style-dictionary:build",
+    "tokens:transform": "token-transformer src/tokens/figma.tokens.json src/tokens/sd.tokens.json",
+    "webpack": "webpack --watch --config ./webpack/webpack.dev.js"
   },
   "dependencies": {
     "add-attributes-twig-extension": "^0.1.0",
@@ -35,6 +37,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
+    "@fourkitchens/eslint-config-and-other-formatting": "^1.0.0",
     "@storybook/addon-a11y": "^6.4.22",
     "@storybook/addon-actions": "^6.4.22",
     "@storybook/addon-docs": "^6.4.22",
@@ -58,8 +61,8 @@
     "style-dictionary": "^3.7.0",
     "style-loader": "^2.0.0",
     "svg-sprite-loader": "^6.0.11",
-    "twig-drupal-filters": "^3.1.2",
     "token-transformer": "0.0.17",
+    "twig-drupal-filters": "^3.1.2",
     "twig-loader": "https://github.com/fourkitchens/twig-loader",
     "webpack": "4.46.0",
     "webpack-cli": "^4.9.2",
@@ -67,6 +70,12 @@
     "yaml": "^1.10.0"
   },
   "lint-staged": {
+    "src/components/**/*.scss": [
+      "npm run lint:styles -- --fix"
+    ],
+    "src/components/**/*.js": [
+      "npm run lint:js -- --fix"
+    ],
     "src/components/**/*.{js,yml,scss,md}": [
       "npm run prettier -- --write"
     ]
