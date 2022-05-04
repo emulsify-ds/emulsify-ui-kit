@@ -1,8 +1,7 @@
 // This file can be used to import all other styles.
 @import '~normalize.css/normalize';
-@import '~breakpoint-sass/stylesheets/breakpoint';
 
 // Components
-@import 'storybook-styles/**/*.scss';
-@import 'tokens/**/*.scss';
-@import 'components/**/*.scss';
+@import 'storybook-styles/storybook';
+@import 'tokens/tokens';
+@import 'components/button/button';
