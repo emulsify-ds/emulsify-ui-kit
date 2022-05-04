@@ -1,5 +1,6 @@
 # Ignore compiled files.
 dist
+_tokens.scss
 
 # Yarn/NPM
 node_modules
