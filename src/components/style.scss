@@ -2,6 +2,6 @@
 @import '~normalize.css/normalize';
 
 // Components
-@import 'storybook-styles/**/*.scss';
-@import 'tokens/**/*.scss';
-@import 'components/**/*.scss';
+@import 'storybook-styles/storybook';
+@import 'tokens/tokens';
+@import 'components/button/button';
