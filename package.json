@@ -14,7 +14,10 @@
   "scripts": {
     "build": "webpack --config ./webpack/webpack.prod.js",
     "develop": "concurrently --raw \"npm run webpack\" \"npm run storybook\"",
+    "husky:commit-msg": "commitlint --edit $1",
     "husky:pre-commit": "lint-staged",
+    "lint:js": "eslint src/components",
+    "lint:styles": "stylelint 'src/components/**/*.scss'",
     "postinstall": "npx patch-package",
     "prepare": "husky install",
     "prettier": "prettier src/components --ignore-unknown --list-different",
@@ -35,6 +38,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
+    "@fourkitchens/eslint-config-and-other-formatting": "^1.0.0",
     "@storybook/addon-a11y": "^6.4.22",
     "@storybook/addon-actions": "^6.4.22",
     "@storybook/addon-docs": "^6.4.22",
@@ -58,8 +62,8 @@
     "style-dictionary": "^3.7.0",
     "style-loader": "^2.0.0",
     "svg-sprite-loader": "^6.0.11",
-    "twig-drupal-filters": "^3.1.2",
     "token-transformer": "0.0.17",
+    "twig-drupal-filters": "^3.1.2",
     "twig-loader": "https://github.com/fourkitchens/twig-loader",
     "webpack": "4.46.0",
     "webpack-cli": "^4.9.2",
@@ -67,6 +71,12 @@
     "yaml": "^1.10.0"
   },
   "lint-staged": {
+    "src/components/**/*.scss": [
+      "npm run lint:styles -- --fix"
+    ],
+    "src/components/**/*.js": [
+      "npm run lint:js -- --fix"
+    ],
     "src/components/**/*.{js,yml,scss,md}": [
       "npm run prettier -- --write"
     ]
