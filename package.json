@@ -12,9 +12,9 @@
   "author": "Four Kitchens <shout@fourkitchens.com>",
   "license": "ISC",
   "scripts": {
-    "build": "webpack --config ./webpack/webpack.prod.js",
+    "build": "npm run tokens:build && webpack --config ./webpack/webpack.prod.js",
     "chromatic": "npx chromatic --project-token=decfb1743eec",
-    "develop": "concurrently --raw \"npm run webpack\" \"npm run storybook\"",
+    "develop": "concurrently --raw 'npm run tokens:watch' 'npm run webpack' 'npm run storybook'",
     "husky:commit-msg": "commitlint --edit $1",
     "husky:pre-commit": "lint-staged",
     "lint:js": "eslint src/components",
@@ -28,6 +28,7 @@
     "style-dictionary:build": "node ./src/tokens/tokensTransform.js",
     "tokens:build": "npm run tokens:transform && npm run style-dictionary:build",
     "tokens:transform": "token-transformer src/tokens/figma.tokens.json src/tokens/sd.tokens.json",
+    "tokens:watch": "npm run tokens:build && chokidar 'src/tokens/figma.tokens.json' -c 'npm run tokens:build'",
     "webpack": "webpack --watch --config ./webpack/webpack.dev.js"
   },
   "dependencies": {
@@ -46,6 +47,7 @@
     "@storybook/html": "^6.4.22",
     "@storybook/storybook-deployer": "^2.8.11",
     "babel-loader": "^8.2.3",
+    "chokidar-cli": "^3.0.0",
     "chromatic": "^6.5.3",
     "clean-webpack-plugin": "^4.0.0",
     "concurrently": "^7.0.0",
