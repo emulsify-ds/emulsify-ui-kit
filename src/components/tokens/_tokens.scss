@@ -1,12 +1,38 @@
 /**
  * Do not edit directly
- * Generated on Thu, 14 Apr 2022 20:46:11 GMT
+ * Generated on Sat, 06 Aug 2022 16:23:55 GMT
  */
 
 :root {
-  --button-color-bkg: #35aa4e;
+  --colors-sb-background: #cde9f4;
+  --colors-sb-text-body: #011821;
+  --colors-sb-text-heading: #085a7d;
+  --colors-sb-visualization: #1a96ca;
+  --colors-primary-default: #1a96ca;
+  --colors-primary-light: #cde9f4;
+  --colors-primary-dark: #085a7d;
+  --colors-text-body: #011821;
+  --colors-text-heading: #085a7d;
+  --colors-black: #000000;
+  --colors-white: #ffffff;
+  --colors-green-100: #d4e4b3;
+  --colors-green-200: #b1d792;
+  --colors-green-300: #87c873;
+  --colors-green-400: #54ba53;
+  --colors-green-500: #35aa4e;
+  --colors-green-600: #2d975a;
+  --colors-green-700: #258361;
+  --colors-green-800: #1d6e62;
+  --colors-green-900: #165559;
+  --colors-green-050: #eef0d4;
+  --colors-blue-medium: #085a7d;
+  --colors-blue-default: #1a96ca;
+  --colors-blue-light: #cde9f4;
+  --colors-blue-dark: #011821;
+  --colors-blue-purple: #035ba1;
+  --button-color-bkg: #035ba1;
   --button-color-label: #ffffff;
-  --button-color-bkg-hover: #258361;
+  --button-color-bkg-hover: #085a7d;
   --button-color-label-hover: #ffffff;
   --button-color-label-focus: #ffffff;
   --button-color-outline-focus: #ffffffd9;
@@ -16,17 +42,17 @@
   --button-padding-y: 0.5rem;
   --button-padding-y-hover: 0.5rem;
   --button-padding-y-focus: 0.5rem;
-  --button-radius: 1.25rem;
-  --button-radius-hover: 1.25rem;
-  --button-radius-focus: 1.25rem;
+  --button-radius: 0.25rem;
+  --button-radius-hover: 0.25rem;
+  --button-radius-focus: 0.25rem;
   --button-border-width-outline-focus: 3px;
   --button-border-width-border: 3px;
   --button-border-width-border-hover: 3px;
   --button-border-width-border-focus: 3px;
   --button-text-case: uppercase;
-  --button-border-color: #2d975a;
-  --button-border-color-hover: #1d6e62;
-  --button-border-color-focus: #2d975a;
+  --button-border-color: #035ba1;
+  --button-border-color-hover: #085a7d;
+  --button-border-color-focus: #085a7d;
   --button-font-weight-label: Bold;
   --spacing-xs: 0.125rem;
   --spacing-sm: 0.25rem;
@@ -68,23 +94,6 @@
   --border-sm: 1px;
   --border-md: 3px;
   --border-lg: 5px;
-  --colors-black: #000000;
-  --colors-white: #ffffff;
-  --colors-green-100: #d4e4b3;
-  --colors-green-200: #b1d792;
-  --colors-green-300: #87c873;
-  --colors-green-400: #54ba53;
-  --colors-green-500: #35aa4e;
-  --colors-green-600: #2d975a;
-  --colors-green-700: #258361;
-  --colors-green-800: #1d6e62;
-  --colors-green-900: #165559;
-  --colors-green-050: #eef0d4;
-  --typography-text-color: #ffffff;
-  --typography-heading-color: #ffffff;
-  --storybook-bkg: #382f30;
-  --storybook-heading-color: #35aa4e;
-  --storybook-text-color: #ffffff;
   --font-families-primary: Inter;
   --font-families-secondary: Sentinel;
   --line-heights-none: 100%;
