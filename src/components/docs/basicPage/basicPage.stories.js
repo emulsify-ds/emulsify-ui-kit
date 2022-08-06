@@ -1,5 +1,5 @@
 import template from './basicPage.twig';
-import logo from '../../../images/4klogo.svg';
+import logo from '../../../images/logo.svg';
 
 const data = { logo };
 
