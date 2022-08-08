@@ -120,3 +120,5 @@ Button.parameters = {
 We implement [Four Kitchens' linting and formatting standards](https://github.com/fourkitchens/eslint-config-and-other-formatting) on this project. The configuration for the various linting tools are installed via NPM, and because it's published as a GitHub package, you must create a Personal Access Token and save it as an environment variable locally to be able to successfully run `npm install`.
 
 Follow the steps in the "Prerequisites" section of the [Installation docs](https://github.com/fourkitchens/eslint-config-and-other-formatting#installation) to create your own. (Be sure to follow the link to stack overflow so that you can set your variable to persist across terminal instances!)
+
+### Contributors
