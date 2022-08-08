@@ -122,3 +122,29 @@ We implement [Four Kitchens' linting and formatting standards](https://github.co
 Follow the steps in the "Prerequisites" section of the [Installation docs](https://github.com/fourkitchens/eslint-config-and-other-formatting#installation) to create your own. (Be sure to follow the link to stack overflow so that you can set your variable to persist across terminal instances!)
 
 ### Contributors
+
+<table>
+<tr>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/amazingrando>
+            <img src=https://avatars.githubusercontent.com/u/409903?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Randy Oest/>
+            <br />
+            <sub style="font-size:14px"><b>Randy Oest</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/ModulesUnraveled>
+            <img src=https://avatars.githubusercontent.com/u/1663810?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Brian Lewis/>
+            <br />
+            <sub style="font-size:14px"><b>Brian Lewis</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/ryanhagerty>
+            <img src=https://avatars.githubusercontent.com/u/8405274?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Ryan Hagerty/>
+            <br />
+            <sub style="font-size:14px"><b>Ryan Hagerty</b></sub>
+        </a>
+    </td>
+</tr>
+</table>
