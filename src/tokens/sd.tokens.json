@@ -165,6 +165,10 @@
         "value": "125%",
         "type": "lineHeights"
       }
+    },
+    "bkg": {
+      "value": "#ffffff",
+      "type": "color"
     }
   },
   "button": {
