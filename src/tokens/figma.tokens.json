@@ -1299,6 +1299,12 @@
           "value": "{colors.primary.dark}",
           "type": "color"
         }
+      },
+      "warning": {
+        "default": {
+          "value": "#D80F0F",
+          "type": "color"
+        }
       }
     }
   },
@@ -1462,7 +1468,7 @@
     "colors": {
       "sb": {
         "background": {
-          "value": "{colors.blue.light}",
+          "value": "{colors.white}",
           "type": "color"
         },
         "text": {
