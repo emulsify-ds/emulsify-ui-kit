@@ -4,7 +4,7 @@ import logo from '../../../images/logo.svg';
 const data = { logo };
 
 export default {
-  title: '1 Examples/Basic Page',
+  title: 'Examples/Basic Page',
 };
 
 export const BasicPage = () => template(data);
