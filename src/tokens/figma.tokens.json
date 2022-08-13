@@ -1313,7 +1313,11 @@
       "color": {
         "bkg": {
           "value": "{colors.blue.purple}",
-          "type": "color"
+          "type": "color",
+          "focus": {
+            "value": "red",
+            "type": "color"
+          }
         },
         "label": {
           "value": "{colors.white}",
@@ -1333,6 +1337,10 @@
         },
         "outline-focus": {
           "value": "rgba(255,255,255,0.85)",
+          "type": "color"
+        },
+        "bkg-focus": {
+          "value": "{colors.primary.dark}",
           "type": "color"
         }
       },
