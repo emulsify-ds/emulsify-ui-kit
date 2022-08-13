@@ -1465,6 +1465,10 @@
           "value": "{lineHeights.tight}",
           "type": "lineHeights"
         }
+      },
+      "bkg": {
+        "value": "{colors.white}",
+        "type": "color"
       }
     }
   },
