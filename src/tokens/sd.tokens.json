@@ -238,7 +238,7 @@
     },
     "borderWidth": {
       "outline-focus": {
-        "value": 3,
+        "value": 1,
         "type": "borderWidth"
       },
       "border": {
