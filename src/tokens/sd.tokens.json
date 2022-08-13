@@ -117,6 +117,50 @@
       }
     }
   },
+  "input": {
+    "gap": {
+      "value": 8,
+      "type": "spacing"
+    },
+    "paddingX": {
+      "value": 16,
+      "type": "spacing"
+    },
+    "paddingY": {
+      "value": 8,
+      "type": "spacing"
+    },
+    "color": {
+      "label": {
+        "value": "#085a7d",
+        "type": "color"
+      },
+      "helpText": {
+        "value": "#085a7d",
+        "type": "color"
+      },
+      "placeholder": {
+        "value": "#AFC7D0",
+        "type": "color"
+      }
+    },
+    "border": {
+      "color": {
+        "value": "#1a96ca",
+        "type": "color"
+      }
+    },
+    "radius": {
+      "value": 4,
+      "type": "borderRadius"
+    },
+    "label": {
+      "lineheight": {
+        "value": "125%",
+        "type": "lineHeights"
+      }
+    }
+  },
   "button": {
     "color": {
       "bkg": {
