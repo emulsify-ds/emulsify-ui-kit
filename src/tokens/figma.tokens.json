@@ -1388,7 +1388,7 @@
           "type": "borderWidth"
         },
         "border": {
-          "value": "{border.md}",
+          "value": "{border.sm}",
           "type": "borderWidth"
         },
         "border-hover": {
