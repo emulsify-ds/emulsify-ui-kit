@@ -3,7 +3,9 @@
 @import '~breakpoint-sass/stylesheets/breakpoint';
 
 // Components
+/* stylelint-disable scss/at-import-partial-extension */
 @import 'storybook-styles/**/*.scss';
 @import 'docs/**/*.scss';
 @import 'tokens/**/*.scss';
 @import 'components/**/*.scss';
+/* stylelint-enable scss/at-import-partial-extension */
