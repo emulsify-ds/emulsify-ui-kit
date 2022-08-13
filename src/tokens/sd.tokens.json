@@ -171,7 +171,11 @@
     "color": {
       "bkg": {
         "value": "#035ba1",
-        "type": "color"
+        "type": "color",
+        "focus": {
+          "value": "red",
+          "type": "color"
+        }
       },
       "label": {
         "value": "#ffffff",
@@ -191,6 +195,10 @@
       },
       "outline-focus": {
         "value": "#ffffffd9",
+        "type": "color"
+      },
+      "bkg-focus": {
+        "value": "#085a7d",
         "type": "color"
       }
     },
