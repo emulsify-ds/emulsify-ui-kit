@@ -22,6 +22,7 @@
 
   &:focus,
   &.button--focus {
+    background-color: var(--button-color-bkg-focus);
     padding: var(--button-padding-y-focus) var(--button-padding-x-focus);
     color: var(--button-color-label-focus);
     border: var(--button-border-width-border-focus) solid

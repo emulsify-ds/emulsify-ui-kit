@@ -2,7 +2,7 @@
   "colors": {
     "sb": {
       "background": {
-        "value": "#cde9f4",
+        "value": "#ffffff",
         "type": "color"
       },
       "text": {
@@ -41,6 +41,12 @@
       },
       "heading": {
         "value": "#085a7d",
+        "type": "color"
+      }
+    },
+    "warning": {
+      "default": {
+        "value": "#D80F0F",
         "type": "color"
       }
     },
