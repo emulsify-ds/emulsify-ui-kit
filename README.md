@@ -1,48 +1,150 @@
-<p align="center"><img src="https://raw.githubusercontent.com/emulsify-ds/documentation/master/.gitbook/assets/logo.png" width="400"/></p>
+[![Emulsify Design System](https://user-images.githubusercontent.com/409903/170579210-327abcdd-2c98-4922-87bb-36446a4cc013.svg)](https://www.emulsify.info/)
+![4K-CI-style badge](https://user-images.githubusercontent.com/409903/165123883-03452ea9-76ec-4319-9d82-b2dcba785d2b.svg)
 
-Emulsify is an open-source tool for creating design systems with reusable components and clear guidelines for teams. Emulsify helps organizations scale their design while reducing cost, streamlining workflows, and improving accessibility.
+# UI kit vision
 
-# Emulsify Drupal
+The Four Kitchens UI Kit is a tool for designers and front-end engineers to build high-quality user interfaces effectively and efficiently while maintaining WCAG 2.1 AA standards and project performance goals.
 
-### Storybook development, Webpack build, and Drupal 8 theme
+The Four Kitchens UI Kit gives users access to a library of prebuilt tokens and components that follow accessibility best practices and are easy to customize. The components in the kit are fully responsive, carefully designed, and can be implemented for modification in every project.
 
-**Emulsify Drupal** provides a [Storybook](https://storybook.js.org/) component library, a [Webpack](https://webpack.js.org/) development environment, and a Drupal 8 starterkit theme. It can be used as a standalone prototyping tool or inside a Drupal installation.
+The goals of the Four Kitchens UI Kit are to:
 
-## Documentation
+- Create efficiency in the user interface design process
+- Establish consistency in user interface design
+- Maintain high accessibility standards
 
-[docs.emulsify.info](https://docs.emulsify.info/)
+The Four Kitchens UI Kit has two distinct building blocks: the Figma and the code repo. These two items are kept in alignment for a seamless experience.
 
-### Quick Links
+The Creative Team uses the Four Kitchens UI Kit for every design project, modifying it to create great user interfaces. When a new component is made for a project, that new component is added back into the kit for future reuse. Tokens are managed in Figma and shared with the code repo.
 
-1. [Installation](https://docs.emulsify.info/installation/design-system)
-2. [Usage](https://docs.emulsify.info/usage/commands)
+The Frontend Engineering team uses the Four Kitchens UI Kit for every project. With tokens synced from Figma and a comprehensive component library, the Frontend team focuses their energy on building custom interfaces, streamlining performance, etc.
 
-## Demo
+What the Four Kitchens UI Kit is not:
 
-1. [Storybook](http://storybook.emulsify.info/)
+- Handcuffs. If using the kit is a barrier to a successful project, do what you need to for your project to be successful and provide feedback on why the kit was a barrier.
+- A "default" visual design. Our visual design work is tailor-made for each of our clients and projects.
 
-## Contributing
+## There are two parts of this UI Kit
 
-### [Code of Conduct](https://github.com/emulsify-ds/emulsify-drupal/blob/master/CODE_OF_CONDUCT.md)
+- [Figma UI Kit](https://www.figma.com/file/eo87m50yAw3P8iXTypxw4I/Four-Kitchens-UI-Kit?node-id=22073%3A26)
+- [Storybook](https://four-kitchens-ui-kit.netlify.app/?path=/story/docs-cover--cover)
 
-The project maintainers have adopted a Code of Conduct that we expect project participants to adhere to. Please read the full text so that you can understand what actions will and will not be tolerated.
+## Connecting components with Figma
 
-### Contribution Guide
+The strength of this UI kit leans on its connection with Figma.
 
-Please also follow the issue template and pull request templates provided. See below for the correct places to post issues:
+1. In Figma, a series of design tokens for a component are defined and exported to this project as `./src/tokens/figma.tokens.json`.
+2. These tokens are transformed into standard [Amazon Style Dictionary](https://amzn.github.io/style-dictionary/#/) syntax.
+3. These new tokens are converted into the preferred CSS format from the `./src/tokens/sd.tokens.json` file.
 
-1. [Emulsify Drupal](https://github.com/emulsify-ds/emulsify-drupal/issues)
-2. [Emulsify Twig Extensions](https://github.com/emulsify-ds/emulsify-twig-extensions/issues)
-3. [Emulsify Twig Drupal Module](https://www.drupal.org/project/issues/emulsify_twig)
+### Example component
 
-### Committing Changes
+The [button component](https://four-kitchens-ui-kit.netlify.app/?path=/story/components-button--button) serves as an example of how variables are used to connect Figma with the code.
 
-To facilitate automatic semantic release versioning, we utilize the [Conventional Changelog](https://github.com/conventional-changelog/conventional-changelog) standard through Commitizen. Follow these steps when commiting your work to ensure semantic release can version correctly.
+```css
+.button {
+  background-color: var(--button-color-bkg);
+  padding: var(--button-padding-y) var(--button-padding-x);
+  color: var(--button-color-label);
+  border-radius: var(--button-radius);
+  border: var(--button-border-width-border) solid var(--button-border-color);
+  font-size: var(--font-size-small);
+  font-weight: var(--button-font-weight-label);
+  text-transform: var(--button-text-case);
+  text-decoration: none;
 
-1. Stage your changes, ensuring they encompass exactly what you wish to change, no more.
-2. Run the `commit` script via `yarn commit` or `npm run commit` and follow the prompts to craft the perfect commit message.
-3. Your commit message will be used to create the changelog for the next version that includes that commit.
+  &:hover,
+  &.button--hover {
+    background-color: var(--button-color-bkg-hover);
+    padding: var(--button-padding-y-hover) var(--button-padding-x-hover);
+    border: var(--button-border-width-border-hover) solid var(
+        --button-border-color-hover
+      );
+    color: var(--button-color-label-hover);
+    text-decoration: underline;
+    text-transform: var(--button-text-case);
+  }
 
-## Author
+  &:focus,
+  &.button--focus {
+    padding: var(--button-padding-y-focus) var(--button-padding-x-focus);
+    color: var(--button-color-label-focus);
+    border: var(--button-border-width-border-focus) solid var(
+        --button-border-color-focus
+      );
+    outline: var(--button-border-width-outline-focus) solid var(
+        --button-color-outline-focus
+      );
+    text-transform: var(--button-text-case);
+  }
+}
+```
 
-Emulsify&reg; is a product of [Four Kitchens &mdash; We make BIG websites](https://fourkitchens.com).
+## Creating a component
+
+A complete component meets the following criteria:
+
+1. Design tokens are defined as their own set in Figma, in the Figma Tokens plugin, and they use references to values defined in `global` as much as possible.
+2. The component has an independent frame in Figma.
+3. The component's CSS file uses the generated design tokens as much as possible. See button example above.
+4. A component's story connects to the corresponding Figma frame, defined in `.storybook/configma.json`.
+5. A component passes WCAG 2 AA.
+
+### Defining design tokens as their own set in Figma
+
+https://user-images.githubusercontent.com/409903/165324471-6c16eee2-0fa2-461f-9f84-42b5862658d2.mp4
+
+### Connecting a component's story to the corresponding Figma frame
+
+1. In Figma, select the frame to share and activate the Share button (in the upper right hand corner).
+2. In the share modal make sure that "Link to selected frame" is checked and activate "Copy link".
+3. Open `.storybook/configma.json` and confirm the following:
+4. Using this example: `https://www.figma.com/file/[FIGMA_FILE_ID]/[FIGMA_FILE_NAME]?node-id=[NODE_ID]`
+5. Confirm that `url` has the correct `FIGMA_FILE_ID` and `FIGMA_FILE_NAME`.
+6. Add your component name to the file as a key with the `NODE_ID` being the value.
+7. Import `configma.json` into your story.
+
+8. In the parameters of your story, include `figma.COMPONENT_KEY` as shown below.
+
+```js
+Button.parameters = {
+  design: {
+    type: 'figma',
+    url: figma.url + figma.button,
+  },
+};
+```
+
+## Contributing to this UI Kit
+
+We implement [Four Kitchens' linting and formatting standards](https://github.com/fourkitchens/eslint-config-and-other-formatting) on this project. The configuration for the various linting tools are installed via NPM, and because it's published as a GitHub package, you must create a Personal Access Token and save it as an environment variable locally to be able to successfully run `npm install`.
+
+Follow the steps in the "Prerequisites" section of the [Installation docs](https://github.com/fourkitchens/eslint-config-and-other-formatting#installation) to create your own. (Be sure to follow the link to stack overflow so that you can set your variable to persist across terminal instances!)
+
+### Contributors
+
+<table>
+<tr>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/amazingrando>
+            <img src=https://avatars.githubusercontent.com/u/409903?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Randy Oest/>
+            <br />
+            <sub style="font-size:14px"><b>Randy Oest</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/ModulesUnraveled>
+            <img src=https://avatars.githubusercontent.com/u/1663810?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Brian Lewis/>
+            <br />
+            <sub style="font-size:14px"><b>Brian Lewis</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/ryanhagerty>
+            <img src=https://avatars.githubusercontent.com/u/8405274?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Ryan Hagerty/>
+            <br />
+            <sub style="font-size:14px"><b>Ryan Hagerty</b></sub>
+        </a>
+    </td>
+</tr>
+</table>

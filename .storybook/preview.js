@@ -24,7 +24,15 @@ export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   options: {
     storySort: {
-      order: ['Cover', 'Examples', 'Components', 'Tokens', '*', 'WIP'],
+      order: [
+        'Cover',
+        'Docs',
+        'Examples',
+        'Components',
+        'Tokens',
+        '*',
+        'WIP',
+      ],
     },
   },
 };
