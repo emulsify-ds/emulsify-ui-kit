@@ -1412,6 +1412,52 @@
       }
     }
   },
+  "Input": {
+    "input": {
+      "gap": {
+        "value": "{spacing.md}",
+        "type": "spacing"
+      },
+      "paddingX": {
+        "value": "{spacing.lg}",
+        "type": "spacing"
+      },
+      "paddingY": {
+        "value": "{spacing.md}",
+        "type": "spacing"
+      },
+      "color": {
+        "label": {
+          "value": "{colors.primary.dark}",
+          "type": "color"
+        },
+        "helpText": {
+          "value": "{colors.primary.dark}",
+          "type": "color"
+        },
+        "placeholder": {
+          "value": "#AFC7D0",
+          "type": "color"
+        }
+      },
+      "border": {
+        "color": {
+          "value": "{colors.primary.default}",
+          "type": "color"
+        }
+      },
+      "radius": {
+        "value": "{radius.sm}",
+        "type": "borderRadius"
+      },
+      "label": {
+        "lineheight": {
+          "value": "{lineHeights.tight}",
+          "type": "lineHeights"
+        }
+      }
+    }
+  },
   "storybook": {
     "colors": {
       "sb": {
