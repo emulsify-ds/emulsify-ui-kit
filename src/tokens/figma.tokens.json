@@ -1335,10 +1335,6 @@
           "value": "{colors.white}",
           "type": "color"
         },
-        "outline-focus": {
-          "value": "rgba(255,255,255,0.85)",
-          "type": "color"
-        },
         "bkg-focus": {
           "value": "{colors.primary.dark}",
           "type": "color"
