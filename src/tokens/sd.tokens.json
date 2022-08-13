@@ -246,15 +246,15 @@
         "type": "borderWidth"
       },
       "border": {
-        "value": 3,
+        "value": 1,
         "type": "borderWidth"
       },
       "border-hover": {
-        "value": 3,
+        "value": 1,
         "type": "borderWidth"
       },
       "border-focus": {
-        "value": 3,
+        "value": 1,
         "type": "borderWidth"
       }
     },
