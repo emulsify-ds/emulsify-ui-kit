@@ -2,5 +2,6 @@
 {% if buttonAdditionalClasses %}
   {% set buttonClasses = buttonClasses|merge(buttonAdditionalClasses) %}
 {% endif %}
+{% set buttonLabel = buttonLabel|default('Button') %}
 
-<a href="#" class="{{buttonClasses|join(' ')}}">Button</a>
+<a href="#" class="{{buttonClasses|join(' ')}}">{{buttonLabel}}</a>

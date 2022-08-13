@@ -13,6 +13,8 @@
     border-radius: var(--input-radius);
     padding: var(--input-padding-y) var(--input-padding-x);
     font-weight: bold;
+    width: 100%;
+    box-sizing: border-box;
 
     &::placeholder {
       color: var(--input-color-placeholder);
