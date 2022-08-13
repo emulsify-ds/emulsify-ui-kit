@@ -193,10 +193,6 @@
         "value": "#ffffff",
         "type": "color"
       },
-      "outline-focus": {
-        "value": "#ffffffd9",
-        "type": "color"
-      },
       "bkg-focus": {
         "value": "#085a7d",
         "type": "color"
