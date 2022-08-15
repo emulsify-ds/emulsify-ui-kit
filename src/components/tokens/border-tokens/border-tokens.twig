@@ -8,9 +8,9 @@
         <span class="sb-list__value">{{value.value}}px</span>
         <span class="sb-list__custom-property">
           <code class=" sb-custom-property-name">var(--border-{{border}})</code>
-        </li>
+        </span>
+        <span class="sb-list__visualization" style="height: {{value.value}}px; background-color: var(--colors-sb-visualization); width: 300px;"></span>
       </li>
-    </span>
-    <span class="sb-list__visualization" style="width: {{value.value}}px"></span>
-  </li>
-{% endfor %}</ul></div>
+    {% endfor %}
+  </ul>
+</div>

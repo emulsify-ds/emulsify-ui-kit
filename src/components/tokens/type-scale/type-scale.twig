@@ -5,7 +5,7 @@
     {% for fontSize, value in _context.fontSize|reverse %}
       <li class="sb-list__item">
         <span class="sb-list__value">{{value.value}}px</span>
-        <span class="sb-list__custom-property" style="width: 235px;">
+        <span class="sb-list__custom-property">
           <code class="sb-custom-property-name">var(--font-size-{{fontSize}})</code>
         </span>
         <span class="sb-list__label" style="font-size: {{value.value}}px;">{{fontSize}}</span>

@@ -3,11 +3,18 @@ import figma from '../../../../.storybook/configma.json';
 
 export default {
   title: 'Components/Button',
+  decorators: [
+    (story) => `<div><h2 class="sb-title">Button</h2>${story()}</div>`,
+  ],
 };
 
-export const Button = () => template();
+export const Default = () => template();
+export const Hover = () =>
+  template({ buttonAdditionalClasses: ['button--hover'] });
+export const Focus = () =>
+  template({ buttonAdditionalClasses: ['button--focus'] });
 
-Button.parameters = {
+Default.parameters = {
   design: {
     type: 'figma',
     url: figma.url + figma.button,
