@@ -1278,25 +1278,25 @@
     "colors": {
       "primary": {
         "default": {
-          "value": "{colors.blue.default}",
+          "value": "{colors.green.500}",
           "type": "color"
         },
         "light": {
-          "value": "{colors.blue.light}",
+          "value": "{colors.green.200}",
           "type": "color"
         },
         "dark": {
-          "value": "{colors.blue.medium}",
+          "value": "{colors.green.900}",
           "type": "color"
         }
       },
       "text": {
         "body": {
-          "value": "{colors.blue.dark}",
+          "value": "{colors.green.900}",
           "type": "color"
         },
         "heading": {
-          "value": "{colors.primary.dark}",
+          "value": "{colors.green.700}",
           "type": "color"
         }
       },
@@ -1367,7 +1367,7 @@
         }
       },
       "radius": {
-        "value": "{radius.sm}",
+        "value": "{radius.lg}",
         "type": "borderRadius"
       },
       "radius-hover": {
@@ -1496,5 +1496,14 @@
       }
     }
   },
-  "$themes": []
+  "$themes": [],
+  "$metadata": {
+    "tokenSetOrder": [
+      "global",
+      "semantic",
+      "button",
+      "Input",
+      "storybook"
+    ]
+  }
 }
