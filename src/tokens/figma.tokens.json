@@ -249,7 +249,7 @@
     },
     "fontFamilies": {
       "primary": {
-        "value": "Inter",
+        "value": "Georgia",
         "type": "fontFamilies"
       },
       "secondary": {
