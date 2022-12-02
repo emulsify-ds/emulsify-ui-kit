@@ -1312,7 +1312,7 @@
     "button": {
       "color": {
         "bkg": {
-          "value": "{colors.blue.purple}",
+          "value": "{colors.primary.default}",
           "type": "color",
           "focus": {
             "value": "red",
@@ -1402,15 +1402,15 @@
       },
       "border": {
         "color": {
-          "value": "{colors.blue.purple}",
+          "value": "{button.color.bkg}",
           "type": "color"
         },
         "color-hover": {
-          "value": "{colors.primary.dark}",
+          "value": "{button.color.bkg-hover}",
           "type": "color"
         },
         "color-focus": {
-          "value": "{colors.primary.dark}",
+          "value": "{button.color.bkg-focus}",
           "type": "color"
         }
       },
@@ -1496,5 +1496,14 @@
       }
     }
   },
-  "$themes": []
+  "$themes": [],
+  "$metadata": {
+    "tokenSetOrder": [
+      "global",
+      "semantic",
+      "button",
+      "Input",
+      "storybook"
+    ]
+  }
 }
