@@ -110,6 +110,15 @@
     font-family: var(--font-families-primary), serif !important;
     font-size: var(--font-size-colossus);
     margin: 0;
-    line-height: var(--line-heights-none);
   }
+}
+
+.sb_lozenge {
+  background: var(--colors-primary-light);
+  color: var(--colors-primary-dark);
+  font-size: var(--font-size-small);
+  display: block;
+  border-radius: var(--radius-lg);
+  width: max-content;
+  padding: var(--spacing-sm) var(--spacing-lg);
 }

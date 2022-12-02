@@ -8,11 +8,14 @@ export default {
   ],
 };
 
-export const Default = () => template();
-export const Hover = () =>
-  template({ buttonAdditionalClasses: ['button--hover'] });
-export const Focus = () =>
-  template({ buttonAdditionalClasses: ['button--focus'] });
+export const Default = () => `
+  <p>Default:</p>
+  ${template()}
+  <p>Hover:</p>
+  ${template({ buttonAdditionalClasses: ['button--hover'] })}
+  <p>Focus:</p>
+  ${template({ buttonAdditionalClasses: ['button--focus'] })}
+`;
 
 Default.parameters = {
   design: {
