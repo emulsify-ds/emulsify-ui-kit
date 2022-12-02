@@ -1,7 +1,11 @@
 // This file can be used to import all other styles.
 @import '~normalize.css/normalize';
+@import '~breakpoint-sass/stylesheets/breakpoint';
 
 // Components
-@import 'storybook-styles/storybook';
-@import 'tokens/tokens';
-@import 'components/button/button';
+/* stylelint-disable scss/at-import-partial-extension */
+@import 'storybook-styles/**/*.scss';
+@import 'docs/**/*.scss';
+@import 'tokens/**/*.scss';
+@import 'components/**/*.scss';
+/* stylelint-enable scss/at-import-partial-extension */

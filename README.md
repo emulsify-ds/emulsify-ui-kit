@@ -1,3 +1,4 @@
+[![Emulsify Design System](https://user-images.githubusercontent.com/409903/170579210-327abcdd-2c98-4922-87bb-36446a4cc013.svg)](https://www.emulsify.info/)
 ![4K-CI-style badge](https://user-images.githubusercontent.com/409903/165123883-03452ea9-76ec-4319-9d82-b2dcba785d2b.svg)
 
 # UI kit vision
@@ -119,3 +120,31 @@ Button.parameters = {
 We implement [Four Kitchens' linting and formatting standards](https://github.com/fourkitchens/eslint-config-and-other-formatting) on this project. The configuration for the various linting tools are installed via NPM, and because it's published as a GitHub package, you must create a Personal Access Token and save it as an environment variable locally to be able to successfully run `npm install`.
 
 Follow the steps in the "Prerequisites" section of the [Installation docs](https://github.com/fourkitchens/eslint-config-and-other-formatting#installation) to create your own. (Be sure to follow the link to stack overflow so that you can set your variable to persist across terminal instances!)
+
+### Contributors
+
+<table>
+<tr>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/amazingrando>
+            <img src=https://avatars.githubusercontent.com/u/409903?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Randy Oest/>
+            <br />
+            <sub style="font-size:14px"><b>Randy Oest</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/ModulesUnraveled>
+            <img src=https://avatars.githubusercontent.com/u/1663810?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Brian Lewis/>
+            <br />
+            <sub style="font-size:14px"><b>Brian Lewis</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/ryanhagerty>
+            <img src=https://avatars.githubusercontent.com/u/8405274?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Ryan Hagerty/>
+            <br />
+            <sub style="font-size:14px"><b>Ryan Hagerty</b></sub>
+        </a>
+    </td>
+</tr>
+</table>

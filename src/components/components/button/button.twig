@@ -1,19 +1,7 @@
-<div>
-  <h2 class="sb-title">Button</h2>
+{% set buttonClasses = ['button'] %}
+{% if buttonAdditionalClasses %}
+  {% set buttonClasses = buttonClasses|merge(buttonAdditionalClasses) %}
+{% endif %}
+{% set buttonLabel = buttonLabel|default('Button') %}
 
-  <h3 class="sb-subtitle">Default</h3>
-  <p>
-    <a href="#" class="button">Button</a>
-  </p>
-
-  <h3 class="sb-subtitle">Hover</h3>
-  <p>
-    <a href="#" class="button button--hover">Button hover</a>
-  </p>
-
-  <h3 class="sb-subtitle">Focus</h3>
-  <p>
-    <a href="#" class="button button--focus">Button Label</a>
-  </p>
-
-</div>
+<a href="#" class="{{buttonClasses|join(' ')}}">{{buttonLabel}}</a>

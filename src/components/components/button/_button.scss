@@ -8,6 +8,7 @@
   font-weight: var(--button-font-weight-label);
   text-transform: var(--button-text-case);
   text-decoration: none;
+  text-align: center;
 
   &:hover,
   &.button--hover {
@@ -22,12 +23,14 @@
 
   &:focus,
   &.button--focus {
+    background-color: var(--button-color-bkg-focus);
     padding: var(--button-padding-y-focus) var(--button-padding-x-focus);
     color: var(--button-color-label-focus);
     border: var(--button-border-width-border-focus) solid
       var(--button-border-color-focus);
-    outline: var(--button-border-width-outline-focus) solid
-      var(--button-color-outline-focus);
+    outline: var(--button-border-width-outline-focus) dotted
+      var(--button-border-color-focus);
     text-transform: var(--button-text-case);
+    outline-offset: 0.125rem;
   }
 }

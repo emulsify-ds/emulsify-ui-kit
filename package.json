@@ -1,13 +1,14 @@
 {
-  "name": "4k-ui-kit",
-  "version": "0.0.0-development",
-  "description": "Four Kitchens UI Kit",
+  "name": "emulsify-ui-kit",
+  "version": "1.0.0",
+  "description": "UI Kit",
   "keywords": [
     "component library",
     "design system",
+    "drupal",
     "pattern library",
     "storybook",
-    "style guide"
+    "styleguide"
   ],
   "author": "Four Kitchens <shout@fourkitchens.com>",
   "license": "ISC",
@@ -22,9 +23,9 @@
     "postinstall": "npx patch-package",
     "prepare": "husky install",
     "prettier": "prettier src/components --ignore-unknown --list-different",
-    "storybook": "start-storybook --ci -s dist,src/images,src/fonts -p 6006",
     "storybook:build": "npm run build && build-storybook -s dist,src/images,src/fonts -o .out",
     "storybook:deploy": "storybook-to-ghpages -o .out",
+    "storybook": "start-storybook --ci -s dist,src/images,src/fonts -p 6006",
     "style-dictionary:build": "node ./src/tokens/tokensTransform.js",
     "tokens:build": "npm run tokens:transform && npm run style-dictionary:build",
     "tokens:transform": "token-transformer src/tokens/figma.tokens.json src/tokens/sd.tokens.json",
@@ -37,6 +38,7 @@
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {
+    "breakpoint-sass": "^2.7.1",
     "@babel/core": "^7.16.7",
     "@fourkitchens/eslint-config-and-other-formatting": "^1.0.0",
     "@storybook/addon-a11y": "^6.4.22",
