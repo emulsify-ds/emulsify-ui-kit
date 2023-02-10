@@ -1,0 +1,23 @@
+{#
+/**
+ * Available variables:
+ * - button__content - the content of the button (typically text)
+ *
+ * Available blocks:
+ * - button__content - used to replace the content of the button with something other than text
+ *   for example: to insert an icon
+ */
+#}
+
+{% set button__base_class = button__base_class|default('button') %}
+{% set button__attributes = button__attributes|default([]) %}
+
+{% set button__attributes = button__attributes|merge({
+  'class': bem(button__base_class, button__modifiers, button__blockname, button__additional_classes),
+}) %}
+
+<button {{ add_attributes(button__attributes) }}>
+  {% block button__content %}
+    {{ button__content }}
+  {% endblock %}
+</button>

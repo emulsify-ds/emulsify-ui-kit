@@ -1,4 +1,26 @@
 {
+  "tokenSetOrder": {
+    "0": {
+      "value": "global",
+      "type": "other"
+    },
+    "1": {
+      "value": "semantic",
+      "type": "other"
+    },
+    "2": {
+      "value": "button",
+      "type": "other"
+    },
+    "3": {
+      "value": "Input",
+      "type": "other"
+    },
+    "4": {
+      "value": "storybook",
+      "type": "other"
+    }
+  },
   "colors": {
     "sb": {
       "background": {
@@ -174,7 +196,7 @@
   "button": {
     "color": {
       "bkg": {
-        "value": "#035ba1",
+        "value": "#1a96ca",
         "type": "color",
         "focus": {
           "value": "red",
@@ -264,7 +286,7 @@
     },
     "border": {
       "color": {
-        "value": "#035ba1",
+        "value": "#1a96ca",
         "type": "color"
       },
       "color-hover": {

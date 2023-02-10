@@ -1,0 +1,19 @@
+{#
+ # Available variables:
+ # - list__item__content - the content of the list_item (typically text)
+ #
+ # Available blocks:
+ # - list__item__content - used to replace the content of the list_item with something other than text
+ #   for example: to insert the image and/or link components
+ #}
+{% set list__item__base_class = list__item__base_class|default('item') %}
+{% set list__item__attributes = list__item__attributes|default({}) %}
+{% set list__item__attributes = list__item__attributes|merge({
+  'class': bem(list__item__base_class, list__item__modifiers, list__item__blockname),
+}) %}
+
+<li {{ add_attributes(list__item__attributes) }}>
+  {% block list__item__content %}
+    {{ list__item__content }}
+  {% endblock %}
+</li>

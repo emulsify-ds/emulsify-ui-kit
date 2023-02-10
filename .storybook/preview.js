@@ -27,8 +27,10 @@ export const parameters = {
       order: [
         'Cover',
         'Docs',
-        'Examples',
+        'Pages',
+        'Templates',
         'Components',
+        ['Base', 'Atoms', "Molecules", "Organisms", "*"],
         'Tokens',
         '*',
         'WIP',

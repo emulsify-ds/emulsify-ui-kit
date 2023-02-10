@@ -1,0 +1,8 @@
+unordered__list__items:
+  - list__item__content: "This is a list of items that doesn't need numbers."
+  - list__item__content: 'Amet consectetur purus justo feugiat mattis sit ultricies odio. Pellentesque pellentesque sit sed porttitor duis interdum.'
+  - list__item__content: 'Elementum elit est, vitae feugiat enim odio cursus. Enim cum dictum gravida amet id eget.'
+ordered__list__items:
+  - list__item__content: 'This is a list of items that benefits from numbers.'
+  - list__item__content: 'Amet consectetur purus justo feugiat mattis sit ultricies odio. Pellentesque pellentesque sit sed porttitor duis interdum.'
+  - list__item__content: 'Elementum elit est, vitae feugiat enim odio cursus. Enim cum dictum gravida amet id eget.'

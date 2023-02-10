@@ -1,9 +1,14 @@
 /**
  * Do not edit directly
- * Generated on Sat, 13 Aug 2022 19:39:16 GMT
+ * Generated on Fri, 10 Feb 2023 19:06:43 GMT
  */
 
 :root {
+  --token-set-order-0: global;
+  --token-set-order-1: semantic;
+  --token-set-order-2: button;
+  --token-set-order-3: Input;
+  --token-set-order-4: storybook;
   --colors-sb-background: #ffffff;
   --colors-sb-text-body: #011821;
   --colors-sb-text-heading: #085a7d;
@@ -41,7 +46,7 @@
   --input-radius: 0.25rem;
   --input-label-lineheight: 125%;
   --input-bkg: #ffffff;
-  --button-color-bkg: #035ba1;
+  --button-color-bkg: #1a96ca;
   --button-color-label: #ffffff;
   --button-color-bkg-hover: #085a7d;
   --button-color-label-hover: #ffffff;
@@ -61,7 +66,7 @@
   --button-border-width-border-hover: 1px;
   --button-border-width-border-focus: 1px;
   --button-text-case: uppercase;
-  --button-border-color: #035ba1;
+  --button-border-color: #1a96ca;
   --button-border-color-hover: #085a7d;
   --button-border-color-focus: #085a7d;
   --button-font-weight-label: Bold;
