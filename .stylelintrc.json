@@ -1,0 +1,31 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
+  "plugins": ["stylelint-prettier"],
+  "customSyntax": "postcss-scss",
+  "rules": {
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "content",
+          "each",
+          "else",
+          "extend",
+          "forward",
+          "function",
+          "if",
+          "import",
+          "include",
+          "mixin",
+          "return",
+          "use"
+        ]
+      }
+    ],
+    "number-leading-zero": "always",
+    "number-no-trailing-zeros": true,
+    "prettier/prettier": true,
+    "selector-class-pattern": null,
+    "function-no-unknown": null
+  }
+}
