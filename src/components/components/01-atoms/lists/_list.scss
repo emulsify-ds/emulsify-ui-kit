@@ -1,0 +1,17 @@
+ul {
+  @include list-reset;
+
+  list-style-type: disc;
+}
+
+ol {
+  @include list-reset;
+
+  list-style-type: decimal;
+}
+
+.text-field {
+  li {
+    padding-left: $space;
+  }
+}

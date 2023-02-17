@@ -1,0 +1,37 @@
+{#
+ # Available Props:
+ # - pull_quote__style: bar-left, bar-right, or quote-left
+ #
+ # Available Variables:
+ # - pull_quote__quote (required)
+ # - pull_quote__attribution
+ # - pull_quote__aria_label
+ #}
+
+{% set pull_quote__base_class = 'pull-quote' %}
+{% set pull_quote__style = pull_quote__style|default('bar-left') %}
+{% set pull_quote__aria_label = pull_quote__aria_label|default('Pullquote Element by Lorem Ipsum') %}
+{# If pull_quote__attributes is not defined, set it to an empty object by default #}
+{% set pull_quote__attributes = pull_quote__attributes|default({}) %}
+
+{% set pull_quote__attributes = pull_quote__attributes|merge({
+  'data-component-width': 'content',
+  'data-pull-quote-style': pull_quote__style,
+  'aria-label': pull_quote__aria_label,
+  class: bem(pull_quote__base_class, pull_quote__modifiers, pull_quote__blockname),
+}) %}
+
+<aside {{ add_attributes(pull_quote__attributes) }}>
+  <div {{ bem('inner', [], pull_quote__base_class) }}>
+    <figure {{ bem('figure', [], pull_quote__base_class) }}>
+      {% include "@atoms/text/text/02-blockquote.twig" with {
+        blockquote__content: pull_quote__quote,
+        blockquote__blockname: pull_quote__base_class,
+        blockquote__base_class: 'quote',
+      } %}
+      {% if pull_quote__attribution %}
+        <figcaption {{ bem('attribution', [], pull_quote__base_class) }}>—{{ pull_quote__attribution }}</figcaption>
+      {% endif %}
+    </figure>
+  </div>
+</aside>

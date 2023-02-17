@@ -1,0 +1,45 @@
+.pull-quote {
+  padding: $space-double;
+}
+
+.pull-quote__figure {
+  [data-pull-quote-style='bar-left'] & {
+    padding-left: $space;
+    border-left: $space-one-half solid clr(accent);
+  }
+
+  [data-pull-quote-style='bar-right'] & {
+    padding-right: $space;
+    border-right: $space-one-half solid clr(accent);
+    text-align: right;
+  }
+
+  [data-pull-quote-style='quote-left'] & {
+    position: relative;
+    padding-left: $space-triple;
+
+    &::before {
+      content: '“';
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 4em;
+      line-height: 0.8;
+      color: clr(accent);
+    }
+  }
+}
+
+.pull-quote__quote {
+  border-left: none;
+  margin: 0;
+
+  p {
+    font-size: 1.2rem;
+  }
+}
+
+.pull-quote__attribution {
+  font-size: 1rem;
+  color: clr(text);
+}

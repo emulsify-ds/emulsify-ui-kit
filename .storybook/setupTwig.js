@@ -18,11 +18,37 @@ const fetchVariantConfig = () => {
         name: 'components',
         directory: './src/components/components',
       },
+      {
+        name: 'base',
+        directory: './src/components/components/00-base',
+      },
+      {
+        name: 'atoms',
+        directory: './src/components/components/01-atoms',
+      },
+      {
+        name: 'molecules',
+        directory: './src/components/components/02-molecules',
+      },
+      {
+        name: 'organisms',
+        directory: './src/components/components/03-organisms',
+      },
+      {
+        name: 'templates',
+        directory: './src/components/components/04-templates',
+      },
     ];
   }
 };
 
-module.exports.namespaces = {};
+module.exports.namespaces = {
+  atoms: resolve(__dirname, '../', 'components/components/01-atoms'),
+  molecules: resolve(__dirname, '../', 'components/components/02-molecules'),
+  organisms: resolve(__dirname, '../', 'components/components/03-organisms'),
+  templates: resolve(__dirname, '../', 'components/components/04-templates'),
+};
+
 for (const { name, directory } of fetchVariantConfig()) {
   module.exports.namespaces[name] = resolve(__dirname, '../', directory);
 }
