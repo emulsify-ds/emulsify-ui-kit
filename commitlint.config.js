@@ -1,5 +1,1 @@
-module.exports = {
-  extends: [
-    '@fourkitchens/eslint-config-and-other-formatting/commitlint.config',
-  ],
-};
+module.exports = { extends: ['@commitlint/config-conventional'] };
