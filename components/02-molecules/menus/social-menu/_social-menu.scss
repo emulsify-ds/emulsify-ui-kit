@@ -1,0 +1,33 @@
+$social-icon-size: 16px;
+
+.social-menu {
+  @include list-reset;
+}
+
+.social-menu__item {
+  margin-bottom: $space-one-half;
+}
+
+.social-menu__link {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  text-decoration: none;
+  color: clr(text);
+
+  &:focus,
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.social-menu__icon {
+  height: $social-icon-size;
+  width: $social-icon-size;
+  margin-right: $space-one-half;
+  fill: currentColor;
+}
+
+.social-menu__text {
+  font-weight: bold;
+}

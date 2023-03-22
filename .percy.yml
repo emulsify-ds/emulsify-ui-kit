@@ -1,0 +1,8 @@
+version: 2
+discovery:
+  disable-cache: true
+snapshot:
+  percy-css: |
+    img:not(.logo__image) {
+      visibility: hidden;
+    }

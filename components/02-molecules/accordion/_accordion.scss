@@ -1,0 +1,82 @@
+$accordion_icon_size: $space;
+
+// The accordion group.
+.accordion {
+  padding-block: $space;
+}
+
+.accordion__controls {
+  @include list-reset;
+
+  display: flex;
+}
+
+.accordion__controls__item {
+  &:not(:last-child) {
+    padding-right: $space;
+    margin-right: $space;
+    border-right: 1px solid;
+  }
+}
+
+.accordion-item__toggle {
+  display: flex;
+  gap: $space;
+  align-items: center;
+
+  &:hover {
+    color: clr(link);
+  }
+}
+
+.accordion__toggle-all {
+  display: flex;
+  gap: $space;
+  align-items: center;
+
+  &:hover {
+    color: clr(link);
+  }
+}
+
+.accordion__icon {
+  height: $accordion_icon_size;
+  width: $accordion_icon_size;
+  pointer-events: none;
+
+  .accordion__toggle-all--collapse & {
+    transform: rotate(180deg);
+  }
+}
+
+// Individual accordion items.
+.accordion-item {
+  border-bottom: 1px solid;
+  padding-top: $space;
+}
+
+.accordion-item__heading {
+  display: flex;
+  margin-bottom: $space;
+}
+
+.accordion-item__icon {
+  height: $accordion_icon_size;
+  width: $accordion_icon_size;
+
+  [aria-expanded='true'] > & {
+    transform: rotate(180deg);
+  }
+}
+
+.accordion-item__content {
+  overflow: hidden;
+
+  [data-accordion-expanded='true'] & {
+    margin-bottom: $space;
+  }
+
+  [data-accordion-expanded='false'] & {
+    max-height: 0;
+  }
+}

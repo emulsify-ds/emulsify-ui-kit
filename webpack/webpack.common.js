@@ -38,6 +38,7 @@ module.exports = {
       loaders.SVGSpriteLoader,
       loaders.ImageLoader,
       loaders.JSLoader,
+      loaders.FontLoader,
     ],
   },
   plugins: [
@@ -46,6 +47,8 @@ module.exports = {
     plugins.SpriteLoaderPlugin,
     plugins.ProgressPlugin,
     plugins.CleanWebpackPlugin,
+    plugins.StyleLintPlugin,
+    plugins.ESLintPlugin,
   ],
   output: {
     path: distDir,

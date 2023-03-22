@@ -1,0 +1,221 @@
+{
+  "name": "compound",
+  "homepage": "https://github.com/emulsify-ds/compound",
+  "repository": "https://github.com/emulsify-ds/compound.git",
+  "structure": [
+    {
+      "name": "base",
+      "description": "Base-level components used in virtually every higher-level component"
+    },
+    {
+      "name": "atoms",
+      "description": "Small components commonly used in higher-level components"
+    },
+    {
+      "name": "molecules",
+      "description": "Medium-sized components used as building blocks within a larger component"
+    },
+    {
+      "name": "organisms",
+      "description": "Large components that compose smaller components into a cohesive UI"
+    },
+    {
+      "name": "templates",
+      "description": "Collection of layout templates."
+    },
+    {
+      "name": "pages",
+      "description": "Entire pages built using smaller components"
+    }
+  ],
+  "variants": [
+    {
+      "platform": "drupal",
+      "structureImplementations": [
+        {
+          "name": "base",
+          "directory": "./components/00-base"
+        },
+        {
+          "name": "atoms",
+          "directory": "./components/01-atoms"
+        },
+        {
+          "name": "molecules",
+          "directory": "./components/02-molecules"
+        },
+        {
+          "name": "organisms",
+          "directory": "./components/03-organisms"
+        },
+        {
+          "name": "templates",
+          "directory": "./components/04-templates"
+        },
+        {
+          "name": "pages",
+          "directory": "./components/05-pages"
+        }
+      ],
+      "directories": [
+        {
+          "name": "defaults",
+          "path": "./components/00-base/00-defaults",
+          "destinationPath": "./components/00-base/00-defaults",
+          "description": "Contains scss files with global defaults"
+        },
+        {
+          "name": "template-components",
+          "path": "./components/04-templates",
+          "destinationPath": "./components/04-templates",
+          "description": "Contains default templates and layouts that are required"
+        },
+        {
+          "name": "templates",
+          "path": "./templates",
+          "destinationPath": "./templates",
+          "description": "Contains Drupal templates"
+        }
+      ],
+      "files": [
+        {
+          "name": "style",
+          "path": "./components/style.scss",
+          "destinationPath": "./components/style.scss",
+          "description": "Primary style scss file"
+        }
+      ],
+      "components": [
+        {
+          "name": "01-colors",
+          "structure": "base",
+          "required": true,
+          "dependency": ["text"]
+        },
+        {
+          "name": "02-motion",
+          "structure": "base",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "03-site",
+          "structure": "base",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "buttons",
+          "structure": "atoms",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "forms",
+          "structure": "atoms",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "images",
+          "structure": "atoms",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "links",
+          "structure": "atoms",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "lists",
+          "structure": "atoms",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "tables",
+          "structure": "atoms",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "text",
+          "structure": "atoms",
+          "required": true,
+          "dependency": ["links"]
+        },
+        {
+          "name": "videos",
+          "structure": "atoms",
+          "dependency": []
+        },
+        {
+          "name": "accordion",
+          "structure": "molecules"
+        },
+        {
+          "name": "card",
+          "structure": "molecules",
+          "dependency": ["images", "text", "links", "buttons"]
+        },
+        {
+          "name": "cta",
+          "structure": "molecules",
+          "dependency": ["buttons"]
+        },
+        {
+          "name": "menus",
+          "structure": "molecules",
+          "required": true,
+          "dependency": ["images", "links", "lists"]
+        },
+        {
+          "name": "pager",
+          "structure": "molecules",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "status",
+          "structure": "molecules",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "tabs",
+          "structure": "molecules",
+          "dependency": []
+        },
+        {
+          "name": "grid",
+          "structure": "organisms",
+          "required": true,
+          "dependency": ["text", "cta", "card"]
+        },
+        {
+          "name": "site",
+          "structure": "organisms",
+          "required": true,
+          "dependency": ["images", "menus"]
+        },
+        {
+          "name": "placeholder",
+          "structure": "templates",
+          "dependency": ["site"]
+        },
+        {
+          "name": "content-types",
+          "structure": "pages",
+          "dependency": ["text", "grid", "cta"]
+        },
+        {
+          "name": "landing-pages",
+          "structure": "pages",
+          "dependency": ["text", "grid", "cta"]
+        }
+      ]
+    }
+  ]
+}
