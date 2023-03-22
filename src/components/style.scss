@@ -1,18 +1,15 @@
-// This file can be used to import all other styles.
-@import url('~normalize.css/normalize');
-@import url('~breakpoint-sass/stylesheets/breakpoint');
+// External Libraries
+@import '~normalize.css/normalize';
+@import '~breakpoint-sass/stylesheets/breakpoint';
 
 // Components
-/* stylelint-disable scss/at-import-partial-extension */
-@import url('storybook-styles/**/*.scss');
-@import url('docs/**/*.scss');
-@import url('tokens/**/*.scss');
-@import url('components/**/*.scss');
-
-@import url('components/00-base/**/*.scss');
-@import url('components/01-atoms/**/*.scss');
-@import url('components/02-molecules/**/*.scss');
-@import url('components/03-organisms/**/*.scss');
-@import url('components/04-templates/**/*.scss');
-@import url('components/00-base/01-colors/colors-used.scss');
-/* stylelint-enable scss/at-import-partial-extension */
+@import '00-base/**/*.scss';
+@import '01-atoms/**/*.scss';
+@import '02-molecules/**/*.scss';
+@import '03-organisms/**/*.scss';
+@import '04-templates/**/*.scss';
+@import '00-base/01-colors/colors-used.scss';
+@import 'storybook-styles/**/*.scss';
+@import 'docs/**/*.scss';
+@import 'tokens/**/*.scss';
+@import 'components/**/*.scss';

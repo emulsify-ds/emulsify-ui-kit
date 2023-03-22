@@ -34,40 +34,44 @@
       "structureImplementations": [
         {
           "name": "base",
-          "directory": "./components/00-base"
+          "directory": "./src/components/00-base"
         },
         {
           "name": "atoms",
-          "directory": "./components/01-atoms"
+          "directory": "./src/components/01-atoms"
         },
         {
           "name": "molecules",
-          "directory": "./components/02-molecules"
+          "directory": "./src/components/02-molecules"
         },
         {
           "name": "organisms",
-          "directory": "./components/03-organisms"
+          "directory": "./src/components/03-organisms"
         },
         {
           "name": "templates",
-          "directory": "./components/04-templates"
+          "directory": "./src/components/04-templates"
         },
         {
           "name": "pages",
-          "directory": "./components/05-pages"
+          "directory": "./src/components/05-pages"
+        },
+        {
+          "name": "components",
+          "directory": "./src/components"
         }
       ],
       "directories": [
         {
           "name": "defaults",
-          "path": "./components/00-base/00-defaults",
-          "destinationPath": "./components/00-base/00-defaults",
+          "path": "./src/components/00-base/00-defaults",
+          "destinationPath": "./src/components/00-base/00-defaults",
           "description": "Contains scss files with global defaults"
         },
         {
           "name": "template-components",
-          "path": "./components/04-templates",
-          "destinationPath": "./components/04-templates",
+          "path": "./src/components/04-templates",
+          "destinationPath": "./src/components/04-templates",
           "description": "Contains default templates and layouts that are required"
         },
         {
@@ -80,8 +84,8 @@
       "files": [
         {
           "name": "style",
-          "path": "./components/style.scss",
-          "destinationPath": "./components/style.scss",
+          "path": "./src/components/style.scss",
+          "destinationPath": "./src/components/style.scss",
           "description": "Primary style scss file"
         }
       ],

@@ -34,12 +34,12 @@ const ProgressPlugin = new webpack.ProgressPlugin();
 
 const StyleLintPlugin = new _StyleLintPlugin({
   configFile: path.resolve(__dirname, '../', '.stylelintrc'),
-  context: path.resolve(__dirname, '../', 'components'),
+  context: path.resolve(__dirname, '../', 'src/components'),
   files: '**/*.scss',
 });
 
 const ESLintPlugin = new _ESLintPlugin({
-  context: path.resolve(__dirname, '../', 'components'),
+  context: path.resolve(__dirname, '../', 'src/components'),
   extensions: ['js'],
 });
 
