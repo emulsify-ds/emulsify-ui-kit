@@ -1,8 +1,5 @@
-// const path = require('path');
-const globImporter = require("node-sass-glob-importer");
-// const _StyleLintPlugin = require('stylelint-webpack-plugin');
-// const ESLintPlugin = require('eslint-webpack-plugin');
-const { namespaces } = require("./setupTwig");
+const globImporter = require('node-sass-glob-importer');
+const { namespaces } = require('./setupTwig');
 
 module.exports = async ({ config }) => {
   // Twig
@@ -10,7 +7,7 @@ module.exports = async ({ config }) => {
     test: /\.twig$/,
     use: [
       {
-        loader: "twig-loader",
+        loader: 'twig-loader',
         options: {
           twigOptions: {
             namespaces,
@@ -24,15 +21,15 @@ module.exports = async ({ config }) => {
   config.module.rules.push({
     test: /\.s[ac]ss$/i,
     use: [
-      "style-loader",
+      'style-loader',
       {
-        loader: "css-loader",
+        loader: 'css-loader',
         options: {
           sourceMap: true,
         },
       },
       {
-        loader: "sass-loader",
+        loader: 'sass-loader',
         options: {
           sourceMap: true,
           sassOptions: {
@@ -43,24 +40,10 @@ module.exports = async ({ config }) => {
     ],
   });
 
-  // config.plugins.push(
-  //   new _StyleLintPlugin({
-  //     configFile: path.resolve(__dirname, '../', '.stylelintrc.json'),
-  //     context: path.resolve(__dirname, '../', 'src/components'),
-  //     files: '**/*.scss',
-  //     failOnError: false,
-  //     quiet: false,
-  //   }),
-  //   new ESLintPlugin({
-  //     context: path.resolve(__dirname, '../', 'components'),
-  //     extensions: ['js'],
-  //   }),
-  // );
-
   // YAML
   config.module.rules.push({
     test: /\.ya?ml$/,
-    loader: "js-yaml-loader",
+    loader: 'js-yaml-loader',
   });
 
   return config;

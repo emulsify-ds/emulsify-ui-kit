@@ -7,7 +7,10 @@ const _ImageminPlugin = require('imagemin-webpack-plugin').default;
 const _SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const glob = require('glob');
 
-const imagePath = path.resolve(__dirname, '../src/images');
+const _StyleLintPlugin = require('stylelint-webpack-plugin');
+const _ESLintPlugin = require('eslint-webpack-plugin');
+
+const imagePath = path.resolve(__dirname, '../images');
 
 const MiniCssExtractPlugin = new _MiniCssExtractPlugin({
   filename: 'style.css',
@@ -29,6 +32,17 @@ const SpriteLoaderPlugin = new _SpriteLoaderPlugin({
 
 const ProgressPlugin = new webpack.ProgressPlugin();
 
+const StyleLintPlugin = new _StyleLintPlugin({
+  configFile: path.resolve(__dirname, '../', '.stylelintrc'),
+  context: path.resolve(__dirname, '../', 'components'),
+  files: '**/*.scss',
+});
+
+const ESLintPlugin = new _ESLintPlugin({
+  context: path.resolve(__dirname, '../', 'components'),
+  extensions: ['js'],
+});
+
 module.exports = {
   ProgressPlugin,
   MiniCssExtractPlugin,
@@ -38,4 +52,6 @@ module.exports = {
     cleanOnceBeforeBuildPatterns: ['!*.{png,jpg,gif,svg}'],
     cleanAfterEveryBuildPatterns: ['remove/**', '!js', '!*.{png,jpg,gif,svg}'],
   }),
+  StyleLintPlugin,
+  ESLintPlugin,
 };

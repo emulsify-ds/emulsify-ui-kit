@@ -1,0 +1,52 @@
+name: Tests
+on:
+  pull_request:
+    types: [ready_for_review]
+jobs:
+  visual-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        # Check whether components were changed.
+        # Then below, we can only run steps if there's something to test.
+      - uses: dorny/paths-filter@v2
+        id: component_changes
+        with:
+          filters: |
+            components:
+              - 'components/**'
+      - name: Setup Node
+        if: steps.component_changes.outputs.components == 'true'
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.13'
+      - name: Install dependencies
+        if: steps.component_changes.outputs.components == 'true'
+        run: npm ci
+      - name: Build storybook
+        if: steps.component_changes.outputs.components == 'true'
+        run: npm run storybook:build
+      - name: Run Percy Tests
+        if: steps.component_changes.outputs.components == 'true'
+        run: npm run visreg-ci
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+  cli-verification:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.13'
+      - name: Install CLI
+        run: npm install -g @emulsify/cli
+      - name: Install starter
+        run: emulsify init "Emulsify Drupal Starter" . --platform drupal
+      - name: Install system and all components
+        run: |
+          cd emulsify_drupal_starter
+          emulsify system install --repository https://github.com/emulsify-ds/compound.git --checkout ${{ github.head_ref }}
+          emulsify component install --all

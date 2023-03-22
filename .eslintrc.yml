@@ -3,10 +3,12 @@ extends:
   - airbnb-base
   - plugin:security/recommended
   - plugin:prettier/recommended
+  - plugin:jsdoc/recommended
 plugins:
   - security
   - prettier
   - jest
+  - jsdoc
 env:
   es6: true
   browser: true

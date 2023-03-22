@@ -1,16 +1,16 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const globImporter = require("node-sass-glob-importer");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const globImporter = require('node-sass-glob-importer');
 
 const JSLoader = {
   test: /^(?!.*\.(stories|component)\.js$).*\.js$/,
   exclude: /node_modules/,
-  loader: "babel-loader",
+  loader: 'babel-loader',
 };
 
 const ImageLoader = {
   test: /\.(png|svg|jpg|gif)$/i,
   exclude: /icons\/.*\.svg$/,
-  loader: "file-loader",
+  loader: 'file-loader',
 };
 
 const CSSLoader = {
@@ -19,25 +19,25 @@ const CSSLoader = {
   use: [
     MiniCssExtractPlugin.loader,
     {
-      loader: "css-loader",
+      loader: 'css-loader',
       options: {
         sourceMap: true,
         url: false,
       },
     },
     {
-      loader: "postcss-loader",
+      loader: 'postcss-loader',
       options: {
         sourceMap: true,
       },
     },
     {
-      loader: "sass-loader",
+      loader: 'sass-loader',
       options: {
         sourceMap: true,
         sassOptions: {
           importer: globImporter(),
-          outputStyle: "compressed",
+          outputStyle: 'compressed',
         },
       },
     },
@@ -46,11 +46,17 @@ const CSSLoader = {
 
 const SVGSpriteLoader = {
   test: /icons\/.*\.svg$/, // your icons directory
-  loader: "svg-sprite-loader",
+  loader: 'svg-sprite-loader',
   options: {
     extract: true,
-    spriteFilename: "../dist/icons.svg",
+    spriteFilename: '../dist/icons.svg',
   },
+};
+
+const FontLoader = {
+  test: /.(woff|woff2|ttf|eot|otf|svg)$/,
+  loader: 'file-loader',
+  include: [/fonts/],
 };
 
 module.exports = {
@@ -58,4 +64,5 @@ module.exports = {
   CSSLoader,
   SVGSpriteLoader,
   ImageLoader,
+  FontLoader,
 };

@@ -1,0 +1,50 @@
+.pager {
+  margin: 2em 0;
+}
+
+.pager__items {
+  @include list-reset;
+
+  text-align: center;
+}
+
+.pager__item {
+  display: inline-block;
+  margin: 0 0.2em;
+
+  @include large {
+    margin: 0 0.5em;
+  }
+}
+
+.pager__link {
+  padding: 0.5em;
+  color: clr(text);
+  text-decoration: none;
+
+  &.is-active,
+  &:hover,
+  &:focus {
+    background-color: clr(text);
+    color: clr(text-inverse);
+  }
+
+  &.is-active:hover,
+  &.is-active:focus {
+    background-color: clr(accent);
+  }
+}
+
+.pager__link--next,
+.pager__link--prev,
+.pager__link--first,
+.pager__link--last {
+  display: block;
+  padding: 0;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    color: clr(accent);
+  }
+}
