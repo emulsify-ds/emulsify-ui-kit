@@ -1,5 +1,5 @@
 import template from './input.twig';
-import figma from '../../.storybook/configma.json';
+import figma from '../../../.storybook/configma.json';
 
 export default {
   title: 'Components/Input',

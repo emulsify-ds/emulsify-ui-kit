@@ -1,6 +1,6 @@
 import template from './audio-player.twig';
 import audioData from './audio-player.yml';
-import figma from '../../.storybook/configma.json';
+import figma from '../../../.storybook/configma.json';
 
 export default {
   title: 'Components/Media/Audio Player',
