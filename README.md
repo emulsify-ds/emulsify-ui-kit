@@ -1,49 +1,120 @@
 [![Emulsify Design System](https://user-images.githubusercontent.com/409903/170579210-327abcdd-2c98-4922-87bb-36446a4cc013.svg)](https://www.emulsify.info/)
+![4K-CI-style badge](https://user-images.githubusercontent.com/409903/165123883-03452ea9-76ec-4319-9d82-b2dcba785d2b.svg)
 
-## Compound
+# Emulsify UI kit vision
 
-<blockquote>Noun: A thing that is composed of two or more separate elements</blockquote>
+The Emulsify UI Kit is a tool for designers and front-end engineers to build high-quality user interfaces effectively and efficiently while maintaining WCAG 2.1 AA standards and project performance goals.
 
-Compound is the default Emulsify system of components.
+The Emulsify UI Kit gives users access to a library of prebuilt tokens and components that follow accessibility best practices and are easy to customize. The components in the kit are fully responsive, carefully designed, and can be implemented for modification in every project.
 
-[View the deployed storybook instance here](https://emulsify-ds.github.io/compound)
+## The goals of the Emulsify UI Kit are to
 
-## Development
+- Create efficiency in the user interface design process
+- Establish consistency in user interface design
+- Maintain high accessibility standards
 
-- Ensure you're using the correct node/npm version `nvm use`
-- Install dependencies `npm install`
-- Run the develop script `npm run develop`
+The Emulsify UI Kit has two distinct building blocks: the Figma and the code repo. These two items are kept in alignment for a seamless experience.
 
-That should spin up a local server (typically at `http://localhost:6006`) that you can open in your browser, to see the components in a Storybook instance. It will also watch for updates to your code, so any changes you make will be reflected in the Storybook instance live, any time you save.
+## What the Emulsify UI Kit is not
 
-## Contributing Components
+- Handcuffs. If using the kit is a barrier to a successful project, do what you need to for your project to be successful and provide feedback on why the kit was a barrier.
+- A "default" visual design. Your visual design work should be tailor-made for each of your clients.
 
-Compound is a completely open source set of components that work with each other. If you find yourself using these components as starter files in your projects, feel free to contribute your own components to the repo!
+## There are two parts of this UI Kit
 
-When you do, remember to add it to the `system.emulsify.json` file so that it's exposed to the CLI! You can place it wherever is appropriate inside the `variants > components` section.
+- [Figma UI Kit](https://www.figma.com/file/eo87m50yAw3P8iXTypxw4I/Four-Kitchens-UI-Kit?node-id=22073%3A26)
+- [Storybook](https://four-kitchens-ui-kit.netlify.app/?path=/story/docs-cover--cover)
 
-If the component has dependencies, be sure to identify them, so that the CLI knows to install them as well.
+## Connecting components with Figma
 
-Components with a leading underscore, such as `_tab.twig`, indicate that the twig file is not intended to be used on its own, but rather as part of a higher level component.
+The strength of this UI kit leans on its connection with Figma.
 
-### Common Scripts
+TKTK
 
-These are the most common npm scripts you may find yourself using:
-(Each is prefixed with `npm run`)
+### Example component
 
-- `develop`<br>
-Initializes [Webpack](https://webpack.js.org/) to compile existing files and watch for additional changes. It also starts an instance of [storybook](https://storybook.js.org/) that auto-refreshes when file changes are detected.
+The [button component](https://four-kitchens-ui-kit.netlify.app/?path=/story/components-button--button) serves as an example of how variables are used to connect Figma with the code.
 
-- `lint`<br>
-Runs [stylelint](https://stylelint.io/) for your sass files and [eslint](https://eslint.org/) for your javascript files. The eslint configuration enforces formatting based on [prettier](https://prettier.io/docs/en/index.html) and javascript comments according to [JSdoc](https://jsdoc.app/).
+```css
+.button {
+  background-color: var(--button-color-bkg);
+  padding: var(--button-padding-y) var(--button-padding-x);
+  color: var(--button-color-label);
+  border-radius: var(--button-radius);
+  border: var(--button-border-width-border) solid var(--button-border-color);
+  font-size: var(--font-size-small);
+  font-weight: var(--button-font-weight-label);
+  text-transform: var(--button-text-case);
+  text-decoration: none;
 
+  &:hover,
+  &.button--hover {
+    background-color: var(--button-color-bkg-hover);
+    padding: var(--button-padding-y-hover) var(--button-padding-x-hover);
+    border: var(--button-border-width-border-hover) solid var(
+        --button-border-color-hover
+      );
+    color: var(--button-color-label-hover);
+    text-decoration: underline;
+    text-transform: var(--button-text-case);
+  }
+
+  &:focus,
+  &.button--focus {
+    padding: var(--button-padding-y-focus) var(--button-padding-x-focus);
+    color: var(--button-color-label-focus);
+    border: var(--button-border-width-border-focus) solid var(
+        --button-border-color-focus
+      );
+    outline: var(--button-border-width-outline-focus) solid var(
+        --button-color-outline-focus
+      );
+    text-transform: var(--button-text-case);
+  }
+}
 ```
-{
-  "name": "card",
-  "structure": "molecules",
-  "dependency": ["images", "text", "links", "buttons"]
-},
+
+## Creating a component
+
+A complete component meets the following criteria:
+
+1. Design tokens are defined as their own set in Figma, in the Figma Tokens plugin, and they use references to values defined in `global` as much as possible.
+2. The component has an independent frame in Figma.
+3. The component's CSS file uses the generated design tokens as much as possible. See button example above.
+4. A component's story connects to the corresponding Figma frame, defined in `.storybook/configma.json`.
+5. A component passes WCAG 2 AA.
+
+### Naming tokens
+
+See [this whiteboard](https://www.figma.com/file/l6MIPQCewbIJoKvZpxhAwr/Token-Naming?node-id=0%3A1&t=5IaZF2ZNEoruxEld-1) that outlines the preferred naming convention for design tokens.
+
+### Defining design tokens as their own set in Figma
+
+<https://user-images.githubusercontent.com/409903/165324471-6c16eee2-0fa2-461f-9f84-42b5862658d2.mp4>
+
+### Connecting a component's story to the corresponding Figma frame
+
+1. In Figma, select the frame to share and activate the Share button (in the upper right hand corner).
+2. In the share modal make sure that "Link to selected frame" is checked and activate "Copy link".
+3. Open `.storybook/configma.json` and confirm the following:
+4. Using this example: `https://www.figma.com/file/[FIGMA_FILE_ID]/[FIGMA_FILE_NAME]?node-id=[NODE_ID]`
+5. Confirm that `url` has the correct `FIGMA_FILE_ID` and `FIGMA_FILE_NAME`.
+6. Add your component name to the file as a key with the `NODE_ID` being the value.
+7. Import `configma.json` into your story.
+8. In the parameters of your story, include `figma.$KEY` as shown below.
+
+```js
+Button.parameters = {
+  design: {
+    type: 'figma',
+    url: figma.url + figma.button,
+  },
+};
 ```
+
+## Contributing to this UI Kit
+
+TKTK
 
 ### Contributors
 
