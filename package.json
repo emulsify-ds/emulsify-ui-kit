@@ -23,6 +23,9 @@
     "storybook:deploy": "storybook-to-ghpages -o .out",
     "test": "echo \"Error: no test specified\" && exit 1",
     "token-engine:fetch": "figma-token-engine",
+    "tokens:build": "npm run tokens:transform && npm run style-dictionary:build",
+    "tokens:transform": "token-transformer src/tokens/figma.tokens.json src/tokens/sd.tokens.json",
+    "tokens:watch": "npm run tokens:build && chokidar 'src/tokens/figma.tokens.json' -c 'npm run tokens:build'",
     "visreg": "percy storybook http://localhost:6006",
     "visreg-ci": "percy storybook .out",
     "webpack": "webpack --watch --config ./webpack/webpack.dev.js"
