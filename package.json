@@ -21,6 +21,7 @@
     "storybook": "start-storybook --ci -s images,dist -p 6006",
     "storybook:build": "npm run build && build-storybook -s images,dist -o ./.out",
     "storybook:deploy": "storybook-to-ghpages -o .out",
+    "style-dictionary:build": "node ./src/tokens/tokensTransform.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "token-engine:fetch": "figma-token-engine",
     "tokens:build": "npm run tokens:transform && npm run style-dictionary:build",
