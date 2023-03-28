@@ -1730,6 +1730,16 @@
           "value": "{colors.EmulsifyBlue.600}",
           "type": "color"
         }
+      },
+      "padding": {
+        "x": {
+          "value": "{spacing.md}",
+          "type": "spacing"
+        },
+        "y": {
+          "value": "{spacing.sm}",
+          "type": "spacing"
+        }
       }
     }
   },
@@ -1747,7 +1757,7 @@
         "accordion": "enabled",
         "checkbox": "enabled",
         "selectdropdown": "enabled",
-        "table": "disabled"
+        "table": "enabled"
       },
       "$figmaStyleReferences": {}
     }
