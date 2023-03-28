@@ -1325,6 +1325,14 @@
           "value": "#D80F0F",
           "type": "color"
         }
+      },
+      "link": {
+        "value": "{colors.EmulsifyBlue.500}",
+        "type": "color"
+      },
+      "link-hover": {
+        "value": "{colors.EmulsifyBlue.600}",
+        "type": "color"
       }
     }
   },
@@ -1466,19 +1474,21 @@
       }
     }
   },
-  "Input": {
+  "input": {
     "input": {
       "gap": {
         "value": "{spacing.md}",
         "type": "spacing"
       },
-      "paddingX": {
-        "value": "{spacing.lg}",
-        "type": "spacing"
-      },
-      "paddingY": {
-        "value": "{spacing.md}",
-        "type": "spacing"
+      "padding": {
+        "x": {
+          "value": "{spacing.lg}",
+          "type": "spacing"
+        },
+        "y": {
+          "value": "{spacing.md}",
+          "type": "spacing"
+        }
       },
       "color": {
         "label": {
@@ -1551,6 +1561,53 @@
           "value": "{colors.grays.300}",
           "type": "color"
         }
+      },
+      "gap": {
+        "value": "{spacing.sm}",
+        "type": "spacing"
+      }
+    }
+  },
+  "accordion": {
+    "accordion": {
+      "header": {
+        "value": {
+          "fontFamily": "{fontFamilies.primary}",
+          "fontWeight": "{fontWeights.primary-regular}",
+          "lineHeight": "{lineHeights.normal}",
+          "fontSize": "{fontSize.h4}",
+          "letterSpacing": ""
+        },
+        "type": "typography"
+      },
+      "p": {
+        "value": {
+          "fontFamily": "{fontFamilies.primary}",
+          "fontWeight": "{fontWeights.primary-regular}",
+          "lineHeight": "{lineHeights.normal}",
+          "fontSize": "{fontSize.body}"
+        },
+        "type": "typography"
+      },
+      "color": {
+        "body": {
+          "value": "{colors.text.body}",
+          "type": "color"
+        },
+        "header": {
+          "value": "{colors.text.heading}",
+          "type": "color"
+        },
+        "header-hover": {
+          "value": "{colors.link}",
+          "type": "color"
+        }
+      },
+      "divider": {
+        "color": {
+          "value": "{colors.grays.500}",
+          "type": "color"
+        }
       }
     }
   },
@@ -1561,8 +1618,9 @@
       "semantic",
       "storybook",
       "button",
-      "Input",
-      "radioButton"
+      "input",
+      "radioButton",
+      "accordion"
     ]
   }
 }
