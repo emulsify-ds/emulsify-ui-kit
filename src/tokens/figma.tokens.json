@@ -1695,6 +1695,44 @@
       }
     }
   },
+  "table": {
+    "table": {
+      "body": {
+        "color": {
+          "text": {
+            "value": "{colors.text.body}",
+            "type": "color"
+          },
+          "bkg": {
+            "value": "{colors.white}",
+            "type": "color"
+          },
+          "bkg-alt": {
+            "value": "{colors.EmulsifyBlue.100}",
+            "type": "color"
+          }
+        }
+      },
+      "header": {
+        "color": {
+          "text": {
+            "value": "{colors.text.body}",
+            "type": "color"
+          },
+          "bkg": {
+            "value": "{colors.EmulsifyBlue.400}",
+            "type": "color"
+          }
+        }
+      },
+      "icon": {
+        "color": {
+          "value": "{colors.EmulsifyBlue.600}",
+          "type": "color"
+        }
+      }
+    }
+  },
   "$themes": [
     {
       "id": "05a6b29ec89c82919561b0a9d0f652f94e36cc0d",
@@ -1708,7 +1746,8 @@
         "radioButton": "enabled",
         "accordion": "enabled",
         "checkbox": "enabled",
-        "selectdropdown": "enabled"
+        "selectdropdown": "enabled",
+        "table": "disabled"
       },
       "$figmaStyleReferences": {}
     }
@@ -1723,7 +1762,8 @@
       "radioButton",
       "accordion",
       "checkbox",
-      "selectdropdown"
+      "selectdropdown",
+      "table"
     ]
   }
 }
