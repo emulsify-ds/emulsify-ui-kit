@@ -1316,7 +1316,7 @@
           "type": "color"
         },
         "heading": {
-          "value": "{colors.primary.dark}",
+          "value": "{colors.EmulsifyBlue.700}",
           "type": "color"
         }
       },
@@ -1695,54 +1695,6 @@
       }
     }
   },
-  "table": {
-    "table": {
-      "body": {
-        "color": {
-          "text": {
-            "value": "{colors.text.body}",
-            "type": "color"
-          },
-          "bkg": {
-            "value": "{colors.white}",
-            "type": "color"
-          },
-          "bkg-alt": {
-            "value": "{colors.EmulsifyBlue.100}",
-            "type": "color"
-          }
-        }
-      },
-      "header": {
-        "color": {
-          "text": {
-            "value": "{colors.text.body}",
-            "type": "color"
-          },
-          "bkg": {
-            "value": "{colors.EmulsifyBlue.400}",
-            "type": "color"
-          }
-        }
-      },
-      "icon": {
-        "color": {
-          "value": "{colors.EmulsifyBlue.600}",
-          "type": "color"
-        }
-      },
-      "padding": {
-        "x": {
-          "value": "{spacing.md}",
-          "type": "spacing"
-        },
-        "y": {
-          "value": "{spacing.sm}",
-          "type": "spacing"
-        }
-      }
-    }
-  },
   "$themes": [
     {
       "id": "05a6b29ec89c82919561b0a9d0f652f94e36cc0d",
@@ -1756,10 +1708,86 @@
         "radioButton": "enabled",
         "accordion": "enabled",
         "checkbox": "enabled",
-        "selectdropdown": "enabled",
-        "table": "enabled"
+        "selectdropdown": "enabled"
       },
-      "$figmaStyleReferences": {}
+      "$figmaStyleReferences": {
+        "selectdropdown.label": "S:b9ef7c5c58aef147993d4968132bc01a00dc6b7a,",
+        "selectdropdown.label-disabled": "S:2eb60d710c5574af66a60f533fde0c03d6c166f5,",
+        "selectdropdown.button.fill": "S:89f3021a1fe3ce48330845e009f87f3a4c055057,",
+        "selectdropdown.button.fill-hover": "S:a8e502f563d787f33038b84f16653d35f9bb2cbb,",
+        "selectdropdown.button.fill-disabled": "S:1af1f339be99a66f3e2578411a1c112af304da69,",
+        "selectdropdown.button.stroke": "S:d16f3197b49272cb44ea91a857465131adec1ff3,",
+        "selectdropdown.button.stroke-hover": "S:f1348592d0bffd0bec65eb0b89f6f51a4c61b94b,",
+        "selectdropdown.button.stroke-disabled": "S:b8e061d6c0e4a3d39eaed63e014f52e5aa1723bd,",
+        "checkbox.label": "S:dd27f922df752738d999c185f11b67e77134feac,",
+        "checkbox.label-disabled": "S:72b6ef5a238e1bf6f232f7f0dc8f27095a075e3f,",
+        "checkbox.button.fill": "S:6ffe870e63efaff8d2951ac726ce08336d4857e6,",
+        "checkbox.button.fill-hover": "S:7c9a3f2dd84f7ff4b17dc298142f0a247bea03cd,",
+        "checkbox.button.fill-disabled": "S:0607630e79f4586bc16d9efda29b8ad421c2f30b,",
+        "checkbox.button.stroke": "S:9befcc9d436f6d8c79ab20840257d163a638be86,",
+        "checkbox.button.stroke-hover": "S:7e843183909e2d29a28bf9c86169a4552b310f85,",
+        "checkbox.button.stroke-disabled": "S:6cc2a0e3e034b160cec6ca8619e8754f555bdb4e,",
+        "accordion.color.body": "S:e623ad6e346ba9040e040cc0ee6f0936d1664815,",
+        "accordion.color.header": "S:29d5ac1c51e6bdb1fdc0faf0e722f3689f61abca,",
+        "accordion.color.header-hover": "S:1bb9718ca7cb8b5e5c6610546e739522e89dee3a,",
+        "accordion.divider.color": "S:09f5861eb47765d6cfce9e1ade46ef8a4842c78e,",
+        "radio.label": "S:dffec13c67d8f60c0f19f65ef4835aebfeb5ab22,",
+        "radio.label-disabled": "S:943fc2a6c9cfb6fd88cf05410e8356448952ae73,",
+        "radio.button.fill": "S:7af8b205c55d0e46e93a8513bbfd84b45dfc11e2,",
+        "radio.button.fill-hover": "S:31684ea84dcb6812658f684007010bdd35aaa2c5,",
+        "radio.button.fill-disabled": "S:865f7b6d60b3aaf56e0bedfc24cd1deda0c3bb56,",
+        "radio.button.stroke": "S:edaa24d29424f365cf593b9fda6aae5b82364ec6,",
+        "radio.button.stroke-hover": "S:e2d0ba018fc28326b87679a7ac4f7ff739958579,",
+        "radio.button.stroke-disabled": "S:6193883214216e8cc13fbea6a5a27c1be66cd42e,",
+        "input.color.label": "S:6e0e3c421bce1bbfe423e7cdac5862595f10a8eb,",
+        "input.color.helpText": "S:54340b01df20f9515efcdab63cbbf7c0a6c1c4c8,",
+        "input.color.placeholder": "S:b38f60789103086e255401dc8af54b208a830a47,",
+        "input.border.color": "S:ff4fe30d7858b512b2995b07791d2886385b7e04,",
+        "input.bkg": "S:4ffd65977519a50eda3304b00575594a4dea8c90,",
+        "button.color.bkg": "S:2c1b75b56a9a55baee1cf8d27bdef3bedcb72a57,",
+        "button.color.label": "S:bd0baf91a18f9b3e1611c99cb87041c2f5469f42,",
+        "button.color.bkg-hover": "S:3de30f4594debbd4e34102a5173e74b60ffd8496,",
+        "button.color.label-hover": "S:ccd4c3ed98ac0628013eef35562613b56865f516,",
+        "button.color.label-focus": "S:6443ac5bb91933c61c62d61c3ae3fd458181a530,",
+        "button.color.bkg-focus": "S:5bb35aa04cff6c59fba0a213a7e4026d85f025ce,",
+        "button.border.color": "S:1659b82a9bbc3ca85b94ce9e7d100618588bf238,",
+        "button.border.color-hover": "S:736b385ff74bb348042e12a0d62492a2e5c4f648,",
+        "button.border.color-focus": "S:47c3fd91a4184f8bf603c0cf7be89ce97c55406b,",
+        "colors.sb.background": "S:6d1afeca31e5ce894a0338e5588b647583939bd1,",
+        "colors.sb.text.body": "S:f61c728b8bd9dbc7b87beb14b59e3003e044f2fb,",
+        "colors.sb.text.heading": "S:a5138b6f1aa5214e4dd82549f2d73c89b7fceac8,",
+        "colors.sb.visualization": "S:2ac4b3e27070849e7abd87ea83376d7c068aca9e,",
+        "colors.primary.default": "S:433a43249d7828b3234011901dd38ea8b299c877,",
+        "colors.primary.light": "S:ac1dcfc58aef49b7c1d9467e24b35f055b4638a2,",
+        "colors.primary.dark": "S:82590b774f433315255192e1fab8e32b310ac48d,",
+        "colors.text.body": "S:e25eb6695a080736d01badb7e85c7a593ea09ecf,",
+        "colors.text.heading": "S:dc39d4b3f8016e429dfac0af5977ee165a555cb6,",
+        "colors.warning.default": "S:89a69a9137b6761c17899932beee27978c64d83a,",
+        "colors.link": "S:6a82f985dda276ae14b1a5f778d438037d5df7ea,",
+        "colors.link-hover": "S:d770ec7f8a1cef503b6890b41aa0ec29d17b35cf,",
+        "colors.black": "S:05a5348adcb0f341d91075ad37738a72be3a96a8,",
+        "colors.white": "S:3275420eb19481f27facb627cf9b19114dee0081,",
+        "colors.EmulsifyBlue.100": "S:3bde6d78b54fd2c44e8b27f620181d9eec11bc07,",
+        "colors.EmulsifyBlue.200": "S:2312ae18e15e4c3ebcd91fcc2b0b9a7ee8c3f52e,",
+        "colors.EmulsifyBlue.300": "S:75541e56ef53131000e39283e2178777118477b7,",
+        "colors.EmulsifyBlue.400": "S:5767223151dcbe3695e355c142d79a29879fe489,",
+        "colors.EmulsifyBlue.500": "S:a32fcb014aab4263557f400d21bb439d15c0c910,",
+        "colors.EmulsifyBlue.600": "S:6aa466162457b030d41a979bc63a7a0f83818e25,",
+        "colors.EmulsifyBlue.700": "S:bccce06113b98bd08eb1df9c795bdd545448a2e5,",
+        "colors.EmulsifyBlue.800": "S:57c9a8315e34dac4038b44f05c6ac60d7a22394e,",
+        "colors.EmulsifyBlue.900": "S:5600370335142779ce487fa7e2c48c75275189a9,",
+        "colors.EmulsifyBlue.1000": "S:80b5fb46bd27e3ec250c48a766d605c58fa80b9e,",
+        "colors.grays.100": "S:150bf9f09b894b5c695c49c2816842bef5c87dc5,",
+        "colors.grays.200": "S:58ad040369ea756f34298cfe64bb3786f9ce8e12,",
+        "colors.grays.300": "S:1c79509dc7c9a2afd0ca136e77128cb7c67e2ad8,",
+        "colors.grays.400": "S:e43f2514ee5118427403f6dc027d48a1a6b95b9f,",
+        "colors.grays.500": "S:0babefbfa459024321c6d9f5d15b5acee723a6a0,",
+        "colors.grays.600": "S:e95ca855f35e8ddf107635b8e89b10df3576287f,",
+        "colors.grays.700": "S:3a1fa817107cffc46b33a966e25a576231425b34,",
+        "colors.grays.800": "S:c5c4135271128e92c48eb8b8901438fde9882699,",
+        "colors.grays.900": "S:9bc1a059401da9445de05a530800a27461ce4c39,",
+        "colors.grays.1000": "S:4c50cc48209d9cd00760a1791a2b5362f5daab6a,"
+      }
     }
   ],
   "$metadata": {
@@ -1772,8 +1800,7 @@
       "radioButton",
       "accordion",
       "checkbox",
-      "selectdropdown",
-      "table"
+      "selectdropdown"
     ]
   }
 }
