@@ -1,24 +1,20 @@
 {
+  "source": ["src/tokens/sd.tokens.json"],
   "platforms": {
-    "swift": {
-      "transformGroup": "ios-swift",
-      "buildPath": "./ios/",
+    "css": {
+      "transforms": [
+        "attribute/cti",
+        "name/cti/kebab",
+        "time/seconds",
+        "content/icon",
+        "color/css",
+        "toRem/pxToRem",
+        "toPX/appendPX"
+      ],
       "files": [
         {
-          "destination": "ios",
-          "format": "ios-swift/enum.swift",
-          "options": {
-            "fileHeader": "This is a custom header"
-          }
-        }
-      ]
-    },
-    "android": {
-      "transformGroup": "android",
-      "files": [
-        {
-          "destination": "android",
-          "format": "android/resources",
+          "destination": "src/components/tokens/_tokens.scss",
+          "format": "css/variables"
         }
       ]
     }
