@@ -1695,6 +1695,34 @@
       }
     }
   },
+  "link": {
+    "linkColor": {
+      "Default": {
+        "value": "{colors.EmulsifyBlue.600}",
+        "type": "color"
+      },
+      "Hover": {
+        "value": "{colors.EmulsifyBlue.800}",
+        "type": "color"
+      }
+    }
+  },
+  "textField": {
+    "textField": {
+      "borderWidth": {
+        "value": "{border.sm}",
+        "type": "borderWidth"
+      },
+      "radius": {
+        "value": "{radius.md}",
+        "type": "borderRadius"
+      },
+      "borderColor": {
+        "value": "{colors.grays.1000}",
+        "type": "color"
+      }
+    }
+  },
   "$themes": [
     {
       "id": "05a6b29ec89c82919561b0a9d0f652f94e36cc0d",
@@ -1800,7 +1828,9 @@
       "radioButton",
       "accordion",
       "checkbox",
-      "selectdropdown"
+      "selectdropdown",
+      "link",
+      "textField"
     ]
   }
 }
