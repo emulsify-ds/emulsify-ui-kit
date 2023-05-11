@@ -1831,6 +1831,30 @@
       }
     }
   },
+  "breadcrumbs": {
+    "breadcrumb": {
+      "default": {
+        "value": {
+          "fontFamily": "{fontFamilies.secondary}",
+          "fontWeight": "{fontWeights.secondary-regular}",
+          "lineHeight": "{lineHeights.none}",
+          "fontSize": "{fontSize.x-small}",
+          "textCase": "{textCase.none}"
+        },
+        "type": "typography"
+      },
+      "text": {
+        "default": {
+          "value": "{colors.grays.600}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{colors.grays.800}",
+          "type": "color"
+        }
+      }
+    }
+  },
   "$themes": [
     {
       "id": "05a6b29ec89c82919561b0a9d0f652f94e36cc0d",
@@ -1845,8 +1869,7 @@
         "accordion": "enabled",
         "checkbox": "enabled",
         "selectdropdown": "enabled",
-        "card": "disabled",
-        "cta": "disabled"
+        "breadcrumbs": "disabled"
       },
       "$figmaStyleReferences": {
         "selectdropdown.label": "S:b9ef7c5c58aef147993d4968132bc01a00dc6b7a,",
@@ -1943,7 +1966,8 @@
       "textField",
       "blockQuote",
       "card",
-      "cta"
+      "cta",
+      "breadcrumbs"
     ]
   }
 }
