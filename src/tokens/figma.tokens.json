@@ -1704,6 +1704,17 @@
       "hover": {
         "value": "{colors.EmulsifyBlue.800}",
         "type": "color"
+      },
+      "body": {
+        "value": {
+          "fontFamily": "{fontFamilies.primary}",
+          "fontWeight": "{fontWeights.primary-regular}",
+          "lineHeight": "{lineHeights.normal}",
+          "fontSize": "{fontSize.body}",
+          "textCase": "{textCase.none}",
+          "textDecoration": "underline"
+        },
+        "type": "typography"
       }
     }
   },
@@ -1732,7 +1743,8 @@
           "fontFamily": "{fontFamilies.primary}",
           "fontWeight": "{fontWeights.primary-regular}",
           "fontSize": "{fontSize.lead}",
-          "lineHeight": "{lineHeights.normal}"
+          "lineHeight": "{lineHeights.normal}",
+          "textCase": "{textCase.none}"
         },
         "type": "typography"
       },
@@ -1741,7 +1753,8 @@
           "fontFamily": "{fontFamilies.primary}",
           "fontWeight": "{fontWeights.primary-regular}",
           "lineHeight": "{lineHeights.normal}",
-          "fontSize": "{fontSize.caption}"
+          "fontSize": "{fontSize.caption}",
+          "textCase": "{textCase.none}"
         },
         "type": "typography"
       },
@@ -1755,6 +1768,66 @@
           "width": "{border.10}"
         },
         "type": "border"
+      }
+    }
+  },
+  "card": {
+    "card": {
+      "header": {
+        "value": {
+          "fontFamily": "{fontFamilies.primary}",
+          "fontWeight": "{fontWeights.primary-bold}",
+          "lineHeight": "{lineHeights.normal}",
+          "fontSize": "{fontSize.h3}",
+          "textCase": "{textCase.none}"
+        },
+        "type": "typography"
+      },
+      "body": {
+        "value": {
+          "fontFamily": "{fontFamilies.primary}",
+          "fontWeight": "{fontWeights.primary-regular}",
+          "lineHeight": "{lineHeights.normal}",
+          "fontSize": "{fontSize.body}",
+          "textCase": "{textCase.none}"
+        },
+        "type": "typography"
+      },
+      "spacing": {
+        "value": "{spacing.lg}",
+        "type": "spacing"
+      }
+    }
+  },
+  "cta": {
+    "cta": {
+      "header": {
+        "value": {
+          "fontFamily": "{fontFamilies.primary}",
+          "fontWeight": "{fontWeights.primary-bold}",
+          "lineHeight": "{lineHeights.normal}",
+          "fontSize": "{fontSize.h2}",
+          "textCase": "{textCase.none}"
+        },
+        "type": "typography"
+      },
+      "body": {
+        "value": {
+          "fontFamily": "{fontFamilies.primary}",
+          "fontWeight": "{fontWeights.primary-regular}",
+          "lineHeight": "{lineHeights.normal}",
+          "fontSize": "{fontSize.lead}",
+          "textCase": "{textCase.none}"
+        },
+        "type": "typography"
+      },
+      "spacing": {
+        "value": "{spacing.lg}",
+        "type": "spacing"
+      },
+      "fill": {
+        "value": "{colors.EmulsifyBlue.1000}",
+        "type": "color"
       }
     }
   },
@@ -1772,7 +1845,8 @@
         "accordion": "enabled",
         "checkbox": "enabled",
         "selectdropdown": "enabled",
-        "blockQuote": "disabled"
+        "card": "disabled",
+        "cta": "disabled"
       },
       "$figmaStyleReferences": {
         "selectdropdown.label": "S:b9ef7c5c58aef147993d4968132bc01a00dc6b7a,",
@@ -1867,7 +1941,9 @@
       "selectdropdown",
       "link",
       "textField",
-      "blockQuote"
+      "blockQuote",
+      "card",
+      "cta"
     ]
   }
 }
