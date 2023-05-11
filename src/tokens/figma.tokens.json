@@ -1696,12 +1696,12 @@
     }
   },
   "link": {
-    "linkColor": {
-      "Default": {
+    "link": {
+      "default": {
         "value": "{colors.EmulsifyBlue.600}",
         "type": "color"
       },
-      "Hover": {
+      "hover": {
         "value": "{colors.EmulsifyBlue.800}",
         "type": "color"
       }
@@ -1717,9 +1717,44 @@
         "value": "{radius.md}",
         "type": "borderRadius"
       },
-      "borderColor": {
-        "value": "{colors.grays.1000}",
-        "type": "color"
+      "border": {
+        "value": {
+          "color": "colors.grays.800"
+        },
+        "type": "border"
+      }
+    }
+  },
+  "blockQuote": {
+    "blockQuote": {
+      "body": {
+        "value": {
+          "fontFamily": "{fontFamilies.primary}",
+          "fontWeight": "{fontWeights.primary-regular}",
+          "fontSize": "{fontSize.lead}",
+          "lineHeight": "{lineHeights.normal}"
+        },
+        "type": "typography"
+      },
+      "credit": {
+        "value": {
+          "fontFamily": "{fontFamilies.primary}",
+          "fontWeight": "{fontWeights.primary-regular}",
+          "lineHeight": "{lineHeights.normal}",
+          "fontSize": "{fontSize.caption}"
+        },
+        "type": "typography"
+      },
+      "spacing": {
+        "value": "{spacing.xl}",
+        "type": "spacing"
+      },
+      "accent": {
+        "value": {
+          "color": "{colors.EmulsifyBlue.600}",
+          "width": "{border.10}"
+        },
+        "type": "border"
       }
     }
   },
@@ -1736,7 +1771,8 @@
         "radioButton": "enabled",
         "accordion": "enabled",
         "checkbox": "enabled",
-        "selectdropdown": "enabled"
+        "selectdropdown": "enabled",
+        "blockQuote": "disabled"
       },
       "$figmaStyleReferences": {
         "selectdropdown.label": "S:b9ef7c5c58aef147993d4968132bc01a00dc6b7a,",
@@ -1830,7 +1866,8 @@
       "checkbox",
       "selectdropdown",
       "link",
-      "textField"
+      "textField",
+      "blockQuote"
     ]
   }
 }
