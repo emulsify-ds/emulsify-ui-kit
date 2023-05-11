@@ -1740,8 +1740,8 @@
     "blockQuote": {
       "body": {
         "value": {
-          "fontFamily": "{fontFamilies.primary}",
-          "fontWeight": "{fontWeights.primary-regular}",
+          "fontFamily": "{fontFamilies.secondary}",
+          "fontWeight": "{fontWeights.secondary-regular}",
           "fontSize": "{fontSize.lead}",
           "lineHeight": "{lineHeights.normal}",
           "textCase": "{textCase.none}"
@@ -1764,8 +1764,8 @@
       },
       "accent": {
         "value": {
-          "color": "{colors.EmulsifyBlue.600}",
-          "width": "{border.10}"
+          "color": "{colors.grays.800}",
+          "width": "{border.4}"
         },
         "type": "border"
       }
@@ -1855,6 +1855,68 @@
       }
     }
   },
+  "pager": {
+    "pager": {
+      "text": {
+        "default": {
+          "value": "{colors.grays.600}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{colors.white}",
+          "type": "color"
+        }
+      },
+      "default": {
+        "value": {
+          "fontFamily": "{fontFamilies.secondary}",
+          "fontWeight": "{fontWeights.secondary-regular}",
+          "lineHeight": "{lineHeights.none}",
+          "fontSize": "{fontSize.body}",
+          "textCase": "{textCase.none}"
+        },
+        "type": "typography"
+      },
+      "fill": {
+        "hover": {
+          "value": "{colors.EmulsifyBlue.800}",
+          "type": "color"
+        }
+      }
+    },
+    "breadcrumb": {
+      "spacing": {
+        "value": "{spacing.lg}",
+        "type": "spacing"
+      }
+    }
+  },
+  "status": {
+    "status": {
+      "good": {
+        "value": "#CFEFC5",
+        "type": "color"
+      },
+      "warning": {
+        "value": "#FDFA9C",
+        "type": "color"
+      },
+      "error": {
+        "value": "#FDE3E4",
+        "type": "color"
+      },
+      "default": {
+        "value": {
+          "fontFamily": "{fontFamilies.primary}",
+          "fontWeight": "{fontWeights.primary-bold}",
+          "lineHeight": "{lineHeights.none}",
+          "fontSize": "{fontSize.body}",
+          "textCase": "{textCase.none}"
+        },
+        "type": "typography"
+      }
+    }
+  },
   "$themes": [
     {
       "id": "05a6b29ec89c82919561b0a9d0f652f94e36cc0d",
@@ -1869,7 +1931,8 @@
         "accordion": "enabled",
         "checkbox": "enabled",
         "selectdropdown": "enabled",
-        "breadcrumbs": "disabled"
+        "pager": "disabled",
+        "status": "disabled"
       },
       "$figmaStyleReferences": {
         "selectdropdown.label": "S:b9ef7c5c58aef147993d4968132bc01a00dc6b7a,",
@@ -1967,7 +2030,9 @@
       "blockQuote",
       "card",
       "cta",
-      "breadcrumbs"
+      "breadcrumbs",
+      "pager",
+      "status"
     ]
   }
 }
