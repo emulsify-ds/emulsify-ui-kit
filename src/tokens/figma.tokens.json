@@ -1917,6 +1917,97 @@
       }
     }
   },
+  "tabs": {
+    "tabs": {
+      "state": {
+        "active": {
+          "value": "{colors.white}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{colors.grays.300}",
+          "type": "color"
+        },
+        "inactive": {
+          "value": "{colors.grays.200}",
+          "type": "color"
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{colors.grays.800}",
+          "type": "color"
+        }
+      },
+      "border": {
+        "value": {
+          "color": "{colors.grays.300}",
+          "width": "{border.1}"
+        },
+        "type": "border"
+      }
+    },
+    "tab": {
+      "label": {
+        "value": {
+          "fontFamily": "{fontFamilies.primary}",
+          "fontWeight": "{fontWeights.primary-bold}",
+          "lineHeight": "{lineHeights.normal}",
+          "fontSize": "{fontSize.h5}",
+          "textCase": "{textCase.none}"
+        },
+        "type": "typography"
+      }
+    }
+  },
+  "mainMenu": {
+    "mainMenu": {
+      "text": {
+        "level1": {
+          "value": {
+            "fontFamily": "{fontFamilies.primary}",
+            "fontWeight": "{fontWeights.primary-bold}",
+            "lineHeight": "{lineHeights.none}",
+            "fontSize": "{fontSize.h5}",
+            "textCase": "{textCase.upper}"
+          },
+          "type": "typography"
+        },
+        "level2": {
+          "value": {
+            "fontFamily": "{fontFamilies.primary}",
+            "fontWeight": "{fontWeights.primary-regular}",
+            "lineHeight": "{lineHeights.none}",
+            "fontSize": "{fontSize.body}",
+            "textCase": "{textCase.none}"
+          },
+          "type": "typography"
+        },
+        "defaultl": {
+          "value": "{colors.black}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{colors.white}",
+          "type": "color"
+        }
+      },
+      "fill": {
+        "default": {
+          "value": "{colors.EmulsifyBlue.400}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{colors.EmulsifyBlue.800}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{colors.EmulsifyBlue.600}",
+          "type": "color"
+        }
+      }
+    }
+  },
   "$themes": [
     {
       "id": "05a6b29ec89c82919561b0a9d0f652f94e36cc0d",
@@ -1930,9 +2021,7 @@
         "radioButton": "enabled",
         "accordion": "enabled",
         "checkbox": "enabled",
-        "selectdropdown": "enabled",
-        "pager": "disabled",
-        "status": "disabled"
+        "selectdropdown": "enabled"
       },
       "$figmaStyleReferences": {
         "selectdropdown.label": "S:b9ef7c5c58aef147993d4968132bc01a00dc6b7a,",
@@ -2032,7 +2121,9 @@
       "cta",
       "breadcrumbs",
       "pager",
-      "status"
+      "status",
+      "tabs",
+      "mainMenu"
     ]
   }
 }
