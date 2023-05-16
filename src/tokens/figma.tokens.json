@@ -1758,7 +1758,7 @@
         },
         "type": "typography"
       },
-      "spacing": {
+      "x": {
         "value": "{spacing.xl}",
         "type": "spacing"
       },
@@ -1768,6 +1768,10 @@
           "width": "{border.4}"
         },
         "type": "border"
+      },
+      "y": {
+        "value": "{spacing.md}",
+        "type": "spacing"
       }
     }
   },
@@ -1865,6 +1869,10 @@
         "hover": {
           "value": "{colors.white}",
           "type": "color"
+        },
+        "focus": {
+          "value": "{colors.EmulsifyBlue.600}",
+          "type": "color"
         }
       },
       "default": {
@@ -1882,12 +1890,32 @@
           "value": "{colors.EmulsifyBlue.800}",
           "type": "color"
         }
-      }
-    },
-    "breadcrumb": {
-      "spacing": {
-        "value": "{spacing.lg}",
-        "type": "spacing"
+      },
+      "padding": {
+        "x": {
+          "value": "{spacing.lg}",
+          "type": "spacing"
+        },
+        "x-hover": {
+          "value": "{spacing.lg}",
+          "type": "spacing"
+        },
+        "x-focus": {
+          "value": "{spacing.lg}",
+          "type": "spacing"
+        },
+        "y": {
+          "value": "{spacing.md}",
+          "type": "spacing"
+        },
+        "y-hover": {
+          "value": "{spacing.md}",
+          "type": "spacing"
+        },
+        "y-focus": {
+          "value": "{spacing.md}",
+          "type": "spacing"
+        }
       }
     }
   },
@@ -1957,6 +1985,32 @@
           "textCase": "{textCase.none}"
         },
         "type": "typography"
+      },
+      "padding": {
+        "x": {
+          "value": "{spacing.lg}",
+          "type": "spacing"
+        },
+        "x-hover": {
+          "value": "{spacing.lg}",
+          "type": "spacing"
+        },
+        "x-focus": {
+          "value": "{spacing.lg}",
+          "type": "spacing"
+        },
+        "y": {
+          "value": "{spacing.md}",
+          "type": "spacing"
+        },
+        "y-hover": {
+          "value": "{spacing.md}",
+          "type": "spacing"
+        },
+        "y-focus": {
+          "value": "{spacing.md}",
+          "type": "spacing"
+        }
       }
     }
   },
