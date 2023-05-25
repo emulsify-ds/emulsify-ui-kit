@@ -1748,7 +1748,7 @@
         },
         "type": "typography"
       },
-      "credit": {
+      "cite": {
         "value": {
           "fontFamily": "{fontFamilies.primary}",
           "fontWeight": "{fontWeights.primary-regular}",
@@ -1758,9 +1758,15 @@
         },
         "type": "typography"
       },
-      "x": {
-        "value": "{spacing.xl}",
-        "type": "spacing"
+      "padding": {
+        "x": {
+          "value": "{spacing.xl}",
+          "type": "spacing"
+        },
+        "y": {
+          "value": "{spacing.md}",
+          "type": "spacing"
+        }
       },
       "accent": {
         "value": {
@@ -1768,10 +1774,6 @@
           "width": "{border.4}"
         },
         "type": "border"
-      },
-      "y": {
-        "value": "{spacing.md}",
-        "type": "spacing"
       }
     }
   },
@@ -1824,10 +1826,6 @@
           "textCase": "{textCase.none}"
         },
         "type": "typography"
-      },
-      "spacing": {
-        "value": "{spacing.lg}",
-        "type": "spacing"
       },
       "fill": {
         "value": "{colors.EmulsifyBlue.1000}",
