@@ -1945,7 +1945,7 @@
   },
   "tabs": {
     "tabs": {
-      "state": {
+      "bg": {
         "active": {
           "value": "{colors.white}",
           "type": "color"
@@ -1961,6 +1961,10 @@
       },
       "text": {
         "default": {
+          "value": "{colors.grays.800}",
+          "type": "color"
+        },
+        "hover": {
           "value": "{colors.grays.800}",
           "type": "color"
         }
