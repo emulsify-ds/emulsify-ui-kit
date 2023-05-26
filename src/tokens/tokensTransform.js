@@ -1,5 +1,6 @@
-const StyleDictionary =
-  require('style-dictionary').extend('tokens.config.json');
+const StyleDictionary = require('style-dictionary').extend(
+  'sdTokens.config.json',
+);
 
 const pixelsToRem = (px) => {
   const rem = 16;
