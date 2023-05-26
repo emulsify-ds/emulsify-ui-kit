@@ -1847,7 +1847,7 @@
       },
       "text": {
         "default": {
-          "value": "{colors.grays.600}",
+          "value": "{colors.grays.400}",
           "type": "color"
         },
         "hover": {
