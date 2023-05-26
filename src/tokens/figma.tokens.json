@@ -387,6 +387,10 @@
       "0": {
         "value": "0",
         "type": "letterSpacing"
+      },
+      "tight": {
+        "value": "-3",
+        "type": "letterSpacing"
       }
     },
     "paragraphSpacing": {
