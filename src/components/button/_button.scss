@@ -1,4 +1,7 @@
+@import '../tokens/tokens';
+
 .button {
+  border: red solid 1px;
   background-color: var(--button-color-bkg);
   padding: var(--button-padding-y) var(--button-padding-x);
   color: var(--button-color-label);
@@ -14,8 +17,7 @@
   &.button--hover {
     background-color: var(--button-color-bkg-hover);
     padding: var(--button-padding-y-hover) var(--button-padding-x-hover);
-    border: var(--button-border-width-border-hover) solid
-      var(--button-border-color-hover);
+    border: var(--button-border-width-border-hover) solid var(--button-border-color-hover);
     color: var(--button-color-label-hover);
     text-decoration: underline;
     text-transform: var(--button-text-case);
@@ -26,10 +28,8 @@
     background-color: var(--button-color-bkg-focus);
     padding: var(--button-padding-y-focus) var(--button-padding-x-focus);
     color: var(--button-color-label-focus);
-    border: var(--button-border-width-border-focus) solid
-      var(--button-border-color-focus);
-    outline: var(--button-border-width-outline-focus) dotted
-      var(--button-border-color-focus);
+    border: var(--button-border-width-border-focus) solid var(--button-border-color-focus);
+    outline: var(--button-border-width-outline-focus) dotted var(--button-border-color-focus);
     text-transform: var(--button-text-case);
     outline-offset: 0.125rem;
   }

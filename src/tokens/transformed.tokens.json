@@ -1,4 +1,38 @@
 {
+  "color": {
+    "fieldset": {
+      "bg": {
+        "value": "white",
+        "type": "color"
+      },
+      "border": {
+        "value": "#a9afb1",
+        "type": "color"
+      },
+      "label": {
+        "value": "#00202e",
+        "type": "color"
+      }
+    }
+  },
+  "radius": {
+    "fieldset": {
+      "value": 4,
+      "type": "borderRadius"
+    },
+    "sm": {
+      "value": 4,
+      "type": "borderRadius"
+    },
+    "md": {
+      "value": 10,
+      "type": "borderRadius"
+    },
+    "lg": {
+      "value": 20,
+      "type": "borderRadius"
+    }
+  },
   "mainMenu": {
     "text": {
       "level1": {
@@ -872,20 +906,6 @@
     "xxl": {
       "value": 1400,
       "type": "other"
-    }
-  },
-  "radius": {
-    "sm": {
-      "value": 4,
-      "type": "borderRadius"
-    },
-    "md": {
-      "value": 10,
-      "type": "borderRadius"
-    },
-    "lg": {
-      "value": 20,
-      "type": "borderRadius"
     }
   },
   "opacity": {
@@ -2077,6 +2097,10 @@
     },
     "18": {
       "value": "mainMenu",
+      "type": "other"
+    },
+    "19": {
+      "value": "fieldset",
       "type": "other"
     }
   }

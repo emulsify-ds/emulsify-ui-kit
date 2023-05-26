@@ -1,9 +1,16 @@
 /**
  * Do not edit directly
- * Generated on Fri, 26 May 2023 20:09:22 GMT
+ * Generated on Fri, 26 May 2023 21:07:28 GMT
  */
 
 :root {
+  --color-fieldset-bg: #ffffff;
+  --color-fieldset-border: #a9afb1;
+  --color-fieldset-label: #00202e;
+  --radius-fieldset: 0.25rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1.25rem;
   --main-menu-text-level1: [object Object];
   --main-menu-text-level2: [object Object];
   --main-menu-text-defaultl: #000000;
@@ -175,9 +182,6 @@
   --breakpoint-lg: 62rem;
   --breakpoint-xl: 75rem;
   --breakpoint-xxl: 87.5rem;
-  --radius-sm: 0.25rem;
-  --radius-md: 0.625rem;
-  --radius-lg: 1.25rem;
   --opacity-0: 0%;
   --opacity-10: 10%;
   --opacity-20: 20%;
@@ -314,4 +318,5 @@
   --token-set-order-16: status;
   --token-set-order-17: tabs;
   --token-set-order-18: mainMenu;
+  --token-set-order-19: fieldset;
 }

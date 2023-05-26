@@ -8,7 +8,7 @@ export default {
   ],
 };
 
-export const Default = () => `
+export const Button = () => `
   <p>Default:</p>
   ${template()}
   <p>Hover:</p>
@@ -17,7 +17,7 @@ export const Default = () => `
   ${template({ buttonAdditionalClasses: ['button--focus'] })}
 `;
 
-Default.parameters = {
+Button.parameters = {
   design: {
     type: 'figma',
     url: figma.url + figma.button,

@@ -2044,6 +2044,30 @@
       }
     }
   },
+  "fieldset": {
+    "color": {
+      "fieldset": {
+        "bg": {
+          "value": "white",
+          "type": "color"
+        },
+        "border": {
+          "value": "{colors.grays.300}",
+          "type": "color"
+        },
+        "label": {
+          "value": "{colors.text.body}",
+          "type": "color"
+        }
+      }
+    },
+    "radius": {
+      "fieldset": {
+        "value": "{radius.sm}",
+        "type": "borderRadius"
+      }
+    }
+  },
   "$themes": [],
   "$metadata": {
     "tokenSetOrder": [
@@ -2065,7 +2089,8 @@
       "pager",
       "status",
       "tabs",
-      "mainMenu"
+      "mainMenu",
+      "fieldset"
     ]
   }
 }
