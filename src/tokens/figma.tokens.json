@@ -1783,26 +1783,6 @@
   },
   "card": {
     "card": {
-      "header": {
-        "value": {
-          "fontFamily": "{fontFamilies.primary}",
-          "fontWeight": "{fontWeights.primary-bold}",
-          "lineHeight": "{lineHeights.normal}",
-          "fontSize": "{fontSize.h3}",
-          "textCase": "{textCase.none}"
-        },
-        "type": "typography"
-      },
-      "body": {
-        "value": {
-          "fontFamily": "{fontFamilies.primary}",
-          "fontWeight": "{fontWeights.primary-regular}",
-          "lineHeight": "{lineHeights.normal}",
-          "fontSize": "{fontSize.body}",
-          "textCase": "{textCase.none}"
-        },
-        "type": "typography"
-      },
       "spacing": {
         "value": "{spacing.lg}",
         "type": "spacing"
