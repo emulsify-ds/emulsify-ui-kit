@@ -1,6 +1,6 @@
 // import template from './color-tokens.twig';
 
-// import tokens from '../../../tokens/sd.tokens.json';
+// import tokens from '../../../tokens/transformed.tokens.json';
 
 // const data = { colors: tokens.colors };
 

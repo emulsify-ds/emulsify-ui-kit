@@ -4,6 +4,6 @@
   "inputFile": "./tokens-studio.json",
   "outputDir": "./src/components/tokens",
   "platforms": [
-    "css", "json"
+    "json"
   ]
 }

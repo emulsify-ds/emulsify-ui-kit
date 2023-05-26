@@ -1,7 +1,7 @@
 import template from './border-radius-tokens.twig';
 import figma from '../../../../.storybook/configma.json';
 
-import tokens from '../../../tokens/sd.tokens.json';
+import tokens from '../../../tokens/transformed.tokens.json';
 
 const data = { radius: tokens.radius };
 
