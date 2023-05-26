@@ -2068,17 +2068,6 @@
     {
       "id": "05a6b29ec89c82919561b0a9d0f652f94e36cc0d",
       "name": "Emulsify UI Kit",
-      "selectedTokenSets": {
-        "global": "enabled",
-        "semantic": "enabled",
-        "storybook": "enabled",
-        "button": "enabled",
-        "input": "enabled",
-        "radioButton": "enabled",
-        "accordion": "enabled",
-        "checkbox": "enabled",
-        "selectdropdown": "enabled"
-      },
       "$figmaStyleReferences": {
         "selectdropdown.label": "S:b9ef7c5c58aef147993d4968132bc01a00dc6b7a,",
         "selectdropdown.label-disabled": "S:2eb60d710c5574af66a60f533fde0c03d6c166f5,",
@@ -2156,6 +2145,27 @@
         "colors.grays.800": "S:c5c4135271128e92c48eb8b8901438fde9882699,",
         "colors.grays.900": "S:9bc1a059401da9445de05a530800a27461ce4c39,",
         "colors.grays.1000": "S:4c50cc48209d9cd00760a1791a2b5362f5daab6a,"
+      },
+      "selectedTokenSets": {
+        "global": "enabled",
+        "semantic": "enabled",
+        "storybook": "enabled",
+        "button": "enabled",
+        "input": "enabled",
+        "radioButton": "enabled",
+        "accordion": "enabled",
+        "checkbox": "enabled",
+        "selectdropdown": "enabled",
+        "link": "enabled",
+        "textField": "enabled",
+        "blockQuote": "enabled",
+        "card": "enabled",
+        "cta": "enabled",
+        "breadcrumbs": "enabled",
+        "pager": "enabled",
+        "status": "enabled",
+        "tabs": "enabled",
+        "mainMenu": "enabled"
       }
     }
   ],
