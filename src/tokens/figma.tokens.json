@@ -1697,6 +1697,12 @@
         "value": "{spacing.sm}",
         "type": "spacing"
       }
+    },
+    "selectDropdown": {
+      "radius": {
+        "value": "{radius.sm}",
+        "type": "borderRadius"
+      }
     }
   },
   "link": {
