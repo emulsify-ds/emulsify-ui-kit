@@ -1,5 +1,5 @@
 .form-item {
-  color: clr(text);
+  color: var(--colors-text-body);
   margin-bottom: 1em;
   max-width: 32em;
 
@@ -8,7 +8,11 @@
 
 .form-item__label {
   display: block;
-  font-weight: 600;
+  color: var(--input-color-label);
+  margin-bottom: var(--input-gap);
+  font-size: var(--font-size-small);
+  font-weight: bold;
+  line-height: var(--input-label-lineheight);
 
   @include xs {
     display: block;
@@ -18,8 +22,9 @@
 }
 
 .form-item__textfield {
-  border: 1px solid clr(accent);
-  padding: 0.6em;
+  border: 1px solid var(--input-border-color);
+  border-radius: var(--input-radius);
+  padding: var(--input-padding-y) var(--input-padding-x);
   max-width: 100%;
 
   &:focus {
@@ -27,21 +32,28 @@
   }
 
   &::placeholder {
-    color: clr(text);
+    color: var(--input-color-placeholder);
   }
 }
 
 .form-item__description {
-  margin-top: 0.3em;
+  color: var(--input-color-help-text);
+  margin: var(--input-gap) 0 0;
+  font-size: var(--font-size-x-small);
 }
 
 .form-fieldset {
-  border: none;
   margin-bottom: 2em;
-  padding: 0;
+  border: 1px solid var(--color-fieldset-border);
+  border-radius: var(--radius-fieldset);
+  padding: var(--spacing-lg);
 
   .form-item {
     margin-left: 1em;
     max-width: 31em;
   }
+}
+
+legend {
+  color: var(--color-fieldset-label);
 }

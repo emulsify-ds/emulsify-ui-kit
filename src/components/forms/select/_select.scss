@@ -24,19 +24,21 @@
     display: none;
   }
 
-  &:hover {
-    border-color: clr(accent-high);
+  :hover {
+    background: var(--selectdropdown-button-fill-hover);
   }
 }
 
 .form-item__select {
-  border: 1px solid clr(accent);
+  border: 1px solid var(--selectdropdown-button-stroke);
   height: 41px; // set height required for discrepancy between .form-item__dropdown border and the select :focus border
   font-size: 16px;
   margin: 0;
   outline: none;
   padding: 0.6em 0.8em 0.5em;
   width: 100%;
+  color: var(--selectdropdown-label);
+  background: var(--selectdropdown-button-fill);
 
   :focus {
     outline: none;
@@ -44,8 +46,8 @@
   }
 }
 
-@supports (-webkit-appearance: none) or (appearance: none) or
-  ((-moz-appearance: none) and (mask-type: alpha)) {
+@supports (-webkit-appearance: none) or (appearance: none) or ((-moz-appearance: none) and (mask-type: alpha)) {
+
   /* Show custom arrow */
   .form-item__dropdown::after {
     display: block;
@@ -53,13 +55,16 @@
 
   /* Remove select styling */
   .form-item__select {
-    padding-right: 2em; /* Match-01 */
+    padding-right: 2em;
+    /* Match-01 */
 
     /* inside @supports so that iOS <= 8 display the native arrow */
-    background: none; /* Match-04 */
+    // background: none;
+    /* Match-04 */
 
     /* inside @supports so that Android <= 4.3 display the native arrow */
-    border: 1px solid transparent; /* Match-05 */
+    // border: 1px solid transparent;
+    /* Match-05 */
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
