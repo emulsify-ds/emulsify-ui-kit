@@ -5,16 +5,14 @@
 
 $color-heading: clr(accent);
 
-@mixin heading-xl(
-  $font-family: $font-heading,
+@mixin heading-xl($font-family: var(--font-families-secondary),
   $font-size: 2rem,
   $line-height: 1.4,
   $color: $color-heading,
   $color-link: inherit,
   $color-link-hover: inherit,
   $font-weight: 700,
-  $margin: 0 0 0.5em
-) {
+  $margin: 0 0 0.5em) {
   color: $color;
   font-family: $font-family;
   font-weight: $font-weight;
@@ -33,16 +31,14 @@ $color-heading: clr(accent);
   }
 }
 
-@mixin heading-large(
-  $font-family: $font-heading,
+@mixin heading-large($font-family: var(--font-families-secondary),
   $font-size: 1.8rem,
   $line-height: 1.4,
   $color: $color-heading,
   $color-link: inherit,
   $color-link-hover: inherit,
   $font-weight: 700,
-  $margin: 0 0 0.5em
-) {
+  $margin: 0 0 0.5em) {
   color: $color;
   font-family: $font-family;
   font-weight: $font-weight;
@@ -61,16 +57,14 @@ $color-heading: clr(accent);
   }
 }
 
-@mixin heading-medium(
-  $font-family: $font-heading,
+@mixin heading-medium($font-family: var(--font-families-secondary),
   $font-size: 1.4rem,
   $line-height: 1.6,
   $color: $color-heading,
   $color-link: inherit,
   $color-link-hover: inherit,
   $font-weight: 700,
-  $margin: 0 0 0.5em
-) {
+  $margin: 0 0 0.5em) {
   color: $color;
   font-family: $font-family;
   font-weight: $font-weight;
@@ -89,16 +83,14 @@ $color-heading: clr(accent);
   }
 }
 
-@mixin heading-small(
-  $font-family: $font-heading,
+@mixin heading-small($font-family: var(--font-families-secondary),
   $font-size: 1.2rem,
   $line-height: 1.6,
   $color: $color-heading,
   $color-link: inherit,
   $color-link-hover: inherit,
   $font-weight: 600,
-  $margin: 0 0 0.5em
-) {
+  $margin: 0 0 0.5em) {
   color: $color;
   font-family: $font-family;
   font-weight: $font-weight;
@@ -117,16 +109,14 @@ $color-heading: clr(accent);
   }
 }
 
-@mixin heading-xs(
-  $font-family: $font-heading,
+@mixin heading-xs($font-family: var(--font-families-secondary),
   $font-size: 1.1rem,
   $line-height: 2,
   $color: $color-heading,
   $color-link: inherit,
   $color-link-hover: inherit,
   $font-weight: 600,
-  $margin: 0 0 0.5em
-) {
+  $margin: 0 0 0.5em) {
   color: $color;
   font-family: $font-family;
   font-weight: $font-weight;

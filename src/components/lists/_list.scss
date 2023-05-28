@@ -12,6 +12,6 @@ ol {
 
 .text-field {
   li {
-    padding-left: $space;
+    padding-left: var(--spacing-sm);
   }
 }

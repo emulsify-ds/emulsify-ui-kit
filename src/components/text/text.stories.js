@@ -11,7 +11,7 @@ import codeData from './text/code.yml';
 /**
  * Storybook Definition.
  */
-export default { title: 'Atoms/Text' };
+export default { title: 'Components/Typography' };
 
 // Loop over items in headingData to show each one in the example below.
 const headings = headingData.map((d) => heading(d)).join('');

@@ -18,9 +18,9 @@
 #}
 {% set heading__base_class = heading__base_class|default('heading') %}
 
-<h{{ heading__level }} {{ bem(heading__base_class, heading__modifiers, heading__blockname) }}>
-  {% if heading_url %}
-    {% include "@atoms/links/link/link.twig" with {
+<h{{heading__level}} {{ bem(heading__base_class, heading__modifiers, heading__blockname) }}>
+	{% if heading_url %}
+		{% include "@components/links/link/link.twig" with {
       "link_content": heading,
       "link_url": heading_url,
       "link_attributes": heading_link_attributes,
@@ -28,7 +28,7 @@
       "link_modifiers": heading_link_modifiers,
       "link_blockname": heading_link_blockname|default(heading_base_class),
     } %}
-  {% else %}
-    {{ heading }}
-  {% endif %}
-</h{{ heading__level }}>
+	{% else %}
+		{{ heading }}
+	{% endif %}
+</h{{heading__level}}>

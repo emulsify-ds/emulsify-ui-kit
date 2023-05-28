@@ -3,7 +3,7 @@ $table-border-width: 1px;
 @mixin table-header-footer {
   background-color: clr(highlight-high);
 
-  > * {
+  >* {
     border-color: clr(highlight);
   }
 }
@@ -14,13 +14,13 @@ $table-border-width: 1px;
   border-bottom-width: $table-border-width;
   border-style: solid;
   border-color: inherit;
-  padding: $space;
+  padding: var(--spacing-lg);
 
   &:last-child {
     border-right: 0;
   }
 
-  :last-child > & {
+  :last-child>& {
     border-bottom: 0;
   }
 
@@ -32,7 +32,7 @@ $table-border-width: 1px;
 .table {
   border: $table-border-width solid clr(highlight-high);
   border-spacing: 0;
-  margin: $space 0;
+  margin: var(--spacing-lg) 0;
   width: 100%;
 }
 
@@ -47,6 +47,7 @@ $table-border-width: 1px;
 
 // Table body rows
 .table__row {
+
   // Alternate row background/border colors
   &:nth-child(odd) {
     background-color: clr(background);

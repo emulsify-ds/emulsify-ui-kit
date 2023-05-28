@@ -4,6 +4,6 @@ import tableData from './tables.yml';
 /**
  * Storybook Definition.
  */
-export default { title: 'Atoms/Tables' };
+export default { title: 'Components/Typography' };
 
 export const tables = () => tableTwig(tableData);

@@ -5,7 +5,7 @@ import listData from './list.yml';
 /**
  * Storybook Definition.
  */
-export default { title: 'Atoms/Lists' };
+export default { title: 'Components/Typography' };
 
 export const UnorderedList = () => `
   <div class="text-field">

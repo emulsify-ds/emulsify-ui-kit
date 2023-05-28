@@ -1,6 +1,5 @@
 import image from './image/responsive-image.twig';
 import figure from './image/figure.twig';
-import iconTwig from './icons/icons.twig';
 
 import imageData from './image/image.yml';
 import figureData from './image/figure.yml';
@@ -15,10 +14,8 @@ svgIcons.keys().forEach((key) => {
 /**
  * Storybook Definition.
  */
-export default { title: 'Atoms/Images' };
+export default { title: 'Components/Media' };
 
 export const images = () => image(imageData);
 
 export const figures = () => figure(figureData);
-
-export const Icons = () => iconTwig({ icons });

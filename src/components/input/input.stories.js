@@ -2,7 +2,7 @@ import template from './input.twig';
 import figma from '../../../.storybook/configma.json';
 
 export default {
-  title: 'Components/Input',
+  title: 'Components/Forms/Input',
   decorators: [
     (story) => `<div><h2 class="sb-title">Input</h2>${story()}</div>`,
   ],
