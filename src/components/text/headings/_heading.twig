@@ -18,7 +18,7 @@
 #}
 {% set heading__base_class = heading__base_class|default('heading') %}
 
-<h{{heading__level}} {{ bem(heading__base_class, heading__modifiers, heading__blockname) }}>
+<h{{heading__level|default('1')}} {{ bem(heading__base_class, heading__modifiers, heading__blockname) }}>
 	{% if heading_url %}
 		{% include "@components/links/link/link.twig" with {
       "link_content": heading,
@@ -30,5 +30,6 @@
     } %}
 	{% else %}
 		{{ heading }}
+		{{heading__level}}
 	{% endif %}
 </h{{heading__level}}>

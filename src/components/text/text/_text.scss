@@ -10,10 +10,18 @@
 }
 
 .blockquote {
-  font-style: italic;
-  border-left: solid 3px clr(accent);
-  margin-left: 1em;
-  padding-left: 1em;
+  border-left: 4px solid var(--colors-text-body);
+  font-family: var(--font-families-secondary);
+  font-size: var(--font-size-h3);
+  padding: var(--spacing-lg) var(--spacing-xl);
+}
+
+.blockquote cite {
+  display: block;
+  font-family: var(--font-families-primary);
+  font-size: var(--font-size-small);
+  font-style: normal;
+  margin-top: var(--spacing-lg);
 }
 
 .hr {

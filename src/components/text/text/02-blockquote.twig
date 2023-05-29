@@ -19,7 +19,13 @@
 } %}
 
 <blockquote {{ add_attributes(blockquote__attributes) }}>
-  {% block blockquote__content %}
-    {{ blockquote__content }}
-  {% endblock %}
+	{% block blockquote__content %}
+		{{ blockquote__content }}
+	{% endblock %}
+	{% if blockquote__cite %}
+		<cite>
+			{{blockquote__cite}}
+		</cite>
+	{% endif %}
+
 </blockquote>

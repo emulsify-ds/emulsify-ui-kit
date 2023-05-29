@@ -10,9 +10,11 @@ picture {
 }
 
 figure {
-  margin: 0; /* override normalize */
+  margin: 0;
+  /* override normalize */
 }
 
 .figure__caption {
-  font-style: italic;
+  font-size: var(--font-size-x-small);
+  margin-top: var(--spacing-md);
 }

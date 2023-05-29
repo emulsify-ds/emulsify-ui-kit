@@ -1,8 +1,8 @@
 import heading from './headings/_heading.twig';
-import blockquote from './text/02-blockquote.twig';
-import pre from './text/05-pre.twig';
-import paragraph from './text/03-inline-elements.twig';
-import code from './text/07-code.twig';
+import blockquoteTemplate from './text/02-blockquote.twig';
+import preTemplate from './text/05-pre.twig';
+import paragraphTemplate from './text/03-inline-elements.twig';
+import codeTemplate from './text/07-code.twig';
 
 import blockquoteData from './text/blockquote.yml';
 import headingData from './headings/headings.yml';
@@ -13,15 +13,12 @@ import codeData from './text/code.yml';
  */
 export default { title: 'Components/Typography' };
 
-// Loop over items in headingData to show each one in the example below.
-const headings = headingData.map((d) => heading(d)).join('');
+export const headings = () => headingData.map((d) => heading(d)).join('');
 
-export const headingsExamples = () => headings;
+export const blockquote = () => blockquoteTemplate(blockquoteData);
 
-export const blockquoteExample = () => blockquote(blockquoteData);
+export const preformatted = () => preTemplate();
 
-export const preformatted = () => pre();
+export const random = () => paragraphTemplate();
 
-export const random = () => paragraph();
-
-export const codeExample = () => code(codeData);
+export const code = () => codeTemplate(codeData);
