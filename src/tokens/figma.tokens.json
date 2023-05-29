@@ -1984,6 +1984,10 @@
             "value": "{colors.EmulsifyBlue.800}",
             "type": "color"
           }
+        },
+        "border": {
+          "value": "{colors.grays.200}",
+          "type": "color"
         }
       }
     }
