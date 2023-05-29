@@ -8,7 +8,7 @@ import './accordion';
  * Storybook Definition.
  */
 export default {
-  title: 'Molecules/Accordion',
+  title: 'Components/Accordion',
   argTypes: {
     heading: {
       name: 'Heading',
@@ -21,6 +21,10 @@ export default {
       defaultValue: accordionData.accordion__item__content,
     },
   },
+  decorators: [
+    (story) =>
+      `<div style="max-width: 700px; margin: 0 auto;">${story()}</div>`,
+  ],
 };
 
 export const Accordion = ({ heading, content }) =>
