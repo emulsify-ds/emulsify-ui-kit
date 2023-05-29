@@ -1721,7 +1721,7 @@
           "type": "color"
         },
         "placeholder": {
-          "value": "{colors.EmulsifyBlue.400}",
+          "value": "{colors.grays.300}",
           "type": "color"
         }
       },
@@ -1911,9 +1911,7 @@
       "gap": {
         "value": "{spacing.sm}",
         "type": "spacing"
-      }
-    },
-    "selectDropdown": {
+      },
       "radius": {
         "value": "{radius.sm}",
         "type": "borderRadius"

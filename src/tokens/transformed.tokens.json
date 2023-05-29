@@ -234,9 +234,7 @@
     "gap": {
       "value": 4,
       "type": "spacing"
-    }
-  },
-  "selectDropdown": {
+    },
     "radius": {
       "value": 4,
       "type": "borderRadius"
@@ -386,7 +384,7 @@
         "type": "color"
       },
       "placeholder": {
-        "value": "#66c5ef",
+        "value": "#a9afb1",
         "type": "color"
       }
     },

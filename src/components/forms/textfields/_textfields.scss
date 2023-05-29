@@ -1,7 +1,6 @@
 .form-item {
   color: var(--colors-text-body);
   margin-bottom: 1em;
-  max-width: 32em;
 
   @include clearfix;
 }
@@ -26,6 +25,8 @@
   border-radius: var(--input-radius);
   padding: var(--input-padding-y) var(--input-padding-x);
   max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
 
   &:focus {
     border-color: clr(accent-high);
@@ -50,10 +51,15 @@
 
   .form-item {
     margin-left: 1em;
-    max-width: 31em;
   }
 }
 
 legend {
   color: var(--color-fieldset-label);
+}
+
+.form-item--warning {
+  --input-color-label: var(--colors-warning-default);
+  --input-border-color: var(--colors-warning-default);
+  --input-color-help-text: var(--colors-warning-default);
 }
