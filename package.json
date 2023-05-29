@@ -56,7 +56,7 @@
     "@storybook/storybook-deployer": "^2.8.10",
     "add-attributes-twig-extension": "^0.1.0",
     "bem-twig-extension": "^0.1.1",
-    "breakpoint-sass": "^2.7.1",
+    "breakpoint-sass": "^3.0.0",
     "css-loader": "^5.0.1",
     "figma-token-engine": "^0.1.1",
     "js-yaml-loader": "^1.2.2",

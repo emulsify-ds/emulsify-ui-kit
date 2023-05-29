@@ -2,14 +2,25 @@
 @import '~normalize.css/normalize';
 @import '~breakpoint-sass/stylesheets/breakpoint';
 
+html {
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--colors-text-body);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-heights-normal);
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
 // Components
 @import 'tokens/**/*.scss';
-// @import '00-base/**/*.scss';
-// @import '01-atoms/**/*.scss';
-// @import '02-molecules/**/*.scss';
-// @import '03-organisms/**/*.scss';
-// @import '04-templates/**/*.scss';
-// @import '00-base/01-colors/colors-used.scss';
 @import 'stylesheets/**/*.scss';
 @import 'storybook-styles/**/*.scss';
 @import 'docs/**/*.scss';

@@ -4,7 +4,7 @@
   display: block;
   font-size: 1.2rem;
   line-height: 1.5;
-  padding: $space $space-triple $space $space-double;
+  padding: var(--spacing-sm) var(--spacing-sm)-triple var(--spacing-sm) var(--spacing-sm)-double;
   text-decoration: none;
   font-weight: bold;
 
@@ -16,7 +16,7 @@
     border-bottom: none;
     display: inline-block;
     font-size: 1.1rem;
-    padding: $space;
+    padding: var(--spacing-sm);
     text-transform: none;
     position: relative;
     width: auto;
@@ -55,13 +55,13 @@
 /* A (Nested) */
 .main-menu__link--sub {
   color: clr(accent);
-  padding-left: $space-triple;
+  padding-left: var(--spacing-sm)-triple;
   font-weight: normal;
 
   @include medium {
     color: clr(highlight);
     display: block;
-    padding: $space-one-third $space;
+    padding: var(--spacing-sm)-one-third var(--spacing-sm);
   }
 }
 
@@ -70,5 +70,5 @@
 }
 
 .main-menu__link--sub-2 {
-  padding-left: $space-quadruple;
+  padding-left: var(--spacing-sm)-quadruple;
 }

@@ -3,13 +3,13 @@
 {% set list__blockname = menu_blockname %}
 
 {# List #}
-{% extends "@atoms/lists/list.twig" %}
+{% extends "@components/lists/list.twig" %}
 {% block list__content %}
-  {% for item in items %}
-    {% include "@molecules/menus/_menu-item.twig" with {
+	{% for item in items %}
+		{% include "@components/menus/_menu-item.twig" with {
       list__item__base_class: item_base_class,
       list__item__modifiers: item_modifiers,
       list__item__blockname: item_blockname,
     } %}
-  {% endfor %}
+	{% endfor %}
 {% endblock %}

@@ -13,7 +13,7 @@ import './main-menu/main-menu';
 /**
  * Storybook Definition.
  */
-export default { title: 'Molecules/Menus' };
+export default { title: 'Components/Menus' };
 
 export const breadcrumbs = () => breadcrumb(breadcrumbsData);
 

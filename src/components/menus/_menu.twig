@@ -36,7 +36,7 @@
       {% set menu_modifiers = menu_modifiers|merge(['sub', 'sub-' ~ menu_level]) %}
     {% endif %}
 
-    {% include "@molecules/menus/_menu-list.twig" %}
+    {% include "@components/menus/_menu-list.twig" %}
   {% endif %}
 {% endmacro %}
 

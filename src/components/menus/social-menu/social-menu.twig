@@ -5,9 +5,9 @@
 {% set list__blockname = menu_blockname %}
 
 {# List #}
-{% extends "@atoms/lists/list.twig" %}
+{% extends "@components/lists/list.twig" %}
 {% block list__content %}
-  {% for item in social_menu_items %}
-    {% include "@molecules/menus/social-menu/_social-menu-item.twig" %}
-  {% endfor %}
+	{% for item in social_menu_items %}
+		{% include "@components/menus/social-menu/_social-menu-item.twig" %}
+	{% endfor %}
 {% endblock %}

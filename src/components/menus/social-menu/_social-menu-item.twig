@@ -2,7 +2,7 @@
 {% set list__item__modifiers = item_modifiers %}
 {% set list__item__blockname = menu_class %}
 
-{% extends "@atoms/lists/_list-item.twig" %}
+{% extends "@components/lists/_list-item.twig" %}
 {% block list__item__content %}
-  {% include "@molecules/menus/social-menu/_social-menu-link.twig" %}
+	{% include "@components/menus/social-menu/_social-menu-link.twig" %}
 {% endblock %}

@@ -7,12 +7,6 @@
  * use example =   @include cleafix
 */
 
-@mixin body-copy {
-  font-family: $font-body;
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
 @mixin clearfix {
   &::after {
     clear: both;
@@ -115,7 +109,7 @@ $outer-container-break: var(--breakpoint-sm);
 
 @mixin heading-medium($font-family: var(--font-family-heading),
   $font-size: var(--font-size-h3),
-  $line-height: var(--line-heights-none),
+  $line-height: var(--line-heights-tight),
   $color: var(--colors-text-heading),
   $color-link: inherit,
   $color-link-hover: inherit,
@@ -141,7 +135,7 @@ $outer-container-break: var(--breakpoint-sm);
 
 @mixin heading-small($font-family: var(--font-family-heading),
   $font-size: var(--font-size-h4),
-  $line-height: var(--line-heights-none),
+  $line-height: var(--line-heights-tight),
   $color: var(--colors-text-heading),
   $color-link: inherit,
   $color-link-hover: inherit,
@@ -167,7 +161,7 @@ $outer-container-break: var(--breakpoint-sm);
 
 @mixin heading-xs($font-family: var(--font-family-heading),
   $font-size: var(--font-size-h5),
-  $line-height: var(--line-heights-none),
+  $line-height: var(--line-heights-tight),
   $color: var(--colors-text-heading),
   $color-link: inherit,
   $color-link-hover: inherit,

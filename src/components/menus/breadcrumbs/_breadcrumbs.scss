@@ -1,7 +1,3 @@
-$color-breadcrumb: clr(accent);
-$color-breadcrumb-hover: clr(accent-high);
-$color-breadcrumb-active: clr(text);
-
 .breadcrumb {
   @include list-reset;
 }
@@ -11,12 +7,12 @@ $color-breadcrumb-active: clr(text);
 .breadcrumb__link:link,
 .breadcrumb__link:visited,
 .breadcrumb__link:focus {
-  color: $color-breadcrumb;
+  color: var(--breadcrumb-text-default);
   text-decoration: none;
 }
 
 .breadcrumb__link:hover {
-  color: $color-breadcrumb-hover;
+  color: var(--breadcrumb-text-hover);
 }
 
 .breadcrumb__item {
@@ -28,7 +24,7 @@ $color-breadcrumb-active: clr(text);
   }
 
   &:last-child {
-    color: $color-breadcrumb-active;
+    color: var(--breadcrumb-text-default);
 
     &::after {
       content: '';
@@ -37,5 +33,5 @@ $color-breadcrumb-active: clr(text);
 }
 
 .breadcrumb_link:active {
-  color: $color-breadcrumb-active;
+  color: var(--breadcrumb-text-default);
 }

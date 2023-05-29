@@ -1,19 +1,19 @@
-$social-icon-size: 16px;
-
 .social-menu {
   @include list-reset;
-}
-
-.social-menu__item {
-  margin-bottom: $space-one-half;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--spacing-sm);
 }
 
 .social-menu__link {
+  @include link;
+
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+  gap: var(--spacing-sm);
   text-decoration: none;
-  color: clr(text);
+
 
   &:focus,
   &:hover {
@@ -22,12 +22,7 @@ $social-icon-size: 16px;
 }
 
 .social-menu__icon {
-  height: $social-icon-size;
-  width: $social-icon-size;
-  margin-right: $space-one-half;
+  height: var(--size-lg);
+  width: var(--size-lg);
   fill: currentColor;
-}
-
-.social-menu__text {
-  font-weight: bold;
 }
