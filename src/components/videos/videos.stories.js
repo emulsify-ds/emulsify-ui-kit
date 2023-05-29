@@ -8,7 +8,7 @@ import './video-embed';
 /**
  * Storybook Definition.
  */
-export default { title: 'Atoms/Videos' };
+export default { title: 'Components/Media' };
 
-export const embed = () => video(videoEmbedData);
-export const html5 = () => video(videoHTML5Data);
+export const videoEmbed = () => video(videoEmbedData);
+export const videoHtml5 = () => video(videoHTML5Data);

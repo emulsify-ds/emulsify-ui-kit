@@ -24,10 +24,10 @@
 }) %}
 
 <div {{ add_attributes(video__attributes) }}>
-  {% if video__type == 'embed' %}
-    {% include "@atoms/videos/_video-embed.twig" %}
-  {% endif %}
-  {% if video__type == 'html5' %}
-    {% include "@atoms/videos/_video-html5.twig" %}
-  {% endif %}
+	{% if video__type == 'embed' %}
+		{% include "@components/videos/_video-embed.twig" %}
+	{% endif %}
+	{% if video__type == 'html5' %}
+		{% include "@components/videos/_video-html5.twig" %}
+	{% endif %}
 </div>

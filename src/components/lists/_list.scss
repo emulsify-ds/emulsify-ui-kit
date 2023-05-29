@@ -1,12 +1,18 @@
 ul {
   @include list-reset;
 
+  line-height: var(--line-heights-normal);
+  margin-bottom: var(--spacing-lg);
+  padding-left: var(--spacing-lg);
   list-style-type: disc;
 }
 
 ol {
   @include list-reset;
 
+  line-height: var(--line-heights-normal);
+  margin-bottom: var(--spacing-lg);
+  padding-left: var(--spacing-lg);
   list-style-type: decimal;
 }
 

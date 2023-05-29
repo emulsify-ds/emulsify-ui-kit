@@ -5,6 +5,6 @@ import linkData from './link.yml';
 /**
  * Storybook Definition.
  */
-export default { title: 'Components/Typography' };
+export default { title: 'Components/Typography/Links' };
 
 export const links = () => link(linkData);

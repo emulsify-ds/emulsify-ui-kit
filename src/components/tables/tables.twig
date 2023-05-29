@@ -46,85 +46,85 @@
 }) %}
 
 {% if attributes %}
-  {% set table__attributes = table__attributes|merge(attributes) %}
+	{% set table__attributes = table__attributes|merge(attributes) %}
 {% endif %}
 
 <table {{ add_attributes(table__attributes) }}>
-  {% if caption %}
-    <caption>{{ caption }}</caption>
-  {% endif %}
+	{% if caption %}
+		<caption>{{ caption }}</caption>
+	{% endif %}
 
-  {% for colgroup in colgroups %}
-    {% if colgroup.cols %}
-      <colgroup {{ colgroup.attributes }}>
-        {% for col in colgroup.cols %}
-          <col {{ col.attributes }} />
-        {% endfor %}
-      </colgroup>
-    {% else %}
-      <colgroup {{ colgroup.attributes }} />
-    {% endif %}
-  {% endfor %}
+	{% for colgroup in colgroups %}
+		{% if colgroup.cols %}
+			<colgroup {{ colgroup.attributes }}>
+				{% for col in colgroup.cols %}
+					<col {{ col.attributes }}/>
+				{% endfor %}
+			</colgroup>
+		{% else %}
+			<colgroup {{ colgroup.attributes }}/>
+		{% endif %}
+	{% endfor %}
 
-  {% if header %}
-    <thead {{ bem('header', [], table__base_class) }}>
-      <tr>
-        {% for cell in header %}
-          {% set table__header_cell__attributes = {
-            'class': bem('heading-cell', [], table__base_class),
+	{% if header %}
+		<thead {{ bem('header', [], table__base_class) }}>
+			<tr>
+				{% for cell in header %}
+					{% set table__header_cell__attributes = {
+            'class': bem('header_cell', [], table__base_class),
           } %}
-          {% if cell.attributes %}
-            {% set table__header_cell__attributes = table__header_cell__attributes|merge(cell.attributes) %}
-          {% endif %}
-          <{{cell.tag}} {{ add_attributes(table__header_cell__attributes) }}>
-            {{- cell.content -}}
-          </{{cell.tag}}>
-        {% endfor %}
-      </tr>
-    </thead>
-  {% endif %}
+					{% if cell.attributes %}
+						{% set table__header_cell__attributes = table__header_cell__attributes|merge(cell.attributes) %}
+					{% endif %}
+					<{{cell.tag}} {{ add_attributes(table__header_cell__attributes) }}>
+						{{- cell.content -}}
+					</{{cell.tag}}>
+				{% endfor %}
+			</tr>
+		</thead>
+	{% endif %}
 
-  {% if rows %}
-    <tbody>
-      {% for row in rows %}
-        <tr {{ bem('row', [], table__base_class) }}>
-          {% for cell in row.cells %}
-            {% set table__cell__attributes = {
+	{% if rows %}
+		<tbody>
+			{% for row in rows %}
+				<tr {{ bem('row', [], table__base_class) }}>
+					{% for cell in row.cells %}
+						{% set table__cell__attributes = {
               'class': bem('cell', [], table__base_class),
             } %}
-            {% if cell.attributes %}
-              {% set table__cell__attributes = table__cell__attributes|merge(cell.attributes) %}
-            {% endif %}
-            <{{cell.tag}} {{ add_attributes(table__cell__attributes) }}>
-              {{- cell.content -}}
-            </{{cell.tag}}>
-          {% endfor %}
-        </tr>
-      {% endfor %}
-    </tbody>
-  {% elseif empty %}
-    <tbody>
-      <tr {{ bem('row', [], table__base_class) }}>
-        <td colspan="{{ header_columns }}" {{ bem('cell', [], table__base_class) }}>{{ empty }}</td>
-      </tr>
-    </tbody>
-  {% endif %}
+						{% if cell.attributes %}
+							{% set table__cell__attributes = table__cell__attributes|merge(cell.attributes) %}
+						{% endif %}
+						<{{cell.tag}} {{ add_attributes(table__cell__attributes) }}>
+							{{- cell.content -}}
+						</{{cell.tag}}>
+					{% endfor %}
+				</tr>
+			{% endfor %}
+		</tbody>
+	{% elseif empty %}
+		<tbody>
+			<tr {{ bem('row', [], table__base_class) }}>
+				<td colspan="{{ header_columns }}" {{ bem('cell', [], table__base_class) }}>{{ empty }}</td>
+			</tr>
+		</tbody>
+	{% endif %}
 
-  {% if footer %}
-    <tfoot {{ bem('footer', [], table__base_class) }}>
-      <tr>
-        {% for cell in footer %}
-          {% set table__footer_cell__attributes = {
+	{% if footer %}
+		<tfoot {{ bem('footer', [], table__base_class) }}>
+			<tr>
+				{% for cell in footer %}
+					{% set table__footer_cell__attributes = {
             'class': bem('footer-cell', [], table__base_class),
           } %}
-          {% if cell.attributes %}
-            {% set table__footer_cell__attributes = table__footer_cell__attributes|merge(cell.attributes) %}
-          {% endif %}
-          <{{cell.tag}} {{ add_attributes(table__footer_cell__attributes) }}>
-            {{- cell.content -}}
-          </{{cell.tag}}>
-        {% endfor %}
-      </tr>
-    </tfoot>
-  {% endif %}
+					{% if cell.attributes %}
+						{% set table__footer_cell__attributes = table__footer_cell__attributes|merge(cell.attributes) %}
+					{% endif %}
+					<{{cell.tag}} {{ add_attributes(table__footer_cell__attributes) }}>
+						{{- cell.content -}}
+					</{{cell.tag}}>
+				{% endfor %}
+			</tr>
+		</tfoot>
+	{% endif %}
 </table>

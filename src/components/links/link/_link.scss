@@ -1,8 +1,9 @@
 @mixin link {
-  color: clr(accent);
+  color: var(--link-default);
+  transition: all .15s;
 
   &:hover {
-    color: clr(accent-high);
+    color: var(--link-hover);
   }
 }
 
