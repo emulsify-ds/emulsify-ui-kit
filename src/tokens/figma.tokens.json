@@ -1338,6 +1338,16 @@
         "value": "{colors.EmulsifyBlue.600}",
         "type": "color"
       }
+    },
+    "fontFamily": {
+      "body": {
+        "value": "{fontFamilies.primary}",
+        "type": "fontFamilies"
+      },
+      "heading": {
+        "value": "{fontFamilies.secondary}",
+        "type": "fontFamilies"
+      }
     }
   },
   "storybook": {
@@ -1781,7 +1791,8 @@
       "accent": {
         "value": {
           "color": "{colors.grays.800}",
-          "width": "{border.4}"
+          "width": "{border.4}",
+          "style": "solid"
         },
         "type": "border"
       }
