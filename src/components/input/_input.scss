@@ -9,7 +9,7 @@
   }
 
   &__input {
-    border: 1px solid var(--input-border-color);
+    border: var(--border-sm) solid var(--input-border-color);
     border-radius: var(--input-radius);
     padding: var(--input-padding-y) var(--input-padding-x);
     font-weight: bold;

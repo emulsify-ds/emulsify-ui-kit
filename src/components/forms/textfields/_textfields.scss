@@ -22,7 +22,7 @@
 }
 
 .form-item__textfield {
-  border: 1px solid var(--input-border-color);
+  border: var(--border-sm) solid var(--input-border-color);
   border-radius: var(--input-radius);
   padding: var(--input-padding-y) var(--input-padding-x);
   max-width: 100%;
@@ -44,7 +44,7 @@
 
 .form-fieldset {
   margin-bottom: 2em;
-  border: 1px solid var(--color-fieldset-border);
+  border: var(--border-sm) solid var(--color-fieldset-border);
   border-radius: var(--radius-fieldset);
   padding: var(--spacing-lg);
 
