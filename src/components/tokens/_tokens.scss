@@ -1,16 +1,9 @@
 /**
  * Do not edit directly
- * Generated on Mon, 29 May 2023 19:48:19 GMT
+ * Generated on Tue, 30 May 2023 01:42:54 GMT
  */
 
 :root {
-  --main-menu-text-level1: [object Object];
-  --main-menu-text-level2: [object Object];
-  --main-menu-text-defaultl: #000000;
-  --main-menu-text-active: #ffffff;
-  --main-menu-fill-default: #66c5ef;
-  --main-menu-fill-hover: #005f89;
-  --main-menu-fill-active: #009fe4;
   --text-field-border-width: 1px;
   --text-field-radius: 0.625rem;
   --text-field-border: [object Object];
@@ -69,6 +62,15 @@
   --pager-padding-y: 0.5rem;
   --pager-padding-y-hover: 0.5rem;
   --pager-padding-y-focus: 0.5rem;
+  --main-menu-color-bg: #ffffff;
+  --main-menu-color-link-bg: #ffffff;
+  --main-menu-color-link-bg-hover: #e6f5fc;
+  --main-menu-color-link-label: #005f89;
+  --main-menu-color-link-label-hover: #00405b;
+  --main-menu-color-dropdown-bg: #e6f5fc;
+  --main-menu-color-dropdown-bg-hover: #ccecfa;
+  --main-menu-color-dropdown-label: #005f89;
+  --main-menu-color-dropdown-label-hover: #00405b;
   --link-default: #009fe4;
   --link-hover: #005f89;
   --link-body: [object Object];
@@ -323,12 +325,12 @@
   --token-set-order-10: fieldset;
   --token-set-order-11: input;
   --token-set-order-12: link;
-  --token-set-order-13: pager;
-  --token-set-order-14: radioButton;
-  --token-set-order-15: selectdropdown;
-  --token-set-order-16: status;
-  --token-set-order-17: table;
-  --token-set-order-18: tabs;
-  --token-set-order-19: textField;
-  --token-set-order-20: mainMenu;
+  --token-set-order-13: mainMenu;
+  --token-set-order-14: pager;
+  --token-set-order-15: radioButton;
+  --token-set-order-16: selectdropdown;
+  --token-set-order-17: status;
+  --token-set-order-18: table;
+  --token-set-order-19: tabs;
+  --token-set-order-20: textField;
 }

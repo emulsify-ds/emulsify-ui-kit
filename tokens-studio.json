@@ -1770,6 +1770,52 @@
       }
     }
   },
+  "mainMenu": {
+    "mainMenu": {
+      "color": {
+        "bg": {
+          "value": "{colors.white}",
+          "type": "color"
+        },
+        "link": {
+          "bg": {
+            "value": "{colors.white}",
+            "type": "color"
+          },
+          "bg-hover": {
+            "value": "{colors.EmulsifyBlue.100}",
+            "type": "color"
+          },
+          "label": {
+            "value": "{colors.EmulsifyBlue.800}",
+            "type": "color"
+          },
+          "label-hover": {
+            "value": "{colors.EmulsifyBlue.900}",
+            "type": "color"
+          }
+        },
+        "dropdown": {
+          "bg": {
+            "value": "{colors.EmulsifyBlue.100}",
+            "type": "color"
+          },
+          "bg-hover": {
+            "value": "{colors.EmulsifyBlue.200}",
+            "type": "color"
+          },
+          "label": {
+            "value": "{colors.EmulsifyBlue.800}",
+            "type": "color"
+          },
+          "label-hover": {
+            "value": "{colors.EmulsifyBlue.900}",
+            "type": "color"
+          }
+        }
+      }
+    }
+  },
   "pager": {
     "pager": {
       "text": {
@@ -2077,54 +2123,6 @@
       }
     }
   },
-  "mainMenu": {
-    "mainMenu": {
-      "text": {
-        "level1": {
-          "value": {
-            "fontFamily": "{fontFamilies.primary}",
-            "fontWeight": "{fontWeights.primary-bold}",
-            "lineHeight": "{lineHeights.none}",
-            "fontSize": "{fontSize.h5}",
-            "textCase": "{textCase.upper}"
-          },
-          "type": "typography"
-        },
-        "level2": {
-          "value": {
-            "fontFamily": "{fontFamilies.primary}",
-            "fontWeight": "{fontWeights.primary-regular}",
-            "lineHeight": "{lineHeights.none}",
-            "fontSize": "{fontSize.body}",
-            "textCase": "{textCase.none}"
-          },
-          "type": "typography"
-        },
-        "defaultl": {
-          "value": "{colors.black}",
-          "type": "color"
-        },
-        "active": {
-          "value": "{colors.white}",
-          "type": "color"
-        }
-      },
-      "fill": {
-        "default": {
-          "value": "{colors.EmulsifyBlue.400}",
-          "type": "color"
-        },
-        "hover": {
-          "value": "{colors.EmulsifyBlue.800}",
-          "type": "color"
-        },
-        "active": {
-          "value": "{colors.EmulsifyBlue.600}",
-          "type": "color"
-        }
-      }
-    }
-  },
   "$themes": [],
   "$metadata": {
     "tokenSetOrder": [
@@ -2141,14 +2139,14 @@
       "fieldset",
       "input",
       "link",
+      "mainMenu",
       "pager",
       "radioButton",
       "selectdropdown",
       "status",
       "table",
       "tabs",
-      "textField",
-      "mainMenu"
+      "textField"
     ]
   }
 }

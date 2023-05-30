@@ -1,50 +1,4 @@
 {
-  "mainMenu": {
-    "text": {
-      "level1": {
-        "value": {
-          "fontFamily": "Inter",
-          "fontWeight": "Bold",
-          "lineHeight": "100%",
-          "fontSize": 21,
-          "textCase": "uppercase"
-        },
-        "type": "typography"
-      },
-      "level2": {
-        "value": {
-          "fontFamily": "Inter",
-          "fontWeight": "Regular",
-          "lineHeight": "100%",
-          "fontSize": 18,
-          "textCase": "none"
-        },
-        "type": "typography"
-      },
-      "defaultl": {
-        "value": "#000000",
-        "type": "color"
-      },
-      "active": {
-        "value": "#ffffff",
-        "type": "color"
-      }
-    },
-    "fill": {
-      "default": {
-        "value": "#66c5ef",
-        "type": "color"
-      },
-      "hover": {
-        "value": "#005f89",
-        "type": "color"
-      },
-      "active": {
-        "value": "#009fe4",
-        "type": "color"
-      }
-    }
-  },
   "textField": {
     "borderWidth": {
       "value": 1,
@@ -335,6 +289,50 @@
       "y-focus": {
         "value": 8,
         "type": "spacing"
+      }
+    }
+  },
+  "mainMenu": {
+    "color": {
+      "bg": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "link": {
+        "bg": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "bg-hover": {
+          "value": "#e6f5fc",
+          "type": "color"
+        },
+        "label": {
+          "value": "#005f89",
+          "type": "color"
+        },
+        "label-hover": {
+          "value": "#00405b",
+          "type": "color"
+        }
+      },
+      "dropdown": {
+        "bg": {
+          "value": "#e6f5fc",
+          "type": "color"
+        },
+        "bg-hover": {
+          "value": "#ccecfa",
+          "type": "color"
+        },
+        "label": {
+          "value": "#005f89",
+          "type": "color"
+        },
+        "label-hover": {
+          "value": "#00405b",
+          "type": "color"
+        }
       }
     }
   },
@@ -2131,35 +2129,35 @@
       "type": "other"
     },
     "13": {
-      "value": "pager",
+      "value": "mainMenu",
       "type": "other"
     },
     "14": {
-      "value": "radioButton",
+      "value": "pager",
       "type": "other"
     },
     "15": {
-      "value": "selectdropdown",
+      "value": "radioButton",
       "type": "other"
     },
     "16": {
-      "value": "status",
+      "value": "selectdropdown",
       "type": "other"
     },
     "17": {
-      "value": "table",
+      "value": "status",
       "type": "other"
     },
     "18": {
-      "value": "tabs",
+      "value": "table",
       "type": "other"
     },
     "19": {
-      "value": "textField",
+      "value": "tabs",
       "type": "other"
     },
     "20": {
-      "value": "mainMenu",
+      "value": "textField",
       "type": "other"
     }
   }

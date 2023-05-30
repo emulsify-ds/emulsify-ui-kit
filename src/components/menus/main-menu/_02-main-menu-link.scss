@@ -1,50 +1,52 @@
 /* A */
 .main-menu__link {
-  color: clr(accent);
+  background: var(--main-menu-color-link-bg);
+  color: var(--main-menu-color-link-label);
   display: block;
-  font-size: 1.2rem;
-  line-height: 1.5;
-  padding: var(--spacing-sm) var(--spacing-sm)-triple var(--spacing-sm) var(--spacing-sm)-double;
+  font-size: var(--font-size-h5);
+  line-height: var(--line-heights-none);
+  padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-sm) var(--spacing-sm);
   text-decoration: none;
   font-weight: bold;
+  text-transform: uppercase;
 
-  &--with-sub {
-    width: 80%;
-  }
+  // &--with-sub {
+  //   width: 80%;
+  // }
 
   @include medium {
     border-bottom: none;
     display: inline-block;
-    font-size: 1.1rem;
     padding: var(--spacing-sm);
-    text-transform: none;
     position: relative;
     width: auto;
+    transition: all .15s;
 
     &.active,
     &:active,
     &:hover {
-      color: clr(highlight-high);
+      background: var(--main-menu-color-link-bg-hover);
+      color: var(--main-menu-color-link-label-hover);
     }
 
-    &::after {
-      color: clr(text-inverse);
-      display: inline-block;
-      content: '>';
-      margin-left: 0.5rem;
-    }
+    // &::after {
+    //   color: clr(text-inverse);
+    //   display: inline-block;
+    //   content: '>';
+    //   margin-left: 0.5rem;
+    // }
 
-    &--sub::after {
-      display: none;
-    }
+    // &--sub::after {
+    //   display: none;
+    // }
 
-    &:hover {
-      color: clr(background);
+    // &:hover {
+    //   color: var(--main-menu-color-link-label-hover);
 
-      &::after {
-        color: clr(highlight);
-      }
-    }
+    //   &::after {
+    //     color: var(--main-menu-color-link-label-hover);
+    //   }
+    // }
   }
 }
 
@@ -54,21 +56,27 @@
 
 /* A (Nested) */
 .main-menu__link--sub {
-  color: clr(accent);
-  padding-left: var(--spacing-sm)-triple;
+  background-color: var(--main-menu-color-dropdown-bg);
+  color: var(--main-menu-color-dropdown-label);
+  padding-left: var(--spacing-sm);
   font-weight: normal;
 
   @include medium {
-    color: clr(highlight);
+    color: var(--main-menu-color-dropdown-label);
     display: block;
-    padding: var(--spacing-sm)-one-third var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-sm);
+  }
+
+  &:hover {
+    background-color: var(--main-menu-color-dropdown-bg-hover);
+    color: var(--main-menu-color-dropdown-label-hover);
   }
 }
 
 .main-menu--sub-2 {
-  background-color: clr(highlight-high);
+  background-color: var(--main-menu-color-dropdown-bg);
 }
 
 .main-menu__link--sub-2 {
-  padding-left: var(--spacing-sm)-quadruple;
+  padding-left: var(--spacing-sm);
 }
