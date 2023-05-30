@@ -1725,7 +1725,7 @@
           "type": "color"
         },
         "placeholder": {
-          "value": "{colors.EmulsifyBlue.400}",
+          "value": "{colors.grays.300}",
           "type": "color"
         }
       },
@@ -1915,9 +1915,7 @@
       "gap": {
         "value": "{spacing.sm}",
         "type": "spacing"
-      }
-    },
-    "selectDropdown": {
+      },
       "radius": {
         "value": "{radius.sm}",
         "type": "borderRadius"
@@ -2085,48 +2083,38 @@
   },
   "mainMenu": {
     "mainMenu": {
-      "text": {
-        "level1": {
-          "value": {
-            "fontFamily": "{fontFamilies.primary}",
-            "fontWeight": "{fontWeights.primary-bold}",
-            "lineHeight": "{lineHeights.none}",
-            "fontSize": "{fontSize.h5}",
-            "textCase": "{textCase.upper}"
-          },
-          "type": "typography"
-        },
-        "level2": {
-          "value": {
-            "fontFamily": "{fontFamilies.primary}",
-            "fontWeight": "{fontWeights.primary-regular}",
-            "lineHeight": "{lineHeights.none}",
-            "fontSize": "{fontSize.body}",
-            "textCase": "{textCase.none}"
-          },
-          "type": "typography"
-        },
-        "defaultl": {
-          "value": "{colors.black}",
-          "type": "color"
-        },
-        "active": {
+      "color": {
+        "bg": {
           "value": "{colors.white}",
           "type": "color"
-        }
-      },
-      "fill": {
-        "default": {
-          "value": "{colors.EmulsifyBlue.400}",
-          "type": "color"
         },
-        "hover": {
-          "value": "{colors.EmulsifyBlue.800}",
-          "type": "color"
+        "link": {
+          "bg": {
+            "value": "{colors.white}",
+            "type": "color"
+          },
+          "bg-hover": {
+            "value": "{colors.EmulsifyBlue.100}",
+            "type": "color"
+          },
+          "label": {
+            "value": "{colors.EmulsifyBlue.800}",
+            "type": "color"
+          }
         },
-        "active": {
-          "value": "{colors.EmulsifyBlue.600}",
-          "type": "color"
+        "dropdown": {
+          "bg": {
+            "value": "{colors.EmulsifyBlue.100}",
+            "type": "color"
+          },
+          "bg-hover": {
+            "value": "{colors.EmulsifyBlue.200}",
+            "type": "color"
+          },
+          "label": {
+            "value": "{colors.EmulsifyBlue.800}",
+            "type": "color"
+          }
         }
       }
     }
