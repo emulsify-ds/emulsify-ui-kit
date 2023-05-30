@@ -1793,6 +1793,10 @@
           "label": {
             "value": "{colors.EmulsifyBlue.800}",
             "type": "color"
+          },
+          "label-hover": {
+            "value": "{colors.EmulsifyBlue.900}",
+            "type": "color"
           }
         },
         "dropdown": {
@@ -1806,6 +1810,10 @@
           },
           "label": {
             "value": "{colors.EmulsifyBlue.800}",
+            "type": "color"
+          },
+          "label-hover": {
+            "value": "{colors.EmulsifyBlue.900}",
             "type": "color"
           }
         }
