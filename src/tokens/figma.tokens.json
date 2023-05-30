@@ -1774,6 +1774,44 @@
       }
     }
   },
+  "mainMenu": {
+    "mainMenu": {
+      "color": {
+        "bg": {
+          "value": "{colors.white}",
+          "type": "color"
+        },
+        "link": {
+          "bg": {
+            "value": "{colors.white}",
+            "type": "color"
+          },
+          "bg-hover": {
+            "value": "{colors.EmulsifyBlue.100}",
+            "type": "color"
+          },
+          "label": {
+            "value": "{colors.EmulsifyBlue.800}",
+            "type": "color"
+          }
+        },
+        "dropdown": {
+          "bg": {
+            "value": "{colors.EmulsifyBlue.100}",
+            "type": "color"
+          },
+          "bg-hover": {
+            "value": "{colors.EmulsifyBlue.200}",
+            "type": "color"
+          },
+          "label": {
+            "value": "{colors.EmulsifyBlue.800}",
+            "type": "color"
+          }
+        }
+      }
+    }
+  },
   "pager": {
     "pager": {
       "text": {
@@ -2081,44 +2119,6 @@
       }
     }
   },
-  "mainMenu": {
-    "mainMenu": {
-      "color": {
-        "bg": {
-          "value": "{colors.white}",
-          "type": "color"
-        },
-        "link": {
-          "bg": {
-            "value": "{colors.white}",
-            "type": "color"
-          },
-          "bg-hover": {
-            "value": "{colors.EmulsifyBlue.100}",
-            "type": "color"
-          },
-          "label": {
-            "value": "{colors.EmulsifyBlue.800}",
-            "type": "color"
-          }
-        },
-        "dropdown": {
-          "bg": {
-            "value": "{colors.EmulsifyBlue.100}",
-            "type": "color"
-          },
-          "bg-hover": {
-            "value": "{colors.EmulsifyBlue.200}",
-            "type": "color"
-          },
-          "label": {
-            "value": "{colors.EmulsifyBlue.800}",
-            "type": "color"
-          }
-        }
-      }
-    }
-  },
   "$themes": [
     {
       "id": "05a6b29ec89c82919561b0a9d0f652f94e36cc0d",
@@ -2241,14 +2241,14 @@
       "fieldset",
       "input",
       "link",
+      "mainMenu",
       "pager",
       "radioButton",
       "selectdropdown",
       "status",
       "table",
       "tabs",
-      "textField",
-      "mainMenu"
+      "textField"
     ]
   }
 }
