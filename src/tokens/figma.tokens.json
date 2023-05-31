@@ -1886,7 +1886,7 @@
           "fontFamily": "{fontFamilies.primary}",
           "fontWeight": "{fontWeights.secondary-regular}",
           "lineHeight": "{lineHeights.none}",
-          "fontSize": "{fontSize.small}",
+          "fontSize": "{fontSize.x-small}",
           "textCase": "{textCase.none}"
         },
         "type": "typography"
