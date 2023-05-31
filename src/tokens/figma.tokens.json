@@ -1390,7 +1390,7 @@
         "type": "fontFamilies"
       },
       "heading": {
-        "value": "{fontFamilies.secondary}",
+        "value": "{fontFamilies.primary}",
         "type": "fontFamilies"
       }
     }
