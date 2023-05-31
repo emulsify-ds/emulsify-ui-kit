@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 30 May 2023 01:42:54 GMT
+ * Generated on Wed, 31 May 2023 03:07:49 GMT
  */
 
 :root {
@@ -21,12 +21,12 @@
   --tab-padding-y-hover: 0.5rem;
   --tab-padding-y-focus: 0.5rem;
   --table-color-cell-bg: #ffffff;
-  --table-color-cell-bg-stripe: #e6f5fc;
+  --table-color-cell-bg-stripe: #009fe4;
   --table-color-cell-text: #00202e;
   --table-color-cell-icon: #007fb6;
-  --table-color-header-bg: #66c5ef;
-  --table-color-header-text: #00202e;
-  --table-color-header-icon: #005f89;
+  --table-color-header-bg: #009fe4;
+  --table-color-header-text: #ffffff;
+  --table-color-header-icon: #009fe4;
   --table-color-border: #d4d7d8;
   --status-good: #CFEFC5;
   --status-warning: #FDFA9C;
@@ -37,15 +37,15 @@
   --selectdropdown-button-fill: #ffffff;
   --selectdropdown-button-fill-hover: #e6f5fc;
   --selectdropdown-button-fill-disabled: #ffffff;
-  --selectdropdown-button-stroke: #00202e;
-  --selectdropdown-button-stroke-hover: #00202e;
+  --selectdropdown-button-stroke: #7f878b;
+  --selectdropdown-button-stroke-hover: #545f64;
   --selectdropdown-button-stroke-disabled: #a9afb1;
   --selectdropdown-gap: 0.25rem;
   --selectdropdown-radius: 0.25rem;
   --radio-label: #00202e;
   --radio-label-disabled: #a9afb1;
-  --radio-button-fill: #007fb6;
-  --radio-button-fill-hover: #00202e;
+  --radio-button-fill: #009fe4;
+  --radio-button-fill-hover: #009fe4;
   --radio-button-fill-disabled: #a9afb1;
   --radio-button-stroke: #00202e;
   --radio-button-stroke-hover: #00202e;
@@ -55,7 +55,7 @@
   --pager-text-hover: #ffffff;
   --pager-text-focus: #009fe4;
   --pager-default: [object Object];
-  --pager-fill-hover: #005f89;
+  --pager-fill-hover: #009fe4;
   --pager-padding-x: 1rem;
   --pager-padding-x-hover: 1rem;
   --pager-padding-x-focus: 1rem;
@@ -64,23 +64,23 @@
   --pager-padding-y-focus: 0.5rem;
   --main-menu-color-bg: #ffffff;
   --main-menu-color-link-bg: #ffffff;
-  --main-menu-color-link-bg-hover: #e6f5fc;
-  --main-menu-color-link-label: #005f89;
-  --main-menu-color-link-label-hover: #00405b;
-  --main-menu-color-dropdown-bg: #e6f5fc;
-  --main-menu-color-dropdown-bg-hover: #ccecfa;
-  --main-menu-color-dropdown-label: #005f89;
-  --main-menu-color-dropdown-label-hover: #00405b;
+  --main-menu-color-link-bg-hover: #009fe4;
+  --main-menu-color-link-label: #009fe4;
+  --main-menu-color-link-label-hover: #009fe4;
+  --main-menu-color-dropdown-bg: #009fe4;
+  --main-menu-color-dropdown-bg-hover: #009fe4;
+  --main-menu-color-dropdown-label: #009fe4;
+  --main-menu-color-dropdown-label-hover: #009fe4;
   --link-default: #009fe4;
   --link-hover: #005f89;
   --link-body: [object Object];
   --input-gap: 0.5rem;
   --input-padding-x: 1rem;
   --input-padding-y: 0.5rem;
-  --input-color-label: #005f89;
-  --input-color-help-text: #005f89;
+  --input-color-label: #00202e;
+  --input-color-help-text: #009fe4;
   --input-color-placeholder: #a9afb1;
-  --input-border-color: #009fe4;
+  --input-border-color: #7f878b;
   --input-radius: 0.25rem;
   --input-label-lineheight: 125%;
   --input-bkg: #ffffff;
@@ -96,8 +96,8 @@
   --cta-fill: #00202e;
   --checkbox-label: #00202e;
   --checkbox-label-disabled: #a9afb1;
-  --checkbox-button-fill: #007fb6;
-  --checkbox-button-fill-hover: #00202e;
+  --checkbox-button-fill: #009fe4;
+  --checkbox-button-fill-hover: #009fe4;
   --checkbox-button-fill-disabled: #a9afb1;
   --checkbox-button-stroke: #00202e;
   --checkbox-button-stroke-hover: #00202e;
@@ -106,10 +106,10 @@
   --card-spacing: 1rem;
   --button-color-bkg: #009fe4;
   --button-color-label: #ffffff;
-  --button-color-bkg-hover: #005f89;
+  --button-color-bkg-hover: #009fe4;
   --button-color-label-hover: #ffffff;
   --button-color-label-focus: #ffffff;
-  --button-color-bkg-focus: #005f89;
+  --button-color-bkg-focus: #009fe4;
   --button-padding-x: 1rem;
   --button-padding-x-hover: 1rem;
   --button-padding-x-focus: 1rem;
@@ -125,8 +125,8 @@
   --button-border-width-border-focus: 1px;
   --button-text-case: uppercase;
   --button-border-color: #009fe4;
-  --button-border-color-hover: #005f89;
-  --button-border-color-focus: #005f89;
+  --button-border-color-hover: #009fe4;
+  --button-border-color-focus: #009fe4;
   --button-font-weight-label: Bold;
   --breadcrumb-default: [object Object];
   --breadcrumb-text-default: #7f878b;
@@ -139,18 +139,20 @@
   --accordion-header: [object Object];
   --accordion-p: [object Object];
   --accordion-color-body: #00202e;
-  --accordion-color-header: #007fb6;
+  --accordion-color-header: #009fe4;
   --accordion-color-header-hover: #33b2e9;
   --accordion-divider-color: #545f64;
   --colors-sb-background: #ffffff;
   --colors-sb-text-body: #00202e;
-  --colors-sb-text-heading: #005f89;
+  --colors-sb-text-heading: #009fe4;
   --colors-sb-visualization: #009fe4;
   --colors-primary-default: #009fe4;
-  --colors-primary-light: #66c5ef;
-  --colors-primary-dark: #005f89;
+  --colors-primary-light: #009fe4;
+  --colors-primary-lighter: #009fe4;
+  --colors-primary-dark: #009fe4;
+  --colors-primary-darker: #009fe4;
   --colors-text-body: #00202e;
-  --colors-text-heading: #007fb6;
+  --colors-text-heading: #009fe4;
   --colors-warning-default: #D80F0F;
   --colors-link: #33b2e9;
   --colors-link-hover: #009fe4;

@@ -1303,14 +1303,23 @@
       "primary": {
         "default": {
           "value": "{colors.EmulsifyBlue.600}",
-          "type": "color"
+          "type": "color",
+          "description": "600"
         },
         "light": {
-          "value": "{colors.EmulsifyBlue.400}",
+          "value": "{colors.primary.default}",
+          "type": "color"
+        },
+        "lighter": {
+          "value": "{colors.primary.default}",
           "type": "color"
         },
         "dark": {
-          "value": "{colors.EmulsifyBlue.800}",
+          "value": "{colors.primary.default}",
+          "type": "color"
+        },
+        "darker": {
+          "value": "{colors.primary.default}",
           "type": "color"
         }
       },
@@ -1320,7 +1329,7 @@
           "type": "color"
         },
         "heading": {
-          "value": "{colors.EmulsifyBlue.700}",
+          "value": "{colors.primary.dark}",
           "type": "color"
         }
       },
@@ -1613,11 +1622,11 @@
       },
       "button": {
         "fill": {
-          "value": "{colors.EmulsifyBlue.700}",
+          "value": "{colors.primary.default}",
           "type": "color"
         },
         "fill-hover": {
-          "value": "{colors.EmulsifyBlue.1000}",
+          "value": "{colors.primary.dark}",
           "type": "color"
         },
         "fill-disabled": {
@@ -1713,7 +1722,7 @@
       },
       "color": {
         "label": {
-          "value": "{colors.primary.dark}",
+          "value": "{colors.text.body}",
           "type": "color"
         },
         "helpText": {
@@ -1727,7 +1736,7 @@
       },
       "border": {
         "color": {
-          "value": "{colors.primary.default}",
+          "value": "{colors.grays.400}",
           "type": "color"
         }
       },
@@ -1783,33 +1792,33 @@
             "type": "color"
           },
           "bg-hover": {
-            "value": "{colors.EmulsifyBlue.100}",
+            "value": "{colors.primary.lighter}",
             "type": "color"
           },
           "label": {
-            "value": "{colors.EmulsifyBlue.800}",
+            "value": "{colors.primary.dark}",
             "type": "color"
           },
           "label-hover": {
-            "value": "{colors.EmulsifyBlue.900}",
+            "value": "{colors.primary.darker}",
             "type": "color"
           }
         },
         "dropdown": {
           "bg": {
-            "value": "{colors.EmulsifyBlue.100}",
+            "value": "{colors.primary.lighter}",
             "type": "color"
           },
           "bg-hover": {
-            "value": "{colors.EmulsifyBlue.200}",
+            "value": "{colors.primary.lighter}",
             "type": "color"
           },
           "label": {
-            "value": "{colors.EmulsifyBlue.800}",
+            "value": "{colors.primary.dark}",
             "type": "color"
           },
           "label-hover": {
-            "value": "{colors.EmulsifyBlue.900}",
+            "value": "{colors.primary.darker}",
             "type": "color"
           }
         }
@@ -1834,17 +1843,17 @@
       },
       "default": {
         "value": {
-          "fontFamily": "{fontFamilies.secondary}",
+          "fontFamily": "{fontFamilies.primary}",
           "fontWeight": "{fontWeights.secondary-regular}",
           "lineHeight": "{lineHeights.none}",
-          "fontSize": "{fontSize.body}",
+          "fontSize": "{fontSize.x-small}",
           "textCase": "{textCase.none}"
         },
         "type": "typography"
       },
       "fill": {
         "hover": {
-          "value": "{colors.EmulsifyBlue.800}",
+          "value": "{colors.primary.default}",
           "type": "color"
         }
       },
@@ -1888,11 +1897,11 @@
       },
       "button": {
         "fill": {
-          "value": "{colors.EmulsifyBlue.700}",
+          "value": "{colors.primary.default}",
           "type": "color"
         },
         "fill-hover": {
-          "value": "{colors.EmulsifyBlue.1000}",
+          "value": "{colors.primary.dark}",
           "type": "color"
         },
         "fill-disabled": {
@@ -1942,11 +1951,11 @@
           "type": "color"
         },
         "stroke": {
-          "value": "{colors.text.body}",
+          "value": "{colors.grays.400}",
           "type": "color"
         },
         "stroke-hover": {
-          "value": "{checkbox.button.stroke}",
+          "value": "{colors.grays.500}",
           "type": "color"
         },
         "stroke-disabled": {
@@ -1999,7 +2008,7 @@
             "type": "color"
           },
           "bg-stripe": {
-            "value": "{colors.EmulsifyBlue.100}",
+            "value": "{colors.primary.lighter}",
             "type": "color"
           },
           "text": {
@@ -2013,15 +2022,15 @@
         },
         "header": {
           "bg": {
-            "value": "{colors.EmulsifyBlue.400}",
+            "value": "{colors.primary.default}",
             "type": "color"
           },
           "text": {
-            "value": "{colors.text.body}",
+            "value": "{colors.white}",
             "type": "color"
           },
           "icon": {
-            "value": "{colors.EmulsifyBlue.800}",
+            "value": "{colors.primary.lighter}",
             "type": "color"
           }
         },
