@@ -2,12 +2,6 @@
 
 $accordion_icon_size: var(--size-xl);
 
-// --accordion-color-body: #00202e;
-// --accordion-color-header: #007fb6;
-// --accordion-color-header-hover: #33b2e9;
-// --accordion-divider-color: #545f64;
-
-
 // The accordion group.
 .accordion {
   padding-block: var(--spacing-sm);
@@ -42,21 +36,19 @@ $accordion_icon_size: var(--size-xl);
   width: 100%;
 
   &:hover {
-    color: clr(link);
+    color: var(--accordion-color-header-hover);
   }
 }
 
 .accordion__toggle-all {
   background: none;
-  color: inherit;
   border: none;
   padding: 0;
   font: inherit;
   cursor: pointer;
   outline: inherit;
-
   display: flex;
-  color: var(--accordion-color-header);
+  color: var(--colors-text-body);
   font-size: var(--font-size-small);
   gap: var(--spacing-sm);
   align-items: center;
@@ -70,7 +62,7 @@ $accordion_icon_size: var(--size-xl);
   }
 
   .accordion__icon {
-    fill: var(--accordion-color-header);
+    fill: var(--colors-text-body);
     height: var(--size-lg);
     width: var(--size-lg);
   }
@@ -94,6 +86,7 @@ $accordion_icon_size: var(--size-xl);
 
 .accordion-item__heading {
   @include heading-medium;
+  font-weight: normal;
   display: flex;
   margin: 0 0 var(--spacing-lg);
   color: var(--accordion-color-header);

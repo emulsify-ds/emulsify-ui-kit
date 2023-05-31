@@ -4,6 +4,15 @@
   ],
   "platforms": {
     "css": {
+      "transformGroup": "tokens-studio",
+      "files": [
+        {
+          "destination": "src/components/tokens/_tokens.scss",
+          "format": "css/variables"
+        }
+      ]
+    },
+    "foo": {
       "transforms": [
         "attribute/cti",
         "name/cti/kebab",
@@ -15,7 +24,7 @@
       ],
       "files": [
         {
-          "destination": "src/components/tokens/_tokens.scss",
+          "destination": "src/components/tokens/_tokens-foo.css",
           "format": "css/variables"
         }
       ]

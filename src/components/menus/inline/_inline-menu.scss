@@ -6,6 +6,7 @@
 
 
   @include medium {
+    flex-flow: row wrap;
     gap: var(--spacing-lg);
     margin-bottom: 1em;
   }

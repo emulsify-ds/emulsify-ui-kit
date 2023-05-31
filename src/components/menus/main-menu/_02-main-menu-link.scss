@@ -25,8 +25,8 @@
     &.active,
     &:active,
     &:hover {
-      background: var(--main-menu-color-link-bg-hover);
-      color: var(--main-menu-color-link-label-hover);
+      background: blue; //var(--main-menu-color-link-bg-hover);
+      color: red; //var(--main-menu-color-link-label-hover);
     }
 
     // &::after {
