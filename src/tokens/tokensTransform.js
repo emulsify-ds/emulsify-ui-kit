@@ -1,7 +1,4 @@
-const { registerTransforms } = require('@tokens-studio/sd-transforms');
-const StyleDictionary = require('style-dictionary').extend(
-  'sdTokens.config.json',
-);
+const StyleDictionary = require('style-dictionary').extend('sd.config.json');
 
 const pixelsToRem = (px) => {
   const rem = 16;
@@ -11,8 +8,6 @@ const pixelsToRem = (px) => {
 const appendPX = (value) => {
   return `${value}px`;
 };
-
-registerTransforms(StyleDictionary, { excludeParentKeys: true });
 
 StyleDictionary.registerTransform({
   name: 'toRem/pxToRem',

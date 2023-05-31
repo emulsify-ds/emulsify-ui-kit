@@ -1,5 +1,5 @@
 menu_items:
-  - title: 'Menu Item 1'
+  - title: 'Academics'
     url: '#'
     below:
       - title: 'Menu Item 1 Sub 1'
@@ -15,7 +15,7 @@ menu_items:
         url: '#'
       - title: 'Menu Item 1 Sub 4'
         url: '#'
-  - title: 'Menu Item 2'
+  - title: 'Admissions'
     url: '#'
     below:
       - title: 'Menu Item 2 Sub 1'
@@ -24,7 +24,7 @@ menu_items:
         url: '#'
       - title: 'Menu Item 2 Sub 3'
         url: '#'
-  - title: 'Menu Item 3'
+  - title: 'Research'
     url: '#'
     below:
       - title: 'Menu Item 3 Sub 1'
@@ -35,3 +35,5 @@ menu_items:
         url: '#'
       - title: 'Menu Item 3 Sub 4'
         url: '#'
+  - title: 'About'
+    url: '#'

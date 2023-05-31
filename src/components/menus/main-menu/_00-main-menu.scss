@@ -3,7 +3,9 @@
   display: none;
 
   @include medium {
-    display: block;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: var(--spacing-md);
   }
 
   &--open {
@@ -40,32 +42,25 @@
   border-bottom: none;
   height: 0;
   overflow: hidden;
-  background-color: clr(muted);
+  background-color: var(--main-menu-color-dropdown-bg);
   width: 100%;
 
   @include medium {
-    background-color: clr(highlight-high);
     display: none;
     height: auto;
     left: 0;
     overflow: visible;
     padding: var(--spacing-sm) 0;
     position: absolute;
-    top: 55px;
+    top: 37px;
     width: 315px;
     z-index: 1;
     font-size: 0.9rem;
-    opacity: 0.6;
   }
 
   &:hover {
     @include medium {
-      opacity: 1;
-      background-color: clr(accent-high);
-      transition: all 0.2s;
-
       .main-menu__link--sub {
-        color: clr(highlight);
 
         &.active,
         &:active,
