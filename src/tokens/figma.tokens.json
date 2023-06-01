@@ -1319,6 +1319,19 @@
             }
           }
         },
+        "lightest": {
+          "value": "{colors.primary.default}",
+          "type": "color",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "lighten",
+                "value": ".8",
+                "space": "hsl"
+              }
+            }
+          }
+        },
         "lighter": {
           "value": "{colors.primary.default}",
           "type": "color",
