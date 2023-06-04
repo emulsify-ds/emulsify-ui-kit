@@ -43,75 +43,80 @@
  #}
 {% set card__base_class = 'card' %}
 
-<div {{ bem(card__base_class, card__modifiers, card__blockname, card__extra_classes) }}>
-  {# Image #}
-  {% block card__img %}
-    {% if card__image__src %}
-      {% include "@atoms/images/image/responsive-image.twig" with {
+<div
+	{{ bem(card__base_class, card__modifiers, card__blockname, card__extra_classes) }}>
+	{# Image #}
+	{% block card__img %}
+		{% if card__image__src %}
+			{% include "@components/images/image/responsive-image.twig" with {
         image_blockname: card__base_class,
         output_image_tag: card__image__output_image_tag,
         image_src: card__image__src,
         image_alt: card__image__alt,
       } %}
-    {% endif %}
-  {% endblock %}
-  {# Content #}
-  <div {{ bem('content', card__content__modifiers, card__base_class) }}>
-    {# Heading #}
-    {% if card__heading %}
-      {{ title_prefix }}
-      {% include "@atoms/text/headings/_heading.twig" with {
-        heading_base_class: card__heading__base_class|default('heading'),
-        heading_modifiers: card__heading__modifiers,
-        heading_blockname: card__base_class,
-        heading_level: 2,
+		{% endif %}
+	{% endblock %}
+	{# Content #}
+	<div
+		{{ bem('content', card__content__modifiers, card__base_class) }}>
+
+		{# Subheading #}
+		{% if card__subheading %}
+			{% include "@components/text/headings/_heading.twig" with {
+        heading__base_class: card__subheading__base_class|default('subheading'),
+        heading__modifiers: card__subheading__modifiers,
+        heading__blockname: card__base_class,
+        heading__level: 3,
+        heading: card__subheading,
+        heading_url: card__subheading__link,
+      } %}
+		{% endif %}
+
+		{# Heading #}
+		{% if card__heading %}
+			{{ title_prefix }}
+			{% include "@components/text/headings/_heading.twig" with {
+        heading__base_class: card__heading__base_class|default('heading'),
+        heading__modifiers: card__heading__modifiers,
+        heading__blockname: card__base_class,
+        heading__level: 2,
         heading: card__heading,
         heading_url: card__heading__link|default(card__link__url),
         heading_link_base_class: card__heading__link_base_class|default('heading-link'),
         heading_link_blockname: card__base_class,
       } %}
-      {{ title_suffix }}
-    {% endif %}
-    {# Subheading #}
-    {% if card__subheading %}
-      {% include "@atoms/text/headings/_heading.twig" with {
-        heading_base_class: card__subheading__base_class|default('subheading'),
-        heading_modifiers: card__subheading__modifiers,
-        heading_blockname: card__base_class,
-        heading_level: 3,
-        heading: card__subheading,
-        heading_url: card__subheading__link,
-      } %}
-    {% endif %}
-    {# Body #}
-    {% if card__body %}
-      {% include "@atoms/text/text/01-paragraph.twig" with {
+			{{ title_suffix }}
+		{% endif %}
+
+		{# Body #}
+		{% if card__body %}
+			{% include "@components/text/text/01-paragraph.twig" with {
         paragraph_base_class: card__body__base_class|default('body'),
         paragraph_modifiers: card__body__modifiers,
         paragraph_blockname: card__base_class,
         paragraph_content: card__body,
       } %}
-    {% endif %}
-    {# Link #}
-    {% if card__link__url %}
-      {% include "@atoms/links/link/link.twig" with {
+		{% endif %}
+		{# Link #}
+		{% if card__link__url %}
+			{% include "@components/links/link/link.twig" with {
         link_base_class: card__link__base_class|default('link'),
         link_blockname: card__base_class,
         link_attributes: card__link__attributes,
         link_content: card__link__text,
         link_url: card__link__url,
       } %}
-    {% endif %}
-    {# Button #}
-    {% if card__button__url %}
-      {% include "@atoms/buttons/button.twig" with {
-        button_base_class: card__button__base_class|default('button'),
-        button_modifiers: card__button__modifiers,
-        button_blockname: card__base_class,
-        button_attributes: card__button__attributes,
-        button__content: card__button__content,
-        button_url: card__button__url,
-      } %}
-    {% endif %}
-  </div>
+		{% endif %}
+		{# Button #}
+		{# {% if card__button__url %}
+																											{% include "@components/buttons/button.twig" with {
+																								        button_base_class: card__button__base_class|default('button'),
+																								        button_modifiers: card__button__modifiers,
+																								        button_blockname: card__base_class,
+																								        button_attributes: card__button__attributes,
+																								        button__content: card__button__content,
+																								        button_url: card__button__url,
+																								      } %}
+																										{% endif %} #}
+	</div>
 </div>

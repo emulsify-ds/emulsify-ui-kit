@@ -109,14 +109,16 @@
     color: var(--colors-white);
     font-family: var(--font-families-primary), serif !important;
     font-size: var(--font-size-colossus);
+    line-height: var(--line-heights-none);
     margin: 0;
   }
 }
 
 .sb_lozenge {
   background: var(--colors-primary-light);
-  color: var(--colors-primary-dark);
+  color: var(--colors-white);
   font-size: var(--font-size-small);
+  line-height: var(--line-heights-none);
   display: block;
   border-radius: var(--radius-lg);
   width: max-content;

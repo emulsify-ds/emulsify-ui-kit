@@ -756,19 +756,19 @@
         "description": "600"
       },
       "light": {
-        "value": "#4bc9ff",
+        "value": "#1ebbff",
         "type": "color"
       },
       "lighter": {
-        "value": "#dcf5ff",
+        "value": "#9ce1ff",
         "type": "color"
       },
       "dark": {
-        "value": "#006692",
+        "value": "#0080b7",
         "type": "color"
       },
       "darker": {
-        "value": "#003952",
+        "value": "#006089",
         "type": "color"
       }
     },

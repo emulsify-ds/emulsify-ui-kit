@@ -184,3 +184,12 @@ $outer-container-break: var(--breakpoint-sm);
     }
   }
 }
+
+@mixin link {
+  color: var(--link-default);
+  transition: all .15s;
+
+  &:hover {
+    color: var(--link-hover);
+  }
+}

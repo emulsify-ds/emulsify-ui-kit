@@ -24,7 +24,6 @@ export const parameters = {
     storySort: {
       method: 'alphabetical',
       order: [
-        'Cover',
         'Docs',
         'Pages',
         'Layouts',

@@ -1,12 +1,3 @@
-@mixin link {
-  color: var(--link-default);
-  transition: all .15s;
-
-  &:hover {
-    color: var(--link-hover);
-  }
-}
-
 .link {
   @include link;
 }

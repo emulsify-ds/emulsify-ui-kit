@@ -1,0 +1,112 @@
+menu_items:
+  - title: 'Academics'
+    url: '#'
+    below:
+      - title: 'Menu Item 1 Sub 1'
+        url: '#'
+      - title: 'Menu Item 1 Sub 2'
+        url: '#'
+        below:
+          - title: 'Menu Item 1 Sub Sub 1'
+            url: '#'
+          - title: 'Menu Item 1 Sub Sub 2'
+            url: '#'
+      - title: 'Menu Item 1 Sub 3'
+        url: '#'
+      - title: 'Menu Item 1 Sub 4'
+        url: '#'
+  - title: 'Admissions'
+    url: '#'
+    below:
+      - title: 'Menu Item 2 Sub 1'
+        url: '#'
+      - title: 'Menu Item 2 Sub 2'
+        url: '#'
+      - title: 'Menu Item 2 Sub 3'
+        url: '#'
+  - title: 'Research'
+    url: '#'
+    below:
+      - title: 'Menu Item 3 Sub 1'
+        url: '#'
+      - title: 'Menu Item 3 Sub 2'
+        url: '#'
+      - title: 'Menu Item 3 Sub 3'
+        url: '#'
+      - title: 'Menu Item 3 Sub 4'
+        url: '#'
+  - title: 'About'
+    url: '#'
+cards:
+  - card__image__src: './static/images/example/watch-Image-1.png'
+    card__image__alt: "This is the card image's alt text"
+    card__image__output_image_tag: true
+    card__subheading: 'social science ‘23'
+    card__heading: 'Eara Mclusky'
+    card__body: 'This nationally lauded scholar is helping Spanish speakers learn complex science.'
+    card__link__text: 'Read more about this card'
+    card__link__url: '#'
+    card__modifiers: 
+      - 'horizontal'
+  - card__image__src: 'https://placehold.co/400'
+    card__image__alt: "This is the card image's alt text"
+    card__image__output_image_tag: true
+    card__subheading: 'Medicine ‘24'
+    card__heading: 'Tyler Weber'
+    card__body: 'Studying trauma and its impact.'
+    card__link__text: 'Read more about this card'
+    card__link__url: '#'
+  - card__image__src: 'https://placehold.co/400'
+    card__image__alt: "This is the card image's alt text"
+    card__image__output_image_tag: true
+    card__subheading: 'Engineering ‘25'
+    card__heading: 'Jewell Riddle'
+    card__body: 'An engineering student who leads by example'
+    card__link__text: 'Read more about this card'
+    card__link__url: '#'
+celebratingCards:
+  - card__image__src: 'https://placehold.co/250x200'
+    card__image__alt: "This is the card image's alt text"
+    card__image__output_image_tag: true
+    card__subheading: 'Student Opportunities'
+    card__heading: 'Recent Honors College Graduate Selected for Fulbright English Teaching Award to Spain'
+    card__body: 'May 09, 2023'
+    card__modifiers: 
+      - 'horizontal'
+  - card__image__src: 'https://placehold.co/250x200'
+    card__image__alt: "This is the card image's alt text"
+    card__image__output_image_tag: true
+    card__subheading: 'University News'
+    card__heading: 'Council of Trustees approved three naming resolutions'
+    card__body: 'May 09, 2023'
+    card__modifiers: 
+      - 'horizontal'
+  - card__image__src: 'https://placehold.co/250x200'
+    card__image__alt: "This is the card image's alt text"
+    card__image__output_image_tag: true
+    card__subheading: 'Research'
+    card__heading: 'WUP is set to "level up" its quantum capabilities with an $11.6 million investment'
+    card__body: 'May 01, 2023'
+    card__modifiers: 
+      - 'horizontal'
+  - card__image__src: 'https://placehold.co/250x200'
+    card__image__alt: "This is the card image's alt text"
+    card__image__output_image_tag: true
+    card__subheading: 'Arts and Humanities'
+    card__heading: 'How to live more creatively, according to a faculty poet'
+    card__body: 'May 01, 2023'
+    card__modifiers: 
+      - 'horizontal'
+social_menu_items:
+  - title: 'Instagram'
+    url: '#'
+    icon: 'instagram'
+  - title: 'Mastodon'
+    url: '#'
+    icon: 'mastodon'
+  - title: 'Slack'
+    url: '#'
+    icon: 'slack'
+  - title: 'YouTube'
+    url: '#'
+    icon: 'youtube'
