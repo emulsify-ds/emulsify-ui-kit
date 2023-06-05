@@ -1,0 +1,18 @@
+.form-item--checkboxes,
+.form-item--checkbox__item {
+  @include list-reset;
+}
+
+.form-item--checkboxes {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--checkbox-gap);
+}
+
+.form-item--checkbox__item--label {
+  color: var(--checkbox-label);
+}
+
+.form-item--checkbox__item--label__disabled {
+  color: var(--checkbox-label-disabled);
+}

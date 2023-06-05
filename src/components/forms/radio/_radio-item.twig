@@ -1,0 +1,8 @@
+{% set labelClasses = radio_item_disabled ? 'form-item--radio__item--label__disabled' : '' %}
+
+<li class="form-item--radio__item {{ labelClasses }}">
+	<label for="radio{{ key }}">
+		<input id="radio{{ key }}" name="radio" type="radio" class="radio" {% if radio_item_checked %} checked="{{ radio_item_checked }}" {% endif %} {% if radio_item_disabled %} disabled="{{ radio_item_disabled }}" {% endif %}>
+		{{ radio_item }}
+	</label>
+</li>

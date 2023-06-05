@@ -1326,7 +1326,7 @@
             "studio.tokens": {
               "modify": {
                 "type": "lighten",
-                "value": ".6",
+                "value": ".65",
                 "space": "hsl"
               }
             }
