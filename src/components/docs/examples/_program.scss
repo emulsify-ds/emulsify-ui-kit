@@ -16,11 +16,10 @@
       margin: var(--spacing-xl) auto var(--spacing-xl);
     }
 
-    h2,
-    p {
+    .dynamic-h2,
+    .dynamic-p {
       max-width: 70vw;
-      margin: 0 auto;
-
+      margin-inline: auto;
     }
   }
 
