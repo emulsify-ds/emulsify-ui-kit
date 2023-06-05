@@ -21,8 +21,8 @@ The Emulsify UI Kit has two distinct building blocks: the Figma and the code rep
 
 ## There are two parts of this UI Kit
 
-- [Figma UI Kit](https://www.figma.com/file/eo87m50yAw3P8iXTypxw4I/Four-Kitchens-UI-Kit?node-id=22073%3A26)
-- [Storybook](https://four-kitchens-ui-kit.netlify.app/?path=/story/docs-cover--cover)
+- [Figma UI Kit](https://www.figma.com/community/file/1141071510618977331)
+- [Storybook](emulsify-ds.github.io/emulsify-ui-kit/)
 
 ## Connecting components with Figma
 
@@ -32,7 +32,7 @@ Note: Expand this section.
 
 ### Example component
 
-The [button component](https://four-kitchens-ui-kit.netlify.app/?path=/story/components-button--button) serves as an example of how variables are used to connect Figma with the code.
+The [button component](https://emulsify-ds.github.io/emulsify-ui-kit/?path=/story/components-button--button) serves as an example of how variables are used to connect Figma with the code.
 
 ```css
 .button {
@@ -109,7 +109,7 @@ Button.parameters = {
 
 ## Contributing to this UI Kit
 
-TKTK
+To come. TKTK
 
 ### Contributors
 
