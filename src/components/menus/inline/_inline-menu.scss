@@ -1,9 +1,9 @@
 .inline-menu {
   @include list-reset;
+
   display: flex;
   flex-flow: column wrap;
   gap: var(--spacing-md);
-
 
   @include medium {
     flex-flow: row wrap;

@@ -1,6 +1,5 @@
 $table-border-width: 1px;
 
-
 // --table-color-cell-bg: #ffffff;
 //   --table-color-cell-bg-stripe: #e6f5fc;
 //   --table-color-cell-text: #00202e;
@@ -13,7 +12,7 @@ $table-border-width: 1px;
 @mixin table-header-footer {
   background-color: var(--table-color-cell-bg);
 
-  >* {
+  > * {
     border-color: var(--table-color-border);
   }
 }
@@ -30,7 +29,7 @@ $table-border-width: 1px;
     border-right: 0;
   }
 
-  :last-child>& {
+  :last-child > & {
     border-bottom: 0;
   }
 }
@@ -56,7 +55,6 @@ $table-border-width: 1px;
 
 // Table body rows
 .table__row {
-
   // Alternate row background/border colors
   &:nth-child(odd) {
     background-color: var(--table-color-cell-bg);

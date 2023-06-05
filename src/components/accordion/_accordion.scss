@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 @use '../../stylesheets/mixins.scss';
 
 $accordion_icon_size: var(--size-xl);
@@ -11,7 +12,7 @@ $accordion_icon_size: var(--size-xl);
   @include list-reset;
 
   display: flex;
-  gap: var(--spacing-md)
+  gap: var(--spacing-md);
 }
 
 .accordion__controls__item {
@@ -29,7 +30,6 @@ $accordion_icon_size: var(--size-xl);
   font: inherit;
   cursor: pointer;
   outline: inherit;
-
   display: flex;
   gap: var(--spacing-sm);
   align-items: center;
@@ -53,18 +53,18 @@ $accordion_icon_size: var(--size-xl);
   gap: var(--spacing-sm);
   align-items: center;
 
+  .accordion__icon {
+    fill: var(--colors-text-body);
+    height: var(--size-lg);
+    width: var(--size-lg);
+  }
+
   &:hover {
     color: var(--accordion-color-header-hover);
 
     .accordion__icon {
       fill: var(--accordion-color-header-hover);
     }
-  }
-
-  .accordion__icon {
-    fill: var(--colors-text-body);
-    height: var(--size-lg);
-    width: var(--size-lg);
   }
 }
 
@@ -86,6 +86,7 @@ $accordion_icon_size: var(--size-xl);
 
 .accordion-item__heading {
   @include heading-medium;
+
   font-weight: normal;
   display: flex;
   margin: 0 0 var(--spacing-lg);
@@ -106,7 +107,7 @@ $accordion_icon_size: var(--size-xl);
   width: $accordion_icon_size;
   fill: var(--accordion-color-header);
 
-  [aria-expanded='true']>& {
+  [aria-expanded='true'] > & {
     transform: rotate(180deg);
   }
 }
@@ -122,3 +123,5 @@ $accordion_icon_size: var(--size-xl);
     max-height: 0;
   }
 }
+
+/* stylelint-enable no-descending-specificity */

@@ -1,5 +1,6 @@
 .social-menu {
   @include list-reset;
+
   display: flex;
   flex-flow: column nowrap;
   gap: var(--spacing-sm);
@@ -13,7 +14,6 @@
   align-items: center;
   gap: var(--spacing-sm);
   text-decoration: none;
-
 
   &:focus,
   &:hover {

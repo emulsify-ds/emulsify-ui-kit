@@ -61,7 +61,6 @@
   &:hover {
     @include medium {
       .main-menu__link--sub {
-
         &.active,
         &:active,
         &:hover {
@@ -81,6 +80,7 @@
 .main-menu--sub-2 {
   @include medium {
     display: none;
+
     /* Never shown on large screens */
   }
 }
