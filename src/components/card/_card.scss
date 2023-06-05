@@ -12,17 +12,20 @@
 
 .card__heading {
   @include heading-large($font-size: var(--font-size-h3));
+
   margin: 0;
   line-height: var(--line-heights-tight);
 
   &-link {
     @include link;
+
     text-decoration: none;
   }
 }
 
 .card__subheading {
   @include heading-medium($font-size: var(--font-size-small));
+
   color: var(--colors-grays-500);
   margin: 0 0 var(--spacing-md);
   line-height: var(--line-heights-tight);
