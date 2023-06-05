@@ -26,9 +26,9 @@ The Emulsify UI Kit has two distinct building blocks: the Figma and the code rep
 
 ## Connecting components with Figma
 
-The strength of this UI kit leans on its connection with Figma.
+The strength of this UI kit leans on its connection with Figma via [Tokens Studio](https://tokens.studio/).
 
-TKTK
+Note: Expand this section.
 
 ### Example component
 
@@ -77,7 +77,7 @@ The [button component](https://four-kitchens-ui-kit.netlify.app/?path=/story/com
 
 A complete component meets the following criteria:
 
-1. Design tokens are defined as their own set in Figma, in the Figma Tokens plugin, and they use references to values defined in `global` as much as possible.
+1. Design tokens are defined as their own set in Figma, in the Token Studio plugin, and they use references to values defined in `global` as much as possible.
 2. The component has an independent frame in Figma.
 3. The component's CSS file uses the generated design tokens as much as possible. See button example above.
 4. A component's story connects to the corresponding Figma frame, defined in `.storybook/configma.json`.
@@ -86,10 +86,6 @@ A complete component meets the following criteria:
 ### Naming tokens
 
 See [this whiteboard](https://www.figma.com/file/l6MIPQCewbIJoKvZpxhAwr/Token-Naming?node-id=0%3A1&t=5IaZF2ZNEoruxEld-1) that outlines the preferred naming convention for design tokens.
-
-### Defining design tokens as their own set in Figma
-
-<https://user-images.githubusercontent.com/409903/165324471-6c16eee2-0fa2-461f-9f84-42b5862658d2.mp4>
 
 ### Connecting a component's story to the corresponding Figma frame
 
