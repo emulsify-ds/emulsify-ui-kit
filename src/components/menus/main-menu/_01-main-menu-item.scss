@@ -13,7 +13,7 @@
     &:not(.main-menu__item--sub):hover {
       background-color: var(--main-menu-color-link-bg);
 
-      &>.main-menu--sub {
+      & > .main-menu--sub {
         display: block;
       }
     }
@@ -26,7 +26,7 @@
   }
 }
 
-.main-menu__item--with-sub:hover>a {
+.main-menu__item--with-sub:hover > a {
   background: var(--main-menu-color-link-bg-hover);
   color: var(--main-menu-color-link-label-hover);
 }
@@ -81,7 +81,6 @@
 .main-menu__item--sub {
   @include medium {
     display: block;
-
 
     &:not(:first-child) {
       border-top: 1px solid clr(highlight);

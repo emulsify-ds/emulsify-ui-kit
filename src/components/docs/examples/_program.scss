@@ -6,12 +6,14 @@
 
     .dynamic-h2 {
       @include heading-large;
+
       font-size: var(--font-size-display);
       margin: 0 auto var(--spacing-xl);
     }
 
     .dynamic-h3 {
       @include heading-medium;
+
       font-size: var(--font-size-h2);
       margin: var(--spacing-xl) auto var(--spacing-xl);
     }
