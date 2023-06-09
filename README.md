@@ -24,13 +24,37 @@ The Emulsify UI Kit has two distinct building blocks: the Figma and the code rep
 - [Figma UI Kit](https://www.figma.com/community/file/1141071510618977331)
 - [Storybook](emulsify-ds.github.io/emulsify-ui-kit/)
 
+## Two ways to get started
+
+### Use the Emulsify CLI
+
+Instructions to come. TKTK
+
+### Deploy to Netlify
+
+This will make your own copy of the repo and push the code to Netlify, where you can review the UI kit.
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify/netlify-statuskit)
+
 ## Connecting components with Figma
+
+First, get your own copy of the [Emulsify UI kit](https://www.figma.com/community/file/1141071510618977331) from the Figma community.
 
 The strength of this UI kit leans on its connection with Figma via [Tokens Studio](https://tokens.studio/).
 
-Note: Expand this section.
+To connect the Figma file with your code, [see the instructions in the Tokens Studio documentation](https://docs.tokens.studio/sync/github).
 
-### Example component
+## Creating a component
+
+A complete component meets the following criteria:
+
+1. Design tokens are defined as their own set in Figma, in the Token Studio plugin, and they use references to values defined in `semantic` as much as possible.
+2. The component has an independent frame in Figma.
+3. The component's CSS file uses the generated design tokens as much as possible. See button example below.
+4. A component's story connects to the corresponding Figma frame, defined in `.storybook/configma.json`.
+5. The component passes WCAG 2 AA.
+
+## Example component
 
 The [button component](https://emulsify-ds.github.io/emulsify-ui-kit/?path=/story/components-button--button) serves as an example of how variables are used to connect Figma with the code.
 
@@ -72,16 +96,6 @@ The [button component](https://emulsify-ds.github.io/emulsify-ui-kit/?path=/stor
   }
 }
 ```
-
-## Creating a component
-
-A complete component meets the following criteria:
-
-1. Design tokens are defined as their own set in Figma, in the Token Studio plugin, and they use references to values defined in `global` as much as possible.
-2. The component has an independent frame in Figma.
-3. The component's CSS file uses the generated design tokens as much as possible. See button example above.
-4. A component's story connects to the corresponding Figma frame, defined in `.storybook/configma.json`.
-5. A component passes WCAG 2 AA.
 
 ### Naming tokens
 
