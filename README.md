@@ -34,7 +34,7 @@ Instructions to come. TKTK
 
 This will make your own copy of the repo and push the code to Netlify, where you can review the UI kit.
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify/netlify-statuskit)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/emulsify-ds/emulsify-ui-kit)
 
 ## Connecting components with Figma
 
