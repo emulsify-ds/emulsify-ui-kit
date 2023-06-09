@@ -1395,30 +1395,6 @@
       }
     }
   },
-  "storybook": {
-    "colors": {
-      "sb": {
-        "background": {
-          "value": "{colors.white}",
-          "type": "color"
-        },
-        "text": {
-          "body": {
-            "value": "{colors.text.body}",
-            "type": "color"
-          },
-          "heading": {
-            "value": "{colors.primary.dark}",
-            "type": "color"
-          }
-        },
-        "visualization": {
-          "value": "{colors.EmulsifyBlue.600}",
-          "type": "color"
-        }
-      }
-    }
-  },
   "accordion": {
     "accordion": {
       "header": {
@@ -2015,27 +1991,53 @@
   },
   "status": {
     "status": {
-      "good": {
-        "value": "#CFEFC5",
-        "type": "color"
+      "info": {
+        "bg": {
+          "value": "#16bdde",
+          "type": "color"
+        },
+        "label": {
+          "value": "{colors.white}",
+          "type": "color"
+        }
+      },
+      "danger": {
+        "bg": {
+          "value": "#BD1919",
+          "type": "color"
+        },
+        "label": {
+          "value": "{colors.white}",
+          "type": "color"
+        }
+      },
+      "success": {
+        "bg": {
+          "value": "#337B32",
+          "type": "color"
+        },
+        "label": {
+          "value": "{colors.white}",
+          "type": "color"
+        }
       },
       "warning": {
-        "value": "#FDFA9C",
-        "type": "color"
-      },
-      "error": {
-        "value": "#FDE3E4",
-        "type": "color"
-      },
-      "default": {
-        "value": {
-          "fontFamily": "{fontFamilies.primary}",
-          "fontWeight": "{fontWeights.primary-bold}",
-          "lineHeight": "{lineHeights.none}",
-          "fontSize": "{fontSize.body}",
-          "textCase": "{textCase.none}"
+        "bg": {
+          "value": "#F6C40F",
+          "type": "color"
         },
-        "type": "typography"
+        "label": {
+          "value": "{colors.white}",
+          "type": "color"
+        }
+      },
+      "heading": {
+        "value": "{fontSize.h2}",
+        "type": "fontSizes"
+      },
+      "body": {
+        "value": "{fontSize.body}",
+        "type": "fontSizes"
       }
     }
   },
@@ -2172,6 +2174,30 @@
       }
     }
   },
+  "storybook": {
+    "colors": {
+      "sb": {
+        "background": {
+          "value": "{colors.white}",
+          "type": "color"
+        },
+        "text": {
+          "body": {
+            "value": "{colors.text.body}",
+            "type": "color"
+          },
+          "heading": {
+            "value": "{colors.primary.dark}",
+            "type": "color"
+          }
+        },
+        "visualization": {
+          "value": "{colors.EmulsifyBlue.600}",
+          "type": "color"
+        }
+      }
+    }
+  },
   "$themes": [
     {
       "id": "05a6b29ec89c82919561b0a9d0f652f94e36cc0d",
@@ -2282,7 +2308,6 @@
     "tokenSetOrder": [
       "global",
       "semantic",
-      "storybook",
       "accordion",
       "blockQuote",
       "breadcrumbs",
@@ -2300,7 +2325,8 @@
       "status",
       "table",
       "tabs",
-      "textField"
+      "textField",
+      "storybook"
     ]
   }
 }
