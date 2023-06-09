@@ -2300,7 +2300,8 @@
       "status": "enabled",
       "mainMenu": "enabled",
       "fieldset": "enabled",
-      "table": "enabled"
+      "table": "enabled",
+      "tabs": "enabled"
     },
     "type": "other",
     "value": "[object Object]"
