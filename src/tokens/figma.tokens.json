@@ -1438,7 +1438,7 @@
       }
     }
   },
-  "blockQuote": {
+  "components/blockQuote": {
     "blockQuote": {
       "body": {
         "value": {
@@ -1480,7 +1480,7 @@
       }
     }
   },
-  "breadcrumbs": {
+  "components/breadcrumbs": {
     "breadcrumb": {
       "default": {
         "value": {
@@ -1504,7 +1504,7 @@
       }
     }
   },
-  "button": {
+  "components/button": {
     "button": {
       "color": {
         "bkg": {
@@ -1618,7 +1618,7 @@
       }
     }
   },
-  "card": {
+  "components/card": {
     "card": {
       "spacing": {
         "value": "{spacing.lg}",
@@ -1626,7 +1626,7 @@
       }
     }
   },
-  "checkbox": {
+  "components/checkbox": {
     "checkbox": {
       "label": {
         "value": "{colors.text.body}",
@@ -1668,7 +1668,7 @@
       }
     }
   },
-  "cta": {
+  "components/cta": {
     "cta": {
       "header": {
         "value": {
@@ -1696,7 +1696,7 @@
       }
     }
   },
-  "fieldset": {
+  "components/fieldset": {
     "color": {
       "fieldset": {
         "bg": {
@@ -1720,7 +1720,7 @@
       }
     }
   },
-  "input": {
+  "components/input": {
     "input": {
       "gap": {
         "value": "{spacing.md}",
@@ -1772,7 +1772,7 @@
       }
     }
   },
-  "link": {
+  "components/link": {
     "link": {
       "default": {
         "value": "{colors.EmulsifyBlue.600}",
@@ -1795,7 +1795,7 @@
       }
     }
   },
-  "mainMenu": {
+  "components/mainMenu": {
     "mainMenu": {
       "color": {
         "bg": {
@@ -1841,7 +1841,7 @@
       }
     }
   },
-  "pager": {
+  "components/pager": {
     "pager": {
       "text": {
         "default": {
@@ -1901,7 +1901,7 @@
       }
     }
   },
-  "radioButton": {
+  "components/radioButton": {
     "radio": {
       "label": {
         "value": "{colors.text.body}",
@@ -1943,7 +1943,7 @@
       }
     }
   },
-  "selectdropdown": {
+  "components/selectdropdown": {
     "selectdropdown": {
       "label": {
         "value": "{colors.text.body}",
@@ -1989,7 +1989,7 @@
       }
     }
   },
-  "status": {
+  "components/status": {
     "status": {
       "info": {
         "bg": {
@@ -2041,7 +2041,7 @@
       }
     }
   },
-  "table": {
+  "components/table": {
     "table": {
       "color": {
         "cell": {
@@ -2083,7 +2083,7 @@
       }
     }
   },
-  "tabs": {
+  "components/tabs": {
     "tabs": {
       "bg": {
         "active": {
@@ -2156,7 +2156,7 @@
       }
     }
   },
-  "textField": {
+  "components/textField": {
     "textField": {
       "borderWidth": {
         "value": "{border.sm}",
@@ -2284,24 +2284,24 @@
         "global": "enabled",
         "semantic": "enabled",
         "storybook": "enabled",
-        "button": "enabled",
-        "input": "enabled",
-        "radioButton": "enabled",
-        "checkbox": "enabled",
-        "selectdropdown": "enabled",
-        "link": "enabled",
-        "textField": "enabled",
-        "blockQuote": "enabled",
-        "card": "enabled",
-        "cta": "enabled",
-        "breadcrumbs": "enabled",
-        "pager": "enabled",
-        "status": "enabled",
-        "mainMenu": "enabled",
-        "fieldset": "enabled",
-        "table": "enabled",
-        "tabs": "enabled",
-        "components/accordion": "enabled"
+        "components/accordion": "enabled",
+        "components/blockQuote": "enabled",
+        "components/breadcrumbs": "enabled",
+        "components/button": "enabled",
+        "components/card": "enabled",
+        "components/checkbox": "enabled",
+        "components/cta": "enabled",
+        "components/fieldset": "enabled",
+        "components/input": "enabled",
+        "components/link": "enabled",
+        "components/mainMenu": "enabled",
+        "components/pager": "enabled",
+        "components/radioButton": "enabled",
+        "components/selectdropdown": "enabled",
+        "components/status": "enabled",
+        "components/table": "enabled",
+        "components/tabs": "enabled",
+        "components/textField": "enabled"
       }
     }
   ],
@@ -2310,23 +2310,23 @@
       "global",
       "semantic",
       "components/accordion",
-      "blockQuote",
-      "breadcrumbs",
-      "button",
-      "card",
-      "checkbox",
-      "cta",
-      "fieldset",
-      "input",
-      "link",
-      "mainMenu",
-      "pager",
-      "radioButton",
-      "selectdropdown",
-      "status",
-      "table",
-      "tabs",
-      "textField",
+      "components/blockQuote",
+      "components/breadcrumbs",
+      "components/button",
+      "components/card",
+      "components/checkbox",
+      "components/cta",
+      "components/fieldset",
+      "components/input",
+      "components/link",
+      "components/mainMenu",
+      "components/pager",
+      "components/radioButton",
+      "components/selectdropdown",
+      "components/status",
+      "components/table",
+      "components/tabs",
+      "components/textField",
       "storybook"
     ]
   }
