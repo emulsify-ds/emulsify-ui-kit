@@ -2201,7 +2201,7 @@
   "$themes": [
     {
       "id": "05a6b29ec89c82919561b0a9d0f652f94e36cc0d",
-      "name": "Emulsify UI Kit",
+      "name": "UI Kit Full",
       "$figmaStyleReferences": {
         "selectdropdown.label": "S:b9ef7c5c58aef147993d4968132bc01a00dc6b7a,",
         "selectdropdown.label-disabled": "S:2eb60d710c5574af66a60f533fde0c03d6c166f5,",
@@ -2302,7 +2302,61 @@
         "components/table": "enabled",
         "components/tabs": "enabled",
         "components/textField": "enabled"
-      }
+      },
+      "group": "Emulsify"
+    },
+    {
+      "id": "0a5c4562bd35f00ce8a339239980a3842147c0bd",
+      "name": "Global",
+      "$figmaStyleReferences": {},
+      "selectedTokenSets": {
+        "global": "enabled"
+      },
+      "group": "Emulsify"
+    },
+    {
+      "id": "ca91148967a5dcc80f7e50f6ccfe35b30efd5f2f",
+      "name": "Semantic",
+      "$figmaStyleReferences": {},
+      "selectedTokenSets": {
+        "semantic": "enabled"
+      },
+      "group": "Emulsify"
+    },
+    {
+      "id": "16a10d373d39988a75c7d612cd449a633f373c44",
+      "name": "Storybook only",
+      "$figmaStyleReferences": {},
+      "selectedTokenSets": {
+        "storybook": "source"
+      },
+      "group": "Emulsify"
+    },
+    {
+      "id": "6e02f14f248b8b88a2697495e8d648f361e73a55",
+      "name": "Components",
+      "$figmaStyleReferences": {},
+      "selectedTokenSets": {
+        "components/accordion": "enabled",
+        "components/blockQuote": "enabled",
+        "components/breadcrumbs": "enabled",
+        "components/button": "enabled",
+        "components/card": "enabled",
+        "components/checkbox": "enabled",
+        "components/cta": "enabled",
+        "components/fieldset": "enabled",
+        "components/input": "enabled",
+        "components/link": "enabled",
+        "components/mainMenu": "enabled",
+        "components/pager": "enabled",
+        "components/radioButton": "enabled",
+        "components/selectdropdown": "enabled",
+        "components/status": "enabled",
+        "components/table": "enabled",
+        "components/tabs": "enabled",
+        "components/textField": "enabled"
+      },
+      "group": "Emulsify"
     }
   ],
   "$metadata": {
