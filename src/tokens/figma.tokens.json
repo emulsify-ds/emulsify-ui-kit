@@ -1395,7 +1395,7 @@
       }
     }
   },
-  "accordion": {
+  "components/accordion": {
     "accordion": {
       "header": {
         "value": {
@@ -2287,7 +2287,6 @@
         "button": "enabled",
         "input": "enabled",
         "radioButton": "enabled",
-        "accordion": "enabled",
         "checkbox": "enabled",
         "selectdropdown": "enabled",
         "link": "enabled",
@@ -2301,7 +2300,8 @@
         "mainMenu": "enabled",
         "fieldset": "enabled",
         "table": "enabled",
-        "tabs": "enabled"
+        "tabs": "enabled",
+        "components/accordion": "enabled"
       }
     }
   ],
@@ -2309,7 +2309,7 @@
     "tokenSetOrder": [
       "global",
       "semantic",
-      "accordion",
+      "components/accordion",
       "blockQuote",
       "breadcrumbs",
       "button",
