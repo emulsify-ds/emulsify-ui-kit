@@ -1449,7 +1449,7 @@
       "accent": {
         "value": {
           "color": "{color.grays.800}",
-          "width": "{border.4}",
+          "width": "{border.lg}",
           "style": "solid"
         },
         "type": "border"
