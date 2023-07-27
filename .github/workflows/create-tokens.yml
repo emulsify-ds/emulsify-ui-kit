@@ -1,4 +1,4 @@
-name: Generate tokens
+name: Create tokens
 
 on:
   workflow_dispatch:
@@ -24,4 +24,4 @@ jobs:
       # Dictionary or token-transformer.
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Update Tokens
+          commit_message: 'feat: create tokens'
