@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths:
-      - 'src/tokens/figma.json'
+      - 'src/tokens/figma.tokens.json'
 
 jobs:
   build:
@@ -18,8 +18,6 @@ jobs:
           node-version: 16.13
       - name: Install Node Dependencies
         run: npm ci
-        env:
-          FOUR_KITCHENS_BUILD_TOKEN: ${{ secrets.FOUR_KITCHENS_BUILD_TOKEN }}
       # Transform Figma Tokens JSON to something Style Dictionary can read, then
       # Convert tokens according to Style Dictionary config
       - name: Build Style Dictionary
