@@ -29,4 +29,5 @@ jobs:
       # Dictionary or token-transformer.
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
+          personal_token: ${{ secrets.ADD_TO_PROJECT_PAT }} 
           commit_message: 'feat: create tokens'
