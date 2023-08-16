@@ -1,31 +1,33 @@
 .block-quote {
-  padding: var(--block-quote-padding-x);
+  width: 573px;
+  padding: var(--block-quote-padding-x) 0;
 }
 
 .block-quote__figure {
   [data-block-quote-style='bar-left'] & {
-    // padding-left: var(--spacing-lg);
-    // border-left: $space-one-half solid clr(accent);
+    padding-left: var(--block-quote-padding-x);
+    border-left: var(--size-md) solid var(--colors-text-body);
   }
 
   [data-block-quote-style='bar-right'] & {
-    // padding-right: $space;
-    // border-right: $space-one-half solid clr(accent);
+    padding-right: var(--block-quote-padding-x);
+    border-right: var(--size-md) solid var(--colors-text-body);
     text-align: right;
   }
 
   [data-block-quote-style='quote-left'] & {
     position: relative;
-    // padding-left: $space-triple;
 
     &::before {
       content: '“';
-      position: absolute;
-      top: 0;
-      left: 0;
-      font-size: 4em;
-      line-height: 0.8;
-      color: var(--colors-emulsify-blue-1000);
+      position: relative;
+      font-size: var(--font-size-display);
+      line-height: var(--line-heights-normal);
+      color: var(--colors-text-body);
+    }
+
+    .block-quote__quote  p {
+      margin: var(--block-quote-padding-y) var(--paragraph-spacing-0);
     }
   }
 }
@@ -40,7 +42,6 @@
     font-weight: var(--font-weights-secondary-regular);
     line-height: var(--line-heights-normal);
     letter-spacing: var(--letter-spacing-0);
-    text-indent: var(--paragraph-spacing-0);
     text-transform: var(--text-case-none);
     text-decoration: var(--text-decoration-none);
   }
@@ -48,5 +49,5 @@
 
 .block-quote__attribution {
   font-size: var(--font-size-caption);
-  color: clr(text);
+  color: var(--colors-text-body);
 }
