@@ -1416,26 +1416,6 @@
   },
   "components/blockQuote": {
     "blockQuote": {
-      "body": {
-        "value": {
-          "fontFamily": "{font-family.secondary}",
-          "fontWeight": "{font-weight.secondary-regular}",
-          "fontSize": "{font-size.lead}",
-          "lineHeight": "{line-height.normal}",
-          "textCase": "{text-case.none}"
-        },
-        "type": "typography"
-      },
-      "cite": {
-        "value": {
-          "fontFamily": "{font-family.primary}",
-          "fontWeight": "{font-weight.primary-regular}",
-          "lineHeight": "{line-height.normal}",
-          "fontSize": "{font-size.caption}",
-          "textCase": "{text-case.none}"
-        },
-        "type": "typography"
-      },
       "padding": {
         "x": {
           "value": "{spacing.xl}",
@@ -1445,14 +1425,6 @@
           "value": "{spacing.md}",
           "type": "spacing"
         }
-      },
-      "accent": {
-        "value": {
-          "color": "{color.grays.800}",
-          "width": "{border.lg}",
-          "style": "solid"
-        },
-        "type": "border"
       }
     }
   },
@@ -2321,8 +2293,6 @@
         "cta.header": "S:677db5ee994a963e929056548aba391672dfbfd9,",
         "cta.body": "S:8fc875e6c511f9ab8a7148c04513da635c67e750,",
         "breadcrumb.default": "S:366e206af78f133d4b3bd070071a8983b7dc5ff6,",
-        "blockQuote.body": "S:f70ee2fbc353fff78c172a036a5a3f787f1a616f,",
-        "blockQuote.cite": "S:49f258f830b506cb74c4b1112a8920b2758d7563,",
         "accordion.header": "S:03f96120162ed38f19d8ff0dcc5b248ea98f72f6,",
         "accordion.p": "S:bb5618cbcdb501542ff10ff477be894d15f0ebab,",
         "FontPrimary.Colossus.Default": "S:76f4fbf4de12ae387af8c673a4448b17255745ea,",
