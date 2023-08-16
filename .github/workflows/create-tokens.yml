@@ -7,11 +7,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          persist-credentials: false
+          persist-credentials: true
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
         with:
@@ -26,4 +29,5 @@ jobs:
       # Dictionary or token-transformer.
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
+          personal_token: ${{ secrets.ADD_TO_PROJECT_PAT }} 
           commit_message: 'feat: create tokens'
