@@ -1,20 +1,20 @@
-.pull-quote {
+.block-quote {
   padding: var(--block-quote-padding-x);
 }
 
-.pull-quote__figure {
-  [data-pull-quote-style='bar-left'] & {
+.block-quote__figure {
+  [data-block-quote-style='bar-left'] & {
     // padding-left: var(--spacing-lg);
     // border-left: $space-one-half solid clr(accent);
   }
 
-  [data-pull-quote-style='bar-right'] & {
+  [data-block-quote-style='bar-right'] & {
     // padding-right: $space;
     // border-right: $space-one-half solid clr(accent);
     text-align: right;
   }
 
-  [data-pull-quote-style='quote-left'] & {
+  [data-block-quote-style='quote-left'] & {
     position: relative;
     // padding-left: $space-triple;
 
@@ -25,21 +25,28 @@
       left: 0;
       font-size: 4em;
       line-height: 0.8;
-      color: clr(accent);
+      color: var(--colors-emulsify-blue-1000);
     }
   }
 }
 
-.pull-quote__quote {
+.block-quote__quote {
   border-left: none;
   margin: 0;
 
   p {
-    font-size: var(--font-size-lead);
+    font-size: var(--font-size-small);
+    font-family: var(--font-families-secondary);
+    font-weight: var(--font-weights-secondary-regular);
+    line-height: var(--line-heights-normal);
+    letter-spacing: var(--letter-spacing-0);
+    text-indent: var(--paragraph-spacing-0);
+    text-transform: var(--text-case-none);
+    text-decoration: var(--text-decoration-none);
   }
 }
 
-.pull-quote__attribution {
+.block-quote__attribution {
   font-size: var(--font-size-caption);
   color: clr(text);
 }

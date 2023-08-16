@@ -11,12 +11,12 @@ export default {
     quote: {
       name: 'Quote',
       type: 'string',
-      defaultValue: blockquoteData.pull_quote__quote,
+      defaultValue: blockquoteData.block_quote__quote,
     },
     attribution: {
       name: 'Attribution',
       type: 'string',
-      defaultValue: blockquoteData.pull_quote__attribution,
+      defaultValue: blockquoteData.block_quote__attribution,
     },
     style: {
       name: 'Style',
@@ -27,32 +27,32 @@ export default {
     ariaLabel: {
       name: 'aria-label attribute',
       type: 'string',
-      defaultValue: blockquoteData.pull_quote__aria_label,
+      defaultValue: blockquoteData.block_quote__aria_label,
     },
   },
 };
 
 export const blockquote = ({ style, quote, attribution, ariaLabel }) => `
   ${blockquoteTwig({
-    pull_quote__quote: blockquoteTwig.pull_quote__quote,
-    pull_quote__attribution: blockquoteTwig.pull_quote__attribution,
-    pull_quote__aria_label: 'Pull Quote with bar graphic to the left',
+    block_quote__quote: blockquoteData.block_quote__quote,
+    block_quote__attribution: blockquoteData.block_quote__attribution,
+    block_quote__aria_label: 'Block Quote with bar graphic to the left',
   })}
   ${blockquoteTwig({
-    pull_quote__quote: blockquoteTwig.pull_quote__quote,
-    pull_quote__style: 'bar-right',
-    pull_quote__aria_label: 'Pull Quote with bar graphic to the right',
+    block_quote__quote: blockquoteData.block_quote__quote,
+    block_quote__style: 'bar-right',
+    block_quote__aria_label: 'Block Quote with bar graphic to the right',
   })}
   ${blockquoteTwig({
-    pull_quote__quote: blockquoteTwig.pull_quote__quote,
-    pull_quote__attribution: blockquoteTwig.pull_quote__attribution,
-    pull_quote__style: 'quote-left',
-    pull_quote__aria_label: 'Pull Quote with quote icon to the left',
+    block_quote__quote: blockquoteData.block_quote__quote,
+    block_quote__attribution: blockquoteData.block_quote__attribution,
+    block_quote__style: 'quote-left',
+    block_quote__aria_label: 'Block Quote with quote icon to the left',
   })}
   ${blockquoteTwig({
-    pull_quote__quote: quote,
-    pull_quote__attribution: attribution,
-    pull_quote__style: style,
-    pull_quote__aria_label: ariaLabel,
+    block_quote__quote: quote,
+    block_quote__attribution: attribution,
+    block_quote__style: style,
+    block_quote__aria_label: ariaLabel,
   })}
 `;
