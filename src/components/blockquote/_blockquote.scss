@@ -3,15 +3,15 @@
   padding: var(--block-quote-padding-x) 0;
 }
 
-.block-quote__figure {
+.block-quote__blockquote {
   [data-block-quote-style='bar-left'] & {
     padding-left: var(--block-quote-padding-x);
-    border-left: var(--size-md) solid var(--colors-text-body);
+    border-left: var(--size-md) solid var(--color-text-body);
   }
 
   [data-block-quote-style='bar-right'] & {
     padding-right: var(--block-quote-padding-x);
-    border-right: var(--size-md) solid var(--colors-text-body);
+    border-right: var(--size-md) solid var(--color-text-body);
     text-align: right;
   }
 
@@ -22,8 +22,8 @@
       content: '“';
       position: relative;
       font-size: var(--font-size-display);
-      line-height: var(--line-heights-normal);
-      color: var(--colors-text-body);
+      line-height: var(--line-height-normal);
+      color: var(--color-text-body);
     }
 
     .block-quote__quote  p {
@@ -38,9 +38,9 @@
 
   p {
     font-size: var(--font-size-small);
-    font-family: var(--font-families-secondary);
-    font-weight: var(--font-weights-secondary-regular);
-    line-height: var(--line-heights-normal);
+    font-family: var(--font-family-secondary);
+    font-weight: var(--font-weight-secondary-regular);
+    line-height: var(--line-height-normal);
     letter-spacing: var(--letter-spacing-0);
     text-transform: var(--text-case-none);
     text-decoration: var(--text-decoration-none);
@@ -49,5 +49,5 @@
 
 .block-quote__attribution {
   font-size: var(--font-size-caption);
-  color: var(--colors-text-body);
+  color: var(--color-text-body);
 }

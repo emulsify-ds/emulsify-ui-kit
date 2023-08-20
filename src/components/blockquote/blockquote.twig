@@ -23,7 +23,7 @@
 
 <aside {{ add_attributes(block_quote__attributes) }}>
   <div {{ bem('inner', [], block_quote__base_class) }}>
-    <figure {{ bem('figure', [], block_quote__base_class) }}>
+    <blockquote {{ bem('blockquote', [], block_quote__base_class) }}>
       {% include "@components/text/text/02-blockquote.twig" with {
         blockquote__content: block_quote__quote,
         blockquote__blockname: block_quote__base_class,
@@ -32,6 +32,6 @@
       {% if block_quote__attribution %}
         <figcaption {{ bem('attribution', [], block_quote__base_class) }}>—{{ block_quote__attribution }}</figcaption>
       {% endif %}
-    </figure>
+    </blockquote>
   </div>
 </aside>
