@@ -4,10 +4,6 @@ const twigBEM = require('bem-twig-extension');
 const twigAddAttributes = require('add-attributes-twig-extension');
 
 module.exports.namespaces = {
-  atoms: resolve(__dirname, '../', 'src/components/01-atoms'),
-  molecules: resolve(__dirname, '../', 'src/components/02-molecules'),
-  organisms: resolve(__dirname, '../', 'src/components/03-organisms'),
-  templates: resolve(__dirname, '../', 'src/components/04-templates'),
   components: resolve(__dirname, '../', 'src/components'),
 };
 

@@ -5,7 +5,7 @@
   "structure": [
     {
       "name": "components",
-      "description": "Small components commonly used in higher-level components"
+      "description": "Components commonly used in higher-level components"
     }
   ],
   "variants": [
