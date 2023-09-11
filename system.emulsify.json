@@ -4,10 +4,6 @@
   "repository": "https://github.com/emulsify-ds/emulsify-ui-kit.git",
   "structure": [
     {
-      "name": "base",
-      "description": "Base-level components used in virtually every higher-level component"
-    },
-    {
       "name": "components",
       "description": "Small components commonly used in higher-level components"
     }
