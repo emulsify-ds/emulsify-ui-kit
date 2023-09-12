@@ -18,13 +18,13 @@
   color: var(--pager-color-text-default);
   text-decoration: none;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: var(--pager-color-text-hover);
     background-color: var(--pager-color-fill-hover);
   }
 
-  &.is-active,
-  &:focus {
+  &.is-active {
     color: var(--pager-color-text-focus);
   }
 }
@@ -41,5 +41,5 @@
 .pager__link--first,
 .pager__link--last {
   display: block;
-  padding: 0;
+  padding: var(--pager-padding-y) var(--pager-padding-x);
 }
