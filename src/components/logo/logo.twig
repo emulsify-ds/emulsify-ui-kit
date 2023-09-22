@@ -13,12 +13,12 @@
 } %}
 
 <div {{ add_attributes(logo__attributes) }}>
-  {% embed "@atoms/links/link/link.twig" with {
+  {% embed "@components/links/link/link.twig" with {
     link_base_class: 'logo__link',
     link_url: logo__url|default('/'),
   } %}
     {% block link_content %}
-      {% include "@atoms/images/image/responsive-image.twig" with {
+      {% include "@components/images/image/responsive-image.twig" with {
         output_image_tag: true,
         image_src: directory ? '/' ~ directory ~ '/images/logo.png' : 'logo.png',
         image_alt: 'Logo',
