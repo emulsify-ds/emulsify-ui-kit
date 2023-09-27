@@ -1995,11 +1995,7 @@
       },
       "font-size": {
         "header": {
-          "value": "{font-size.h2}",
-          "type": "fontSizes"
-        },
-        "body": {
-          "value": "{font-size.body}",
+          "value": "{font-size.h5}",
           "type": "fontSizes"
         }
       }
