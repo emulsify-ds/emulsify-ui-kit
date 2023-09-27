@@ -40,61 +40,32 @@
   "tabs": {
     "color": {
       "bg": {
+        "default": {
+          "value": "#ffffff",
+          "type": "color"
+        },
         "active": {
           "value": "#ffffff",
           "type": "color"
         },
         "hover": {
-          "value": "#a9afb1",
-          "type": "color"
-        },
-        "inactive": {
-          "value": "#d4d7d8",
+          "value": "#ffffff",
           "type": "color"
         }
       },
       "text": {
         "default": {
-          "value": "#192125",
+          "value": "#00202e",
+          "type": "color"
+        },
+        "active": {
+          "value": "#0080b7",
           "type": "color"
         },
         "hover": {
-          "value": "#192125",
+          "value": "#33b2e9",
           "type": "color"
         }
-      }
-    },
-    "border": {
-      "value": {
-        "color": "#a9afb1",
-        "width": 1
-      },
-      "type": "border"
-    },
-    "padding": {
-      "x": {
-        "value": 16,
-        "type": "spacing"
-      },
-      "x-hover": {
-        "value": 16,
-        "type": "spacing"
-      },
-      "x-focus": {
-        "value": 16,
-        "type": "spacing"
-      },
-      "y": {
-        "value": 8,
-        "type": "spacing"
-      },
-      "y-hover": {
-        "value": 8,
-        "type": "spacing"
-      },
-      "y-focus": {
-        "value": 8,
-        "type": "spacing"
       }
     }
   },
