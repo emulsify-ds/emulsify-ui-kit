@@ -158,7 +158,7 @@
           "type": "color"
         },
         "label": {
-          "value": "#ffffff",
+          "value": "#272727",
           "type": "color"
         }
       },
@@ -188,18 +188,14 @@
           "type": "color"
         },
         "label": {
-          "value": "#ffffff",
+          "value": "#333333",
           "type": "color"
         }
       }
     },
     "font-size": {
       "header": {
-        "value": 37,
-        "type": "fontSizes"
-      },
-      "body": {
-        "value": 18,
+        "value": 21,
         "type": "fontSizes"
       }
     }

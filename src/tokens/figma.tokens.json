@@ -1958,7 +1958,7 @@
             "type": "color"
           },
           "label": {
-            "value": "{color.white}",
+            "value": "#272727",
             "type": "color"
           }
         },
@@ -1988,18 +1988,14 @@
             "type": "color"
           },
           "label": {
-            "value": "{color.white}",
+            "value": "#333333",
             "type": "color"
           }
         }
       },
       "font-size": {
         "header": {
-          "value": "{font-size.h2}",
-          "type": "fontSizes"
-        },
-        "body": {
-          "value": "{font-size.body}",
+          "value": "{font-size.h5}",
           "type": "fontSizes"
         }
       }
