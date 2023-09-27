@@ -2047,26 +2047,30 @@
     "tabs": {
       "color": {
         "bg": {
+          "default": {
+            "value": "{color.white}",
+            "type": "color"
+          },
           "active": {
             "value": "{color.white}",
             "type": "color"
           },
           "hover": {
-            "value": "{color.grays.300}",
-            "type": "color"
-          },
-          "inactive": {
-            "value": "{color.grays.200}",
+            "value": "{color.white}",
             "type": "color"
           }
         },
         "text": {
           "default": {
-            "value": "{color.grays.800}",
+            "value": "{color.text.body}",
+            "type": "color"
+          },
+          "active": {
+            "value": "{color.primary.dark}",
             "type": "color"
           },
           "hover": {
-            "value": "{color.grays.800}",
+            "value": "{color.link}",
             "type": "color"
           }
         }
