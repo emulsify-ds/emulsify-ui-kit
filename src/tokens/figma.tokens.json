@@ -2074,39 +2074,6 @@
             "type": "color"
           }
         }
-      },
-      "border": {
-        "value": {
-          "color": "{color.grays.300}",
-          "width": "{border.sm}"
-        },
-        "type": "border"
-      },
-      "padding": {
-        "x": {
-          "value": "{spacing.lg}",
-          "type": "spacing"
-        },
-        "x-hover": {
-          "value": "{spacing.lg}",
-          "type": "spacing"
-        },
-        "x-focus": {
-          "value": "{spacing.lg}",
-          "type": "spacing"
-        },
-        "y": {
-          "value": "{spacing.md}",
-          "type": "spacing"
-        },
-        "y-hover": {
-          "value": "{spacing.md}",
-          "type": "spacing"
-        },
-        "y-focus": {
-          "value": "{spacing.md}",
-          "type": "spacing"
-        }
       }
     },
     "tab": {
