@@ -164,5 +164,12 @@ To come. TKTK
             <sub style="font-size:14px"><b>Ryan Hagerty</b></sub>
         </a>
     </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/mndonx>
+            <img src=https://avatars.githubusercontent.com/u/2343957?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Amanda Luker/>
+            <br />
+            <sub style="font-size:14px"><b>Amanda Luker</b></sub>
+        </a>
+    </td>
 </tr>
 </table>
