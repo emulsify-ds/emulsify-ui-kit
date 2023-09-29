@@ -2073,6 +2073,10 @@
             "value": "{color.link}",
             "type": "color"
           }
+        },
+        "border-bottom": {
+          "value": "{color.grays.300}",
+          "type": "color"
         }
       }
     },
