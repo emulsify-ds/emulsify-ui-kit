@@ -1,7 +1,7 @@
 ul {
   @include list-reset;
 
-  line-height: var(--line-heights-normal);
+  line-height: var(--line-height-normal);
   margin-bottom: var(--spacing-lg);
   padding-left: var(--spacing-lg);
   list-style-type: disc;
@@ -10,7 +10,7 @@ ul {
 ol {
   @include list-reset;
 
-  line-height: var(--line-heights-normal);
+  line-height: var(--line-height-normal);
   margin-bottom: var(--spacing-lg);
   padding-left: var(--spacing-lg);
   list-style-type: decimal;
