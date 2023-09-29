@@ -66,6 +66,10 @@
           "value": "#33b2e9",
           "type": "color"
         }
+      },
+      "border-bottom": {
+        "value": "#a9afb1",
+        "type": "color"
       }
     }
   },
