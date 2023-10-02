@@ -1,0 +1,32 @@
+.tabs__link,
+.tabs__link--local-tasks {
+  background-color: var(--tabs-color-bg-default);
+  border-bottom: var(--size-md) solid var(--tabs-color-bg-default);
+  color: var(--tabs-color-text-default);
+  display: block;
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-h5);
+  font-weight: var(--font-weight-primary-bold);
+  padding: var(--spacing-md) var(--spacing-xl);
+  text-align: center;
+  text-decoration: none;
+  transition: color 0.3s;
+
+  @include large {
+    display: inline-block;
+    position: relative;
+    top: var(--spacing-md);
+    width: auto;
+  }
+
+  &:hover {
+    background-color: var(--tabs-color-bg-hover);
+    color: var(--tabs-color-text-hover);
+  }
+
+  &.is-active {
+    background-color: var(--tabs-color-bg-active);
+    border-color: var(--tabs-color-text-active);
+    color: var(--tabs-color-text-active);
+  }
+}
