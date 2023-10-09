@@ -22,8 +22,9 @@
     "storybook:build": "npm run build && build-storybook -s images,dist -o ./.out",
     "storybook:deploy": "storybook-to-ghpages -o .out",
     "style-dictionary:build": "node ./src/tokens/tokensTransform.js",
+    "sd": "style-dictionary build",
     "tokens:transform": "token-transformer ./src/tokens/figma.tokens.json ./src/tokens/transformed.tokens.json",
-    "tokens:build": "npm run tokens:transform && npm run style-dictionary:build",
+    "tokens:build": "npm run style-dictionary:build",
     "visreg": "percy storybook http://localhost:6006",
     "visreg-ci": "percy storybook .out",
     "webpack": "webpack --watch --config ./webpack/webpack.dev.js"
@@ -53,6 +54,7 @@
   "dependencies": {
     "@babel/eslint-parser": "^7.12.17",
     "@storybook/storybook-deployer": "^2.8.10",
+    "@tokens-studio/sd-transforms": "^0.11.4",
     "add-attributes-twig-extension": "^0.1.0",
     "bem-twig-extension": "^0.1.1",
     "breakpoint-sass": "^3.0.0",
