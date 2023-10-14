@@ -1,40 +1,23 @@
-const StyleDictionary = require('style-dictionary').extend('sd.config.json');
+const { registerTransforms } = require('@tokens-studio/sd-transforms');
+const StyleDictionary = require('style-dictionary');
 
-const pixelsToRem = (px) => {
-  const rem = 16;
-  return `${px / rem}rem`;
-};
+registerTransforms(StyleDictionary, { casing: 'kebab' });
 
-const appendPX = (value) => {
-  return `${value}px`;
-};
-
-StyleDictionary.registerTransform({
-  name: 'toRem/pxToRem',
-  type: 'value',
-  matcher(token) {
-    return (
-      token.type === 'sizing' ||
-      token.type === 'spacing' ||
-      token.type === 'borderRadius' ||
-      token.path[0] === 'breakpoint' ||
-      token.path[0] === 'fontSize'
-    );
-  },
-  transformer(token) {
-    return pixelsToRem(token.value);
+const sd = StyleDictionary.extend({
+  source: ['**/*.tokens.json'],
+  platforms: {
+    css: {
+      transformGroup: 'tokens-studio',
+      buildPath: 'src/components/tokens/',
+      files: [
+        {
+          destination: '_tokens.scss',
+          format: 'css/variables',
+        },
+      ],
+    },
   },
 });
 
-StyleDictionary.registerTransform({
-  name: 'toPX/appendPX',
-  type: 'value',
-  matcher(token) {
-    return token.type === 'borderWidth';
-  },
-  transformer(token) {
-    return appendPX(token.value);
-  },
-});
-
-StyleDictionary.buildAllPlatforms();
+sd.cleanAllPlatforms();
+sd.buildAllPlatforms();
