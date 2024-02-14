@@ -26,13 +26,11 @@
 
   &.is-active {
     color: var(--pager-color-text-focus);
-  }
-}
 
-.pager__link.is-active {
-  &:hover,
-  &:focus {
-    color: var(--pager-color-text-hover);
+    &:hover,
+    &:focus {
+      color: var(--pager-color-text-hover);
+    }
   }
 }
 
