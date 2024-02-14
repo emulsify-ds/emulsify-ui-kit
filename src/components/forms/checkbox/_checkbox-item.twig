@@ -1,0 +1,8 @@
+{% set labelClasses = checkbox_item_disabled ? 'form-item--checkbox__item--label__disabled' : '' %}
+
+<li class="form-item--checkbox__item">
+	<label for="checkbox{{ key }}" class="form-item--checkbox__item--label {{ labelClasses }}">
+		<input id="checkbox{{ key }}" name="checkbox" type="checkbox" {% if checkbox_item_checked %} checked="{{ checkbox_item_checked }}" {% endif %} {% if checkbox_item_disabled %} disabled="{{ checkbox_item_disabled }}" {% endif %}>
+		{{ checkbox_item }}
+	</label>
+</li>

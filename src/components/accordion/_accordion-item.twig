@@ -1,0 +1,57 @@
+{#
+ # Available Variables:
+ # - accordion__item__heading
+ # - accordion__item__heading__level (passed down by `accordion.twig`)
+ #
+ # Available Blocks:
+ # - accordion__item__content
+ #}
+
+{% set accordion__item__base_class = 'accordion-item' %}
+{% set accordion__item__attributes = accordion__item__attributes|default([]) %}
+{% set accordion__item__content__attributes = accordion__item__content__attributes|default([]) %}
+
+{% set accordion__item__attributes = accordion__item__attributes|merge({
+  'data-accordion-expanded': 'true',
+  'class': bem(accordion__item__base_class, accordion__item__modifiers, accordion__item__blockname, ['js-accordion-item']),
+}) %}
+
+{% set accordion__item__content__attributes = accordion__item__content__attributes|merge({
+  'class': bem('content', accordion__item__modifiers, accordion__item__base_class),
+}) %}
+
+{% set accordion__item__button__content %}
+{{ accordion__item__heading }}
+{% include "@components/icons/_icon.twig" with {
+    icon__name: 'chevron-down',
+    icon__blockname: accordion__item__base_class,
+    icon__decorative: true,
+  } %}
+{% endset %}
+
+{% set accordion__item__heading__content %}
+{% include "@components/button/button.twig" with {
+    button__content: accordion__item__button__content,
+    button__base_class: 'toggle',
+    button__additional_classes: ['js-accordion-item__toggle'],
+    button__blockname: accordion__item__base_class,
+    button__attributes: {
+      'aria-controls': accordion__item__content__id,
+    }
+  } %}
+{% endset %}
+
+<div {{ add_attributes(accordion__item__attributes) }}>
+	{% include "@components/text/headings/_heading.twig" with {
+    heading__level: accordion__item__heading__level|default('2'),
+    heading__blockname: accordion__item__base_class,
+    heading: accordion__item__heading__content,
+  } %}
+	<div {{ add_attributes(accordion__item__content__attributes) }}>
+		{% block accordion__item__content %}
+			{% include "@components/text/text/01-paragraph.twig" with {
+        paragraph_content: accordion__item__content,
+      } %}
+		{% endblock %}
+	</div>
+</div>

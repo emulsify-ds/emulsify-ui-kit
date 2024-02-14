@@ -1,0 +1,23 @@
+{{ attach_library('emulsify/main-menu') }}
+
+<nav>
+	<a href="#" id="toggle-expand" class="toggle-expand">
+		<span class="toggle-expand__open">
+			{% include "@components/icons/_icon.twig" with {
+        icon__base_class: "icon",
+        icon__blockname: "toggle-expand",
+        icon__name: "menu",
+      } %}
+			<span class="toggle-expand__text">Menu</span>
+		</span>
+		<span class="toggle-expand__close">
+			<span class="toggle-expand__text">Close</span>
+		</span>
+	</a>
+	<div id="main-nav" class="main-nav">
+		{% include "@components/menus/_menu.twig" with {
+      menu_class: "main-menu",
+      items: menu_items,
+    } %}
+	</div>
+</nav>

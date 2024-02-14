@@ -5,7 +5,7 @@ import { setupTwig } from './setupTwig';
 import { withDesign } from 'storybook-addon-designs';
 
 // GLOBAL CSS
-import '../src/components/style.scss';
+import '../src/style.scss';
 
 // If in a Drupal project, it's recommended to import a symlinked version of drupal.js.
 import './_drupal.js';
@@ -22,8 +22,8 @@ export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   options: {
     storySort: {
+      method: 'alphabetical',
       order: [
-        'Cover',
         'Docs',
         'Pages',
         'Layouts',
@@ -33,6 +33,7 @@ export const parameters = {
         '*',
         'WIP',
       ],
+      includeNames: true
     },
   },
 };

@@ -1,0 +1,24 @@
+{#
+ # Available variables:
+ # - list__items - the array of list items
+ #
+ # Available blocks:
+ # - list__content
+ #}
+{% set list__base_class = list__base_class|default('list') %}
+{% set list__type = list__type|default('ul') %}
+{% set list__attributes = list__attributes|default([]) %}
+{% set list__attributes = list__attributes|merge({
+  'class': bem(list__base_class, list__modifiers, list__blockname, list__addition_classes),
+}) %}
+
+<{{list__type}} {{ add_attributes(list__attributes) }}>
+	{% block list__content %}
+		{% for list__item in list__items %}
+			{% include "@components/lists/_list-item.twig" with {
+        list__item__content: list__item.list__item__content,
+        list__item__blockname: list__base_class,
+      } %}
+		{% endfor %}
+	{% endblock %}
+</{{list__type}}>

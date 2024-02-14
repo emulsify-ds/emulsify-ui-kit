@@ -1,0 +1,21 @@
+@mixin image {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+img,
+picture {
+  @include image;
+}
+
+figure {
+  margin: 0;
+
+  /* override normalize */
+}
+
+.figure__caption {
+  font-size: var(--font-size-x-small);
+  margin-top: var(--spacing-md);
+}

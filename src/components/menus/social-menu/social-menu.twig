@@ -1,0 +1,13 @@
+{# Set classes #}
+{% set menu_class = 'social-menu' %}
+{% set list__base_class = menu_class %}
+{% set list__modifiers = menu_modifiers %}
+{% set list__blockname = menu_blockname %}
+
+{# List #}
+{% extends "@components/lists/list.twig" %}
+{% block list__content %}
+	{% for item in social_menu_items %}
+		{% include "@components/menus/social-menu/_social-menu-item.twig" %}
+	{% endfor %}
+{% endblock %}

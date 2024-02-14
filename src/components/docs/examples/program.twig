@@ -1,0 +1,45 @@
+<div class="example">
+	{% include "@components/docs/examples/assets/_header.twig" %}
+	<main>
+		<section class="dynamic">
+			<h2 class="dynamic-h2">Our Dynamic and Immersive Film and Media Studies Program</h2>
+			<p class="dynamic-p">Embark on an exhilarating cinematic journey, exploring the captivating art of storytelling through film, television, and new media. With hands-on practical experiences, thought-provoking courses, and expert faculty, our program fosters creativity, critical thinking, and a deep understanding of the powerful influence of visual media in today's society.</p>
+			<h3 class="dynamic-h3">Get Involved!</h3>
+			<div class="dynamic-grid">
+				{% for card in data.cards %}
+					{% include "@components/card/card.twig" with {
+						card__image__output_image_tag: card.card__image__output_image_tag,
+						card__image__src: watchImages[loop.index0],
+						card__image__alt: card.card__image__alt,
+						card__heading: card.card__heading,
+						card__subheading: card.card__subheading,
+						card__body: card.card__body,
+						card__link__text: card.card__link__text,
+						card__link__url: card.card__link__url,
+					} %}
+				{% endfor %}
+			</div>
+		</section>
+
+		<section class="celebrating">
+			<h2 class="celebrating-h2">Celebrating Academic Excellence: Top Stories from Our University</h2>
+			<div class="celebrating-grid">
+				{% for card in data.celebratingCards %}
+					{% include "@components/card/card.twig" with {
+						card__image__output_image_tag: card.card__image__output_image_tag,
+						card__image__src: celebratingImages[loop.index0],
+						card__image__alt: card.card__image__alt,
+						card__heading: card.card__heading,
+						card__subheading: card.card__subheading,
+						card__body: card.card__body,
+						card__link__text: card.card__link__text,
+						card__link__url: card.card__link__url,
+						card__modifiers: card.card__modifiers,
+					} %}
+				{% endfor %}
+			</div>
+		</section>
+	</main>
+	{% include "@components/docs/examples/assets/_footer.twig" %}
+
+</div>

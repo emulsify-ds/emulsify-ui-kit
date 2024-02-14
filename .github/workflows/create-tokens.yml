@@ -1,25 +1,26 @@
-name: CI
+name: Create tokens
+
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'src/tokens/figma.json'
+  workflow_dispatch:
+  pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          persist-credentials: true
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
         with:
           node-version: 16.13
       - name: Install Node Dependencies
         run: npm ci
-        env:
-          FOUR_KITCHENS_BUILD_TOKEN: ${{ secrets.FOUR_KITCHENS_BUILD_TOKEN }}
       # Transform Figma Tokens JSON to something Style Dictionary can read, then
       # Convert tokens according to Style Dictionary config
       - name: Build Style Dictionary
@@ -28,4 +29,5 @@ jobs:
       # Dictionary or token-transformer.
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Update Tokens
+          personal_token: ${{ secrets.ADD_TO_PROJECT_PAT }} 
+          commit_message: 'feat: create tokens'

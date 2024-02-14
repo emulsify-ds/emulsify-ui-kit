@@ -21,18 +21,42 @@ The Emulsify UI Kit has two distinct building blocks: the Figma and the code rep
 
 ## There are two parts of this UI Kit
 
-- [Figma UI Kit](https://www.figma.com/file/eo87m50yAw3P8iXTypxw4I/Four-Kitchens-UI-Kit?node-id=22073%3A26)
-- [Storybook](https://four-kitchens-ui-kit.netlify.app/?path=/story/docs-cover--cover)
+- [Figma UI Kit](https://www.figma.com/community/file/1141071510618977331)
+- [Storybook](emulsify-ds.github.io/emulsify-ui-kit/)
+
+## Two ways to get started
+
+### Use the Emulsify CLI
+
+Instructions to come. TKTK
+
+### Deploy to Netlify
+
+This will make your own copy of the repo and push the code to Netlify, where you can review the UI kit.
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/emulsify-ds/emulsify-ui-kit)
 
 ## Connecting components with Figma
 
-The strength of this UI kit leans on its connection with Figma.
+First, get your own copy of the [Emulsify UI kit](https://www.figma.com/community/file/1141071510618977331) from the Figma community.
 
-TKTK
+The strength of this UI kit leans on its connection with Figma via [Tokens Studio](https://tokens.studio/).
 
-### Example component
+To connect the Figma file with your code, [see the instructions in the Tokens Studio documentation](https://docs.tokens.studio/sync/github).
 
-The [button component](https://four-kitchens-ui-kit.netlify.app/?path=/story/components-button--button) serves as an example of how variables are used to connect Figma with the code.
+## Creating a component
+
+A complete component meets the following criteria:
+
+1. Design tokens are defined as their own set in Figma, in the Token Studio plugin, and they use references to values defined in `semantic` as much as possible.
+2. The component has an independent frame in Figma.
+3. The component's CSS file uses the generated design tokens as much as possible. See button example below.
+4. A component's story connects to the corresponding Figma frame, defined in `.storybook/configma.json`.
+5. The component passes WCAG 2 AA.
+
+## Example component
+
+The [button component](https://emulsify-ds.github.io/emulsify-ui-kit/?path=/story/components-button--button) serves as an example of how variables are used to connect Figma with the code.
 
 ```css
 .button {
@@ -73,23 +97,9 @@ The [button component](https://four-kitchens-ui-kit.netlify.app/?path=/story/com
 }
 ```
 
-## Creating a component
-
-A complete component meets the following criteria:
-
-1. Design tokens are defined as their own set in Figma, in the Figma Tokens plugin, and they use references to values defined in `global` as much as possible.
-2. The component has an independent frame in Figma.
-3. The component's CSS file uses the generated design tokens as much as possible. See button example above.
-4. A component's story connects to the corresponding Figma frame, defined in `.storybook/configma.json`.
-5. A component passes WCAG 2 AA.
-
 ### Naming tokens
 
 See [this whiteboard](https://www.figma.com/file/l6MIPQCewbIJoKvZpxhAwr/Token-Naming?node-id=0%3A1&t=5IaZF2ZNEoruxEld-1) that outlines the preferred naming convention for design tokens.
-
-### Defining design tokens as their own set in Figma
-
-<https://user-images.githubusercontent.com/409903/165324471-6c16eee2-0fa2-461f-9f84-42b5862658d2.mp4>
 
 ### Connecting a component's story to the corresponding Figma frame
 
@@ -113,7 +123,7 @@ Button.parameters = {
 
 ## Contributing to this UI Kit
 
-TKTK
+To come. TKTK
 
 ### Contributors
 
@@ -131,6 +141,27 @@ TKTK
             <img src=https://avatars.githubusercontent.com/u/1663810?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Brian Lewis/>
             <br />
             <sub style="font-size:14px"><b>Brian Lewis</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/mariannuar>
+            <img src=https://avatars.githubusercontent.com/u/48533432?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Mariana Núñez/>
+            <br />
+            <sub style="font-size:14px"><b>Mariana Núñez</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/brendan-wu-4K>
+            <img src=https://avatars.githubusercontent.com/u/87146740?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=brendan-wu-4K/>
+            <br />
+            <sub style="font-size:14px"><b>brendan-wu-4K</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/mndonx>
+            <img src=https://avatars.githubusercontent.com/u/2343957?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Amanda Luker/>
+            <br />
+            <sub style="font-size:14px"><b>Amanda Luker</b></sub>
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">

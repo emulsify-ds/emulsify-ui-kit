@@ -4,7 +4,7 @@ import backgroundImage from '../../../images/cover.png';
 const data = { backgroundImage };
 
 export default {
-  title: 'Cover/Cover',
+  title: 'Docs/Cover',
 };
 
 export const Cover = () => template(data);

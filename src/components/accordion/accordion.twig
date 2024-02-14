@@ -1,0 +1,93 @@
+{#
+ # Available Variables:
+ # - accordion__heading
+ #
+ # Available Blocks:
+ # - accordion__items
+ #}
+
+{% set accordion__base_class = 'accordion' %}
+
+{% set expand_all__content %}
+Expand All
+{% include "@components/icons/_icon.twig" with {
+    icon__name: 'chevron-down',
+    icon__blockname: accordion__base_class,
+  } %}
+{% endset %}
+
+{% set collapse_all__content %}
+Collapse All
+{% include "@components/icons/_icon.twig" with {
+    icon__name: 'chevron-down',
+    icon__blockname: accordion__base_class,
+  } %}
+{% endset %}
+
+{% set accordion__attibutes = {
+  'class': bem(accordion__base_class),
+} %}
+
+<div {{ add_attributes(accordion__attibutes) }}>
+	{% if accordion__heading %}
+		{% include "@components/text/headings/_heading.twig" with {
+      heading__level: '2',
+      heading__blockname: accordion__base_class,
+      heading: accordion__heading,
+    } %}H
+	{% endif %}
+	{% embed "@components/lists/list.twig" with {
+    list__base_class: 'controls',
+    list__blockname: accordion__base_class,
+    list__addition_classes: ['js-accordion__controls'],
+    list__attributes: {'aria-label': 'Controls to Expand or Collapse all accordion items'},
+  } %}
+		{% block list__content %}
+			{% embed "@components/lists/_list-item.twig" with {
+        list__item__base_class: 'controls__item',
+        list__item__blockname: accordion__base_class,
+      }%}
+				{% block list__item__content %}
+					{% include "@components/button/button.twig" with {
+            button__content: expand_all__content,
+            button__base_class: 'toggle-all',
+            button__modifiers: ['expand'],
+            button__blockname: accordion__base_class,
+            button__additional_classes: ['js-accordion__toggle-all--expand'],
+          } %}
+				{% endblock %}
+			{% endembed %}
+			{% embed "@components/lists/_list-item.twig" with {
+        list__item__base_class: 'controls__item',
+        list__item__blockname: accordion__base_class,
+      }%}
+				{% block list__item__content %}
+					{% include "@components/button/button.twig" with {
+            button__content: collapse_all__content,
+            button__base_class: 'toggle-all',
+            button__modifiers: ['collapse'],
+            button__blockname: accordion__base_class,
+            button__additional_classes: ['js-accordion__toggle-all--collapse'],
+          } %}
+				{% endblock %}
+			{% endembed %}
+		{% endblock %}
+	{% endembed %}
+
+	{% block accordion__items %}
+		{% for item in accordion__items %}
+			{# Create a unique ID for each accordion item #}
+			{% set unique_id = random('1234567890') ~ random('1234567890') ~ random('1234567890') ~ random('1234567890') %}
+			{% set accordion__item__content__id = 'accordion__item-' ~ unique_id ~ '-' ~ loop.index %}
+			{% include "@components/accordion/_accordion-item.twig" with {
+        accordion__item__heading: item.accordion__item__heading,
+        accordion__item__content: item.accordion__item__content,
+        accordion__item__heading__level: accordion__heading ? '3' : '2',
+        accordion__item__content__attributes: {
+          'id': accordion__item__content__id,
+        }
+      } %}
+		{% endfor %}
+	{% endblock %}
+
+</div>
