@@ -14,7 +14,7 @@
 .sb-show-main {
   background: var(--colors-sb-background);
   // color: var(--colors-sb-text-body);
-  font-family: var(--font-families-primary), serif !important;
+  font-family: var(--font-family-body), serif !important;
 }
 
 .sb-title {
@@ -23,7 +23,7 @@
   font-size: var(--font-size-hero);
   margin: 0 0 var(--spacing-xxl);
   position: relative;
-  font-family: var(--font-families-primary), serif !important;
+  font-family: var(--font-family-body), serif !important;
 
   &::after {
     content: '';
@@ -37,7 +37,7 @@
 }
 
 .sb-subtitle {
-  font-family: var(--font-families-primary), serif !important;
+  font-family: var(--font-family-body), serif !important;
   font-size: var(--font-size-h4);
   opacity: var(--opacity-80);
   margin: var(--spacing-xxl) 0 var(--spacing-md);
@@ -106,19 +106,19 @@
   }
 
   &__title {
-    color: var(--colors-white);
-    font-family: var(--font-families-primary), serif !important;
+    color: var(--color-white);
+    font-family: var(--font-family-body), serif !important;
     font-size: var(--font-size-colossus);
-    line-height: var(--line-heights-none);
+    line-height: var(--line-height-none);
     margin: 0;
   }
 }
 
 .sb_lozenge {
-  background: var(--colors-primary-light);
-  color: var(--colors-white);
+  background: var(--color-primary-light);
+  color: var(--color-white);
   font-size: var(--font-size-small);
-  line-height: var(--line-heights-none);
+  line-height: var(--line-height-none);
   display: block;
   border-radius: var(--radius-lg);
   width: max-content;
