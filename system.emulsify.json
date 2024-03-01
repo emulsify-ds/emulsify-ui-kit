@@ -24,6 +24,26 @@
           "destinationPath": "./templates",
           "description": "Contains Drupal templates"
         }
+      ],
+      "components": [
+        {
+          "name": "images",
+          "structure": "atoms",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "links",
+          "structure": "atoms",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "text",
+          "structure": "atoms",
+          "required": true,
+          "dependency": ["links"]
+        }
       ]
     }
   ]
