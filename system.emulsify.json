@@ -1,5 +1,5 @@
 {
-  "name": "uikit",
+  "name": "emulsify-ui-kit",
   "homepage": "https://github.com/emulsify-ds/emulsify-ui-kit",
   "repository": "https://github.com/emulsify-ds/emulsify-ui-kit.git",
   "structure": [
@@ -23,6 +23,26 @@
           "path": "./templates",
           "destinationPath": "./templates",
           "description": "Contains Drupal templates"
+        }
+      ],
+      "components": [
+        {
+          "name": "images",
+          "structure": "components",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "links",
+          "structure": "components",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "text",
+          "structure": "components",
+          "required": true,
+          "dependency": ["links"]
         }
       ]
     }
