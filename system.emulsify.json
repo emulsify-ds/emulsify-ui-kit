@@ -28,19 +28,19 @@
       "components": [
         {
           "name": "images",
-          "structure": "atoms",
+          "structure": "components",
           "required": true,
           "dependency": []
         },
         {
           "name": "links",
-          "structure": "atoms",
+          "structure": "components",
           "required": true,
           "dependency": []
         },
         {
           "name": "text",
-          "structure": "atoms",
+          "structure": "components",
           "required": true,
           "dependency": ["links"]
         }
