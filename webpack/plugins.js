@@ -10,7 +10,7 @@ const glob = require('glob');
 const _StyleLintPlugin = require('stylelint-webpack-plugin');
 const _ESLintPlugin = require('eslint-webpack-plugin');
 
-const imagePath = path.resolve(__dirname, '../images');
+const imagePath = path.resolve(__dirname, '../src/images');
 
 const MiniCssExtractPlugin = new _MiniCssExtractPlugin({
   filename: 'style.css',
