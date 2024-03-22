@@ -44,7 +44,11 @@ module.exports = async ({ config }) => {
 
   config.plugins.push(
     new _StyleLintPlugin({
-      configFile: path.resolve(__dirname, '../', 'webpack/.stylelintrc'),
+      configFile: path.resolve(
+        __dirname,
+        '../',
+        'node_modules/emulsify-core/config/.stylelintrc.json',
+      ),
       context: path.resolve(__dirname, '../', 'components'),
       files: '**/*.scss',
       failOnError: false,
