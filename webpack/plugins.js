@@ -33,7 +33,11 @@ const SpriteLoaderPlugin = new _SpriteLoaderPlugin({
 const ProgressPlugin = new webpack.ProgressPlugin();
 
 const StyleLintPlugin = new _StyleLintPlugin({
-  configFile: path.resolve(__dirname, '../', '.stylelintrc'),
+  configFile: path.resolve(
+    __dirname,
+    '../',
+    'node_modules/emulsify-core/config/.stylelintrc.json',
+  ),
   context: path.resolve(__dirname, '../', 'components'),
   files: '**/*.scss',
 });
