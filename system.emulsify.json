@@ -14,7 +14,7 @@
       "structureImplementations": [
         {
           "name": "components",
-          "directory": "./src/components"
+          "directory": "./components"
         }
       ],
       "directories": [

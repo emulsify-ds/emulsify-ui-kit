@@ -1,3 +1,7 @@
+@use '~breakpoint-sass/stylesheets/breakpoint' as *;
+@use '../../components/tokens/tokens' as *;
+@use '../../src/stylesheets/mixins' as *;
+
 // Global Breakpoints
 $breakpoint-xs: 20rem;
 $breakpoint-sm: 36rem; // matches var(--breakpoint-sm);

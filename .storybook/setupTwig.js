@@ -4,7 +4,7 @@ const twigBEM = require('bem-twig-extension');
 const twigAddAttributes = require('add-attributes-twig-extension');
 
 module.exports.namespaces = {
-  components: resolve(__dirname, '../', 'src/components'),
+  components: resolve(__dirname, '../', 'components'),
 };
 
 /**

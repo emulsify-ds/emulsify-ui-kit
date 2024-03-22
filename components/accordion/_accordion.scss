@@ -1,0 +1,128 @@
+/* stylelint-disable no-descending-specificity */
+@use '../tokens/tokens' as *;
+@use '../../src/stylesheets/mixins' as *;
+
+$accordion-icon-size: var(--size-xl);
+
+// The accordion group.
+.accordion {
+  padding-block: var(--spacing-sm);
+}
+
+.accordion__controls {
+  @include list-reset;
+
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.accordion__controls__item {
+  &:not(:last-child) {
+    padding-right: var(--spacing-sm);
+    margin-right: var(--spacing-sm);
+  }
+}
+
+.accordion-item__toggle {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+  width: 100%;
+
+  &:hover {
+    color: var(--accordion-color-header-hover);
+  }
+}
+
+.accordion__toggle-all {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  display: flex;
+  color: var(--colors-text-body);
+  font-size: var(--font-size-small);
+  gap: var(--spacing-sm);
+  align-items: center;
+
+  .accordion__icon {
+    fill: var(--colors-text-body);
+    height: var(--size-lg);
+    width: var(--size-lg);
+  }
+
+  &:hover {
+    color: var(--accordion-color-header-hover);
+
+    .accordion__icon {
+      fill: var(--accordion-color-header-hover);
+    }
+  }
+}
+
+.accordion__icon {
+  height: var(--size-xl);
+  width: var(--size-xl);
+  pointer-events: none;
+
+  .accordion__toggle-all--collapse & {
+    transform: rotate(180deg);
+  }
+}
+
+// Individual accordion items.
+.accordion-item {
+  border-bottom: 1px solid var(--accordion-divider-color);
+  padding-top: var(--spacing-lg);
+}
+
+.accordion-item__heading {
+  @include heading-medium;
+
+  font-weight: normal;
+  display: flex;
+  margin: 0 0 var(--spacing-lg);
+  color: var(--accordion-color-header);
+
+  &:hover {
+    color: var(--accordion-color-header-hover);
+
+    .accordion-item__icon {
+      fill: var(--accordion-color-header-hover);
+    }
+  }
+}
+
+.accordion-item__icon {
+  margin-left: auto;
+  height: $accordion-icon-size;
+  width: $accordion-icon-size;
+  fill: var(--accordion-color-header);
+
+  [aria-expanded='true'] > & {
+    transform: rotate(180deg);
+  }
+}
+
+.accordion-item__content {
+  overflow: hidden;
+
+  [data-accordion-expanded='true'] & {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  [data-accordion-expanded='false'] & {
+    max-height: 0;
+  }
+}
+
+/* stylelint-enable no-descending-specificity */

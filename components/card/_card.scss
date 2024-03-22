@@ -1,0 +1,46 @@
+@use '../tokens/tokens' as *;
+@use '../../src/stylesheets/mixins' as *;
+
+.card {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--spacing-lg);
+  text-align: left;
+}
+
+.card--horizontal {
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.card__heading {
+  @include heading-large($font-size: var(--font-size-h3));
+
+  margin: 0;
+  line-height: var(--line-heights-tight);
+
+  &-link {
+    @include link;
+
+    text-decoration: none;
+  }
+}
+
+.card__subheading {
+  @include heading-medium($font-size: var(--font-size-small));
+
+  color: var(--colors-grays-500);
+  margin: 0 0 var(--spacing-md);
+  line-height: var(--line-heights-tight);
+  text-transform: uppercase;
+}
+
+.card__link {
+  @include link;
+}
+
+.card__button {
+  // @include button-base;
+  // @include button-color-primary;
+  // @include button-medium;
+}
