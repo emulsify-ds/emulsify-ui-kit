@@ -1645,6 +1645,12 @@
       "fill": {
         "value": "{color.EmulsifyBlue.1000}",
         "type": "color"
+      },
+      "color": {
+        "heading": {
+          "value": "{color.EmulsifyBlue.700}",
+          "type": "color"
+        }
       }
     }
   },
