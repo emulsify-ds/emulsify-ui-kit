@@ -498,6 +498,12 @@
     "fill": {
       "value": "#00202e",
       "type": "color"
+    },
+    "color": {
+      "heading": {
+        "value": "#007fb6",
+        "type": "color"
+      }
     }
   },
   "checkbox": {
