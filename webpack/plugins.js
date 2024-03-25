@@ -10,10 +10,10 @@ const glob = require('glob');
 const _StyleLintPlugin = require('stylelint-webpack-plugin');
 const _ESLintPlugin = require('eslint-webpack-plugin');
 
-const imagePath = path.resolve(__dirname, '../images');
+const imagePath = path.resolve(__dirname, '../src/images');
 
 const MiniCssExtractPlugin = new _MiniCssExtractPlugin({
-  filename: 'style.css',
+  filename: '[name].css',
   chunkFilename: '[id].css',
 });
 
@@ -33,13 +33,17 @@ const SpriteLoaderPlugin = new _SpriteLoaderPlugin({
 const ProgressPlugin = new webpack.ProgressPlugin();
 
 const StyleLintPlugin = new _StyleLintPlugin({
-  configFile: path.resolve(__dirname, '../', '.stylelintrc'),
-  context: path.resolve(__dirname, '../', 'src/components'),
+  configFile: path.resolve(
+    __dirname,
+    '../',
+    'node_modules/emulsify-core/config/.stylelintrc.json',
+  ),
+  context: path.resolve(__dirname, '../', 'components'),
   files: '**/*.scss',
 });
 
 const ESLintPlugin = new _ESLintPlugin({
-  context: path.resolve(__dirname, '../', 'src/components'),
+  context: path.resolve(__dirname, '../', 'components'),
   extensions: ['js'],
 });
 

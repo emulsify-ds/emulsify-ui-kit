@@ -23,7 +23,7 @@ describe('setupTwig', () => {
 
   it('exports emulsifys namespaces', () => {
     expect(namespaces).toEqual({
-      components: '../src/components',
+      components: '../components',
     });
   });
 });
