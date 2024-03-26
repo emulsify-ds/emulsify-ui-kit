@@ -478,8 +478,8 @@
     "header": {
       "value": {
         "fontFamily": "Inter",
-        "fontWeight": "Bold",
-        "lineHeight": "150%",
+        "fontWeight": "Extra Bold",
+        "lineHeight": "100%",
         "fontSize": 37,
         "textCase": "none"
       },
@@ -490,20 +490,24 @@
         "fontFamily": "Inter",
         "fontWeight": "Regular",
         "lineHeight": "150%",
-        "fontSize": 24,
+        "fontSize": 18,
         "textCase": "none"
+      },
+      "type": "typography"
+    },
+    "eyebrow": {
+      "value": {
+        "fontFamily": "Inter",
+        "fontWeight": "Bold",
+        "lineHeight": "150%",
+        "fontSize": 16,
+        "textCase": "uppercase"
       },
       "type": "typography"
     },
     "fill": {
       "value": "#00202e",
       "type": "color"
-    },
-    "color": {
-      "heading": {
-        "value": "#007fb6",
-        "type": "color"
-      }
     }
   },
   "checkbox": {
