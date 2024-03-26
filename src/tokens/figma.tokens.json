@@ -1660,14 +1660,22 @@
           "fontSize": "{font-size.body}",
           "lineHeight": "{line-height.normal}"
         },
-        "type": "typography"
+        "type": "typography",
+        "background": {
+          "value": "{color.EmulsifyBlue.600}",
+          "type": "color"
+        },
+        "darker-background": {
+          "value": "{color.EmulsifyBlue.900}",
+          "type": "color"
+        }
       },
       "color": {
         "heading": {
           "value": "{color.EmulsifyBlue.700}",
           "type": "color"
         },
-        "heading-with-bkg": {
+        "heading-darker": {
           "value": "{color.EmulsifyBlue.900}",
           "type": "color"
         },
@@ -1675,12 +1683,16 @@
           "value": "{color.grays.500}",
           "type": "color"
         },
-        "eyebrow-with-bkg": {
+        "eyebrow-darker": {
           "value": "{color.grays.600}",
           "type": "color"
         },
         "body": {
           "value": "{color.black}",
+          "type": "color"
+        },
+        "button": {
+          "value": "{color.white}",
           "type": "color"
         }
       },
