@@ -513,14 +513,22 @@
         "fontSize": 18,
         "lineHeight": "150%"
       },
-      "type": "typography"
+      "type": "typography",
+      "background": {
+        "value": "{color.EmulsifyBlue.600}",
+        "type": "color"
+      },
+      "darker-background": {
+        "value": "{color.EmulsifyBlue.900}",
+        "type": "color"
+      }
     },
     "color": {
       "heading": {
         "value": "#007fb6",
         "type": "color"
       },
-      "heading-with-bkg": {
+      "heading-darker": {
         "value": "#00405b",
         "type": "color"
       },
@@ -528,12 +536,16 @@
         "value": "#545f64",
         "type": "color"
       },
-      "eyebrow-with-bkg": {
+      "eyebrow-darker": {
         "value": "#29373d",
         "type": "color"
       },
       "body": {
         "value": "#000000",
+        "type": "color"
+      },
+      "button": {
+        "value": "#ffffff",
         "type": "color"
       }
     },
