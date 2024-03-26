@@ -1625,8 +1625,8 @@
       "header": {
         "value": {
           "fontFamily": "{font-family.primary}",
-          "fontWeight": "{font-weight.primary-bold}",
-          "lineHeight": "{line-height.normal}",
+          "fontWeight": "Extra Bold",
+          "lineHeight": "{line-height.none}",
           "fontSize": "{font-size.h2}",
           "textCase": "{text-case.none}"
         },
@@ -1637,20 +1637,24 @@
           "fontFamily": "{font-family.primary}",
           "fontWeight": "{font-weight.primary-regular}",
           "lineHeight": "{line-height.normal}",
-          "fontSize": "{font-size.lead}",
+          "fontSize": "{font-size.body}",
           "textCase": "{text-case.none}"
+        },
+        "type": "typography"
+      },
+      "eyebrow": {
+        "value": {
+          "fontFamily": "{font-family.primary}",
+          "fontWeight": "{font-weight.primary-bold}",
+          "lineHeight": "{line-height.normal}",
+          "fontSize": "{font-size.small}",
+          "textCase": "{text-case.upper}"
         },
         "type": "typography"
       },
       "fill": {
         "value": "{color.EmulsifyBlue.1000}",
         "type": "color"
-      },
-      "color": {
-        "heading": {
-          "value": "{color.EmulsifyBlue.700}",
-          "type": "color"
-        }
       }
     }
   },
