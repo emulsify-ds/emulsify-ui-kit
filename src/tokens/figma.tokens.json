@@ -1672,11 +1672,11 @@
       },
       "color": {
         "heading": {
-          "value": "{color.EmulsifyBlue.700}",
+          "value": "{color.text.heading}",
           "type": "color"
         },
         "heading-darker": {
-          "value": "{color.EmulsifyBlue.900}",
+          "value": "{color.primary.darker}",
           "type": "color"
         },
         "eyebrow": {
