@@ -525,11 +525,11 @@
     },
     "color": {
       "heading": {
-        "value": "#007fb6",
+        "value": "#0080b7",
         "type": "color"
       },
       "heading-darker": {
-        "value": "#00405b",
+        "value": "#006089",
         "type": "color"
       },
       "eyebrow": {
