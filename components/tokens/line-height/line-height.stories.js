@@ -1,5 +1,5 @@
 import template from './line-height.twig';
-import figma from '../../../.storybook/configma.json';
+import figma from '../../../config/configma.json';
 import tokens from '../../../src/tokens/transformed.tokens.json';
 
 const data = { lineHeight: tokens.lineHeights };

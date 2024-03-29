@@ -52,15 +52,20 @@
     ]
   },
   "dependencies": {
-    "emulsify-core": "github:emulsify-ds/emulsify-core",
     "@percy/cli": "^1.28.2",
-    "@percy/storybook": "^5.0.1"
+    "@percy/storybook": "^5.0.1",
+    "emulsify-core": "github:emulsify-ds/emulsify-core"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
     "@commitlint/config-conventional": "^19.1.0",
-    "commitlint": "^19.2.1",
+    "@semantic-release/changelog": "^6.0.2",
+    "@semantic-release/commit-analyzer": "^11.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^10.0.2",
+    "@semantic-release/release-notes-generator": "^12.1.0",
+    "@storybook/addon-designs": "^8.0.0",
     "husky": "^9.0.11",
-    "storybook-addon-designs": "^6.3.1"
+    "semantic-release": "^23.0.4"
   }
 }
