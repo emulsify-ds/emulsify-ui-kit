@@ -4,7 +4,7 @@
   "description": "Compound is the default Emulsify system, and includes variants for the platforms that Emulsify supports.",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config ./webpack/webpack.prod.js",
+    "build": "webpack --config node_modules/emulsify-core/config/webpack/webpack.prod.js",
     "develop": "concurrently --raw \"npm run webpack\" \"npm run storybook\"",
     "format": "npm run lint-fix; npm run prettier-fix",
     "husky:commit-msg": "commitlint --edit $1",
@@ -19,9 +19,9 @@
     "prepare": "husky install",
     "sass": "sass",
     "semantic-release": "semantic-release",
-    "storybook": "storybook dev --ci -s ../dist,../images, -p 6006",
-    "build-storybook": "npm run build && storybook build -s ../dist,../images, -o .out",
-    "deploy-storybook": "storybook-to-ghpages -o .out",
+    "storybook": "storybook dev -c node_modules/emulsify-core/.storybook --ci -s ../../../dist,../../../assets/images,../../../assets/icons -p 6006",
+    "storybook-build": "storybook build -s ./dist,./assets/images,./assets/icons -o .out",
+    "storybook-deploy": "storybook-to-ghpages -o .out",
     "style-dictionary:build": "node ./src/tokens/tokensTransform.js",
     "tokens:transform": "token-transformer ./src/tokens/figma.tokens.json ./src/tokens/transformed.tokens.json",
     "tokens:build": "npm run tokens:transform && npm run style-dictionary:build",
@@ -52,7 +52,9 @@
     ]
   },
   "dependencies": {
-    "emulsify-core": "github:emulsify-ds/emulsify-core"
+    "emulsify-core": "github:emulsify-ds/emulsify-core",
+    "@percy/cli": "^1.28.2",
+    "@percy/storybook": "^5.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
