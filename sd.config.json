@@ -15,7 +15,7 @@
       ],
       "files": [
         {
-          "destination": "src/components/tokens/_tokens.scss",
+          "destination": "components/tokens/_tokens.scss",
           "format": "css/variables"
         }
       ]
