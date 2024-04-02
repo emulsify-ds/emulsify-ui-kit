@@ -1688,7 +1688,7 @@
           "type": "color"
         },
         "body": {
-          "value": "{color.black}",
+          "value": "{color.text.body}",
           "type": "color"
         },
         "button": {
@@ -1697,7 +1697,15 @@
         }
       },
       "background": {
-        "value": "{color.EmulsifyBlue.300}",
+        "value": "{color.primary.lighter}",
+        "type": "color"
+      },
+      "button-background": {
+        "value": "{color.primary.default}",
+        "type": "color"
+      },
+      "button-background-darker": {
+        "value": "{color.primary.darker}",
         "type": "color"
       }
     }
