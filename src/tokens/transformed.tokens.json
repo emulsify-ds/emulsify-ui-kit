@@ -541,7 +541,7 @@
         "type": "color"
       },
       "body": {
-        "value": "#000000",
+        "value": "#00202e",
         "type": "color"
       },
       "button": {
@@ -550,7 +550,15 @@
       }
     },
     "background": {
-      "value": "#99d9f4",
+      "value": "#9ce1ff",
+      "type": "color"
+    },
+    "button-background": {
+      "value": "#009fe4",
+      "type": "color"
+    },
+    "button-background-darker": {
+      "value": "#006089",
       "type": "color"
     }
   },
