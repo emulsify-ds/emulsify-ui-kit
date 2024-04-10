@@ -23,7 +23,7 @@ export default {
   },
   decorators: [
     (story) =>
-      `<div style="max-width: 700px; margin: 0 auto;">${story()}</div>`,
+      `<div style="max-width: 890px; margin: 0 auto;">${story()}</div>`,
   ],
 };
 
