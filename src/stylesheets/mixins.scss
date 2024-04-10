@@ -186,10 +186,10 @@ $outer-container-break: var(--breakpoint-sm);
 }
 
 @mixin link {
-  color: var(--link-default);
+  color: var(--link-color-default);
   transition: all .15s;
 
   &:hover {
-    color: var(--link-hover);
+    color: var(--link-color-hover);
   }
 }
