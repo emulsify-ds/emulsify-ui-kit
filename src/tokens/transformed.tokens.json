@@ -533,11 +533,7 @@
         "type": "color"
       },
       "eyebrow": {
-        "value": "#545f64",
-        "type": "color"
-      },
-      "eyebrow-darker": {
-        "value": "#29373d",
+        "value": "#005f89",
         "type": "color"
       },
       "body": {
@@ -828,8 +824,16 @@
         "value": "#00202e",
         "type": "color"
       },
+      "body-lighter": {
+        "value": "#005f89",
+        "type": "color"
+      },
       "heading": {
         "value": "#0080b7",
+        "type": "color"
+      },
+      "white": {
+        "value": "#ffffff",
         "type": "color"
       }
     },
