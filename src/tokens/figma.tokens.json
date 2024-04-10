@@ -1340,8 +1340,16 @@
           "value": "{color.EmulsifyBlue.1000}",
           "type": "color"
         },
+        "body-lighter": {
+          "value": "{color.EmulsifyBlue.800}",
+          "type": "color"
+        },
         "heading": {
           "value": "{color.primary.dark}",
+          "type": "color"
+        },
+        "white": {
+          "value": "{color.white}",
           "type": "color"
         }
       },
@@ -1680,11 +1688,7 @@
           "type": "color"
         },
         "eyebrow": {
-          "value": "{color.grays.500}",
-          "type": "color"
-        },
-        "eyebrow-darker": {
-          "value": "{color.grays.600}",
+          "value": "{color.text.body-lighter}",
           "type": "color"
         },
         "body": {
@@ -1692,7 +1696,7 @@
           "type": "color"
         },
         "button": {
-          "value": "{color.white}",
+          "value": "{color.text.white}",
           "type": "color"
         }
       },
