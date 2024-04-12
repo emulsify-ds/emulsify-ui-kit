@@ -1364,7 +1364,7 @@
         "type": "color"
       },
       "link-hover": {
-        "value": "{color.EmulsifyBlue.600}",
+        "value": "{color.EmulsifyBlue.700}",
         "type": "color"
       }
     },
