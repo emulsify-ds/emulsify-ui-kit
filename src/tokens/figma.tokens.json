@@ -1341,12 +1341,13 @@
           "type": "color"
         },
         "body-lighter": {
-          "value": "{color.EmulsifyBlue.800}",
+          "value": "{color.primary.darker}",
           "type": "color"
         },
         "heading": {
-          "value": "{color.primary.dark}",
-          "type": "color"
+          "value": "{color.primary.darker}",
+          "type": "color",
+          "description": "{color.primary.dark}"
         },
         "white": {
           "value": "{color.white}",
@@ -1360,7 +1361,7 @@
         }
       },
       "link": {
-        "value": "{color.EmulsifyBlue.500}",
+        "value": "{color.EmulsifyBlue.600}",
         "type": "color"
       },
       "link-hover": {
