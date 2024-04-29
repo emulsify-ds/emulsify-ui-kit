@@ -7,11 +7,11 @@
       },
       "text": {
         "body": {
-          "value": "#00202e",
+          "value": "#72520d",
           "type": "color"
         },
         "heading": {
-          "value": "#0080b7",
+          "value": "#e29b00",
           "type": "color"
         }
       },
@@ -55,15 +55,15 @@
       },
       "text": {
         "default": {
-          "value": "#00202e",
+          "value": "#72520d",
           "type": "color"
         },
         "active": {
-          "value": "#0080b7",
+          "value": "#e29b00",
           "type": "color"
         },
         "hover": {
-          "value": "#33b2e9",
+          "value": "#009fe4",
           "type": "color"
         }
       },
@@ -76,7 +76,7 @@
   "tab": {
     "label": {
       "value": {
-        "fontFamily": "Inter",
+        "fontFamily": "IBM Plex Sans",
         "fontWeight": "Bold",
         "lineHeight": "150%",
         "fontSize": 21,
@@ -93,11 +93,11 @@
           "type": "color"
         },
         "bg-stripe": {
-          "value": "#9ce1ff",
+          "value": "#ffe6af",
           "type": "color"
         },
         "text": {
-          "value": "#00202e",
+          "value": "#72520d",
           "type": "color"
         },
         "icon": {
@@ -107,7 +107,7 @@
       },
       "header": {
         "bg": {
-          "value": "#009fe4",
+          "value": "#ffb81c",
           "type": "color"
         },
         "text": {
@@ -115,7 +115,7 @@
           "type": "color"
         },
         "icon": {
-          "value": "#9ce1ff",
+          "value": "#ffe6af",
           "type": "color"
         }
       },
@@ -178,7 +178,7 @@
   "selectdropdown": {
     "color": {
       "label": {
-        "value": "#00202e",
+        "value": "#72520d",
         "type": "color"
       },
       "label-disabled": {
@@ -224,7 +224,7 @@
   "radio": {
     "color": {
       "label": {
-        "value": "#00202e",
+        "value": "#72520d",
         "type": "color"
       },
       "label-disabled": {
@@ -233,11 +233,11 @@
       },
       "button": {
         "fill": {
-          "value": "#009fe4",
+          "value": "#ffb81c",
           "type": "color"
         },
         "fill-hover": {
-          "value": "#0080b7",
+          "value": "#e29b00",
           "type": "color"
         },
         "fill-disabled": {
@@ -245,11 +245,11 @@
           "type": "color"
         },
         "stroke": {
-          "value": "#00202e",
+          "value": "#72520d",
           "type": "color"
         },
         "stroke-hover": {
-          "value": "#00202e",
+          "value": "#72520d",
           "type": "color"
         },
         "stroke-disabled": {
@@ -281,14 +281,14 @@
       },
       "fill": {
         "hover": {
-          "value": "#009fe4",
+          "value": "#ffb81c",
           "type": "color"
         }
       }
     },
     "default": {
       "value": {
-        "fontFamily": "Inter",
+        "fontFamily": "IBM Plex Sans",
         "fontWeight": "Medium",
         "lineHeight": "100%",
         "fontSize": 12,
@@ -335,33 +335,33 @@
           "type": "color"
         },
         "bg-hover": {
-          "value": "#9ce1ff",
+          "value": "#ffe6af",
           "type": "color"
         },
         "label": {
-          "value": "#0080b7",
+          "value": "#002f84",
           "type": "color"
         },
         "label-hover": {
-          "value": "#006089",
+          "value": "#002973",
           "type": "color"
         }
       },
       "dropdown": {
         "bg": {
-          "value": "#9ce1ff",
+          "value": "#ffe6af",
           "type": "color"
         },
         "bg-hover": {
-          "value": "#9ce1ff",
+          "value": "#ffe6af",
           "type": "color"
         },
         "label": {
-          "value": "#0080b7",
+          "value": "#002f84",
           "type": "color"
         },
         "label-hover": {
-          "value": "#006089",
+          "value": "#002973",
           "type": "color"
         }
       }
@@ -380,7 +380,7 @@
     },
     "body": {
       "value": {
-        "fontFamily": "Inter",
+        "fontFamily": "IBM Plex Sans",
         "fontWeight": "Regular",
         "lineHeight": "150%",
         "fontSize": 18,
@@ -407,11 +407,11 @@
     },
     "color": {
       "label": {
-        "value": "#00202e",
+        "value": "#72520d",
         "type": "color"
       },
       "helpText": {
-        "value": "#0080b7",
+        "value": "#a17412",
         "type": "color"
       },
       "placeholder": {
@@ -451,7 +451,7 @@
         "type": "color"
       },
       "label": {
-        "value": "#00202e",
+        "value": "#72520d",
         "type": "color"
       }
     }
@@ -477,7 +477,7 @@
   "cta": {
     "header": {
       "value": {
-        "fontFamily": "Inter",
+        "fontFamily": "IBM Plex Sans",
         "fontWeight": "Extra Bold",
         "lineHeight": "100%",
         "fontSize": 37,
@@ -487,7 +487,7 @@
     },
     "body": {
       "value": {
-        "fontFamily": "Inter",
+        "fontFamily": "IBM Plex Sans",
         "fontWeight": "Regular",
         "lineHeight": "150%",
         "fontSize": 18,
@@ -497,7 +497,7 @@
     },
     "eyebrow": {
       "value": {
-        "fontFamily": "Inter",
+        "fontFamily": "IBM Plex Sans",
         "fontWeight": "Bold",
         "lineHeight": "150%",
         "fontSize": 16,
@@ -507,7 +507,7 @@
     },
     "button": {
       "value": {
-        "fontFamily": "Inter",
+        "fontFamily": "IBM Plex Sans",
         "fontWeight": "Bold",
         "textCase": "uppercase",
         "fontSize": 18,
@@ -525,19 +525,19 @@
     },
     "color": {
       "heading": {
-        "value": "#0080b7",
+        "value": "#002973",
         "type": "color"
       },
       "heading-darker": {
-        "value": "#006089",
+        "value": "#aa7500",
         "type": "color"
       },
       "eyebrow": {
-        "value": "#005f89",
+        "value": "#a17412",
         "type": "color"
       },
       "body": {
-        "value": "#00202e",
+        "value": "#72520d",
         "type": "color"
       },
       "button": {
@@ -546,22 +546,22 @@
       }
     },
     "background": {
-      "value": "#9ce1ff",
+      "value": "#ffe6af",
       "type": "color"
     },
     "button-background": {
-      "value": "#009fe4",
+      "value": "#ffb81c",
       "type": "color"
     },
     "button-background-darker": {
-      "value": "#006089",
+      "value": "#aa7500",
       "type": "color"
     }
   },
   "checkbox": {
     "color": {
       "label": {
-        "value": "#00202e",
+        "value": "#72520d",
         "type": "color"
       },
       "label-disabled": {
@@ -571,11 +571,11 @@
     },
     "button": {
       "fill": {
-        "value": "#009fe4",
+        "value": "#ffb81c",
         "type": "color"
       },
       "fill-hover": {
-        "value": "#0080b7",
+        "value": "#e29b00",
         "type": "color"
       },
       "fill-disabled": {
@@ -583,11 +583,11 @@
         "type": "color"
       },
       "stroke": {
-        "value": "#00202e",
+        "value": "#72520d",
         "type": "color"
       },
       "stroke-hover": {
-        "value": "#00202e",
+        "value": "#72520d",
         "type": "color"
       },
       "stroke-disabled": {
@@ -611,7 +611,7 @@
   "button": {
     "color": {
       "bkg": {
-        "value": "#009fe4",
+        "value": "#003594",
         "type": "color",
         "focus": {
           "value": "red",
@@ -623,7 +623,7 @@
         "type": "color"
       },
       "bkg-hover": {
-        "value": "#0080b7",
+        "value": "#002f84",
         "type": "color"
       },
       "label-hover": {
@@ -635,7 +635,7 @@
         "type": "color"
       },
       "bkg-focus": {
-        "value": "#0080b7",
+        "value": "#002f84",
         "type": "color"
       }
     },
@@ -701,15 +701,15 @@
     },
     "border": {
       "color": {
-        "value": "#009fe4",
+        "value": "#003594",
         "type": "color"
       },
       "color-hover": {
-        "value": "#0080b7",
+        "value": "#002f84",
         "type": "color"
       },
       "color-focus": {
-        "value": "#0080b7",
+        "value": "#002f84",
         "type": "color"
       }
     },
@@ -723,7 +723,7 @@
   "breadcrumb": {
     "default": {
       "value": {
-        "fontFamily": "Sentinel",
+        "fontFamily": "IBM Plex Serif",
         "fontWeight": "Medium",
         "lineHeight": "100%",
         "fontSize": 12,
@@ -757,7 +757,7 @@
   "accordion": {
     "header": {
       "value": {
-        "fontFamily": "Inter",
+        "fontFamily": "IBM Plex Sans",
         "fontWeight": "Regular",
         "lineHeight": "150%",
         "fontSize": 26,
@@ -767,7 +767,7 @@
     },
     "p": {
       "value": {
-        "fontFamily": "Inter",
+        "fontFamily": "IBM Plex Sans",
         "fontWeight": "Regular",
         "lineHeight": "150%",
         "fontSize": 18
@@ -776,15 +776,15 @@
     },
     "color": {
       "body": {
-        "value": "#00202e",
+        "value": "#72520d",
         "type": "color"
       },
       "header": {
-        "value": "#0080b7",
+        "value": "#002973",
         "type": "color"
       },
       "header-hover": {
-        "value": "#33b2e9",
+        "value": "#009fe4",
         "type": "color"
       }
     },
@@ -798,39 +798,45 @@
   "color": {
     "primary": {
       "default": {
-        "value": "#009fe4",
+        "value": "#ffb81c",
         "type": "color",
         "description": "600"
       },
       "light": {
-        "value": "#1ebbff",
+        "value": "#ffc649",
         "type": "color"
       },
       "lighter": {
-        "value": "#9ce1ff",
+        "value": "#ffe6af",
         "type": "color"
       },
       "dark": {
-        "value": "#0080b7",
+        "value": "#e29b00",
         "type": "color"
       },
       "darker": {
-        "value": "#006089",
+        "value": "#aa7500",
         "type": "color"
       }
     },
     "text": {
       "body": {
-        "value": "#00202e",
+        "value": "#72520d",
         "type": "color"
       },
       "body-lighter": {
-        "value": "#005f89",
+        "value": "#a17412",
         "type": "color"
       },
       "heading": {
-        "value": "#0080b7",
-        "type": "color"
+        "value": "#002973",
+        "type": "color",
+        "description": "{color.primary.dark}"
+      },
+      "heading-lighter": {
+        "value": "#e29b00",
+        "type": "color",
+        "description": "{color.primary.dark}"
       },
       "white": {
         "value": "#ffffff",
@@ -844,11 +850,11 @@
       }
     },
     "link": {
-      "value": "#33b2e9",
+      "value": "#009fe4",
       "type": "color"
     },
     "link-hover": {
-      "value": "#009fe4",
+      "value": "#007fb6",
       "type": "color"
     },
     "black": {
@@ -942,15 +948,187 @@
         "value": "#080b0c",
         "type": "color"
       }
+    },
+    "WUP": {
+      "gold": {
+        "100": {
+          "value": "#fff9f2",
+          "type": "color"
+        },
+        "200": {
+          "value": "#fff2e4",
+          "type": "color"
+        },
+        "300": {
+          "value": "#ffe5c6",
+          "type": "color"
+        },
+        "400": {
+          "value": "#ffd7a3",
+          "type": "color"
+        },
+        "500": {
+          "value": "#ffc875",
+          "type": "color"
+        },
+        "600": {
+          "value": "#ffb81c",
+          "type": "color"
+        },
+        "700": {
+          "value": "#e4a519",
+          "type": "color"
+        },
+        "800": {
+          "value": "#c68f16",
+          "type": "color"
+        },
+        "900": {
+          "value": "#a17412",
+          "type": "color"
+        },
+        "1000": {
+          "value": "#72520d",
+          "type": "color"
+        }
+      },
+      "blue": {
+        "100": {
+          "value": "#f2f2f6",
+          "type": "color"
+        },
+        "200": {
+          "value": "#e4e5ed",
+          "type": "color"
+        },
+        "300": {
+          "value": "#c6c8db",
+          "type": "color"
+        },
+        "400": {
+          "value": "#a1a6c6",
+          "type": "color"
+        },
+        "500": {
+          "value": "#727baf",
+          "type": "color"
+        },
+        "600": {
+          "value": "#003594",
+          "type": "color"
+        },
+        "700": {
+          "value": "#002f84",
+          "type": "color"
+        },
+        "800": {
+          "value": "#002973",
+          "type": "color"
+        },
+        "900": {
+          "value": "#00225e",
+          "type": "color"
+        },
+        "1000": {
+          "value": "#001842",
+          "type": "color"
+        }
+      },
+      "legacy": {
+        "gold": {
+          "100": {
+            "value": "#f9f6f2",
+            "type": "color"
+          },
+          "200": {
+            "value": "#f2ece4",
+            "type": "color"
+          },
+          "300": {
+            "value": "#e4d7c6",
+            "type": "color"
+          },
+          "400": {
+            "value": "#d6bfa1",
+            "type": "color"
+          },
+          "500": {
+            "value": "#c6a572",
+            "type": "color"
+          },
+          "600": {
+            "value": "#b58500",
+            "type": "color"
+          },
+          "700": {
+            "value": "#a27700",
+            "type": "color"
+          },
+          "800": {
+            "value": "#8c6700",
+            "type": "color"
+          },
+          "900": {
+            "value": "#725400",
+            "type": "color"
+          },
+          "1000": {
+            "value": "#513b00",
+            "type": "color"
+          }
+        },
+        "blue": {
+          "100": {
+            "value": "#f2f2f3",
+            "type": "color"
+          },
+          "200": {
+            "value": "#e4e4e7",
+            "type": "color"
+          },
+          "300": {
+            "value": "#c6c6cb",
+            "type": "color"
+          },
+          "400": {
+            "value": "#a2a3ac",
+            "type": "color"
+          },
+          "500": {
+            "value": "#737585",
+            "type": "color"
+          },
+          "600": {
+            "value": "#141b4d",
+            "type": "color"
+          },
+          "700": {
+            "value": "#121845",
+            "type": "color"
+          },
+          "800": {
+            "value": "#0f153c",
+            "type": "color"
+          },
+          "900": {
+            "value": "#0d1131",
+            "type": "color"
+          },
+          "1000": {
+            "value": "#090c22",
+            "type": "color"
+          }
+        }
+      }
     }
   },
   "fontFamily": {
     "body": {
-      "value": "Inter",
+      "value": "IBM Plex Serif",
       "type": "fontFamilies"
     },
     "heading": {
-      "value": "Inter",
+      "value": "IBM Plex Serif",
       "type": "fontFamilies"
     }
   },
@@ -1091,11 +1269,11 @@
   },
   "font-family": {
     "primary": {
-      "value": "Inter",
+      "value": "IBM Plex Sans",
       "type": "fontFamilies"
     },
     "secondary": {
-      "value": "Sentinel",
+      "value": "IBM Plex Serif",
       "type": "fontFamilies"
     }
   },
@@ -1225,7 +1403,7 @@
     "Colossus": {
       "Default": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 140,
@@ -1238,7 +1416,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 140,
@@ -1253,7 +1431,7 @@
     "Uber": {
       "Default": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 112,
@@ -1266,7 +1444,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 112,
@@ -1281,7 +1459,7 @@
     "Hero": {
       "Default": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Regular",
           "lineHeight": "125%",
           "fontSize": 80,
@@ -1294,7 +1472,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Bold",
           "lineHeight": "125%",
           "fontSize": 80,
@@ -1309,7 +1487,7 @@
     "Display": {
       "Default": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 64,
@@ -1322,7 +1500,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 64,
@@ -1337,7 +1515,7 @@
     "H1": {
       "Default": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 48,
@@ -1350,7 +1528,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 48,
@@ -1365,7 +1543,7 @@
     "H2": {
       "Default": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 37,
@@ -1378,7 +1556,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 37,
@@ -1393,7 +1571,7 @@
     "H3": {
       "Default": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 31,
@@ -1406,7 +1584,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 31,
@@ -1421,7 +1599,7 @@
     "H4": {
       "Default": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 26,
@@ -1434,7 +1612,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 26,
@@ -1449,7 +1627,7 @@
     "H5": {
       "Default": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 21,
@@ -1462,7 +1640,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 21,
@@ -1477,7 +1655,7 @@
     "Lead": {
       "Default": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 24,
@@ -1490,7 +1668,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 24,
@@ -1505,7 +1683,7 @@
     "Body": {
       "Default": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 18,
@@ -1518,7 +1696,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 18,
@@ -1532,7 +1710,7 @@
       "Mobile": {
         "Default": {
           "value": {
-            "fontFamily": "Inter",
+            "fontFamily": "IBM Plex Sans",
             "fontWeight": "Regular",
             "lineHeight": "150%",
             "fontSize": 14,
@@ -1548,7 +1726,7 @@
     "Small": {
       "Default": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 16,
@@ -1561,7 +1739,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 16,
@@ -1576,7 +1754,7 @@
     "Caption": {
       "Default": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 14,
@@ -1589,7 +1767,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 14,
@@ -1604,7 +1782,7 @@
     "X-Small": {
       "Default": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 12,
@@ -1617,7 +1795,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 12,
@@ -1632,7 +1810,7 @@
     "Tiny": {
       "Default": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 10,
@@ -1645,7 +1823,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Inter",
+          "fontFamily": "IBM Plex Sans",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 10,
@@ -1662,7 +1840,7 @@
     "Colossus": {
       "Default": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 140,
@@ -1675,7 +1853,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 140,
@@ -1690,7 +1868,7 @@
     "Uber": {
       "Default": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 112,
@@ -1703,7 +1881,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 112,
@@ -1718,7 +1896,7 @@
     "Hero": {
       "Default": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Medium",
           "lineHeight": "125%",
           "fontSize": 80,
@@ -1731,7 +1909,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Bold",
           "lineHeight": "125%",
           "fontSize": 80,
@@ -1746,7 +1924,7 @@
     "Display": {
       "Default": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 64,
@@ -1759,7 +1937,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 64,
@@ -1774,7 +1952,7 @@
     "H1": {
       "Default": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 48,
@@ -1787,7 +1965,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 48,
@@ -1802,7 +1980,7 @@
     "H2": {
       "Default": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 37,
@@ -1815,7 +1993,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 37,
@@ -1830,7 +2008,7 @@
     "H3": {
       "Default": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 31,
@@ -1843,7 +2021,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 31,
@@ -1858,7 +2036,7 @@
     "H4": {
       "Default": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 26,
@@ -1871,7 +2049,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 26,
@@ -1886,7 +2064,7 @@
     "H5": {
       "Default": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 21,
@@ -1899,7 +2077,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 21,
@@ -1914,7 +2092,7 @@
     "Lead": {
       "Default": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 24,
@@ -1927,7 +2105,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 24,
@@ -1942,7 +2120,7 @@
     "Body": {
       "Default": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 18,
@@ -1955,7 +2133,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 18,
@@ -1969,7 +2147,7 @@
       "Mobile": {
         "Default": {
           "value": {
-            "fontFamily": "Sentinel",
+            "fontFamily": "IBM Plex Serif",
             "fontWeight": "Medium",
             "lineHeight": "150%",
             "fontSize": 14,
@@ -1985,7 +2163,7 @@
     "Small": {
       "Default": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 16,
@@ -1998,7 +2176,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 16,
@@ -2013,7 +2191,7 @@
     "Caption": {
       "Default": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 14,
@@ -2026,7 +2204,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 14,
@@ -2041,7 +2219,7 @@
     "X-Small": {
       "Default": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 12,
@@ -2054,7 +2232,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 12,
@@ -2069,7 +2247,7 @@
     "Tiny": {
       "Default": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 10,
@@ -2082,7 +2260,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "Sentinel",
+          "fontFamily": "IBM Plex Serif",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 10,
@@ -2125,82 +2303,86 @@
       "type": "other"
     },
     "1": {
-      "value": "semantic",
+      "value": "Main",
       "type": "other"
     },
     "2": {
-      "value": "components/accordion",
+      "value": "Gold",
       "type": "other"
     },
     "3": {
-      "value": "components/blockQuote",
+      "value": "components/accordion",
       "type": "other"
     },
     "4": {
-      "value": "components/breadcrumbs",
+      "value": "components/blockQuote",
       "type": "other"
     },
     "5": {
-      "value": "components/button",
+      "value": "components/breadcrumbs",
       "type": "other"
     },
     "6": {
-      "value": "components/card",
+      "value": "components/button",
       "type": "other"
     },
     "7": {
-      "value": "components/checkbox",
+      "value": "components/card",
       "type": "other"
     },
     "8": {
-      "value": "components/cta",
+      "value": "components/checkbox",
       "type": "other"
     },
     "9": {
-      "value": "components/fieldset",
+      "value": "components/cta",
       "type": "other"
     },
     "10": {
-      "value": "components/input",
+      "value": "components/fieldset",
       "type": "other"
     },
     "11": {
-      "value": "components/link",
+      "value": "components/input",
       "type": "other"
     },
     "12": {
-      "value": "components/mainMenu",
+      "value": "components/link",
       "type": "other"
     },
     "13": {
-      "value": "components/pager",
+      "value": "components/mainMenu",
       "type": "other"
     },
     "14": {
-      "value": "components/radioButton",
+      "value": "components/pager",
       "type": "other"
     },
     "15": {
-      "value": "components/selectdropdown",
+      "value": "components/radioButton",
       "type": "other"
     },
     "16": {
-      "value": "components/status",
+      "value": "components/selectdropdown",
       "type": "other"
     },
     "17": {
-      "value": "components/table",
+      "value": "components/status",
       "type": "other"
     },
     "18": {
-      "value": "components/tabs",
+      "value": "components/table",
       "type": "other"
     },
     "19": {
-      "value": "components/textField",
+      "value": "components/tabs",
       "type": "other"
     },
     "20": {
+      "value": "components/textField",
+      "type": "other"
+    },
+    "21": {
       "value": "storybook",
       "type": "other"
     }
@@ -2422,7 +2604,6 @@
     },
     "selectedTokenSets": {
       "global": "enabled",
-      "semantic": "enabled",
       "storybook": "enabled",
       "components/accordion": "enabled",
       "components/blockQuote": "enabled",
@@ -2441,7 +2622,9 @@
       "components/status": "enabled",
       "components/table": "enabled",
       "components/tabs": "enabled",
-      "components/textField": "enabled"
+      "components/textField": "enabled",
+      "Main": "enabled",
+      "Gold": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:16908",
     "$figmaModeId": "23237:10",
@@ -2630,7 +2813,9 @@
     "id": "0a5c4562bd35f00ce8a339239980a3842147c0bd",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "global": "enabled"
+      "global": "enabled",
+      "Main": "disabled",
+      "Gold": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17089",
     "$figmaModeId": "23237:11",
@@ -2683,7 +2868,8 @@
     "id": "ca91148967a5dcc80f7e50f6ccfe35b30efd5f2f",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic": "enabled"
+      "Main": "enabled",
+      "Gold": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17133",
     "$figmaModeId": "23237:12",
@@ -2706,7 +2892,9 @@
     "id": "16a10d373d39988a75c7d612cd449a633f373c44",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "storybook": "source"
+      "storybook": "source",
+      "Main": "disabled",
+      "Gold": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17144",
     "$figmaModeId": "23237:13",
@@ -2735,7 +2923,9 @@
       "components/status": "enabled",
       "components/table": "enabled",
       "components/tabs": "enabled",
-      "components/textField": "enabled"
+      "components/textField": "enabled",
+      "Main": "disabled",
+      "Gold": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17145",
     "$figmaModeId": "23237:14",
@@ -2863,6 +3053,65 @@
       "checkbox.color.label": "d2a0283754f673d1b92c74eef12f3bbe06845d3b",
       "checkbox.color.label-disabled": "5cd5bb5326d33a62412e7579c0abd8c0bea97838"
     },
+    "type": "other",
+    "value": "[object Object]"
+  },
+  "Main": {
+    "id": "865132ed4de1f234ac10e07b09e233a0fbadd978",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "global": "enabled",
+      "components/accordion": "enabled",
+      "components/blockQuote": "enabled",
+      "components/breadcrumbs": "enabled",
+      "components/button": "enabled",
+      "components/card": "enabled",
+      "components/checkbox": "enabled",
+      "components/cta": "enabled",
+      "components/fieldset": "enabled",
+      "components/input": "enabled",
+      "components/link": "enabled",
+      "components/mainMenu": "enabled",
+      "components/pager": "enabled",
+      "components/radioButton": "enabled",
+      "components/selectdropdown": "enabled",
+      "components/status": "enabled",
+      "components/table": "enabled",
+      "components/tabs": "enabled",
+      "components/textField": "enabled",
+      "Main": "enabled",
+      "Gold": "disabled"
+    },
+    "group": "WUP",
+    "type": "other",
+    "value": "[object Object]"
+  },
+  "Gold": {
+    "id": "14ff327c549a6b3a1dd78f86615f1e5bed0e367d",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "global": "enabled",
+      "components/accordion": "enabled",
+      "components/blockQuote": "enabled",
+      "components/breadcrumbs": "enabled",
+      "components/button": "enabled",
+      "components/card": "enabled",
+      "components/checkbox": "enabled",
+      "components/cta": "enabled",
+      "components/fieldset": "enabled",
+      "components/input": "enabled",
+      "components/link": "enabled",
+      "components/mainMenu": "enabled",
+      "components/pager": "enabled",
+      "components/radioButton": "enabled",
+      "components/selectdropdown": "enabled",
+      "components/status": "enabled",
+      "components/table": "enabled",
+      "components/tabs": "enabled",
+      "components/textField": "enabled",
+      "Gold": "enabled"
+    },
+    "group": "WUP",
     "type": "other",
     "value": "[object Object]"
   }
