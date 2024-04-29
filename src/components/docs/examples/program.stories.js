@@ -15,7 +15,7 @@
 //   title: 'Pages/Program',
 //   decorators: [
 //     (story) =>
-//       `<div style="background: var(--colors-grays-700); padding: 0;">${story()}</div>`,
+//       `<div style="background: var(--color-grays-700); padding: 0;">${story()}</div>`,
 //   ],
 // };
 

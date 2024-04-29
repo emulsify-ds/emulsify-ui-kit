@@ -48,13 +48,13 @@ $accordion_icon_size: var(--size-xl);
   cursor: pointer;
   outline: inherit;
   display: flex;
-  color: var(--colors-text-body);
+  color: var(--color-text-body);
   font-size: var(--font-size-small);
   gap: var(--spacing-sm);
   align-items: center;
 
   .accordion__icon {
-    fill: var(--colors-text-body);
+    fill: var(--color-text-body);
     height: var(--size-lg);
     width: var(--size-lg);
   }
@@ -107,7 +107,7 @@ $accordion_icon_size: var(--size-xl);
   width: $accordion_icon_size;
   fill: var(--accordion-color-header);
 
-  [aria-expanded='true'] > & {
+  [aria-expanded='true']>& {
     transform: rotate(180deg);
   }
 }

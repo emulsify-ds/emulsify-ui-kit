@@ -3,7 +3,7 @@
 .example {
   display: flex;
   flex-flow: column nowrap;
-  background-color: var(--colors-white);
+  background-color: var(--color-white);
   padding: 0 !important;
   // max-width: var(--max-width);
   margin: 0 auto;
@@ -21,14 +21,14 @@
   }
 
   .logo-text {
-    fill: var(--colors-text-body);
+    fill: var(--color-text-body);
   }
 
   .logo-mark {
-    fill: var(--colors-primary-darker);
+    fill: var(--color-primary-darker);
   }
 
-  .logo + nav {
+  .logo+nav {
     margin-right: var(--spacing-xl);
   }
 
@@ -36,7 +36,7 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-    color: var(--colors-white);
+    color: var(--color-white);
     aspect-ratio: 16/7;
     background-size: cover;
     text-align: center;
@@ -46,7 +46,7 @@
     &::after {
       content: '';
       position: absolute;
-      background: var(--colors-primary-dark);
+      background: var(--color-primary-dark);
       top: 0;
       left: 0;
       bottom: 0;
@@ -55,7 +55,7 @@
       opacity: 0.75;
     }
 
-    > * {
+    >* {
       z-index: 10;
       position: relative;
     }
@@ -98,7 +98,7 @@
   }
 
   .celebrating {
-    background: var(--colors-primary-lighter);
+    background: var(--color-primary-lighter);
     text-align: center;
     padding: var(--spacing-xxl) var(--spacing-xl);
 
@@ -120,8 +120,8 @@
   }
 
   .footer {
-    background: var(--colors-primary-darker);
-    color: var(--colors-white);
+    background: var(--color-primary-darker);
+    color: var(--color-white);
     padding: var(--spacing-lg) var(--spacing-xl) var(--spacing-xxl);
     margin-top: auto;
     display: flex;
@@ -137,11 +137,11 @@
     }
 
     .logo-text {
-      fill: var(--colors-white);
+      fill: var(--color-white);
     }
 
     .logo-mark {
-      fill: var(--colors-primary-lighter);
+      fill: var(--color-primary-lighter);
     }
 
     .social-menu--footer {
@@ -150,11 +150,11 @@
     }
 
     .social-menu--footer .social-menu__link {
-      color: var(--colors-primary-lighter);
+      color: var(--color-primary-lighter);
       font-size: var(--font-size-display);
 
       &:hover {
-        color: var(--colors-primary-light);
+        color: var(--color-primary-light);
       }
     }
 
@@ -168,7 +168,7 @@
     }
 
     .footer-h3 {
-      color: var(--colors-primary-lighter);
+      color: var(--color-primary-lighter);
       font-size: var(--font-size-body);
     }
 
