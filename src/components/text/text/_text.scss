@@ -2,7 +2,7 @@
  * in components with other classnames.
 */
 @mixin paragraph($margin: 0 0 var(--spacing-lg)) {
-  line-height: var(--line-heights-normal);
+  line-height: var(--line-height-normal);
   margin: $margin;
 }
 

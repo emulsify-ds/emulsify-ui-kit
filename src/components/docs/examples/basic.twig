@@ -1,0 +1,42 @@
+<div class="example basic">
+	{% include "@components/docs/examples/assets/_header.twig" %}
+	<main class="basic text-long">
+		{% include "@components/menus/breadcrumbs/breadcrumbs.twig" with {
+			breadcrumb: data.breadcrumb
+		} %}
+		<h1 class="page-title">Undergraduate Courses</h1>
+		<h2>Unveiling the Rich Tapestry of Film History</h2>
+		<p>In the first semester, students embark on a captivating journey through time, exploring the evolution of cinema from its early beginnings to the present day. They delve into the works of influential filmmakers, iconic films, and significant movements, cultivating a deep appreciation for the artistic, cultural, and social impact of cinema.</p>
+
+		<img src="{{_context.image}}" alt="" style="margin: var(--spacing-xl) 0"/>
+
+		<h2>Analyzing Films: Unraveling the Layers of Meaning</h2>
+		<p>Diving into the realm of film theory, aesthetics, and analysis, students develop the skills to interpret films through multiple lenses. They delve into narrative structures, visual storytelling techniques, and the nuanced role of cinematography, sound, and editing. Through rigorous analysis and thought-provoking discussions, students gain a profound understanding of the intricate layers of meaning embedded within films.</p>
+		<h2>Hands-On Filmmaking Experience: From Vision to Creation</h2>
+		<p>Empowering students with practical skills, our program offers hands-on production courses where they transform their creative visions into reality. From scriptwriting to directing, cinematography to editing, students master the technical aspects of filmmaking. Collaborating with fellow students, they navigate the complexities of teamwork, effective communication, and project organization.</p>
+		<p>Our program goes beyond the classroom, providing valuable industry insights and connections. Guest lectures, workshops, and internships offer students opportunities to learn from and network with professionals in the field. Through these engagements, students gain real-world perspectives, understand industry trends, and lay the foundation for future career opportunities.</p>
+		<p>In the final semesters, students have the freedom to specialize in areas of interest. Whether it's documentary filmmaking, film criticism, or screenwriting, advanced courses refine their skills and knowledge, empowering them to delve deeper into their chosen field. The program culminates in a capstone project, where students showcase their expertise through a comprehensive film analysis, research paper, or creative work.</p>
+		<p>Led by passionate faculty and supported by state-of-the-art facilities, our Film Studies program offers a transformative educational experience. Students emerge with a profound appreciation for cinema's artistic power, a strong foundation in critical thinking and analysis, and the practical skills required to succeed in the film industry or pursue further academic studies in the field. Join us on this remarkable journey of cinematic exploration and discovery.</p>
+
+		<section class="faux-form">
+			<h2>Fill out this form</h2>
+			<div class="two-col">
+				<div class="form-item">
+					<label for="edit-name" class="form-item__label form-item__label--required form-item__label--textfield">Name</label>
+					<input id="edit-name" autocorrect="none" autocapitalize="none" spellcheck="false" type="text" name="name" value="" size="60" maxlength="60" class="form-item__textfield form-item__textfield--required" required="required" aria-required="true" placeholder="First, Middle, Last">
+				</div>
+				<div class="form-item">
+					<label for="emailaddress" class="form-item__label form-item__label--textfield">Email Address</label>
+					<input id="emailaddress" type="email" class="form-item__textfield" placeholder="name@email.com">
+				</div>
+			</div>
+
+			{% include "@components/button/button.twig" with { button__content: 'Apply today' } %}
+
+		</section>
+
+
+	</main>
+	{% include "@components/docs/examples/assets/_footer.twig" %}
+
+</div>

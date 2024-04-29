@@ -14,10 +14,11 @@
   @include heading-large($font-size: var(--font-size-h3));
 
   margin: 0;
-  line-height: var(--line-heights-tight);
+  line-height: var(--line-height-tight);
 
   &-link {
     @include link;
+    color: var(--color-text-heading);
 
     text-decoration: none;
   }
@@ -26,9 +27,9 @@
 .card__subheading {
   @include heading-medium($font-size: var(--font-size-small));
 
-  color: var(--color-grays-500);
+  color: var(--color-text-heading-lighter);
   margin: 0 0 var(--spacing-md);
-  line-height: var(--line-heights-tight);
+  line-height: var(--line-height-tight);
   text-transform: uppercase;
 }
 
