@@ -1446,118 +1446,7 @@
       }
     }
   },
-  "Main": {
-    "color": {
-      "primary": {
-        "default": {
-          "value": "{color.WUP.blue.600}",
-          "type": "color",
-          "description": "600"
-        },
-        "light": {
-          "value": "{color.primary.default}",
-          "type": "color",
-          "$extensions": {
-            "studio.tokens": {
-              "modify": {
-                "type": "lighten",
-                "value": ".2",
-                "space": "hsl"
-              }
-            }
-          }
-        },
-        "lighter": {
-          "value": "{color.primary.default}",
-          "type": "color",
-          "$extensions": {
-            "studio.tokens": {
-              "modify": {
-                "type": "lighten",
-                "value": ".65",
-                "space": "hsl"
-              }
-            }
-          }
-        },
-        "dark": {
-          "value": "{color.primary.default}",
-          "type": "color",
-          "$extensions": {
-            "studio.tokens": {
-              "modify": {
-                "type": "darken",
-                "value": ".2",
-                "space": "hsl"
-              }
-            }
-          }
-        },
-        "darker": {
-          "value": "{color.primary.default}",
-          "type": "color",
-          "$extensions": {
-            "studio.tokens": {
-              "modify": {
-                "type": "darken",
-                "value": ".4",
-                "space": "hsl"
-              }
-            }
-          }
-        }
-      },
-      "text": {
-        "body": {
-          "value": "{color.EmulsifyBlue.1000}",
-          "type": "color"
-        },
-        "body-lighter": {
-          "value": "{color.primary.darker}",
-          "type": "color"
-        },
-        "heading": {
-          "value": "{color.primary.darker}",
-          "type": "color",
-          "description": "{color.primary.dark}"
-        },
-        "heading-lighter": {
-          "value": "{color.primary.dark}",
-          "type": "color",
-          "description": "{color.primary.dark}"
-        },
-        "white": {
-          "value": "{color.white}",
-          "type": "color"
-        }
-      },
-      "warning": {
-        "default": {
-          "value": "#D80F0F",
-          "type": "color"
-        }
-      },
-      "link": {
-        "value": "{color.EmulsifyBlue.600}",
-        "type": "color"
-      },
-      "link-hover": {
-        "value": "{color.EmulsifyBlue.700}",
-        "type": "color"
-      }
-    },
-    "fontFamily": {
-      "body": {
-        "value": "{font-family.primary}",
-        "type": "fontFamilies"
-      },
-      "heading": {
-        "value": "{font-family.primary}",
-        "type": "fontFamilies"
-      }
-    }
-  },
-  "Gold": {
+  "semantic": {
     "color": {
       "primary": {
         "default": {
@@ -2728,8 +2617,7 @@
         "components/table": "enabled",
         "components/tabs": "enabled",
         "components/textField": "enabled",
-        "Main": "enabled",
-        "Gold": "disabled"
+        "semantic": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:16908",
       "$figmaModeId": "23237:10",
@@ -2918,8 +2806,7 @@
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
         "global": "enabled",
-        "Main": "disabled",
-        "Gold": "disabled"
+        "semantic": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17089",
       "$figmaModeId": "23237:11",
@@ -2971,8 +2858,7 @@
       "name": "Emulsify Semantic",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "Main": "enabled",
-        "Gold": "disabled"
+        "semantic": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17133",
       "$figmaModeId": "23237:12",
@@ -2995,8 +2881,7 @@
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
         "storybook": "source",
-        "Main": "disabled",
-        "Gold": "disabled"
+        "semantic": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17144",
       "$figmaModeId": "23237:13",
@@ -3025,8 +2910,7 @@
         "components/table": "enabled",
         "components/tabs": "enabled",
         "components/textField": "enabled",
-        "Main": "disabled",
-        "Gold": "disabled"
+        "semantic": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17145",
       "$figmaModeId": "23237:14",
@@ -3179,8 +3063,7 @@
         "components/table": "enabled",
         "components/tabs": "enabled",
         "components/textField": "enabled",
-        "Main": "enabled",
-        "Gold": "disabled"
+        "semantic": "disabled"
       },
       "group": "WUP"
     },
@@ -3208,7 +3091,7 @@
         "components/table": "enabled",
         "components/tabs": "enabled",
         "components/textField": "enabled",
-        "Gold": "enabled"
+        "semantic": "enabled"
       },
       "group": "WUP"
     }
@@ -3216,8 +3099,7 @@
   "$metadata": {
     "tokenSetOrder": [
       "global",
-      "Main",
-      "Gold",
+      "semantic",
       "components/accordion",
       "components/blockQuote",
       "components/breadcrumbs",
