@@ -1446,7 +1446,7 @@
       }
     }
   },
-  "Main": {
+  "semantic": {
     "color": {
       "primary": {
         "default": {
@@ -2617,8 +2617,7 @@
         "components/table": "enabled",
         "components/tabs": "enabled",
         "components/textField": "enabled",
-        "Main": "enabled",
-        "Gold": "disabled"
+        "semantic": "enabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:16908",
       "$figmaModeId": "23237:10",
@@ -2807,8 +2806,7 @@
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
         "global": "enabled",
-        "Main": "disabled",
-        "Gold": "disabled"
+        "semantic": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17089",
       "$figmaModeId": "23237:11",
@@ -2860,8 +2858,7 @@
       "name": "Emulsify Semantic",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "Main": "enabled",
-        "Gold": "disabled"
+        "semantic": "enabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17133",
       "$figmaModeId": "23237:12",
@@ -2884,8 +2881,7 @@
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
         "storybook": "source",
-        "Main": "disabled",
-        "Gold": "disabled"
+        "semantic": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17144",
       "$figmaModeId": "23237:13",
@@ -2914,8 +2910,7 @@
         "components/table": "enabled",
         "components/tabs": "enabled",
         "components/textField": "enabled",
-        "Main": "disabled",
-        "Gold": "disabled"
+        "semantic": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17145",
       "$figmaModeId": "23237:14",
@@ -3068,8 +3063,7 @@
         "components/table": "enabled",
         "components/tabs": "enabled",
         "components/textField": "enabled",
-        "Main": "enabled",
-        "Gold": "disabled"
+        "semantic": "enabled"
       },
       "group": "WUP"
     },
@@ -3097,7 +3091,7 @@
         "components/table": "enabled",
         "components/tabs": "enabled",
         "components/textField": "enabled",
-        "Gold": "enabled"
+        "semantic": "disabled"
       },
       "group": "WUP"
     }
@@ -3105,8 +3099,7 @@
   "$metadata": {
     "tokenSetOrder": [
       "global",
-      "Main",
-      "Gold",
+      "semantic",
       "components/accordion",
       "components/blockQuote",
       "components/breadcrumbs",
