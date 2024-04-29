@@ -2303,86 +2303,82 @@
       "type": "other"
     },
     "1": {
-      "value": "Main",
+      "value": "semantic",
       "type": "other"
     },
     "2": {
-      "value": "Gold",
-      "type": "other"
-    },
-    "3": {
       "value": "components/accordion",
       "type": "other"
     },
-    "4": {
+    "3": {
       "value": "components/blockQuote",
       "type": "other"
     },
-    "5": {
+    "4": {
       "value": "components/breadcrumbs",
       "type": "other"
     },
-    "6": {
+    "5": {
       "value": "components/button",
       "type": "other"
     },
-    "7": {
+    "6": {
       "value": "components/card",
       "type": "other"
     },
-    "8": {
+    "7": {
       "value": "components/checkbox",
       "type": "other"
     },
-    "9": {
+    "8": {
       "value": "components/cta",
       "type": "other"
     },
-    "10": {
+    "9": {
       "value": "components/fieldset",
       "type": "other"
     },
-    "11": {
+    "10": {
       "value": "components/input",
       "type": "other"
     },
-    "12": {
+    "11": {
       "value": "components/link",
       "type": "other"
     },
-    "13": {
+    "12": {
       "value": "components/mainMenu",
       "type": "other"
     },
-    "14": {
+    "13": {
       "value": "components/pager",
       "type": "other"
     },
-    "15": {
+    "14": {
       "value": "components/radioButton",
       "type": "other"
     },
-    "16": {
+    "15": {
       "value": "components/selectdropdown",
       "type": "other"
     },
-    "17": {
+    "16": {
       "value": "components/status",
       "type": "other"
     },
-    "18": {
+    "17": {
       "value": "components/table",
       "type": "other"
     },
-    "19": {
+    "18": {
       "value": "components/tabs",
       "type": "other"
     },
-    "20": {
+    "19": {
       "value": "components/textField",
       "type": "other"
     },
-    "21": {
+    "20": {
       "value": "storybook",
       "type": "other"
     }
@@ -2623,8 +2619,7 @@
       "components/table": "enabled",
       "components/tabs": "enabled",
       "components/textField": "enabled",
-      "Main": "enabled",
-      "Gold": "disabled"
+      "semantic": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:16908",
     "$figmaModeId": "23237:10",
@@ -2814,8 +2809,7 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "global": "enabled",
-      "Main": "disabled",
-      "Gold": "disabled"
+      "semantic": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17089",
     "$figmaModeId": "23237:11",
@@ -2868,8 +2862,7 @@
     "id": "ca91148967a5dcc80f7e50f6ccfe35b30efd5f2f",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Main": "enabled",
-      "Gold": "disabled"
+      "semantic": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17133",
     "$figmaModeId": "23237:12",
@@ -2893,8 +2886,7 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "storybook": "source",
-      "Main": "disabled",
-      "Gold": "disabled"
+      "semantic": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17144",
     "$figmaModeId": "23237:13",
@@ -2924,8 +2916,7 @@
       "components/table": "enabled",
       "components/tabs": "enabled",
       "components/textField": "enabled",
-      "Main": "disabled",
-      "Gold": "disabled"
+      "semantic": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17145",
     "$figmaModeId": "23237:14",
@@ -3079,8 +3070,7 @@
       "components/table": "enabled",
       "components/tabs": "enabled",
       "components/textField": "enabled",
-      "Main": "enabled",
-      "Gold": "disabled"
+      "semantic": "disabled"
     },
     "group": "WUP",
     "type": "other",
@@ -3109,7 +3099,7 @@
       "components/table": "enabled",
       "components/tabs": "enabled",
       "components/textField": "enabled",
-      "Gold": "enabled"
+      "semantic": "enabled"
     },
     "group": "WUP",
     "type": "other",
