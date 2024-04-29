@@ -1,5 +1,5 @@
 .form-item {
-  color: var(--colors-text-body);
+  color: var(--color-text-body);
   margin-bottom: 1em;
 
   @include clearfix;
@@ -59,7 +59,7 @@ legend {
 }
 
 .form-item--warning {
-  --input-color-label: var(--colors-warning-default);
-  --input-border-color: var(--colors-warning-default);
-  --input-color-help-text: var(--colors-warning-default);
+  --input-color-label: var(--color-warning-default);
+  --input-border-color: var(--color-warning-default);
+  --input-color-help-text: var(--color-warning-default);
 }

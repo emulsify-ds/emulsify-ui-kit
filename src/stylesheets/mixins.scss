@@ -58,11 +58,11 @@ $outer-container-break: var(--breakpoint-sm);
 @mixin heading-xl($font-family: var(--font-family-heading),
   $font-size: var(--font-size-h1),
   $line-height: var(--line-heights-none),
-  $color: var(--colors-text-heading),
+  $color: var(--color-text-heading),
   $color-link: inherit,
   $color-link-hover: inherit,
   $font-weight: 700,
-  $margin: var(--spacing-xxl) 0 var(--spacing-lg)) {
+  $margin: var(--spacing-xl) 0 var(--spacing-lg)) {
   color: $color;
   font-family: $font-family;
   font-weight: $font-weight;
@@ -71,6 +71,7 @@ $outer-container-break: var(--breakpoint-sm);
   line-height: $line-height;
   margin: $margin;
   width: auto;
+  text-wrap: balance;
 
   &__link {
     color: $color-link;
@@ -84,11 +85,11 @@ $outer-container-break: var(--breakpoint-sm);
 @mixin heading-large($font-family: var(--font-family-heading),
   $font-size: var(--font-size-h2),
   $line-height: var(--line-heights-none),
-  $color: var(--colors-text-heading),
+  $color: var(--color-text-heading),
   $color-link: inherit,
   $color-link-hover: inherit,
   $font-weight: 700,
-  $margin: var(--spacing-xxl) 0 var(--spacing-lg)) {
+  $margin: var(--spacing-xl) 0 var(--spacing-lg)) {
   color: $color;
   font-family: $font-family;
   font-weight: $font-weight;
@@ -97,6 +98,7 @@ $outer-container-break: var(--breakpoint-sm);
   line-height: $line-height;
   margin: $margin;
   width: auto;
+  text-wrap: balance;
 
   &__link {
     color: $color-link;
@@ -110,11 +112,11 @@ $outer-container-break: var(--breakpoint-sm);
 @mixin heading-medium($font-family: var(--font-family-heading),
   $font-size: var(--font-size-h3),
   $line-height: var(--line-heights-tight),
-  $color: var(--colors-text-heading),
+  $color: var(--color-text-heading),
   $color-link: inherit,
   $color-link-hover: inherit,
   $font-weight: 700,
-  $margin: var(--spacing-xxl) 0 var(--spacing-lg)) {
+  $margin: var(--spacing-xl) 0 var(--spacing-lg)) {
   color: $color;
   font-family: $font-family;
   font-weight: $font-weight;
@@ -123,6 +125,7 @@ $outer-container-break: var(--breakpoint-sm);
   line-height: $line-height;
   margin: $margin;
   width: auto;
+  text-wrap: balance;
 
   &__link {
     color: $color-link;
@@ -136,11 +139,11 @@ $outer-container-break: var(--breakpoint-sm);
 @mixin heading-small($font-family: var(--font-family-heading),
   $font-size: var(--font-size-h4),
   $line-height: var(--line-heights-tight),
-  $color: var(--colors-text-heading),
+  $color: var(--color-text-heading),
   $color-link: inherit,
   $color-link-hover: inherit,
   $font-weight: 600,
-  $margin: var(--spacing-xxl) 0 var(--spacing-lg)) {
+  $margin: var(--spacing-xl) 0 var(--spacing-lg)) {
   color: $color;
   font-family: $font-family;
   font-weight: $font-weight;
@@ -149,6 +152,7 @@ $outer-container-break: var(--breakpoint-sm);
   line-height: $line-height;
   margin: $margin;
   width: auto;
+  text-wrap: balance;
 
   &__link {
     color: $color-link;
@@ -162,11 +166,11 @@ $outer-container-break: var(--breakpoint-sm);
 @mixin heading-xs($font-family: var(--font-family-heading),
   $font-size: var(--font-size-h5),
   $line-height: var(--line-heights-tight),
-  $color: var(--colors-text-heading),
+  $color: var(--color-text-heading),
   $color-link: inherit,
   $color-link-hover: inherit,
   $font-weight: 600,
-  $margin: var(--spacing-xxl) 0 var(--spacing-lg)) {
+  $margin: var(--spacing-2xl) 0 var(--spacing-lg)) {
   color: $color;
   font-family: $font-family;
   font-weight: $font-weight;
@@ -175,6 +179,7 @@ $outer-container-break: var(--breakpoint-sm);
   line-height: $line-height;
   margin: $margin;
   width: auto;
+  text-wrap: balance;
 
   &__link {
     color: $color-link;
@@ -186,10 +191,10 @@ $outer-container-break: var(--breakpoint-sm);
 }
 
 @mixin link {
-  color: var(--link-default);
+  color: var(--link-color-default);
   transition: all .15s;
 
   &:hover {
-    color: var(--link-hover);
+    color: var(--link-color-hover);
   }
 }
