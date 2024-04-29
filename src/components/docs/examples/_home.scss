@@ -27,7 +27,7 @@
     fill: var(--color-wup-blue-600);
   }
 
-  .logo+nav {
+  .logo + nav {
     margin-right: var(--spacing-xl);
   }
 
@@ -54,7 +54,7 @@
       opacity: 0.75;
     }
 
-    >* {
+    > * {
       z-index: 10;
       position: relative;
     }

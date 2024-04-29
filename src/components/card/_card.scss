@@ -18,8 +18,8 @@
 
   &-link {
     @include link;
-    color: var(--color-text-heading);
 
+    color: var(--color-text-heading);
     text-decoration: none;
   }
 }

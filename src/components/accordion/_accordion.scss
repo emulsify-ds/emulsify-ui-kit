@@ -107,7 +107,7 @@ $accordion_icon_size: var(--size-xl);
   width: $accordion_icon_size;
   fill: var(--accordion-color-header);
 
-  [aria-expanded='true']>& {
+  [aria-expanded='true'] > & {
     transform: rotate(180deg);
   }
 }
