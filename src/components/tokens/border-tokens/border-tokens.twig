@@ -1,16 +1,16 @@
 <div>
-  <h2 class="sb-title">Border Tokens</h2>
+	<h2 class="sb-title">Border Tokens</h2>
 
-  <ul class="sb-list">
-    {% for border, value in _context.border %}
-      <li class="sb-list__item">
-        <span class="sb-list__label">{{border}}</span>
-        <span class="sb-list__value">{{value.value}}px</span>
-        <span class="sb-list__custom-property">
-          <code class=" sb-custom-property-name">var(--border-{{border}})</code>
-        </span>
-        <span class="sb-list__visualization" style="height: {{value.value}}px; background-color: var(--colors-sb-visualization); width: 300px;"></span>
-      </li>
-    {% endfor %}
-  </ul>
+	<ul class="sb-list">
+		{% for border, value in _context.border %}
+			<li class="sb-list__item">
+				<span class="sb-list__label">{{border}}</span>
+				<span class="sb-list__value">{{value.value}}px</span>
+				<span class="sb-list__custom-property">
+					<code class=" sb-custom-property-name">var(--border-{{border}})</code>
+				</span>
+				<span class="sb-list__visualization" style="height: {{value.value}}px; background-color: var(--color-sb-visualization); width: 300px;"></span>
+			</li>
+		{% endfor %}
+	</ul>
 </div>

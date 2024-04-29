@@ -21,7 +21,7 @@ export default {
   title: 'Pages/Home',
   decorators: [
     (story) =>
-      `<div style="background: var(--colors-grays-700); padding: 0;">${story()}</div>`,
+      `<div style="background: var(--color-grays-700); padding: 0;margin:0;">${story()}</div>`,
   ],
 };
 

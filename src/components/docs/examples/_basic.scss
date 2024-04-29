@@ -1,0 +1,33 @@
+.example {
+  .basic {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--spacing-2xl) 0;
+
+    h1.page-title {
+      margin-block-start: 0;
+      margin-block-end: var(--spacing-2xl);
+    }
+
+    h2 {
+      line-height: var(--line-height-tight);
+    }
+
+    p {
+      line-height: var(--line-height-relaxed);
+    }
+
+    .faux-form {
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-2xl);
+        margin-block-end: var(--spacing-lg);
+      }
+    }
+  }
+
+  &.basic .header {
+    border-bottom: 40px solid var(--color-primary-default);
+  }
+}
