@@ -2,7 +2,7 @@ import template from './line-height.twig';
 import tokens from '../../../tokens/transformed.tokens.json';
 import figma from '../../../../.storybook/configma.json';
 
-const data = { lineHeight: tokens.lineHeights };
+const data = { lineHeight: tokens['line-height'] };
 
 export default {
   title: 'Tokens/Line Height',
