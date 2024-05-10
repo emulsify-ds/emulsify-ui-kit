@@ -63,7 +63,7 @@
           "type": "color"
         },
         "hover": {
-          "value": "#33b2e9",
+          "value": "#009fe4",
           "type": "color"
         }
       },
@@ -525,7 +525,7 @@
     },
     "color": {
       "heading": {
-        "value": "#0080b7",
+        "value": "#006089",
         "type": "color"
       },
       "heading-darker": {
@@ -533,7 +533,7 @@
         "type": "color"
       },
       "eyebrow": {
-        "value": "#005f89",
+        "value": "#006089",
         "type": "color"
       },
       "body": {
@@ -780,11 +780,11 @@
         "type": "color"
       },
       "header": {
-        "value": "#0080b7",
+        "value": "#006089",
         "type": "color"
       },
       "header-hover": {
-        "value": "#33b2e9",
+        "value": "#009fe4",
         "type": "color"
       }
     },
@@ -825,12 +825,13 @@
         "type": "color"
       },
       "body-lighter": {
-        "value": "#005f89",
+        "value": "#006089",
         "type": "color"
       },
       "heading": {
-        "value": "#0080b7",
-        "type": "color"
+        "value": "#006089",
+        "type": "color",
+        "description": "{color.primary.dark}"
       },
       "white": {
         "value": "#ffffff",
@@ -844,11 +845,11 @@
       }
     },
     "link": {
-      "value": "#33b2e9",
+      "value": "#009fe4",
       "type": "color"
     },
     "link-hover": {
-      "value": "#009fe4",
+      "value": "#007fb6",
       "type": "color"
     },
     "black": {
