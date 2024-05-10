@@ -1,5 +1,5 @@
 .form-item {
-  color: var(--colors-text-body);
+  color: var(--color-text-body);
   margin-bottom: 1em;
 
   @include clearfix;
@@ -45,9 +45,10 @@
 
 .form-fieldset {
   margin-bottom: 2em;
-  border: var(--border-sm) solid var(--color-fieldset-border);
+  border: var(--border-sm) solid var(--fieldset-color-border);
   border-radius: var(--radius-fieldset);
   padding: var(--spacing-lg);
+  font-weight: bold;
 
   .form-item {
     margin-left: 1em;
@@ -55,11 +56,11 @@
 }
 
 legend {
-  color: var(--color-fieldset-label);
+  color: var(--fieldset-color-label);
 }
 
 .form-item--warning {
-  --input-color-label: var(--colors-warning-default);
-  --input-border-color: var(--colors-warning-default);
-  --input-color-help-text: var(--colors-warning-default);
+  --input-color-label: var(--color-warning-default);
+  --input-border-color: var(--color-warning-default);
+  --input-color-help-text: var(--color-warning-default);
 }
