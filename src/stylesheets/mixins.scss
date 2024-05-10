@@ -186,10 +186,22 @@ $outer-container-break: var(--breakpoint-sm);
 }
 
 @mixin link {
-  color: var(--link-default);
+  color: var(--link-color-default);
   transition: all .15s;
 
   &:hover {
-    color: var(--link-hover);
+    color: var(--link-color-hover);
   }
+}
+
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
