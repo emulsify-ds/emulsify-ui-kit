@@ -1,7 +1,9 @@
 /* stylelint-disable no-descending-specificity */
 @use '../../stylesheets/mixins.scss';
 
-$accordion_icon_size: var(--size-xl);
+$accordion_icon_size: var(--font-size-lead);
+$accordion_padding_x: calc(var(--spacing-lg) * 5);
+$accordion_padding_y: calc(var(--spacing-lg) * 1.25);
 
 // The accordion group.
 .accordion {
@@ -34,6 +36,7 @@ $accordion_icon_size: var(--size-xl);
   gap: var(--spacing-sm);
   align-items: center;
   width: 100%;
+  padding-right: var(--spacing-lg);
 
   &:hover {
     color: var(--accordion-color-header-hover);
@@ -49,7 +52,7 @@ $accordion_icon_size: var(--size-xl);
   outline: inherit;
   display: flex;
   color: var(--colors-text-body);
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-body);
   gap: var(--spacing-sm);
   align-items: center;
 
@@ -81,16 +84,16 @@ $accordion_icon_size: var(--size-xl);
 // Individual accordion items.
 .accordion-item {
   border-bottom: 1px solid var(--accordion-divider-color);
-  padding-top: var(--spacing-lg);
+  padding-top: calc(var(--spacing-lg) * 1.125);
 }
 
 .accordion-item__heading {
-  @include heading-medium;
+  @include heading-small;
 
   font-weight: normal;
   display: flex;
-  margin: 0 0 var(--spacing-lg);
   color: var(--accordion-color-header);
+  margin: 0 0 $accordion_padding_y;
 
   &:hover {
     color: var(--accordion-color-header-hover);
@@ -99,13 +102,18 @@ $accordion_icon_size: var(--size-xl);
       fill: var(--accordion-color-header-hover);
     }
   }
+
+  [data-accordion-expanded='false'] & {
+    color: var(--accordion-color-body);
+  }
 }
 
 .accordion-item__icon {
   margin-left: auto;
   height: $accordion_icon_size;
   width: $accordion_icon_size;
-  fill: var(--accordion-color-header);
+  fill: var(--accordion-color-body);
+  transition: transform 0.3s;
 
   [aria-expanded='true'] > & {
     transform: rotate(180deg);
@@ -114,13 +122,20 @@ $accordion_icon_size: var(--size-xl);
 
 .accordion-item__content {
   overflow: hidden;
+  padding: 0 var(--spacing-lg);
+  color: var(--accordion-color-body);
+  font-family: var(--font-family-body);
 
   [data-accordion-expanded='true'] & {
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: $accordion_padding_y;
   }
 
   [data-accordion-expanded='false'] & {
     max-height: 0;
+  }
+
+  @include medium {
+    padding: 0 $accordion_padding_x;
   }
 }
 
