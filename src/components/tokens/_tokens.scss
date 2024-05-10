@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 10 Apr 2024 19:38:48 GMT
+ * Generated on Fri, 10 May 2024 20:34:40 GMT
  */
 
 :root {
@@ -16,7 +16,7 @@
   --tabs-color-bg-hover: #ffffff;
   --tabs-color-text-default: #00202e;
   --tabs-color-text-active: #0080b7;
-  --tabs-color-text-hover: #33b2e9;
+  --tabs-color-text-hover: #009fe4;
   --tabs-color-border-bottom: #a9afb1;
   --tab-label: [object Object];
   --table-color-cell-bg: #ffffff;
@@ -97,7 +97,16 @@
   --radius-lg: 1.25rem;
   --cta-header: [object Object];
   --cta-body: [object Object];
-  --cta-fill: #00202e;
+  --cta-eyebrow: [object Object];
+  --cta-button: [object Object];
+  --cta-color-heading: #006089;
+  --cta-color-heading-darker: #006089;
+  --cta-color-eyebrow: #006089;
+  --cta-color-body: #00202e;
+  --cta-color-button: #ffffff;
+  --cta-background: #9ce1ff;
+  --cta-button-background: #009fe4;
+  --cta-button-background-darker: #006089;
   --checkbox-color-label: #00202e;
   --checkbox-color-label-disabled: #a9afb1;
   --checkbox-button-fill: #009fe4;
@@ -140,8 +149,8 @@
   --accordion-header: [object Object];
   --accordion-p: [object Object];
   --accordion-color-body: #00202e;
-  --accordion-color-header: #0080b7;
-  --accordion-color-header-hover: #33b2e9;
+  --accordion-color-header: #006089;
+  --accordion-color-header-hover: #009fe4;
   --accordion-divider-color: #545f64;
   --color-primary-default: #009fe4;
   --color-primary-light: #1ebbff;
@@ -149,10 +158,12 @@
   --color-primary-dark: #0080b7;
   --color-primary-darker: #006089;
   --color-text-body: #00202e;
-  --color-text-heading: #0080b7;
+  --color-text-body-lighter: #006089;
+  --color-text-heading: #006089;
+  --color-text-white: #ffffff;
   --color-warning-default: #d80f0f;
-  --color-link: #33b2e9;
-  --color-link-hover: #009fe4;
+  --color-link: #009fe4;
+  --color-link-hover: #007fb6;
   --color-black: #000000;
   --color-white: #ffffff;
   --color-emulsify-blue-100: #e6f5fc;

@@ -63,7 +63,7 @@
           "type": "color"
         },
         "hover": {
-          "value": "#33b2e9",
+          "value": "#009fe4",
           "type": "color"
         }
       },
@@ -478,8 +478,8 @@
     "header": {
       "value": {
         "fontFamily": "Inter",
-        "fontWeight": "Bold",
-        "lineHeight": "150%",
+        "fontWeight": "Extra Bold",
+        "lineHeight": "100%",
         "fontSize": 37,
         "textCase": "none"
       },
@@ -490,13 +490,71 @@
         "fontFamily": "Inter",
         "fontWeight": "Regular",
         "lineHeight": "150%",
-        "fontSize": 24,
+        "fontSize": 18,
         "textCase": "none"
       },
       "type": "typography"
     },
-    "fill": {
-      "value": "#00202e",
+    "eyebrow": {
+      "value": {
+        "fontFamily": "Inter",
+        "fontWeight": "Bold",
+        "lineHeight": "150%",
+        "fontSize": 16,
+        "textCase": "uppercase"
+      },
+      "type": "typography"
+    },
+    "button": {
+      "value": {
+        "fontFamily": "Inter",
+        "fontWeight": "Bold",
+        "textCase": "uppercase",
+        "fontSize": 18,
+        "lineHeight": "150%"
+      },
+      "type": "typography",
+      "background": {
+        "value": "{color.EmulsifyBlue.600}",
+        "type": "color"
+      },
+      "darker-background": {
+        "value": "{color.EmulsifyBlue.900}",
+        "type": "color"
+      }
+    },
+    "color": {
+      "heading": {
+        "value": "#006089",
+        "type": "color"
+      },
+      "heading-darker": {
+        "value": "#006089",
+        "type": "color"
+      },
+      "eyebrow": {
+        "value": "#006089",
+        "type": "color"
+      },
+      "body": {
+        "value": "#00202e",
+        "type": "color"
+      },
+      "button": {
+        "value": "#ffffff",
+        "type": "color"
+      }
+    },
+    "background": {
+      "value": "#9ce1ff",
+      "type": "color"
+    },
+    "button-background": {
+      "value": "#009fe4",
+      "type": "color"
+    },
+    "button-background-darker": {
+      "value": "#006089",
       "type": "color"
     }
   },
@@ -722,11 +780,11 @@
         "type": "color"
       },
       "header": {
-        "value": "#0080b7",
+        "value": "#006089",
         "type": "color"
       },
       "header-hover": {
-        "value": "#33b2e9",
+        "value": "#009fe4",
         "type": "color"
       }
     },
@@ -766,8 +824,17 @@
         "value": "#00202e",
         "type": "color"
       },
+      "body-lighter": {
+        "value": "#006089",
+        "type": "color"
+      },
       "heading": {
-        "value": "#0080b7",
+        "value": "#006089",
+        "type": "color",
+        "description": "{color.primary.dark}"
+      },
+      "white": {
+        "value": "#ffffff",
         "type": "color"
       }
     },
@@ -778,11 +845,11 @@
       }
     },
     "link": {
-      "value": "#33b2e9",
+      "value": "#009fe4",
       "type": "color"
     },
     "link-hover": {
-      "value": "#009fe4",
+      "value": "#007fb6",
       "type": "color"
     },
     "black": {
@@ -2255,7 +2322,6 @@
       "color.fieldset.bg": "S:bfe975e6026fa7f0aa7fd11985d9ebaeb6565d17,",
       "color.fieldset.border": "S:ca6abb31ab70455a6d11848aadd158a8907b0bea,",
       "color.fieldset.label": "S:0d9aa0b5950a87753c48fba1aa9100282ebbb8e0,",
-      "cta.fill": "S:a6bc1d54b3da7366a595dc0dc2e6987baeafd6f3,",
       "breadcrumb.text.default": "S:ecaf6ffd8d511adea99c5a4d94c5929eed89b7d7,",
       "breadcrumb.text.hover": "S:c0247789551d012ba99e6c2d1738a6f99f8f5f14,",
       "colors.primary.lighter": "S:c8725628a7dffcd7f97d70505a8e1ef3f6f99c16,",
@@ -2445,7 +2511,6 @@
       "color.fieldset.bg": "47251918dfafd3b9a29561c0d8e0f45a1d6a6a8e",
       "color.fieldset.border": "8f1a5d81f61715b473cb09289e806d33e715901a",
       "color.fieldset.label": "667b8ed6a1eae8e94a1c324b6fd9c9dffeb7660a",
-      "cta.fill": "45d5ad4f0856cca1ee16c376e89792a2ec60ef04",
       "checkbox.button.fill": "30f3605f0746da73f37ea046045249db55362821",
       "checkbox.button.fill-hover": "0d9bc68bbfb1c107738cc5b7aa11c1bd1c7631d5",
       "checkbox.button.fill-disabled": "e2aea7eb3659d2c9f7c32a2d1eca870cb41476c6",
@@ -2736,7 +2801,6 @@
       "color.fieldset.bg": "460db7a453063b068e0f6a8fd468df2a3a5d636d",
       "color.fieldset.border": "bac0e0e04922374a9a35f443a582325c3aacea30",
       "color.fieldset.label": "8c40e4982b2746d45e4e69b08db0d547d5e8857a",
-      "cta.fill": "fe8b7bbb13b55c353092d168171c4996c3a4678c",
       "checkbox.button.fill": "3f0fbc42ccba13fd6c47395eb1c2b8a69fd8beb6",
       "checkbox.button.fill-hover": "f57fe90c92e54779298333aa444cbb5cedc510df",
       "checkbox.button.fill-disabled": "37d7515936488e0e90dc79d2a08c5e45ce430dd0",
