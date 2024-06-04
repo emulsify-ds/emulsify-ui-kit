@@ -339,11 +339,11 @@
           "type": "color"
         },
         "label": {
-          "value": "#002f84",
+          "value": "#002976",
           "type": "color"
         },
         "label-hover": {
-          "value": "#002973",
+          "value": "#001f59",
           "type": "color"
         }
       },
@@ -357,11 +357,11 @@
           "type": "color"
         },
         "label": {
-          "value": "#002f84",
+          "value": "#001f59",
           "type": "color"
         },
         "label-hover": {
-          "value": "#002973",
+          "value": "#001f59",
           "type": "color"
         }
       }
@@ -623,7 +623,7 @@
         "type": "color"
       },
       "bkg-hover": {
-        "value": "#002f84",
+        "value": "#002976",
         "type": "color"
       },
       "label-hover": {
@@ -635,7 +635,7 @@
         "type": "color"
       },
       "bkg-focus": {
-        "value": "#002f84",
+        "value": "#002976",
         "type": "color"
       }
     },
@@ -705,11 +705,11 @@
         "type": "color"
       },
       "color-hover": {
-        "value": "#002f84",
+        "value": "#002976",
         "type": "color"
       },
       "color-focus": {
-        "value": "#002f84",
+        "value": "#002976",
         "type": "color"
       }
     },
@@ -1119,6 +1119,10 @@
             "type": "color"
           }
         }
+      },
+      "green": {
+        "value": "#0EB747",
+        "type": "color"
       }
     }
   },
@@ -2808,8 +2812,7 @@
     "id": "0a5c4562bd35f00ce8a339239980a3842147c0bd",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "global": "enabled",
-      "semantic": "disabled"
+      "global": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17089",
     "$figmaModeId": "23237:11",
@@ -2885,8 +2888,7 @@
     "id": "16a10d373d39988a75c7d612cd449a633f373c44",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "storybook": "source",
-      "semantic": "disabled"
+      "storybook": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17144",
     "$figmaModeId": "23237:13",
@@ -2915,8 +2917,7 @@
       "components/status": "enabled",
       "components/table": "enabled",
       "components/tabs": "enabled",
-      "components/textField": "enabled",
-      "semantic": "disabled"
+      "components/textField": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17145",
     "$figmaModeId": "23237:14",
@@ -3098,8 +3099,7 @@
       "components/status": "enabled",
       "components/table": "enabled",
       "components/tabs": "enabled",
-      "components/textField": "enabled",
-      "semantic": "disabled"
+      "components/textField": "enabled"
     },
     "group": "WUP",
     "type": "other",
