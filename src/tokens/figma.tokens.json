@@ -1454,7 +1454,7 @@
     "color": {
       "primary": {
         "default": {
-          "value": "{color.WUP.blue.600}",
+          "value": "{color.WUP.green}",
           "type": "color",
           "description": "600"
         },
