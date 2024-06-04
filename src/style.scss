@@ -11,7 +11,7 @@ body {
   color: var(--color-text-body);
   font-family: var(--font-family-body);
   font-size: var(--font-size-body);
-  line-height: var(--line-heights-normal);
+  line-height: var(--line-height-normal);
 }
 
 *,
@@ -21,6 +21,7 @@ body {
 }
 
 // Components
+
 @import 'tokens/**/*.scss';
 @import 'stylesheets/**/*.scss';
 @import 'storybook-styles/**/*.scss';
