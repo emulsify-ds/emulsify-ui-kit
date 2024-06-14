@@ -107,7 +107,7 @@
       },
       "header": {
         "bg": {
-          "value": "#009fe4",
+          "value": "#007fb6",
           "type": "color"
         },
         "text": {
@@ -860,6 +860,10 @@
     },
     "link-hover": {
       "value": "#00202e",
+      "type": "color"
+    },
+    "table": {
+      "value": "#007fb6",
       "type": "color"
     },
     "black": {
