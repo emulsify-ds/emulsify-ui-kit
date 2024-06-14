@@ -63,7 +63,7 @@
           "type": "color"
         },
         "hover": {
-          "value": "#009fe4",
+          "value": "#005f89",
           "type": "color"
         }
       },
@@ -370,11 +370,11 @@
   "link": {
     "color": {
       "default": {
-        "value": "#009fe4",
+        "value": "#005f89",
         "type": "color"
       },
       "hover": {
-        "value": "#005f89",
+        "value": "#00202e",
         "type": "color"
       }
     },
@@ -611,7 +611,7 @@
   "button": {
     "color": {
       "bkg": {
-        "value": "#007fb6",
+        "value": "#0080b7",
         "type": "color",
         "focus": {
           "value": "red",
@@ -623,7 +623,7 @@
         "type": "color"
       },
       "bkg-hover": {
-        "value": "#005f89",
+        "value": "#006089",
         "type": "color"
       },
       "label-hover": {
@@ -635,7 +635,7 @@
         "type": "color"
       },
       "bkg-focus": {
-        "value": "#005f89",
+        "value": "#006089",
         "type": "color"
       }
     },
@@ -701,15 +701,15 @@
     },
     "border": {
       "color": {
-        "value": "#007fb6",
+        "value": "#0080b7",
         "type": "color"
       },
       "color-hover": {
-        "value": "#005f89",
+        "value": "#006089",
         "type": "color"
       },
       "color-focus": {
-        "value": "#005f89",
+        "value": "#006089",
         "type": "color"
       }
     },
@@ -784,7 +784,7 @@
         "type": "color"
       },
       "header-hover": {
-        "value": "#007fb6",
+        "value": "#00202e",
         "type": "color"
       }
     },
@@ -845,19 +845,11 @@
       }
     },
     "link": {
-      "value": "#009fe4",
+      "value": "#005f89",
       "type": "color"
     },
     "link-hover": {
-      "value": "#007fb6",
-      "type": "color"
-    },
-    "button": {
-      "value": "#007fb6",
-      "type": "color"
-    },
-    "button-hover": {
-      "value": "#005f89",
+      "value": "#00202e",
       "type": "color"
     },
     "black": {

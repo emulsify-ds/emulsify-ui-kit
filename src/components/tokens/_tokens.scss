@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 14 Jun 2024 20:51:41 GMT
+ * Generated on Fri, 14 Jun 2024 21:24:10 GMT
  */
 
 :root {
@@ -16,7 +16,7 @@
   --tabs-color-bg-hover: #ffffff;
   --tabs-color-text-default: #00202e;
   --tabs-color-text-active: #0080b7;
-  --tabs-color-text-hover: #009fe4;
+  --tabs-color-text-hover: #005f89;
   --tabs-color-border-bottom: #a9afb1;
   --tab-label: [object Object];
   --table-color-cell-bg: #ffffff;
@@ -75,8 +75,8 @@
   --main-menu-color-dropdown-bg-hover: #9ce1ff;
   --main-menu-color-dropdown-label: #0080b7;
   --main-menu-color-dropdown-label-hover: #006089;
-  --link-color-default: #009fe4;
-  --link-color-hover: #005f89;
+  --link-color-default: #005f89;
+  --link-color-hover: #00202e;
   --link-body: [object Object];
   --input-gap: 0.5rem;
   --input-padding-x: 1rem;
@@ -117,12 +117,12 @@
   --checkbox-button-stroke-disabled: #a9afb1;
   --checkbox-spacing-gap: 0.25rem;
   --card-spacing: 1rem;
-  --button-color-bkg: #007fb6;
+  --button-color-bkg: #0080b7;
   --button-color-label: #ffffff;
-  --button-color-bkg-hover: #005f89;
+  --button-color-bkg-hover: #006089;
   --button-color-label-hover: #ffffff;
   --button-color-label-focus: #ffffff;
-  --button-color-bkg-focus: #005f89;
+  --button-color-bkg-focus: #006089;
   --button-padding-x: 1rem;
   --button-padding-x-hover: 1rem;
   --button-padding-x-focus: 1rem;
@@ -137,9 +137,9 @@
   --button-border-width-border-hover: 1px;
   --button-border-width-border-focus: 1px;
   --button-text-case: uppercase;
-  --button-border-color: #007fb6;
-  --button-border-color-hover: #005f89;
-  --button-border-color-focus: #005f89;
+  --button-border-color: #0080b7;
+  --button-border-color-hover: #006089;
+  --button-border-color-focus: #006089;
   --button-font-weight-label: Bold;
   --breadcrumb-default: [object Object];
   --breadcrumb-text-default: #545f64;
@@ -150,7 +150,7 @@
   --accordion-p: [object Object];
   --accordion-color-body: #00202e;
   --accordion-color-header: #006089;
-  --accordion-color-header-hover: #007fb6;
+  --accordion-color-header-hover: #00202e;
   --accordion-divider-color: #545f64;
   --color-primary-default: #009fe4;
   --color-primary-light: #1ebbff;
@@ -162,10 +162,8 @@
   --color-text-heading: #006089;
   --color-text-white: #ffffff;
   --color-warning-default: #d80f0f;
-  --color-link: #009fe4;
-  --color-link-hover: #007fb6;
-  --color-button: #007fb6;
-  --color-button-hover: #005f89;
+  --color-link: #005f89;
+  --color-link-hover: #00202e;
   --color-black: #000000;
   --color-white: #ffffff;
   --color-emulsify-blue-100: #e6f5fc;
