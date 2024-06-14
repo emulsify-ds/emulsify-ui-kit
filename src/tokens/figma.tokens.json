@@ -1367,6 +1367,10 @@
       "link-hover": {
         "value": "{color.EmulsifyBlue.1000}",
         "type": "color"
+      },
+      "table": {
+        "value": "{color.EmulsifyBlue.700}",
+        "type": "color"
       }
     },
     "fontFamily": {
@@ -2095,13 +2099,13 @@
             "type": "color"
           },
           "icon": {
-            "value": "{color.EmulsifyBlue.700}",
+            "value": "{color.table}",
             "type": "color"
           }
         },
         "header": {
           "bg": {
-            "value": "{color.primary.default}",
+            "value": "{color.table}",
             "type": "color"
           },
           "text": {
