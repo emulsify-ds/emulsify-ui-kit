@@ -1885,13 +1885,13 @@
             "type": "color"
           },
           "focus": {
-            "value": "{color.EmulsifyBlue.600}",
+            "value": "{color.primary.dark}",
             "type": "color"
           }
         },
         "fill": {
           "hover": {
-            "value": "{color.primary.default}",
+            "value": "{color.primary.dark}",
             "type": "color"
           }
         }
