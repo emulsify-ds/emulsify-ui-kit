@@ -275,13 +275,13 @@
           "type": "color"
         },
         "focus": {
-          "value": "#009fe4",
+          "value": "#0080b7",
           "type": "color"
         }
       },
       "fill": {
         "hover": {
-          "value": "#009fe4",
+          "value": "#0080b7",
           "type": "color"
         }
       }
