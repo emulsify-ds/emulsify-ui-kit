@@ -733,7 +733,7 @@
     },
     "text": {
       "default": {
-        "value": "#7f878b",
+        "value": "#545f64",
         "type": "color"
       },
       "hover": {
@@ -784,7 +784,7 @@
         "type": "color"
       },
       "header-hover": {
-        "value": "#009fe4",
+        "value": "#007fb6",
         "type": "color"
       }
     },
