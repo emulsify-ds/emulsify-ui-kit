@@ -1580,16 +1580,16 @@
       "spacing": {
         "value": "{spacing.lg}",
         "type": "spacing"
-      }
-    },
-    "color": {
-      "heading": {
-        "value": "{color.primary.dark}",
-        "type": "color"
       },
-      "subheading": {
-        "value": "{color.primary.darker}",
-        "type": "color"
+      "color": {
+        "heading": {
+          "value": "{color.primary.dark}",
+          "type": "color"
+        },
+        "subheading": {
+          "value": "{color.primary.darker}",
+          "type": "color"
+        }
       }
     }
   },
