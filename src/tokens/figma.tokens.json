@@ -1367,6 +1367,14 @@
       "link-hover": {
         "value": "{color.EmulsifyBlue.700}",
         "type": "color"
+      },
+      "button": {
+        "value": "{color.EmulsifyBlue.700}",
+        "type": "color"
+      },
+      "button-hover": {
+        "value": "{color.EmulsifyBlue.800}",
+        "type": "color"
       }
     },
     "fontFamily": {
@@ -1465,7 +1473,7 @@
     "button": {
       "color": {
         "bkg": {
-          "value": "{color.primary.default}",
+          "value": "{color.button}",
           "type": "color",
           "focus": {
             "value": "red",
@@ -1477,7 +1485,7 @@
           "type": "color"
         },
         "bkg-hover": {
-          "value": "{color.primary.dark}",
+          "value": "{color.button-hover}",
           "type": "color"
         },
         "label-hover": {
@@ -1489,7 +1497,7 @@
           "type": "color"
         },
         "bkg-focus": {
-          "value": "{color.primary.dark}",
+          "value": "{color.button-hover}",
           "type": "color"
         }
       },
