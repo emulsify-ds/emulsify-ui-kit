@@ -1411,7 +1411,7 @@
           "type": "color"
         },
         "header-hover": {
-          "value": "{color.link}",
+          "value": "{color.link-hover}",
           "type": "color"
         }
       },
@@ -1451,7 +1451,7 @@
       },
       "text": {
         "default": {
-          "value": "{color.grays.400}",
+          "value": "{color.grays.500}",
           "type": "color"
         },
         "hover": {
