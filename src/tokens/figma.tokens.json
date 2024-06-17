@@ -1368,8 +1368,8 @@
         "value": "{color.EmulsifyBlue.1000}",
         "type": "color"
       },
-      "table": {
-        "value": "{color.EmulsifyBlue.800}",
+      "link-hover-lighter": {
+        "value": "{color.EmulsifyBlue.900}",
         "type": "color"
       }
     },
@@ -1469,7 +1469,7 @@
     "button": {
       "color": {
         "bkg": {
-          "value": "{color.primary.dark}",
+          "value": "{color.link}",
           "type": "color",
           "focus": {
             "value": "red",
@@ -1481,7 +1481,7 @@
           "type": "color"
         },
         "bkg-hover": {
-          "value": "{color.primary.darker}",
+          "value": "{color.link-hover-lighter}",
           "type": "color"
         },
         "label-hover": {
@@ -1493,7 +1493,7 @@
           "type": "color"
         },
         "bkg-focus": {
-          "value": "{color.primary.darker}",
+          "value": "{color.link-hover-lighter}",
           "type": "color"
         }
       },
@@ -2099,13 +2099,13 @@
             "type": "color"
           },
           "icon": {
-            "value": "{color.table}",
+            "value": "{color.bkg}",
             "type": "color"
           }
         },
         "header": {
           "bg": {
-            "value": "{color.table}",
+            "value": "{color.link}",
             "type": "color"
           },
           "text": {
@@ -2553,7 +2553,6 @@
         "color.text.heading": "4f236039ebbe9ab9f7b2fc9c730fd1e03d770646",
         "color.warning.default": "53587ede6f97488b7db21986db7147e7886f42b3",
         "color.link": "1f637c9a615fd4d0f936c62a2fadea575f6cc398",
-        "color.link-hover": "74d0f74b830a9dd07279967cea7c9f662178e310",
         "color.black": "55dac975a4f6f9c054d53b85f7ffba4a1d27f291",
         "color.white": "f0dddd77af08dcb4d16939df6ea9a1a24129780f",
         "color.EmulsifyBlue.100": "e83fe29a796a479f9b6331c27c44497ba7db917a",
@@ -2634,7 +2633,8 @@
         "border.lg": "d98fd94c338de18d8949d1bb0b4767131646a4e1",
         "checkbox.spacing.gap": "59fbad63c0994ee956f8790e994534f9f5f5e922",
         "checkbox.color.label": "4db65c0b61319b6c85cdb9c1b683d84e2f65ff52",
-        "checkbox.color.label-disabled": "3a5dec39f06f92904d80c2096f9c439ae0b5d09a"
+        "checkbox.color.label-disabled": "3a5dec39f06f92904d80c2096f9c439ae0b5d09a",
+        "color.link-hover": "74d0f74b830a9dd07279967cea7c9f662178e310"
       }
     },
     {
