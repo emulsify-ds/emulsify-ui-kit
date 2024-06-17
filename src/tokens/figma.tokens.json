@@ -2099,7 +2099,7 @@
             "type": "color"
           },
           "icon": {
-            "value": "{color.bkg}",
+            "value": "{color.link}",
             "type": "color"
           }
         },
