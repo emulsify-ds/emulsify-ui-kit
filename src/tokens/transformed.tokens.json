@@ -101,13 +101,13 @@
           "type": "color"
         },
         "icon": {
-          "value": "#007fb6",
+          "value": "#005f89",
           "type": "color"
         }
       },
       "header": {
         "bg": {
-          "value": "#007fb6",
+          "value": "#005f89",
           "type": "color"
         },
         "text": {
@@ -863,7 +863,7 @@
       "type": "color"
     },
     "table": {
-      "value": "#007fb6",
+      "value": "#005f89",
       "type": "color"
     },
     "black": {
