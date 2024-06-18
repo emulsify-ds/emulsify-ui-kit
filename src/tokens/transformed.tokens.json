@@ -63,7 +63,7 @@
           "type": "color"
         },
         "hover": {
-          "value": "#009fe4",
+          "value": "#005f89",
           "type": "color"
         }
       },
@@ -101,13 +101,13 @@
           "type": "color"
         },
         "icon": {
-          "value": "#007fb6",
+          "value": "#005f89",
           "type": "color"
         }
       },
       "header": {
         "bg": {
-          "value": "#009fe4",
+          "value": "#005f89",
           "type": "color"
         },
         "text": {
@@ -275,13 +275,13 @@
           "type": "color"
         },
         "focus": {
-          "value": "#009fe4",
+          "value": "#0080b7",
           "type": "color"
         }
       },
       "fill": {
         "hover": {
-          "value": "#009fe4",
+          "value": "#0080b7",
           "type": "color"
         }
       }
@@ -370,11 +370,11 @@
   "link": {
     "color": {
       "default": {
-        "value": "#009fe4",
+        "value": "#005f89",
         "type": "color"
       },
       "hover": {
-        "value": "#005f89",
+        "value": "#00202e",
         "type": "color"
       }
     },
@@ -606,12 +606,22 @@
     "spacing": {
       "value": 16,
       "type": "spacing"
+    },
+    "color": {
+      "heading": {
+        "value": "#0080b7",
+        "type": "color"
+      },
+      "subheading": {
+        "value": "#006089",
+        "type": "color"
+      }
     }
   },
   "button": {
     "color": {
       "bkg": {
-        "value": "#009fe4",
+        "value": "#005f89",
         "type": "color",
         "focus": {
           "value": "red",
@@ -623,7 +633,7 @@
         "type": "color"
       },
       "bkg-hover": {
-        "value": "#0080b7",
+        "value": "#00405b",
         "type": "color"
       },
       "label-hover": {
@@ -635,7 +645,7 @@
         "type": "color"
       },
       "bkg-focus": {
-        "value": "#0080b7",
+        "value": "#00405b",
         "type": "color"
       }
     },
@@ -701,15 +711,15 @@
     },
     "border": {
       "color": {
-        "value": "#009fe4",
+        "value": "#005f89",
         "type": "color"
       },
       "color-hover": {
-        "value": "#0080b7",
+        "value": "#00405b",
         "type": "color"
       },
       "color-focus": {
-        "value": "#0080b7",
+        "value": "#00405b",
         "type": "color"
       }
     },
@@ -733,7 +743,7 @@
     },
     "text": {
       "default": {
-        "value": "#7f878b",
+        "value": "#545f64",
         "type": "color"
       },
       "hover": {
@@ -784,7 +794,7 @@
         "type": "color"
       },
       "header-hover": {
-        "value": "#009fe4",
+        "value": "#00202e",
         "type": "color"
       }
     },
@@ -845,11 +855,15 @@
       }
     },
     "link": {
-      "value": "#009fe4",
+      "value": "#005f89",
       "type": "color"
     },
     "link-hover": {
-      "value": "#007fb6",
+      "value": "#00202e",
+      "type": "color"
+    },
+    "link-hover-lighter": {
+      "value": "#00405b",
       "type": "color"
     },
     "black": {
@@ -2541,7 +2555,6 @@
       "color.text.heading": "4f236039ebbe9ab9f7b2fc9c730fd1e03d770646",
       "color.warning.default": "53587ede6f97488b7db21986db7147e7886f42b3",
       "color.link": "1f637c9a615fd4d0f936c62a2fadea575f6cc398",
-      "color.link-hover": "74d0f74b830a9dd07279967cea7c9f662178e310",
       "color.black": "55dac975a4f6f9c054d53b85f7ffba4a1d27f291",
       "color.white": "f0dddd77af08dcb4d16939df6ea9a1a24129780f",
       "color.EmulsifyBlue.100": "e83fe29a796a479f9b6331c27c44497ba7db917a",
@@ -2622,7 +2635,8 @@
       "border.lg": "d98fd94c338de18d8949d1bb0b4767131646a4e1",
       "checkbox.spacing.gap": "59fbad63c0994ee956f8790e994534f9f5f5e922",
       "checkbox.color.label": "4db65c0b61319b6c85cdb9c1b683d84e2f65ff52",
-      "checkbox.color.label-disabled": "3a5dec39f06f92904d80c2096f9c439ae0b5d09a"
+      "checkbox.color.label-disabled": "3a5dec39f06f92904d80c2096f9c439ae0b5d09a",
+      "color.link-hover": "74d0f74b830a9dd07279967cea7c9f662178e310"
     },
     "type": "other",
     "value": "[object Object]"

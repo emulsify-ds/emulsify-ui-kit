@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 10 May 2024 20:51:02 GMT
+ * Generated on Mon, 17 Jun 2024 23:59:55 GMT
  */
 
 :root {
@@ -16,14 +16,14 @@
   --tabs-color-bg-hover: #ffffff;
   --tabs-color-text-default: #00202e;
   --tabs-color-text-active: #0080b7;
-  --tabs-color-text-hover: #009fe4;
+  --tabs-color-text-hover: #005f89;
   --tabs-color-border-bottom: #a9afb1;
   --tab-label: [object Object];
   --table-color-cell-bg: #ffffff;
   --table-color-cell-bg-stripe: #9ce1ff;
   --table-color-cell-text: #00202e;
-  --table-color-cell-icon: #007fb6;
-  --table-color-header-bg: #009fe4;
+  --table-color-cell-icon: #005f89;
+  --table-color-header-bg: #005f89;
   --table-color-header-text: #ffffff;
   --table-color-header-icon: #9ce1ff;
   --table-color-border: #d4d7d8;
@@ -57,8 +57,8 @@
   --radio-gap: 0.25rem;
   --pager-color-text-default: #29373d;
   --pager-color-text-hover: #ffffff;
-  --pager-color-text-focus: #009fe4;
-  --pager-color-fill-hover: #009fe4;
+  --pager-color-text-focus: #0080b7;
+  --pager-color-fill-hover: #0080b7;
   --pager-default: [object Object];
   --pager-padding-x: 1rem;
   --pager-padding-x-hover: 1rem;
@@ -75,8 +75,8 @@
   --main-menu-color-dropdown-bg-hover: #9ce1ff;
   --main-menu-color-dropdown-label: #0080b7;
   --main-menu-color-dropdown-label-hover: #006089;
-  --link-color-default: #009fe4;
-  --link-color-hover: #005f89;
+  --link-color-default: #005f89;
+  --link-color-hover: #00202e;
   --link-body: [object Object];
   --input-gap: 0.5rem;
   --input-padding-x: 1rem;
@@ -117,12 +117,14 @@
   --checkbox-button-stroke-disabled: #a9afb1;
   --checkbox-spacing-gap: 0.25rem;
   --card-spacing: 1rem;
-  --button-color-bkg: #009fe4;
+  --card-color-heading: #0080b7;
+  --card-color-subheading: #006089;
+  --button-color-bkg: #005f89;
   --button-color-label: #ffffff;
-  --button-color-bkg-hover: #0080b7;
+  --button-color-bkg-hover: #00405b;
   --button-color-label-hover: #ffffff;
   --button-color-label-focus: #ffffff;
-  --button-color-bkg-focus: #0080b7;
+  --button-color-bkg-focus: #00405b;
   --button-padding-x: 1rem;
   --button-padding-x-hover: 1rem;
   --button-padding-x-focus: 1rem;
@@ -137,12 +139,12 @@
   --button-border-width-border-hover: 1px;
   --button-border-width-border-focus: 1px;
   --button-text-case: uppercase;
-  --button-border-color: #009fe4;
-  --button-border-color-hover: #0080b7;
-  --button-border-color-focus: #0080b7;
+  --button-border-color: #005f89;
+  --button-border-color-hover: #00405b;
+  --button-border-color-focus: #00405b;
   --button-font-weight-label: Bold;
   --breadcrumb-default: [object Object];
-  --breadcrumb-text-default: #7f878b;
+  --breadcrumb-text-default: #545f64;
   --breadcrumb-text-hover: #192125;
   --block-quote-padding-x: 2rem;
   --block-quote-padding-y: 0.5rem;
@@ -150,7 +152,7 @@
   --accordion-p: [object Object];
   --accordion-color-body: #00202e;
   --accordion-color-header: #006089;
-  --accordion-color-header-hover: #009fe4;
+  --accordion-color-header-hover: #00202e;
   --accordion-divider-color: #545f64;
   --color-primary-default: #009fe4;
   --color-primary-light: #1ebbff;
@@ -162,8 +164,9 @@
   --color-text-heading: #006089;
   --color-text-white: #ffffff;
   --color-warning-default: #d80f0f;
-  --color-link: #009fe4;
-  --color-link-hover: #007fb6;
+  --color-link: #005f89;
+  --color-link-hover: #00202e;
+  --color-link-hover-lighter: #00405b;
   --color-black: #000000;
   --color-white: #ffffff;
   --color-emulsify-blue-100: #e6f5fc;

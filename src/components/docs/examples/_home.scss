@@ -79,7 +79,7 @@
 
   .watch {
     text-align: center;
-    padding: var(--spacing-xxl) var(--spacing-xl);
+    padding: var(--spacing-2xl) var(--spacing-xl);
 
     .watch-h2 {
       @include heading-large;
@@ -92,15 +92,15 @@
   .watch-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-xxl);
+    gap: var(--spacing-2xl);
     max-width: 1000px;
-    margin: var(--spacing-xxl) auto 0;
+    margin: var(--spacing-2xl) auto 0;
   }
 
   .celebrating {
     background: var(--colors-primary-lighter);
     text-align: center;
-    padding: var(--spacing-xxl) var(--spacing-xl);
+    padding: var(--spacing-2xl) var(--spacing-xl);
 
     &-h2 {
       @include heading-large;
@@ -114,15 +114,15 @@
   .celebrating-grid {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: var(--spacing-xxl);
+    gap: var(--spacing-2xl);
     max-width: 775px;
-    margin: var(--spacing-xxl) auto 0;
+    margin: var(--spacing-2xl) auto 0;
   }
 
   .footer {
     background: var(--colors-primary-darker);
     color: var(--colors-white);
-    padding: var(--spacing-lg) var(--spacing-xl) var(--spacing-xxl);
+    padding: var(--spacing-lg) var(--spacing-xl) var(--spacing-2xl);
     margin-top: auto;
     display: flex;
     flex-flow: row nowrap;
