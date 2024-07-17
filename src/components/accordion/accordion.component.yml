@@ -4,8 +4,8 @@ accordion__item__content: 'Enim eget nec sit scelerisque lacus. Porttitor senect
 $schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
 
 name: Accordion
-group: Molecules
-status: experimental
+group: Components
+status: stable
 props:
   type: object
   required:
