@@ -35,6 +35,6 @@ export default create({
   brandTitle: 'Emulsify',
   brandUrl: 'https://emulsify.info',
   brandImage:
-    'https://raw.githubusercontent.com/emulsify-ds/emulsify-ui-kit/storybook-theming/images/emulsify-logo-sb.svg',
+    'https://raw.githubusercontent.com/emulsify-ds/emulsify-ui-kit/main/src/images/logo.svg',
   brandTarget: '_self',
 });
