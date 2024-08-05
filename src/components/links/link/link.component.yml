@@ -1,0 +1,27 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Links
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - link_url
+    - link_content
+  properties:
+    link_url:
+      type: string
+      title: Link's url
+      description: The url of the link.
+      data: 'https://github.com/emulsify-ds/emulsify-design-system'
+    link_content:
+      type: string
+      title: Link's content
+      description: The content/text of the link.
+      data: 'This is my link text'
+    link_attributes:
+      type: string
+      title: Link's attributes (optional)
+      description: The attribute of the link.
+      data:
+        target: '_blank'

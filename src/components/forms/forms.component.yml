@@ -1,0 +1,42 @@
+name:  Forms
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - checkboxes
+    - radios
+    - select
+  properties:
+    checkboxes:
+      type: array
+      title: Checkboxes
+      description: The options of checkbox.
+      data:
+        - title: 'Option 1'
+          checked: 'checked'
+        - title: 'Option 2'
+        - title: 'Option 3'
+        - title: 'Option 4'
+          disabled: 'disabled'
+    radios:
+      type: array
+      title: Radio buttons
+      description: The options of radio buttons.
+      data:
+        - title: 'Option 1'
+          checked: 'checked'
+        - title: 'Option 2'
+        - title: 'Option 3'
+        - title: 'Option 4'
+          disabled: 'disabled'
+    select:
+      type: array
+      title: Select
+      description: The options for select.
+      data:
+        - title: 'Choose an Option'
+        - title: 'Option 1'
+        - title: 'Option 2'
+        - title: 'Option 3'
+        - title: 'Option 4'
