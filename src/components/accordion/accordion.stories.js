@@ -1,8 +1,10 @@
 import accordionTwig from './accordion.twig';
 
-import accordionData from './accordion.yml';
+import { props } from './accordion.component.yml';
 
 import './accordion';
+
+const accordionData = props.properties;
 
 /**
  * Storybook Definition.
@@ -13,12 +15,12 @@ export default {
     heading: {
       name: 'Heading',
       type: 'string',
-      defaultValue: accordionData.accordion__item__heading,
+      defaultValue: accordionData.accordion__item__heading.data,
     },
     content: {
       name: 'Content',
       type: 'string',
-      defaultValue: accordionData.accordion__item__content,
+      defaultValue: accordionData.accordion__item__content.data,
     },
   },
   decorators: [
@@ -35,12 +37,12 @@ export const Accordion = ({ heading, content }) =>
         accordion__item__content: content,
       },
       {
-        accordion__item__heading: accordionData.accordion__item__heading,
-        accordion__item__content: accordionData.accordion__item__content,
+        accordion__item__heading: accordionData.accordion__item__heading.data,
+        accordion__item__content: accordionData.accordion__item__content.data,
       },
       {
-        accordion__item__heading: accordionData.accordion__item__heading,
-        accordion__item__content: accordionData.accordion__item__content,
+        accordion__item__heading: accordionData.accordion__item__heading.data,
+        accordion__item__content: accordionData.accordion__item__content.data,
       },
     ],
   });
