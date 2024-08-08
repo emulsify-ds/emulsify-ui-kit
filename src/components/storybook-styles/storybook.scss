@@ -13,7 +13,7 @@
 
 .sb-show-main {
   background: var(--colors-sb-background);
-  // color: var(--colors-sb-text-body);
+  // color: var(--color-sb-text-body);
   font-family: var(--font-family-body), serif !important;
 }
 
@@ -30,7 +30,7 @@
     display: block;
     position: absolute;
     left: 0;
-    bottom: calc(-1 * var(--spacing-lg));
+    bottom: calc(-3 * var(--spacing-lg));
     border-bottom: 10px solid var(--colors-sb-text-heading);
     width: 100px;
   }

@@ -241,6 +241,178 @@
           "value": "#080b0c",
           "type": "color"
         }
+      },
+      "WUP": {
+        "gold": {
+          "100": {
+            "value": "#fff9f2",
+            "type": "color"
+          },
+          "200": {
+            "value": "#fff2e4",
+            "type": "color"
+          },
+          "300": {
+            "value": "#ffe5c6",
+            "type": "color"
+          },
+          "400": {
+            "value": "#ffd7a3",
+            "type": "color"
+          },
+          "500": {
+            "value": "#ffc875",
+            "type": "color"
+          },
+          "600": {
+            "value": "#ffb81c",
+            "type": "color"
+          },
+          "700": {
+            "value": "#e4a519",
+            "type": "color"
+          },
+          "800": {
+            "value": "#c68f16",
+            "type": "color"
+          },
+          "900": {
+            "value": "#a17412",
+            "type": "color"
+          },
+          "1000": {
+            "value": "#72520d",
+            "type": "color"
+          }
+        },
+        "blue": {
+          "100": {
+            "value": "#f2f2f6",
+            "type": "color"
+          },
+          "200": {
+            "value": "#e4e5ed",
+            "type": "color"
+          },
+          "300": {
+            "value": "#c6c8db",
+            "type": "color"
+          },
+          "400": {
+            "value": "#a1a6c6",
+            "type": "color"
+          },
+          "500": {
+            "value": "#727baf",
+            "type": "color"
+          },
+          "600": {
+            "value": "#003594",
+            "type": "color"
+          },
+          "700": {
+            "value": "#002f84",
+            "type": "color"
+          },
+          "800": {
+            "value": "#002973",
+            "type": "color"
+          },
+          "900": {
+            "value": "#00225e",
+            "type": "color"
+          },
+          "1000": {
+            "value": "#001842",
+            "type": "color"
+          }
+        },
+        "legacy": {
+          "gold": {
+            "100": {
+              "value": "#f9f6f2",
+              "type": "color"
+            },
+            "200": {
+              "value": "#f2ece4",
+              "type": "color"
+            },
+            "300": {
+              "value": "#e4d7c6",
+              "type": "color"
+            },
+            "400": {
+              "value": "#d6bfa1",
+              "type": "color"
+            },
+            "500": {
+              "value": "#c6a572",
+              "type": "color"
+            },
+            "600": {
+              "value": "#b58500",
+              "type": "color"
+            },
+            "700": {
+              "value": "#a27700",
+              "type": "color"
+            },
+            "800": {
+              "value": "#8c6700",
+              "type": "color"
+            },
+            "900": {
+              "value": "#725400",
+              "type": "color"
+            },
+            "1000": {
+              "value": "#513b00",
+              "type": "color"
+            }
+          },
+          "blue": {
+            "100": {
+              "value": "#f2f2f3",
+              "type": "color"
+            },
+            "200": {
+              "value": "#e4e4e7",
+              "type": "color"
+            },
+            "300": {
+              "value": "#c6c6cb",
+              "type": "color"
+            },
+            "400": {
+              "value": "#a2a3ac",
+              "type": "color"
+            },
+            "500": {
+              "value": "#737585",
+              "type": "color"
+            },
+            "600": {
+              "value": "#141b4d",
+              "type": "color"
+            },
+            "700": {
+              "value": "#121845",
+              "type": "color"
+            },
+            "800": {
+              "value": "#0f153c",
+              "type": "color"
+            },
+            "900": {
+              "value": "#0d1131",
+              "type": "color"
+            },
+            "1000": {
+              "value": "#090c22",
+              "type": "color"
+            }
+          }
+        }
       }
     },
     "font-family": {
@@ -2435,7 +2607,6 @@
       },
       "selectedTokenSets": {
         "global": "enabled",
-        "semantic": "enabled",
         "storybook": "enabled",
         "components/accordion": "enabled",
         "components/blockQuote": "enabled",
@@ -2454,7 +2625,8 @@
         "components/status": "enabled",
         "components/table": "enabled",
         "components/tabs": "enabled",
-        "components/textField": "enabled"
+        "components/textField": "enabled",
+        "semantic": "enabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:16908",
       "$figmaModeId": "23237:10",
@@ -2642,7 +2814,8 @@
       "name": "Emulsify Global",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "global": "enabled"
+        "global": "enabled",
+        "semantic": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17089",
       "$figmaModeId": "23237:11",
@@ -2716,7 +2889,8 @@
       "name": "Emulsify Storybook only",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "storybook": "source"
+        "storybook": "source",
+        "semantic": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17144",
       "$figmaModeId": "23237:13",
@@ -2744,7 +2918,8 @@
         "components/status": "enabled",
         "components/table": "enabled",
         "components/tabs": "enabled",
-        "components/textField": "enabled"
+        "components/textField": "enabled",
+        "semantic": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17145",
       "$figmaModeId": "23237:14",
@@ -2872,6 +3047,62 @@
         "checkbox.color.label": "d2a0283754f673d1b92c74eef12f3bbe06845d3b",
         "checkbox.color.label-disabled": "5cd5bb5326d33a62412e7579c0abd8c0bea97838"
       }
+    },
+    {
+      "id": "865132ed4de1f234ac10e07b09e233a0fbadd978",
+      "name": "Main",
+      "$figmaStyleReferences": {},
+      "selectedTokenSets": {
+        "global": "enabled",
+        "components/accordion": "enabled",
+        "components/blockQuote": "enabled",
+        "components/breadcrumbs": "enabled",
+        "components/button": "enabled",
+        "components/card": "enabled",
+        "components/checkbox": "enabled",
+        "components/cta": "enabled",
+        "components/fieldset": "enabled",
+        "components/input": "enabled",
+        "components/link": "enabled",
+        "components/mainMenu": "enabled",
+        "components/pager": "enabled",
+        "components/radioButton": "enabled",
+        "components/selectdropdown": "enabled",
+        "components/status": "enabled",
+        "components/table": "enabled",
+        "components/tabs": "enabled",
+        "components/textField": "enabled",
+        "semantic": "enabled"
+      },
+      "group": "WUP"
+    },
+    {
+      "id": "14ff327c549a6b3a1dd78f86615f1e5bed0e367d",
+      "name": "Gold",
+      "$figmaStyleReferences": {},
+      "selectedTokenSets": {
+        "global": "enabled",
+        "components/accordion": "enabled",
+        "components/blockQuote": "enabled",
+        "components/breadcrumbs": "enabled",
+        "components/button": "enabled",
+        "components/card": "enabled",
+        "components/checkbox": "enabled",
+        "components/cta": "enabled",
+        "components/fieldset": "enabled",
+        "components/input": "enabled",
+        "components/link": "enabled",
+        "components/mainMenu": "enabled",
+        "components/pager": "enabled",
+        "components/radioButton": "enabled",
+        "components/selectdropdown": "enabled",
+        "components/status": "enabled",
+        "components/table": "enabled",
+        "components/tabs": "enabled",
+        "components/textField": "enabled",
+        "semantic": "disabled"
+      },
+      "group": "WUP"
     }
   ],
   "$metadata": {

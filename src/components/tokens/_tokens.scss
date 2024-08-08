@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 22 Jul 2024 17:58:36 GMT
+ * Generated on Thu, 08 Aug 2024 18:32:01 GMT
  */
 
 :root {
@@ -189,6 +189,46 @@
   --color-grays-800: #192125;
   --color-grays-900: #101618;
   --color-grays-1000: #080b0c;
+  --color-wup-gold-100: #fff9f2;
+  --color-wup-gold-200: #fff2e4;
+  --color-wup-gold-300: #ffe5c6;
+  --color-wup-gold-400: #ffd7a3;
+  --color-wup-gold-500: #ffc875;
+  --color-wup-gold-600: #ffb81c;
+  --color-wup-gold-700: #e4a519;
+  --color-wup-gold-800: #c68f16;
+  --color-wup-gold-900: #a17412;
+  --color-wup-gold-1000: #72520d;
+  --color-wup-blue-100: #f2f2f6;
+  --color-wup-blue-200: #e4e5ed;
+  --color-wup-blue-300: #c6c8db;
+  --color-wup-blue-400: #a1a6c6;
+  --color-wup-blue-500: #727baf;
+  --color-wup-blue-600: #003594;
+  --color-wup-blue-700: #002f84;
+  --color-wup-blue-800: #002973;
+  --color-wup-blue-900: #00225e;
+  --color-wup-blue-1000: #001842;
+  --color-wup-legacy-gold-100: #f9f6f2;
+  --color-wup-legacy-gold-200: #f2ece4;
+  --color-wup-legacy-gold-300: #e4d7c6;
+  --color-wup-legacy-gold-400: #d6bfa1;
+  --color-wup-legacy-gold-500: #c6a572;
+  --color-wup-legacy-gold-600: #b58500;
+  --color-wup-legacy-gold-700: #a27700;
+  --color-wup-legacy-gold-800: #8c6700;
+  --color-wup-legacy-gold-900: #725400;
+  --color-wup-legacy-gold-1000: #513b00;
+  --color-wup-legacy-blue-100: #f2f2f3;
+  --color-wup-legacy-blue-200: #e4e4e7;
+  --color-wup-legacy-blue-300: #c6c6cb;
+  --color-wup-legacy-blue-400: #a2a3ac;
+  --color-wup-legacy-blue-500: #737585;
+  --color-wup-legacy-blue-600: #141b4d;
+  --color-wup-legacy-blue-700: #121845;
+  --color-wup-legacy-blue-800: #0f153c;
+  --color-wup-legacy-blue-900: #0d1131;
+  --color-wup-legacy-blue-1000: #090c22;
   --font-family-body: Inter;
   --font-family-heading: Inter;
   --spacing-xs: 0.125rem;
@@ -345,4 +385,6 @@
   --emulsify-semantic: [object Object];
   --emulsify-storybook-only: [object Object];
   --emulsify-components: [object Object];
+  --main: [object Object];
+  --gold: [object Object];
 }

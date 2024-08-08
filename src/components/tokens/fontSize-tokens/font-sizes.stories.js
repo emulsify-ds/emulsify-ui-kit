@@ -6,6 +6,6 @@ import tokens from '../../../tokens/transformed.tokens.json';
  */
 export default { title: 'Tokens/Font Sizes' };
 
-const fontSizeData = { fontSize: tokens.fontSize };
+const fontSizeData = { fontSize: tokens['font-size'] };
 
 export const FontSizes = () => fontSizeTemplate(fontSizeData);

@@ -51,13 +51,13 @@ $accordion_padding_y: calc(var(--spacing-lg) * 1.25);
   cursor: pointer;
   outline: inherit;
   display: flex;
-  color: var(--colors-text-body);
+  color: var(--color-text-body);
   font-size: var(--font-size-body);
   gap: var(--spacing-sm);
   align-items: center;
 
   .accordion__icon {
-    fill: var(--colors-text-body);
+    fill: var(--color-text-body);
     height: var(--size-lg);
     width: var(--size-lg);
   }
