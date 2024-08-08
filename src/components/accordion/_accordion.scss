@@ -102,7 +102,7 @@ $accordion_padding_y: calc(var(--spacing-lg) * 1.25);
   &:hover {
     color: var(--accordion-color-header-hover);
 
-    [data-accordion-expanded='false'] {
+    [data-accordion-expanded='false'] & {
       color: var(--accordion-color-header);
 
       .accordion-item__toggle {
@@ -116,16 +116,6 @@ $accordion_padding_y: calc(var(--spacing-lg) * 1.25);
       [data-accordion-expanded='false'] & {
         fill: var(--accordion-color-header);
       }
-    }
-  }
-}
-
-[data-accordion-expanded='false'] {
-  .accordion-item__heading:hover {
-    color: var(--accordion-color-header);
-
-    .accordion-item__toggle {
-      color: var(--accordion-color-header);
     }
   }
 }
