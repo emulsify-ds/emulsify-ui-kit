@@ -5,6 +5,7 @@ import { setupTwig } from './setupTwig';
 import { withDesign } from 'storybook-addon-designs';
 
 // GLOBAL CSS
+import '../src/fonts/fonts.scss';
 import '../src/style.scss';
 
 // If in a Drupal project, it's recommended to import a symlinked version of drupal.js.
@@ -33,7 +34,7 @@ export const parameters = {
         '*',
         'WIP',
       ],
-      includeNames: true
+      includeNames: true,
     },
   },
 };

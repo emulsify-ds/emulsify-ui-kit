@@ -11,7 +11,7 @@
           "type": "color"
         },
         "heading": {
-          "value": "#002976",
+          "value": "#0080b7",
           "type": "color"
         }
       },
@@ -59,11 +59,11 @@
           "type": "color"
         },
         "active": {
-          "value": "#002976",
+          "value": "#0080b7",
           "type": "color"
         },
         "hover": {
-          "value": "#009fe4",
+          "value": "#005f89",
           "type": "color"
         }
       },
@@ -76,7 +76,7 @@
   "tab": {
     "label": {
       "value": {
-        "fontFamily": "IBM Plex Sans",
+        "fontFamily": "Inter",
         "fontWeight": "Bold",
         "lineHeight": "150%",
         "fontSize": 21,
@@ -93,7 +93,7 @@
           "type": "color"
         },
         "bg-stripe": {
-          "value": "#81adff",
+          "value": "#9ce1ff",
           "type": "color"
         },
         "text": {
@@ -101,13 +101,13 @@
           "type": "color"
         },
         "icon": {
-          "value": "#007fb6",
+          "value": "#005f89",
           "type": "color"
         }
       },
       "header": {
         "bg": {
-          "value": "#003594",
+          "value": "#005f89",
           "type": "color"
         },
         "text": {
@@ -115,7 +115,7 @@
           "type": "color"
         },
         "icon": {
-          "value": "#81adff",
+          "value": "#9ce1ff",
           "type": "color"
         }
       },
@@ -233,11 +233,11 @@
       },
       "button": {
         "fill": {
-          "value": "#003594",
+          "value": "#009fe4",
           "type": "color"
         },
         "fill-hover": {
-          "value": "#002976",
+          "value": "#0080b7",
           "type": "color"
         },
         "fill-disabled": {
@@ -275,20 +275,20 @@
           "type": "color"
         },
         "focus": {
-          "value": "#009fe4",
+          "value": "#0080b7",
           "type": "color"
         }
       },
       "fill": {
         "hover": {
-          "value": "#003594",
+          "value": "#0080b7",
           "type": "color"
         }
       }
     },
     "default": {
       "value": {
-        "fontFamily": "IBM Plex Sans",
+        "fontFamily": "Inter",
         "fontWeight": "Medium",
         "lineHeight": "100%",
         "fontSize": 12,
@@ -335,33 +335,33 @@
           "type": "color"
         },
         "bg-hover": {
-          "value": "#81adff",
+          "value": "#9ce1ff",
           "type": "color"
         },
         "label": {
-          "value": "#002f84",
+          "value": "#0080b7",
           "type": "color"
         },
         "label-hover": {
-          "value": "#002973",
+          "value": "#006089",
           "type": "color"
         }
       },
       "dropdown": {
         "bg": {
-          "value": "#81adff",
+          "value": "#9ce1ff",
           "type": "color"
         },
         "bg-hover": {
-          "value": "#81adff",
+          "value": "#9ce1ff",
           "type": "color"
         },
         "label": {
-          "value": "#002f84",
+          "value": "#0080b7",
           "type": "color"
         },
         "label-hover": {
-          "value": "#002973",
+          "value": "#006089",
           "type": "color"
         }
       }
@@ -370,17 +370,17 @@
   "link": {
     "color": {
       "default": {
-        "value": "#009fe4",
+        "value": "#005f89",
         "type": "color"
       },
       "hover": {
-        "value": "#005f89",
+        "value": "#00202e",
         "type": "color"
       }
     },
     "body": {
       "value": {
-        "fontFamily": "IBM Plex Sans",
+        "fontFamily": "Inter",
         "fontWeight": "Regular",
         "lineHeight": "150%",
         "fontSize": 18,
@@ -411,7 +411,7 @@
         "type": "color"
       },
       "helpText": {
-        "value": "#001f59",
+        "value": "#0080b7",
         "type": "color"
       },
       "placeholder": {
@@ -477,7 +477,7 @@
   "cta": {
     "header": {
       "value": {
-        "fontFamily": "IBM Plex Sans",
+        "fontFamily": "Inter",
         "fontWeight": "Extra Bold",
         "lineHeight": "100%",
         "fontSize": 37,
@@ -487,7 +487,7 @@
     },
     "body": {
       "value": {
-        "fontFamily": "IBM Plex Sans",
+        "fontFamily": "Inter",
         "fontWeight": "Regular",
         "lineHeight": "150%",
         "fontSize": 18,
@@ -497,7 +497,7 @@
     },
     "eyebrow": {
       "value": {
-        "fontFamily": "IBM Plex Sans",
+        "fontFamily": "Inter",
         "fontWeight": "Bold",
         "lineHeight": "150%",
         "fontSize": 16,
@@ -507,7 +507,7 @@
     },
     "button": {
       "value": {
-        "fontFamily": "IBM Plex Sans",
+        "fontFamily": "Inter",
         "fontWeight": "Bold",
         "textCase": "uppercase",
         "fontSize": 18,
@@ -525,15 +525,15 @@
     },
     "color": {
       "heading": {
-        "value": "#001f59",
+        "value": "#006089",
         "type": "color"
       },
       "heading-darker": {
-        "value": "#001f59",
+        "value": "#006089",
         "type": "color"
       },
       "eyebrow": {
-        "value": "#001f59",
+        "value": "#006089",
         "type": "color"
       },
       "body": {
@@ -546,15 +546,15 @@
       }
     },
     "background": {
-      "value": "#81adff",
+      "value": "#9ce1ff",
       "type": "color"
     },
     "button-background": {
-      "value": "#003594",
+      "value": "#009fe4",
       "type": "color"
     },
     "button-background-darker": {
-      "value": "#001f59",
+      "value": "#006089",
       "type": "color"
     }
   },
@@ -571,11 +571,11 @@
     },
     "button": {
       "fill": {
-        "value": "#003594",
+        "value": "#009fe4",
         "type": "color"
       },
       "fill-hover": {
-        "value": "#002976",
+        "value": "#0080b7",
         "type": "color"
       },
       "fill-disabled": {
@@ -606,12 +606,22 @@
     "spacing": {
       "value": 16,
       "type": "spacing"
+    },
+    "color": {
+      "heading": {
+        "value": "#0080b7",
+        "type": "color"
+      },
+      "subheading": {
+        "value": "#006089",
+        "type": "color"
+      }
     }
   },
   "button": {
     "color": {
       "bkg": {
-        "value": "#003594",
+        "value": "#005f89",
         "type": "color",
         "focus": {
           "value": "red",
@@ -623,7 +633,7 @@
         "type": "color"
       },
       "bkg-hover": {
-        "value": "#002f84",
+        "value": "#00405b",
         "type": "color"
       },
       "label-hover": {
@@ -635,7 +645,7 @@
         "type": "color"
       },
       "bkg-focus": {
-        "value": "#002f84",
+        "value": "#00405b",
         "type": "color"
       }
     },
@@ -701,15 +711,15 @@
     },
     "border": {
       "color": {
-        "value": "#003594",
+        "value": "#005f89",
         "type": "color"
       },
       "color-hover": {
-        "value": "#002f84",
+        "value": "#00405b",
         "type": "color"
       },
       "color-focus": {
-        "value": "#002f84",
+        "value": "#00405b",
         "type": "color"
       }
     },
@@ -723,7 +733,7 @@
   "breadcrumb": {
     "default": {
       "value": {
-        "fontFamily": "IBM Plex Serif",
+        "fontFamily": "Sentinel",
         "fontWeight": "Medium",
         "lineHeight": "100%",
         "fontSize": 12,
@@ -733,7 +743,7 @@
     },
     "text": {
       "default": {
-        "value": "#7f878b",
+        "value": "#545f64",
         "type": "color"
       },
       "hover": {
@@ -757,7 +767,7 @@
   "accordion": {
     "header": {
       "value": {
-        "fontFamily": "IBM Plex Sans",
+        "fontFamily": "Inter",
         "fontWeight": "Regular",
         "lineHeight": "150%",
         "fontSize": 26,
@@ -767,7 +777,7 @@
     },
     "p": {
       "value": {
-        "fontFamily": "IBM Plex Sans",
+        "fontFamily": "Inter",
         "fontWeight": "Regular",
         "lineHeight": "150%",
         "fontSize": 18
@@ -780,11 +790,11 @@
         "type": "color"
       },
       "header": {
-        "value": "#001f59",
+        "value": "#006089",
         "type": "color"
       },
       "header-hover": {
-        "value": "#009fe4",
+        "value": "#00202e",
         "type": "color"
       }
     },
@@ -798,24 +808,24 @@
   "color": {
     "primary": {
       "default": {
-        "value": "#003594",
+        "value": "#009fe4",
         "type": "color",
         "description": "600"
       },
       "light": {
-        "value": "#004ddc",
+        "value": "#1ebbff",
         "type": "color"
       },
       "lighter": {
-        "value": "#81adff",
+        "value": "#9ce1ff",
         "type": "color"
       },
       "dark": {
-        "value": "#002976",
+        "value": "#0080b7",
         "type": "color"
       },
       "darker": {
-        "value": "#001f59",
+        "value": "#006089",
         "type": "color"
       }
     },
@@ -825,16 +835,11 @@
         "type": "color"
       },
       "body-lighter": {
-        "value": "#001f59",
+        "value": "#006089",
         "type": "color"
       },
       "heading": {
-        "value": "#001f59",
-        "type": "color",
-        "description": "{color.primary.dark}"
-      },
-      "heading-lighter": {
-        "value": "#002976",
+        "value": "#006089",
         "type": "color",
         "description": "{color.primary.dark}"
       },
@@ -850,11 +855,15 @@
       }
     },
     "link": {
-      "value": "#009fe4",
+      "value": "#005f89",
       "type": "color"
     },
     "link-hover": {
-      "value": "#007fb6",
+      "value": "#00202e",
+      "type": "color"
+    },
+    "link-hover-lighter": {
+      "value": "#00405b",
       "type": "color"
     },
     "black": {
@@ -1124,11 +1133,11 @@
   },
   "fontFamily": {
     "body": {
-      "value": "IBM Plex Sans",
+      "value": "Inter",
       "type": "fontFamilies"
     },
     "heading": {
-      "value": "IBM Plex Sans",
+      "value": "Inter",
       "type": "fontFamilies"
     }
   },
@@ -1269,11 +1278,11 @@
   },
   "font-family": {
     "primary": {
-      "value": "IBM Plex Sans",
+      "value": "Inter",
       "type": "fontFamilies"
     },
     "secondary": {
-      "value": "IBM Plex Serif",
+      "value": "Sentinel",
       "type": "fontFamilies"
     }
   },
@@ -1403,7 +1412,7 @@
     "Colossus": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 140,
@@ -1416,7 +1425,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 140,
@@ -1431,7 +1440,7 @@
     "Uber": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 112,
@@ -1444,7 +1453,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 112,
@@ -1459,7 +1468,7 @@
     "Hero": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Regular",
           "lineHeight": "125%",
           "fontSize": 80,
@@ -1472,7 +1481,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Bold",
           "lineHeight": "125%",
           "fontSize": 80,
@@ -1487,7 +1496,7 @@
     "Display": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 64,
@@ -1500,7 +1509,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 64,
@@ -1515,7 +1524,7 @@
     "H1": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 48,
@@ -1528,7 +1537,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 48,
@@ -1543,7 +1552,7 @@
     "H2": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 37,
@@ -1556,7 +1565,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 37,
@@ -1571,7 +1580,7 @@
     "H3": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 31,
@@ -1584,7 +1593,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 31,
@@ -1599,7 +1608,7 @@
     "H4": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 26,
@@ -1612,7 +1621,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 26,
@@ -1627,7 +1636,7 @@
     "H5": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 21,
@@ -1640,7 +1649,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 21,
@@ -1655,7 +1664,7 @@
     "Lead": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 24,
@@ -1668,7 +1677,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 24,
@@ -1683,7 +1692,7 @@
     "Body": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 18,
@@ -1696,7 +1705,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 18,
@@ -1710,7 +1719,7 @@
       "Mobile": {
         "Default": {
           "value": {
-            "fontFamily": "IBM Plex Sans",
+            "fontFamily": "Inter",
             "fontWeight": "Regular",
             "lineHeight": "150%",
             "fontSize": 14,
@@ -1726,7 +1735,7 @@
     "Small": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 16,
@@ -1739,7 +1748,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 16,
@@ -1754,7 +1763,7 @@
     "Caption": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 14,
@@ -1767,7 +1776,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 14,
@@ -1782,7 +1791,7 @@
     "X-Small": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 12,
@@ -1795,7 +1804,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 12,
@@ -1810,7 +1819,7 @@
     "Tiny": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Regular",
           "lineHeight": "150%",
           "fontSize": 10,
@@ -1823,7 +1832,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Sans",
+          "fontFamily": "Inter",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 10,
@@ -1840,7 +1849,7 @@
     "Colossus": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 140,
@@ -1853,7 +1862,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 140,
@@ -1868,7 +1877,7 @@
     "Uber": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 112,
@@ -1881,7 +1890,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 112,
@@ -1896,7 +1905,7 @@
     "Hero": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Medium",
           "lineHeight": "125%",
           "fontSize": 80,
@@ -1909,7 +1918,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Bold",
           "lineHeight": "125%",
           "fontSize": 80,
@@ -1924,7 +1933,7 @@
     "Display": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 64,
@@ -1937,7 +1946,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 64,
@@ -1952,7 +1961,7 @@
     "H1": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 48,
@@ -1965,7 +1974,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 48,
@@ -1980,7 +1989,7 @@
     "H2": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 37,
@@ -1993,7 +2002,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 37,
@@ -2008,7 +2017,7 @@
     "H3": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 31,
@@ -2021,7 +2030,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 31,
@@ -2036,7 +2045,7 @@
     "H4": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 26,
@@ -2049,7 +2058,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 26,
@@ -2064,7 +2073,7 @@
     "H5": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 21,
@@ -2077,7 +2086,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 21,
@@ -2092,7 +2101,7 @@
     "Lead": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 24,
@@ -2105,7 +2114,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 24,
@@ -2120,7 +2129,7 @@
     "Body": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 18,
@@ -2133,7 +2142,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 18,
@@ -2147,7 +2156,7 @@
       "Mobile": {
         "Default": {
           "value": {
-            "fontFamily": "IBM Plex Serif",
+            "fontFamily": "Sentinel",
             "fontWeight": "Medium",
             "lineHeight": "150%",
             "fontSize": 14,
@@ -2163,7 +2172,7 @@
     "Small": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 16,
@@ -2176,7 +2185,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 16,
@@ -2191,7 +2200,7 @@
     "Caption": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 14,
@@ -2204,7 +2213,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 14,
@@ -2219,7 +2228,7 @@
     "X-Small": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 12,
@@ -2232,7 +2241,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 12,
@@ -2247,7 +2256,7 @@
     "Tiny": {
       "Default": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Medium",
           "lineHeight": "150%",
           "fontSize": 10,
@@ -2260,7 +2269,7 @@
       },
       "Bold": {
         "value": {
-          "fontFamily": "IBM Plex Serif",
+          "fontFamily": "Sentinel",
           "fontWeight": "Bold",
           "lineHeight": "150%",
           "fontSize": 10,
@@ -2718,7 +2727,6 @@
       "color.text.heading": "4f236039ebbe9ab9f7b2fc9c730fd1e03d770646",
       "color.warning.default": "53587ede6f97488b7db21986db7147e7886f42b3",
       "color.link": "1f637c9a615fd4d0f936c62a2fadea575f6cc398",
-      "color.link-hover": "74d0f74b830a9dd07279967cea7c9f662178e310",
       "color.black": "55dac975a4f6f9c054d53b85f7ffba4a1d27f291",
       "color.white": "f0dddd77af08dcb4d16939df6ea9a1a24129780f",
       "color.EmulsifyBlue.100": "e83fe29a796a479f9b6331c27c44497ba7db917a",
@@ -2799,7 +2807,8 @@
       "border.lg": "d98fd94c338de18d8949d1bb0b4767131646a4e1",
       "checkbox.spacing.gap": "59fbad63c0994ee956f8790e994534f9f5f5e922",
       "checkbox.color.label": "4db65c0b61319b6c85cdb9c1b683d84e2f65ff52",
-      "checkbox.color.label-disabled": "3a5dec39f06f92904d80c2096f9c439ae0b5d09a"
+      "checkbox.color.label-disabled": "3a5dec39f06f92904d80c2096f9c439ae0b5d09a",
+      "color.link-hover": "74d0f74b830a9dd07279967cea7c9f662178e310"
     },
     "type": "other",
     "value": "[object Object]"
