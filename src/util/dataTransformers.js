@@ -8,13 +8,20 @@
  * @returns {Object} - A new object where each key is mapped to its `data` value from the original object.
  */
 export function mapDataToTwig(props) {
-  const transformedData = {};
+  const result = {};
 
   for (const key in props) {
-    if (props.hasOwnProperty(key) && props[key]?.data !== undefined) {
-      transformedData[key] = props[key].data;
+    if (props.hasOwnProperty(key)) {
+      if (props[key]?.data !== undefined) {
+        result[key] = props[key].data;
+      } else if (
+        typeof props[key] === 'object' &&
+        props[key].hasOwnProperty('properties')
+      ) {
+        result[key] = mapDataToTwig(props[key].properties);
+      }
     }
   }
 
-  return transformedData;
+  return result;
 }
