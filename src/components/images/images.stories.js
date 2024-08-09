@@ -1,8 +1,10 @@
-import image from './image/responsive-image.twig';
-import figure from './image/figure.twig';
+import imageTwig from './image/responsive-image.twig';
+import figureTwig from './image/figure.twig';
 
-import imageData from './image/image.yml';
-import figureData from './image/figure.yml';
+import { props as imageProps } from './image/image.component.yml';
+import { props as figureProps } from './image/figure.component.yml';
+
+import { mapDataToTwig } from '../../util/dataTransformers';
 
 const svgIcons = require.context('../../../images/icons/', true, /\.svg$/);
 const icons = [];
@@ -11,11 +13,21 @@ svgIcons.keys().forEach((key) => {
   icons.push(icon);
 });
 
+const imageData = mapDataToTwig(imageProps.properties);
+const figureData = mapDataToTwig(figureProps.properties);
+
 /**
  * Storybook Definition.
  */
-export default { title: 'Components/Media' };
 
-export const images = () => image(imageData);
+export default {
+  title: 'Components/Media',
+  decorators: [
+    (story) =>
+      `<div style="max-width: 890px; margin: 0 auto;">${story()}</div>`,
+  ],
+};
 
-export const figures = () => figure(figureData);
+export const Image = () => imageTwig(imageData);
+
+export const Figure = () => figureTwig(figureData);
