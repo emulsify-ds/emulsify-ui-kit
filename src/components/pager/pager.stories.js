@@ -1,24 +1,25 @@
-import pager from './pager.twig';
+import pagerTwig from './pager.twig';
+import { mapDataToTwig } from '../../util/dataTransformers';
 
-import pagerData from './pager.yml';
-import pagerNextEllipsesData from './pager-next-ellipses.yml';
-import pagerPrevEllipsesData from './pager-prev-ellipses.yml';
-import pagerBothEllipsesData from './pager-both-ellipses.yml';
-import pagerFirstLastData from './pager-first-last.yml';
+import { props as pagerProps } from './pager.component.yml';
+import { props as pagerNextEllipsesProps } from './pager-next-ellipses.component.yml';
+import { props as pagerPrevEllipsesProps } from './pager-prev-ellipses.component.yml';
+import { props as pagerBothEllipsesProps } from './pager-both-ellipses.component.yml';
+import { props as pagerFirstLastProps } from './pager-first-last.component.yml';
+
+const pagerData = mapDataToTwig(pagerProps.properties);
+const pagerNextEllipsesData = mapDataToTwig(pagerNextEllipsesProps.properties);
+const pagerPrevEllipsesData = mapDataToTwig(pagerPrevEllipsesProps.properties);
+const pagerBothEllipsesData = mapDataToTwig(pagerBothEllipsesProps.properties);
+const pagerFirstLastData = mapDataToTwig(pagerFirstLastProps.properties);
 
 /**
  * Storybook Definition.
  */
 export default { title: 'Components/Pager' };
 
-export const basic = () => pager(pagerData);
-
-export const withNext = () => pager({ ...pagerData, ...pagerNextEllipsesData });
-
-export const withBoth = () => pager({ ...pagerData, ...pagerBothEllipsesData });
-
-export const withPrevious = () =>
-  pager({ ...pagerData, ...pagerPrevEllipsesData });
-
-export const withFirstAndLast = () =>
-  pager({ ...pagerData, ...pagerFirstLastData });
+export const basic = () => pagerTwig(pagerData);
+export const withNext = () => pagerTwig(pagerNextEllipsesData);
+export const withPrevious = () => pagerTwig(pagerPrevEllipsesData);
+export const withBoth = () => pagerTwig(pagerBothEllipsesData);
+export const withFirstAndLast = () => pagerTwig(pagerFirstLastData);
