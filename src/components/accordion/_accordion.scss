@@ -63,10 +63,10 @@ $accordion_padding_y: calc(var(--spacing-lg) * 1.25);
   }
 
   &:hover {
-    color: var(--accordion-color-header-hover);
+    color: var(--accordion-color-header);
 
     .accordion__icon {
-      fill: var(--accordion-color-header-hover);
+      fill: var(--accordion-color-header);
     }
   }
 }
@@ -95,16 +95,28 @@ $accordion_padding_y: calc(var(--spacing-lg) * 1.25);
   color: var(--accordion-color-header);
   margin: 0 0 $accordion_padding_y;
 
+  [data-accordion-expanded='false'] & {
+    color: var(--accordion-color-body);
+  }
+
   &:hover {
     color: var(--accordion-color-header-hover);
 
+    [data-accordion-expanded='false'] & {
+      color: var(--accordion-color-header);
+
+      .accordion-item__toggle {
+        color: var(--accordion-color-header);
+      }
+    }
+
     .accordion-item__icon {
       fill: var(--accordion-color-header-hover);
-    }
-  }
 
-  [data-accordion-expanded='false'] & {
-    color: var(--accordion-color-body);
+      [data-accordion-expanded='false'] & {
+        fill: var(--accordion-color-header);
+      }
+    }
   }
 }
 
@@ -117,6 +129,7 @@ $accordion_padding_y: calc(var(--spacing-lg) * 1.25);
 
   [aria-expanded='true'] > & {
     transform: rotate(180deg);
+    fill: var(--accordion-color-header);
   }
 }
 
