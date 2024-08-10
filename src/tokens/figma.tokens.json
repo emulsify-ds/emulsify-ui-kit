@@ -2364,6 +2364,50 @@
       }
     }
   },
+  "components/announcement": {
+    "background": {
+      "default-bkg": {
+        "value": "{color.white}",
+        "type": "color"
+      },
+      "light": {
+        "value": "{color.primary.lighter}",
+        "type": "color"
+      },
+      "dark": {
+        "value": "{color.primary.darker}",
+        "type": "color"
+      }
+    },
+    "heading": {
+      "default": {
+        "value": "{color.primary.dark}",
+        "type": "color"
+      },
+      "light": {
+        "value": "{color.primary.lighter}",
+        "type": "color"
+      },
+      "dark": {
+        "value": "{color.primary.darker}",
+        "type": "color"
+      }
+    },
+    "icon": {
+      "default": {
+        "value": "{color.primary.dark}",
+        "type": "color"
+      },
+      "dark": {
+        "value": "{color.link-hover-lighter}",
+        "type": "color"
+      },
+      "light": {
+        "value": "{color.primary.lighter}",
+        "type": "color"
+      }
+    }
+  },
   "storybook": {
     "colors": {
       "sb": {
@@ -3123,6 +3167,7 @@
       "components/table",
       "components/tabs",
       "components/textField",
+      "components/announcement",
       "storybook"
     ]
   }
