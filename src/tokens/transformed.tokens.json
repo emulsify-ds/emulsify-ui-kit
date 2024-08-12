@@ -21,48 +21,6 @@
       }
     }
   },
-  "background": {
-    "default-bkg": {
-      "value": "#ffffff",
-      "type": "color"
-    },
-    "light": {
-      "value": "#9ce1ff",
-      "type": "color"
-    },
-    "dark": {
-      "value": "#006089",
-      "type": "color"
-    }
-  },
-  "heading": {
-    "default": {
-      "value": "#0080b7",
-      "type": "color"
-    },
-    "light": {
-      "value": "#9ce1ff",
-      "type": "color"
-    },
-    "dark": {
-      "value": "#006089",
-      "type": "color"
-    }
-  },
-  "icon": {
-    "default": {
-      "value": "#0080b7",
-      "type": "color"
-    },
-    "dark": {
-      "value": "#00405b",
-      "type": "color"
-    },
-    "light": {
-      "value": "#9ce1ff",
-      "type": "color"
-    }
-  },
   "textField": {
     "borderWidth": {
       "value": 1,
@@ -804,6 +762,48 @@
         "value": 8,
         "type": "spacing"
       }
+    }
+  },
+  "background": {
+    "default": {
+      "value": "#ffffff",
+      "type": "color"
+    },
+    "light": {
+      "value": "#9ce1ff",
+      "type": "color"
+    },
+    "dark": {
+      "value": "#006089",
+      "type": "color"
+    }
+  },
+  "heading": {
+    "default": {
+      "value": "#0080b7",
+      "type": "color"
+    },
+    "light": {
+      "value": "#9ce1ff",
+      "type": "color"
+    },
+    "dark": {
+      "value": "#006089",
+      "type": "color"
+    }
+  },
+  "icon": {
+    "default": {
+      "value": "#0080b7",
+      "type": "color"
+    },
+    "dark": {
+      "value": "#00405b",
+      "type": "color"
+    },
+    "light": {
+      "value": "#9ce1ff",
+      "type": "color"
     }
   },
   "accordion": {
@@ -2362,75 +2362,75 @@
       "type": "other"
     },
     "3": {
-      "value": "components/blockQuote",
+      "value": "components/announcement",
       "type": "other"
     },
     "4": {
-      "value": "components/breadcrumbs",
+      "value": "components/blockQuote",
       "type": "other"
     },
     "5": {
-      "value": "components/button",
+      "value": "components/breadcrumbs",
       "type": "other"
     },
     "6": {
-      "value": "components/card",
+      "value": "components/button",
       "type": "other"
     },
     "7": {
-      "value": "components/checkbox",
+      "value": "components/card",
       "type": "other"
     },
     "8": {
-      "value": "components/cta",
+      "value": "components/checkbox",
       "type": "other"
     },
     "9": {
-      "value": "components/fieldset",
+      "value": "components/cta",
       "type": "other"
     },
     "10": {
-      "value": "components/input",
+      "value": "components/fieldset",
       "type": "other"
     },
     "11": {
-      "value": "components/link",
+      "value": "components/input",
       "type": "other"
     },
     "12": {
-      "value": "components/mainMenu",
+      "value": "components/link",
       "type": "other"
     },
     "13": {
-      "value": "components/pager",
+      "value": "components/mainMenu",
       "type": "other"
     },
     "14": {
-      "value": "components/radioButton",
+      "value": "components/pager",
       "type": "other"
     },
     "15": {
-      "value": "components/selectdropdown",
+      "value": "components/radioButton",
       "type": "other"
     },
     "16": {
-      "value": "components/status",
+      "value": "components/selectdropdown",
       "type": "other"
     },
     "17": {
-      "value": "components/table",
+      "value": "components/status",
       "type": "other"
     },
     "18": {
-      "value": "components/tabs",
+      "value": "components/table",
       "type": "other"
     },
     "19": {
-      "value": "components/textField",
+      "value": "components/tabs",
       "type": "other"
     },
     "20": {
-      "value": "components/announcement",
+      "value": "components/textField",
       "type": "other"
     },
     "21": {
