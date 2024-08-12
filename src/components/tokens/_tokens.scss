@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 08 Aug 2024 21:29:15 GMT
+ * Generated on Mon, 12 Aug 2024 17:38:58 GMT
  */
 
 :root {
@@ -148,6 +148,15 @@
   --breadcrumb-text-hover: #192125;
   --block-quote-padding-x: 2rem;
   --block-quote-padding-y: 0.5rem;
+  --announcement-background-default: #ffffff;
+  --announcement-background-light: #9ce1ff;
+  --announcement-background-dark: #006089;
+  --announcement-heading-default: #0080b7;
+  --announcement-heading-light: #9ce1ff;
+  --announcement-heading-dark: #006089;
+  --announcement-icon-default: #0080b7;
+  --announcement-icon-dark: #00405b;
+  --announcement-icon-light: #9ce1ff;
   --accordion-header: [object Object];
   --accordion-p: [object Object];
   --accordion-color-body: #00202e;
@@ -362,24 +371,25 @@
   --token-set-order-0: global;
   --token-set-order-1: semantic;
   --token-set-order-2: components/accordion;
-  --token-set-order-3: components/blockQuote;
-  --token-set-order-4: components/breadcrumbs;
-  --token-set-order-5: components/button;
-  --token-set-order-6: components/card;
-  --token-set-order-7: components/checkbox;
-  --token-set-order-8: components/cta;
-  --token-set-order-9: components/fieldset;
-  --token-set-order-10: components/input;
-  --token-set-order-11: components/link;
-  --token-set-order-12: components/mainMenu;
-  --token-set-order-13: components/pager;
-  --token-set-order-14: components/radioButton;
-  --token-set-order-15: components/selectdropdown;
-  --token-set-order-16: components/status;
-  --token-set-order-17: components/table;
-  --token-set-order-18: components/tabs;
-  --token-set-order-19: components/textField;
-  --token-set-order-20: storybook;
+  --token-set-order-3: components/announcement;
+  --token-set-order-4: components/blockQuote;
+  --token-set-order-5: components/breadcrumbs;
+  --token-set-order-6: components/button;
+  --token-set-order-7: components/card;
+  --token-set-order-8: components/checkbox;
+  --token-set-order-9: components/cta;
+  --token-set-order-10: components/fieldset;
+  --token-set-order-11: components/input;
+  --token-set-order-12: components/link;
+  --token-set-order-13: components/mainMenu;
+  --token-set-order-14: components/pager;
+  --token-set-order-15: components/radioButton;
+  --token-set-order-16: components/selectdropdown;
+  --token-set-order-17: components/status;
+  --token-set-order-18: components/table;
+  --token-set-order-19: components/tabs;
+  --token-set-order-20: components/textField;
+  --token-set-order-21: storybook;
   --emulsify-ui-kit-full: [object Object];
   --emulsify-global: [object Object];
   --emulsify-semantic: [object Object];

@@ -1599,6 +1599,52 @@
       }
     }
   },
+  "components/announcement": {
+    "announcement": {
+      "background": {
+        "default": {
+          "value": "{color.white}",
+          "type": "color"
+        },
+        "light": {
+          "value": "{color.primary.lighter}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{color.primary.darker}",
+          "type": "color"
+        }
+      },
+      "heading": {
+        "default": {
+          "value": "{color.primary.dark}",
+          "type": "color"
+        },
+        "light": {
+          "value": "{color.primary.lighter}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{color.primary.darker}",
+          "type": "color"
+        }
+      },
+      "icon": {
+        "default": {
+          "value": "{color.primary.dark}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{color.link-hover-lighter}",
+          "type": "color"
+        },
+        "light": {
+          "value": "{color.primary.lighter}",
+          "type": "color"
+        }
+      }
+    }
+  },
   "components/blockQuote": {
     "blockQuote": {
       "padding": {
@@ -2814,8 +2860,7 @@
       "name": "Emulsify Global",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "global": "enabled",
-        "semantic": "disabled"
+        "global": "enabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17089",
       "$figmaModeId": "23237:11",
@@ -2889,8 +2934,7 @@
       "name": "Emulsify Storybook only",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "storybook": "source",
-        "semantic": "disabled"
+        "storybook": "source"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17144",
       "$figmaModeId": "23237:13",
@@ -2918,8 +2962,7 @@
         "components/status": "enabled",
         "components/table": "enabled",
         "components/tabs": "enabled",
-        "components/textField": "enabled",
-        "semantic": "disabled"
+        "components/textField": "enabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17145",
       "$figmaModeId": "23237:14",
@@ -3099,8 +3142,7 @@
         "components/status": "enabled",
         "components/table": "enabled",
         "components/tabs": "enabled",
-        "components/textField": "enabled",
-        "semantic": "disabled"
+        "components/textField": "enabled"
       },
       "group": "WUP"
     }
@@ -3110,6 +3152,7 @@
       "global",
       "semantic",
       "components/accordion",
+      "components/announcement",
       "components/blockQuote",
       "components/breadcrumbs",
       "components/button",
