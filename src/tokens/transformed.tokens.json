@@ -764,46 +764,48 @@
       }
     }
   },
-  "background": {
-    "default": {
-      "value": "#ffffff",
-      "type": "color"
+  "announcement": {
+    "background": {
+      "default": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "light": {
+        "value": "#9ce1ff",
+        "type": "color"
+      },
+      "dark": {
+        "value": "#006089",
+        "type": "color"
+      }
     },
-    "light": {
-      "value": "#9ce1ff",
-      "type": "color"
+    "heading": {
+      "default": {
+        "value": "#0080b7",
+        "type": "color"
+      },
+      "light": {
+        "value": "#9ce1ff",
+        "type": "color"
+      },
+      "dark": {
+        "value": "#006089",
+        "type": "color"
+      }
     },
-    "dark": {
-      "value": "#006089",
-      "type": "color"
-    }
-  },
-  "heading": {
-    "default": {
-      "value": "#0080b7",
-      "type": "color"
-    },
-    "light": {
-      "value": "#9ce1ff",
-      "type": "color"
-    },
-    "dark": {
-      "value": "#006089",
-      "type": "color"
-    }
-  },
-  "icon": {
-    "default": {
-      "value": "#0080b7",
-      "type": "color"
-    },
-    "dark": {
-      "value": "#00405b",
-      "type": "color"
-    },
-    "light": {
-      "value": "#9ce1ff",
-      "type": "color"
+    "icon": {
+      "default": {
+        "value": "#0080b7",
+        "type": "color"
+      },
+      "dark": {
+        "value": "#00405b",
+        "type": "color"
+      },
+      "light": {
+        "value": "#9ce1ff",
+        "type": "color"
+      }
     }
   },
   "accordion": {
