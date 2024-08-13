@@ -764,6 +764,38 @@
       }
     }
   },
+  "banner": {
+    "button": {
+      "text": {
+        "value": "#00202e",
+        "type": "color"
+      },
+      "border": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "background": {
+        "value": "#9ce1ff",
+        "type": "color"
+      }
+    },
+    "text": {
+      "value": "#ffffff",
+      "type": "color",
+      "subheading": {
+        "value": "{color.text.white}",
+        "type": "color"
+      }
+    },
+    "background": {
+      "value": "#006089",
+      "type": "color"
+    },
+    "background-opacity": {
+      "value": 0.75,
+      "type": "opacity"
+    }
+  },
   "announcement": {
     "background": {
       "default": {
@@ -2368,74 +2400,78 @@
       "type": "other"
     },
     "4": {
-      "value": "components/blockQuote",
+      "value": "components/banner",
       "type": "other"
     },
     "5": {
-      "value": "components/breadcrumbs",
+      "value": "components/blockQuote",
       "type": "other"
     },
     "6": {
-      "value": "components/button",
+      "value": "components/breadcrumbs",
       "type": "other"
     },
     "7": {
-      "value": "components/card",
+      "value": "components/button",
       "type": "other"
     },
     "8": {
-      "value": "components/checkbox",
+      "value": "components/card",
       "type": "other"
     },
     "9": {
-      "value": "components/cta",
+      "value": "components/checkbox",
       "type": "other"
     },
     "10": {
-      "value": "components/fieldset",
+      "value": "components/cta",
       "type": "other"
     },
     "11": {
-      "value": "components/input",
+      "value": "components/fieldset",
       "type": "other"
     },
     "12": {
-      "value": "components/link",
+      "value": "components/input",
       "type": "other"
     },
     "13": {
-      "value": "components/mainMenu",
+      "value": "components/link",
       "type": "other"
     },
     "14": {
-      "value": "components/pager",
+      "value": "components/mainMenu",
       "type": "other"
     },
     "15": {
-      "value": "components/radioButton",
+      "value": "components/pager",
       "type": "other"
     },
     "16": {
-      "value": "components/selectdropdown",
+      "value": "components/radioButton",
       "type": "other"
     },
     "17": {
-      "value": "components/status",
+      "value": "components/selectdropdown",
       "type": "other"
     },
     "18": {
-      "value": "components/table",
+      "value": "components/status",
       "type": "other"
     },
     "19": {
-      "value": "components/tabs",
+      "value": "components/table",
       "type": "other"
     },
     "20": {
-      "value": "components/textField",
+      "value": "components/tabs",
       "type": "other"
     },
     "21": {
+      "value": "components/textField",
+      "type": "other"
+    },
+    "22": {
       "value": "storybook",
       "type": "other"
     }
