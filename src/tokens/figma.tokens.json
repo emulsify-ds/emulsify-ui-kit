@@ -1645,7 +1645,40 @@
       }
     }
   },
-  "components/banner": {},
+  "components/banner": {
+    "banner": {
+      "button": {
+        "text": {
+          "value": "{color.text.body}",
+          "type": "color"
+        },
+        "border": {
+          "value": "{color.text.white}",
+          "type": "color"
+        },
+        "background": {
+          "value": "{color.primary.lighter}",
+          "type": "color"
+        }
+      },
+      "text": {
+        "value": "{color.text.white}",
+        "type": "color",
+        "subheading": {
+          "value": "{color.text.white}",
+          "type": "color"
+        }
+      },
+      "background": {
+        "value": "{color.primary.darker}",
+        "type": "color"
+      },
+      "background-opacity": {
+        "value": "0.75",
+        "type": "opacity"
+      }
+    }
+  },
   "components/blockQuote": {
     "blockQuote": {
       "padding": {
@@ -2673,8 +2706,7 @@
         "components/table": "enabled",
         "components/tabs": "enabled",
         "components/textField": "enabled",
-        "semantic": "enabled",
-        "components/banner": "disabled"
+        "semantic": "enabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:16908",
       "$figmaModeId": "23237:10",
@@ -2862,8 +2894,7 @@
       "name": "Emulsify Global",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "global": "enabled",
-        "components/banner": "disabled"
+        "global": "enabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17089",
       "$figmaModeId": "23237:11",
@@ -2915,8 +2946,7 @@
       "name": "Emulsify Semantic",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "semantic": "enabled",
-        "components/banner": "disabled"
+        "semantic": "enabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17133",
       "$figmaModeId": "23237:12",
@@ -2938,8 +2968,7 @@
       "name": "Emulsify Storybook only",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "storybook": "source",
-        "components/banner": "disabled"
+        "storybook": "source"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17144",
       "$figmaModeId": "23237:13",
@@ -2967,8 +2996,7 @@
         "components/status": "enabled",
         "components/table": "enabled",
         "components/tabs": "enabled",
-        "components/textField": "enabled",
-        "components/banner": "disabled"
+        "components/textField": "enabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17145",
       "$figmaModeId": "23237:14",
@@ -3121,8 +3149,7 @@
         "components/table": "enabled",
         "components/tabs": "enabled",
         "components/textField": "enabled",
-        "semantic": "enabled",
-        "components/banner": "disabled"
+        "semantic": "enabled"
       },
       "group": "WUP"
     },
@@ -3149,8 +3176,7 @@
         "components/status": "enabled",
         "components/table": "enabled",
         "components/tabs": "enabled",
-        "components/textField": "enabled",
-        "components/banner": "disabled"
+        "components/textField": "enabled"
       },
       "group": "WUP"
     }
