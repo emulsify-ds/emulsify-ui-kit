@@ -37,38 +37,6 @@
       "type": "border"
     }
   },
-  "footer": {
-    "background": {
-      "default": {
-        "value": "#006089",
-        "type": "color"
-      },
-      "light": {
-        "value": "#ffffff",
-        "type": "color"
-      }
-    },
-    "heading": {
-      "default": {
-        "value": "#9ce1ff",
-        "type": "color"
-      },
-      "dark": {
-        "value": "#0080b7",
-        "type": "color"
-      }
-    },
-    "icon": {
-      "default": {
-        "value": "#9ce1ff",
-        "type": "color"
-      },
-      "dark": {
-        "value": "#0080b7",
-        "type": "color"
-      }
-    }
-  },
   "tabs": {
     "color": {
       "bg": {
@@ -470,6 +438,38 @@
     "bkg": {
       "value": "#ffffff",
       "type": "color"
+    }
+  },
+  "footer": {
+    "background": {
+      "default": {
+        "value": "#006089",
+        "type": "color"
+      },
+      "light": {
+        "value": "#ffffff",
+        "type": "color"
+      }
+    },
+    "heading": {
+      "default": {
+        "value": "#9ce1ff",
+        "type": "color"
+      },
+      "dark": {
+        "value": "#0080b7",
+        "type": "color"
+      }
+    },
+    "icon": {
+      "default": {
+        "value": "#9ce1ff",
+        "type": "color"
+      },
+      "dark": {
+        "value": "#0080b7",
+        "type": "color"
+      }
     }
   },
   "fieldset": {
@@ -2428,43 +2428,43 @@
       "type": "other"
     },
     "11": {
-      "value": "components/input",
+      "value": "components/footer",
       "type": "other"
     },
     "12": {
-      "value": "components/link",
+      "value": "components/input",
       "type": "other"
     },
     "13": {
-      "value": "components/mainMenu",
+      "value": "components/link",
       "type": "other"
     },
     "14": {
-      "value": "components/pager",
+      "value": "components/mainMenu",
       "type": "other"
     },
     "15": {
-      "value": "components/radioButton",
+      "value": "components/pager",
       "type": "other"
     },
     "16": {
-      "value": "components/selectdropdown",
+      "value": "components/radioButton",
       "type": "other"
     },
     "17": {
-      "value": "components/status",
+      "value": "components/selectdropdown",
       "type": "other"
     },
     "18": {
-      "value": "components/table",
+      "value": "components/status",
       "type": "other"
     },
     "19": {
-      "value": "components/tabs",
+      "value": "components/table",
       "type": "other"
     },
     "20": {
-      "value": "components/footer",
+      "value": "components/tabs",
       "type": "other"
     },
     "21": {
@@ -2712,8 +2712,7 @@
       "components/table": "enabled",
       "components/tabs": "enabled",
       "components/textField": "enabled",
-      "semantic": "enabled",
-      "components/footer": "disabled"
+      "semantic": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:16908",
     "$figmaModeId": "23237:10",
@@ -2902,8 +2901,7 @@
     "id": "0a5c4562bd35f00ce8a339239980a3842147c0bd",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "global": "enabled",
-      "components/footer": "disabled"
+      "global": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17089",
     "$figmaModeId": "23237:11",
@@ -2956,8 +2954,7 @@
     "id": "ca91148967a5dcc80f7e50f6ccfe35b30efd5f2f",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic": "enabled",
-      "components/footer": "disabled"
+      "semantic": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17133",
     "$figmaModeId": "23237:12",
@@ -2980,8 +2977,7 @@
     "id": "16a10d373d39988a75c7d612cd449a633f373c44",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "storybook": "source",
-      "components/footer": "disabled"
+      "storybook": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17144",
     "$figmaModeId": "23237:13",
@@ -3010,8 +3006,7 @@
       "components/status": "enabled",
       "components/table": "enabled",
       "components/tabs": "enabled",
-      "components/textField": "enabled",
-      "components/footer": "disabled"
+      "components/textField": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17145",
     "$figmaModeId": "23237:14",
@@ -3165,8 +3160,7 @@
       "components/table": "enabled",
       "components/tabs": "enabled",
       "components/textField": "enabled",
-      "semantic": "enabled",
-      "components/footer": "disabled"
+      "semantic": "enabled"
     },
     "group": "WUP",
     "type": "other",
@@ -3194,8 +3188,7 @@
       "components/status": "enabled",
       "components/table": "enabled",
       "components/tabs": "enabled",
-      "components/textField": "enabled",
-      "components/footer": "disabled"
+      "components/textField": "enabled"
     },
     "group": "WUP",
     "type": "other",
