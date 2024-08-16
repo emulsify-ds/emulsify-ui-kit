@@ -1,5 +1,8 @@
 import template from './button.twig';
+import { props } from './button.component.yml';
 import figma from '../../../.storybook/configma.json';
+
+const buttonData = props.properties.button__additional_classes.data;
 
 export default {
   title: 'Components/Button',
@@ -10,9 +13,9 @@ export const Button = () => `
   <p>Default:</p>
   ${template()}
   <p>Hover:</p>
-  ${template({ button__additional_classes: ['button--hover'] })}
+  ${template({ button__additional_classes: [`${buttonData[0]}`] })}
   <p>Focus:</p>
-  ${template({ button__additional_classes: ['button--focus'] })}
+  ${template({ button__additional_classes: [`${buttonData[1]}`] })}
 `;
 
 Button.parameters = {
