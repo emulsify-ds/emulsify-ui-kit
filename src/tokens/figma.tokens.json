@@ -2392,6 +2392,40 @@
       }
     }
   },
+  "components/footer": {
+    "footer": {
+      "background": {
+        "default": {
+          "value": "{color.primary.darker}",
+          "type": "color"
+        },
+        "light": {
+          "value": "{color.text.white}",
+          "type": "color"
+        }
+      },
+      "heading": {
+        "default": {
+          "value": "{color.primary.lighter}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{color.primary.dark}",
+          "type": "color"
+        }
+      },
+      "icon": {
+        "default": {
+          "value": "{color.primary.lighter}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{color.primary.dark}",
+          "type": "color"
+        }
+      }
+    }
+  },
   "components/textField": {
     "textField": {
       "borderWidth": {
@@ -2672,7 +2706,8 @@
         "components/table": "enabled",
         "components/tabs": "enabled",
         "components/textField": "enabled",
-        "semantic": "enabled"
+        "semantic": "enabled",
+        "components/footer": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:16908",
       "$figmaModeId": "23237:10",
@@ -2860,7 +2895,8 @@
       "name": "Emulsify Global",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "global": "enabled"
+        "global": "enabled",
+        "components/footer": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17089",
       "$figmaModeId": "23237:11",
@@ -2912,7 +2948,8 @@
       "name": "Emulsify Semantic",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "semantic": "enabled"
+        "semantic": "enabled",
+        "components/footer": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17133",
       "$figmaModeId": "23237:12",
@@ -2934,7 +2971,8 @@
       "name": "Emulsify Storybook only",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "storybook": "source"
+        "storybook": "source",
+        "components/footer": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17144",
       "$figmaModeId": "23237:13",
@@ -2962,7 +3000,8 @@
         "components/status": "enabled",
         "components/table": "enabled",
         "components/tabs": "enabled",
-        "components/textField": "enabled"
+        "components/textField": "enabled",
+        "components/footer": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17145",
       "$figmaModeId": "23237:14",
@@ -3115,7 +3154,8 @@
         "components/table": "enabled",
         "components/tabs": "enabled",
         "components/textField": "enabled",
-        "semantic": "enabled"
+        "semantic": "enabled",
+        "components/footer": "disabled"
       },
       "group": "WUP"
     },
@@ -3142,7 +3182,8 @@
         "components/status": "enabled",
         "components/table": "enabled",
         "components/tabs": "enabled",
-        "components/textField": "enabled"
+        "components/textField": "enabled",
+        "components/footer": "disabled"
       },
       "group": "WUP"
     }
@@ -3169,6 +3210,7 @@
       "components/status",
       "components/table",
       "components/tabs",
+      "components/footer",
       "components/textField",
       "storybook"
     ]
