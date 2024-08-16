@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 12 Aug 2024 17:38:58 GMT
+ * Generated on Fri, 16 Aug 2024 16:34:06 GMT
  */
 
 :root {
@@ -11,6 +11,12 @@
   --text-field-border-width: 1px;
   --text-field-radius: 0.625rem;
   --text-field-border: [object Object];
+  --footer-background-default: #006089;
+  --footer-background-light: #ffffff;
+  --footer-heading-default: #9ce1ff;
+  --footer-heading-dark: #0080b7;
+  --footer-icon-default: #9ce1ff;
+  --footer-icon-dark: #0080b7;
   --tabs-color-bg-default: #ffffff;
   --tabs-color-bg-active: #ffffff;
   --tabs-color-bg-hover: #ffffff;
@@ -388,8 +394,9 @@
   --token-set-order-17: components/status;
   --token-set-order-18: components/table;
   --token-set-order-19: components/tabs;
-  --token-set-order-20: components/textField;
-  --token-set-order-21: storybook;
+  --token-set-order-20: components/footer;
+  --token-set-order-21: components/textField;
+  --token-set-order-22: storybook;
   --emulsify-ui-kit-full: [object Object];
   --emulsify-global: [object Object];
   --emulsify-semantic: [object Object];

@@ -37,6 +37,38 @@
       "type": "border"
     }
   },
+  "footer": {
+    "background": {
+      "default": {
+        "value": "#006089",
+        "type": "color"
+      },
+      "light": {
+        "value": "#ffffff",
+        "type": "color"
+      }
+    },
+    "heading": {
+      "default": {
+        "value": "#9ce1ff",
+        "type": "color"
+      },
+      "dark": {
+        "value": "#0080b7",
+        "type": "color"
+      }
+    },
+    "icon": {
+      "default": {
+        "value": "#9ce1ff",
+        "type": "color"
+      },
+      "dark": {
+        "value": "#0080b7",
+        "type": "color"
+      }
+    }
+  },
   "tabs": {
     "color": {
       "bg": {
@@ -2432,10 +2464,14 @@
       "type": "other"
     },
     "20": {
-      "value": "components/textField",
+      "value": "components/footer",
       "type": "other"
     },
     "21": {
+      "value": "components/textField",
+      "type": "other"
+    },
+    "22": {
       "value": "storybook",
       "type": "other"
     }
@@ -2676,7 +2712,8 @@
       "components/table": "enabled",
       "components/tabs": "enabled",
       "components/textField": "enabled",
-      "semantic": "enabled"
+      "semantic": "enabled",
+      "components/footer": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:16908",
     "$figmaModeId": "23237:10",
@@ -2865,7 +2902,8 @@
     "id": "0a5c4562bd35f00ce8a339239980a3842147c0bd",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "global": "enabled"
+      "global": "enabled",
+      "components/footer": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17089",
     "$figmaModeId": "23237:11",
@@ -2918,7 +2956,8 @@
     "id": "ca91148967a5dcc80f7e50f6ccfe35b30efd5f2f",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic": "enabled"
+      "semantic": "enabled",
+      "components/footer": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17133",
     "$figmaModeId": "23237:12",
@@ -2941,7 +2980,8 @@
     "id": "16a10d373d39988a75c7d612cd449a633f373c44",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "storybook": "source"
+      "storybook": "source",
+      "components/footer": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17144",
     "$figmaModeId": "23237:13",
@@ -2970,7 +3010,8 @@
       "components/status": "enabled",
       "components/table": "enabled",
       "components/tabs": "enabled",
-      "components/textField": "enabled"
+      "components/textField": "enabled",
+      "components/footer": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17145",
     "$figmaModeId": "23237:14",
@@ -3124,7 +3165,8 @@
       "components/table": "enabled",
       "components/tabs": "enabled",
       "components/textField": "enabled",
-      "semantic": "enabled"
+      "semantic": "enabled",
+      "components/footer": "disabled"
     },
     "group": "WUP",
     "type": "other",
@@ -3152,7 +3194,8 @@
       "components/status": "enabled",
       "components/table": "enabled",
       "components/tabs": "enabled",
-      "components/textField": "enabled"
+      "components/textField": "enabled",
+      "components/footer": "disabled"
     },
     "group": "WUP",
     "type": "other",
