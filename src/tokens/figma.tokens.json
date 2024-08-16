@@ -1971,6 +1971,40 @@
       }
     }
   },
+  "components/footer": {
+    "footer": {
+      "background": {
+        "default": {
+          "value": "{color.primary.darker}",
+          "type": "color"
+        },
+        "light": {
+          "value": "{color.text.white}",
+          "type": "color"
+        }
+      },
+      "heading": {
+        "default": {
+          "value": "{color.primary.lighter}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{color.primary.dark}",
+          "type": "color"
+        }
+      },
+      "icon": {
+        "default": {
+          "value": "{color.primary.lighter}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{color.primary.dark}",
+          "type": "color"
+        }
+      }
+    }
+  },
   "components/input": {
     "input": {
       "gap": {
@@ -2392,40 +2426,6 @@
       }
     }
   },
-  "components/footer": {
-    "footer": {
-      "background": {
-        "default": {
-          "value": "{color.primary.darker}",
-          "type": "color"
-        },
-        "light": {
-          "value": "{color.text.white}",
-          "type": "color"
-        }
-      },
-      "heading": {
-        "default": {
-          "value": "{color.primary.lighter}",
-          "type": "color"
-        },
-        "dark": {
-          "value": "{color.primary.dark}",
-          "type": "color"
-        }
-      },
-      "icon": {
-        "default": {
-          "value": "{color.primary.lighter}",
-          "type": "color"
-        },
-        "dark": {
-          "value": "{color.primary.dark}",
-          "type": "color"
-        }
-      }
-    }
-  },
   "components/textField": {
     "textField": {
       "borderWidth": {
@@ -2706,8 +2706,7 @@
         "components/table": "enabled",
         "components/tabs": "enabled",
         "components/textField": "enabled",
-        "semantic": "enabled",
-        "components/footer": "disabled"
+        "semantic": "enabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:16908",
       "$figmaModeId": "23237:10",
@@ -2895,8 +2894,7 @@
       "name": "Emulsify Global",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "global": "enabled",
-        "components/footer": "disabled"
+        "global": "enabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17089",
       "$figmaModeId": "23237:11",
@@ -2948,8 +2946,7 @@
       "name": "Emulsify Semantic",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "semantic": "enabled",
-        "components/footer": "disabled"
+        "semantic": "enabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17133",
       "$figmaModeId": "23237:12",
@@ -2971,8 +2968,7 @@
       "name": "Emulsify Storybook only",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "storybook": "source",
-        "components/footer": "disabled"
+        "storybook": "source"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17144",
       "$figmaModeId": "23237:13",
@@ -3000,8 +2996,7 @@
         "components/status": "enabled",
         "components/table": "enabled",
         "components/tabs": "enabled",
-        "components/textField": "enabled",
-        "components/footer": "disabled"
+        "components/textField": "enabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17145",
       "$figmaModeId": "23237:14",
@@ -3154,8 +3149,7 @@
         "components/table": "enabled",
         "components/tabs": "enabled",
         "components/textField": "enabled",
-        "semantic": "enabled",
-        "components/footer": "disabled"
+        "semantic": "enabled"
       },
       "group": "WUP"
     },
@@ -3182,8 +3176,7 @@
         "components/status": "enabled",
         "components/table": "enabled",
         "components/tabs": "enabled",
-        "components/textField": "enabled",
-        "components/footer": "disabled"
+        "components/textField": "enabled"
       },
       "group": "WUP"
     }
@@ -3201,6 +3194,7 @@
       "components/checkbox",
       "components/cta",
       "components/fieldset",
+      "components/footer",
       "components/input",
       "components/link",
       "components/mainMenu",
@@ -3210,7 +3204,6 @@
       "components/status",
       "components/table",
       "components/tabs",
-      "components/footer",
       "components/textField",
       "storybook"
     ]
