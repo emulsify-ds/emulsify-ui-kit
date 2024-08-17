@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 12 Aug 2024 17:38:58 GMT
+ * Generated on Sat, 17 Aug 2024 18:21:06 GMT
  */
 
 :root {
@@ -88,6 +88,8 @@
   --input-radius: 0.25rem;
   --input-label-lineheight: 125%;
   --input-bkg: #ffffff;
+  --header-search-background: #006089;
+  --header-search-text-icon: #ffffff;
   --fieldset-color-bg: white;
   --fieldset-color-border: #a9afb1;
   --fieldset-color-label: #00202e;
@@ -379,17 +381,18 @@
   --token-set-order-8: components/checkbox;
   --token-set-order-9: components/cta;
   --token-set-order-10: components/fieldset;
-  --token-set-order-11: components/input;
-  --token-set-order-12: components/link;
-  --token-set-order-13: components/mainMenu;
-  --token-set-order-14: components/pager;
-  --token-set-order-15: components/radioButton;
-  --token-set-order-16: components/selectdropdown;
-  --token-set-order-17: components/status;
-  --token-set-order-18: components/table;
-  --token-set-order-19: components/tabs;
-  --token-set-order-20: components/textField;
-  --token-set-order-21: storybook;
+  --token-set-order-11: components/header;
+  --token-set-order-12: components/input;
+  --token-set-order-13: components/link;
+  --token-set-order-14: components/mainMenu;
+  --token-set-order-15: components/pager;
+  --token-set-order-16: components/radioButton;
+  --token-set-order-17: components/selectdropdown;
+  --token-set-order-18: components/status;
+  --token-set-order-19: components/table;
+  --token-set-order-20: components/tabs;
+  --token-set-order-21: components/textField;
+  --token-set-order-22: storybook;
   --emulsify-ui-kit-full: [object Object];
   --emulsify-global: [object Object];
   --emulsify-semantic: [object Object];
