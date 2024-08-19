@@ -1,15 +1,25 @@
+import { mapDataToTwig } from '../../util/dataTransformers';
+
+/* Twigs */
 import heading from './headings/_heading.twig';
 import blockquoteTemplate from './text/02-blockquote.twig';
 import preTemplate from './text/05-pre.twig';
 import paragraphTemplate from './text/03-inline-elements.twig';
 import codeTemplate from './text/07-code.twig';
-import blockquoteData from './text/blockquote.yml';
-import headingData from './headings/headings.yml';
-import codeData from './text/code.yml';
+
+/* Data */
+import { props as blockquoteProps } from './text/blockquote.component.yml';
+import { props as headingProps } from './headings/headings.component.yml';
+import { props as codeProps } from './text/code.component.yml';
 
 /**
  * Storybook Definition.
  */
+
+const blockquoteData = mapDataToTwig(blockquoteProps.properties);
+const codeData = mapDataToTwig(codeProps.properties);
+const headingData = headingProps.example;
+
 export default { title: 'Components/Typography' };
 
 export const headings = () =>
