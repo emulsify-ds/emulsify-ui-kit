@@ -14,7 +14,7 @@
   &::after {
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 9px solid var(--colors-text-body);
+    border-top: 9px solid var(--color-text-body);
     content: ' ';
     position: absolute;
     top: 42%;
@@ -27,21 +27,21 @@
   }
 
   :hover {
-    background: var(--selectdropdown-button-fill-hover);
+    background: var(--selectdropdown-color-button-fill-hover);
   }
 }
 
 .form-item__select {
-  border: var(--border-sm) solid var(--selectdropdown-button-stroke);
-  border-radius: var(--selectdropdown-radius);
+  border: var(--border-sm) solid var(--selectdropdown-color-button-stroke);
+  border-radius: var(--selectdropdown-color-radius);
   height: 41px; // set height required for discrepancy between .form-item__dropdown border and the select :focus border
   font-size: 16px;
   margin: 0;
   outline: none;
   padding: 0.6em 0.8em 0.5em;
   width: 100%;
-  color: var(--selectdropdown-label);
-  background: var(--selectdropdown-button-fill);
+  color: var(--selectdropdown-color-label);
+  background: var(--selectdropdown-color-button-fill);
 
   :focus {
     outline: none;

@@ -16,12 +16,14 @@
 .card__heading {
   @include heading-large($font-size: var(--font-size-h3));
 
+  color: var(--card-color-heading);
   margin: 0;
-  line-height: var(--line-heights-tight);
+  line-height: var(--line-height-tight);
 
   &-link {
     @include link;
 
+    color: var(--card-color-heading);
     text-decoration: none;
   }
 }
@@ -29,10 +31,14 @@
 .card__subheading {
   @include heading-medium($font-size: var(--font-size-small));
 
-  color: var(--colors-grays-500);
+  color: var(--card-color-subheading);
   margin: 0 0 var(--spacing-md);
-  line-height: var(--line-heights-tight);
+  line-height: var(--line-height-tight);
   text-transform: uppercase;
+}
+
+.card__body {
+  color: var(--color-text-body);
 }
 
 .card__link {

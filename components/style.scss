@@ -2,7 +2,6 @@
 @use '~normalize.css/normalize';
 
 // Use component styles
-@use './components';
 
 html {
   box-sizing: border-box;
@@ -12,7 +11,7 @@ body {
   color: var(--colors-text-body);
   font-family: var(--font-family-body);
   font-size: var(--font-size-body);
-  line-height: var(--line-heights-normal);
+  line-height: var(--line-height-normal);
 }
 
 *,
@@ -20,3 +19,6 @@ body {
 *::before {
   box-sizing: inherit;
 }
+
+// Components
+@use './**/*.scss';

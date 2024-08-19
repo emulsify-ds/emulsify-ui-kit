@@ -9,13 +9,61 @@
 .form-item--checkboxes {
   display: flex;
   flex-flow: column nowrap;
-  gap: var(--checkbox-gap);
+  gap: var(--checkbox-spacing-gap);
 }
 
 .form-item--checkbox__item--label {
-  color: var(--checkbox-label);
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  padding-left: calc(var(--spacing-lg) + var(--spacing-sm));
+  color: var(--checkbox-color-label);
+  font-size: var(--font-size-caption);
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--checkbox-button-stroke);
+    background-color: transparent;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 7px;
+    width: 5px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 1px 1px 0;
+    transform: rotate(45deg);
+    display: none;
+  }
 }
 
 .form-item--checkbox__item--label__disabled {
-  color: var(--checkbox-label-disabled);
+  color: var(--checkbox-color-label-disabled);
+
+  &::before {
+    border-color: var(--checkbox-button-stroke-disabled);
+  }
+}
+
+.form-item--checkbox__item {
+  input[type='checkbox'] {
+    @include sr-only;
+  }
+
+  input[type='checkbox']:checked + .form-item--checkbox__item--label::before {
+    background-color: var(--checkbox-button-fill);
+  }
+
+  input[type='checkbox']:checked + .form-item--checkbox__item--label::after {
+    display: block;
+    border-color: white;
+  }
 }

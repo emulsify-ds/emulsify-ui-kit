@@ -22,7 +22,7 @@
   color: var(--colors-sb-text-heading);
   text-transform: uppercase;
   font-size: var(--font-size-hero);
-  margin: 0 0 var(--spacing-xxl);
+  margin: 0 0 var(--spacing-2xl);
   position: relative;
   font-family: var(--font-family-body), serif !important;
 
@@ -41,7 +41,7 @@
   font-family: var(--font-family-body), serif !important;
   font-size: var(--font-size-h4);
   opacity: var(--opacity-80);
-  margin: var(--spacing-xxl) 0 var(--spacing-md);
+  margin: var(--spacing-2xl) 0 var(--spacing-md);
 }
 
 #root > div {
@@ -93,7 +93,7 @@
   inset: 0;
   background-size: cover;
   background-position: bottom right;
-  padding: var(--spacing-xxl) !important;
+  padding: var(--spacing-2xl) !important;
   display: flex;
   justify-content: flex-end;
   flex-flow: column nowrap;
