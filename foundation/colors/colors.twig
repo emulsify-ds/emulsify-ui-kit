@@ -1,0 +1,31 @@
+{% set colors_base_class = "cl-colors" %}
+
+<div {{ bem(colors_base_class) }}>
+	{% include "@atoms/text/headings/heading.twig" with {
+    heading__level: 2,
+    heading: colors_heading,
+    heading__base_class: colors_base_class,
+  } %}
+
+	{% for palette in palettes %}
+		{% set theme_name = palette.theme_name %}
+		{% include "@atoms/text/headings/heading.twig" with {
+      heading__level: 3,
+      heading: palette.palette_heading,
+      heading__base_class: colors_base_class,
+    } %}
+		<ul {{ bem('list', [theme_name], colors_base_class) }} data-theme="{{ theme_name }}">
+			{% for color in palette.colors %}
+				{% set color_machine = color.name|lower|replace({' ': '-'}) %}
+				{% if color.color_reverse == TRUE %}
+					{% set colors_title_modifiers = ['reverse'] %}
+				{% endif %}
+				<li {{ bem("item", [color_machine], colors_base_class) }}>
+					<span {{ bem("swatch", colors_title_modifiers, colors_base_class) }}></span>
+					<span {{ bem("title", colors_title_modifiers, colors_base_class) }}>{{ color.name }}</span>
+					<span {{ bem("definition", colors_title_modifiers, colors_base_class) }}></span>
+				</li>
+			{% endfor %}
+		</ul>
+	{% endfor %}
+</div>

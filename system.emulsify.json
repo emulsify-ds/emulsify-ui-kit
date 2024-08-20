@@ -13,8 +13,16 @@
       "platform": "drupal",
       "structureImplementations": [
         {
+          "name": "foundation",
+          "directory": "./foundation/"
+        },
+        {
           "name": "components",
-          "directory": "./components"
+          "directory": "./components/"
+        },
+        {
+          "name": "layout",
+          "directory": "./layout/"
         }
       ],
       "directories": [

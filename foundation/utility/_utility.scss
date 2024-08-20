@@ -1,0 +1,70 @@
+@use '../breakpoints/breakpoints' as *;
+@use '../functions/color' as *;
+@use '../spacing/spacing' as *;
+
+@mixin visually-hidden {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  word-wrap: normal;
+}
+
+.visually-hidden,
+.sr-only {
+  @include visually-hidden;
+}
+
+// These are abstracted from the general use `focus` mixin below to support
+// use-cases like `focus-within` that apply to an "outer" element when something
+// "inside" has focus. e.g. The utility nav search box.
+@mixin focus-styles {
+  outline: space(0.125) dotted clr(neutral, n500) !important;
+  outline-offset: space(0.125);
+}
+
+@mixin focus {
+  &:focus-visible {
+    @include focus-styles;
+  }
+
+  // Remove browser focus indicator from browsers that support `:focus-visible`
+  // This allows older browsers (e.g. Safari) to show default styles, while
+  // modern browsers use our focus designs.
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+* {
+  @include focus;
+}
+
+body[data-body-frozen],
+body[data-offcanvas-active='true'],
+body[data-gallery-active='true'] {
+  overflow: hidden;
+  max-height: 100vh;
+}
+
+// Prevent all instances of double returns
+p + br {
+  display: none;
+}
+
+.main {
+  position: relative;
+  margin: 0 auto;
+  max-width: $xxxlarge;
+  background-color: clr(full-white);
+}
+
+.paragraph-anchor {
+  scroll-margin-top: space(6);
+}
+
+.gin--edit-form .ck.ck-editor .ck-widget,
+.gin--edit-form .ck.ck-editor .ck-widget:hover {
+  outline: none;
+}

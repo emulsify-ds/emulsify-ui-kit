@@ -1,5 +1,5 @@
-@use '../tokens/tokens' as *;
-@use '../../src/stylesheets/mixins' as *;
+@use "../../tokens/tokens" as *;
+@use "../../src/stylesheets/mixins" as *;
 
 // The accordion group.
 .accordion {
@@ -90,7 +90,7 @@
   fill: var(--accordion-color-body);
   transition: transform 0.3s;
 
-  [aria-expanded='true'] > & {
+  [aria-expanded="true"] > & {
     transform: rotate(180deg);
   }
 }
@@ -111,7 +111,7 @@
     }
   }
 
-  [data-accordion-expanded='false'] & {
+  [data-accordion-expanded="false"] & {
     color: var(--accordion-color-body);
   }
 }
@@ -122,11 +122,11 @@
   color: var(--accordion-color-body);
   font-family: var(--font-family-body);
 
-  [data-accordion-expanded='true'] & {
+  [data-accordion-expanded="true"] & {
     margin-bottom: var(--font-size-lead);
   }
 
-  [data-accordion-expanded='false'] & {
+  [data-accordion-expanded="false"] & {
     max-height: 0;
   }
 

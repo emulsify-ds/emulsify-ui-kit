@@ -1,0 +1,505 @@
+@use '../spacing/spacing' as *;
+@use '../functions/rem-calc' as *;
+@use 'sass:map';
+@use '../functions/color' as *;
+@use '../functions/map' as *;
+@use '../breakpoints/breakpoints' as *;
+
+$smith-font-url: '../../assets/fonts';
+
+@font-face {
+  font-family: Gabriela;
+  src: url('#{$smith-font-url}/Gabriela-SemiBold.woff2') format('woff2'),
+    url('#{$smith-font-url}/Rubik-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Rubik;
+  src: url('#{$smith-font-url}/Rubik-SemiBoldItalic.woff2') format('woff2'),
+    url('#{$smith-font-url}/Rubik-SemiBoldItalic.woff') format('woff');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Rubik;
+  src: url('#{$smith-font-url}/Rubik-SemiBold.woff2') format('woff2'),
+    url('#{$smith-font-url}/Rubik-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: bold;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Rubik;
+  src: url('#{$smith-font-url}/Rubik-Medium.woff2') format('woff2'),
+    url('#{$smith-font-url}/Rubik-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Rubik;
+  src: url('#{$smith-font-url}/Rubik-MediumItalic.woff2') format('woff2'),
+    url('#{$smith-font-url}/Rubik-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Rubik;
+  src: url('#{$smith-font-url}/Rubik-Regular.woff2') format('woff2'),
+    url('#{$smith-font-url}/Rubik-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Rubik;
+  src: url('#{$smith-font-url}/Rubik-Italic.woff2') format('woff2'),
+    url('#{$smith-font-url}/Rubik-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Rubik;
+  src: url('#{$smith-font-url}/Rubik-LightItalic.woff2') format('woff2'),
+    url('#{$smith-font-url}/Rubik-LightItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Rubik;
+  src: url('#{$smith-font-url}/Rubik-Light.woff2') format('woff2'),
+    url('#{$smith-font-url}/Rubik-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Typography CSS Vars
+// Add px values from design tokens and run them through the rem-calc function.
+$font-size-12: rem-calc(12);
+$font-size-13: rem-calc(13);
+$font-size-14: rem-calc(14);
+$font-size-15: rem-calc(15);
+$font-size-16: rem-calc(16);
+$font-size-18: rem-calc(18);
+$font-size-20: rem-calc(20);
+$font-size-22: rem-calc(22);
+$font-size-24: rem-calc(24);
+$font-size-28: rem-calc(28);
+$font-size-30: rem-calc(30);
+$font-size-36: rem-calc(36);
+$font-size-39: rem-calc(39);
+$font-size-44: rem-calc(44);
+$font-size-48: rem-calc(48);
+$font-size-56: rem-calc(56);
+$font-size-66: rem-calc(66);
+$font-size-75: rem-calc(75);
+$font-size-80: rem-calc(80);
+$font-size-100: rem-calc(100);
+$font-size-160: rem-calc(160);
+$font-size-240: rem-calc(240);
+$font-family-serif: 'Gabriela', times, serif;
+$font-family-sans: 'Rubik', verdana, sans-serif;
+$font-weight-extra-light: 200;
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 600;
+$letter-spacing-neg2: -2px;
+$letter-spacing-neg1: -1px;
+$letter-spacing: 0;
+$letter-spacing-neg3: -3px;
+$line-height: 1.2;
+$line-height-tight: 0.9;
+$line-height-loose: 1.4;
+$line-height-xloose: 1.7;
+$fontsizes: (
+  12: var(--font-size-12),
+  13: var(--font-size-13),
+  14: var(--font-size-14),
+  15: var(--font-size-15),
+  16: var(--font-size-16),
+  18: var(--font-size-18),
+  20: var(--font-size-20),
+  22: var(--font-size-22),
+  24: var(--font-size-24),
+  28: var(--font-size-28),
+  30: var(--font-size-30),
+  36: var(--font-size-36),
+  39: var(--font-size-39),
+  44: var(--font-size-44),
+  48: var(--font-size-48),
+  56: var(--font-size-56),
+  66: var(--font-size-66),
+  75: var(--font-size-75),
+  80: var(--font-size-80),
+  100: var(--font-size-100),
+  160: var(--font-size-160),
+  240: var(--font-size-240),
+);
+
+@function fontsize($size) {
+  @return map.get($fontsizes, $size);
+}
+
+// set CSS variables equal to sass variables above.
+:root {
+  --font-family-sans: #{$font-family-sans};
+  --font-size-12: #{$font-size-12};
+  --font-size-13: #{$font-size-13};
+  --font-size-14: #{$font-size-14};
+  --font-size-15: #{$font-size-15};
+  --font-size-16: #{$font-size-16};
+  --font-size-18: #{$font-size-18};
+  --font-size-20: #{$font-size-20};
+  --font-size-22: #{$font-size-22};
+  --font-size-28: #{$font-size-28};
+  --font-size-24: #{$font-size-24};
+  --font-size-30: #{$font-size-30};
+  --font-size-36: #{$font-size-36};
+  --font-size-39: #{$font-size-39};
+  --font-size-44: #{$font-size-44};
+  --font-size-48: #{$font-size-48};
+  --font-size-56: #{$font-size-56};
+  --font-size-66: #{$font-size-66};
+  --font-size-75: #{$font-size-75};
+  --font-size-80: #{$font-size-80};
+  --font-size-100: #{$font-size-100};
+  --font-size-160: #{$font-size-160};
+  --font-size-240: #{$font-size-240};
+  --font-weight-regular: #{$font-weight-regular};
+  --font-weight-medium: #{$font-weight-medium};
+  --font-weight-bold: #{$font-weight-bold};
+  --global-line-height-tight: #{$line-height-tight};
+  --global-line-height: #{$line-height};
+  --font-letter-spacing-neg3: #{$letter-spacing-neg3};
+  --font-letter-spacing-neg2: #{$letter-spacing-neg2};
+  --font-letter-spacing-neg1: #{$letter-spacing-neg1};
+  --font-letter-spacing: #{$letter-spacing};
+}
+
+// Heading mixins
+@mixin h1 {
+  font-size: clamp(
+    #{$font-size-44},
+    #{$font-size-44} + 1.1458vw,
+    #{$font-size-66}
+  );
+  font-family: $font-family-serif;
+  font-weight: 600;
+  letter-spacing: $letter-spacing-neg2;
+  line-height: 1.12;
+}
+
+@mixin h2 {
+  font-size: clamp(
+    #{$font-size-36},
+    #{$font-size-36} + 1.1458vw,
+    #{$font-size-48}
+  );
+  font-family: $font-family-serif;
+  font-weight: 600;
+  letter-spacing: $letter-spacing-neg1;
+  line-height: $line-height;
+}
+
+@mixin h3 {
+  font-size: clamp(
+    #{$font-size-28},
+    #{$font-size-28} + 1.1458vw,
+    #{$font-size-36}
+  );
+  font-family: $font-family-serif;
+  font-weight: 600;
+  letter-spacing: $letter-spacing;
+  line-height: $line-height;
+}
+
+@mixin h4 {
+  font-size: clamp(
+    #{$font-size-22},
+    #{$font-size-22} + 1.1458vw,
+    #{$font-size-28}
+  );
+  font-family: $font-family-serif;
+  font-weight: 600;
+  letter-spacing: $letter-spacing;
+  line-height: $line-height;
+}
+
+@mixin h5 {
+  font-size: clamp(
+    #{$font-size-20},
+    #{$font-size-20} + 1.1458vw,
+    #{$font-size-22}
+  );
+  font-family: $font-family-serif;
+  font-weight: 600;
+  letter-spacing: $letter-spacing;
+  line-height: $line-height;
+}
+
+@mixin h6 {
+  font-size: clamp(
+    #{$font-size-18},
+    #{$font-size-18} + 1.1458vw,
+    #{$font-size-20}
+  );
+  font-family: $font-family-serif;
+  font-weight: 600;
+  letter-spacing: $letter-spacing;
+  line-height: $line-height;
+}
+
+@mixin eyebrow {
+  font-size: clamp(
+    #{$font-size-14},
+    #{$font-size-14} + 0.2778vw,
+    #{$font-size-16}
+  );
+  font-family: $font-family-sans;
+  letter-spacing: $letter-spacing;
+  line-height: $line-height-loose;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+@mixin quote {
+  font-size: clamp(
+    #{$font-size-20},
+    #{$font-size-20} + 0.2778vw,
+    #{$font-size-24}
+  );
+  font-family: $font-family-serif;
+  letter-spacing: $letter-spacing;
+  line-height: $line-height-loose;
+}
+
+// Body mixins
+@mixin body-xl {
+  font-size: clamp(
+    #{$font-size-24},
+    #{$font-size-24} + 0.2778vw,
+    #{$font-size-28}
+  );
+  line-height: $line-height-xloose;
+  font-family: $font-family-sans;
+  font-weight: 400;
+}
+
+// Body mixins
+@mixin body-xl-condensed {
+  font-size: clamp(
+    #{$font-size-24},
+    #{$font-size-24} + 0.2778vw,
+    #{$font-size-28}
+  );
+  line-height: $line-height-loose;
+  letter-spacing: $letter-spacing;
+  font-family: $font-family-sans;
+  font-weight: 400;
+}
+
+@mixin body-l {
+  font-size: clamp(
+    #{$font-size-20},
+    #{$font-size-20} + 0.2778vw,
+    #{$font-size-24}
+  );
+  line-height: $line-height-xloose;
+  font-family: $font-family-sans;
+  font-weight: 400;
+}
+
+@mixin body-l-condensed {
+  font-size: clamp(
+    #{$font-size-20},
+    #{$font-size-20} + 0.2778vw,
+    #{$font-size-24}
+  );
+  line-height: $line-height-loose;
+  letter-spacing: $letter-spacing;
+  font-family: $font-family-sans;
+  font-weight: 400;
+}
+
+@mixin body-m {
+  font-size: clamp(
+    #{$font-size-18},
+    #{$font-size-18} + 0.2778vw,
+    #{$font-size-20}
+  );
+  line-height: $line-height-xloose;
+  font-family: $font-family-sans;
+  font-weight: 400;
+}
+
+@mixin body-m-condensed {
+  font-size: clamp(
+    #{$font-size-18},
+    #{$font-size-18} + 0.2778vw,
+    #{$font-size-20}
+  );
+  line-height: $line-height-loose;
+  letter-spacing: $letter-spacing;
+  font-family: $font-family-sans;
+  font-weight: 400;
+}
+
+@mixin body-default {
+  font-size: clamp(
+    #{$font-size-15},
+    #{$font-size-15} + 0.2778vw,
+    #{$font-size-16}
+  );
+  line-height: $line-height-xloose;
+  font-family: $font-family-sans;
+  font-weight: 400;
+}
+
+@mixin body-default-condensed {
+  font-size: clamp(
+    #{$font-size-15},
+    #{$font-size-15} + 0.2778vw,
+    #{$font-size-16}
+  );
+  line-height: $line-height-loose;
+  letter-spacing: $letter-spacing;
+  font-family: $font-family-sans;
+  font-weight: 400;
+}
+
+@mixin body-s {
+  font-size: clamp(
+    #{$font-size-13},
+    #{$font-size-13} + 0.2778vw,
+    #{$font-size-14}
+  );
+  line-height: $line-height-xloose;
+  font-family: $font-family-sans;
+  font-weight: 400;
+}
+
+@mixin body-s-condensed {
+  font-size: clamp(
+    #{$font-size-13},
+    #{$font-size-13} + 0.2778vw,
+    #{$font-size-14}
+  );
+  line-height: $line-height-loose;
+  letter-spacing: $letter-spacing;
+  font-family: $font-family-sans;
+  font-weight: 400;
+}
+
+@mixin body-xs {
+  font-size: clamp(
+    #{$font-size-12},
+    #{$font-size-12} + 0.2778vw,
+    #{$font-size-13}
+  );
+  line-height: $line-height-xloose;
+  font-family: $font-family-sans;
+  font-weight: 400;
+}
+
+@mixin body-xs-condensed {
+  font-size: clamp(
+    #{$font-size-12},
+    #{$font-size-12} + 0.2778vw,
+    #{$font-size-13}
+  );
+  line-height: $line-height-loose;
+  letter-spacing: $letter-spacing;
+  font-family: $font-family-sans;
+  font-weight: 400;
+}
+
+@mixin menu-item {
+  font-size: clamp(
+    #{$font-size-15},
+    #{$font-size-15} + 0.2778vw,
+    #{$font-size-18}
+  );
+  font-weight: 400;
+  font-family: $font-family-sans;
+}
+
+body {
+  @include body-default;
+
+  font-family: $font-family-sans;
+  font-weight: 400;
+  text-rendering: optimizespeed;
+  background-color: clr(neutral, n50);
+  color: clr(text);
+}
+
+[data-component-theme*='inverse'] {
+  color: clr(text, inverse);
+}
+
+code {
+  border: 2px solid solid;
+  border-radius: space(2);
+  padding: 0 space(1);
+  background-color: clr(neutral, n100);
+}
+
+strong {
+  font-weight: 600;
+}
+
+em {
+  font-style: italic;
+}
+
+.body-xl {
+  @include body-xl;
+}
+
+.body-xl-condensed {
+  @include body-xl-condensed;
+}
+
+.body-l {
+  @include body-l;
+}
+
+.body-l-condensed {
+  @include body-l-condensed;
+}
+
+.body-default {
+  @include body-default;
+}
+
+.body-default-condensed {
+  @include body-default-condensed;
+}
+
+.body-s {
+  @include body-s;
+}
+
+.body-s-condensed {
+  @include body-s-condensed;
+}
+
+[class*='__eyebrow'] {
+  @include eyebrow;
+}

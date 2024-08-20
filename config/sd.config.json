@@ -1,6 +1,6 @@
 {
   "source": [
-    "src/tokens/transformed.tokens.json"
+    "tokens/transformed.tokens.json"
   ],
   "platforms": {
     "css": {
@@ -15,7 +15,7 @@
       ],
       "files": [
         {
-          "destination": "components/tokens/_tokens.scss",
+          "destination": "tokens/tokens.scss",
           "format": "css/variables"
         }
       ]

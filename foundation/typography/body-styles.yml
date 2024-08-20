@@ -1,0 +1,8 @@
+body_sizes:
+  xl: "400 clamp( 1.5rem, 1.5rem + 0.2778vw, 1.75rem )/1.65 'Rubik', sans-serif"
+  xl-condensed: "400 clamp( 1.5rem, 1.5rem + 0.2778vw, 1.75rem )/1.4 'Rubik', sans-serif"
+  l: "400 clamp( 1.25rem, 1.25rem + 0.2778vw, 1.5rem )/1.4 'Rubik', sans-serif"
+  l-condensed: "400 clamp( 1.25rem, 1.25rem + 0.2778vw, 1.5rem )/1.4 'Rubik', sans-serif"
+  default: "400 clamp( 0.9375rem, 0.9375rem + 0.2778vw, 1rem )/1.65 'Rubik', sans-serif"
+  default-condensed: "400 clamp( 0.9375rem, 0.9375rem + 0.2778vw, 1rem )/1.4 'Rubik', sans-serif"
+  s: "400 clamp( 0.8125rem, 0.8125rem + 0.2778vw, 0.875rem )/1.65 'Rubik', sans-serif"

@@ -1,0 +1,68 @@
+@use '../functions/color' as *;
+@use './typography' as *;
+
+.cl-type {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &__family {
+    margin: 0 0 var(--size-spacing-6);
+  }
+}
+
+.cl-type__item + .cl-type__item {
+  margin-top: 2rem;
+}
+
+.cl-info {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+
+.heading--heading-styles {
+  font-family: Gabriela, serif;
+}
+
+.heading {
+  &--h1 {
+    @include h1;
+  }
+
+  &--h2 {
+    @include h2;
+  }
+
+  &--h3 {
+    @include h3;
+  }
+
+  &--h4 {
+    @include h4;
+  }
+
+  &--h5 {
+    @include h5;
+  }
+}
+
+.cl-type__item--body-styles {
+  p {
+    font-family: Rubik, serif;
+  }
+}
+
+.cl-info summary {
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+.cl-info[open] {
+  background-color: clr(accent, light);
+}
+
+.cl-info span code {
+  padding: 0 0.5rem;
+}
