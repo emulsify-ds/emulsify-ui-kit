@@ -22,7 +22,7 @@
     "storybook": "storybook dev -c node_modules/@emulsify/core/.storybook --ci -s ../../../../dist,../../../../assets/images,../../../../assets/icons -p 6006",
     "storybook-build": "npm run build && storybook build -c node_modules/@emulsify/core/.storybook -s ./dist,./assets/images,./assets/icons -o .out",
     "storybook-deploy": "storybook-to-ghpages -o .out",
-    "style-dictionary:build": "node ./src/tokens/tokensTransform.js",
+    "style-dictionary:build": "style-dictionary build --config ./config/sd.config.js",
     "test": "jest --coverage  --config ./config/jest.config.js",
     "twatch": "jest --no-coverage --watch --verbose",
     "visreg": "percy storybook http://localhost:6006",
