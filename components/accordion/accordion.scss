@@ -1,5 +1,5 @@
-@use "../../tokens/tokens" as *;
-@use "../../src/stylesheets/mixins" as *;
+// @use "../../tokens/tokens" as *;
+// @use "../../src/stylesheets/mixins" as *;
 
 // The accordion group.
 .accordion {
@@ -7,8 +7,6 @@
 }
 
 .accordion__controls {
-  @include list-reset;
-
   display: flex;
   gap: var(--spacing-md);
 }
@@ -85,8 +83,6 @@
 
 .accordion-item__icon {
   margin-left: auto;
-  height: $accordion_icon_size;
-  width: $accordion_icon_size;
   fill: var(--accordion-color-body);
   transition: transform 0.3s;
 
@@ -96,8 +92,6 @@
 }
 
 .accordion-item__heading {
-  @include heading-small;
-
   font-weight: normal;
   display: flex;
   color: var(--accordion-color-header);
@@ -128,9 +122,5 @@
 
   [data-accordion-expanded="false"] & {
     max-height: 0;
-  }
-
-  @include medium {
-    padding: 0 calc(var(--spacing-lg) * 5);
   }
 }

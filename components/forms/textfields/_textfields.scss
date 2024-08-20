@@ -1,6 +1,6 @@
-@use '../../tokens/tokens' as *;
-@use '../../../src/stylesheets/breakpoints.scss' as *;
-@use '../../../src/stylesheets/mixins' as *;
+@use "../../tokens/tokens" as *;
+@use "../../../src/stylesheets/breakpoints.scss" as *;
+@use "../../../src/stylesheets/mixins" as *;
 
 .form-item {
   color: var(--color-text-body);

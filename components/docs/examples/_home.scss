@@ -1,5 +1,5 @@
-@use '../../tokens/tokens' as *;
-@use '../../../src/stylesheets/mixins' as *;
+@use "../../tokens/tokens" as *;
+@use "../../../src/stylesheets/mixins" as *;
 
 .example {
   display: flex;
@@ -46,7 +46,7 @@
     padding: var(--spacing-xl);
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       background: var(--colors-primary-dark);
       top: 0;

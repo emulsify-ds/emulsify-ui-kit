@@ -1,4 +1,4 @@
-@use '../../../src/stylesheets/mixins' as *;
+@use "../../../src/stylesheets/mixins" as *;
 
 .breadcrumb {
   @include list-reset;
@@ -22,14 +22,14 @@
   font-size: 0.75rem;
 
   &::after {
-    content: '/';
+    content: "/";
   }
 
   &:last-child {
     color: var(--breadcrumb-text-default);
 
     &::after {
-      content: '';
+      content: "";
     }
   }
 }

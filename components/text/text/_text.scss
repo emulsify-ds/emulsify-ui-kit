@@ -1,5 +1,5 @@
-@use '../../../src/stylesheets/breakpoints.scss' as *;
-@use '../../../src/stylesheets/mixins' as *;
+@use "../../../src/stylesheets/breakpoints.scss" as *;
+@use "../../../src/stylesheets/mixins" as *;
 
 /* Create a mixin for paragraph styles that can be implemented
  * in components with other classnames.

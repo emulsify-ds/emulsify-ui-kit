@@ -1,4 +1,4 @@
-@use '../../../src/stylesheets/mixins' as *;
+@use "../../../src/stylesheets/mixins" as *;
 
 .social-menu {
   @include list-reset;

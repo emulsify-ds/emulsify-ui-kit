@@ -1,5 +1,5 @@
-@use '../../../src/stylesheets/breakpoints.scss' as *;
-@use '../../../src/stylesheets/mixins' as *;
+@use "../../../src/stylesheets/breakpoints.scss" as *;
+@use "../../../src/stylesheets/mixins" as *;
 
 /* LI */
 .main-menu__item {
@@ -53,7 +53,7 @@
     border-bottom-color: transparent;
     border-left: 12px solid transparent;
     border-right: 12px solid transparent;
-    content: '';
+    content: "";
     display: block;
     margin-right: -12px;
     margin-top: -6px;
