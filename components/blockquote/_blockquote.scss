@@ -19,22 +19,22 @@
 }
 
 .block-quote__blockquote {
-  [data-block-quote-style="bar-left"] & {
+  [data-block-quote-style='bar-left'] & {
     padding-left: var(--block-quote-padding-x);
     border-left: var(--size-md) solid var(--color-text-body);
   }
 
-  [data-block-quote-style="bar-right"] & {
+  [data-block-quote-style='bar-right'] & {
     padding-right: var(--block-quote-padding-x);
     border-right: var(--size-md) solid var(--color-text-body);
     text-align: right;
   }
 
-  [data-block-quote-style="quote-left"] & {
+  [data-block-quote-style='quote-left'] & {
     position: relative;
 
     &::before {
-      content: "“";
+      content: '“';
       position: relative;
       font-size: var(--font-size-display);
       line-height: var(--line-height-normal);

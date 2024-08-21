@@ -1,5 +1,5 @@
-@use "../../../src/stylesheets/breakpoints.scss" as *;
-@use "../../../src/stylesheets/mixins" as *;
+@use '../../../src/stylesheets/breakpoints.scss' as *;
+@use '../../../src/stylesheets/mixins' as *;
 
 /* Toggle */
 .toggle-expand {
@@ -55,7 +55,7 @@
 
   &::before {
     color: clr(background);
-    content: "X";
+    content: 'X';
     display: block;
     font-size: 2.5rem;
     line-height: 2;

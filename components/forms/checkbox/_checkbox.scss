@@ -1,5 +1,5 @@
-@use "../../tokens/tokens" as *;
-@use "../../../src/stylesheets/mixins" as *;
+@use '../../tokens/tokens' as *;
+@use '../../../src/stylesheets/mixins' as *;
 
 .form-item--checkboxes,
 .form-item--checkbox__item {
@@ -21,7 +21,7 @@
   font-size: var(--font-size-caption);
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     top: 5px;
@@ -32,7 +32,7 @@
   }
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 6px;
     top: 7px;
@@ -54,15 +54,15 @@
 }
 
 .form-item--checkbox__item {
-  input[type="checkbox"] {
+  input[type='checkbox'] {
     @include sr-only;
   }
 
-  input[type="checkbox"]:checked + .form-item--checkbox__item--label::before {
+  input[type='checkbox']:checked + .form-item--checkbox__item--label::before {
     background-color: var(--checkbox-button-fill);
   }
 
-  input[type="checkbox"]:checked + .form-item--checkbox__item--label::after {
+  input[type='checkbox']:checked + .form-item--checkbox__item--label::after {
     display: block;
     border-color: white;
   }
