@@ -1,8 +1,8 @@
-@use './../../base/breakpoints/breakpoints' as *;
-@use './../..//base/functions/color' as *;
-@use './../../base/spacing/spacing' as *;
-@use './../../base/typography/typography' as *;
-@use './../../base/motion/motion' as *;
+@use '../../foundation/breakpoints/breakpoints' as *;
+@use '../../foundation/functions/color' as *;
+@use '../../foundation/spacing/spacing' as *;
+@use '../../foundation/typography/typography' as *;
+@use '../../foundation/motion/motion' as *;
 
 // Utilize custom properties so they can be rescoped
 :root {
@@ -156,53 +156,17 @@
   &--with-bg {
     @include section-padding(2);
 
-    & {
-      background-color: clr(secondary);
-    }
+    // & {
+    //   background-color: clr(secondary);
+    // }
 
-    &[data-component-theme*='primary'] {
-      background-color: clr(primary);
-    }
+    // &[data-component-theme*='primary'] {
+    //   background-color: clr(primary);
+    // }
 
-    &[data-component-theme*='primary light'] {
-      background-color: clr(primary, light);
-    }
-
-    &[data-component-theme*='primary subtle'] {
-      background-color: clr(primary, subtle);
-    }
-
-    &[data-component-theme*='secondary'] {
-      background-color: clr(secondary);
-    }
-
-    &[data-component-theme*='secondary dark'] {
-      background-color: clr(secondary, dark);
-    }
-
-    &[data-component-theme*='secondary light'] {
-      background-color: clr(secondary, light);
-    }
-
-    &[data-component-theme*='secondary bright'] {
-      background-color: clr(secondary, shade);
-    }
-
-    &[data-component-theme*='tertiary'] {
-      background-color: clr(tertiary);
-    }
-
-    &[data-component-theme*='tertiary'] {
-      background-color: clr(tertiary, light);
-    }
-
-    &[data-component-theme*='quaternary'] {
-      background-color: clr(tertiary);
-    }
-
-    &[data-component-theme*='quaternary light'] {
-      background-color: clr(tertiary, light);
-    }
+    // &[data-component-theme*='primary light'] {
+    //   background-color: clr(primary, light);
+    // }
 
     + .container {
       @include margin-gap-top;

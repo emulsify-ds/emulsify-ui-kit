@@ -1,8 +1,8 @@
 @use 'sass:math';
-@use '../../base/breakpoints/breakpoints' as *;
-@use '../../base/functions/color' as *;
-@use '../../base/functions/map' as *;
-@use '../../base/spacing/spacing' as *;
+@use '../../foundation/breakpoints/breakpoints' as *;
+@use '../../foundation/functions/color' as *;
+@use '../../foundation/functions/map' as *;
+@use '../../foundation/spacing/spacing' as *;
 
 // Define grid columns and their widths
 $grids: (
@@ -46,10 +46,6 @@ $grids: (
   + .grid {
     @include margin-gap-top(1);
     @include section-padding-top(1);
-
-    & {
-      border-top: 1px solid clr(neutral);
-    }
   }
 
   > .grid {
