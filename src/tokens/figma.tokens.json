@@ -2005,6 +2005,40 @@
       }
     }
   },
+  "components/footer": {
+    "footer": {
+      "background": {
+        "default": {
+          "value": "{color.primary.darker}",
+          "type": "color"
+        },
+        "light": {
+          "value": "{color.text.white}",
+          "type": "color"
+        }
+      },
+      "heading": {
+        "default": {
+          "value": "{color.primary.lighter}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{color.primary.dark}",
+          "type": "color"
+        }
+      },
+      "icon": {
+        "default": {
+          "value": "{color.primary.lighter}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{color.primary.dark}",
+          "type": "color"
+        }
+      }
+    }
+  },
   "components/header": {
     "header": {
       "search": {
@@ -3209,6 +3243,7 @@
       "components/checkbox",
       "components/cta",
       "components/fieldset",
+      "components/footer",
       "components/header",
       "components/input",
       "components/link",
