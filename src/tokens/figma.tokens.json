@@ -1645,6 +1645,40 @@
       }
     }
   },
+  "components/banner": {
+    "banner": {
+      "button": {
+        "text": {
+          "value": "{color.text.body}",
+          "type": "color"
+        },
+        "border": {
+          "value": "{color.text.white}",
+          "type": "color"
+        },
+        "background": {
+          "value": "{color.primary.lighter}",
+          "type": "color"
+        }
+      },
+      "text": {
+        "value": "{color.text.white}",
+        "type": "color",
+        "subheading": {
+          "value": "{color.text.white}",
+          "type": "color"
+        }
+      },
+      "background": {
+        "value": "{color.primary.darker}",
+        "type": "color"
+      },
+      "background-opacity": {
+        "value": "0.75",
+        "type": "opacity"
+      }
+    }
+  },
   "components/blockQuote": {
     "blockQuote": {
       "padding": {
@@ -2000,6 +2034,20 @@
         },
         "dark": {
           "value": "{color.primary.dark}",
+          "type": "color"
+        }
+      }
+    }
+  },
+  "components/header": {
+    "header": {
+      "search": {
+        "background": {
+          "value": "{color.primary.darker}",
+          "type": "color"
+        },
+        "text-icon": {
+          "value": "{color.text.white}",
           "type": "color"
         }
       }
@@ -3187,6 +3235,7 @@
       "semantic",
       "components/accordion",
       "components/announcement",
+      "components/banner",
       "components/blockQuote",
       "components/breadcrumbs",
       "components/button",
@@ -3195,6 +3244,7 @@
       "components/cta",
       "components/fieldset",
       "components/footer",
+      "components/header",
       "components/input",
       "components/link",
       "components/mainMenu",
