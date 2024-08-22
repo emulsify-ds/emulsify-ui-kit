@@ -2754,7 +2754,11 @@
         "components/table": "enabled",
         "components/tabs": "enabled",
         "components/textField": "enabled",
-        "semantic": "enabled"
+        "semantic": "enabled",
+        "components/announcement": "enabled",
+        "components/banner": "enabled",
+        "components/footer": "enabled",
+        "components/header": "enabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:16908",
       "$figmaModeId": "23237:10",
