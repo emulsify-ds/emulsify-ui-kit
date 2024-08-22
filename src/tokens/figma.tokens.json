@@ -2005,6 +2005,20 @@
       }
     }
   },
+  "components/header": {
+    "header": {
+      "search": {
+        "background": {
+          "value": "{color.primary.darker}",
+          "type": "color"
+        },
+        "text-icon": {
+          "value": "{color.text.white}",
+          "type": "color"
+        }
+      }
+    }
+  },
   "components/input": {
     "input": {
       "gap": {
@@ -3195,6 +3209,7 @@
       "components/checkbox",
       "components/cta",
       "components/fieldset",
+      "components/header",
       "components/input",
       "components/link",
       "components/mainMenu",
