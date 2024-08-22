@@ -1,0 +1,88 @@
+{
+  "color": {
+    "primary": {
+      "default": {
+        "value": "{color.EmulsifyBlue.600}",
+        "type": "color",
+        "description": "600"
+      },
+      "light": {
+        "value": "{color.EmulsifyBlue.400}",
+        "type": "color"
+      },
+      "lighter": {
+        "value": "{color.EmulsifyBlue.200}",
+        "type": "color"
+      },
+      "dark": {
+        "value": "{color.EmulsifyBlue.700}",
+        "type": "color"
+      },
+      "darker": {
+        "value": "{color.EmulsifyBlue.900}",
+        "type": "color"
+      }
+    },
+    "text": {
+      "body": {
+        "value": "{color.primary.darker}",
+        "type": "color"
+      },
+      "body-lighter": {
+        "value": "{color.primary.darker}",
+        "type": "color"
+      },
+      "heading": {
+        "value": "{color.primary.darker}",
+        "type": "color",
+        "description": "{color.primary.dark}"
+      },
+      "white": {
+        "value": "{color.white}",
+        "type": "color"
+      }
+    },
+    "warning": {
+      "default": {
+        "value": "#d80f0f",
+        "type": "color"
+      }
+    },
+    "link": {
+      "value": "{color.EmulsifyBlue.800}",
+      "type": "color"
+    },
+    "link-hover": {
+      "value": "{color.EmulsifyBlue.1000}",
+      "type": "color"
+    },
+    "link-hover-lighter": {
+      "value": "{color.EmulsifyBlue.900}",
+      "type": "color"
+    }
+  },
+  "typography": {
+    "font-family": {
+      "heading": {
+        "value": "{typography.font-family.primary}",
+        "type": "text"
+      },
+      "body": {
+        "value": "{typography.font-family.secondary}",
+        "type": "text"
+      },
+      "primary": {
+        "value": "{typography.font-family.sans}",
+        "type": "text"
+      },
+      "secondary": {
+        "value": "{typography.font-family.serif}",
+        "type": "text"
+      }
+    }
+  },
+  "Number": {
+    "value": "0rem",
+    "type": "dimension"
+  }
+}

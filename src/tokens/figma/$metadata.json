@@ -1,0 +1,9 @@
+{
+  "tokenSetOrder": [
+    "global",
+    "1. Global/mobile",
+    "1. Global/default",
+    "3. Components/default",
+    "2. Semantic/default"
+  ]
+}

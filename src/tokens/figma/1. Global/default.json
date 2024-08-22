@@ -1,0 +1,244 @@
+{
+  "color": {
+    "black": {
+      "value": "#000000",
+      "type": "color"
+    },
+    "white": {
+      "value": "#ffffff",
+      "type": "color"
+    },
+    "EmulsifyBlue": {
+      "100": {
+        "value": "#e6f5fc",
+        "type": "color"
+      },
+      "200": {
+        "value": "#ccecfa",
+        "type": "color"
+      },
+      "300": {
+        "value": "#99d9f4",
+        "type": "color"
+      },
+      "400": {
+        "value": "#66c5ef",
+        "type": "color"
+      },
+      "500": {
+        "value": "#33b2e9",
+        "type": "color"
+      },
+      "600": {
+        "value": "#009fe4",
+        "type": "color"
+      },
+      "700": {
+        "value": "#007fb6",
+        "type": "color"
+      },
+      "800": {
+        "value": "#005f89",
+        "type": "color"
+      },
+      "900": {
+        "value": "#00405b",
+        "type": "color"
+      },
+      "1000": {
+        "value": "#00202e",
+        "type": "color"
+      }
+    },
+    "grays": {
+      "100": {
+        "value": "#eaebec",
+        "type": "color"
+      },
+      "200": {
+        "value": "#d4d7d8",
+        "type": "color"
+      },
+      "300": {
+        "value": "#a9afb1",
+        "type": "color"
+      },
+      "400": {
+        "value": "#7f878b",
+        "type": "color"
+      },
+      "500": {
+        "value": "#545f64",
+        "type": "color"
+      },
+      "600": {
+        "value": "#29373d",
+        "type": "color"
+      },
+      "700": {
+        "value": "#212c31",
+        "type": "color"
+      },
+      "800": {
+        "value": "#192125",
+        "type": "color"
+      },
+      "900": {
+        "value": "#101618",
+        "type": "color"
+      },
+      "1000": {
+        "value": "#080b0c",
+        "type": "color"
+      }
+    }
+  },
+  "typography": {
+    "font-family": {
+      "sans": {
+        "value": "Inter",
+        "type": "text"
+      },
+      "serif": {
+        "value": "Georgia",
+        "type": "text"
+      },
+      "code": {
+        "value": "Fira Code",
+        "type": "text"
+      }
+    },
+    "font-weight": {
+      "light": {
+        "value": "Light",
+        "type": "text"
+      },
+      "regular": {
+        "value": "Regular",
+        "type": "text"
+      },
+      "semibold": {
+        "value": "Semibold",
+        "type": "text"
+      },
+      "bold": {
+        "value": "Bold",
+        "type": "text"
+      }
+    },
+    "font-size": {
+      "xs": {
+        "value": "0.625rem",
+        "type": "dimension"
+      },
+      "sm": {
+        "value": "0.8125rem",
+        "type": "dimension"
+      },
+      "md": {
+        "value": "1.125rem",
+        "type": "dimension"
+      },
+      "lg": {
+        "value": "1.5rem",
+        "type": "dimension"
+      },
+      "xl": {
+        "value": "2rem",
+        "type": "dimension"
+      },
+      "2xl": {
+        "value": "2.625rem",
+        "type": "dimension"
+      },
+      "3xl": {
+        "value": "3.5rem",
+        "type": "dimension"
+      },
+      "4xl": {
+        "value": "4.6875rem",
+        "type": "dimension"
+      }
+    },
+    "lineheight": {
+      "default": {
+        "value": "9.375rem",
+        "type": "dimension"
+      },
+      "tight": {
+        "value": "7.8125rem",
+        "type": "dimension"
+      },
+      "loose": {
+        "value": "12.5rem",
+        "type": "dimension"
+      },
+      "relaxed": {
+        "value": "10.9375rem",
+        "type": "dimension"
+      },
+      "snug": {
+        "value": "8.5625rem",
+        "type": "dimension"
+      },
+      "none": {
+        "value": "6.25rem",
+        "type": "dimension"
+      }
+    }
+  },
+  "spacing": {
+    "xs": {
+      "value": "0.125rem",
+      "type": "dimension"
+    },
+    "sm": {
+      "value": "0.25rem",
+      "type": "dimension"
+    },
+    "md": {
+      "value": "0.5rem",
+      "type": "dimension"
+    },
+    "lg": {
+      "value": "1rem",
+      "type": "dimension"
+    },
+    "xl": {
+      "value": "2rem",
+      "type": "dimension"
+    },
+    "2xl": {
+      "value": "4rem",
+      "type": "dimension"
+    }
+  },
+  "radius": {
+    "sm": {
+      "value": "0.25rem",
+      "type": "dimension"
+    },
+    "md": {
+      "value": "0.625rem",
+      "type": "dimension"
+    },
+    "lg": {
+      "value": "1.25rem",
+      "type": "dimension"
+    }
+  },
+  "border": {
+    "sm": {
+      "value": "0.0625rem",
+      "type": "dimension"
+    },
+    "md": {
+      "value": "0.125rem",
+      "type": "dimension"
+    },
+    "lg": {
+      "value": "0.3125rem",
+      "type": "dimension"
+    }
+  }
+}

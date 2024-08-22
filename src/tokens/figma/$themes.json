@@ -1,0 +1,23 @@
+[
+  {
+    "id": "2d62b8e0da4ed3d521e73856fb49314c508311d0",
+    "name": "Default",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "global": "enabled",
+      "1. Global/default": "enabled",
+      "3. Components/default": "enabled",
+      "2. Semantic/default": "enabled"
+    },
+    "group": "Emulsify"
+  },
+  {
+    "id": "e0a6c4b0e15cfb9c9f55c3c1bb9e2ed3e0346bf2",
+    "name": "Mobile",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "1. Global/mobile": "enabled"
+    },
+    "group": "Emulsify"
+  }
+]
