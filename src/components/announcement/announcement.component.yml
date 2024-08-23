@@ -1,0 +1,98 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Announcement
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - announcement__title
+    - announcement__content
+  properties:
+    announcement__title:
+      type: string
+      title: Title
+      description: 'Specifies the title of the announcement'
+      data: 'This is an announcement title'
+    announcement__content:
+      type: string
+      title: Content
+      description: 'Specifies the main content of the announcement'
+      data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
+    announcement__button_text:
+      type: string
+      title: Button Text
+      description: 'Specifies the text displayed on the button'
+      data: 'Go to site'
+    announcement__button_url:
+      type: string
+      title: Button URL
+      description: 'Specifies the URL the button will link to'
+      data: '#'
+    announcement__icon:
+      type: string
+      title: Icon
+      description: '(Optional) Specifies the URL of the icon image for the announcement'
+      data: 'https://placehold.co/60x60'
+    announcement__variant:
+      type: string
+      title: Variant
+      description: 'Specifies the style variant for the announcement component'
+      enum:
+        - default
+        - light
+        - dark
+      data: 'default'
+  example:
+    - announcement__title: 'This is an announcement title'
+      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
+      announcement__button_text: 'Go to site'
+      announcement__button_url: '#'
+      announcement__icon: 'icon-dark'
+    - announcement__title: 'This is an announcement title'
+      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
+      announcement__icon: 'icon-dark'
+    - announcement__title: 'This is an announcement title'
+      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
+      announcement__button_text: 'Go to site'
+      announcement__button_url: '#'
+    - announcement__title: 'This is an announcement title'
+      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
+    
+    - announcement__title: 'This is an announcement title'
+      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
+      announcement__button_text: 'Go to site'
+      announcement__button_url: '#'
+      announcement__icon: 'icon-dark'
+      announcement__variant: 'light'
+    - announcement__title: 'This is an announcement title'
+      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
+      announcement__icon: 'icon-dark'
+      announcement__variant: 'light'
+    - announcement__title: 'This is an announcement title'
+      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
+      announcement__button_text: 'Go to site'
+      announcement__button_url: '#'
+      announcement__variant: 'light'
+    - announcement__title: 'This is an announcement title'
+      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
+      announcement__variant: 'light'
+    
+    - announcement__title: 'This is an announcement title'
+      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
+      announcement__button_text: 'Go to site'
+      announcement__button_url: '#'
+      announcement__icon: 'icon-light'
+      announcement__variant: 'dark'
+    - announcement__title: 'This is an announcement title'
+      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
+      announcement__icon: 'icon-light'
+      announcement__variant: 'dark'
+    - announcement__title: 'This is an announcement title'
+      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
+      announcement__button_text: 'Go to site'
+      announcement__button_url: '#'
+      announcement__variant: 'dark'
+    - announcement__title: 'This is an announcement title'
+      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
+      announcement__variant: 'dark'
