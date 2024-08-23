@@ -16,15 +16,15 @@
     "structureImplementations": [
       {
         "name": "foundation",
-        "directory": "./foundation/"
-      },
-      {
-        "name": "components",
-        "directory": "./components/"
+        "directory": "./src/foundation/"
       },
       {
         "name": "layout",
-        "directory": "./layout/"
+        "directory": "./src/layout/"
+      },
+      {
+        "name": "components",
+        "directory": "./src/components/"
       }
     ]
   }
