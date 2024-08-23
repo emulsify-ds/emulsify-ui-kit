@@ -55,10 +55,9 @@
     ]
   },
   "dependencies": {
-    "@emulsify/core": "^1.4.0",
+    "@emulsify/core": "github:emulsify-ds/emulsify-core#release-sdc-support",
     "@percy/cli": "^1.28.2",
-    "@percy/storybook": "^5.0.1",
-    "sass-loader": "^16.0.1"
+    "@percy/storybook": "^5.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.2.0",
