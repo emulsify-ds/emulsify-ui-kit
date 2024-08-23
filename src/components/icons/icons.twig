@@ -1,0 +1,11 @@
+<div class="icons-demo" id="icons">
+	{% for item in icons %}
+		<div class="icons-demo__item">
+			{% include "@components/icons/_icon.twig" with {
+        icon__name: item
+      } %}
+			<pre>{{ item }}</pre>
+		</div>
+	{% endfor %}
+</div>
+<br>

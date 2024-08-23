@@ -1,0 +1,5 @@
+video__type: 'html5'
+# Add remote or locally hosted MP4, WebM, or OGG files.
+video__urls:
+  - 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4'
+  - 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-webm-file.webm'

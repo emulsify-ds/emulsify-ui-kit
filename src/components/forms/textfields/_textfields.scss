@@ -1,0 +1,70 @@
+@use '../../tokens/tokens' as *;
+@use '../../../src/stylesheets/breakpoints.scss' as *;
+@use '../../../src/stylesheets/mixins' as *;
+
+.form-item {
+  color: var(--color-text-body);
+  margin-bottom: 1em;
+
+  @include clearfix;
+}
+
+.form-item__label {
+  display: block;
+  color: var(--input-color-label);
+  margin-bottom: var(--input-gap);
+  font-size: var(--font-size-small);
+  font-weight: bold;
+  line-height: var(--input-label-lineheight);
+
+  @include xs {
+    display: block;
+    margin-right: 2%;
+    padding: 0.6em 0;
+  }
+}
+
+.form-item__textfield {
+  border: var(--border-sm) solid var(--input-border-color);
+  border-radius: var(--input-radius);
+  padding: var(--input-padding-y) var(--input-padding-x);
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+
+  &:focus {
+    border-color: clr(accent-high);
+  }
+
+  &::placeholder {
+    color: var(--input-color-placeholder);
+  }
+}
+
+.form-item__description {
+  color: var(--input-color-help-text);
+  margin: var(--input-gap) 0 0;
+  font-size: var(--font-size-x-small);
+}
+
+.form-fieldset {
+  margin-bottom: 2em;
+  border: var(--border-sm) solid var(--fieldset-color-border);
+  border-radius: var(--radius-fieldset);
+  padding: var(--spacing-lg);
+  font-weight: bold;
+
+  .form-item {
+    margin-left: 1em;
+  }
+}
+
+legend {
+  color: var(--fieldset-color-label);
+}
+
+.form-item--warning {
+  --input-color-label: var(--color-warning-default);
+  --input-border-color: var(--color-warning-default);
+  --input-color-help-text: var(--color-warning-default);
+}
