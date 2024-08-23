@@ -1,0 +1,21 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Inline Menu
+group: Components/Menus
+status: stable
+props:
+  type: object
+  required:
+    - inline_menu_items
+  properties:
+    inline_menu_items:
+      type: array
+      title: Inline menu items
+      description: The items of the inline menu.
+      data:
+        - title: 'Test'
+          url: '#'
+        - title: 'Number 2'
+          url: '#'
+        - title: 'Item Number 3'
+          url: '#'
