@@ -1,0 +1,82 @@
+{#
+/**
+ * Available Variables:
+ * - banner__title: The title of the banner.
+ * - banner__content: The main content of the banner.
+ * - banner__button_text: The text displayed on the banner button.
+ * - banner__button_url: The URL that the banner button links to.
+ * - banner__background_image: The URL of the background image for the banner.
+ * - banner__video: The URL of the video to be displayed. If provided, background_image will be ignored.
+ * - banner__alignment: Specifies the alignment of the content within the banner. Options include 'left', 'center'.
+ * - banner__variant: Specifies the style variant for the banner component (e.g., default, light, dark).
+ * - additional_attributes: Additional HTML attributes for the banner container.
+ */
+#}
+{{ attach_library('emulsify/banner') }}
+
+{% set banner__base_class = 'banner' %}
+{% set banner__alignment = banner__alignment|default('left') %}
+{% set additional_attributes = additional_attributes|default() %}
+{% set has_image = not banner__video and banner__background_image %}
+{% set banner__modifiers = banner__modifiers|default([])|merge([banner__alignment]) %}
+
+{% if has_image %}
+  {% set banner__modifiers = banner__modifiers|merge(['has-image']) %}
+{% endif %}
+
+<div 
+  {{ bem(banner__base_class, banner__modifiers) }} 
+  {{ add_attributes(additional_attributes) }}
+  style="{% if has_image %}background-image: url('{{ banner__background_image }}');{% endif %}"
+>
+  {# Render the video background #}
+  {% if banner__video %}
+    <div {{ bem('video-container', [], banner__base_class) }}>
+      <video {{ bem('video', [], banner__base_class) }} autoplay loop muted>
+        <source src="{{ banner__video }}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div {{ bem('video-controls', [], banner__base_class) }}>
+        <button {{ bem('toggle', [], banner__base_class) }}>
+          <span {{ bem('toggle_label', [], banner__base_class, ['visually-hidden']) }}></span>
+          {% include "@components/icons/_icon.twig" with {
+            icon__name: 'pause',
+            icon__decorative: true,
+            icon__base_class: 'pause',
+            icon__blockname: banner__base_class,
+          } %}
+          {% include "@components/icons/_icon.twig" with {
+            icon__name: 'play',
+            icon__decorative: true,
+            icon__base_class: 'play',
+            icon__blockname: banner__base_class,
+          } %}
+        </button>
+      </div>
+    </div>
+  {% endif %}
+  {# Render the main content #}
+  <div {{ bem('content', [banner__alignment], banner__base_class) }}>
+    {% if banner__title %}
+      {% include "@components/text/headings/_heading.twig" with {
+        heading__level: banner__heading__level|default('4'),
+        heading: banner__title,
+      } %}
+    {% endif %}
+    {% if banner__content %}
+      <div>{{ banner__content }}</div>
+    {% endif %}
+    {# Render the action button #}
+    {% if banner__button_text and banner__button_url %}
+      <div {{ bem('action', [], banner__base_class) }}>
+        {% include "@components/button/button.twig" with {
+          button__tag: 'a',
+          button__content: banner__button_text,
+          button__attributes: {
+            'href': banner__button_url,
+          }
+        } %}
+      </div>
+    {% endif %}
+  </div>
+</div>
