@@ -41,6 +41,10 @@
   @include focus;
 }
 
+body {
+  color: var(--colors-text-body);
+}
+
 body[data-body-frozen] {
   overflow: hidden;
   max-height: 100vh;
