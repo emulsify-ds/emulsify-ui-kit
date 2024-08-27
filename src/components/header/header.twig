@@ -1,0 +1,56 @@
+{% set header__base_class = 'header' %}
+{% set header__base_class = 'header' %}
+{% set header__search_placeholder = header__search_placeholder|default('Search placeholder') %}
+
+<header {{ bem(header__base_class) }} {{ add_attributes(additional_attributes) }}>
+  <div {{ bem('branding', [], header__base_class) }}>
+    {{ header__branding|raw }}
+  </div>
+  <nav {{ bem('menu', [], header__base_class) }}>
+    <ul>
+      {% for item in header__menu %}
+        <li {{ bem('menu-item', [], header__base_class) }}>
+          <a {{ bem('menu-link', [], header__base_class) }} href="{{ item.url }}">
+            {{ item.label }}
+          </a>
+          {% if item.submenu %}
+            {% include "@components/icons/_icon.twig" with {
+              icon__decorative: true,
+              icon__base_class: 'toggle',
+              icon__name: 'chevron-down',
+              icon__blockname: header__base_class,
+            } %}
+            <ul {{ bem('submenu', [], header__base_class) }}>
+              {% for subitem in item.submenu %}
+                <li {{ bem('submenu-item', [], header__base_class) }}>
+                  <a href="{{ subitem.url }}">{{ subitem.label }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+  <div {{ bem('search-form', [], header__base_class) }}>
+    <input {{ bem('search-input', [], header__base_class) }} type="search" placeholder="{{ header__search_placeholder }}">
+    <div {{ bem('form-actions', [], header__base_class) }}>
+      <button {{ bem('submit', [], header__base_class) }}>
+        {% include "@components/icons/_icon.twig" with {
+          icon__name: 'search',
+          icon__decorative: true,
+          icon__base_class: 'icon',
+          icon__blockname: header__base_class,
+        } %}
+      </button>
+      <button {{ bem('cancel', [], header__base_class) }}>
+        {% include "@components/icons/_icon.twig" with {
+          icon__name: 'close',
+          icon__decorative: true,
+          icon__base_class: 'icon',
+          icon__blockname: header__base_class,
+        } %}
+      </button>
+    </div>
+  </div>
+</header>
