@@ -1,5 +1,5 @@
 import template from './cover.twig';
-import backgroundImage from '../../../src/images/cover.png';
+import backgroundImage from '../../../../assets/images/cover.png';
 
 const data = { backgroundImage };
 

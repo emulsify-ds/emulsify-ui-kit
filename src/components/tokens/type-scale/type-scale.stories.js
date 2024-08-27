@@ -1,6 +1,6 @@
 import template from './type-scale.twig';
-import figma from '../../../config/configma.json';
-import tokens from '../../../src/tokens/transformed.tokens.json';
+import figma from '../../../../config/configma.json';
+import tokens from '../../../tokens/transformed.tokens.json';
 
 const data = { fontSize: tokens.fontSize };
 

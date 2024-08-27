@@ -1,6 +1,6 @@
 import template from './breakpoint-tokens.twig';
-import figma from '../../../config/configma.json';
-import tokens from '../../../src/tokens/transformed.tokens.json';
+import figma from '../../../../config/configma.json';
+import tokens from '../../../tokens/transformed.tokens.json';
 
 const data = { breakpoint: tokens.breakpoint };
 

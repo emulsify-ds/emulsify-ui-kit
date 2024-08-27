@@ -1,5 +1,5 @@
 import fontSizeTemplate from './_fontSizes.twig';
-import tokens from '../../../src/tokens/transformed.tokens.json';
+import tokens from '../../../tokens/transformed.tokens.json';
 
 /**
  * Storybook Definition.

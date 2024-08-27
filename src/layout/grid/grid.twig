@@ -28,13 +28,13 @@
 	{% block grid__heading %}{% endblock %}
 	<div {{ add_attributes(grid__inner__attributes) }}>
 		{% block grid__prefix %}{% endblock %}
-		{% block grid__content %}
+		{# {% block grid__content %}
 			{% for item in grid__items %}
-				{% include "emulsify-ui-kit:layout/placeholder/placeholder.twig" with {
+				{% include "emulsify-ui-kit-placeholder" with {
 					place_holder: "Placeholder Content",
 				} %}
 			{% endfor %}
-		{% endblock %}
+		{% endblock %} #}
 		{% block grid__suffix %}{% endblock %}
 	</div>
 </div>

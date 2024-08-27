@@ -35,27 +35,25 @@
   <div {{ bem('inner', container__inner_modifiers, container__base_class) }}>
     {% if container__heading or container__text %}
       <div {{ bem('intro', container__inner_modifiers, container__base_class) }}>
-        {% if container__heading %}
-          {% include "emulsify-ui-kit:components/text/headings/heading.twig" with {
+        {# {% if container__heading %}
+          {% include "emulsify-ui-kit:heading" with {
             heading__level: container__heading_level|default('2'),
             heading: container__heading,
             heading__blockname: container__base_class,
             heading__modifiers: container__heading__modifiers,
           } %}
-        {% endif %}
-        {% if container__text %}
-          {% include "emulsify-ui-kit:components/text/text/text.twig" with {
+        {% endif %} #}
+        {# {% if container__text %}
+          {% include "emulsify-ui-kit:text" with {
               text__blockname: container__base_class,
               text__content: container__text,
             } %}
-        {% endif %}
+        {% endif %} #}
       </div>
     {% endif %}
 
     {% block container__content %}
-      {% include "emulsify-ui-kit:layout/placeholder/placeholder.twig"  with {
-        place_holder: "Placeholder Content"
-      } %}
+      {% include "@layout/placeholder/placeholder.twig" with { place_holder: "Placeholder Content" } %}
     {% endblock %}
   </div>
   {% block container__suffix %}{% endblock %}

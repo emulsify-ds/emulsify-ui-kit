@@ -4,7 +4,7 @@ import figure from './image/figure.twig';
 import imageData from './image/image.yml';
 import figureData from './image/figure.yml';
 
-const svgIcons = require.context('../../assets/icons/', true, /\.svg$/);
+const svgIcons = require.context('../../../assets/icons/', true, /\.svg$/);
 const icons = [];
 svgIcons.keys().forEach((key) => {
   const icon = key.split('./')[1].split('.')[0];

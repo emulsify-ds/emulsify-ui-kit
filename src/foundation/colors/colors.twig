@@ -1,7 +1,7 @@
 {% set colors_base_class = "cl-colors" %}
 
 <div {{ bem(colors_base_class) }}>
-	{% include "@atoms/text/headings/heading.twig" with {
+	{% include "@components/text/headings/heading.twig" with {
     heading__level: 2,
     heading: colors_heading,
     heading__base_class: colors_base_class,
@@ -9,7 +9,7 @@
 
 	{% for palette in palettes %}
 		{% set theme_name = palette.theme_name %}
-		{% include "@atoms/text/headings/heading.twig" with {
+		{% include "@components/text/headings/heading.twig" with {
       heading__level: 3,
       heading: palette.palette_heading,
       heading__base_class: colors_base_class,

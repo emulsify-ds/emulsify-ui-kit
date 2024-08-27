@@ -1,13 +1,13 @@
 import template from './home.twig';
 import data from './home.yml';
-import heroImage from '../../../src/images/example/hero.jpg';
-import watchImage1 from '../../../src/images/example/watch-Image.png';
-import watchImage2 from '../../../src/images/example/watch-Image-1.png';
-import watchImage3 from '../../../src/images/example/watch-Image-2.png';
-import celebratingImage1 from '../../../src/images/example/celebrating-Image-1.png';
-import celebratingImage2 from '../../../src/images/example/celebrating-Image-2.png';
-import celebratingImage3 from '../../../src/images/example/celebrating-Image-3.png';
-import celebratingImage4 from '../../../src/images/example/celebrating-Image-4.png';
+import heroImage from '../../../../assets/images/example/hero.jpg';
+import watchImage1 from '../../../../assets/images/example/watch-Image.png';
+import watchImage2 from '../../../../assets/images/example/watch-Image-1.png';
+import watchImage3 from '../../../../assets/images/example/watch-Image-2.png';
+import celebratingImage1 from '../../../../assets/images/example/celebrating-Image-1.png';
+import celebratingImage2 from '../../../../assets/images/example/celebrating-Image-2.png';
+import celebratingImage3 from '../../../../assets/images/example/celebrating-Image-3.png';
+import celebratingImage4 from '../../../../assets/images/example/celebrating-Image-4.png';
 
 const celebratingImages = [
   celebratingImage1,
