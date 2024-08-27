@@ -48,7 +48,7 @@
 	{# Image #}
 	{% block card__img %}
 		{% if card__image__src %}
-			{% include "@components/images/image/responsive-image.twig" with {
+			{% include "@components/image/responsive-image.twig" with {
         image_blockname: card__base_class,
         output_image_tag: card__image__output_image_tag,
         image_src: card__image__src,

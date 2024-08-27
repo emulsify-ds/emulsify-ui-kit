@@ -1,4 +1,4 @@
-@use '../../../src/stylesheets/mixins' as *;
+@use '../../../foundation/utility/utility' as *;
 
 .breadcrumb {
   @include list-reset;

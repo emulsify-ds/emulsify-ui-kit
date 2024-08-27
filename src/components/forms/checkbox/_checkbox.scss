@@ -1,5 +1,4 @@
-@use '../../tokens/tokens' as *;
-@use '../../../src/stylesheets/mixins' as *;
+@use '../../../foundation/utility/utility' as *;
 
 .form-item--checkboxes,
 .form-item--checkbox__item {

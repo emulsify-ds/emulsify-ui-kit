@@ -1,6 +1,3 @@
-@use '../../tokens/tokens' as *;
-@use '../../../src/stylesheets/mixins' as *;
-
 .example {
   display: flex;
   flex-flow: column nowrap;

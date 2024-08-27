@@ -1,4 +1,11 @@
-@use '../../../src/stylesheets/mixins' as *;
+@mixin link {
+  color: var(--link-color-default);
+  transition: all .15s;
+
+  &:hover {
+    color: var(--link-color-hover);
+  }
+}
 
 .link {
   @include link;

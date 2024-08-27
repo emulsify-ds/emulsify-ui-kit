@@ -1,5 +1,5 @@
-@use '../../../src/stylesheets/breakpoints.scss' as *;
-@use '../../../src/stylesheets/mixins' as *;
+@use '../../../foundation/breakpoints/breakpoints' as *;
+@use '../../../foundation/typography/typography' as *;
 
 /*
  * Generic header styles:
@@ -8,29 +8,29 @@
 
 %h1,
 .h1 {
-  @include heading-xl;
+  @include h1;
 }
 
 %h2,
 .h2 {
-  @include heading-large;
+  @include h2;
 }
 
 %h3,
 .h3 {
-  @include heading-medium;
+  @include h3;
 }
 
 %h4,
 .h4 {
-  @include heading-small;
+  @include h4;
 }
 
 %h5,
 %h6,
 .h5,
 .h6 {
-  @include heading-xs;
+  @include h5;
 }
 
 /* TODO: BEM selectors should be applied to wysiwyg-created content */

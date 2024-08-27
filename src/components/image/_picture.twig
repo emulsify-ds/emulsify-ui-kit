@@ -13,7 +13,7 @@
 		<!--[if IE 9]></video><![endif]-->
 	{% endif %}
 	{# The controlling image, with the fallback image in srcset. #}
-	{% include "@components/images/image/_image.twig" with {
+	{% include "@components/image/_image.twig" with {
     image_blockname: picture_image_blockname|default(picture_blockname),
   } %}
 </picture>

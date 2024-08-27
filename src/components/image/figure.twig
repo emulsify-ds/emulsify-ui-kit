@@ -6,7 +6,7 @@
 		<a {{ bem(image_link_base_class, image_link_modifiers, image_link_blockname|default(image_figure_base_class)) }} href="{{ image_url }}">
 		{% endif %}
 		{% block figure_content %}
-			{% include "@components/images/image/responsive-image.twig" with {
+			{% include "@components/image/responsive-image.twig" with {
         responsive_image_blockname: responsive_image_blockname|default(image_figure_base_class),
       } %}
 		{% endblock %}

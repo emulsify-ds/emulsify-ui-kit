@@ -1,7 +1,3 @@
-// CSS-only select styling (from https://github.com/filamentgroup/select-css)
-@use '../../tokens/tokens' as *;
-@use '../../../src/stylesheets/mixins' as *;
-
 .form-item__dropdown {
   border: var(--border-sm) solid clr(accent);
   display: block;

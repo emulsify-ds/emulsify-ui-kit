@@ -1,6 +1,6 @@
 @forward './tab';
-@use '../../src/stylesheets/breakpoints.scss' as *;
-@use '../../src/stylesheets/mixins' as *;
+@use '../../foundation/breakpoints/breakpoints' as *;
+@use '../../foundation/utility/utility' as *;
 
 /* Tab Navigation */
 .tabs__nav {
@@ -9,7 +9,7 @@
   border-bottom: 1px solid var(--tabs-color-border-bottom);
   padding-bottom: var(--spacing-md);
 
-  @include large {
+  @include breakpoint('large') {
     display: flex;
   }
 }

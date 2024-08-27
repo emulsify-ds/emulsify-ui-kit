@@ -52,8 +52,10 @@ $table-border-width: 1px;
 .table__header_cell {
   @include table-cell;
 
-  background: var(--table-color-header-bg);
-  color: var(--table-color-header-text);
+  & {
+    background: var(--table-color-header-bg);
+    color: var(--table-color-header-text);
+  }
 }
 
 // Table body rows

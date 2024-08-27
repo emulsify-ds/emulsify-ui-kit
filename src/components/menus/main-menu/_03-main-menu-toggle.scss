@@ -1,21 +1,22 @@
-@use '../../../src/stylesheets/breakpoints.scss' as *;
-@use '../../../src/stylesheets/mixins' as *;
+@use '../../../foundation/breakpoints/breakpoints' as *;
+@use '../../links/link/link.scss' as *;
 
 /* Toggle */
 .toggle-expand {
   @include link;
 
-  background: red;
-  display: flex;
-
-  @include medium {
-    display: none;
+  & {
+    background: red;
+    display: flex;
+    display: inline-block;
+    padding: var(--spacing-sm);
+    text-decoration: none;
+    width: 100%;
   }
 
-  display: inline-block;
-  padding: var(--spacing-sm);
-  text-decoration: none;
-  width: 100%;
+  @include breakpoint('medium') {
+    display: none;
+  }
 
   /* See main-menu.js */
   &--open {

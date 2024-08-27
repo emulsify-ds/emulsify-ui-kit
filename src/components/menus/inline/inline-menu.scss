@@ -1,5 +1,6 @@
-@use '../../../src/stylesheets/breakpoints.scss' as *;
-@use '../../../src/stylesheets/mixins' as *;
+@use '../../../foundation/breakpoints/breakpoints' as *;
+@use '../../../foundation/utility/utility' as *;
+@use '../../links/link/link.scss' as *;
 
 .inline-menu {
   @include list-reset;
@@ -8,7 +9,7 @@
   flex-flow: column wrap;
   gap: var(--spacing-md);
 
-  @include medium {
+  @include breakpoint('medium') {
     flex-flow: row wrap;
     gap: var(--spacing-lg);
     margin-bottom: 1em;

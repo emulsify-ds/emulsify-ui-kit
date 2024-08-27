@@ -1,12 +1,12 @@
-@use '../../tokens/tokens' as *;
-@use '../../../src/stylesheets/breakpoints.scss' as *;
-@use '../../../src/stylesheets/mixins' as *;
+@use '../../../foundation/breakpoints/breakpoints' as *;
 
 .form-item {
-  color: var(--color-text-body);
-  margin-bottom: 1em;
-
   @include clearfix;
+
+  & {
+    color: var(--color-text-body);
+    margin-bottom: 1em;
+  }
 }
 
 .form-item__label {

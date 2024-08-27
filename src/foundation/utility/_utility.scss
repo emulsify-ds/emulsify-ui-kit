@@ -37,6 +37,21 @@
   }
 }
 
+@mixin list-reset {
+  list-style: none;
+  margin: 0;
+  padding-inline: 0;
+}
+
+@mixin clearfix {
+  &:after {
+    content: " ";
+    display: block;
+    clear: both;
+    margin: 0;
+  }
+}
+
 * {
   @include focus;
 }
