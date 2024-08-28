@@ -1,3 +1,5 @@
+@use '../../../foundation/utility/utility' as *;
+
 .form-item--checkboxes,
 .form-item--checkbox__item {
   @include list-reset;

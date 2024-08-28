@@ -1,8 +1,12 @@
-.form-item {
-  color: var(--color-text-body);
-  margin-bottom: 1em;
+@use '../../../foundation/breakpoints/breakpoints' as *;
 
+.form-item {
   @include clearfix;
+
+  & {
+    color: var(--color-text-body);
+    margin-bottom: 1em;
+  }
 }
 
 .form-item__label {

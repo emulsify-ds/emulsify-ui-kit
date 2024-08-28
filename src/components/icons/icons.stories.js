@@ -1,6 +1,6 @@
 import iconTwig from './icons.twig';
 
-const svgIcons = require.context('../../../images/icons/', true, /\.svg$/);
+const svgIcons = require.context('../../../assets/icons/', true, /\.svg$/);
 const icons = [];
 svgIcons.keys().forEach((key) => {
   const icon = key.split('./')[1].split('.')[0];
