@@ -1,11 +1,12 @@
-/* LI */
+@use '../../../foundation/breakpoints/breakpoints' as *;
+
 .main-menu__item {
   border-top: 1px solid;
   display: flex;
   flex-wrap: wrap;
   position: relative;
 
-  @include medium {
+  @include breakpoint('medium') {
     border-top: none;
     display: inline-block;
 
@@ -40,7 +41,7 @@
   color: var(--main-menu-color-link-label);
   position: relative;
 
-  @include medium {
+  @include breakpoint('medium') {
     display: none;
   }
 
@@ -79,7 +80,7 @@
 
 /* LI (Nested) */
 .main-menu__item--sub {
-  @include medium {
+  @include breakpoint('medium') {
     display: block;
 
     &:not(:first-child) {

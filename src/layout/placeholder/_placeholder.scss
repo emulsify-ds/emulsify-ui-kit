@@ -1,0 +1,18 @@
+@use '../../base/spacing/spacing' as *;
+@use '../../base/functions/color' as *;
+
+.place-holder {
+  color: clr(neutral);
+  border: 4px dashed clr(secondary);
+  padding: 50px;
+
+  &__content {
+    font-size: 3.2rem;
+    line-height: 1.4;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
