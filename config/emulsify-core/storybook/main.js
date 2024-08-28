@@ -6,7 +6,7 @@ const configOverrides = {};
 // See https://storybook.js.org/docs/7/configure for details.
 // const configOverrides = {
 //   stories: [
-//     '../../../../components/**/*.stories.@(js|jsx|ts|tsx)',
+//     '../../../../src/**/*.stories.@(js|jsx|ts|tsx)',
 //   ],
 //   addons: [
 //     '../../../@storybook/addon-a11y',
