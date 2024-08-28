@@ -1,10 +1,9 @@
-@use '../../../stylesheets/mixins';
-
 .example {
   display: flex;
   flex-flow: column nowrap;
   background-color: var(--colors-white);
   padding: 0 !important;
+
   // max-width: var(--max-width);
   margin: 0 auto;
   min-height: 100vh;
@@ -126,7 +125,7 @@
     margin-top: auto;
     display: flex;
     flex-flow: row nowrap;
-    align-items: start;
+    align-items: flex-start;
 
     .footer-content {
       margin-right: auto;

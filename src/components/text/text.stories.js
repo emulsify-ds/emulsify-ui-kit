@@ -1,7 +1,7 @@
 import { mapDataToTwig } from '../../util/dataTransformers';
 
 /* Twigs */
-import heading from './headings/_heading.twig';
+import heading from './headings/heading.twig';
 import blockquoteTemplate from './text/02-blockquote.twig';
 import preTemplate from './text/05-pre.twig';
 import paragraphTemplate from './text/03-inline-elements.twig';

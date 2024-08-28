@@ -1,0 +1,66 @@
+spacing:
+  - usage: space(10);
+    tokenName: $size-spacing-13
+    rem: 10rem
+    px: 160px
+    example: something
+  - usage: space(6);
+    tokenName: $size-spacing-12
+    rem: 6rem
+    px: 96px
+    example: something
+  - usage: space(5);
+    tokenName: $size-spacing-11
+    rem: 5rem
+    px: 80px
+    example: something
+  - usage: space(4);
+    tokenName: $size-spacing-10
+    rem: 4rem
+    px: 64px
+    example: something
+  - usage: space(3);
+    tokenName: $size-spacing-9
+    rem: 3rem
+    px: 48px
+    example: something
+  - usage: space(2.5);
+    tokenName: $size-spacing-8
+    rem: 2.5rem
+    px: 40px
+    example: something
+  - usage: space(2);
+    tokenName: $size-spacing-7
+    rem: 2rem
+    px: 32px
+    example: something
+  - usage: space(1.5);
+    tokenName: $size-spacing-6
+    rem: 1.5rem
+    px: 24px
+    example: something
+  - usage: space(1);
+    tokenName: $size-spacing-5
+    rem: 1rem
+    px: 16px
+    example: something
+  - usage: space(0.75);
+    tokenName: $size-spacing-4
+    rem: 0.75rem
+    px: 12px
+    example: something
+  - usage: space(0.5);
+    tokenName: $size-spacing-3
+    rem: 0.5rem
+    px: 6px
+    example: something
+  - usage: space(0.25);
+    tokenName: $size-spacing-2
+    rem: 0.25rem
+    px: 4px
+    example: something
+  - usage: space(0.125);
+    tokenName: $size-spacing-1
+    rem: 0.125rem
+    px: 2px
+    example: something
