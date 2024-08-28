@@ -1,0 +1,16 @@
+breakpoints:
+  - name: Xsmall
+    variable: $xsmall
+    value: 600px
+  - name: Small
+    variable: $small
+    value: 905px
+  - name: Medium
+    variable: $medium
+    value: 1240px
+  - name: Large
+    variable: $large
+    value: 1440px
+  - name: Xlarge
+    variable: $xlarge
+    value: 1920px

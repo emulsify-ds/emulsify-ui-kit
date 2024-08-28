@@ -48,7 +48,7 @@
 	{# Image #}
 	{% block card__img %}
 		{% if card__image__src %}
-			{% include "@components/images/image/responsive-image.twig" with {
+			{% include "@components/image/responsive-image.twig" with {
         image_blockname: card__base_class,
         output_image_tag: card__image__output_image_tag,
         image_src: card__image__src,
@@ -62,7 +62,7 @@
 
 		{# Subheading #}
 		{% if card__subheading %}
-			{% include "@components/text/headings/_heading.twig" with {
+			{% include "@components/text/headings/heading.twig" with {
         heading__base_class: card__subheading__base_class|default('subheading'),
         heading__modifiers: card__subheading__modifiers,
         heading__blockname: card__base_class,
@@ -75,7 +75,7 @@
 		{# Heading #}
 		{% if card__heading %}
 			{{ title_prefix }}
-			{% include "@components/text/headings/_heading.twig" with {
+			{% include "@components/text/headings/heading.twig" with {
         heading__base_class: card__heading__base_class|default('heading'),
         heading__modifiers: card__heading__modifiers,
         heading__blockname: card__base_class,

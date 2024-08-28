@@ -1,4 +1,5 @@
-/* A */
+@use '../../../foundation/breakpoints/breakpoints' as *;
+
 .main-menu__link {
   background: var(--main-menu-color-link-bg);
   color: var(--main-menu-color-link-label);
@@ -10,7 +11,7 @@
   font-weight: bold;
   text-transform: uppercase;
 
-  @include medium {
+  @include breakpoint('medium') {
     border-bottom: none;
     display: inline-block;
     position: relative;
@@ -28,8 +29,6 @@
 /*
  * Sub Navigation Links
  */
-
-/* A (Nested) */
 .main-menu__link--sub {
   background-color: var(--main-menu-color-dropdown-bg);
   color: var(--main-menu-color-dropdown-label);
@@ -37,7 +36,7 @@
   padding: var(--spacing-md) var(--spacing-lg);
   font-weight: bold;
 
-  @include medium {
+  @include breakpoint('medium') {
     color: var(--main-menu-color-dropdown-label);
     display: block;
   }
