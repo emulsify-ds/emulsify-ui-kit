@@ -1,6 +1,6 @@
 import template from './button.twig';
 import { props } from './button.component.yml';
-import figma from '../../../.storybook/configma.json';
+import figma from '../../../config/configma.json';
 
 const buttonData = props.properties.button__additional_classes.data;
 

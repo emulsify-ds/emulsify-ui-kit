@@ -13,16 +13,16 @@
       "platform": "drupal",
       "structureImplementations": [
         {
-          "name": "components",
-          "directory": "./src/components"
-        }
-      ],
-      "directories": [
+          "name": "foundation",
+          "directory": "./src/foundation/"
+        },
         {
-          "name": "templates",
-          "path": "./templates",
-          "destinationPath": "./templates",
-          "description": "Contains Drupal templates"
+          "name": "layout",
+          "directory": "./src/layout/"
+        },
+        {
+          "name": "components",
+          "directory": "./src/components/"
         }
       ],
       "components": [

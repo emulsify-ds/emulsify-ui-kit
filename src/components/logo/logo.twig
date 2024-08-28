@@ -18,9 +18,9 @@
     link_url: logo__url|default('/'),
   } %}
     {% block link_content %}
-      {% include "@components/images/image/responsive-image.twig" with {
+      {% include "@components/image/responsive-image.twig" with {
         output_image_tag: true,
-        image_src: directory ? '/' ~ directory ~ '/images/logo.png' : 'logo.png',
+        image_src: directory ? '/' ~ directory ~ '/assets/images/logo.png' : 'logo.png',
         image_alt: 'Logo',
         responsive_image_blockname: 'logo',
       } %}

@@ -1,6 +1,6 @@
 import template from './audio-player.twig';
 import { props } from './audio-player.component.yml';
-import figma from '../../../.storybook/configma.json';
+import figma from '../../../config/configma.json';
 
 const audioData = props.properties.audio_content.data;
 
