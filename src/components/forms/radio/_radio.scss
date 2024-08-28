@@ -54,7 +54,7 @@
 
 .form-item--radio__item {
   input[type='radio'] {
-    @include sr-only;
+    @include visually-hidden;
   }
 
   input[type='radio']:checked + .form-item--radio__item--label::after {

@@ -1,7 +1,5 @@
-@use 'sass:math';
 @use 'sass:map';
-@use '../functions/map' as *;
-@use '../breakpoints/breakpoints' as *;
+@use '../breakpoints/breakpoints' as bp;
 
 $size-spacing-14: 12rem;
 $size-spacing-13: 10rem;
@@ -53,12 +51,12 @@ $spacings: (
     padding-top: space(2);
   }
 
-  @include breakpoint('small') {
-    padding-top: space(2.5) * $multiplier;
+  @include bp.breakpoint('small') {
+    padding-top: #{space(2.5) * $multiplier};
   }
 
-  @include breakpoint('large') {
-    padding-top: space(3) * $multiplier;
+  @include bp.breakpoint('large') {
+    padding-top: #{space(3) * $multiplier};
   }
 }
 
@@ -67,12 +65,12 @@ $spacings: (
     padding-bottom: space(2);
   }
 
-  @include breakpoint('small') {
-    padding-bottom: space(2.5) * $multiplier;
+  @include bp.breakpoint('small') {
+    padding-bottom: #{space(2.5) * $multiplier};
   }
 
-  @include breakpoint('large') {
-    padding-bottom: space(3) * $multiplier;
+  @include bp.breakpoint('large') {
+    padding-bottom: #{space(3) * $multiplier};
   }
 }
 
@@ -83,20 +81,20 @@ $spacings: (
 
 @mixin margin-gap-top($multiplier: 1) {
   & {
-    margin-top: space(2) * $multiplier;
+    margin-top: #{space(2) * $multiplier};
   }
 
-  @include breakpoint('large') {
-    margin-top: space(3) * $multiplier;
+  @include bp.breakpoint('large') {
+    margin-top: #{space(3) * $multiplier};
   }
 }
 
 @mixin margin-gap-bottom($multiplier: 1) {
   &:not(:last-child) {
-    margin-bottom: space(2) * $multiplier;
+    margin-bottom: #{space(2) * $multiplier};
 
-    @include breakpoint('large') {
-      margin-bottom: space(3) * $multiplier;
+    @include bp.breakpoint('large') {
+      margin-bottom: #{space(3) * $multiplier};
     }
   }
 }

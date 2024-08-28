@@ -1,12 +1,12 @@
 @use '../functions/color' as *;
-@use './color-definitions' as *;
+@use './color-definitions' as c;
 
 // Create CSS custom properties based on the color-palette map.
 // For each color variable (e.g. `text` and `background`) a css custom
 // property will be created. (e.g. `--c-text:` and `--c-background:`).
 :root {
   // Create custom properties from the default theme.
-  @each $theme, $palette in $color-palette {
+  @each $theme, $palette in c.$color-palette {
     @if $theme == 'default' {
       @each $name, $color in $palette {
         @if type-of($color) == map {
@@ -28,7 +28,7 @@
   // has a data-theme attribute set. This can be set
   // on the body tag to affect the entire page or set
   // on any tag within the page to affect it's children.
-  @each $theme, $palette in $color-palette {
+  @each $theme, $palette in c.$color-palette {
     [data-theme='#{$theme}'] {
       @each $name, $color in $palette {
         @if type-of($color) == map {
@@ -66,7 +66,7 @@
   // their OS or User-Agent setting.
   // See: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme
   // @media (prefers-color-scheme: dark) {
-  //   @each $theme, $palette in $color-palette {
+  //   @each $theme, $palette in c.$color-palette {
   //     // Change the following theme value to any theme you've defined in
   //     // _01-color-definitions.scss to be the representative dark-mode.
   //     @if ($theme == 'dark') {

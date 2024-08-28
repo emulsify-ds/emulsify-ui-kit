@@ -1,3 +1,6 @@
+@use '../../../foundation/typography/typography' as *;
+@use '../../../foundation/utility/utility' as *;
+
 .example {
   display: flex;
   flex-flow: column nowrap;
@@ -81,7 +84,7 @@
     padding: var(--spacing-2xl) var(--spacing-xl);
 
     .watch-h2 {
-      @include heading-large;
+      @include h2;
 
       font-size: var(--font-size-display);
       margin-top: 0;
@@ -102,7 +105,7 @@
     padding: var(--spacing-2xl) var(--spacing-xl);
 
     &-h2 {
-      @include heading-large;
+      @include h2;
 
       font-size: var(--font-size-display);
       max-width: 980px;

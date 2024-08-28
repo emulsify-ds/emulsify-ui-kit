@@ -1,5 +1,3 @@
-@use '../tokens/tokens' as *;
-
 fieldset {
   border: var(--border-sm) solid var(--color-fieldset-border);
   border-radius: var(--radius-fieldset);

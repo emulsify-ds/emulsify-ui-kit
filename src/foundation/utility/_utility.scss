@@ -1,6 +1,5 @@
-@use '../breakpoints/breakpoints' as *;
-@use '../functions/color' as *;
-@use '../spacing/spacing' as *;
+@use '../functions/color';
+@use '../spacing/spacing';
 
 @mixin visually-hidden {
   position: absolute !important;

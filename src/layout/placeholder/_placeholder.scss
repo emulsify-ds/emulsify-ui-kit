@@ -1,5 +1,4 @@
-@use '../../base/spacing/spacing' as *;
-@use '../../base/functions/color' as *;
+@use '../../foundation/functions/color';
 
 .place-holder {
   color: clr(neutral);

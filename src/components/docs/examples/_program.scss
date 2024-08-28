@@ -1,3 +1,6 @@
+@use '../../../foundation/typography/typography' as *;
+@use '../../../foundation/utility/utility' as *;
+
 .example {
   .dynamic {
     background: var(--colors-primary-lighter);
@@ -5,14 +8,14 @@
     padding: var(--spacing-2xl) var(--spacing-xl);
 
     .dynamic-h2 {
-      @include heading-large;
+      @include h2;
 
       font-size: var(--font-size-display);
       margin: 0 auto var(--spacing-xl);
     }
 
     .dynamic-h3 {
-      @include heading-medium;
+      @include h3;
 
       font-size: var(--font-size-h2);
       margin: var(--spacing-xl) auto var(--spacing-xl);

@@ -1,6 +1,6 @@
-@use '../functions/color' as *;
-@use '../spacing/spacing' as *;
-@use './color-definitions' as *;
+@use '../functions/color';
+@use '../spacing/spacing';
+@use './color-definitions' as c;
 
 // These styles only affect the colors "Usage" page in the component library
 .sb-show-main {
@@ -24,8 +24,8 @@
     padding: space(1);
     transition: all 0.4s;
     flex: 1 1 20%;
-    min-width: space(1) * 20;
-    min-height: space(1) * 18;
+    min-width: calc(#{space(1)} * 20);
+    min-height: calc(#{space(1)} * 18);
     display: flex;
     flex-flow: column wrap;
     align-items: flex-start;
@@ -102,7 +102,7 @@
 }
 
 // Set color swatch styles based on defined color in $color-palette.
-@each $theme, $palette in $color-palette {
+@each $theme, $palette in c.$color-palette {
   .cl-colors__list--#{$theme} {
     background-color: clr(background);
     padding: 0 0 space(2);
