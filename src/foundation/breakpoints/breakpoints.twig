@@ -1,0 +1,16 @@
+{% set breakpoints__base_class = 'cl-table' %}
+
+<table {{ bem(breakpoints__base_class) }}>
+	<tr>
+		<th {{ bem('header', [], breakpoints__base_class) }}>Breakpoint</th>
+		<th {{ bem('header', [], breakpoints__base_class) }}>(SCSS) Variable</th>
+		<th {{ bem('header', [], breakpoints__base_class) }}>Width</th>
+	</tr>
+	{% for breakpoint in breakpoints %}
+		<tr {{ bem('bp-' ~ breakpoint.name|lower, [], breakpoints__base_class) }}>
+			<td>{{ breakpoint.name }}</td>
+			<td>{{ breakpoint.variable }}</td>
+			<td>{{ breakpoint.value }}</td>
+		</tr>
+	{% endfor %}
+</table>
