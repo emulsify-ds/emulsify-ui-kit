@@ -1,0 +1,31 @@
+{
+  "project": {
+    "platform": "drupal",
+    "name": "emulsify-ui-kit",
+    "machineName": "emulsify-ui-kit"
+  },
+  "starter": {
+    "repository": "https://github.com/emulsify-ds/emulsify-ui-kit.git"
+  },
+  "system": {
+    "repository": "https://github.com/emulsify-ds/emulsify-ui-kit.git",
+    "checkout": "main"
+  },
+  "variant": {
+    "platform": "drupal",
+    "structureImplementations": [
+      {
+        "name": "foundation",
+        "directory": "./src/foundation/"
+      },
+      {
+        "name": "layout",
+        "directory": "./src/layout/"
+      },
+      {
+        "name": "components",
+        "directory": "./src/components/"
+      }
+    ]
+  }
+}

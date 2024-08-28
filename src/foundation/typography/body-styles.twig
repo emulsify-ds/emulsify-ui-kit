@@ -1,0 +1,25 @@
+{% set type__base_class = 'cl-type' %}
+
+<h2>Type Styles use SASS Mixins to capture their entire style</h2>
+<p>Like heading styles, body styles may include only a
+	<code>font</code>
+	attribute. However, in order to keep implementation consistent, all typography definitions across the codebase must implement the relevant sass mixin and not mix or omit parts of any typography style.</p>
+
+<ul {{ bem(type__base_class) }}>
+	{% for size, value in body_sizes %}
+		{% set body_styles = 'body-' ~ size %}
+		<li {{ bem('item', ['body-styles'], type__base_class, ['text-field']) }}>
+			<div {{ bem('sample', [], type__base_class, [body_styles]) }}>
+				<strong>Body
+					{{ size }}</strong><br/><p>Enim eget nec sit scelerisque lacus. Porttitor senectus vulputate mattis tortor odio vitae. Dui et, ut ipsum aliquet sit tempor. Amet consectetur purus justo feugiat mattis sit ultricies odio. Pellentesque pellentesque sit sed porttitor duis interdum.</p>
+			</div>
+			<details class="cl-info">
+				<summary>Font Details</summary>
+				<strong>variable:</strong>
+				<code>@include body-{{ size }}</code>
+				<br/><strong>font:</strong>
+				{{ value }}
+			</details>
+		</li>
+	{% endfor %}
+</ul>

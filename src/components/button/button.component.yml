@@ -11,5 +11,5 @@ props:
       title: Additional classes
       description: Additional classes for button.
       data:
-      - 'button--hover'
-      - 'button--focus'
+        - 'button--hover'
+        - 'button--focus'

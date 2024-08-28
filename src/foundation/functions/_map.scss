@@ -1,0 +1,18 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+
+/// Map deep get
+/// @param {Map} $map - Map
+/// @param {Arglist} $keys - Key chain
+/// @return {*} - Desired value
+@function deep-get($map, $keys...) {
+  $scope: $map;
+  $i: 1;
+  // stylelint-disable-next-line
+  @while (meta.type-of($scope) == map) and ($i <= list.length($keys)) {
+    $scope: map.get($scope, list.nth($keys, $i));
+    $i: $i + 1;
+  }
+  @return $scope;
+}

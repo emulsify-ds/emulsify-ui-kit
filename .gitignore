@@ -41,6 +41,10 @@ build/Release
 node_modules/
 jspm_packages/
 
+# Drupal compiled components
+components/
+!src/components/
+
 # TypeScript v1 declaration files
 typings/
 
@@ -99,6 +103,7 @@ dist
 
 # DynamoDB Local files
 .dynamodb/
+.history/
 
 # TernJS port file
 .tern-port
