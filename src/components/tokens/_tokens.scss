@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 22 Aug 2024 18:22:46 GMT
+ * Generated on Wed, 28 Aug 2024 16:20:24 GMT
  */
 
 :root {
@@ -90,6 +90,13 @@
   --input-bkg: #ffffff;
   --header-search-background: #006089;
   --header-search-text-icon: #ffffff;
+  --gallery-overlay: #00405b;
+  --gallery-grid: 2rem;
+  --gallery-heading: #006089;
+  --gallery-body: #00202e;
+  --gallery-modal-padding-x: 2.5rem;
+  --gallery-modal-padding-bottom: 4rem;
+  --gallery-modal-padding-top: 4.75rem;
   --footer-background-default: #006089;
   --footer-background-light: #ffffff;
   --footer-heading-default: #9ce1ff;
@@ -182,6 +189,7 @@
   --color-primary-lighter: #9ce1ff;
   --color-primary-dark: #0080b7;
   --color-primary-darker: #006089;
+  --color-primary-darkest: #00405b;
   --color-text-body: #00202e;
   --color-text-body-lighter: #006089;
   --color-text-heading: #006089;
@@ -395,18 +403,19 @@
   --token-set-order-10: components/cta;
   --token-set-order-11: components/fieldset;
   --token-set-order-12: components/footer;
-  --token-set-order-13: components/header;
-  --token-set-order-14: components/input;
-  --token-set-order-15: components/link;
-  --token-set-order-16: components/mainMenu;
-  --token-set-order-17: components/pager;
-  --token-set-order-18: components/radioButton;
-  --token-set-order-19: components/selectdropdown;
-  --token-set-order-20: components/status;
-  --token-set-order-21: components/table;
-  --token-set-order-22: components/tabs;
-  --token-set-order-23: components/textField;
-  --token-set-order-24: storybook;
+  --token-set-order-13: components/gallery;
+  --token-set-order-14: components/header;
+  --token-set-order-15: components/input;
+  --token-set-order-16: components/link;
+  --token-set-order-17: components/mainMenu;
+  --token-set-order-18: components/pager;
+  --token-set-order-19: components/radioButton;
+  --token-set-order-20: components/selectdropdown;
+  --token-set-order-21: components/status;
+  --token-set-order-22: components/table;
+  --token-set-order-23: components/tabs;
+  --token-set-order-24: components/textField;
+  --token-set-order-25: storybook;
   --emulsify-ui-kit-full: [object Object];
   --emulsify-global: [object Object];
   --emulsify-semantic: [object Object];
