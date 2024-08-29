@@ -44,13 +44,13 @@
   },
   "homepage": "https://github.com/emulsify-ds/compound#readme",
   "lint-staged": {
-    "components/**/*.js": [
+    "src/**/*.js": [
       "npm run lint-js -- --fix"
     ],
-    "components/**/*.scss": [
+    "src/**/*.scss": [
       "npm run lint-styles -- --fix"
     ],
-    "components/**/*.{js,scss}": [
+    "src/**/*.{js,scss}": [
       "npm run prettier-fix"
     ]
   },
@@ -60,15 +60,15 @@
     "@percy/storybook": "^5.0.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.2.0",
-    "@commitlint/config-conventional": "^19.1.0",
+    "@commitlint/cli": "^19.4.1",
+    "@commitlint/config-conventional": "^19.4.1",
     "@semantic-release/changelog": "^6.0.2",
-    "@semantic-release/commit-analyzer": "^11.1.0",
+    "@semantic-release/commit-analyzer": "^13.0.0",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^10.0.2",
-    "@semantic-release/release-notes-generator": "^12.1.0",
+    "@semantic-release/github": "^10.1.7",
+    "@semantic-release/release-notes-generator": "^14.0.0",
     "@storybook/storybook-deployer": "2.8.16",
-    "husky": "^9.0.11",
+    "husky": "^9.1.5",
     "semantic-release": "^23.0.4"
   }
 }
