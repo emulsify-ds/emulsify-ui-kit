@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 22 Aug 2024 18:22:46 GMT
+ * Generated on Thu, 05 Sep 2024 22:34:29 GMT
  */
 
 :root {
@@ -66,6 +66,9 @@
   --pager-padding-y: 0.5rem;
   --pager-padding-y-hover: 0.5rem;
   --pager-padding-y-focus: 0.5rem;
+  --utility-menu-color-bg: #ffffff;
+  --utility-menu-color-link-default: #006089;
+  --utility-menu-color-link-hover: #0080b7;
   --main-menu-color-bg: #ffffff;
   --main-menu-color-link-bg: #ffffff;
   --main-menu-color-link-bg-hover: #9ce1ff;
@@ -399,14 +402,15 @@
   --token-set-order-14: components/input;
   --token-set-order-15: components/link;
   --token-set-order-16: components/mainMenu;
-  --token-set-order-17: components/pager;
-  --token-set-order-18: components/radioButton;
-  --token-set-order-19: components/selectdropdown;
-  --token-set-order-20: components/status;
-  --token-set-order-21: components/table;
-  --token-set-order-22: components/tabs;
-  --token-set-order-23: components/textField;
-  --token-set-order-24: storybook;
+  --token-set-order-17: components/utilityMenu;
+  --token-set-order-18: components/pager;
+  --token-set-order-19: components/radioButton;
+  --token-set-order-20: components/selectdropdown;
+  --token-set-order-21: components/status;
+  --token-set-order-22: components/table;
+  --token-set-order-23: components/tabs;
+  --token-set-order-24: components/textField;
+  --token-set-order-25: storybook;
   --emulsify-ui-kit-full: [object Object];
   --emulsify-global: [object Object];
   --emulsify-semantic: [object Object];
