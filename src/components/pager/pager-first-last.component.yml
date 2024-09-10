@@ -1,0 +1,113 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Pager with First and Last
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - current
+    - ellipses
+    - items
+  properties:
+    current:
+      type: integer
+      title: Current Page
+      description: 'Specifies the current active page number'
+      data: 10
+    ellipses:
+      type: object
+      title: Ellipses Visibility
+      description: 'Specifies whether to display ellipses for next and previous page navigation'
+      properties:
+        previous:
+          type: boolean
+          title: Show Previous Ellipsis
+          description: 'Determines whether to display an ellipsis for the previous page'
+          data: true
+        next:
+          type: boolean
+          title: Show Next Ellipsis
+          description: 'Determines whether to display an ellipsis for the next page'
+          data: true
+    items:
+      type: object
+      title: Page Items
+      description: 'Specifies the links for page navigation'
+      properties:
+        first:
+          type: object
+          title: First Page Link
+          properties:
+            href:
+              type: string
+              title: First Page URL
+              description: 'URL for the first page'
+              data: '#'
+        last:
+          type: object
+          title: Last Page Link
+          properties:
+            href:
+              type: string
+              title: Last Page URL
+              description: 'URL for the last page'
+              data: '#'
+        previous:
+          type: object
+          title: Previous Page Link
+          properties:
+            href:
+              type: string
+              title: Previous Page URL
+              description: 'URL for the previous page'
+              data: '#'
+        next:
+          type: object
+          title: Next Page Link
+          properties:
+            href:
+              type: string
+              title: Next Page URL
+              description: 'URL for the next page'
+              data: '#'
+        pages:
+          type: object
+          title: Page Links
+          description: 'Links for the page numbers'
+          properties:
+            9:
+              type: object
+              properties:
+                href:
+                  type: string
+                  title: Page 9 URL
+                  data: '#'
+            10:
+              type: object
+              properties:
+                href:
+                  type: string
+                  title: Page 10 URL
+                  data: '#'
+            11:
+              type: object
+              properties:
+                href:
+                  type: string
+                  title: Page 11 URL
+                  data: '#'
+            12:
+              type: object
+              properties:
+                href:
+                  type: string
+                  title: Page 12 URL
+                  data: '#'
+            13:
+              type: object
+              properties:
+                href:
+                  type: string
+                  title: Page 13 URL
+                  data: '#'

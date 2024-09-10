@@ -42,7 +42,7 @@
 {% endset %}
 
 <div {{ add_attributes(accordion__item__attributes) }}>
-	{% include "@components/text/headings/_heading.twig" with {
+	{% include "@components/text/headings/heading.twig" with {
     heading__level: accordion__item__heading__level|default('2'),
     heading__blockname: accordion__item__base_class,
     heading: accordion__item__heading__content,
