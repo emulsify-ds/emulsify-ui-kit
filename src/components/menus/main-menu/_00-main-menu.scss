@@ -1,8 +1,11 @@
+@use '../../../foundation/breakpoints/breakpoints' as *;
+@use '../../../foundation/utility/utility' as *;
+
 /* Nav */
 .main-nav {
   display: none;
 
-  @include medium {
+  @include breakpoint('medium') {
     display: flex;
     flex-flow: row nowrap;
     gap: var(--spacing-md);
@@ -24,11 +27,13 @@
 .main-menu {
   @include list-reset;
 
-  border-bottom: 1px solid;
-  position: relative;
-  z-index: 10;
+  & {
+    border-bottom: 1px solid;
+    position: relative;
+    z-index: 10;
+  }
 
-  @include medium {
+  @include breakpoint('medium') {
     border-bottom: none;
   }
 }
@@ -45,7 +50,7 @@
   background-color: var(--main-menu-color-dropdown-bg);
   width: 100%;
 
-  @include medium {
+  @include breakpoint('medium') {
     display: none;
     height: auto;
     left: 0;
@@ -59,7 +64,7 @@
   }
 
   &:hover {
-    @include medium {
+    @include breakpoint('medium') {
       .main-menu__link--sub {
         &.active,
         &:active,
@@ -78,7 +83,7 @@
 }
 
 .main-menu--sub-2 {
-  @include medium {
+  @include breakpoint('medium') {
     display: none;
 
     /* Never shown on large screens */
