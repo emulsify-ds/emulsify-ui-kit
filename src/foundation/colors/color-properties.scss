@@ -9,7 +9,7 @@
   @each $theme, $palette in c.$color-palette {
     @if $theme == 'default' {
       @each $name, $color in $palette {
-        @if type-of($color) == map {
+        @if meta.meta.type-of($color) == map {
           @each $clrname, $value in $color {
             @if $clrname == 'base' {
               --c-#{$name}: #{cnvrt-clr($value, $format)};
@@ -31,7 +31,7 @@
   @each $theme, $palette in c.$color-palette {
     [data-theme='#{$theme}'] {
       @each $name, $color in $palette {
-        @if type-of($color) == map {
+        @if meta.meta.type-of($color) == map {
           @each $clrname, $value in $color {
             @if $clrname == 'base' {
               --c-#{$name}: #{cnvrt-clr($value, $format)};
@@ -47,7 +47,7 @@
 
     [data-component-theme*='#{$theme}'] {
       @each $name, $color in $palette {
-        @if type-of($color) == map {
+        @if meta.meta.type-of($color) == map {
           @each $clrname, $value in $color {
             @if $clrname == 'base' {
               --c-#{$name}: #{cnvrt-clr($value, $format)};
@@ -71,7 +71,7 @@
   //     // _01-color-definitions.scss to be the representative dark-mode.
   //     @if ($theme == 'dark') {
   //       @each $name, $color in $palette {
-  //         @if (type-of($color) == map) {
+  //         @if (meta.meta.type-of($color) == map) {
   //           @each $clrname, $value in $color {
   //             @if ($clrname == 'base') {
   //               --c-#{$name}: #{cnvrt-clr($value, $format)};

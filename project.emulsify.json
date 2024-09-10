@@ -1,6 +1,6 @@
 {
   "project": {
-    "platform": "drupal",
+    "platform": "",
     "name": "emulsify-ui-kit",
     "machineName": "emulsify-ui-kit"
   },
@@ -12,7 +12,7 @@
     "checkout": "main"
   },
   "variant": {
-    "platform": "drupal",
+    "platform": "",
     "structureImplementations": [
       {
         "name": "foundation",

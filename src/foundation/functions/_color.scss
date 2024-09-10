@@ -5,19 +5,21 @@
 // Returns hex by default.
 // Optionally returns rgb, rgba, hsl, or hsla.
 @function cnvrt-clr($color, $format: null) {
-  @if type-of($color) == color {
+  @if meta.type-of($color) == color {
     @if not $format or $format == 'hex' {
       $ie-hex: ie_hex_str($color);
-      @return unquote('#' + str_slice($ie-hex, 4));
+      @return string.unquote('#' + str_slice($ie-hex, 4));
     } @else if $format == 'rgb' {
-      @return red($color), green($color), blue($color);
+      @return color.red($color), color.green($color), color.blue($color);
     } @else if $format == 'rgba' {
-      @return red($color), green($color), blue($color), opacity($color);
-    } @else if $format == 'hsl' {
-      @return hue($color), saturation($color), lightness($color);
-    } @else if $format == 'hsla' {
-      @return hue($color), saturation($color), lightness($color),
+      @return color.red($color), color.green($color), color.blue($color),
         opacity($color);
+    } @else if $format == 'hsl' {
+      @return color.hue($color), color.saturation($color),
+        color.lightness($color);
+    } @else if $format == 'hsla' {
+      @return color.hue($color), color.saturation($color),
+        color.lightness($color), opacity($color);
     } @else {
       @return '#{$format} is not a valid color format';
     }
@@ -46,7 +48,9 @@ $format: 'rgb';
 ) {
   // Coverage: clr(text)
   @if not $variant {
-    @if type-of(map.get(map.get(c.$color-palette, $theme), $name)) == map {
+    @if meta.meta.type-of(map.get(map.get(c.$color-palette, $theme), $name)) ==
+      map
+    {
       @return #{$format}#{'a('} var(--c-#{$name}, cnvrt-clr(map.get(map.get(map.get(c.$color-palette, $theme), $name), 'base'), $format)),
         $alpha #{')'};
     } @else {
@@ -57,11 +61,15 @@ $format: 'rgb';
 
   // Return variant as alpha value.
   // Coverage: clr(text, 0.5), clr(text, 0.5, contrast)
-  @if $variant != null and type-of($variant) == number {
-    @if map-has-key(c.$color-palette, $alpha) {
+  @if $variant != null and meta.meta.type-of($variant) == number {
+    @if map.has-key(c.$color-palette, $alpha) {
       // Return color value if it doesn't have variations or assume
       // the base color from multi-dimensional array.
-      @if type-of(map.get(map.get(c.$color-palette, $theme), $name)) == map {
+      @if meta.meta.type-of(
+          map.get(map.get(c.$color-palette, $theme), $name)
+        ) ==
+        map
+      {
         @return #{$format}#{'a('} var(--c-#{$name}-#{$alpha}, cnvrt-clr(map.get(map.get(map.get(c.$color-palette, $theme), $name), 'base'), $format)),
           $variant #{')'};
       } @else {
@@ -69,7 +77,11 @@ $format: 'rgb';
           $variant #{')'};
       }
     } @else {
-      @if type-of(map.get(map.get(c.$color-palette, $theme), $name)) == map {
+      @if meta.meta.type-of(
+          map.get(map.get(c.$color-palette, $theme), $name)
+        ) ==
+        map
+      {
         @return #{$format}#{'a('} var(--c-#{$name}, cnvrt-clr(map.get(map.get(map.get(c.$color-palette, $theme), $name), 'base'), $format)),
           $variant #{')'};
       } @else {
@@ -82,11 +94,15 @@ $format: 'rgb';
   // Coverage: clr(text, inverse),
   // clr(text, inverse, 0.5), clr(text, contrast), clr(text, contrast, 0.5),
   // clr(text, inverse, contrast), clr(text, inverse, 0.5, contrast)
-  @if $variant != null and type-of($variant) == string {
+  @if $variant != null and meta.meta.type-of($variant) == string {
     // Return theme specific color if it's defined.
     // Coverage: clr(text, contrast), clr(text, contrast, 0.5)
-    @if map-has-key(c.$color-palette, $variant) {
-      @if type-of(map.get(map.get(c.$color-palette, $theme), $name)) == map {
+    @if map.has-key(c.$color-palette, $variant) {
+      @if meta.meta.type-of(
+          map.get(map.get(c.$color-palette, $theme), $name)
+        ) ==
+        map
+      {
         @return #{$format}#{'a('} var(--c-#{$name}-#{$variant}, cnvrt-clr(map.get(map.get(map.get(c.$color-palette, $variant), $name), 'base'), $format)),
           $alpha #{')'};
       } @else {
@@ -97,21 +113,30 @@ $format: 'rgb';
 
     // Coverage: clr(text, inverse), clr(text, inverse, 0.5),
     // clr(text, inverse, contrast), clr(text, inverse, 0.5, contrast)
-    @if type-of(map.get(map.get(c.$color-palette, #{$theme}), #{$name})) == map {
+    @if meta.meta.type-of(
+        map.get(map.get(c.$color-palette, #{$theme}), #{$name})
+      ) ==
+      map
+    {
       // Coverage: clr(text, inverse),
       // clr(text, inverse, 0.5), clr(text, contrast, 0.5),
       // clr(text, inverse, 0.5, contrast)
-      @if type-of($alpha) == number {
+      @if meta.meta.type-of($alpha) == number {
         @if (
-          map-has-key(c.$color-palette, $variant) and
-            type-of(map.get(map.get(c.$color-palette, $variant), $name)) ==
+          map.has-key(c.$color-palette, $variant) and
+            meta.meta.type-of(
+              map.get(map.get(c.$color-palette, $variant), $name)
+            ) ==
             map
         ) {
           @return #{$format}#{'a('} var(--c-#{$name}-#{$variant}, cnvrt-clr(map.get(map.get(map.get(c.$color-palette, $variant), $name), 'base'), $format)),
             $alpha #{')'};
         } @else {
           @if (
-            type-of(map.get(map.get(c.$color-palette, $theme), $name)) == map
+            meta.meta.type-of(
+                map.get(map.get(c.$color-palette, $theme), $name)
+              ) ==
+              map
           ) {
             @return #{$format}#{'a('} var(--c-#{$name}-#{$variant}, cnvrt-clr(map.get(map.get(map.get(c.$color-palette, $theme), $name), 'base'), $format)),
               $alpha #{')'};
@@ -123,7 +148,7 @@ $format: 'rgb';
       }
 
       // Coverage: clr(text, inverse, contrast)
-      @else if map-has-key(c.$color-palette, #{$alpha}) {
+      @else if map.has-key(c.$color-palette, #{$alpha}) {
         @return #{$format}#{'a('} var(--c-#{$name}-#{$variant}-#{$alpha}, cnvrt-clr(map.get(map.get(map.get(c.$color-palette, #{$alpha}), $name), $variant), $format)),
           1 #{')'};
       } @else {

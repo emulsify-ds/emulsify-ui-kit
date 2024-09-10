@@ -1,8 +1,8 @@
 @use '../../foundation/functions/color';
 
 .place-holder {
-  color: clr(neutral);
-  border: 4px dashed clr(secondary);
+  color: var(--color-text-body);
+  border: 4px dashed var(--colors-sb-visualization);
   padding: 50px;
 
   &__content {

@@ -38,10 +38,11 @@ $spacings: (
 );
 
 @function space($item) {
-  @if map-has-key($map: $spacings, $key: $item) {
+  @if map.has-key($map: $spacings, $key: $item) {
     @return map.get($spacings, $item);
   } @else {
     /* stylelint-disable-next-line at-rule-no-unknown */
+
     @error 'space(#{$item}); does not exist in the $spacings map. See _spacing.scss for available parameters.';
   }
 }

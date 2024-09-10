@@ -6,7 +6,7 @@
 
 /////////////////////
 // Global Breakpoints
-@use '../functions/rem-calc';
+@use '../functions/rem-calc' as *;
 
 $xsmall: rem-calc(610);
 $small: rem-calc(767);
@@ -53,12 +53,13 @@ $breakpoints: (
 /// @require $breakpoints map
 @mixin breakpoint($breakpoint) {
   // If the key exists in the map
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media #{meta.inspect(map.get($breakpoints, $breakpoint))} {
       @content;
     }
   } @else {
     /* stylelint-disable-next-line at-rule-no-unknown */
+
     @error "Unfortunately, no value could be retrieved from `#{$breakpoint}`. Available breakpoints are: #{map-keys($breakpoints)}.";
   }
 }

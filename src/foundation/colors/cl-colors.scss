@@ -1,7 +1,3 @@
-@use '../functions/color';
-@use '../spacing/spacing';
-@use './color-definitions' as c;
-
 // These styles only affect the colors "Usage" page in the component library
 .sb-show-main {
   background-color: clr(background);
@@ -110,7 +106,7 @@
   }
 
   @each $clrname, $color in $palette {
-    @if type-of($color) == map {
+    @if meta.meta.type-of($color) == map {
       @each $variant, $value in $color {
         @if $variant == 'base' {
           .cl-colors__item--#{$clrname} {

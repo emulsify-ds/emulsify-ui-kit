@@ -1,5 +1,5 @@
 import pagerTwig from './pager.twig';
-import { mapDataToTwig } from '../../util/dataTransformers';
+import { mapDataToTwig } from '../../util/dataTransformers.js';
 
 import { props as pagerProps } from './pager.component.yml';
 import { props as pagerNextEllipsesProps } from './pager-next-ellipses.component.yml';

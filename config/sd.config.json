@@ -1,21 +1,21 @@
 {
   "source": [
-    "tokens/transformed.tokens.json"
+    "src/tokens/transformed.tokens.json"
   ],
   "platforms": {
     "css": {
       "transforms": [
         "attribute/cti",
-        "name/cti/kebab",
+        "name/kebab",
         "time/seconds",
-        "content/icon",
+        "html/icon",
         "color/css",
         "toRem/pxToRem",
         "toPX/appendPX"
       ],
       "files": [
         {
-          "destination": "tokens/tokens.scss",
+          "destination": "src/tokens/tokens.scss",
           "format": "css/variables"
         }
       ]

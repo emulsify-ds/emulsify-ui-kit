@@ -23,7 +23,7 @@ export default {
   arg: {
     columnNumber: '3',
     gridSpacing: '',
-  }
+  },
 };
 
 export const grid = ({ columnNumber, gridSpacing }) =>

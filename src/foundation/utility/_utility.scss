@@ -43,8 +43,8 @@
 }
 
 @mixin clearfix {
-  &:after {
-    content: " ";
+  &::after {
+    content: ' ';
     display: block;
     clear: both;
     margin: 0;

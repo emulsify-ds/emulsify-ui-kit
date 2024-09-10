@@ -23,14 +23,6 @@
     width: var(--content-width-wide);
   }
 
-  .layout-node-form & {
-    width: 100%;
-
-    > * {
-      max-width: 100%;
-    }
-  }
-
   [data-component-width='max'] & {
     width: 100%;
     max-width: var(--content-width-max);
@@ -98,12 +90,16 @@
   }
 }
 
+.container__inner {
+  position: relative;
+
+  .container--inline & {
+    min-height: 13rem;
+  }
+}
+
 .container {
   @include section-padding;
-
-  .layout-node-form & {
-    width: 100%;
-  }
 
   & {
     position: relative;
@@ -130,11 +126,6 @@
 
   &--half-spacing {
     @include section-padding(0.5);
-
-    // hacky
-    // + .waypoint-anchor + .container--with-bg {
-    //   @include margin-gap-top(0.5);
-    // }
   }
 
   &--one-spacing {
@@ -208,58 +199,12 @@
       }
     }
   }
-
-  &--separator {
-    @include breakpoint('small') {
-      padding-bottom: 0;
-    }
-
-    &:first-child {
-      > * {
-        padding-top: 0;
-        border-top: 0;
-      }
-    }
-
-    > * {
-      @include section-padding-top;
-
-      & {
-        border-top: 1px solid clr(neutral);
-      }
-
-      @include breakpoint('small') {
-        @include section-padding-bottom;
-
-        & {
-          padding-top: 0;
-        }
-      }
-
-      @include breakpoint('small') {
-        border-bottom: 1px solid clr(neutral);
-        border-top: 0;
-      }
-    }
-  }
-}
-
-.container__inner {
-  position: relative;
-
-  .container--inline & {
-    min-height: 13rem;
-  }
 }
 
 .container__heading {
   align-self: flex-start;
   max-width: var(--content-width);
   margin-bottom: space(2);
-
-  &:not(:last-child) {
-    margin-bottom: space(1);
-  }
 
   &:is(h2) {
     @include h2;
@@ -272,20 +217,16 @@
 
     color: clr(primary);
   }
+
+  &:not(:last-child) {
+    margin-bottom: space(1);
+  }
 }
 
 .container__text {
   align-self: flex-start;
   margin-bottom: space(2);
   max-width: var(--content-width-small);
-}
-
-.container__intro {
-  .container--inline & {
-    float: left;
-    padding-right: space(2);
-    padding-bottom: space(3);
-  }
 }
 
 .clearfix {

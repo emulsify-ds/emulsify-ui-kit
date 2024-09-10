@@ -27,7 +27,7 @@
 .main-menu {
   @include list-reset;
 
-  & { 
+  & {
     border-bottom: 1px solid;
     position: relative;
     z-index: 10;

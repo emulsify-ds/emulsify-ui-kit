@@ -4,7 +4,7 @@ import figureTwig from './figure.twig';
 import { props as imageProps } from './image.component.yml';
 import { props as figureProps } from './figure.component.yml';
 
-import { mapDataToTwig } from '../../util/dataTransformers';
+import { mapDataToTwig } from '../../util/dataTransformers.js';
 
 const svgIcons = require.context('../../../assets/icons/', true, /\.svg$/);
 const icons = [];
