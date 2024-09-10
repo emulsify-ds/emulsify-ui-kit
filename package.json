@@ -56,7 +56,7 @@
     ]
   },
   "dependencies": {
-    "@emulsify/core": "github:emulsify-ds/emulsify-core#fix-eslint-parser",
+    "@emulsify/core": "^2.1.0",
     "@percy/cli": "^1.28.2",
     "@percy/storybook": "^5.0.1"
   },
