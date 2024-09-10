@@ -1,6 +1,6 @@
 // Storybook can only import static files.
 // This is a global scss file strictly for Storybook.
-@forward '../tokens/**/*';
+@forward '../tokens/tokens';
 @forward '../foundation/foundation';
 @forward '../layout/layout';
 

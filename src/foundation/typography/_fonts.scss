@@ -152,7 +152,3 @@ $font-url: '../../assets/fonts';
   font-style: italic;
   font-display: swap;
 }
-
-@function fontsize($size) {
-  @return map.get($fontsizes, $size);
-}

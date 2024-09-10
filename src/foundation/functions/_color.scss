@@ -1,4 +1,6 @@
+@use 'sass:color';
 @use 'sass:map';
+@use 'sass:meta';
 @use '../colors/color-definitions' as c;
 
 // Convert color values to desire format.
@@ -48,9 +50,7 @@ $format: 'rgb';
 ) {
   // Coverage: clr(text)
   @if not $variant {
-    @if meta.meta.type-of(map.get(map.get(c.$color-palette, $theme), $name)) ==
-      map
-    {
+    @if meta.type-of(map.get(map.get(c.$color-palette, $theme), $name)) == map {
       @return #{$format}#{'a('} var(--c-#{$name}, cnvrt-clr(map.get(map.get(map.get(c.$color-palette, $theme), $name), 'base'), $format)),
         $alpha #{')'};
     } @else {
@@ -61,14 +61,11 @@ $format: 'rgb';
 
   // Return variant as alpha value.
   // Coverage: clr(text, 0.5), clr(text, 0.5, contrast)
-  @if $variant != null and meta.meta.type-of($variant) == number {
+  @if $variant != null and meta.type-of($variant) == number {
     @if map.has-key(c.$color-palette, $alpha) {
       // Return color value if it doesn't have variations or assume
       // the base color from multi-dimensional array.
-      @if meta.meta.type-of(
-          map.get(map.get(c.$color-palette, $theme), $name)
-        ) ==
-        map
+      @if meta.type-of(map.get(map.get(c.$color-palette, $theme), $name)) == map
       {
         @return #{$format}#{'a('} var(--c-#{$name}-#{$alpha}, cnvrt-clr(map.get(map.get(map.get(c.$color-palette, $theme), $name), 'base'), $format)),
           $variant #{')'};
@@ -77,10 +74,7 @@ $format: 'rgb';
           $variant #{')'};
       }
     } @else {
-      @if meta.meta.type-of(
-          map.get(map.get(c.$color-palette, $theme), $name)
-        ) ==
-        map
+      @if meta.type-of(map.get(map.get(c.$color-palette, $theme), $name)) == map
       {
         @return #{$format}#{'a('} var(--c-#{$name}, cnvrt-clr(map.get(map.get(map.get(c.$color-palette, $theme), $name), 'base'), $format)),
           $variant #{')'};
@@ -94,14 +88,11 @@ $format: 'rgb';
   // Coverage: clr(text, inverse),
   // clr(text, inverse, 0.5), clr(text, contrast), clr(text, contrast, 0.5),
   // clr(text, inverse, contrast), clr(text, inverse, 0.5, contrast)
-  @if $variant != null and meta.meta.type-of($variant) == string {
+  @if $variant != null and meta.type-of($variant) == string {
     // Return theme specific color if it's defined.
     // Coverage: clr(text, contrast), clr(text, contrast, 0.5)
     @if map.has-key(c.$color-palette, $variant) {
-      @if meta.meta.type-of(
-          map.get(map.get(c.$color-palette, $theme), $name)
-        ) ==
-        map
+      @if meta.type-of(map.get(map.get(c.$color-palette, $theme), $name)) == map
       {
         @return #{$format}#{'a('} var(--c-#{$name}-#{$variant}, cnvrt-clr(map.get(map.get(map.get(c.$color-palette, $variant), $name), 'base'), $format)),
           $alpha #{')'};
@@ -113,29 +104,23 @@ $format: 'rgb';
 
     // Coverage: clr(text, inverse), clr(text, inverse, 0.5),
     // clr(text, inverse, contrast), clr(text, inverse, 0.5, contrast)
-    @if meta.meta.type-of(
-        map.get(map.get(c.$color-palette, #{$theme}), #{$name})
-      ) ==
+    @if meta.type-of(map.get(map.get(c.$color-palette, #{$theme}), #{$name})) ==
       map
     {
       // Coverage: clr(text, inverse),
       // clr(text, inverse, 0.5), clr(text, contrast, 0.5),
       // clr(text, inverse, 0.5, contrast)
-      @if meta.meta.type-of($alpha) == number {
+      @if meta.type-of($alpha) == number {
         @if (
           map.has-key(c.$color-palette, $variant) and
-            meta.meta.type-of(
-              map.get(map.get(c.$color-palette, $variant), $name)
-            ) ==
+            meta.type-of(map.get(map.get(c.$color-palette, $variant), $name)) ==
             map
         ) {
           @return #{$format}#{'a('} var(--c-#{$name}-#{$variant}, cnvrt-clr(map.get(map.get(map.get(c.$color-palette, $variant), $name), 'base'), $format)),
             $alpha #{')'};
         } @else {
           @if (
-            meta.meta.type-of(
-                map.get(map.get(c.$color-palette, $theme), $name)
-              ) ==
+            meta.type-of(map.get(map.get(c.$color-palette, $theme), $name)) ==
               map
           ) {
             @return #{$format}#{'a('} var(--c-#{$name}-#{$variant}, cnvrt-clr(map.get(map.get(map.get(c.$color-palette, $theme), $name), 'base'), $format)),

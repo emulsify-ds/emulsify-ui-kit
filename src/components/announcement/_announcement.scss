@@ -1,3 +1,5 @@
+@use '../../foundation/typography/typography' as *;
+
 .announcement {
   display: flex;
   align-items: center;
@@ -15,9 +17,9 @@
   flex-direction: column;
 
   .heading {
-    @include heading-small;
+    @include h4;
 
-    margin: 0 0 var(--spacing-sm);
+    margin: 0 0 var(--spacing-md);
     color: var(--color-primary-darker);
   }
 
