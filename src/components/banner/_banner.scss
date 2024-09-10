@@ -1,3 +1,5 @@
+@use '../../foundation/typography/typography' as *;
+
 .banner {
   min-height: 16rem;
   position: relative;
@@ -73,7 +75,7 @@
   padding: var(--spacing-2xl) var(--spacing-xl);
 
   .heading {
-    @include heading-large;
+    @include h2;
 
     margin: 0 0 calc(var(--spacing-lg) * 1.5);
   }

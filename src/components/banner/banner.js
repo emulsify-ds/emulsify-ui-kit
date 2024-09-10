@@ -7,7 +7,7 @@ Drupal.behaviors.banners = {
      *
      * @description Returns references to banner elements.
      * @param {HTMLElement} banner Banner element.
-     * @returns {Object} References to label, button, video, pause, and play elements.
+     * @return {Object} References to label, button, video, pause, and play elements.
      */
     function getBannerReferences(banner) {
       return {
@@ -24,7 +24,7 @@ Drupal.behaviors.banners = {
      *
      * @description Starts video playback and updates UI to reflect the playing state.
      * @param {Object} refs Object containing element references.
-     * @returns {Promise} Resolves when the video starts playing or rejects with an error.
+     * @return {Promise} Resolves when the video starts playing or rejects with an error.
      */
     function playVideo(refs) {
       return new Promise((resolve, reject) => {

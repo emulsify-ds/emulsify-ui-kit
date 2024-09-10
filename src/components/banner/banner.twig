@@ -58,7 +58,7 @@
   {# Render the main content #}
   <div {{ bem('content', [banner__alignment], banner__base_class) }}>
     {% if banner__title %}
-      {% include "@components/text/headings/_heading.twig" with {
+      {% include "@components/text/headings/heading.twig" with {
         heading__level: banner__heading__level|default('4'),
         heading: banner__title,
       } %}

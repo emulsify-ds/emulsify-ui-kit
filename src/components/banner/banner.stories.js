@@ -1,7 +1,7 @@
 import bannerTwig from './banner.twig';
 import { props } from './banner.component.yml';
-import bannerVideo from '../../media/video-placeholder.mp4';
-import bannerImage from '../../images/example/banner-image.jpg';
+import bannerVideo from '../../../assets/audio/video-placeholder.mp4';
+import bannerImage from '../../../assets/images/example/banner-image.jpg';
 import './banner';
 
 export default {
