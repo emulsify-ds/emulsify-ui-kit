@@ -11,22 +11,42 @@
  */
 #}
 {% set icon__base_class = icon_base_class|default('icon') %}
+{% set icon__attributes = icon__attributes|default([]) %}
 {# If `directory` is defined, set the path relative for Drupal.
  # Otherwise, set the path relative to the Component Library. #}
 {% set icon__url = directory ? '/' ~ directory ~ '/dist/' %}
 
-{% if directory is null %}
-	{% set icon_url = 'themes/custom/smith/dist/' %}
-{% endif %}
-
 {% set unique__name = icon__name ~ '-' ~ random() %}
 
-<svg {{ bem(icon__base_class, icon__modifiers, icon__blockname, icon__extra_class) }} {% if icon__decorative %} aria-hidden="true" role="img" {% elseif icon__role %} role="{{ icon_role }}" {% endif %} {% if icon_title %} aria-labelledby="title-{{ unique_name }}" {% endif %} {% if icon_desc %} aria-describedby="desc-{{ unique_name }}" {% endif %}>
+{% set icon__attributes = icon__attributes|merge({
+  'class': bem(icon__base_class, icon__modifiers, icon__blockname, icon__extra_class),
+  'aria-labelledby': 'title-' ~ unique__name,
+  'aria-describedby': 'desc-' ~ unique__name,
+}) %}
+
+{% if icon__decorative %}
+  {% set icon__attributes = icon__attributes|merge({
+    'aria-hidden': 'true',
+    'role': 'img',
+  }) %}
+  {% elseif icon__role %}
+  {% set icon__attributes = icon__attributes|merge({
+    'role': icon_role,
+  }) %}
+{% endif %}
+
+{% if icon_desc %}
+  {% set icon__attributes = icon__attributes|merge({
+    'aria-describedby': 'desc-' ~ unique__name,
+  }) %}
+{% endif %}
+
+<svg {{ add_attributes(icon__attributes) }}>
 	{% if icon_title %}
 		<title id="title-{{ unique_name }}">{{ icon__title }}</title>
 	{% endif %}
 	{% if icon__desc %}
 		<desc id="desc-{{ unique__name }}">{{ icon__desc }}</desc>
 	{% endif %}
-	<use xlink:href="{{ icon__url }}icons-1.svg#{{ icon__name }}"></use>
+	<use xlink:href="{{ icon__url }}icons.svg#{{ icon__name }}"></use>
 </svg>
