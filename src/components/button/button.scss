@@ -2,7 +2,7 @@
 @use '../../foundation/motion/motion' as *;
 
 $button-styles: (
-  filled: (
+  primary: (
     text: var(--button-color-label),
     text-hover: var(--button-color-label-hover),
     text-inverse: var(--button-color-bkg),
@@ -16,46 +16,33 @@ $button-styles: (
     border-inverse: var(--button-border-color-hover),
     border-inverse-hover: var(--button-border-color),
   ),
-  outline: (
-    text: clr(full-black),
-    text-hover: clr(full-white),
-    text-inverse: clr(full-white),
-    text-inverse-hover: clr(primary, dark),
-    bg: clr(accent, light, 0),
-    bg-hover: clr(primary, dark),
-    bg-inverse: clr(primary, light, 0),
-    bg-inverse-hover: clr(full-white),
-    border: clr(full-black),
-    border-hover: clr(primary, dark),
-    border-inverse: clr(full-white),
-    border-inverse-hover: clr(full-white),
-  ),
   clean: (
-    text: clr(text),
+    text: var(--link-color-default),
+    text-hover: var(--link-color-hover),
+    text-inverse: var(--button-color-label-hover),
+    text-inverse-hover: var(--button-color-label-hover),
     bg: transparent,
     bg-hover: transparent,
     bg-inverse: transparent,
-    border: transparent,
-    border-inverse: transparent,
-    border-hover: transparent,
-    text-hover: clr(text),
-    text-inverse: clr(text, inverse),
-    text-inverse-hover: clr(text, inverse),
     bg-inverse-hover: transparent,
+    border: transparent,
+    border-hover: transparent,
+    border-inverse: transparent,
+    border-inverse-hover: transparent,
   ),
   disabled: (
-    text: clr(text, 0.9),
-    text-hover: clr(text, inverse),
-    text-inverse: clr(text, inverse, 0.9),
-    text-inverse-hover: clr(text, inverse),
-    bg: clr(background, 0.4),
-    bg-hover: clr(background, inverse, 0.4),
-    bg-inverse: clr(background, inverse, 0.4),
-    bg-inverse-hover: clr(background, inverse, 0.2),
-    border: clr(background, 0),
-    border-hover: clr(background, inverse, 0),
-    border-inverse: clr(background, inverse, 0),
-    border-inverse-hover: clr(background, inverse, 0),
+    text: var(--color-grays-200),
+    text-hover: var(--color-grays-200),
+    text-inverse: var(--color-grays-800),
+    text-inverse-hover: var(--color-grays-800),
+    bg: var(--color-grays-500),
+    bg-hover: var(--color-grays-500),
+    bg-inverse: var(--color-grays-300),
+    bg-inverse-hover: var(--color-grays-300),
+    border: var(--color-grays-500),
+    border-hover: var(--color-grays-500),
+    border-inverse: var(--color-grays-300),
+    border-inverse-hover: var(--color-grays-300),
   ),
 );
 
@@ -64,23 +51,25 @@ $button-styles: (
 @mixin button-base {
   @include transition;
 
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  border: var(--button-border-width-border) solid;
-  font-size: var(--font-size-body);
-  font-weight: var(--button-font-weight-label);
-  text-transform: var(--button-text-case);
-  text-decoration: none;
-  text-align: center;
-  cursor: pointer;
-  border-radius: var(--button-radius);
+  & {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: var(--button-border-width-border) solid;
+    font-size: var(--font-size-body);
+    font-weight: var(--button-font-weight-label);
+    text-transform: var(--button-text-case);
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    border-radius: var(--button-radius);
+    line-height: var(--line-height-relaxed);
+  }
 
   &[disabled],
   &[data-button-style='disabled'] {
     cursor: not-allowed;
-    font-weight: 400;
   }
 
   > * {
@@ -105,24 +94,40 @@ $button-styles: (
     opacity: 1;
   }
 
+  svg {
+    fill: map.get($palette, text);
+  }
+
   &:hover,
   &:focus {
     color: map.get($palette, text-hover);
     background-color: map.get($palette, bg-hover);
     border-color: map.get($palette, border-hover);
+
+    svg {
+      fill: map.get($palette, text-hover);
+    }
   }
 
-  [data-component-theme*='inverse']:not([data-component-theme*='yellow']) & {
+  [data-component-theme*='inverse'] & {
     color: map.get($palette, text-inverse);
     background-color: map.get($palette, bg-inverse);
     border-color: map.get($palette, border-inverse);
     opacity: 1;
+
+    svg {
+      fill: map.get($palette, text-inverse);
+    }
 
     &:hover,
     &:focus {
       color: map.get($palette, text-inverse-hover);
       background-color: map.get($palette, bg-inverse-hover);
       border-color: map.get($palette, border-inverse-hover);
+
+      svg {
+        fill: map.get($palette, text-inverse-hover);
+      }
     }
   }
 
@@ -132,7 +137,7 @@ $button-styles: (
     border-color: map.get($palette, border);
     color: map.get($palette, text);
 
-    [data-component-theme*='inverse']:not([data-component-theme*='yellow']) & {
+    [data-component-theme*='inverse'] & {
       color: map.get($palette, text-inverse);
       background-color: map.get($palette, bg-inverse);
       border-color: map.get($palette, border-inverse);
@@ -148,9 +153,10 @@ $button-styles: (
 }
 
 // Button size variations
-@mixin button-size {
-  padding: 0.66rem var(--button-padding-x);
-  font-size: fontsize(13);
+@mixin button-size($size: null) {
+  & {
+    padding: var(--button-padding-y) var(--button-padding-x);
+  }
 }
 
 @mixin button($type: null) {
@@ -174,5 +180,23 @@ $button-styles: (
   &:hover:is(a),
   &:focus:is(a) {
     text-decoration: underline;
+  }
+
+  &[data-button-alignment='right'] {
+    > [class*='__content'] {
+      margin-right: var(--spacing-md);
+    }
+  }
+
+  &[data-button-alignment='left'] {
+    > [class*='__content'] {
+      margin-left: var(--spacing-md);
+    }
+  }
+
+  svg {
+    display: block;
+    width: var(--size-xl);
+    max-height: var(--size-xl);
   }
 }

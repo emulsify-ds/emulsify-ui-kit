@@ -1,4 +1,7 @@
+@use 'sass:map';
 @use 'sass:meta';
+@use '../functions/color' as *;
+@use './color-definitions' as *;
 
 // These styles only affect the colors "Usage" page in the component library
 .sb-show-main {
@@ -100,7 +103,7 @@
 }
 
 // Set color swatch styles based on defined color in $color-palette.
-@each $theme, $palette in c.$color-palette {
+@each $theme, $palette in $color-palette {
   .cl-colors__list--#{$theme} {
     background-color: clr(background);
     padding: 0 0 space(2);
