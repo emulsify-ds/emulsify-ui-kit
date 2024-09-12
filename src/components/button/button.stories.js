@@ -1,26 +1,39 @@
-import template from './button.twig';
-import { props } from './button.component.yml';
-import figma from '../../../config/configma.json';
-
-const buttonData = props.properties.button__additional_classes.data;
+import buttonTwig from './button.twig';
 
 export default {
   title: 'Components/Button',
   decorators: [(story) => `${story()}`],
-};
-
-export const Button = () => `
-  <p>Default:</p>
-  ${template()}
-  <p>Hover:</p>
-  ${template({ button__additional_classes: [`${buttonData[0]}`] })}
-  <p>Focus:</p>
-  ${template({ button__additional_classes: [`${buttonData[1]}`] })}
-`;
-
-Button.parameters = {
-  design: {
-    type: 'figma',
-    url: figma.url + figma.button,
+  parameters: {
+    layout: 'fullscreen',
+  },
+  argTypes: {
+    buttonElement: {
+      type: 'select',
+      name: 'Button Element',
+      options: {
+        '<button>': 'button',
+        '<a>': 'a',
+      },
+    },
+    buttonStyle: {
+      type: 'select',
+      name: 'Button Style',
+      options: {
+        Primary: 'primary',
+        Secondary: 'secondary',
+      },
+    },
+  },
+  args: {
+    buttonElement: 'button',
+    buttonStyle: 'filled',
   },
 };
+
+export const Button = ({ buttonElement, buttonStyle }) =>
+  buttonTwig({
+    button__element: buttonElement,
+    button__href: '#',
+    button__content: `${buttonStyle} Button`,
+    button__style: buttonStyle,
+  });

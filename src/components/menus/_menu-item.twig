@@ -30,11 +30,11 @@
 	{% if directory %}
 		{{ link(item.title, item.url, bem(item_base_class|default(menu_class ~ '__link'), item_modifiers)) }}
 	{% else %}
-		{% include "@components/links/link/link.twig" with {
-        link_content: item.title,
-        link_url: item.url,
-        link_base_class: item_base_class|default(menu_class ~ '__link'),
-        link_modifiers: item_modifiers,
+		{% include "@components/link/link.twig" with {
+        link__content: item.title,
+        link__url: item.url,
+        link__base_class: item_base_class|default(menu_class ~ '__link'),
+        link__modifiers: item_modifiers,
       } %}
 	{% endif %}
 	{% if item.below %}

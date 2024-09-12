@@ -17,9 +17,14 @@
 
 .sb-show-main {
   background: var(--colors-sb-background);
+  height: 100vh;
 
   // color: var(--colors-sb-text-body);
   font-family: var(--font-family-body), serif !important;
+
+  > * {
+    height: 100vh;
+  }
 }
 
 .sb-title {

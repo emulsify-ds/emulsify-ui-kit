@@ -1,0 +1,85 @@
+@use '../../../foundation/breakpoints/breakpoints' as *;
+@use '../../../foundation/motion/motion' as *;
+@use '../../../foundation/functions/color' as *;
+@use '../../../foundation/functions/rem-calc' as *;
+@use '../../../foundation/spacing/spacing' as *;
+
+.main-nav__menu-list-wrapper {
+  @include transition;
+
+  & {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100vw;
+    background-color: clr(background);
+    border-top: 1px solid clr(neutral, n200);
+    overflow: auto;
+  }
+
+  @include breakpoint('medium') {
+    position: relative;
+    top: auto;
+    width: auto;
+    left: auto;
+    border: none;
+    overflow: visible;
+    min-height: auto;
+  }
+
+  .menu--open & {
+    background-color: clr(neutral, n50);
+  }
+
+  .sub--open &,
+  .main-nav__item--with-sub:hover & {
+    @include animate-show;
+
+    & {
+      max-height: 100vh;
+    }
+  }
+
+  &--level-0 {
+    .menu--open & {
+      height: 100vh;
+
+      @include breakpoint('medium') {
+        height: auto;
+        max-height: 100vh;
+      }
+    }
+  }
+
+  &--level-1 {
+    @include animate-hidden;
+    @include transition($transition-duration: 500ms);
+
+    & {
+      position: relative;
+      overflow: hidden;
+      top: auto;
+      margin: 0 space(1);
+      border: none;
+      max-height: 0;
+    }
+
+    @include breakpoint('small-down') {
+      .sub--open & {
+        overflow: visible;
+      }
+    }
+
+    @include breakpoint('medium') {
+      position: absolute;
+      background-color: clr(background);
+      min-width: rem-calc(230);
+      border-left: space(0.25) solid clr(accent, bright, 'green');
+      box-shadow: 1px 3px 3px clr(text, 0.15);
+      border-radius: 0 space(0.25) space(0.25);
+      padding: 0 (space(1) + space(0.25));
+      margin: 0;
+      top: 100%;
+    }
+  }
+}

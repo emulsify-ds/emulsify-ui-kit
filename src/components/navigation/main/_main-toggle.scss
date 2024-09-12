@@ -1,0 +1,89 @@
+@use '../../../foundation/breakpoints/breakpoints' as *;
+@use '../../../foundation/motion/motion' as *;
+@use '../../../foundation/functions/color' as *;
+@use '../../../foundation/spacing/spacing' as *;
+@use '../../../foundation/utility/utility' as *;
+
+.main-nav__toggle {
+  padding: (space(1) + space(0.33)) 0 (space(1) + space(0.33)) space(1);
+  font-size: 0;
+  z-index: 2;
+
+  &:not([data-menu-level='level-1']) {
+    @include breakpoint('medium') {
+      @include animate-hidden;
+
+      & {
+        opacity: 0;
+      }
+    }
+  }
+
+  &[data-menu-level='level-0'] {
+    @include breakpoint('medium') {
+      display: none;
+    }
+
+    .main-nav__toggle__text {
+      @include visually-hidden;
+    }
+  }
+
+  &:focus,
+  &:focus-visible {
+    fill: clr(primary);
+    outline-offset: 0;
+    border-radius: 0;
+  }
+
+  .icon {
+    fill: clr(text);
+  }
+
+  .main-nav__item:focus-within & {
+    @include animate-show;
+  }
+
+  .main-nav__item & {
+    display: inline-flex;
+    padding: space(1) space(3) space(1) space(0.5);
+    z-index: 1;
+
+    @include breakpoint('medium') {
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: space(1) 0 space(1) space(0.25);
+    }
+
+    @include breakpoint('large') {
+      padding: space(1) space(0.25);
+    }
+
+    .icon {
+      width: space(2);
+      max-height: space(2);
+      fill: clr(primary, dark);
+
+      @include breakpoint('medium') {
+        width: space(1.5);
+        max-height: space(1.5);
+        fill: clr(primary);
+      }
+    }
+  }
+
+  .sub--open &,
+  .main-nav__item:hover & {
+    .icon {
+      fill: clr(neutral, n400);
+      transform: rotate(180deg);
+    }
+  }
+
+  .main-nav__item:last-child & {
+    @include breakpoint('medium') {
+      right: space(1) * -1;
+    }
+  }
+}

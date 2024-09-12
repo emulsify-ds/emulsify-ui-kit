@@ -1,6 +1,11 @@
-@mixin link {
+@mixin link($style: underline) {
   color: var(--link-color-default);
+  text-decoration: underline;
   transition: all 0.15s;
+
+  @if $style == no-underline {
+    text-decoration: none;
+  }
 
   &:hover {
     color: var(--link-color-hover);

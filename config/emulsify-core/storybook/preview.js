@@ -1,3 +1,4 @@
-// Import additional stylesheets just for storybook.
-import '../../../dist/storybook/storybook-base.css';
-import '../../../dist/storybook/storybook-components.css';
+// export global parameters as config overrides.
+// This is useful for reorganizing your stories.
+// See https://storybook.js.org/docs/writing-stories/parameters#story-parameters.
+export const projectParams = '';

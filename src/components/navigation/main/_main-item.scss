@@ -1,0 +1,40 @@
+@use '../../../foundation/breakpoints/breakpoints' as *;
+@use '../../../foundation/motion/motion' as *;
+@use '../../../foundation/functions/color' as *;
+
+.main-nav__item {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+
+  &:hover,
+  &:focus,
+  &:focus-within {
+    > * {
+      color: clr(primary);
+    }
+
+    > .main-nav__placeholder {
+      text-decoration: none;
+      color: clr(text);
+    }
+
+    .main-nav__toggle {
+      @include animate-show;
+
+      & {
+        color: clr(primary);
+      }
+    }
+
+    .icon {
+      fill: clr(primary);
+    }
+  }
+
+  &--level-1:not(:last-child) {
+    @include breakpoint('medium') {
+      border-bottom: 1px solid clr(neutral, n200);
+    }
+  }
+}

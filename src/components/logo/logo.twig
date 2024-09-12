@@ -13,9 +13,9 @@
 } %}
 
 <div {{ add_attributes(logo__attributes) }}>
-  {% embed "@components/links/link/link.twig" with {
-    link_base_class: 'logo__link',
-    link_url: logo__url|default('/'),
+  {% embed "@components/link/link.twig" with {
+    link__base_class: 'logo__link',
+    link__url: logo__url|default('/'),
   } %}
     {% block link_content %}
       {% include "@components/image/responsive-image.twig" with {

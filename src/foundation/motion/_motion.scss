@@ -7,16 +7,20 @@ $transition-timing-function-base: ease-in-out;
   $transition-duration: $transition-duration-base,
   $transition-timing-function: $transition-timing-function-base
 ) {
-  transition: $transition-property $transition-duration
-    $transition-timing-function;
+  & {
+    transition: $transition-property $transition-duration
+      $transition-timing-function;
+  }
 }
 
 // This animation is to remove hidden items from screen readers and
 // keyboard navigation, while maintaining the slow "close" effect.
 @mixin animate-show($speed: $transition-duration-base, $delay: 0ms) {
-  animation: #{$speed} show;
-  animation-fill-mode: forwards;
-  animation-delay: $delay;
+  & {
+    animation: #{$speed} show;
+    animation-fill-mode: forwards;
+    animation-delay: $delay;
+  }
 
   @keyframes show {
     // Start visible at 0% to avoid an occasional "flash" when closing.
@@ -41,13 +45,19 @@ $transition-timing-function-base: ease-in-out;
   $hide-position: 'false'
 ) {
   @if $hide-position == 'true' {
-    animation: hidden, position-change;
+    & {
+      animation: hidden, position-change;
+    }
   } @else {
-    animation: hidden;
+    & {
+      animation: hidden;
+    }
   }
 
-  animation-duration: #{$speed};
-  animation-fill-mode: forwards;
+  & {
+    animation-duration: #{$speed};
+    animation-fill-mode: forwards;
+  }
 
   @keyframes hidden {
     // Start visible at 0% to avoid an occasional "flash" when closing.
@@ -71,9 +81,11 @@ $transition-timing-function-base: ease-in-out;
   $speed: $transition-duration-base,
   $delay: 0ms
 ) {
-  animation: slide-up $speed;
-  animation-fill-mode: forwards;
-  animation-delay: $delay;
+  & {
+    animation: slide-up $speed;
+    animation-fill-mode: forwards;
+    animation-delay: $delay;
+  }
 
   @keyframes slide-up {
     0% {
@@ -94,9 +106,11 @@ $transition-timing-function-base: ease-in-out;
 }
 
 @mixin animate-grow-fade($speed: $transition-duration-base, $delay: 300ms) {
-  animation: grow-fade $speed;
-  animation-fill-mode: forwards;
-  animation-delay: $delay;
+  & {
+    animation: grow-fade $speed;
+    animation-fill-mode: forwards;
+    animation-delay: $delay;
+  }
 
   @keyframes grow-fade {
     0% {
@@ -107,28 +121,6 @@ $transition-timing-function-base: ease-in-out;
     100% {
       opacity: 1;
       transform: scale(1);
-    }
-  }
-}
-
-@mixin cookie-consent($speed: $transition-duration-base, $delay: 500ms) {
-  animation: slide-in $speed;
-  animation-fill-mode: forwards;
-  animation-delay: $delay;
-
-  @keyframes slide-in {
-    0% {
-      bottom: -5rem;
-      opacity: 0;
-    }
-
-    50% {
-      opacity: 1;
-    }
-
-    100% {
-      bottom: 0;
-      opacity: 1;
     }
   }
 }

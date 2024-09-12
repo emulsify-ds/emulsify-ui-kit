@@ -1,0 +1,38 @@
+@use '../../../foundation/breakpoints/breakpoints' as *;
+@use '../../../foundation/spacing/spacing' as *;
+@use '../../../foundation/utility/utility' as *;
+
+.main-nav__menu-list {
+  @include list-reset;
+
+  & {
+    display: flex;
+    flex-flow: column nowrap;
+    width: var(--content-width-wide);
+    margin: space(1) auto 0;
+  }
+
+  @include breakpoint('medium') {
+    flex-flow: row nowrap;
+    margin: 0;
+    width: auto;
+  }
+
+  .main-nav__menu-list-wrapper--level-1 & {
+    flex-flow: column nowrap;
+    margin: 0;
+    border: 0;
+  }
+
+  &:not(.main-nav__menu-list--sub) {
+    display: none;
+
+    @include breakpoint('medium') {
+      display: flex;
+    }
+
+    .menu--open & {
+      display: flex;
+    }
+  }
+}

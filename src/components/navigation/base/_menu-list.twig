@@ -1,0 +1,48 @@
+{% set item__blockname = menu__base_class %}
+
+{% set menu_list__attributes = menu_list__attributes|default([]) %}
+
+{% set menu__modifiers = ['level-' ~ menu__level] %}
+
+{% set menu_list__attributes = menu_list__attributes|merge({
+	'class': bem('menu-list-wrapper', menu__modifiers, menu__base_class),
+}) %}
+
+{% if menu__level == 0 and menu__toggle == true %}
+	{% set menu_list__attributes = menu_list__attributes|merge({
+		'id': [menu__toggle__id],
+	}) %}
+{% endif %}
+
+{% if menu__level > 0 and menu__level_toggle == true %}
+	{% set menu_list__attributes = menu_list__attributes|merge({
+		'aria-hidden': 'true',
+		'id': [menu__toggle__id],
+	}) %}
+{% endif %}
+
+{% if menu__level > 0 %}
+	{% set list__modifiers = ['sub'] %}
+{% endif %}
+
+{% set menu__item %}
+{% block menu__item__content %}
+	{% for item in items %}
+		{% include "@components/navigation/base/_menu-item.twig" %}
+	{% endfor %}
+{% endblock %}
+{% endset %}
+
+<div
+	{{ add_attributes(menu_list__attributes) }}>
+	{# List #}
+	{% embed "@components/lists/list.twig" with {
+		list__base_class: 'menu-list',
+		list__blockname: menu__base_class,
+		list__type: menu__list__type,
+	}%}
+		{% block list__content %}
+			{{ menu__item }}
+		{% endblock %}
+	{% endembed %}
+</div>

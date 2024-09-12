@@ -1,0 +1,75 @@
+@use '../../../../foundation/breakpoints/breakpoints' as *;
+@use '../../../../foundation/motion/motion' as *;
+
+@mixin main-menu-is-open {
+  [aria-expanded='true'] & {
+    @content;
+  }
+}
+
+@mixin toggle-close-bar($rotation) {
+  top: 50%;
+  left: 0;
+  transform: rotate($rotation);
+}
+
+// primary toggle for the entire menu tree.
+nav > [class$='__toggle'] {
+  display: flex;
+  place-content: center;
+  align-items: center;
+  position: relative;
+}
+
+[class$='__toggle__bars'] {
+  position: relative;
+  display: block;
+  margin-right: space(0.75);
+  height: space(1);
+  width: space(1.5);
+}
+
+[class$='__toggle__bar'] {
+  @include transition($transition-duration: 100ms);
+
+  & {
+    position: absolute;
+    display: block;
+    height: space(0.125);
+    width: 100%;
+    background: clr(text);
+  }
+
+  &:nth-child(1) {
+    top: -0.1rem;
+
+    @include main-menu-is-open {
+      @include toggle-close-bar(45deg);
+    }
+  }
+
+  &:nth-child(2) {
+    @include transition(
+      $transition-property: opacity,
+      $transition-duration: 100ms
+    );
+
+    & {
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 1;
+    }
+
+    @include main-menu-is-open {
+      opacity: 0;
+    }
+  }
+
+  &:nth-child(3) {
+    top: 100%;
+
+    @include main-menu-is-open {
+      @include toggle-close-bar(-45deg);
+    }
+  }
+}

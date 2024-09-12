@@ -1,5 +1,5 @@
 @use '../../../foundation/utility/utility' as *;
-@use '../../links/link/link.scss' as *;
+@use '../../link/link.scss' as *;
 
 .social-menu {
   @include list-reset;

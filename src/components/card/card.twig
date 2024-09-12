@@ -99,12 +99,12 @@
 		{% endif %}
 		{# Link #}
 		{% if card__link__url %}
-			{% include "@components/links/link/link.twig" with {
-        link_base_class: card__link__base_class|default('link'),
-        link_blockname: card__base_class,
-        link_attributes: card__link__attributes,
-        link_content: card__link__text,
-        link_url: card__link__url,
+			{% include "@components/link/link.twig" with {
+        link__base_class: card__link__base_class|default('link'),
+        link__blockname: card__base_class,
+        link__attributes: card__link__attributes,
+        link__content: card__link__text,
+        link__url: card__link__url,
       } %}
 		{% endif %}
 	</div>
