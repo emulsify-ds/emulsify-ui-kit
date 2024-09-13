@@ -1,4 +1,4 @@
-{% set item__modifiers = item__modifiers|default([]) %}
+{% set item__modifiers = [] %}
 {% set item__modifiers = item__modifiers|merge(['level-' ~ menu__level]) %}
 {% set item__attributes = item__attributes|default({}) %}
 {% set item__parent = item__parent|default([]) %}

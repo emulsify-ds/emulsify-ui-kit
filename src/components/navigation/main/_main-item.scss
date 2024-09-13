@@ -7,34 +7,11 @@
   display: flex;
   flex-flow: row wrap;
 
-  &:hover,
-  &:focus,
-  &:focus-within {
-    > * {
-      color: clr(primary);
-    }
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--button-color-bkg);
 
-    > .main-nav__placeholder {
-      text-decoration: none;
-      color: clr(text);
-    }
-
-    .main-nav__toggle {
-      @include animate-show;
-
-      & {
-        color: clr(primary);
-      }
-    }
-
-    .icon {
-      fill: clr(primary);
-    }
-  }
-
-  &--level-1:not(:last-child) {
     @include breakpoint('medium') {
-      border-bottom: 1px solid clr(neutral, n200);
+      border-bottom: 0;
     }
   }
 }

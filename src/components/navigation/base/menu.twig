@@ -57,6 +57,7 @@
 {% block menu_toggle__toggle %}
 	{% include "@components/navigation/base/menu-toggle/menu-toggle.twig" with {
 			menu_toggle__menu__level: 'level-' ~ menu__level,
+			menu_toggle__style: 'primary',
 			menu_toggle__attributes: {
 				'aria-controls': menu__toggle__id,
 			},

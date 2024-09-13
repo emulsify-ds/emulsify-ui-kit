@@ -8,8 +8,8 @@
   & {
     display: flex;
     flex-flow: column nowrap;
-    width: var(--content-width-wide);
-    margin: space(1) auto 0;
+    width: 100%;
+    margin: 0 auto;
   }
 
   @include breakpoint('medium') {

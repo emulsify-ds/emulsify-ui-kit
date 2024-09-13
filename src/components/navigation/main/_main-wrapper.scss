@@ -8,35 +8,50 @@
   @include transition;
 
   & {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100vw;
-    background-color: clr(background);
-    border-top: 1px solid clr(neutral, n200);
-    overflow: auto;
+    @include animate-hidden;
+
+    & {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--main-menu-color-bg);
+      overflow: auto;
+    }
   }
 
   @include breakpoint('medium') {
-    position: relative;
-    top: auto;
-    width: auto;
-    left: auto;
-    border: none;
-    overflow: visible;
-    min-height: auto;
+    @include animate-show;
+
+    & {
+      position: relative;
+      top: auto;
+      width: auto;
+      left: auto;
+      border: none;
+      overflow: visible;
+      min-height: auto;
+    }
   }
 
-  .menu--open & {
-    background-color: clr(neutral, n50);
-  }
-
-  .sub--open &,
-  .main-nav__item--with-sub:hover & {
+  // Open subnav on click.
+  .menu--open > &,
+  .sub--open > & {
     @include animate-show;
 
     & {
       max-height: 100vh;
+    }
+  }
+
+  // Open subnav on hover.
+  .main-nav__item--with-sub.main-nav__item--level-0:hover > & {
+    @include breakpoint('medium') {
+      @include animate-show;
+
+      & {
+        max-height: 100vh;
+      }
     }
   }
 
@@ -59,12 +74,13 @@
       position: relative;
       overflow: hidden;
       top: auto;
-      margin: 0 space(1);
-      border: none;
+      margin: 0;
       max-height: 0;
     }
 
     @include breakpoint('small-down') {
+      border-top: 1px solid var(--button-color-bkg);
+
       .sub--open & {
         overflow: visible;
       }
@@ -72,14 +88,34 @@
 
     @include breakpoint('medium') {
       position: absolute;
-      background-color: clr(background);
-      min-width: rem-calc(230);
-      border-left: space(0.25) solid clr(accent, bright, 'green');
-      box-shadow: 1px 3px 3px clr(text, 0.15);
-      border-radius: 0 space(0.25) space(0.25);
-      padding: 0 (space(1) + space(0.25));
+      background-color: var(--main-menu-color-dropdown-bg);
       margin: 0;
       top: 100%;
+    }
+  }
+
+  &--level-2 {
+    @include animate-hidden;
+    @include transition($transition-duration: 500ms);
+
+    & {
+      position: relative;
+      overflow: hidden;
+      top: auto;
+      padding: 0;
+      margin: 0;
+      background-color: var(--main-menu-color-dropdown-bg);
+      border-top: 1px solid var(--button-color-bkg);
+      border-bottom: 1px solid var(--button-color-bkg);
+      max-height: 0;
+    }
+
+    @include breakpoint('small-down') {
+      border-bottom: 0;
+
+      .sub--open & {
+        overflow: visible;
+      }
     }
   }
 }

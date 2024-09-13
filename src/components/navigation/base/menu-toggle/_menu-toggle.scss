@@ -24,9 +24,8 @@ nav > [class$='__toggle'] {
 [class$='__toggle__bars'] {
   position: relative;
   display: block;
-  margin-right: space(0.75);
-  height: space(1);
-  width: space(1.5);
+  height: var(--size-lg);
+  width: var(--size-xl);
 }
 
 [class$='__toggle__bar'] {
@@ -35,9 +34,9 @@ nav > [class$='__toggle'] {
   & {
     position: absolute;
     display: block;
-    height: space(0.125);
+    height: var(--size-xs);
     width: 100%;
-    background: clr(text);
+    background: var(--button-color-label);
   }
 
   &:nth-child(1) {

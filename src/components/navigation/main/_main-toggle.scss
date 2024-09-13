@@ -5,9 +5,13 @@
 @use '../../../foundation/utility/utility' as *;
 
 .main-nav__toggle {
-  padding: (space(1) + space(0.33)) 0 (space(1) + space(0.33)) space(1);
   font-size: 0;
   z-index: 2;
+
+  &:not([data-menu-level='level-0']) {
+    padding: 0;
+    border: 0;
+  }
 
   &:not([data-menu-level='level-1']) {
     @include breakpoint('medium') {
@@ -20,6 +24,8 @@
   }
 
   &[data-menu-level='level-0'] {
+    padding: var(--button-padding-x);
+
     @include breakpoint('medium') {
       display: none;
     }
@@ -31,13 +37,7 @@
 
   &:focus,
   &:focus-visible {
-    fill: clr(primary);
     outline-offset: 0;
-    border-radius: 0;
-  }
-
-  .icon {
-    fill: clr(text);
   }
 
   .main-nav__item:focus-within & {
@@ -46,44 +46,102 @@
 
   .main-nav__item & {
     display: inline-flex;
-    padding: space(1) space(3) space(1) space(0.5);
+    height: auto;
     z-index: 1;
 
     @include breakpoint('medium') {
       position: absolute;
-      right: 0;
-      top: 0;
-      padding: space(1) 0 space(1) space(0.25);
-    }
-
-    @include breakpoint('large') {
-      padding: space(1) space(0.25);
     }
 
     .icon {
-      width: space(2);
-      max-height: space(2);
-      fill: clr(primary, dark);
-
-      @include breakpoint('medium') {
-        width: space(1.5);
-        max-height: space(1.5);
-        fill: clr(primary);
-      }
+      height: calc(var(--size-lg) + var(--size-md));
+      width: calc(var(--size-lg) + var(--size-md));
     }
   }
 
-  .sub--open &,
-  .main-nav__item:hover & {
+  .sub--open > &,
+  &[aria-expanded='true'] {
     .icon {
-      fill: clr(neutral, n400);
       transform: rotate(180deg);
     }
   }
 
-  .main-nav__item:last-child & {
+  &[data-menu-level='level-1'] {
+    top: 0;
+    right: 0;
+
     @include breakpoint('medium') {
-      right: space(1) * -1;
+      top: var(--spacing-md);
+    }
+
+    @include breakpoint('small-down') {
+      border-radius: 0;
+      background-color: var(--button-color-bkg);
+      padding: calc(var(--button-padding-x) / 4);
+
+      .sub--open > & {
+        border-radius: var(--button-radius) var(--button-radius) 0 0;
+      }
+
+      .icon {
+        fill: var(--button-color-label);
+      }
+    }
+
+    &:focus,
+    &:hover {
+      @include breakpoint('small-down') {
+        background-color: var(--button-color-bkg);
+
+        .icon {
+          fill: var(--button-color-label);
+        }
+      }
+    }
+  }
+
+  &[data-menu-level='level-2'],
+  &[data-menu-level='level-3'] {
+    top: 0;
+    right: 0;
+    background-color: var(--button-color-bkg);
+    padding: calc(var(--button-padding-x) / 4);
+
+    @include breakpoint('medium') {
+      top: var(--spacing-sm);
+      right: var(--spacing-sm);
+    }
+
+    @include breakpoint('small-down') {
+      border-radius: 0;
+    }
+
+    .sub--open > & {
+      @include breakpoint('small-down') {
+        border-radius: var(--button-radius) var(--button-radius) 0 0;
+      }
+    }
+
+    .icon {
+      fill: var(--button-color-label);
+    }
+
+    &:focus,
+    &:hover {
+      background-color: var(--button-color-bkg);
+      padding: calc(var(--button-padding-x) / 4);
+
+      .icon {
+        fill: var(--button-color-label);
+      }
+    }
+  }
+
+  .main-nav__item.main-nav__item--level-0:hover > & {
+    @include breakpoint('medium') {
+      .icon {
+        transform: rotate(180deg);
+      }
     }
   }
 }
