@@ -13,7 +13,7 @@ $button-styles: (
     bg-inverse-hover: var(--button-color-bkg),
     border: var(--button-border-color),
     border-hover: var(--button-border-color-hover),
-    border-inverse: var(--button-border-color-hover),
+    border-inverse: var(--button-color-label),
     border-inverse-hover: var(--button-border-color),
   ),
   clean: (

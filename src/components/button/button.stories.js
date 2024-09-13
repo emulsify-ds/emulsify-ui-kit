@@ -31,15 +31,14 @@ export default {
   args: {
     buttonElement: 'button',
     buttonStyle: 'primary',
-    componentTheme: 'base',
   },
 };
 
-export const Button = ({ buttonElement, buttonStyle, componentTheme }) => `
+export const Button = ({ buttonElement, buttonStyle }) => `
   <div class="cl-container">
     <h1>${buttonStyle}</h1>
   </div>
-  <div class="cl-container cl-spaced-row" data-component-theme="${componentTheme}">
+  <div class="cl-container cl-spaced-row">
     ${buttonTwig({
       button__element: buttonElement,
       button__href: '#',
@@ -80,7 +79,7 @@ export const Button = ({ buttonElement, buttonStyle, componentTheme }) => `
       },
     })}
   </div>
-  <div class="cl-container cl-spaced-row" data-component-theme="${componentTheme} inverse">
+  <div class="cl-container cl-spaced-row" data-component-theme="inverse">
     ${buttonTwig({
       button__element: buttonElement,
       button__href: '#',

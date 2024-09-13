@@ -143,3 +143,7 @@
 .cl-container {
   padding: 1rem 2rem;
 }
+
+[data-component-theme*='inverse'] {
+  background-color: var(--colors-sb-text-body);
+}
