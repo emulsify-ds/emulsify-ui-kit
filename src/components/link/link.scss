@@ -56,11 +56,17 @@
   &:focus {
     color: var(--link-color-hover);
     text-decoration: none;
+
+    @if $style == 'no-underline' {
+      & {
+        text-decoration: underline;
+      }
+    }
   }
 
   &:focus {
-    outline: space(0.125) dotted clr(text, dark);
-    outline-offset: space(0.33);
+    outline: var(--spacing-xs) dotted clr(text, dark);
+    outline-offset: var(--spacing-xs);
   }
 
   &[data-extlink],

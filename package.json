@@ -56,7 +56,7 @@
     ]
   },
   "dependencies": {
-    "@emulsify/core": "https://github.com/emulsify-ds/emulsify-core.git#customizable-preview-config",
+    "@emulsify/core": "^2.2.1",
     "@percy/cli": "^1.28.2",
     "@percy/storybook": "^5.0.1"
   },

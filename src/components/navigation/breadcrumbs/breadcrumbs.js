@@ -62,10 +62,6 @@ Drupal.behaviors.breadcrumbs = {
           hiddenItems.push(item);
         }
       });
-      // @TODO: if the user clicks the left arrow twice quickly when only the
-      // first item is hidden (and before the arrow can disappear), this line
-      // throws a js error. Not a huge deal, but could probably be refactored to
-      // prevent it from happening.
       return hiddenItems[hiddenItems.length - 1].offsetLeft - controlsWidth;
     }
 
@@ -75,8 +71,8 @@ Drupal.behaviors.breadcrumbs = {
      * overflow situation is in play.
      */
     function setOverflow() {
-      const breadcrumbsLeft = breadcrumbsWrapper.getBoundingClientRect().left;
-      const breadcrumbsRight = breadcrumbsWrapper.getBoundingClientRect().right;
+      const breadcrumbsLeft = breadcrumbs.getBoundingClientRect().left;
+      const breadcrumbsRight = breadcrumbs.getBoundingClientRect().right;
       const firstBreadcrumbsLeft = breadcrumbs
         .querySelector('.breadcrumbs__item:first-child')
         .getBoundingClientRect().left;
@@ -130,8 +126,8 @@ Drupal.behaviors.breadcrumbs = {
      * @param {HTMLElement} item The focused item.
      */
     function ensureVisible(item) {
-      const breadcrumbsLeft = breadcrumbsWrapper.getBoundingClientRect().left;
-      const breadcrumbsRight = breadcrumbsWrapper.getBoundingClientRect().right;
+      const breadcrumbsLeft = breadcrumbs.getBoundingClientRect().left;
+      const breadcrumbsRight = breadcrumbs.getBoundingClientRect().right;
 
       // if right side overflows control, set to left + control.
       if (
@@ -221,6 +217,13 @@ Drupal.behaviors.breadcrumbs = {
     });
 
     breadcrumbs.addEventListener('scroll', setOverflow);
+    window.addEventListener('load', () => {
+      breadcrumbs.scrollTo(breadcrumbs.scrollWidth, 0);
+    });
+
+    window.addEventListener('resize', () => {
+      breadcrumbs.scrollTo(breadcrumbs.scrollWidth, 0);
+    });
 
     // Listen for window resize.
     window.addEventListener(

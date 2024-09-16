@@ -7,15 +7,15 @@
 
 @mixin breadcrumb-spacer($position: '') {
   &:not(:last-child) {
-    background-size: space(1) + space(0.25);
+    background-size: var(--spacing-lg);
     background-repeat: no-repeat;
 
     @if $position == 'left' {
       background-image: url('../../../../assets/icons/chevronLeft.svg');
-      background-position: space(0.75) 48%;
+      background-position: var(--spacing-md) 48%;
     } @else {
       background-image: url('../../../../assets/icons/chevronRight.svg');
-      background-position: calc(100% + #{space(0.25)}) 42%;
+      background-position: calc(100% + var(--spacing-sm)) 42%;
     }
   }
 }
@@ -26,7 +26,7 @@
   z-index: 1;
 
   @include breakpoint('medium') {
-    margin-left: (space(1) + space(0.25)) * -1;
+    margin-left: calc(var(--spacing-lg) * -1);
     margin-bottom: 0;
   }
 }
@@ -34,12 +34,8 @@
 .breadcrumbs {
   flex-flow: row nowrap;
   position: relative;
-  margin-top: space(1.5);
-  margin-bottom: space(2) * -1;
-  margin-left: 0;
-  padding: space(0.5) space(0.75);
-  background-color: clr(background);
-  border-radius: space(2);
+  margin: 0;
+  padding: var(--spacing-md);
   max-width: 100%;
   display: none;
 
@@ -75,11 +71,12 @@
   @include breadcrumb-spacer;
 
   & {
-    padding: space(0.25) (space(1) + space(0.33)) space(0.25) space(0.5);
+    padding: var(--spacing-sm) var(--spacing-lg) var(--spacing-sm)
+      var(--spacing-md);
   }
 
   &:last-child {
-    padding: space(0.25) space(0.5);
+    padding: var(--spacing-sm) var(--spacing-md);
   }
 
   .breadcrumbs__link {
@@ -87,15 +84,15 @@
 
     & {
       white-space: nowrap;
-      color: clr(neutral, n700);
-      font-weight: 400;
-      padding: 0 0 space(0.125);
+      color: var(--breadcrumb-text-default);
+      padding: 0 0 var(--spacing-xs);
       display: block;
+      font-size: var(--font-size-x-small);
     }
 
     &:hover,
     &:focus {
-      outline-offset: space(0.125) * -1;
+      outline-offset: calc(var(--spacing-xs) * -1);
     }
   }
 }
@@ -103,9 +100,10 @@
 .breadcrumbs__placeholder {
   white-space: nowrap;
   font-style: italic;
-  color: clr(neutral, n400);
+  color: var(--breadcrumb-text-default);
   padding: 0;
   display: block;
+  font-size: var(--font-size-x-small);
 }
 
 .breadcrumbs__scroll {

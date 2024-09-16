@@ -69,7 +69,7 @@ Drupal.behaviors.mainNav = {
       }
       // scroll down to the main menu if alerts are present.
       menuPrimaryToggle.addEventListener('click', () => {
-        if (!siteHeader.classList.contains('stuck')) {
+        if (siteHeader && !siteHeader.classList.contains('stuck')) {
           context
             .querySelector('.site-header__container')
             .scrollIntoView(true, {
