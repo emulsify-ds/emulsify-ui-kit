@@ -1,8 +1,6 @@
 // Component Twig
 import containerTwig from './container.twig';
 
-import containerBaseData from './container-base.yml';
-
 // Menu Location
 export default {
   title: 'Layout/Container',
@@ -51,6 +49,14 @@ export default {
       defaultValue: 'Container content placeholder text',
     },
   },
+  args: {
+    backgroundColor: false,
+    width: 'standard',
+    spacing: '',
+    alignment: 'center',
+    heading: 'This is an example container heading',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget eleifend ex, non ullamcorper tellus. Nullam in lectus a nulla feugiat ultricies in sed lectus. Maecenas tincidunt eu massa sit amet molestie.',
+  },
 };
 
 // Component Examples
@@ -63,7 +69,6 @@ export const container = ({
   text,
 }) =>
   containerTwig({
-    ...containerBaseData,
     container__bg_color: backgroundColor,
     container__component_width: width,
     container__modifiers: [spacing],

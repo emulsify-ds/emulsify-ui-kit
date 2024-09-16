@@ -98,13 +98,13 @@
 
   &[aria-current='page'],
   &.main-nav__link--active {
-    padding-left: space(1.5);
+    padding-left: var(--spacing-lg);
   }
 
   .main-nav__item:last-child > & {
     @include breakpoint('medium') {
       border-bottom: 0;
-      padding-bottom: space(1);
+      padding-bottom: var(--spacing-lg);
     }
   }
 }

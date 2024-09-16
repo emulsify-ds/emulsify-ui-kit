@@ -241,6 +241,178 @@
           "value": "#080b0c",
           "type": "color"
         }
+      },
+      "WUP": {
+        "gold": {
+          "100": {
+            "value": "#fff9f2",
+            "type": "color"
+          },
+          "200": {
+            "value": "#fff2e4",
+            "type": "color"
+          },
+          "300": {
+            "value": "#ffe5c6",
+            "type": "color"
+          },
+          "400": {
+            "value": "#ffd7a3",
+            "type": "color"
+          },
+          "500": {
+            "value": "#ffc875",
+            "type": "color"
+          },
+          "600": {
+            "value": "#ffb81c",
+            "type": "color"
+          },
+          "700": {
+            "value": "#e4a519",
+            "type": "color"
+          },
+          "800": {
+            "value": "#c68f16",
+            "type": "color"
+          },
+          "900": {
+            "value": "#a17412",
+            "type": "color"
+          },
+          "1000": {
+            "value": "#72520d",
+            "type": "color"
+          }
+        },
+        "blue": {
+          "100": {
+            "value": "#f2f2f6",
+            "type": "color"
+          },
+          "200": {
+            "value": "#e4e5ed",
+            "type": "color"
+          },
+          "300": {
+            "value": "#c6c8db",
+            "type": "color"
+          },
+          "400": {
+            "value": "#a1a6c6",
+            "type": "color"
+          },
+          "500": {
+            "value": "#727baf",
+            "type": "color"
+          },
+          "600": {
+            "value": "#003594",
+            "type": "color"
+          },
+          "700": {
+            "value": "#002f84",
+            "type": "color"
+          },
+          "800": {
+            "value": "#002973",
+            "type": "color"
+          },
+          "900": {
+            "value": "#00225e",
+            "type": "color"
+          },
+          "1000": {
+            "value": "#001842",
+            "type": "color"
+          }
+        },
+        "legacy": {
+          "gold": {
+            "100": {
+              "value": "#f9f6f2",
+              "type": "color"
+            },
+            "200": {
+              "value": "#f2ece4",
+              "type": "color"
+            },
+            "300": {
+              "value": "#e4d7c6",
+              "type": "color"
+            },
+            "400": {
+              "value": "#d6bfa1",
+              "type": "color"
+            },
+            "500": {
+              "value": "#c6a572",
+              "type": "color"
+            },
+            "600": {
+              "value": "#b58500",
+              "type": "color"
+            },
+            "700": {
+              "value": "#a27700",
+              "type": "color"
+            },
+            "800": {
+              "value": "#8c6700",
+              "type": "color"
+            },
+            "900": {
+              "value": "#725400",
+              "type": "color"
+            },
+            "1000": {
+              "value": "#513b00",
+              "type": "color"
+            }
+          },
+          "blue": {
+            "100": {
+              "value": "#f2f2f3",
+              "type": "color"
+            },
+            "200": {
+              "value": "#e4e4e7",
+              "type": "color"
+            },
+            "300": {
+              "value": "#c6c6cb",
+              "type": "color"
+            },
+            "400": {
+              "value": "#a2a3ac",
+              "type": "color"
+            },
+            "500": {
+              "value": "#737585",
+              "type": "color"
+            },
+            "600": {
+              "value": "#141b4d",
+              "type": "color"
+            },
+            "700": {
+              "value": "#121845",
+              "type": "color"
+            },
+            "800": {
+              "value": "#0f153c",
+              "type": "color"
+            },
+            "900": {
+              "value": "#0d1131",
+              "type": "color"
+            },
+            "1000": {
+              "value": "#090c22",
+              "type": "color"
+            }
+          }
+        }
       }
     },
     "font-family": {
@@ -1427,6 +1599,86 @@
       }
     }
   },
+  "components/announcement": {
+    "announcement": {
+      "background": {
+        "default": {
+          "value": "{color.white}",
+          "type": "color"
+        },
+        "light": {
+          "value": "{color.primary.lighter}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{color.primary.darker}",
+          "type": "color"
+        }
+      },
+      "heading": {
+        "default": {
+          "value": "{color.primary.dark}",
+          "type": "color"
+        },
+        "light": {
+          "value": "{color.primary.lighter}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{color.primary.darker}",
+          "type": "color"
+        }
+      },
+      "icon": {
+        "default": {
+          "value": "{color.primary.dark}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{color.link-hover-lighter}",
+          "type": "color"
+        },
+        "light": {
+          "value": "{color.primary.lighter}",
+          "type": "color"
+        }
+      }
+    }
+  },
+  "components/banner": {
+    "banner": {
+      "button": {
+        "text": {
+          "value": "{color.text.body}",
+          "type": "color"
+        },
+        "border": {
+          "value": "{color.text.white}",
+          "type": "color"
+        },
+        "background": {
+          "value": "{color.primary.lighter}",
+          "type": "color"
+        }
+      },
+      "text": {
+        "value": "{color.text.white}",
+        "type": "color",
+        "subheading": {
+          "value": "{color.text.white}",
+          "type": "color"
+        }
+      },
+      "background": {
+        "value": "{color.primary.darker}",
+        "type": "color"
+      },
+      "background-opacity": {
+        "value": "0.75",
+        "type": "opacity"
+      }
+    }
+  },
   "components/blockQuote": {
     "blockQuote": {
       "padding": {
@@ -1753,6 +2005,54 @@
       }
     }
   },
+  "components/footer": {
+    "footer": {
+      "background": {
+        "default": {
+          "value": "{color.primary.darker}",
+          "type": "color"
+        },
+        "light": {
+          "value": "{color.text.white}",
+          "type": "color"
+        }
+      },
+      "heading": {
+        "default": {
+          "value": "{color.primary.lighter}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{color.primary.dark}",
+          "type": "color"
+        }
+      },
+      "icon": {
+        "default": {
+          "value": "{color.primary.lighter}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{color.primary.dark}",
+          "type": "color"
+        }
+      }
+    }
+  },
+  "components/header": {
+    "header": {
+      "search": {
+        "background": {
+          "value": "{color.primary.darker}",
+          "type": "color"
+        },
+        "text-icon": {
+          "value": "{color.text.white}",
+          "type": "color"
+        }
+      }
+    }
+  },
   "components/input": {
     "input": {
       "gap": {
@@ -1870,6 +2170,26 @@
           },
           "label-hover": {
             "value": "{color.primary.darker}",
+            "type": "color"
+          }
+        }
+      }
+    }
+  },
+  "components/utilityMenu": {
+    "utilityMenu": {
+      "color": {
+        "bg": {
+          "value": "{color.white}",
+          "type": "color"
+        },
+        "link": {
+          "default": {
+            "value": "{color.primary.darker}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{color.primary.dark}",
             "type": "color"
           }
         }
@@ -2320,15 +2640,6 @@
         "pager.text.hover": "S:d5268cc95f0ca68a28f35d87395f9ce37893fe23,",
         "pager.text.focus": "S:d03b986e8d65e0c71a1837ec7325ffbce6d6aaa7,",
         "pager.fill.hover": "S:5bdc99f7ec11756cdef48ec3e13c9b4dd6f4ea81,",
-        "mainMenu.color.bg": "S:bf2522b49aa417ce534b5208e0f6beef55486cf3,",
-        "mainMenu.color.link.bg": "S:b11ab65866a7661d8fc26a7a62b099ef30061f50,",
-        "mainMenu.color.link.bg-hover": "S:af6ac50c749eaa990fbd9ffed40c1b9674a723a4,",
-        "mainMenu.color.link.label": "S:743bcf21f9c07a7963a7edb4225d95bca9b41703,",
-        "mainMenu.color.link.label-hover": "S:93bfd2e3b7bbd01dc37c4f80afe8e75e9924fdaf,",
-        "mainMenu.color.dropdown.bg": "S:79daec1641db62001cff89e93435729c39710614,",
-        "mainMenu.color.dropdown.bg-hover": "S:badcf257ef0a5a278b895483c36799c19afa98a4,",
-        "mainMenu.color.dropdown.label": "S:77771443996903bcb2c28595214f9e3a0c71d7e9,",
-        "mainMenu.color.dropdown.label-hover": "S:c3a0a9d457ae44f6f0e45c6a5c57e3bd57467383,",
         "link.default": "S:9fd4db376033a945bbc2bf5bfe8a698e68bd6f1a,",
         "link.hover": "S:e6b1afc9022d41b4217e773a9ab4abf90329cf46,",
         "color.fieldset.bg": "S:bfe975e6026fa7f0aa7fd11985d9ebaeb6565d17,",
@@ -2431,11 +2742,19 @@
         "color.grays.900": "S:d14dafeba041e023bd5c5d2c458c10f88801e824,",
         "color.grays.1000": "S:588f6731fa9753788b0b48bb7c575f3b94991a69,",
         "checkbox.color.label": "S:dd27f922df752738d999c185f11b67e77134feac,",
-        "checkbox.color.label-disabled": "S:72b6ef5a238e1bf6f232f7f0dc8f27095a075e3f,"
+        "checkbox.color.label-disabled": "S:72b6ef5a238e1bf6f232f7f0dc8f27095a075e3f,",
+        "utilityMenu.color.bg": "S:bf2522b49aa417ce534b5208e0f6beef55486cf3,",
+        "utilityMenu.color.link.bg": "S:b11ab65866a7661d8fc26a7a62b099ef30061f50,",
+        "utilityMenu.color.link.label-hover": "S:93bfd2e3b7bbd01dc37c4f80afe8e75e9924fdaf,",
+        "utilityMenu.color.dropdown.bg": "S:79daec1641db62001cff89e93435729c39710614,",
+        "utilityMenu.color.dropdown.bg-hover": "S:badcf257ef0a5a278b895483c36799c19afa98a4,",
+        "utilityMenu.color.dropdown.label": "S:77771443996903bcb2c28595214f9e3a0c71d7e9,",
+        "utilityMenu.color.dropdown.label-hover": "S:c3a0a9d457ae44f6f0e45c6a5c57e3bd57467383,",
+        "utilityMenu.color.link.default": "S:af6ac50c749eaa990fbd9ffed40c1b9674a723a4,",
+        "utilityMenu.color.link.hover": "S:743bcf21f9c07a7963a7edb4225d95bca9b41703,"
       },
       "selectedTokenSets": {
         "global": "enabled",
-        "semantic": "enabled",
         "storybook": "enabled",
         "components/accordion": "enabled",
         "components/blockQuote": "enabled",
@@ -2454,7 +2773,13 @@
         "components/status": "enabled",
         "components/table": "enabled",
         "components/tabs": "enabled",
-        "components/textField": "enabled"
+        "components/textField": "enabled",
+        "semantic": "enabled",
+        "components/announcement": "enabled",
+        "components/banner": "enabled",
+        "components/footer": "enabled",
+        "components/header": "enabled",
+        "components/utilityMenu": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:16908",
       "$figmaModeId": "23237:10",
@@ -2504,15 +2829,6 @@
         "pager.text.hover": "2e1149296e028f68d0590547182eb3fa046b0799",
         "pager.text.focus": "f597287eb8465595918f5af8c56a3f803417cf81",
         "pager.fill.hover": "e7c4c208bc4d7ed93b94794070642830984f1687",
-        "mainMenu.color.bg": "9b1706999c4ef658c6b885428bf9f6a3058eba23",
-        "mainMenu.color.link.bg": "9fe948d4cb455eec777d28db8baa8046d75174c2",
-        "mainMenu.color.link.bg-hover": "29ea5911b9675ae3920cf9f26602f612fe9e33d5",
-        "mainMenu.color.link.label": "a28d88530a052b75025ad58244a622f52538ffdb",
-        "mainMenu.color.link.label-hover": "cd95962e180170545de51bf2995158682ea61805",
-        "mainMenu.color.dropdown.bg": "4fcd08018cb0ac6de9ae851dfdb35da945fc9128",
-        "mainMenu.color.dropdown.bg-hover": "25fdd7d0cc2e181e8290710f0f489248ad541477",
-        "mainMenu.color.dropdown.label": "1ab6130383e91011e698dd88b0fc4fce93f24d83",
-        "mainMenu.color.dropdown.label-hover": "2b680d5fc3c7c9c9b5e245400274c58f66cc6268",
         "link.default": "52f2a6ae3ef87bb2b4c96e2b8316e609a1f3e4e0",
         "link.hover": "602f312f7c40299996ccaf31cd8340e88ddcd6a8",
         "input.color.label": "40806b82869b549ff22858fd677df5c1c6d22cad",
@@ -2634,7 +2950,16 @@
         "checkbox.spacing.gap": "59fbad63c0994ee956f8790e994534f9f5f5e922",
         "checkbox.color.label": "4db65c0b61319b6c85cdb9c1b683d84e2f65ff52",
         "checkbox.color.label-disabled": "3a5dec39f06f92904d80c2096f9c439ae0b5d09a",
-        "color.link-hover": "74d0f74b830a9dd07279967cea7c9f662178e310"
+        "color.link-hover": "74d0f74b830a9dd07279967cea7c9f662178e310",
+        "utilityMenu.color.bg": "9b1706999c4ef658c6b885428bf9f6a3058eba23",
+        "utilityMenu.color.link.bg": "9fe948d4cb455eec777d28db8baa8046d75174c2",
+        "utilityMenu.color.link.label-hover": "cd95962e180170545de51bf2995158682ea61805",
+        "utilityMenu.color.dropdown.bg": "4fcd08018cb0ac6de9ae851dfdb35da945fc9128",
+        "utilityMenu.color.dropdown.bg-hover": "25fdd7d0cc2e181e8290710f0f489248ad541477",
+        "utilityMenu.color.dropdown.label": "1ab6130383e91011e698dd88b0fc4fce93f24d83",
+        "utilityMenu.color.dropdown.label-hover": "2b680d5fc3c7c9c9b5e245400274c58f66cc6268",
+        "utilityMenu.color.link.default": "29ea5911b9675ae3920cf9f26602f612fe9e33d5",
+        "utilityMenu.color.link.hover": "a28d88530a052b75025ad58244a622f52538ffdb"
       }
     },
     {
@@ -2642,7 +2967,8 @@
       "name": "Emulsify Global",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "global": "enabled"
+        "global": "enabled",
+        "components/utilityMenu": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17089",
       "$figmaModeId": "23237:11",
@@ -2694,7 +3020,8 @@
       "name": "Emulsify Semantic",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "semantic": "enabled"
+        "semantic": "enabled",
+        "components/utilityMenu": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17133",
       "$figmaModeId": "23237:12",
@@ -2716,7 +3043,8 @@
       "name": "Emulsify Storybook only",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "storybook": "source"
+        "storybook": "source",
+        "components/utilityMenu": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17144",
       "$figmaModeId": "23237:13",
@@ -2744,7 +3072,8 @@
         "components/status": "enabled",
         "components/table": "enabled",
         "components/tabs": "enabled",
-        "components/textField": "enabled"
+        "components/textField": "enabled",
+        "components/utilityMenu": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17145",
       "$figmaModeId": "23237:14",
@@ -2790,15 +3119,6 @@
         "pager.text.hover": "067e5560a9bcaee73e961d449ec580cabede8a17",
         "pager.text.focus": "039853336af697ea5a3d09db6b64f78e7c45c35d",
         "pager.fill.hover": "64071b977256beb9e45651dbbe696ac3dfb389d3",
-        "mainMenu.color.bg": "a51943758f0fa8a2af6ca92227fd91c67560e4b8",
-        "mainMenu.color.link.bg": "87170e49f0fdf73cfd66128db96c4441e700f071",
-        "mainMenu.color.link.bg-hover": "d2185c2db3e4a1b77be017df0fb5f3376c756f50",
-        "mainMenu.color.link.label": "4c190c6dffed1c15773123f079e53c195ae53054",
-        "mainMenu.color.link.label-hover": "7083b097eec3b0e13eb3c41105a6042afe4c575d",
-        "mainMenu.color.dropdown.bg": "f2bdc10d3b611073f278ef6b93be2d1d62720592",
-        "mainMenu.color.dropdown.bg-hover": "e7d24ba7865567a9e30d745dbcd34d8c4a196ddb",
-        "mainMenu.color.dropdown.label": "112a53e4cb87a782a992a38da3249f82d639e0d1",
-        "mainMenu.color.dropdown.label-hover": "3f9cb0ba9099ae87f86474c5c827f4e03f60da91",
         "link.default": "3faaab82a9c834600aaa7ad75621d14583bd9974",
         "link.hover": "e44dbb7433cdb45720e896b1126e28c9bff490e4",
         "input.color.label": "1b07b68bbc2c3339a39e57980e5b0dd66e848174",
@@ -2870,8 +3190,74 @@
         "blockQuote.padding.y": "398508657cd7d1bbd686f838a27db3f0c3ee3f74",
         "checkbox.spacing.gap": "e4d2049d0ee84eceee61f25e3264c2526cfe746a",
         "checkbox.color.label": "d2a0283754f673d1b92c74eef12f3bbe06845d3b",
-        "checkbox.color.label-disabled": "5cd5bb5326d33a62412e7579c0abd8c0bea97838"
+        "checkbox.color.label-disabled": "5cd5bb5326d33a62412e7579c0abd8c0bea97838",
+        "utilityMenu.color.bg": "a51943758f0fa8a2af6ca92227fd91c67560e4b8",
+        "utilityMenu.color.link.bg": "87170e49f0fdf73cfd66128db96c4441e700f071",
+        "utilityMenu.color.link.label-hover": "7083b097eec3b0e13eb3c41105a6042afe4c575d",
+        "utilityMenu.color.dropdown.bg": "f2bdc10d3b611073f278ef6b93be2d1d62720592",
+        "utilityMenu.color.dropdown.bg-hover": "e7d24ba7865567a9e30d745dbcd34d8c4a196ddb",
+        "utilityMenu.color.dropdown.label": "112a53e4cb87a782a992a38da3249f82d639e0d1",
+        "utilityMenu.color.dropdown.label-hover": "3f9cb0ba9099ae87f86474c5c827f4e03f60da91",
+        "utilityMenu.color.link.default": "d2185c2db3e4a1b77be017df0fb5f3376c756f50",
+        "utilityMenu.color.link.hover": "4c190c6dffed1c15773123f079e53c195ae53054"
       }
+    },
+    {
+      "id": "865132ed4de1f234ac10e07b09e233a0fbadd978",
+      "name": "Main",
+      "$figmaStyleReferences": {},
+      "selectedTokenSets": {
+        "global": "enabled",
+        "components/accordion": "enabled",
+        "components/blockQuote": "enabled",
+        "components/breadcrumbs": "enabled",
+        "components/button": "enabled",
+        "components/card": "enabled",
+        "components/checkbox": "enabled",
+        "components/cta": "enabled",
+        "components/fieldset": "enabled",
+        "components/input": "enabled",
+        "components/link": "enabled",
+        "components/mainMenu": "enabled",
+        "components/pager": "enabled",
+        "components/radioButton": "enabled",
+        "components/selectdropdown": "enabled",
+        "components/status": "enabled",
+        "components/table": "enabled",
+        "components/tabs": "enabled",
+        "components/textField": "enabled",
+        "semantic": "enabled",
+        "components/utilityMenu": "disabled"
+      },
+      "group": "WUP"
+    },
+    {
+      "id": "14ff327c549a6b3a1dd78f86615f1e5bed0e367d",
+      "name": "Gold",
+      "$figmaStyleReferences": {},
+      "selectedTokenSets": {
+        "global": "enabled",
+        "components/accordion": "enabled",
+        "components/blockQuote": "enabled",
+        "components/breadcrumbs": "enabled",
+        "components/button": "enabled",
+        "components/card": "enabled",
+        "components/checkbox": "enabled",
+        "components/cta": "enabled",
+        "components/fieldset": "enabled",
+        "components/input": "enabled",
+        "components/link": "enabled",
+        "components/mainMenu": "enabled",
+        "components/pager": "enabled",
+        "components/radioButton": "enabled",
+        "components/selectdropdown": "enabled",
+        "components/status": "enabled",
+        "components/table": "enabled",
+        "components/tabs": "enabled",
+        "components/textField": "enabled",
+        "components/utilityMenu": "disabled"
+      },
+      "group": "WUP"
     }
   ],
   "$metadata": {
@@ -2879,6 +3265,8 @@
       "global",
       "semantic",
       "components/accordion",
+      "components/announcement",
+      "components/banner",
       "components/blockQuote",
       "components/breadcrumbs",
       "components/button",
@@ -2886,9 +3274,12 @@
       "components/checkbox",
       "components/cta",
       "components/fieldset",
+      "components/footer",
+      "components/header",
       "components/input",
       "components/link",
       "components/mainMenu",
+      "components/utilityMenu",
       "components/pager",
       "components/radioButton",
       "components/selectdropdown",
