@@ -20,13 +20,13 @@
 
 <h{{heading__level|default('1')}} {{ bem(heading__base_class, heading__modifiers, heading__blockname) }}>
 	{% if heading_url %}
-		{% include "@components/links/link/link.twig" with {
-      "link_content": heading,
-      "link_url": heading_url,
-      "link_attributes": heading_link_attributes,
-      "link_base_class": heading_link_base_class,
-      "link_modifiers": heading_link_modifiers,
-      "link_blockname": heading_link_blockname|default(heading_base_class),
+		{% include "@components/link/link.twig" with {
+      link__content: heading,
+      link__url: heading_url,
+      link__attributes: heading_link_attributes,
+      link__base_class: heading_link_base_class,
+      link__modifiers: heading_link_modifiers,
+      link__blockname: heading_link_blockname|default(heading_base_class),
     } %}
 	{% else %}
 		{{ heading }}

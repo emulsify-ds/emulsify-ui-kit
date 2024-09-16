@@ -53,8 +53,6 @@
     border-right: 12px solid transparent;
     content: '';
     display: block;
-    margin-right: -12px;
-    margin-top: -6px;
     position: absolute;
     right: 50%;
     top: 50%;
@@ -70,21 +68,6 @@
       border-top-color: transparent;
       border-bottom: 15px solid;
       margin-top: -20px;
-    }
-  }
-}
-
-/*
- * Sub Navigation
- */
-
-/* LI (Nested) */
-.main-menu__item--sub {
-  @include breakpoint('medium') {
-    display: block;
-
-    &:not(:first-child) {
-      border-top: 1px solid clr(highlight);
     }
   }
 }

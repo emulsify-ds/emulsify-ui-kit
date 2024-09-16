@@ -6,22 +6,22 @@ status: stable
 props:
   type: object
   required:
-    - link_url
-    - link_content
+    - link__url
+    - link__content
   properties:
-    link_url:
+    link__url:
       type: string
       title: Link's url
       description: The url of the link.
       data: 'https://github.com/emulsify-ds/emulsify-design-system'
-    link_content:
+    link__content:
       type: string
       title: Link's content
       description: The content/text of the link.
       data: 'This is my link text'
-    link_attributes:
+    link__attributes:
       type: string
       title: Link's attributes (optional)
       description: The attribute of the link.
       data:
-        target: '_blank'
+        title: 'This is a small tooltip description of the link'

@@ -1,6 +1,6 @@
 @use '../../../foundation/breakpoints/breakpoints' as *;
 @use '../../../foundation/utility/utility' as *;
-@use '../../links/link/link.scss' as *;
+@use '../../link/link.scss' as *;
 
 .inline-menu {
   @include list-reset;
