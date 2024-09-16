@@ -1,5 +1,5 @@
-@use '../../foundation/breakpoints/breakpoints' as *;
-@use '../../foundation/utility/utility' as *;
+@use '../../../foundation/breakpoints/breakpoints' as *;
+@use '../../../foundation/utility/utility' as *;
 
 .pager {
   margin: var(--spacing-xl) 0;

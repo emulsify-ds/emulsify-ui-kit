@@ -1,5 +1,5 @@
 import pagerTwig from './pager.twig';
-import { mapDataToTwig } from '../../util/dataTransformers.js';
+import { mapDataToTwig } from '../../../util/dataTransformers.js';
 
 import { props as pagerProps } from './pager.component.yml';
 import { props as pagerNextEllipsesProps } from './pager-next-ellipses.component.yml';
@@ -16,7 +16,7 @@ const pagerFirstLastData = mapDataToTwig(pagerFirstLastProps.properties);
 /**
  * Storybook Definition.
  */
-export default { title: 'Components/Pager' };
+export default { title: 'Components/Navigation/Pager' };
 
 export const basic = () => pagerTwig(pagerData);
 export const withNext = () => pagerTwig(pagerNextEllipsesData);
