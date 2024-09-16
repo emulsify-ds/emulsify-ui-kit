@@ -1,6 +1,3 @@
-@use '../functions/color';
-@use '../spacing/spacing';
-
 @mixin visually-hidden {
   position: absolute !important;
   clip: rect(1px, 1px, 1px, 1px);
@@ -19,8 +16,8 @@
 // use-cases like `focus-within` that apply to an "outer" element when something
 // "inside" has focus. e.g. The utility nav search box.
 @mixin focus-styles {
-  outline: space(0.125) dotted clr(neutral, n500) !important;
-  outline-offset: space(0.125);
+  outline: var(--spacing-xs) dotted clr(neutral, n500) !important;
+  outline-offset: var(--spacing-xs);
 }
 
 @mixin focus {

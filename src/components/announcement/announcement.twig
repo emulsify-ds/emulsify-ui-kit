@@ -38,6 +38,7 @@
     <div {{ bem('action', [announcement__variant], announcement__base_class) }}>
       {% include "@components/button/button.twig" with {
         button__content: announcement__button_text,
+        button__style: 'primary',
         button__attributes: {
           'href': announcement__button_url,
         }

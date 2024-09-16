@@ -1,28 +1,43 @@
 <div>
+  <h2 class="sb-title">Colors</h2>
+
   {% for color, value in _context.colors %}
-    <h2 class="sb-title">{{color}}</h2>
+    <h2 class="sb-subtitle">{{ color }}</h2>
     {% if value.value is defined %}
       <ul class="sb-list">
-        <li style="background: var(--colors-{{color}});" class="token-card">
-          <span>
-            {{color}}
-            <span>
-              <code class="sb-custom-property-name">var(--color-{{color}})</code>
-            </span>
+        <li class="sb-list__item" class="token-card">
+          <span class="sb-list__label">{{ color }}</span>
+          <span class="sb-list__value">{{value.value}}</span>
+          <span class="sb-list__custom-property">
+            <code class="sb-custom-property-name">var(--color-{{color}})</code>
           </span>
+          <span class="sb-list__visualization" style="background-color: var(--color-{{color}});"></span>
         </li>
       </ul>
     {% else %}
       <ul class="sb-list">
         {% for nestedColor, nestedValue in value %}
-          <li style="background: var(--colors-{{color}}-{{nestedColor}});" class="token-card">
-            <span>
-              {{nestedColor}}
-              <span>
-                <code class="sb-custom-property-name">var(--color-{{color}}-{{nestedColor}})</code>
+          {% if nestedValue.value is defined %}
+            <li class="sb-list__item" class="token-card">
+              <span class="sb-list__label">{{ nestedColor }}</span>
+              <span class="sb-list__value">{{nestedValue.value}}</span>
+              <span class="sb-list__custom-property">
+                <code class="sb-custom-property-name">var(--color-{{ color|lower }}-{{nestedColor}})</code>
               </span>
-            </span>
-          </li>
+              <span class="sb-list__visualization" style="background-color: var(--color-{{ color|lower }}-{{nestedColor}});"></span>
+            </li>
+          {% else %}
+            {% for colorFamily, colorFamilyValue in nestedValue %}
+              <li class="sb-list__item" class="token-card">
+                <span class="sb-list__label">{{ nestedColor }} {{ colorFamily }}</span>
+                <span class="sb-list__value">{{ colorFamilyValue.value }}</span>
+                <span class="sb-list__custom-property">
+                  <code class="sb-custom-property-name">var(--color-{{ color|lower }}-{{ nestedColor }}-{{colorFamily}})</code>
+                </span>
+                <span class="sb-list__visualization" style="background-color: var(--color-{{ color|lower }}-{{ nestedColor }}-{{colorFamily}});"></span>
+              </li>
+            {% endfor %}
+          {% endif %}
         {% endfor %}
       </ul>
     {% endif %}

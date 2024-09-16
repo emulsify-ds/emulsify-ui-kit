@@ -2,7 +2,9 @@ import colorsTwig from './color.twig';
 
 import tokens from '../transformed.tokens.json';
 
-const colorsData = { colors: tokens.colors };
+const colorsData = { colors: tokens.color };
+
+console.log(tokens.color);
 
 export default {
   title: 'Tokens/Colors',
