@@ -2492,6 +2492,30 @@
       }
     }
   },
+  "components/tooltip": {
+    "tooltip": {
+      "background": {
+        "dark": {
+          "value": "{color.grays.900}",
+          "type": "color"
+        },
+        "light": {
+          "value": "{color.grays.200}",
+          "type": "color"
+        }
+      },
+      "icon": {
+        "color": {
+          "value": "{color.text.white}",
+          "type": "color"
+        },
+        "background": {
+          "value": "{color.primary.dark}",
+          "type": "color"
+        }
+      }
+    }
+  },
   "storybook": {
     "colors": {
       "sb": {
@@ -2758,7 +2782,8 @@
         "components/announcement": "enabled",
         "components/banner": "enabled",
         "components/footer": "enabled",
-        "components/header": "enabled"
+        "components/header": "enabled",
+        "components/tooltip": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:16908",
       "$figmaModeId": "23237:10",
@@ -2946,7 +2971,8 @@
       "name": "Emulsify Global",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "global": "enabled"
+        "global": "enabled",
+        "components/tooltip": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17089",
       "$figmaModeId": "23237:11",
@@ -2998,7 +3024,8 @@
       "name": "Emulsify Semantic",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "semantic": "enabled"
+        "semantic": "enabled",
+        "components/tooltip": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17133",
       "$figmaModeId": "23237:12",
@@ -3020,7 +3047,8 @@
       "name": "Emulsify Storybook only",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "storybook": "source"
+        "storybook": "source",
+        "components/tooltip": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17144",
       "$figmaModeId": "23237:13",
@@ -3048,7 +3076,8 @@
         "components/status": "enabled",
         "components/table": "enabled",
         "components/tabs": "enabled",
-        "components/textField": "enabled"
+        "components/textField": "enabled",
+        "components/tooltip": "disabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17145",
       "$figmaModeId": "23237:14",
@@ -3201,7 +3230,8 @@
         "components/table": "enabled",
         "components/tabs": "enabled",
         "components/textField": "enabled",
-        "semantic": "enabled"
+        "semantic": "enabled",
+        "components/tooltip": "disabled"
       },
       "group": "WUP"
     },
@@ -3228,7 +3258,8 @@
         "components/status": "enabled",
         "components/table": "enabled",
         "components/tabs": "enabled",
-        "components/textField": "enabled"
+        "components/textField": "enabled",
+        "components/tooltip": "disabled"
       },
       "group": "WUP"
     }
@@ -3259,6 +3290,7 @@
       "components/table",
       "components/tabs",
       "components/textField",
+      "components/tooltip",
       "storybook"
     ]
   }
