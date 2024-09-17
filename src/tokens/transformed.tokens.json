@@ -452,6 +452,38 @@
       }
     }
   },
+  "gallery": {
+    "overlay": {
+      "value": "#00405b",
+      "type": "color"
+    },
+    "grid": {
+      "value": 32,
+      "type": "spacing"
+    },
+    "heading": {
+      "value": "#006089",
+      "type": "color"
+    },
+    "body": {
+      "value": "#00202e",
+      "type": "color"
+    },
+    "modal": {
+      "padding-x": {
+        "value": 40,
+        "type": "spacing"
+      },
+      "padding-bottom": {
+        "value": 64,
+        "type": "spacing"
+      },
+      "padding-top": {
+        "value": 76,
+        "type": "spacing"
+      }
+    }
+  },
   "footer": {
     "background": {
       "default": {
@@ -946,6 +978,10 @@
       },
       "darker": {
         "value": "#006089",
+        "type": "color"
+      },
+      "darkest": {
+        "value": "#00405b",
         "type": "color"
       }
     },
@@ -2480,50 +2516,54 @@
       "type": "other"
     },
     "13": {
-      "value": "components/header",
+      "value": "components/gallery",
       "type": "other"
     },
     "14": {
-      "value": "components/input",
+      "value": "components/header",
       "type": "other"
     },
     "15": {
-      "value": "components/link",
+      "value": "components/input",
       "type": "other"
     },
     "16": {
-      "value": "components/mainMenu",
+      "value": "components/link",
       "type": "other"
     },
     "17": {
-      "value": "components/pager",
+      "value": "components/mainMenu",
       "type": "other"
     },
     "18": {
-      "value": "components/radioButton",
+      "value": "components/pager",
       "type": "other"
     },
     "19": {
-      "value": "components/selectdropdown",
+      "value": "components/radioButton",
       "type": "other"
     },
     "20": {
-      "value": "components/status",
+      "value": "components/selectdropdown",
       "type": "other"
     },
     "21": {
-      "value": "components/table",
+      "value": "components/status",
       "type": "other"
     },
     "22": {
-      "value": "components/tabs",
+      "value": "components/table",
       "type": "other"
     },
     "23": {
-      "value": "components/textField",
+      "value": "components/tabs",
       "type": "other"
     },
     "24": {
+      "value": "components/textField",
+      "type": "other"
+    },
+    "25": {
       "value": "storybook",
       "type": "other"
     }
@@ -2764,7 +2804,11 @@
       "components/table": "enabled",
       "components/tabs": "enabled",
       "components/textField": "enabled",
-      "semantic": "enabled"
+      "semantic": "enabled",
+      "components/announcement": "enabled",
+      "components/banner": "enabled",
+      "components/footer": "enabled",
+      "components/header": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:16908",
     "$figmaModeId": "23237:10",
