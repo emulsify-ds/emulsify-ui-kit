@@ -13,40 +13,41 @@ export default {
       defaultValue: false,
     },
     width: {
+      name: 'Container Width',
       control: { type: 'select' },
       options: {
-        'Content Small': 'compressed',
-        'Content Medium': 'standard',
-        'Content Large': 'extended',
+        Small: 'compressed',
+        Medium: 'standard',
+        Large: 'extended',
+        Max: 'max',
+        Full: 'full',
       },
-      defaultValue: 'standard',
     },
     spacing: {
+      name: 'Container Spacing',
       control: { type: 'select' },
       options: {
         '0x Spacing': 'no-spacing',
         '1x Spacing': '',
         '2x Spacing': 'two-spacing',
       },
-      defaultValue: '',
     },
     alignment: {
       name: 'Component Alignment',
       options: ['left', 'center', 'right'],
       type: 'select',
-      defaultValue: 'left',
     },
     heading: {
+      name: 'Container Heading',
       control: {
         type: 'text',
       },
-      defaultValue: 'Container Heading Placeholder',
     },
     text: {
+      name: 'Container Text',
       control: {
         type: 'text',
       },
-      defaultValue: 'Container content placeholder text',
     },
   },
   args: {

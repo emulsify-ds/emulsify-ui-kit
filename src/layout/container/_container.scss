@@ -179,8 +179,6 @@
 }
 
 .container__heading {
-  align-self: flex-start;
-  max-width: var(--content-width);
   margin: 0 0 var(--spacing-xl);
 
   &:is(h2) {
@@ -197,18 +195,5 @@
 }
 
 .container__text {
-  align-self: flex-start;
-  margin-bottom: var(--spacing-xl);
-  max-width: var(--content-width-small);
-}
-
-.clearfix {
-  float: none;
-  clear: both;
-}
-
-.field__item:has(.container) {
-  display: flex;
-  justify-content: center;
   margin-bottom: var(--spacing-xl);
 }
