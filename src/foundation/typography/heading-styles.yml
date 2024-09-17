@@ -1,0 +1,6 @@
+headings:
+  h1: '400 clamp( 2.75rem, 2.75rem + 1.1458vw, 4.125rem )/1.4 "Gabriela", serif'
+  h2: '400 clamp( 2.25rem, 2.25rem + 1.1458vw, 3rem )/1.4 "Gabriela", serif'
+  h3: '400 clamp( 1.75rem, 1.75rem + 1.1458vw, 2.25rem )/1.4 "Gabriela", serif'
+  h4: '400 clamp( 1.375rem, 1.375rem + 1.1458vw, 1.75rem )/1.4 "Gabriela", serif'
+  h5: '400 clamp( 1.25rem, 1.25rem + 1.1458vw, 1.375rem )/1.4 "Gabriela", serif'

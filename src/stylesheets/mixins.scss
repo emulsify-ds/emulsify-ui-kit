@@ -19,12 +19,14 @@ $outer-container-break: var(--breakpoint-sm);
 
 /// Mixin - Wrapper
 /// Outer container mixin for large screens
-@mixin wrapper($container-max-width: $max-width,
+@mixin wrapper(
+  $container-max-width: $max-width,
   $outer-container-break: $small,
   $v-margin: 0,
   $v-padding: 0,
   $h-padding: $space,
-  $h-padding-large: $h-padding) {
+  $h-padding-large: $h-padding
+) {
   max-width: #{$container-max-width};
   width: 100%;
   margin: #{$v-margin} auto;
@@ -35,8 +37,12 @@ $outer-container-break: var(--breakpoint-sm);
   }
 
   @include breakpoint($container-max-width) {
-    padding-left: calc(#{$h-padding-large} + calc(-50vw + calc(#{$container-max-width} / 2)));
-    padding-right: calc(#{$h-padding-large} + calc(-50vw + calc(#{$container-max-width} / 2)));
+    padding-left: calc(
+      #{$h-padding-large} + calc(-50vw + calc(#{$container-max-width} / 2))
+    );
+    padding-right: calc(
+      #{$h-padding-large} + calc(-50vw + calc(#{$container-max-width} / 2))
+    );
   }
 }
 
@@ -55,14 +61,16 @@ $outer-container-break: var(--breakpoint-sm);
   padding: 0;
 }
 
-@mixin heading-xl($font-family: var(--font-family-heading),
+@mixin heading-xl(
+  $font-family: var(--font-family-heading),
   $font-size: var(--font-size-h1),
   $line-height: var(--line-height-none),
   $color: var(--color-text-heading),
   $color-link: inherit,
   $color-link-hover: inherit,
   $font-weight: 700,
-  $margin: var(--spacing-xl) 0 var(--spacing-lg)) {
+  $margin: var(--spacing-xl) 0 var(--spacing-lg)
+) {
   color: $color;
   font-family: $font-family;
   font-weight: $font-weight;
@@ -82,14 +90,16 @@ $outer-container-break: var(--breakpoint-sm);
   }
 }
 
-@mixin heading-large($font-family: var(--font-family-heading),
+@mixin heading-large(
+  $font-family: var(--font-family-heading),
   $font-size: var(--font-size-h2),
   $line-height: var(--line-height-none),
   $color: var(--color-text-heading),
   $color-link: inherit,
   $color-link-hover: inherit,
   $font-weight: 700,
-  $margin: var(--spacing-xl) 0 var(--spacing-lg)) {
+  $margin: var(--spacing-xl) 0 var(--spacing-lg)
+) {
   color: $color;
   font-family: $font-family;
   font-weight: $font-weight;
@@ -109,14 +119,16 @@ $outer-container-break: var(--breakpoint-sm);
   }
 }
 
-@mixin heading-medium($font-family: var(--font-family-heading),
+@mixin heading-medium(
+  $font-family: var(--font-family-heading),
   $font-size: var(--font-size-h3),
   $line-height: var(--line-height-tight),
   $color: var(--color-text-heading),
   $color-link: inherit,
   $color-link-hover: inherit,
   $font-weight: 700,
-  $margin: var(--spacing-xl) 0 var(--spacing-lg)) {
+  $margin: var(--spacing-xl) 0 var(--spacing-lg)
+) {
   color: $color;
   font-family: $font-family;
   font-weight: $font-weight;
@@ -136,14 +148,16 @@ $outer-container-break: var(--breakpoint-sm);
   }
 }
 
-@mixin heading-small($font-family: var(--font-family-heading),
+@mixin heading-small(
+  $font-family: var(--font-family-heading),
   $font-size: var(--font-size-h4),
   $line-height: var(--line-height-tight),
   $color: var(--color-text-heading),
   $color-link: inherit,
   $color-link-hover: inherit,
   $font-weight: 600,
-  $margin: var(--spacing-xl) 0 var(--spacing-lg)) {
+  $margin: var(--spacing-xl) 0 var(--spacing-lg)
+) {
   color: $color;
   font-family: $font-family;
   font-weight: $font-weight;
@@ -163,14 +177,16 @@ $outer-container-break: var(--breakpoint-sm);
   }
 }
 
-@mixin heading-xs($font-family: var(--font-family-heading),
+@mixin heading-xs(
+  $font-family: var(--font-family-heading),
   $font-size: var(--font-size-h5),
   $line-height: var(--line-height-tight),
   $color: var(--color-text-heading),
   $color-link: inherit,
   $color-link-hover: inherit,
   $font-weight: 600,
-  $margin: var(--spacing-2xl) 0 var(--spacing-lg)) {
+  $margin: var(--spacing-2xl) 0 var(--spacing-lg)
+) {
   color: $color;
   font-family: $font-family;
   font-weight: $font-weight;
@@ -192,7 +208,7 @@ $outer-container-break: var(--breakpoint-sm);
 
 @mixin link {
   color: var(--link-color-default);
-  transition: all .15s;
+  transition: all 0.15s;
 
   &:hover {
     color: var(--link-color-hover);
