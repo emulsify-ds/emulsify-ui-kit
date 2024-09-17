@@ -1,0 +1,29 @@
+{% set type__base_class = 'cl-type' %}
+
+<p>Type Styles use SASS Mixins to capture their entire style</p>
+<br/>
+<ul {{ bem(type__base_class) }}>
+	{% for level, value in headings %}
+		<li {{ bem('item', [], type__base_class) }}>
+			{% set heading__modifiers = [level, 'heading-styles'] %}
+			<div {{ bem('heading', heading__modifiers, []) }}>
+				Heading
+				{{ level }}
+			</div>
+			<details class="cl-info">
+				<summary>Font Details</summary>
+				<strong>Usage:</strong>
+				<code>@include
+					{{ level }}</code>
+				<br/><strong>font:</strong>
+				{{ value }}
+				{%- for spacing, spacing_value in letter_spacing %}
+					{% if spacing == level -%}<br/><strong>letter-spacing:</strong>
+
+						{{ spacing_value }}
+					{%- endif %}
+				{% endfor %}
+			</details>
+		</li>
+	{% endfor %}
+</ul>

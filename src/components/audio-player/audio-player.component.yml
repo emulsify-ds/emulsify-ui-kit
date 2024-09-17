@@ -1,0 +1,18 @@
+# ball audio file by marini24 under CC 3.0
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Audio Player
+group: Components/Media
+status: stable
+props:
+  type: object
+  required:
+    - audio_content
+  properties:
+    audio_content:
+      type: array
+      title: Audio player content
+      description: The content of the audio players.
+      data:
+        - '../../media/ball.ogg'
+        - '../../media/ball.mp3'

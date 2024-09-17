@@ -1,0 +1,108 @@
+{% set breadcrumbs__base_class = 'breadcrumbs' %}
+
+{% set breadcrumbs__attributes = {
+  'class': bem(breadcrumbs__base_class ~ '__wrapper', ['collapsible'], breadcrumbs__blockname),
+} %}
+
+{% set breadcrumbs_items = breadcrumbs_items|default(breadcrumb) %}
+
+{# Get the parent label for the mobile toggle #}
+{% set parent_count = breadcrumbs_items|length - 2 %}
+{% set parent_label = breadcrumbs_items[parent_count].title %}
+{% if breadcrumbs_items[parent_count].title == null %}
+  {% set parent_label = breadcrumbs_items[parent_count].text %}
+{% endif %}
+
+{% set scroll_left %}
+  {% embed "@components/button/button.twig" with {
+    button__content: true,
+    button__base_class: 'scroll',
+    button__blockname: breadcrumbs__base_class,
+    button__modifiers: ['left'],
+    button__attributes: {
+      'aria-hidden': 'true',
+      'tabindex': '-1',
+    },
+    button__icon: {
+      left: true,
+      name: 'chevronLeft',
+      decorative: true,
+    },
+    } %}
+    {% block button__content %}
+      <span {{ bem('visually-hidden') }}>Scroll Left</span>
+    {% endblock %}
+  {% endembed %}
+{% endset %}
+
+{% set scroll_right %}
+  {% embed "@components/button/button.twig" with {
+    button__content: true,
+    button__base_class: 'scroll',
+    button__blockname: breadcrumbs__base_class,
+    button__type: 'filled',
+    button__modifiers: ['right'],
+    button__attributes: {
+      'aria-hidden': 'true',
+      'tabindex': '-1',
+    },
+    button__icon: {
+      right: true,
+      name: 'chevronRight',
+      decorative: true,
+    },
+    } %}
+      {% block button__content %}
+        <span {{ bem('visually-hidden') }}>Scroll Right</span>
+      {% endblock %}
+    {% endembed %}
+{% endset %}
+
+{% set breadcrumbs %}
+  {% embed "@components/navigation/base/menu.twig" with {
+    items: breadcrumbs_items,
+    menu__base_class: breadcrumbs__base_class,
+    menu__modifiers: breadcrumbs__modifiers,
+    menu__name: 'Breadcrumb',
+    menu__list__type: 'ol',
+    menu__attributes: breadcrumbs__attributes,
+  } %}
+    {% block menu_prefix %}
+      {{ scroll_left }}
+    {% endblock %}
+    {% block menu_suffix %}
+      {{ scroll_right }}
+    {% endblock %}
+  {% endembed %}
+{% endset %}
+
+{# Render breadcrumbs within a container #}
+{% if breadcrumbs_items.1 %}
+  {% embed "@layout/container/container.twig" with {
+    container__component_width: 'extended',
+    container__component_alignment: 'left',
+    container__bg_color: 'true',
+    container__modifiers: ['no-spacing'],
+    container__theme: breadcrumbs__theme|default('standard'),
+  }%}
+    {% block container__content %}
+      <div {{ bem('wrapper', [], breadcrumbs__base_class) }}>
+        {% embed "@components/button/button.twig" with {
+          button__content: true,
+          button__base_class: 'toggle',
+          button__blockname: breadcrumbs__base_class,
+          button__attributes: {
+            'aria-hidden': 'true',
+            'tabindex': '-1',
+          },
+          } %}
+          {% block button__content %}
+            <span {{ bem('visually-hidden') }}>Show all breadcrumbs</span>
+            <span aria-hidden="true">{{ parent_label }}</span>
+          {% endblock %}
+        {% endembed %}
+        {{ breadcrumbs }}
+      </div>
+    {% endblock %}
+  {% endembed %}
+{% endif %}

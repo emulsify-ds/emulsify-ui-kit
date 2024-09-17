@@ -1,3 +1,5 @@
+@use '../../foundation/breakpoints/breakpoints' as *;
+
 .tabs__link,
 .tabs__link--local-tasks {
   background-color: var(--tabs-color-bg-default);
@@ -12,7 +14,7 @@
   text-decoration: none;
   transition: color 0.3s;
 
-  @include large {
+  @include breakpoint('large') {
     display: inline-block;
     position: relative;
     top: var(--spacing-md);

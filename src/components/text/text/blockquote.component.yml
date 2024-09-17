@@ -1,0 +1,20 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Blockquote
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - blockquote__content
+  properties:
+    blockquote__content:
+      type: string
+      title: Cite
+      description: 'Specifies the citation or source for the blockquote.'
+      data: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'
+    blockquote__cite:
+      type: string
+      title: Content
+      description: 'Specifies the main content of the blockquote.'
+      data: 'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'

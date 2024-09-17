@@ -1,3 +1,5 @@
+@use '../../../foundation/utility/utility' as *;
+
 .form-item--checkboxes,
 .form-item--checkbox__item {
   @include list-reset;
@@ -52,7 +54,7 @@
 
 .form-item--checkbox__item {
   input[type='checkbox'] {
-    @include sr-only;
+    @include visually-hidden;
   }
 
   input[type='checkbox']:checked + .form-item--checkbox__item--label::before {

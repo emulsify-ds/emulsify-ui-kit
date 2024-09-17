@@ -1,0 +1,23 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Video HTML5
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - video__type
+    - video__urls
+  properties:
+    video__type:
+      type: string
+      title: Video Type
+      description: 'Specifies the type of video to embed. Possible values: embed, html5'
+      data: 'html5'
+    video__urls:
+      type: array
+      title: Video URLs
+      description: 'List of video URLs for HTML5 videos'
+      data:
+        - 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4'
+        - 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-webm-file.webm'

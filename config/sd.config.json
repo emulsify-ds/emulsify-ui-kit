@@ -1,0 +1,24 @@
+{
+  "source": [
+    "src/tokens/transformed.tokens.json"
+  ],
+  "platforms": {
+    "css": {
+      "transforms": [
+        "attribute/cti",
+        "name/kebab",
+        "time/seconds",
+        "html/icon",
+        "color/css",
+        "toRem/pxToRem",
+        "toPX/appendPX"
+      ],
+      "files": [
+        {
+          "destination": "src/tokens/tokens.scss",
+          "format": "css/variables"
+        }
+      ]
+    }
+  }
+}
