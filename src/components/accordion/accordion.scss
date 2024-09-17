@@ -52,22 +52,22 @@
   cursor: pointer;
   outline: inherit;
   display: flex;
-  color: var(--colors-text-body);
+  color: var(--color-text-body);
   font-size: var(--font-size-body);
   gap: var(--spacing-sm);
   align-items: center;
 
   .accordion__icon {
-    fill: var(--colors-text-body);
+    fill: var(--color-text-body);
     height: var(--size-lg);
     width: var(--size-lg);
   }
 
   &:hover {
-    color: var(--accordion-color-header-hover);
+    color: var(--accordion-color-header);
 
     .accordion__icon {
-      fill: var(--accordion-color-header-hover);
+      fill: var(--accordion-color-header);
     }
   }
 }
@@ -94,16 +94,28 @@
   color: var(--accordion-color-header);
   margin: 0 0 var(--font-size-lead);
 
+  [data-accordion-expanded='false'] & {
+    color: var(--accordion-color-body);
+  }
+
   &:hover {
     color: var(--accordion-color-header-hover);
 
+    [data-accordion-expanded='false'] & {
+      color: var(--accordion-color-header);
+
+      .accordion-item__toggle {
+        color: var(--accordion-color-header);
+      }
+    }
+
     .accordion-item__icon {
       fill: var(--accordion-color-header-hover);
-    }
-  }
 
-  [data-accordion-expanded='false'] & {
-    color: var(--accordion-color-body);
+      [data-accordion-expanded='false'] & {
+        fill: var(--accordion-color-header);
+      }
+    }
   }
 }
 
