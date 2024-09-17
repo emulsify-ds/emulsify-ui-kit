@@ -2492,6 +2492,30 @@
       }
     }
   },
+  "components/tooltip": {
+    "tooltip": {
+      "background": {
+        "dark": {
+          "value": "{color.grays.900}",
+          "type": "color"
+        },
+        "light": {
+          "value": "{color.grays.200}",
+          "type": "color"
+        }
+      },
+      "icon": {
+        "color": {
+          "value": "{color.text.white}",
+          "type": "color"
+        },
+        "background": {
+          "value": "{color.primary.dark}",
+          "type": "color"
+        }
+      }
+    }
+  },
   "storybook": {
     "colors": {
       "sb": {
@@ -3259,6 +3283,7 @@
       "components/table",
       "components/tabs",
       "components/textField",
+      "components/tooltip",
       "storybook"
     ]
   }
