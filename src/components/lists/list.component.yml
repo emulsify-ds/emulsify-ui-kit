@@ -1,0 +1,16 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Lists
+group: Components
+status: stable
+props:
+  type: object
+  properties:
+    list__items:
+      type: array
+      title: List items
+      description: The items of the list.
+      data:
+        - "This is a list of items that doesn't need numbers."
+        - 'Amet consectetur purus justo feugiat mattis sit ultricies odio. Pellentesque pellentesque sit sed porttitor duis interdum.'
+        - 'Elementum elit est, vitae feugiat enim odio cursus. Enim cum dictum gravida amet id eget.'

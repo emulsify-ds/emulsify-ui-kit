@@ -1,5 +1,3 @@
-// CSS-only select styling (from https://github.com/filamentgroup/select-css)
-
 .form-item__dropdown {
   border: var(--border-sm) solid clr(accent);
   display: block;
@@ -25,13 +23,13 @@
   }
 
   :hover {
-    background: var(--selectdropdown-button-fill-hover);
+    background: var(--selectdropdown-color-button-fill-hover);
   }
 }
 
 .form-item__select {
   border: var(--border-sm) solid var(--selectdropdown-color-button-stroke);
-  border-radius: var(--selectdropdown-radius);
+  border-radius: var(--selectdropdown-color-radius);
   height: 41px; // set height required for discrepancy between .form-item__dropdown border and the select :focus border
   font-size: 16px;
   margin: 0;
