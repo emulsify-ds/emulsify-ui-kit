@@ -1,0 +1,21 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Video Embed
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - video__type
+    - video_content
+  properties:
+    video__type:
+      type: string
+      title: Video Type
+      description: 'Specifies the type of video to embed. Possible values: embed, html5'
+      data: 'embed'
+    video_content:
+      type: string
+      title: Video Content
+      description: 'Directly specifies the HTML content for embed videos'
+      data: "<iframe title='Test Video' width='854' height='480' frameborder='0' allowfullscreen='allowfullscreen' src='https://www.youtube.com/embed/YRnVnlhjOBs?autoplay=0&amp;start=0'></iframe>"

@@ -1,0 +1,27 @@
+{% set spacing__base_class = 'cl-table' %}
+
+<table {{ bem(spacing__base_class) }}>
+	<tr>
+	  <th {{ bem('header', [], spacing__base_class) }}>usage</th>
+		<th {{ bem('header', [], spacing__base_class) }}>rem</th>
+		<th {{ bem('header', [], spacing__base_class) }}>px</th>
+		<th {{ bem('header', [], spacing__base_class) }}>token name</th>
+		<th {{ bem('header', [], spacing__base_class) }}>example</th>
+	</tr>
+	{% for space in spacing %}
+		<tr>
+		  <td>{{ space.usage}}</td>
+			<td>{{ space.rem }}</td>
+			<td>{{ space.px }}</td>
+			<td>{{ space.tokenName }}</td>
+			<td>
+			  <span class="cl-spacing-visualization__wrapper"  style="gap: {{space.px}}">
+					<span class="cl-spacing-visualization"></span>
+					<span class="cl-spacing-visualization"></span>
+					<span class="cl-spacing-visualization"></span>
+					<span class="cl-spacing-visualization"></span>
+				</span>
+			</td>
+		</tr>
+	{% endfor %}
+</table>

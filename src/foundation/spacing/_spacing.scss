@@ -1,0 +1,101 @@
+@use 'sass:map';
+@use '../breakpoints/breakpoints' as bp;
+
+$size-spacing-14: 12rem;
+$size-spacing-13: 10rem;
+$size-spacing-12: 6rem;
+$size-spacing-11: 5rem;
+$size-spacing-10: 4rem;
+$size-spacing-9: 3rem;
+$size-spacing-8: 2.5rem;
+$size-spacing-7: 2rem;
+$size-spacing-6: 1.5rem;
+$size-spacing-5: 1rem;
+$size-spacing-4: 0.75rem;
+$size-spacing-3: 0.5rem;
+$size-spacing-33: 0.33rem;
+$size-spacing-2: 0.25rem;
+$size-spacing-1: 0.125rem;
+/* stylelint-disable-next-line length-zero-no-unit */
+$size-spacing-0: 0rem;
+$spacings: (
+  12: $size-spacing-14,
+  10: $size-spacing-13,
+  6: $size-spacing-12,
+  5: $size-spacing-11,
+  4: $size-spacing-10,
+  3: $size-spacing-9,
+  2.5: $size-spacing-8,
+  2: $size-spacing-7,
+  1.5: $size-spacing-6,
+  1: $size-spacing-5,
+  0.75: $size-spacing-4,
+  0.5: $size-spacing-3,
+  0.33: $size-spacing-33,
+  0.25: $size-spacing-2,
+  0.125: $size-spacing-1,
+  0: $size-spacing-0,
+);
+
+@function space($item) {
+  @if map.has-key($map: $spacings, $key: $item) {
+    @return map.get($spacings, $item);
+  } @else {
+    /* stylelint-disable-next-line at-rule-no-unknown */
+
+    @error 'space(#{$item}); does not exist in the $spacings map. See _spacing.scss for available parameters.';
+  }
+}
+
+@mixin section-padding-top($multiplier: 1) {
+  & {
+    padding-top: space(2);
+  }
+
+  @include bp.breakpoint('small') {
+    padding-top: #{space(2.5) * $multiplier};
+  }
+
+  @include bp.breakpoint('large') {
+    padding-top: #{space(3) * $multiplier};
+  }
+}
+
+@mixin section-padding-bottom($multiplier: 1) {
+  & {
+    padding-bottom: space(2);
+  }
+
+  @include bp.breakpoint('small') {
+    padding-bottom: #{space(2.5) * $multiplier};
+  }
+
+  @include bp.breakpoint('large') {
+    padding-bottom: #{space(3) * $multiplier};
+  }
+}
+
+@mixin section-padding($multiplier: 1) {
+  @include section-padding-top($multiplier);
+  @include section-padding-bottom($multiplier);
+}
+
+@mixin margin-gap-top($multiplier: 1) {
+  & {
+    margin-top: #{space(2) * $multiplier};
+  }
+
+  @include bp.breakpoint('large') {
+    margin-top: #{space(3) * $multiplier};
+  }
+}
+
+@mixin margin-gap-bottom($multiplier: 1) {
+  &:not(:last-child) {
+    margin-bottom: #{space(2) * $multiplier};
+
+    @include bp.breakpoint('large') {
+      margin-bottom: #{space(3) * $multiplier};
+    }
+  }
+}

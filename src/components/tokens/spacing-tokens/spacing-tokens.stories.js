@@ -1,6 +1,5 @@
 import template from './spacing-tokens.twig';
-import figma from '../../../../.storybook/configma.json';
-
+import figma from '../../../../config/configma.json';
 import tokens from '../../../tokens/transformed.tokens.json';
 
 const data = { spacing: tokens.spacing };

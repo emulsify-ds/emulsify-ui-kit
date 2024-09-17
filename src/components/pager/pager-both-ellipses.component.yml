@@ -1,0 +1,90 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Pager with Both Ellipses
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - current
+    - ellipses
+    - items
+  properties:
+    current:
+      type: integer
+      title: Current Page
+      description: 'Specifies the current active page number'
+      data: 5
+    ellipses:
+      type: object
+      title: Ellipses Visibility
+      description: 'Specifies whether to display ellipses for next and previous page navigation'
+      properties:
+        previous:
+          type: boolean
+          title: Show Previous Ellipsis
+          description: 'Determines whether to display an ellipsis for the previous page'
+          data: true
+        next:
+          type: boolean
+          title: Show Next Ellipsis
+          description: 'Determines whether to display an ellipsis for the next page'
+          data: true
+    items:
+      type: object
+      title: Page Items
+      description: 'Specifies the links for page navigation'
+      properties:
+        previous:
+          type: object
+          title: Previous Page Link
+          properties:
+            href:
+              type: string
+              title: Previous Page URL
+              description: 'URL for the previous page'
+              data: '#'
+        next:
+          type: object
+          title: Next Page Link
+          properties:
+            href:
+              type: string
+              title: Next Page URL
+              description: 'URL for the next page'
+              data: '#'
+        pages:
+          type: object
+          title: Page Links
+          description: 'Links for the page numbers'
+          properties:
+            3:
+              type: object
+              properties:
+                href:
+                  type: string
+                  data: '#'
+            4:
+              type: object
+              properties:
+                href:
+                  type: string
+                  data: '#'
+            5:
+              type: object
+              properties:
+                href:
+                  type: string
+                  data: '#'
+            6:
+              type: object
+              properties:
+                href:
+                  type: string
+                  data: '#'
+            7:
+              type: object
+              properties:
+                href:
+                  type: string
+                  data: '#'

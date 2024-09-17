@@ -1,0 +1,28 @@
+families:
+  - name: Gabriela
+    id: 'Gabriela, sans-serif'
+    styles:
+      - name: Bold
+        weight: 600
+        style: normal
+  - name: Rubik
+    id: 'Rubik, sans-serif'
+    styles:
+      - name: Bold
+        weight: 600
+        style: normal
+      - name: Bold Italic
+        weight: 600
+        style: italic
+      - name: Medium
+        weight: 500
+        style: normal
+      - name: Medium Italic
+        weight: 500
+        style: italic
+      - name: Regular
+        weight: 400
+        style: normal
+      - name: Regular Italic
+        weight: 400
+        style: italic

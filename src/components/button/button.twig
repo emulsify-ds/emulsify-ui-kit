@@ -1,13 +1,118 @@
-{% set button__tag = button__tag|default('button') %}
+{#
+ # Available props
+ # Reference: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role#associated_aria_roles_states_and_properties
+ # - aria_expanded: whether the controlled grouping is expanded or not
+ # - button__hover_style: fade (default), rise, or swipe
+ # - button__radius: none (default), soft, or pill
+ # - button__style: filled (defualt) or outline
+ # - button__outline_weight: 1 (default), 2, or 4
+ #
+ # Available variables:
+ # - button__content - the content of the button (typically text)
+ #
+ # Available blocks:
+ # - button__content - used to replace the content of the button with something other than text
+ #   for example: to insert an icon
+ #}
+
 {% set button__base_class = button__base_class|default('button') %}
+{% set button__element = button__element|default('button') %}
+{% set button__additional_classes = button__additional_classes|default('') %}
 {% set button__attributes = button__attributes|default([]) %}
+
 {% set button__attributes = button__attributes|merge({
   'class': bem(button__base_class, button__modifiers, button__blockname, button__additional_classes),
+  'data-button-style': button__style|default('filled'),
 }) %}
-{% set button__content = button__content|default('Button Label') %}
 
-<{{button__tag}} {{ add_attributes(button__attributes) }}>
-	{% block button__content %}
-		{{ button__content }}
+{% if aria_expanded is defined %}
+	{% set button__attributes = button__attributes|merge({
+    'aria-expanded': aria_expanded,
+  }) %}
+{% endif %}
+
+{% if button__icon is defined %}
+	{# Default to right alignment #}
+	{% set button__attributes = button__attributes|merge({
+      'data-button-alignment': 'right',
+  }) %}
+
+	{% if button__icon.left is defined %}
+		{% set button__attributes = button__attributes|merge({
+      'data-button-alignment': 'left',
+    }) %}
+	{% endif %}
+{% endif %}
+
+{% if button__label_display is defined %}
+	{% set button__attributes = button__attributes|merge({
+    'data-button-label': button__label_display,
+  }) %}
+{% endif %}
+
+{% if button__element == 'a' and button__href is defined %}
+	{% set button__attributes = button__attributes|merge({
+    href: button__href,
+  }) %}
+	{% set button__element = 'a' %}
+{% endif %}
+
+{% if button__element == 'a' and button__external %}
+	{% set button__attributes = button__attributes|merge({
+    'target': '_blank',
+  }) %}
+{% endif %}
+
+{% if button__type is defined %}
+	{% set button__attributes = button__attributes|merge({
+    'button-action': button__type,
+  }) %}
+{% endif %}
+
+{% if aria_controls is defined %}
+	{% set button__attributes = button__attributes|merge({
+    'aria-controls': aria_controls,
+  }) %}
+{% endif %}
+
+{% if aria_hidden is defined %}
+	{% set button__attributes = button__attributes|merge({
+    'aria-hidden': aria_hidden,
+  }) %}
+{% endif %}
+
+{% if not button__content %}
+	{% set button__attributes = button__attributes|merge({
+		'aria-label': button__icon_only,
+  }) %}
+{% endif %}
+
+{% set icon %}
+<span {{ bem('icon', [], button__base_class) }}>
+	{% block button__icon %}
+		{% include "@components/icons/_icon.twig" with {
+			icon__name: button__icon.name,
+			icon__role: button__icon.role,
+			icon__title: button__icon.title,
+			icon__desc: button__icon.desc,
+			icon__decorative: button__icon.decorative,
+		} %}
 	{% endblock %}
-</{{button__tag}}>
+</span>
+{% endset %}
+
+<{{button__element}} {{add_attributes(button__attributes)}}>
+	{% if button__icon.left is defined %}
+		{{- icon -}}
+	{% endif %}
+	{% if button__content is defined %}
+		{% block button__content %}
+			<span {{ bem('content', [], button__base_class) }}>
+				{{- button__content -}}
+			</span>
+		{% endblock %}
+	{% endif %}
+	{% if button__icon.right is defined %}
+		{{- icon -}}
+	{% endif %}
+</{{button__element}}>

@@ -1,0 +1,138 @@
+// - Color Palette Definitions : Use these via the `clr` function.
+// - Colors can be defined using any valid color value. (name, hex, rgb, rgba, hsl, hsla)
+// - Map structure should follow [theme_name] : [color_name] : [variant_name]
+// - [variant_name] is optional.
+// - If [variant_name] is present a 'base' definition is expected.
+// - Themes and colors should not have matching names.
+// - The default theme should contain all possible colors. Needed for fallback purposes.
+// - Additional themes can override default theme definitions or fallback
+// to the default theme's color definition.
+// $grey-25-solid: #f3f3f3ff !default;
+// $grey-100-25: #d0d0d040 !default;
+// $yellow-100: #fffdbdff !default;
+// $yellow-200: #fff675ff !default;
+// $yellow-300: #ffeb0aff !default;
+// $yellow-400: #e4c902ff !default;
+// $gray-100: #d0d0d0ff !default;
+// $gray-200: #b1b1b1ff !default;
+// $gray-300: #919292ff !default;
+// $gray-400: #727273ff !default;
+// $gray-500: #535353ff !default;
+// $gray-600: #333434ff !default;
+// $gray-700: #18191bff !default;
+// $purple-100: #e1d4ecff !default;
+// $purple-200: #ab86c2ff !default;
+// $purple-300: #6f439aff !default;
+// $purple-400: #553375ff !default;
+// $green-100: #c0f6e9ff !default;
+// $green-200: #3ae4b9ff !default;
+// $green-300: #117d62ff !default;
+// $green-400: #00472fff !default;
+// $blue-100: #97cdecff !default;
+// $blue-200: #41a4ddff !default;
+// $blue-300: #207cb1ff !default;
+// $blue-400: #1a2c57ff !default;
+// $red-100: #fab6a4ff !default;
+// $red-200: #f15b55ff !default;
+// $red-300: #b91d42ff !default;
+// $red-400: #610f22ff !default;
+// $neutral-warm: #ffeecdff !default;
+
+$color-palette: (
+  default: (
+    primary: (
+      base: #117d62,
+      dark: #00472f,
+      bright: #3ae4b9,
+      light: #c0f6e9,
+    ),
+    accent: (
+      base: #117d62,
+      dark: #00472f,
+      bright: #3ae4b9,
+      light: #c0f6e9,
+      soft: #dffaf4,
+    ),
+    background: (
+      base: #fff,
+      inverse: #18191b,
+    ),
+    text: (
+      base: #18191b,
+      inverse: #fff,
+    ),
+    neutral: (
+      base: #919292,
+      cold: #f3f1ed,
+      warm: #ffeecdff,
+      n50: #f3f3f3,
+      n75: #ccc,
+      n100: #d0d0d0,
+      n200: #b1b1b1,
+      n300: #919292,
+      n400: #727273,
+      n500: #535353,
+      n600: #333434,
+      n700: #18191bff,
+    ),
+    message: #117d62ff,
+    warning: #ffeb0aff,
+    error: #b91d42ff,
+    full-white: #fff,
+    full-black: #000,
+  ),
+  'green': (
+    accent: (
+      base: #117d62,
+      dark: #00472f,
+      bright: #3ae4b9,
+      light: #c0f6e9,
+      soft: #dffaf4,
+    ),
+  ),
+  'yellow': (
+    accent: (
+      base: #ffeb0a,
+      dark: #e4c902,
+      bright: #fff675,
+      light: #fffdbd,
+      soft: #fffdbd,
+    ),
+  ),
+  'purple': (
+    accent: (
+      base: #6f439a,
+      dark: #553375,
+      bright: #ab86c2,
+      light: #e1d4ec,
+      soft: #f0e9f5,
+    ),
+  ),
+  'blue': (
+    accent: (
+      base: #207cb1,
+      dark: #1a2c57,
+      bright: #41a4dd,
+      light: #97cdec,
+      soft: #cbe6f5,
+    ),
+  ),
+  'red': (
+    accent: (
+      base: #b91d42,
+      dark: #610f22,
+      bright: #f15b55,
+      light: #fab6a4,
+      soft: #fcdad1,
+    ),
+  ),
+  neutral: (
+    accent: (
+      base: #ffeecdff,
+      dark: #000,
+      bright: #fff,
+      light: #f3f3f3,
+      soft: #ededed,
+    ),
+  ),
+);

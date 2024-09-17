@@ -1,0 +1,15 @@
+{% set type__base_class = 'cl-type' %}
+
+<ul {{ bem(type__base_class) }}>
+	{% for family in families %}
+		<li {{ bem('family', [], type__base_class) }}>
+			{% for style in family.styles %}
+				<div {{ bem('sample', [], type__base_class) }} style="font-size: var(--font-size-30); font-family: {{ family.id }}; font-weight: {{ style.weight }}; font-style: {{ style.style }}">
+					{{ family.name }}
+					-
+					{{ style.name }}
+				</div>
+			{% endfor %}
+		</li>
+	{% endfor %}
+</ul>

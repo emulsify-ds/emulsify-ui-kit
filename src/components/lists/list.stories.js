@@ -1,6 +1,7 @@
 import listTwig from './list.twig';
+import { props } from './list.component.yml';
 
-import listData from './list.yml';
+const listData = props.properties.list__items.data;
 
 /**
  * Storybook Definition.
@@ -9,11 +10,12 @@ export default { title: 'Components/Typography' };
 
 export const ListUnordered = () => `
   <div class="text-field">
-    ${listTwig({ list__items: listData.unordered__list__items })}
+    ${listTwig({ list__items: listData })}
   </div>
 `;
+
 export const ListOrdered = () => `
 <div class="text-field">
-  ${listTwig({ list__items: listData.ordered__list__items, list__type: 'ol' })}
+  ${listTwig({ list__items: listData, list__type: 'ol' })}
 </div>
 `;

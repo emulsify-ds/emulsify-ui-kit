@@ -1,8 +1,13 @@
-.form-item {
-  color: var(--color-text-body);
-  margin-bottom: 1em;
+@use '../../../foundation/breakpoints/breakpoints' as *;
+@use '../../../foundation/utility/utility' as *;
 
+.form-item {
   @include clearfix;
+
+  & {
+    color: var(--color-text-body);
+    margin-bottom: 1em;
+  }
 }
 
 .form-item__label {
@@ -13,7 +18,7 @@
   font-weight: bold;
   line-height: var(--input-label-lineheight);
 
-  @include xs {
+  @include breakpoint('xsmall') {
     display: block;
     margin-right: 2%;
     padding: 0.6em 0;

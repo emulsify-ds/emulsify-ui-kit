@@ -1,0 +1,96 @@
+// Heading mixins
+@mixin h1 {
+  font-size: var(--font-size-h1);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-primary-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-none);
+}
+
+@mixin h2 {
+  font-size: var(--font-size-h2);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-primary-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-none);
+}
+
+@mixin h3 {
+  font-size: var(--font-size-h3);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-primary-bold);
+  letter-spacing: var(--letter-spacing-0);
+  line-height: var(--line-height-none);
+}
+
+@mixin h4 {
+  font-size: var(--font-size-h4);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-primary-bold);
+  letter-spacing: var(--letter-spacing-0);
+  line-height: var(--line-height-none);
+}
+
+@mixin h5 {
+  font-size: var(--font-size-h5);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-primary-bold);
+  letter-spacing: var(--letter-spacing-0);
+  line-height: var(--line-height-none);
+}
+
+// Body mixins
+@mixin body-xl {
+  font-size: clamp(
+    #{$font-size-24},
+    #{$font-size-24} + 0.2778vw,
+    #{$font-size-28}
+  );
+  line-height: var(--line-height-loose);
+  font-family: var(--font-family-secondary);
+  font-weight: 400;
+}
+
+@mixin body-l {
+  font-size: clamp(
+    #{$font-size-20},
+    #{$font-size-20} + 0.2778vw,
+    #{$font-size-24}
+  );
+  line-height: var(--line-height-loose);
+  font-family: var(--font-family-secondary);
+  font-weight: 400;
+}
+
+@mixin body-default {
+  font-size: clamp(
+    #{$font-size-15},
+    #{$font-size-15} + 0.2778vw,
+    #{$font-size-16}
+  );
+  line-height: var(--line-height-loose);
+  font-family: var(--font-family-secondary);
+  font-weight: 400;
+}
+
+@mixin body-s {
+  font-size: clamp(
+    #{$font-size-13},
+    #{$font-size-13} + 0.2778vw,
+    #{$font-size-14}
+  );
+  line-height: var(--line-height-loose);
+  font-family: var(--font-family-secondary);
+  font-weight: 400;
+}
+
+@mixin body-xs {
+  font-size: clamp(
+    #{$font-size-12},
+    #{$font-size-12} + 0.2778vw,
+    #{$font-size-13}
+  );
+  line-height: var(--line-height-loose);
+  font-family: var(--font-family-secondary);
+  font-weight: 400;
+}

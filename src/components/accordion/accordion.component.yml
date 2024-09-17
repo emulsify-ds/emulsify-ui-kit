@@ -1,0 +1,21 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Accordion
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - accordion__item__heading
+    - accordion__item__content
+  properties:
+    accordion__item__heading:
+      type: string
+      title: Heading
+      description: The heading of the accordion item.
+      data: Header label text
+    accordion__item__content:
+      type: string
+      title: Accordion item content
+      description: The content of the accordion item.
+      data: 'Enim eget nec sit scelerisque lacus. Porttitor senectus vulputate mattis tortor odio vitae. Dui et, ut ipsum aliquet sit tempor. Amet consectetur purus justo feugiat mattis sit ultricies odio.  Pellentesque pellentesque sit sed porttitor duis interdum. Bibendum nisl, eu, ornare non. Enim consequat in quisque vestibulum facilisi odio. Elementum elit est, vitae feugiat enim odio cursus. Enim cum dictum gravida amet id eget. Ut ac velit sed nulla leo id. Ante duis pellentesque aliquam massa amet, neque cum. Vitae mi purus placerat nibh purus faucibus imperdiet quisque diam. Elementum urna feugiat rhoncus purus. Consectetur neque auctor eite commodo consequat.'

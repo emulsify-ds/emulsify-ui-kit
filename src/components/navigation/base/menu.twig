@@ -1,0 +1,99 @@
+{#
+ # Available variables:
+ # - menu__base_class - base classname of the wrapper.
+ # - menu__blockname - blockname prepended to the base classname of the wrapper(s) and each component.
+ # - menu__modifiers - array of modifiers to add to the base classname of the wrapper.
+ # - menu__name - name of the menu.
+ # - menu__attributes - array of attributes for the nav.
+ # - menu__additional_classes - array of classes in addition to bem structure.
+ # - menu__level - current menu level number in the hierarchy.
+ # - menu__toggle - Boolean value for overall menu toggle.
+ # - menu__level_toggle - Boolean value for toggles within each level in the hierarchy.
+ # - items: A nested list of menu items. Each menu item contains:
+ #   - attributes: HTML attributes for the menu item.
+ #   - below: The menu item child items.
+ #   - title: The menu link title.
+ #   - url: The menu link url, instance of \Drupal\Core\Url
+ #   - localized_options: Menu link localized options.
+ #   - is_expanded: TRUE if the link has visible children within the current
+ *     menu tree.
+ #   - is_collapsed: TRUE if the link has children within the current menu tree
+ *     that are not currently visible.
+ #   - in_active_trail: TRUE if the link is in the active trail.
+ #}
+{% set menu__base_class = menu__base_class|default('menu') %}
+{% set menu__modifiers = menu__modifiers|default([]) %}
+{% set menu__attributes = menu__attributes|default([]) %}
+
+{% if directory is not defined %}
+	{% set attributes = attributes|default([]) %}
+{% endif %}
+
+{% set menu__name = menu__name|default([]) %}
+{% set menu__additional_classes = menu__additional_classes|default([]) %}
+{% set menu__level = menu__level|default(0) %}
+
+{% if menu__toggle is defined or menu__level_toggle is defined %}
+	{% set menu__additional_classes = menu__additional_classes|merge(['menu-with-toggle']) %}
+{% endif %}
+
+{% set menu__attributes = menu__attributes|merge({
+  'id': menu__base_class,
+  'class': bem(menu__base_class, menu__modifiers, menu__blockname, menu__additional_classes),
+  'aria-labelledby': menu__base_class ~ '__label',
+}) %}
+
+{# Create a unique ID for each accordion item #}
+{% set unique_id = random('1234567890') ~ random('1234567890') ~ random('1234567890') ~ random('1234567890') %}
+{% set menu__toggle__id = menu__base_class ~ '-' ~ unique_id %}
+
+{% set menu_list %}
+{% block menu_list__content %}
+	{% include "@components/navigation/base/_menu-list.twig" %}
+{% endblock %}
+{% endset %}
+
+{% set menu_toggle %}
+{% block menu_toggle__toggle %}
+	{% include "@components/navigation/base/menu-toggle/menu-toggle.twig" with {
+			menu_toggle__menu__level: 'level-' ~ menu__level,
+			menu_toggle__style: 'primary',
+			menu_toggle__attributes: {
+				'aria-controls': menu__toggle__id,
+			},
+		} %}
+{% endblock %}
+{% endset %}
+
+{% macro menu_links(items, attributes, menu__level, menu__name, menu__base_class, menu_list__modifiers, menu__modifiers, menu__blockname, menu__list__type, menu__toggle, menu__level_toggle, item__base_class, item__modifiers, item__blockname, menu_list__attributes, directory, menu_list, item__parent, menu__toggle__id) %}
+	{% import _self as menus %}
+
+	{% if items %}
+		{% if menu__level > 0 %}
+			{% set menu__modifiers = ['sub', 'level-' ~ menu__level] %}
+		{% endif %}
+		{% if menu__level == 1 and item__parent.title is not empty %}
+			{% set temp_items = items %}
+			{% set items = [item__parent] %}
+			{% set items = items|merge(temp_items) %}
+		{% endif %}
+		{% if menu_list %}
+			{{ menu_list }}
+		{% else %}
+			{% include "@components/navigation/base/_menu-list.twig" %}
+		{% endif %}
+	{% endif %}
+{% endmacro %}
+
+{% import _self as menus %}
+
+<nav {{ add_attributes(menu__attributes) }}>
+	<h2 id="{{ menu__attributes['aria-labelledby'] }}" {{ bem('visually-hidden') }}>{{ menu__name }}</h2>
+	{% block menu_prefix %}{% endblock %}
+	{% if menu__toggle is defined %}
+		{{ menu_toggle }}
+	{% endif %}
+	{{ menus.menu_links(items, attributes, menu__level, menu__name, menu__base_class, menu_list__modifiers, menu__modifiers, menu__blockname, menu__list__type, menu__toggle, menu__level_toggle, item__base_class, item__modifiers, item__blockname, menu_list__attributes, directory, menu_list, item__parent, menu__toggle__id) }}
+
+	{% block menu_suffix %}{% endblock %}
+</nav>
