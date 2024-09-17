@@ -1,0 +1,246 @@
+{
+  "color": {
+    "NDSU-Green": {
+      "100": {
+        "value": "#d4ece6",
+        "type": "color"
+      },
+      "200": {
+        "value": "#a9d9ce",
+        "type": "color"
+      },
+      "300": {
+        "value": "#7ec5b6",
+        "type": "color"
+      },
+      "400": {
+        "value": "#51ab9f",
+        "type": "color"
+      },
+      "500": {
+        "value": "#095540",
+        "type": "color"
+      },
+      "600": {
+        "value": "#003524",
+        "type": "color"
+      },
+      "700": {
+        "value": "#00221b",
+        "type": "color"
+      }
+    },
+    "NDSU-Yellow": {
+      "100": {
+        "value": "#fff4d6",
+        "type": "color"
+      },
+      "200": {
+        "value": "#ffe68a",
+        "type": "color"
+      },
+      "300": {
+        "value": "#ffc62f",
+        "type": "color"
+      },
+      "400": {
+        "value": "#e5b01a",
+        "type": "color"
+      },
+      "500": {
+        "value": "#b28b13",
+        "type": "color"
+      },
+      "600": {
+        "value": "#99760b",
+        "type": "color"
+      },
+      "700": {
+        "value": "#785d03",
+        "type": "color"
+      }
+    },
+    "White": {
+      "value": "#ffffff",
+      "type": "color"
+    },
+    "Black": {
+      "value": "#000000",
+      "type": "color"
+    },
+    "Grays": {
+      "100": {
+        "value": "#f2f3f3",
+        "type": "color"
+      },
+      "200": {
+        "value": "#d7dadb",
+        "type": "color"
+      },
+      "300": {
+        "value": "#bcc2c3",
+        "type": "color"
+      },
+      "400": {
+        "value": "#879294",
+        "type": "color"
+      },
+      "500": {
+        "value": "#686e6d",
+        "type": "color"
+      },
+      "600": {
+        "value": "#575c5b",
+        "type": "color"
+      },
+      "700": {
+        "value": "#404447",
+        "type": "color"
+      },
+      "800": {
+        "value": "#282c2f",
+        "type": "color"
+      }
+    },
+    "Off-White": {
+      "value": "#fbfbf9",
+      "type": "color"
+    },
+    "Accents": {
+      "Night": {
+        "value": "#0e364b",
+        "type": "color"
+      },
+      "Pond": {
+        "value": "#9dd9f6",
+        "type": "color"
+      },
+      "Moss": {
+        "value": "#d6e4c7",
+        "type": "color"
+      },
+      "Leaf": {
+        "value": "#a0bd78",
+        "type": "color"
+      },
+      "Lime": {
+        "value": "#bed63a",
+        "type": "color"
+      },
+      "Sun": {
+        "value": "#fdf389",
+        "type": "color"
+      },
+      "Harvest": {
+        "value": "#be5d27",
+        "type": "color"
+      }
+    }
+  },
+  "Gradient": {
+    "value": "#ffffff",
+    "type": "color"
+  },
+  "typograhy": {
+    "font-weight": {
+      "regular": {
+        "value": "338",
+        "type": "text"
+      }
+    },
+    "font-size": {
+      "H1": {
+        "value": "2.125rem",
+        "type": "dimension"
+      }
+    }
+  },
+  "border": {
+    "xl": {
+      "value": "6",
+      "type": "text"
+    },
+    "s": {
+      "value": "0.0625rem",
+      "type": "dimension"
+    },
+    "m": {
+      "value": "0.125rem",
+      "type": "dimension"
+    },
+    "l": {
+      "value": "0.1875rem",
+      "type": "dimension"
+    }
+  },
+  "spacing": {
+    "0": {
+      "value": "0rem",
+      "type": "dimension"
+    },
+    "2": {
+      "value": "0.125rem",
+      "type": "dimension"
+    },
+    "4": {
+      "value": "0.25rem",
+      "type": "dimension"
+    },
+    "6": {
+      "value": "0.375rem",
+      "type": "dimension"
+    },
+    "8": {
+      "value": "0.5rem",
+      "type": "dimension"
+    },
+    "10": {
+      "value": "0.625rem",
+      "type": "dimension"
+    },
+    "12": {
+      "value": "0.75rem",
+      "type": "dimension"
+    },
+    "16": {
+      "value": "1rem",
+      "type": "dimension"
+    },
+    "20": {
+      "value": "1.25rem",
+      "type": "dimension"
+    },
+    "24": {
+      "value": "1.5rem",
+      "type": "dimension"
+    },
+    "32": {
+      "value": "2rem",
+      "type": "dimension"
+    },
+    "40": {
+      "value": "2.5rem",
+      "type": "dimension"
+    },
+    "48": {
+      "value": "3rem",
+      "type": "dimension"
+    },
+    "64": {
+      "value": "4rem",
+      "type": "dimension"
+    },
+    "80": {
+      "value": "5rem",
+      "type": "dimension"
+    },
+    "96": {
+      "value": "6rem",
+      "type": "dimension"
+    },
+    "128": {
+      "value": "8rem",
+      "type": "dimension"
+    }
+  }
+}
