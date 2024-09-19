@@ -1,0 +1,87 @@
+{#
+ # Available Props:
+ # - text_with_image__width: feature (default) or highlight
+ # - text_with_image__position: image-left (default) or image-right
+ # - text_with_image__focus: equal (default), image, or text
+ #
+ # Available variables:
+ # - text_with_image__heading
+ # - text_with_image__subheading (optional)
+ # - text_with_image__text
+ #
+ # Available blocks:
+ # - text_with_image__image
+ #}
+
+{% set text_with_image__base_class = 'text-with-image' %}
+
+{% set text_with_image__attributes = {
+  'data-image-position': text_with_image__position|default('left'),
+  'data-component-focus': text_with_image__focus|default('equal'),
+  'class': bem(text_with_image__base_class, text_with_image__modifiers, text_with_image__blockname)
+} %}
+
+{% if text_with_image__copyright %}
+  {% set text_with_image__copyright_credit = '<p>' ~ text_with_image__copyright ~ '</p>'%}
+{% endif %}
+
+{% set text_content__image = text_with_image__caption ~ text_with_image__copyright_credit %}
+
+{% set text_with_image %}
+  <div {{ add_attributes(text_with_image__attributes) }}>
+    {# Content #}
+    <div {{ bem('content', [], text_with_image__base_class) }}>
+      {# Heading #}
+      {% if text_with_image__heading %}
+        {% include "@components/text/headings/heading.twig" with {
+          heading: text_with_image__heading,
+          heading__level: '2',
+          heading__blockname: text_with_image__base_class,
+        } %}
+      {% endif %}
+      {# Text #}
+      {% include "@components/text/text/text.twig" with {
+        text__content: text_with_image__text,
+        text__blockname: text_with_image__base_class,
+      } %}
+      {# optional link #}
+      {% if text_with_image__link__url %}
+        {% include "@components/link/link.twig" with {
+          link__content: text_with_image__link__content,
+          link__url: text_with_image__link__url,
+        } %}
+      {% endif %}
+    </div>
+    {# Image #}
+    <div {{ bem('media', text_with_image__modifiers, text_with_image__base_class) }}>
+      <div {{ bem('image', text_with_image__modifiers, text_with_image__base_class) }}>
+        {% block text_with_image__image %}
+          {% include "@components/image/responsive-image.twig" with {
+            output_image_tag: true,
+            image__sizes: '100vw',
+            image__src: 'https://picsum.photos/320/213',
+            image__srcset: 'https://picsum.photos/320/213 320w, https://picsum.photos/480/320 480w, https://picsum.photos/640/427 640w, https://picsum.photos/800/533 800w, https://picsum.photos/960/640 960w, https://picsum.photos/1120/747 1120w, https://picsum.photos/1280/853 1280w, https://picsum.photos/1440/960 1440w, https://picsum.photos/1600/1067 1600w, https://picsum.photos/1760/1173 1760w, https://picsum.photos/1920/1280 1920w, https://picsum.photos/2080/1387 2080w, https://picsum.photos/2240/1493 2240w, https://picsum.photos/2400/1600 2400w'
+          } %}
+        {% endblock %}
+      </div>
+
+      {% if text_with_image__show_captions
+        and text_content__image %}
+          {% include "@components/text/text/text.twig" with {
+            text__content: text_content__image,
+            text__base_class: 'caption-credit-wrapper',
+          } %}
+      {% endif %}
+    </div>
+  </div>
+{% endset %}
+
+{# Render the accordion within a generic container #}
+{% embed "@layout/container/container.twig" with {
+  container__component_width: 'standard',
+  container__component_alignment: 'center',
+}%}
+	{% block container__content %}
+		{{ text_with_image }}
+	{% endblock %}
+{% endembed %}
