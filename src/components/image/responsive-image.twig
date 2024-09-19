@@ -5,28 +5,28 @@
  # - output_image_tag: Whether or not to output an <img> tag instead of a <picture> tag.
  #}
 
-{% set responsive_image_base_class = responsive_image_base_class|default('image') %}
+{% set responsive_image__base_class = responsive_image__base_class|default('image') %}
 
 {% if output_image_tag %}
-	{% include "@components/image/_image.twig" with {
-    image_base_class: responsive_image_base_class,
-    image_modifiers: responsive_image_modifiers,
-    image_blockname: responsive_image_blockname,
-    image_srcset: image_srcset|default(img_element['#attributes'].srcset),
-    image_sizes: image_sizes|default(img_element['#attributes'].sizes),
-    image_src: image_src|default(img_element['#uri']),
-    image_alt: image_alt|default(img_element['#alt']),
-    image_title: image_title|default(img_element['#title']),
+  {% include "@components/image/_image.twig" with {
+    image__base_class: responsive_image__base_class,
+    image__modifiers: responsive_image__modifiers,
+    image__blockname: responsive_image__blockname,
+    image__srcset: image__srcset|default(img_element['#attributes'].srcset),
+    image__sizes: image__sizes|default(img_element['#attributes'].sizes),
+    image__src: image__src|default(img_element['#uri']),
+    image__alt: image__alt|default(img_element['#alt']),
+    image__title: image__title|default(img_element['#title']),
   } %}
 {% else %}
-	{% include "@components/image/_picture.twig" with {
-    picture_base_class: responsive_image_base_class,
-    picture_modifiers: responsive_image_modifiers,
-    picture_blockname: responsive_image_blockname,
-    image_srcset: image_srcset|default(img_element['#attributes'].srcset),
-    image_sizes: image_sizes|default(img_element['#attributes'].sizes),
-    image_src: image_src|default(img_element['#uri']),
-    image_alt: image_alt|default(img_element['#alt']),
-    image_title: image_title|default(img_element['#title']),
+  {% include "@components/image/_picture.twig" with {
+    picture__base_class: responsive_image__base_class,
+    picture__modifiers: responsive_image__modifiers,
+    picture__blockname: responsive_image__blockname,
+    image__srcset: image__srcset|default(img_element['#attributes'].srcset),
+    image__sizes: image__sizes|default(img_element['#attributes'].sizes),
+    image__src: image__src|default(img_element['#uri']),
+    image__alt: image__alt|default(img_element['#alt']),
+    image__title: image__title|default(img_element['#title']),
   } %}
 {% endif %}
