@@ -42,11 +42,11 @@
 
 /* Variants -- Default style for announcements */
 .announcement--default {
-  background-color: var(--color-primary-lighter);
+  background-color: var(--announcement-background-default);
 }
 
 .announcement__content--default .heading {
-  color: var(--color-primary-darker);
+  color: var(--announcement-heading-default);
 }
 
 .announcement__content--default p {
@@ -55,11 +55,11 @@
 
 /* Variants -- Light style for announcements */
 .announcement--light {
-  background-color: var(--color-white);
+  background-color: var(--announcement-background-light);
 }
 
 .announcement__content--light .heading {
-  color: var(--color-primary-darker);
+  color: var(--announcement-heading-dark);
 }
 
 .announcement__content--light p {
@@ -68,17 +68,17 @@
 
 /* Variants -- Dark style for announcements */
 .announcement--dark {
-  background-color: var(--color-primary-darker);
+  background-color: var(--announcement-background-dark);
 }
 
 .announcement__content--dark p,
 .announcement__content--dark .heading {
-  color: var(--color-primary-lighter);
+  color: var(--announcement-heading-light);
 }
 
-.announcement__action--dark button,
-.announcement__action--dark button:hover,
-.announcement__action--dark button:focus {
-  color: var(--color-primary-darker);
-  background-color: var(--color-primary-lighter);
+.announcement__action--dark button[data-button-style='primary'],
+.announcement__action--dark button[data-button-style='primary']:hover,
+.announcement__action--dark button[data-button-style='primary']:focus {
+  color: var(--announcement-heading-dark);
+  background-color: var(--announcement-background-light);
 }
