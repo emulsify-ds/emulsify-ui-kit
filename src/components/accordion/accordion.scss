@@ -46,6 +46,10 @@
   }
 }
 
+.container__heading {
+  color: var(--accordion-color-header);
+}
+
 .accordion {
   box-shadow: none;
   border: 0;
