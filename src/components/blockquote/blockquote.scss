@@ -1,6 +1,6 @@
 .blockquote {
   width: 573px;
-  padding: var(--blockquote-padding-x) 0;
+  padding: var(--block-quote-padding-x) 0;
 }
 
 .blockquote__quote {
@@ -20,12 +20,12 @@
 
 .blockquote__blockquote {
   [data-blockquote-style='bar-left'] & {
-    padding-left: var(--blockquote-padding-x);
+    padding-left: var(--block-quote-padding-x);
     border-left: var(--size-md) solid var(--color-text-body);
   }
 
   [data-blockquote-style='bar-right'] & {
-    padding-right: var(--blockquote-padding-x);
+    padding-right: var(--block-quote-padding-x);
     border-right: var(--size-md) solid var(--color-text-body);
     text-align: right;
   }
@@ -42,7 +42,7 @@
     }
 
     .blockquote__quote p {
-      margin: var(--blockquote-padding-y) var(--paragraph-spacing-0);
+      margin: var(--block-quote-padding-y) var(--paragraph-spacing-0);
     }
   }
 }
