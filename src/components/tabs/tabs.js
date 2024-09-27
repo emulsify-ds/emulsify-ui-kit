@@ -152,42 +152,44 @@ Drupal.behaviors.tabsNavScroll = {
        * overflow situation is in play.
        */
       function setOverflow() {
-        const tabsLeft = tabsWrapper.getBoundingClientRect().left;
-        const tabsRight = tabsWrapper.getBoundingClientRect().right;
-        const firsttabsLeft = tabs
-          .querySelector('.tabs__tab:first-child')
-          .getBoundingClientRect().left;
-        const lasttabsRight = Math.floor(
-          tabs.querySelector('.tabs__tab:last-child').getBoundingClientRect()
-            .right,
-        );
+        if (tabsWrapper) {
+          const tabsLeft = tabsWrapper.getBoundingClientRect().left;
+          const tabsRight = tabsWrapper.getBoundingClientRect().right;
+          const firsttabsLeft = tabs
+            .querySelector('.tabs__tab:first-child')
+            .getBoundingClientRect().left;
+          const lasttabsRight = Math.floor(
+            tabs.querySelector('.tabs__tab:last-child').getBoundingClientRect()
+              .right,
+          );
 
-        if (firsttabsLeft < tabsLeft) {
-          // If left side of first tabsy_item is < left side of tabsy_nav.
-          // And right side of last tabsy_item is > right side of tabsy_nav.
-          if (lasttabsRight > tabsRight) {
-            if (scrollIndicatorDir !== 'both') {
-              scrollIndicatorDir = 'both';
-              tabsWrapper.setAttribute('data-scroll-indicator', 'both');
-            }
+          if (firsttabsLeft < tabsLeft) {
             // If left side of first tabsy_item is < left side of tabsy_nav.
-            // But right side of last tabsy_item is <= right side of tabsy_nav.
-          } else if (scrollIndicatorDir !== 'left') {
-            scrollIndicatorDir = 'left';
-            tabsWrapper.setAttribute('data-scroll-indicator', 'left');
+            // And right side of last tabsy_item is > right side of tabsy_nav.
+            if (lasttabsRight > tabsRight) {
+              if (scrollIndicatorDir !== 'both') {
+                scrollIndicatorDir = 'both';
+                tabsWrapper.setAttribute('data-scroll-indicator', 'both');
+              }
+              // If left side of first tabsy_item is < left side of tabsy_nav.
+              // But right side of last tabsy_item is <= right side of tabsy_nav.
+            } else if (scrollIndicatorDir !== 'left') {
+              scrollIndicatorDir = 'left';
+              tabsWrapper.setAttribute('data-scroll-indicator', 'left');
+            }
+            // If left side of first tabsy_item is >= left side of tabsy_nav.
+            // And right side of last tabsy_item is > right side of tabsy_nav.
+          } else if (lasttabsRight > tabsRight) {
+            if (scrollIndicatorDir !== 'right') {
+              scrollIndicatorDir = 'right';
+              tabsWrapper.setAttribute('data-scroll-indicator', 'right');
+            }
+            // If left side of first tabsy_item is >= left side of tabsy_nav.
+            // And right side of last tabsy_item is <= right side of tabsy_nav.
+          } else {
+            scrollIndicatorDir = 'none';
+            tabsWrapper.setAttribute('data-scroll-indicator', 'none');
           }
-          // If left side of first tabsy_item is >= left side of tabsy_nav.
-          // And right side of last tabsy_item is > right side of tabsy_nav.
-        } else if (lasttabsRight > tabsRight) {
-          if (scrollIndicatorDir !== 'right') {
-            scrollIndicatorDir = 'right';
-            tabsWrapper.setAttribute('data-scroll-indicator', 'right');
-          }
-          // If left side of first tabsy_item is >= left side of tabsy_nav.
-          // And right side of last tabsy_item is <= right side of tabsy_nav.
-        } else {
-          scrollIndicatorDir = 'none';
-          tabsWrapper.setAttribute('data-scroll-indicator', 'none');
         }
       }
 

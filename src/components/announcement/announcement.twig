@@ -27,7 +27,7 @@
   {% endif %}
   {# Render the main content #}
   <div {{ bem('content', [announcement__variant], announcement__base_class) }}>
-    {% include "@components/text/headings/heading.twig" with {
+    {% include "@components/text/heading/heading.twig" with {
       heading__level: announcement__heading__level|default('4'),
       heading: announcement__title,
     } %}

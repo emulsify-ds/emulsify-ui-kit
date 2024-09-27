@@ -62,7 +62,7 @@
 
 		{# Subheading #}
 		{% if card__subheading %}
-			{% include "@components/text/headings/heading.twig" with {
+			{% include "@components/text/heading/heading.twig" with {
         heading__base_class: card__subheading__base_class|default('subheading'),
         heading__modifiers: card__subheading__modifiers,
         heading__blockname: card__base_class,
@@ -75,7 +75,7 @@
 		{# Heading #}
 		{% if card__heading %}
 			{{ title_prefix }}
-			{% include "@components/text/headings/heading.twig" with {
+			{% include "@components/text/heading/heading.twig" with {
         heading__base_class: card__heading__base_class|default('heading'),
         heading__modifiers: card__heading__modifiers,
         heading__blockname: card__base_class,

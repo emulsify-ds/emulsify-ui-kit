@@ -33,7 +33,7 @@
     <div {{ bem('content', [], text_with_image__base_class) }}>
       {# Heading #}
       {% if text_with_image__heading %}
-        {% include "@components/text/headings/heading.twig" with {
+        {% include "@components/text/heading/heading.twig" with {
           heading: text_with_image__heading,
           heading__level: '2',
           heading__blockname: text_with_image__base_class,
