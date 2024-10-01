@@ -2115,6 +2115,14 @@
         "hover": {
           "value": "{color.link-hover}",
           "type": "color"
+        },
+        "inverse": {
+          "value": "{color.text.white}",
+          "type": "color"
+        },
+        "inverse-hover": {
+          "value": "{color.primary.lighter}",
+          "type": "color"
         }
       },
       "body": {
