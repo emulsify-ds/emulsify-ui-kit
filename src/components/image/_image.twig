@@ -1,0 +1,16 @@
+{% set image__base_class = image__base_class|default('image') %}
+
+<img
+  {{ bem(image__base_class, image__modifiers, image__blockname) }}
+  {% if image__srcset %}
+    srcset="{{ image__srcset }}"
+  {% endif %}
+  {% if image__sizes %}
+    sizes="{{ image__sizes }}"
+  {% endif %}
+  src="{{ image__src }}"
+  alt="{{ image__alt }}"
+  {% if image__title %}
+    title="{{ image__title }}"
+  {% endif %}
+/>

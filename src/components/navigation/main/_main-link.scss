@@ -1,0 +1,117 @@
+@use '../../../foundation/breakpoints/breakpoints' as *;
+@use '../../../foundation/motion/motion' as *;
+@use '../../../foundation/typography/typography' as *;
+@use '../../link/link' as *;
+
+.main-nav__link,
+.main-nav__placeholder {
+  @include link('no-underline');
+
+  & {
+    color: var(--main-menu-color-link-label);
+    display: block;
+    flex: 1 1 auto;
+    font-size: var(--font-size-h5);
+    line-height: var(--line-heights-none);
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  @include breakpoint('medium') {
+    border-bottom: none;
+    display: inline-block;
+    position: relative;
+    width: auto;
+  }
+
+  &.main-nav__link--with-sub {
+    padding-right: var(--spacing-xl);
+  }
+
+  &.active,
+  &:hover,
+  &:focus {
+    background: var(--main-menu-color-link-bg-hover);
+    color: var(--main-menu-color-link-label-hover);
+  }
+
+  &:focus-visible {
+    outline-offset: -2px;
+  }
+
+  .main-nav__item--level-1 > & {
+    cursor: pointer;
+    overflow: visible;
+
+    &--active::after {
+      @include breakpoint('medium') {
+        content: '';
+        display: block;
+        position: absolute;
+      }
+    }
+
+    &--active::before {
+      @include breakpoint('small-down') {
+        content: '';
+        display: block;
+        position: absolute;
+      }
+    }
+  }
+
+  .sub--open > &,
+  .sub--open:focus-within > &,
+  .main-nav__item:hover & {
+    margin: 0;
+
+    ~ .main-nav__toggle {
+      @include animate-show;
+    }
+  }
+}
+
+.main-nav__link--sub,
+.main-nav__placeholder--sub {
+  border-left: 0;
+  border-radius: 0;
+  white-space: nowrap;
+  width: auto;
+  margin: 0;
+  padding: var(--spacing-md);
+  display: flex;
+  align-content: center;
+  overflow: visible;
+
+  @include breakpoint('medium') {
+    width: auto;
+  }
+
+  &:hover,
+  &:focus {
+    color: clr(primary);
+    border-color: clr(neutral, n400);
+    text-decoration: underline;
+  }
+
+  &[aria-current='page'],
+  &.main-nav__link--active {
+    padding-left: var(--spacing-lg);
+  }
+
+  .main-nav__item:last-child > & {
+    @include breakpoint('medium') {
+      border-bottom: 0;
+      padding-bottom: var(--spacing-lg);
+    }
+  }
+}
+
+.main-nav__link--level-1,
+.main-nav__link--level-2 {
+  @include breakpoint('small-down') {
+    padding-left: var(--spacing-xl);
+  }
+}

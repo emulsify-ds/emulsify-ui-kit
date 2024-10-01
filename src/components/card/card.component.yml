@@ -1,0 +1,53 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Cards
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - card__image__src
+    - card__image__alt
+    - card__heading
+    - card__body
+  properties:
+    card__image__src:
+      type: string
+      title: Image's source
+      description: The image's source of the card.
+      data: 'https://placehold.co/400'
+    card__image__alt:
+      type: string
+      title: Image's alternative text
+      description: The image's alternative text of the card.
+      data: 'This is the card image alt text'
+    card__image__output_image_tag:
+      type: boolean
+      title: Image's outpot image tag.
+      description: The image's output image tag of the card.
+      data: true
+    card__heading:
+      type: string
+      title: Heading
+      description: The heading of the card.
+      data: 'This is the card heading'
+    card__subheading:
+      type: string
+      title: Subheading
+      description: The subheading of the card.
+      data: 'Subhead Curabitur non nulla sit amet nisl tempus convallis quis ac lectus'
+    card__body:
+      type: string
+      title: Body
+      description: The content of the card.
+      data: 'Body ellentesque in ipsum id orci porta dapibus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
+    card__link__text:
+      type: string
+      title: Link's text
+      description: The link's text of the card.
+      data: 'Read more about this card'
+    card__link__url:
+      type: string
+      title: Link's url
+      description: The link's url of the card.
+      data: '#'

@@ -1,0 +1,48 @@
+{#
+/**
+ * Available Variables:
+ * - announcement__title: The title of the announcement.
+ * - announcement__content: The main content of the announcement.
+ * - announcement__button_text: The text displayed on the announcement button.
+ * - announcement__button_url: The URL that the announcement button links to.
+ * - announcement__icon: (Optional) The URL of the icon image for the announcement.
+ * - announcement__modifiers: An array of modifier classes to apply to the announcement container.
+ * - additional_attributes: Additional HTML attributes for the announcement container.
+ */
+#}
+
+{% set announcement__base_class = 'announcement' %}
+{% set additional_attributes = additional_attributes|default() %}
+{% set announcement__variant = announcement__variant|default('default') %}
+
+<div {{ bem(announcement__base_class, [announcement__variant]) }} {{ add_attributes(additional_attributes) }}>
+  {# Render the icon if provided #}
+  {% if announcement__icon %}
+    {% include "@components/image/responsive-image.twig" with {
+      image_alt: 'icon',
+      output_image_tag: true,
+      image_src: announcement__icon,
+      responsive_image_blockname: announcement__base_class,
+    } %}
+  {% endif %}
+  {# Render the main content #}
+  <div {{ bem('content', [announcement__variant], announcement__base_class) }}>
+    {% include "@components/text/heading/heading.twig" with {
+      heading__level: announcement__heading__level|default('4'),
+      heading: announcement__title,
+    } %}
+    <p>{{ announcement__content }}</p>
+  </div>
+  {# Render the action button #}
+  {% if announcement__button_text and announcement__button_url %}
+    <div {{ bem('action', [announcement__variant], announcement__base_class) }}>
+      {% include "@components/button/button.twig" with {
+        button__content: announcement__button_text,
+        button__style: 'primary',
+        button__attributes: {
+          'href': announcement__button_url,
+        }
+      } %}
+    </div>
+  {% endif %}
+</div>

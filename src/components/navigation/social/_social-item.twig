@@ -1,0 +1,63 @@
+{% set item__modifiers = item__modifiers|default([]) %}
+{% set item__modifiers = item__modifiers|default([]) %}
+{% set item__attributes = item__attributes|default({}) %}
+
+{# Set link component as default #}
+{% set list__item %}
+{% if item.title %}
+	{% set link__content = item.title %}
+{% endif %}
+
+{% if item.text %}
+	{% set link__content = item.text %}
+{% endif %}
+
+{% if not item.url and not item.href %}
+	{% set link__attributes = link__attributes|merge({
+		'class': bem('placeholder', item__modifiers, menu__base_class),
+	}) %}
+	<span {{ add_attributes(link__attributes) }}>{{- link__content -}}</span>
+{% else %}
+	{# If drupal stringify the url object #}
+	{# See variable passed to menu_links macro #}
+		{% if directory %}
+			{% if item.url %}
+		{% set link__url = item.url|render %}
+		{% endif %}
+			{% if item.href %}
+		{% set link__url = item.href %}
+		{% endif %}
+	{% else %}
+		{% set link__url = item.url %}
+	{% endif %}
+
+	{% if link__url is empty %}
+		{% set link__base_class = 'placeholder' %}
+		{% set link__url = '#' %}
+	{% else %}
+		{% set link__blockname = menu__base_class %}
+	{% endif %}
+	{% embed "@components/link/link.twig" with {
+    link__style: 'icon',
+  } %}
+    {% block link__content %}
+      {% include "@components/icons/_icon.twig" with {
+        icon__name: item.title|lower,
+        icon__blockname: menu__base_class,
+      } %}
+      <span {{ bem('text', [], menu_class, ['visually-hidden']) }}>{{ item.title }}</span>
+    {% endblock %}
+  {% endembed %}
+{% endif %}
+{% endset %}
+
+{% embed "@components/lists/_list-item.twig" with {
+  list__item__base_class: 'item',
+  list__item__modifiers: item__modifiers,
+  list__item__blockname: item__blockname,
+  list__item__attributes: item__attributes,
+} %}
+	{% block list__item__content %}
+		{{- list__item -}}
+	{% endblock %}
+{% endembed %}

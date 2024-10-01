@@ -1,0 +1,61 @@
+{#
+ # Available Variables:
+ # - container__modifiers: standard, space, tight to control vertical padding.
+ # - container__heading
+ # - container__subheading
+ #}
+
+{% set container__base_class = 'container' %}
+{% set container__modifiers = container__modifiers|default([]) %}
+{% set container__inner_modifiers = container__inner_modifiers|default([]) %}
+{% set container__attributes = container__attributes|default([]) %}
+
+{% if container__theme %}
+  {% set container__attributes = container__attributes|merge({
+    'data-component-theme': container__theme,
+  }) %}
+{% endif %}
+
+{% if container__bg_color %}
+  {% set container__modifiers = container__modifiers|merge(['with-bg']) %}
+{% endif %}
+
+{% if container__component_width %}
+  {% set container__attributes = container__attributes|merge({
+    'data-component-width': container__component_width,
+  }) %}
+{% endif %}
+
+{% set container__attributes = container__attributes|merge({
+  'class': bem(container__base_class, container__modifiers, []),
+  'data-component-alignment': container__component_alignment|default('center'),
+}) %}
+
+<div {{ add_attributes(container__attributes) }}>
+  <div {{ bem('inner', container__inner_modifiers, container__base_class) }}>
+    {% if container__heading or container__text %}
+      <div {{ bem('intro', container__inner_modifiers, container__base_class) }}>
+        {% if container__heading %}
+          {% include "@components/text/heading/heading.twig" with {
+            heading__level: container__heading_level|default('2'),
+            heading: container__heading,
+            heading__blockname: container__base_class,
+            heading__modifiers: container__heading__modifiers,
+          } %}
+        {% endif %}
+        {% if container__text %}
+          {% include "@components/text/text/text.twig" with {
+              text__blockname: container__base_class,
+              text__content: container__text,
+            } %}
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% block container__content %}
+      {% include "@layout/placeholder/placeholder.twig" with { place_holder: "Placeholder Content" } %}
+      {% include "emulsify-ui-kit:placeholder" with { place_holder: "Placeholder Content" } %}
+    {% endblock %}
+  </div>
+  {% block container__suffix %}{% endblock %}
+</div>

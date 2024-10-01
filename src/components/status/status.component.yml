@@ -1,0 +1,65 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Status
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - message_list
+  properties:
+    presentational:
+      type: boolean
+      title: Presentational
+      description: 'Indicates if the component is purely presentational'
+      data: true
+    attributes:
+      type: string
+      title: Attributes
+      description: 'Additional attributes for the component'
+      data: ''
+    message_list:
+      type: object
+      title: Message List
+      description: 'A list of messages with their types'
+      properties:
+        info:
+          type: object
+          title: Info Message
+          description: 'An informational message'
+          properties:
+            message:
+              type: string
+              title: Message
+              description: 'The content of the info message'
+              data: 'This is an info message'
+        danger:
+          type: object
+          title: Danger Message
+          description: 'A danger or error message'
+          properties:
+            message:
+              type: string
+              title: Message
+              description: 'The content of the danger message'
+              data: 'This is a danger message'
+        success:
+          type: object
+          title: Success Message
+          description: 'A success message'
+          properties:
+            message:
+              type: string
+              title: Message
+              description: 'The content of the success message'
+              data: 'This is a success message'
+        warning:
+          type: object
+          title: Warning Message
+          description: 'A warning message'
+          properties:
+            message:
+              type: string
+              title: Message
+              description: 'The content of the warning message'
+              data: 'This is a warning message'

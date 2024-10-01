@@ -1,0 +1,199 @@
+@use '../../foundation/breakpoints/breakpoints' as *;
+@use '../../foundation/spacing/spacing' as *;
+@use '../../foundation/typography/typography' as *;
+@use '../../foundation/motion/motion' as *;
+
+// Utilize custom properties so they can be rescoped
+:root {
+  --content-width-compressed: #{$small};
+  --content-width-small: #{$small};
+  --content-width: #{$medium};
+  --content-width-wide: #{$large};
+  --content-width-max: #{$xlarge};
+  --content-width-full: #{$xxlarge};
+}
+
+[class*='__inner'] {
+  max-width: 100%;
+  margin-inline: auto;
+  width: 100%;
+
+  @include breakpoint('large') {
+    width: var(--content-width-wide);
+  }
+
+  [data-component-width='max'] & {
+    width: 100%;
+    max-width: var(--content-width-max);
+  }
+
+  [data-component-width='full'] & {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  // Component widths
+  > * {
+    [data-component-width='wide'] & {
+      width: 100%;
+      max-width: var(--content-width-wide);
+    }
+
+    [data-component-width='standard'] & {
+      width: 100%;
+      max-width: var(--content-width);
+    }
+
+    [data-component-width='compressed'] & {
+      width: 100%;
+      max-width: var(--content-width-compressed);
+    }
+
+    // collapse embedded __inners
+    [class*='__inner'] {
+      width: auto;
+    }
+
+    // Component alignments
+    [data-component-alignment='left'] & {
+      margin-right: auto;
+    }
+
+    [data-component-alignment='center'] & {
+      margin-inline: auto;
+    }
+
+    [data-component-alignment='right'] & {
+      margin-left: auto;
+    }
+  }
+
+  > .container__intro {
+    [data-component-width='full'] & {
+      width: 100%;
+      max-width: var(--content-width-wide);
+    }
+
+    // Component alignments
+    [data-component-alignment='left'] & {
+      margin-right: auto;
+    }
+
+    [data-component-alignment='center'] & {
+      margin-inline: auto;
+    }
+
+    [data-component-alignment='right'] & {
+      margin-left: auto;
+    }
+  }
+}
+
+.container__inner {
+  position: relative;
+
+  .container--inline & {
+    min-height: 13rem;
+  }
+}
+
+.container {
+  @include section-padding;
+
+  & {
+    position: relative;
+  }
+
+  + .container--with-bg {
+    @include margin-gap-top;
+  }
+
+  &[data-component-width='full'] {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  &--half-spacing {
+    @include section-padding(0.5);
+  }
+
+  &--one-spacing {
+    @include section-padding;
+  }
+
+  &--two-spacing {
+    @include section-padding(2);
+  }
+
+  &--no-bottom {
+    padding-bottom: 0;
+  }
+
+  &--no-top {
+    padding-top: 0;
+  }
+
+  &--with-bg {
+    @include section-padding(2);
+
+    & {
+      background-color: var(--color-primary-lighter);
+    }
+  }
+
+  .container:not([class*='container--']),
+  &--no-spacing {
+    padding: 0;
+    margin-block: 0;
+
+    + .waypoint-anchor + .container--with-bg,
+    + .paragraph-anchor + .waypoint-anchor + .container--with-bg {
+      @include margin-gap-top(2);
+    }
+  }
+
+  &--spacing-top {
+    @include section-padding-top;
+
+    & {
+      padding-bottom: 0;
+    }
+  }
+
+  &--spacing-bottom {
+    @include section-padding-bottom;
+  }
+
+  &--embedded {
+    padding: 0;
+    margin: 0;
+
+    &.container--with-bg {
+      align-self: flex-start;
+
+      .container__inner {
+        padding: var(--spacing-xl);
+      }
+    }
+  }
+}
+
+.container__heading {
+  margin: 0 0 var(--spacing-xl);
+
+  &:is(h2) {
+    @include h2;
+  }
+
+  &:is(h3) {
+    @include h3;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: var(--spacing-lg);
+  }
+}
+
+.container__text {
+  margin-bottom: var(--spacing-xl);
+}

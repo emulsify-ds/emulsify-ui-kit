@@ -1,0 +1,22 @@
+{% set image_figure__base_class = image_figure__base_class|default('figure') %}
+{% set image_link__base_class = image_link__base_class|default('link') %}
+
+<figure {{ bem(image_figure__base_class, image_figure__modifiers, image_figure__blockname) }}>
+	{% if image__url %}
+		<a {{ bem(image_link_base_class, image_link__modifiers, image_link__blockname|default(image_figure__base_class)) }} href="{{ image_url }}">
+		{% endif %}
+		{% block figure_content %}
+			{% include "@components/image/responsive-image.twig" with {
+        responsive_image__blockname: responsive_image__blockname|default(image_figure__base_class),
+      } %}
+		{% endblock %}
+		{% if image__url %}
+		</a>
+	{% endif %}
+
+	{% if image__caption %}
+		<figcaption {{ bem('caption', figcaption__modifiers, figcaption__blockname|default(image_figure__base_class)) }}>
+			{{ image__caption }}
+		</figcaption>
+	{% endif %}
+</figure>

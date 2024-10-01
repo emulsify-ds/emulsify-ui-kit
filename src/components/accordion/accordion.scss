@@ -1,0 +1,213 @@
+@use 'sass:math';
+@use '../../foundation/breakpoints/breakpoints' as *;
+@use '../../foundation/typography/typography' as *;
+@use '../../foundation/utility/utility' as *;
+@use '../../foundation/motion/motion' as *;
+
+@mixin plusminus {
+  &::before,
+  &::after {
+    @include transition;
+
+    & {
+      content: '';
+      display: block;
+      position: absolute;
+      background: var(--accordion-color-header);
+      border-radius: var(--spacing-md);
+      inset: 0 0 0 auto;
+      margin: auto;
+    }
+  }
+
+  &::before {
+    height: var(--spacing-lg);
+    width: var(--spacing-xs);
+    transform: rotate(-180deg);
+    right: 0.45rem;
+  }
+
+  &::after {
+    height: var(--spacing-xs);
+    width: var(--spacing-lg);
+  }
+
+  &:hover {
+    &::before,
+    &::after {
+      background-color: var(--accordion-color-header-hover);
+    }
+  }
+
+  &[aria-expanded='true'] {
+    &::before {
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+.container__heading {
+  color: var(--accordion-color-header);
+}
+
+.accordion {
+  box-shadow: none;
+  border: 0;
+}
+
+// The accordion group.
+.accordion__controls {
+  @include list-reset;
+
+  & {
+    display: flex;
+    margin-bottom: var(--spacing-lg);
+  }
+}
+
+.accordion__controls__item {
+  &:not(:last-child) {
+    padding-right: var(--spacing-lg);
+    margin-right: var(--spacing-lg);
+    border-right: 1px solid;
+  }
+}
+
+.accordion-item__toggle {
+  @include plusminus;
+
+  & {
+    background: none;
+    border: none;
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: center;
+    justify-content: flex-start;
+    text-align: start;
+    width: 100%;
+    padding: 0 var(--spacing-xl) 0 0;
+    position: relative;
+    cursor: pointer;
+    text-transform: none;
+  }
+
+  &:hover {
+    color: var(--accordion-color-header-hover);
+
+    &::before,
+    &::after {
+      background: var(--accordion-color-header-hover);
+    }
+  }
+}
+
+.button.accordion__toggle-all {
+  @include plusminus;
+
+  & {
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: center;
+    cursor: pointer;
+    padding: 0 var(--spacing-xl) 0 0;
+    line-height: var(--line-height-tight);
+    font-weight: var(--font-weight-primary-regular);
+    text-transform: none;
+  }
+
+  &::before,
+  &::after {
+    background: var(--accordion-color-header-hover);
+  }
+
+  &::before {
+    height: var(--spacing-lg);
+    width: var(--spacing-xs);
+    transform: rotate(-180deg);
+    right: calc(var(--spacing-lg) * 0.66);
+  }
+
+  &::after {
+    height: var(--spacing-xs);
+    width: var(--spacing-lg);
+    right: var(--spacing-sm);
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+
+    &::before,
+    &::after {
+      background: var(--accordion-color-header);
+    }
+  }
+
+  &--collapse {
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.button[data-button-style='clean'].accordion__toggle-all {
+  color: var(--accordion-color-header-hover);
+
+  &:hover,
+  &:focus {
+    color: var(--accordion-color-header);
+  }
+}
+
+.accordion__icon {
+  height: var(--spacing-lg);
+  width: var(--spacing-lg);
+  pointer-events: none;
+
+  .accordion__toggle-all--collapse & {
+    transform: rotate(180deg);
+  }
+}
+
+// Individual accordion items.
+.accordion-item {
+  border-bottom: 1px solid;
+  padding: var(--spacing-lg) 0;
+  scroll-margin-top: var(--spacing-2xl);
+}
+
+.accordion-item__heading {
+  @include h4;
+
+  display: flex;
+  margin: 0;
+  font-weight: var(--font-weight-primary-regular);
+
+  &:hover {
+    color: var(--accordion-color-header-hover);
+  }
+}
+
+.accordion-item__icon {
+  height: var(--spacing-lg);
+  width: var(--spacing-lg);
+
+  [aria-expanded='true'] > & {
+    transform: rotate(180deg);
+  }
+}
+
+.accordion-item__content {
+  margin-inline: 0;
+  max-width: 90ch;
+  line-height: var(--line-height-normal);
+
+  [data-accordion-expanded='true'] & {
+    margin-block: var(--spacing-lg) var(--spacing-md);
+  }
+
+  [data-accordion-expanded='false'] & {
+    max-height: 0;
+    overflow: hidden;
+  }
+}
