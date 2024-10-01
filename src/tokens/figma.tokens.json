@@ -1536,14 +1536,6 @@
         "value": "{color.EmulsifyBlue.800}",
         "type": "color"
       },
-      "link-inverse": {
-        "value": "{color.text.white}",
-        "type": "color"
-      },
-      "link-inverse-hover": {
-        "value": "{color.primary.lighter}",
-        "type": "color"
-      },
       "link-hover": {
         "value": "{color.EmulsifyBlue.1000}",
         "type": "color"
@@ -2122,6 +2114,14 @@
         },
         "hover": {
           "value": "{color.link-hover}",
+          "type": "color"
+        },
+        "inverse": {
+          "value": "{color.text.white}",
+          "type": "color"
+        },
+        "inverse-hover": {
+          "value": "{color.primary.lighter}",
           "type": "color"
         }
       },
