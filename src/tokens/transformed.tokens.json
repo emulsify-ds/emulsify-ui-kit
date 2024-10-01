@@ -394,6 +394,14 @@
       "hover": {
         "value": "#00202e",
         "type": "color"
+      },
+      "inverse": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "inverse-hover": {
+        "value": "#9ce1ff",
+        "type": "color"
       }
     },
     "body": {
@@ -2790,8 +2798,7 @@
       "components/announcement": "enabled",
       "components/banner": "enabled",
       "components/footer": "enabled",
-      "components/header": "enabled",
-      "components/utilityMenu": "disabled"
+      "components/header": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:16908",
     "$figmaModeId": "23237:10",
@@ -2980,8 +2987,7 @@
     "id": "0a5c4562bd35f00ce8a339239980a3842147c0bd",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "global": "enabled",
-      "components/utilityMenu": "disabled"
+      "global": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17089",
     "$figmaModeId": "23237:11",
@@ -3034,8 +3040,7 @@
     "id": "ca91148967a5dcc80f7e50f6ccfe35b30efd5f2f",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic": "enabled",
-      "components/utilityMenu": "disabled"
+      "semantic": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17133",
     "$figmaModeId": "23237:12",
@@ -3058,8 +3063,7 @@
     "id": "16a10d373d39988a75c7d612cd449a633f373c44",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "storybook": "source",
-      "components/utilityMenu": "disabled"
+      "storybook": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17144",
     "$figmaModeId": "23237:13",
@@ -3088,8 +3092,7 @@
       "components/status": "enabled",
       "components/table": "enabled",
       "components/tabs": "enabled",
-      "components/textField": "enabled",
-      "components/utilityMenu": "disabled"
+      "components/textField": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17145",
     "$figmaModeId": "23237:14",
@@ -3243,8 +3246,7 @@
       "components/table": "enabled",
       "components/tabs": "enabled",
       "components/textField": "enabled",
-      "semantic": "enabled",
-      "components/utilityMenu": "disabled"
+      "semantic": "enabled"
     },
     "group": "WUP",
     "type": "other",
@@ -3272,8 +3274,7 @@
       "components/status": "enabled",
       "components/table": "enabled",
       "components/tabs": "enabled",
-      "components/textField": "enabled",
-      "components/utilityMenu": "disabled"
+      "components/textField": "enabled"
     },
     "group": "WUP",
     "type": "other",
