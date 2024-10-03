@@ -7,7 +7,7 @@
   padding: var(--spacing-xl);
 }
 
-.announcement__image {
+.announcement__icon {
   width: 3.5rem;
 }
 
@@ -45,6 +45,10 @@
   background-color: var(--announcement-background-default);
 }
 
+.announcement--default .announcement__icon {
+  fill: var(--announcement-heading-default);
+}
+
 .announcement__content--default .heading {
   color: var(--announcement-heading-default);
 }
@@ -58,6 +62,10 @@
   background-color: var(--announcement-background-light);
 }
 
+.announcement--light .announcement__icon {
+  fill: var(--announcement-heading-dark);
+}
+
 .announcement__content--light .heading {
   color: var(--announcement-heading-dark);
 }
@@ -69,6 +77,10 @@
 /* Variants -- Dark style for announcements */
 .announcement--dark {
   background-color: var(--announcement-background-dark);
+}
+
+.announcement--dark .announcement__icon {
+  fill: var(--announcement-heading-light);
 }
 
 .announcement__content--dark p,

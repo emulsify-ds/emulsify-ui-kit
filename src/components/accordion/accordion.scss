@@ -4,53 +4,7 @@
 @use '../../foundation/utility/utility' as *;
 @use '../../foundation/motion/motion' as *;
 
-// @mixin plusminus {
-//   &::before,
-//   &::after {
-//     @include transition;
-
-//     & {
-//       content: '';
-//       display: block;
-//       position: absolute;
-//       background: var(--color-text-body);
-//       border-radius: var(--spacing-md);
-//       inset: 0 0 0 auto;
-//       margin: auto;
-//     }
-//   }
-
-//   &::before {
-//     height: var(--spacing-lg);
-//     width: var(--spacing-xs);
-//     transform: rotate(-180deg);
-//     right: 0.45rem;
-//   }
-
-//   &::after {
-//     height: var(--spacing-xs);
-//     width: var(--spacing-lg);
-//   }
-
-//   &:hover {
-//     &::before,
-//     &::after {
-//       background-color: var(--accordion-color-header-hover);
-//     }
-//   }
-
-//   &[aria-expanded='true'] {
-
-//     &::before {
-//       transform: rotate(-90deg);
-//       fill: var(--accordion-color-header);
-//       background: var(--accordion-color-header);
-//     }
-//   }
-// }
-
-
-
+// Container for the accordion.
 .container__heading {
   color: var(--accordion-color-header);
 }
@@ -122,12 +76,6 @@
     line-height: var(--line-height-tight);
     font-weight: var(--font-weight-primary-regular);
     text-transform: none;
-  }
-
-  &--collapse {
-    &::before {
-      display: none;
-    }
   }
 
   .toggle-all__content {

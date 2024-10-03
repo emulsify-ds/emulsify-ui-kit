@@ -29,13 +29,13 @@
 			{% set unique_id = random('1234567890') ~ random('1234567890') ~ random('1234567890') ~ random('1234567890') %}
 			{% set accordion__item__content__id = 'accordion__item-' ~ unique_id ~ '-' ~ loop.index %}
       {% include "@components/accordion/_accordion-item.twig" with {
-          accordion__item__heading: item.accordion__item__heading,
-          accordion__item__content: item.accordion__item__content,
-          accordion__item__heading__level: accordion__heading ? '3' : '2',
-          accordion__item__content__attributes: {
-            'id': accordion__item__content__id,
-          }
-        } %}
+        accordion__item__heading: item.accordion__item__heading,
+        accordion__item__content: item.accordion__item__content,
+        accordion__item__heading__level: accordion__heading ? '3' : '2',
+        accordion__item__content__attributes: {
+          'id': accordion__item__content__id,
+        }
+      } %}
 		{% endfor %}
 	{% endblock %}
 </div>
