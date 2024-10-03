@@ -3,6 +3,24 @@
  # - none
  #}
 
+{% set expand_button__content %}
+  {{'Expand all'}}
+  {% include "@components/icons/_icon.twig" with {
+    icon__name: 'angle-down',
+    icon__blockname: accordion__base_class,
+    icon__decorative: true,
+  } %}
+{% endset %}
+
+{% set collapse_button__content %}
+  {{'Collapse all'}}
+  {% include "@components/icons/_icon.twig" with {
+    icon__name: 'angle-down',
+    icon__blockname: accordion__base_class,
+    icon__decorative: true,
+  } %}
+{% endset %}
+
 {% embed "@components/lists/list.twig" with {
   list__base_class: 'controls',
   list__blockname: accordion__base_class,
@@ -16,7 +34,7 @@
       }%}
 			{% block list__item__content %}
 				{% include "@components/button/button.twig" with {
-          button__content: 'Expand all',
+          button__content: expand_button__content,
           button__base_class: 'toggle-all',
           button__modifiers: ['expand'],
           button__style: 'clean',
@@ -31,7 +49,7 @@
       }%}
 			{% block list__item__content %}
 				{% include "@components/button/button.twig" with {
-          button__content: 'Collapse all',
+          button__content: collapse_button__content,
           button__base_class: 'toggle-all',
           button__modifiers: ['collapse'],
           button__style: 'clean',

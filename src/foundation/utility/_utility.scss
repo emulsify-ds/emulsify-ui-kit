@@ -16,7 +16,7 @@
 // use-cases like `focus-within` that apply to an "outer" element when something
 // "inside" has focus. e.g. The utility nav search box.
 @mixin focus-styles {
-  outline: var(--spacing-xs) dotted clr(neutral, n500) !important;
+  outline: var(--spacing-xs) dotted var(--color-emulsify-blue-900) !important;
   outline-offset: var(--spacing-xs);
 }
 
