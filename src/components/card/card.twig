@@ -49,10 +49,10 @@
 	{% block card__img %}
 		{% if card__image__src %}
 			{% include "@components/image/responsive-image.twig" with {
-        image_blockname: card__base_class,
+        image__blockname: card__base_class,
         output_image_tag: card__image__output_image_tag,
-        image_src: card__image__src,
-        image_alt: card__image__alt,
+        image__src: card__image__src,
+        image__alt: card__image__alt,
       } %}
 		{% endif %}
 	{% endblock %}
