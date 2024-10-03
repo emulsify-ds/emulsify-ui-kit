@@ -4,10 +4,8 @@
 .example {
   display: flex;
   flex-flow: column nowrap;
-  background-color: var(--colors-white);
+  background-color: var(--color-white);
   padding: 0 !important;
-
-  // max-width: var(--max-width);
   margin: 0 auto;
   min-height: 100vh;
 
@@ -23,11 +21,11 @@
   }
 
   .logo-text {
-    fill: var(--colors-text-body);
+    fill: var(--color-text-body);
   }
 
   .logo-mark {
-    fill: var(--colors-primary-darker);
+    fill: var(--color-primary-default);
   }
 
   .logo + nav {
@@ -38,7 +36,7 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-    color: var(--colors-white);
+    color: var(--color-white);
     aspect-ratio: 16/7;
     background-size: cover;
     text-align: center;
@@ -48,7 +46,7 @@
     &::after {
       content: '';
       position: absolute;
-      background: var(--colors-primary-dark);
+      background: var(--color-primary-dark);
       top: 0;
       left: 0;
       bottom: 0;
@@ -64,21 +62,23 @@
 
     h1 {
       font-size: var(--font-size-uber);
-      line-height: var(--line-heights-none);
+      line-height: var(--line-height-none);
       letter-spacing: var(--letter-spacing-tight);
-      max-width: 1000px;
-      margin: 0 auto;
+      margin: 0 auto var(--spacing-lg);
     }
 
     h2 {
       font-size: var(--font-size-display);
-      line-height: var(--line-heights-none);
+      line-height: var(--line-height-none);
       letter-spacing: var(--letter-spacing-tight);
       max-width: 1000px;
       margin: 0 auto;
     }
   }
 
+  /**
+   * Watch section
+   */
   .watch {
     text-align: center;
     padding: var(--spacing-2xl) var(--spacing-xl);
@@ -100,7 +100,7 @@
   }
 
   .celebrating {
-    background: var(--colors-primary-lighter);
+    background: var(--color-primary-lighter);
     text-align: center;
     padding: var(--spacing-2xl) var(--spacing-xl);
 
@@ -122,8 +122,8 @@
   }
 
   .footer {
-    background: var(--colors-primary-darker);
-    color: var(--colors-white);
+    background: var(--color-primary-darker);
+    color: var(--color-white);
     padding: var(--spacing-lg) var(--spacing-xl) var(--spacing-2xl);
     margin-top: auto;
     display: flex;
@@ -139,11 +139,11 @@
     }
 
     .logo-text {
-      fill: var(--colors-white);
+      fill: var(--color-white);
     }
 
     .logo-mark {
-      fill: var(--colors-primary-lighter);
+      fill: var(--color-white);
     }
 
     .social-menu--footer {
@@ -152,11 +152,11 @@
     }
 
     .social-menu--footer .social-menu__link {
-      color: var(--colors-primary-lighter);
+      color: var(--color-primary-lighter);
       font-size: var(--font-size-display);
 
       &:hover {
-        color: var(--colors-primary-light);
+        color: var(--color-primary-light);
       }
     }
 
@@ -170,7 +170,7 @@
     }
 
     .footer-h3 {
-      color: var(--colors-primary-lighter);
+      color: var(--color-primary-lighter);
       font-size: var(--font-size-body);
     }
 
@@ -181,7 +181,7 @@
       max-width: 450px;
       font-size: var(--font-size-small);
       gap: var(--spacing-lg);
-      line-height: var(--line-heights-tight);
+      line-height: var(--line-height-tight);
 
       li {
         margin-bottom: var(--spacing-sm);
