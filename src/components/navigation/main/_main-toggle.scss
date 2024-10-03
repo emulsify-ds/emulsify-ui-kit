@@ -57,6 +57,14 @@
     }
   }
 
+  .main-nav__item--level-1.main-nav__item--with-sub & {
+    .icon {
+      height: var(--size-lg);
+      width: var(--size-lg);
+    }
+  }
+  
+
   .sub--open > &,
   &[aria-expanded='true'] {
     .icon {
@@ -70,6 +78,7 @@
 
     @include breakpoint('medium') {
       top: var(--spacing-md);
+      right: var(--spacing-lg);
     }
 
     @include breakpoint('small-down') {
