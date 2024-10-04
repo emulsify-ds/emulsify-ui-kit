@@ -6,7 +6,7 @@ export default {
   title: 'Pages/Basic',
   decorators: [
     (story) =>
-      `<div style="background: var(--color-grays-700); padding: 0;margin:0;">${story()}</div>`,
+      `<div style="background: var(--color-grays-100); padding: 0;margin:0;">${story()}</div>`,
   ],
 };
 
