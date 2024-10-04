@@ -45,13 +45,9 @@ $transition-timing-function-base: ease-in-out;
   $hide-position: 'false'
 ) {
   @if $hide-position == 'true' {
-    & {
-      animation: hidden, position-change;
-    }
+    animation: hidden, position-change;
   } @else {
-    & {
-      animation: hidden;
-    }
+    animation: hidden;
   }
 
   & {
@@ -73,54 +69,6 @@ $transition-timing-function-base: ease-in-out;
     100% {
       visibility: hidden;
       opacity: 0;
-    }
-  }
-}
-
-@mixin animate-slide-up-fade-in(
-  $speed: $transition-duration-base,
-  $delay: 0ms
-) {
-  & {
-    animation: slide-up $speed;
-    animation-fill-mode: forwards;
-    animation-delay: $delay;
-  }
-
-  @keyframes slide-up {
-    0% {
-      transform: translateY(#{space(3)});
-      opacity: 0;
-    }
-
-    20% {
-      transform: translateY(#{space(3)});
-      opacity: 0;
-    }
-
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-}
-
-@mixin animate-grow-fade($speed: $transition-duration-base, $delay: 300ms) {
-  & {
-    animation: grow-fade $speed;
-    animation-fill-mode: forwards;
-    animation-delay: $delay;
-  }
-
-  @keyframes grow-fade {
-    0% {
-      opacity: 0;
-      transform: scale(0.25);
-    }
-
-    100% {
-      opacity: 1;
-      transform: scale(1);
     }
   }
 }

@@ -8,7 +8,7 @@
 // Global Breakpoints
 @use 'sass:map';
 @use 'sass:meta';
-@use '../functions/rem-calc' as *;
+@use '../utility/rem-calc' as *;
 
 $xsmall: rem-calc(610);
 $small: rem-calc(767);

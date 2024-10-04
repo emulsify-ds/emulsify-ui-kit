@@ -26,6 +26,7 @@
 
   &:not(.main-nav__menu-list--sub) {
     display: none;
+    gap: var(--spacing-md);
 
     @include breakpoint('medium') {
       display: flex;

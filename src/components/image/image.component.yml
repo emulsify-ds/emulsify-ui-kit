@@ -14,22 +14,22 @@ props:
       title: Output image tag
       description: Specifies whether to output the image tag
       data: true
-    image_src:
+    image__src:
       type: string
       title: Source
       description: 'Specifies the path to the image'
       data: 'https://placehold.co/320x180'
-    image_alt:
+    image__alt:
       type: string
       title: Alternate text
       description: 'Specifies an alternate text for the image'
       data: 'A 16 by 9 image'
-    image_srcset:
+    image__srcset:
       type: string
       title: Source Set Attribute
       description: The image's srcset attribute, which defines multiple image sources for different device resolutions.
       data: 'https://placehold.co/320x180 320w, https://placehold.co/480x270 480w, https://placehold.co/640x360 640w, https://placehold.co/800x450 800w, https://placehold.co/960x540 960w, https://placehold.co/1120x630 1120w, https://placehold.co/1280x720 1280w, https://placehold.co/1440x810 1440w, https://placehold.co/1600x900 1600w, https://placehold.co/1760x990 1760w, https://placehold.co/1920x1080 1920w, https://placehold.co/2080x1170 2080w, https://placehold.co/2240x1260 2240w'
-    image_sizes:
+    image__sizes:
       type: string
       title: Image sizes
       description: 'Specifies the intended display sizes of the image'
