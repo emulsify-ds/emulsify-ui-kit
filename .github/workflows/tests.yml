@@ -26,7 +26,7 @@ jobs:
         run: npm ci
       - name: Build storybook
         if: steps.component_changes.outputs.components == 'true'
-        run: npm run storybook:build
+        run: npm run storybook-build
       - name: Run Percy Tests
         if: steps.component_changes.outputs.components == 'true'
         run: npm run visreg-ci
