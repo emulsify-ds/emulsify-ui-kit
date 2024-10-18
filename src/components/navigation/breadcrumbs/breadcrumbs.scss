@@ -20,7 +20,7 @@
 
 @mixin breadcrumb-spacer {
   &:not(:last-child)::after {
-    content: "/";
+    content: '/';
     margin-left: var(--spacing-md);
   }
 }

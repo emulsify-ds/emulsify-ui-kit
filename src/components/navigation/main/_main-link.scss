@@ -80,7 +80,7 @@
   white-space: nowrap;
   width: auto;
   margin: 0;
-  padding: var(--spacing-sm) var(--spacing-lg);
+  padding: var(--spacing-md) var(--spacing-lg);
   display: flex;
   align-content: center;
   overflow: visible;
@@ -110,7 +110,7 @@
 }
 
 .main-nav__item--level-0 {
-  &:hover { 
+  &:hover {
     background-color: var(--main-menu-color-link-bg-hover);
 
     // Make the level-0 link text color change on li hover
@@ -118,11 +118,10 @@
       color: var(--main-menu-color-link-label-hover);
     }
   }
-} 
+}
 
 .main-nav__link--level-1,
 .main-nav__link--level-2 {
-
   & {
     font-size: var(--font-size-h6);
   }
