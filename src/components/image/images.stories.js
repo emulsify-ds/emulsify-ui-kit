@@ -1,33 +1,42 @@
-import imageTwig from './responsive-image.twig';
-import figureTwig from './figure.twig';
-
-import { props as imageProps } from './image.component.yml';
-import { props as figureProps } from './figure.component.yml';
-
-import { mapDataToTwig } from '../../util/dataTransformers.js';
-
-const svgIcons = require.context('../../../assets/icons/', true, /\.svg$/);
-const icons = [];
-svgIcons.keys().forEach((key) => {
-  const icon = key.split('./')[1].split('.')[0];
-  icons.push(icon);
-});
-
-const imageData = mapDataToTwig(imageProps.properties);
-const figureData = mapDataToTwig(figureProps.properties);
+import imageTwig from './image.twig';
+import imageData from './image.yml';
 
 /**
  * Storybook Definition.
  */
-
 export default {
-  title: 'Components/Media',
-  decorators: [
-    (story) =>
-      `<div style="max-width: 890px; margin: 0 auto;">${story()}</div>`,
-  ],
+  title: 'Components/Media/Image',
+  argTypes: {
+    show_caption: {
+      name: 'Show Image Caption',
+      type: 'boolean',
+    },
+    caption: {
+      name: 'Caption',
+      type: 'string',
+    },
+    show_copyright: {
+      name: 'Show Image Caption',
+      type: 'boolean',
+    },
+    copyright: {
+      name: 'Copyright',
+      type: 'string',
+    },
+  },
+  args: {
+    show_caption: true,
+    caption: imageData.image__caption,
+    show_copyright: true,
+    copyright: imageData.image__copyright,
+  },
 };
 
-export const Image = () => imageTwig(imageData);
-
-export const Figure = () => figureTwig(figureData);
+export const image = ({ show_caption, caption, show_copyright, copyright }) =>
+  imageTwig({
+    ...imageData.responsive_images['1x1'],
+    image__show_caption: show_caption,
+    image__show_copyright: show_copyright,
+    image__caption: caption,
+    image__copyright: copyright,
+  });

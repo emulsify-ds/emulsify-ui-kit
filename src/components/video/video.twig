@@ -25,9 +25,9 @@
 
 <div {{ add_attributes(video__attributes) }}>
 	{% if video__type == 'embed' %}
-		{% include "@components/videos/_video-embed.twig" %}
+		{% include "@components/video/_video-embed.twig" %}
 	{% endif %}
 	{% if video__type == 'html5' %}
-		{% include "@components/videos/_video-html5.twig" %}
+		{% include "@components/video/_video-html5.twig" %}
 	{% endif %}
 </div>

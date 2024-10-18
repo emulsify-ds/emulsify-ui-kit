@@ -49,14 +49,14 @@
 {% endset %}
 
 <div {{ add_attributes(accordion__item__attributes) }}>
-	{% include "@components/text/heading/heading.twig" with {
+	{% include "@components/typography/heading/heading.twig" with {
     heading__level: accordion__item__heading__level|default('2'),
     heading__blockname: accordion__item__base_class,
     heading: accordion__item__heading__content,
   } %}
 	<div {{ add_attributes(accordion__item__content__attributes) }}>
 		{% block accordion__item__content %}
-			{% include "@components/text/text/text.twig" with {
+			{% include "@components/typography/text/text.twig" with {
         text__content: accordion__item__content,
       } %}
 		{% endblock %}

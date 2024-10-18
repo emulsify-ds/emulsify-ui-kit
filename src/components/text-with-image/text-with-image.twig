@@ -33,14 +33,14 @@
     <div {{ bem('content', [], text_with_image__base_class) }}>
       {# Heading #}
       {% if text_with_image__heading %}
-        {% include "@components/text/heading/heading.twig" with {
+        {% include "@components/typography/heading/heading.twig" with {
           heading: text_with_image__heading,
           heading__level: '2',
           heading__blockname: text_with_image__base_class,
         } %}
       {% endif %}
       {# Text #}
-      {% include "@components/text/text/text.twig" with {
+      {% include "@components/typography/text/text.twig" with {
         text__content: text_with_image__text,
         text__blockname: text_with_image__base_class,
       } %}
@@ -67,7 +67,7 @@
 
       {% if text_with_image__show_captions
         and text_content__image %}
-          {% include "@components/text/text/text.twig" with {
+          {% include "@components/typography/text/text.twig" with {
             text__content: text_content__image,
             text__base_class: 'caption-credit-wrapper',
           } %}

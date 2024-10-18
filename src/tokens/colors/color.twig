@@ -22,9 +22,9 @@
               <span class="sb-list__label">{{ nestedColor }}</span>
               <span class="sb-list__value">{{nestedValue.value}}</span>
               <span class="sb-list__custom-property">
-                <code class="sb-custom-property-name">var(--color-{{ color|lower }}-{{nestedColor}})</code>
+                <code class="sb-custom-property-name">var(--color-{{ color|lower|replace({'emulsifyblue': 'emulsify-blue'}) }}-{{nestedColor}})</code>
               </span>
-              <span class="sb-list__visualization" style="background-color: var(--color-{{ color|lower }}-{{nestedColor}});"></span>
+              <span class="sb-list__visualization" style="background-color: var(--color-{{ color|lower|replace({'emulsifyblue': 'emulsify-blue'}) }}-{{nestedColor}});"></span>
             </li>
           {% else %}
             {% for colorFamily, colorFamilyValue in nestedValue %}

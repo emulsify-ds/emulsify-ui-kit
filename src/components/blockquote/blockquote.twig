@@ -24,7 +24,7 @@
 <aside {{ add_attributes(blockquote__attributes) }}>
   <div {{ bem('inner', [], blockquote__base_class) }}>
     <blockquote {{ bem('blockquote', [], blockquote__base_class) }}>
-      {% include "@components/text/text/02-blockquote.twig" with {
+      {% include "@components/typography/text/blockquote.twig" with {
         blockquote__content: blockquote__quote,
         blockquote__blockname: blockquote__base_class,
         blockquote__base_class: 'quote',

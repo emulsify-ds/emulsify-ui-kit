@@ -62,7 +62,7 @@
 
 		{# Subheading #}
 		{% if card__subheading %}
-			{% include "@components/text/heading/heading.twig" with {
+			{% include "@components/typography/heading/heading.twig" with {
         heading__base_class: card__subheading__base_class|default('subheading'),
         heading__modifiers: card__subheading__modifiers,
         heading__blockname: card__base_class,
@@ -75,7 +75,7 @@
 		{# Heading #}
 		{% if card__heading %}
 			{{ title_prefix }}
-			{% include "@components/text/heading/heading.twig" with {
+			{% include "@components/typography/heading/heading.twig" with {
         heading__base_class: card__heading__base_class|default('heading'),
         heading__modifiers: card__heading__modifiers,
         heading__blockname: card__base_class,
@@ -90,7 +90,7 @@
 
 		{# Body #}
 		{% if card__body %}
-			{% include "@components/text/text/01-paragraph.twig" with {
+			{% include "@components/typography/text/paragraph.twig" with {
         paragraph_base_class: card__body__base_class|default('body'),
         paragraph_modifiers: card__body__modifiers,
         paragraph_blockname: card__base_class,

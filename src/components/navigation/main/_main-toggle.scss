@@ -57,14 +57,6 @@
     }
   }
 
-  .main-nav__item--level-1.main-nav__item--with-sub & {
-    .icon {
-      height: var(--size-lg);
-      width: var(--size-lg);
-    }
-  }
-  
-
   .sub--open > &,
   &[aria-expanded='true'] {
     .icon {
@@ -149,6 +141,13 @@
       .icon {
         transform: rotate(180deg);
       }
+    }
+  }
+
+  .main-nav__item--level-1.main-nav__item--with-sub & {
+    .icon {
+      height: var(--size-lg);
+      width: var(--size-lg);
     }
   }
 }

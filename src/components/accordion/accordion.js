@@ -39,7 +39,7 @@ Drupal.behaviors.accordion = {
     /**
      * getAnchor
      * @description Get the value of the anchor link in the URL.
-     * @return The string value after the hash.
+     * @return {string} The string value after the hash.
      */
     function getAnchor() {
       return document.URL.split('#').length > 1
