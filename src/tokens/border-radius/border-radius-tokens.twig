@@ -1,0 +1,16 @@
+<div>
+	<h2 class="sb-title">Border Radius Tokens</h2>
+
+	<ul class="sb-list">
+		{% for radius, value in _context.radius %}
+			<li class="sb-list__item">
+				<span class="sb-list__label">{{radius}}</span>
+				<span class="sb-list__value">{{value.value}}px</span>
+				<span class="sb-list__custom-property">
+					<code class="sb-custom-property-name">var(--radius-{{radius}})</code>
+				</span>
+				<span class="sb-list__visualization" style="border-radius: {{value.value}}px; width: 75px; height: 75px; background: var(--color-sb-visualization);"></span>
+			</li>
+		{% endfor %}
+	</ul>
+</div>

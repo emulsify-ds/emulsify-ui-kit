@@ -20,13 +20,13 @@ jobs:
         if: steps.component_changes.outputs.components == 'true'
         uses: actions/setup-node@v2
         with:
-          node-version: '16.13'
+          node-version: 20
       - name: Install dependencies
         if: steps.component_changes.outputs.components == 'true'
         run: npm ci
       - name: Build storybook
         if: steps.component_changes.outputs.components == 'true'
-        run: npm run storybook:build
+        run: npm run storybook-build
       - name: Run Percy Tests
         if: steps.component_changes.outputs.components == 'true'
         run: npm run visreg-ci
@@ -40,7 +40,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          node-version: '16.13'
+          node-version: 20
       - name: Install CLI
         run: npm install -g @emulsify/cli
       - name: Install starter

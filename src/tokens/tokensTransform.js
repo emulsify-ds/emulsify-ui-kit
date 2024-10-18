@@ -1,4 +1,6 @@
-const StyleDictionary = require('style-dictionary').extend('sd.config.json');
+import StyleDictionary from 'style-dictionary';
+
+const ProjectStyleDictionary = new StyleDictionary('config/sd.config.json');
 
 const pixelsToRem = (px) => {
   const rem = 16;
@@ -9,10 +11,10 @@ const appendPX = (value) => {
   return `${value}px`;
 };
 
-StyleDictionary.registerTransform({
+ProjectStyleDictionary.registerTransform({
   name: 'toRem/pxToRem',
   type: 'value',
-  matcher(token) {
+  filter(token) {
     return (
       token.type === 'sizing' ||
       token.type === 'spacing' ||
@@ -21,20 +23,20 @@ StyleDictionary.registerTransform({
       token.path[0] === 'breakpoint'
     );
   },
-  transformer(token) {
+  transform(token) {
     return pixelsToRem(token.value);
   },
 });
 
-StyleDictionary.registerTransform({
+ProjectStyleDictionary.registerTransform({
   name: 'toPX/appendPX',
   type: 'value',
-  matcher(token) {
+  filter(token) {
     return token.type === 'borderWidth';
   },
-  transformer(token) {
+  transform(token) {
     return appendPX(token.value);
   },
 });
 
-StyleDictionary.buildAllPlatforms();
+ProjectStyleDictionary.buildAllPlatforms();

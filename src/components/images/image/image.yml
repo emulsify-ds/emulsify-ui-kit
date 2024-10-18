@@ -1,5 +1,0 @@
-output_image_tag: true
-image_srcset: 'https://placehold.co/320x180 320w, https://placehold.co/480x270 480w, https://placehold.co/640x360 640w, https://placehold.co/800x450 800w, https://placehold.co/960x540 960w, https://placehold.co/1120x630 1120w, https://placehold.co/1280x720 1280w, https://placehold.co/1440x810 1440w, https://placehold.co/1600x900 1600w, https://placehold.co/1760x990 1760w, https://placehold.co/1920x1080 1920w, https://placehold.co/2080x1170 2080w, https://placehold.co/2240x1260 2240w'
-image_sizes: '100vw'
-image_src: 'https://placehold.co/320x180'
-image_alt: 'A 16 by 9 image'

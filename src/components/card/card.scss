@@ -1,0 +1,50 @@
+@use '../../foundation/typography/typography' as *;
+@use '../link/link.scss' as *;
+
+.card {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--spacing-lg);
+  text-align: left;
+}
+
+.card--horizontal {
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.card__heading {
+  @include h3;
+
+  & {
+    color: var(--card-color-heading);
+    margin: 0;
+    line-height: var(--line-height-tight);
+  }
+
+  &-link {
+    @include link;
+
+    & {
+      color: var(--card-color-heading);
+      text-decoration: none;
+    }
+  }
+}
+
+.card__subheading {
+  & {
+    color: var(--card-color-subheading);
+    margin: 0 0 var(--spacing-md);
+    line-height: var(--line-height-tight);
+    text-transform: uppercase;
+  }
+}
+
+.card__body {
+  color: var(--color-text-body);
+}
+
+.card__link {
+  @include link;
+}

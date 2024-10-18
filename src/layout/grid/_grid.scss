@@ -1,0 +1,203 @@
+@use 'sass:math';
+@use '../../foundation/breakpoints/breakpoints' as *;
+@use '../../foundation/spacing/spacing' as s;
+
+// Define grid columns and their widths
+$grids: (
+  equal: (
+    1: 1,
+    2: 0.5,
+    3: 0.3333,
+    4: 0.25,
+  ),
+);
+
+// Utilize custom properties so they can be re-scoped
+:root {
+  --grid-spacing: var(--spacing-2xl);
+
+  @include breakpoint('medium') {
+    --grid-spacing: var(--spacing-xl);
+  }
+}
+
+.grid {
+  width: 100%;
+
+  @include breakpoint('medium') {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  &[data-grid-spacing='no-spacing'] {
+    --grid-spacing: 0;
+  }
+
+  &[data-grid-spacing='two-spacing'] {
+    --grid-spacing: var(--spacing-xl);
+
+    @include breakpoint('medium') {
+      --grid-spacing: var(--spacing-2xl);
+    }
+  }
+
+  + .grid {
+    @include s.margin-gap-top(1);
+    @include s.section-padding-top(1);
+  }
+
+  > .grid {
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+}
+
+.grid__inner {
+  flex: 1;
+  display: flex;
+  flex-flow: row wrap;
+
+  .place-holder__content {
+    font-size: 18px;
+  }
+}
+
+.grid__inner > * {
+  position: relative;
+  margin: calc(var(--grid-spacing) / 2) auto 0;
+
+  @include breakpoint('small') {
+    margin: calc(var(--grid-spacing) / 2) auto;
+
+    &:last-child {
+      margin: calc(var(--grid-spacing) / 2) 0 0 calc(var(--grid-spacing) / 2);
+    }
+  }
+
+  @include breakpoint('small-down') {
+    &:nth-child(2n + 1) {
+      margin-left: 0;
+      padding-left: 0;
+    }
+
+    &:nth-child(2n + 2) {
+      margin-right: 0;
+      padding-right: 0;
+    }
+  }
+
+  @include breakpoint('medium') {
+    margin: calc(var(--grid-spacing) / 2) calc(var(--grid-spacing) / 2) 0;
+  }
+
+  &:first-child {
+    margin-block: 0 calc(var(--grid-spacing) / 2);
+
+    @include breakpoint('small') {
+      margin: 0 auto 0 0;
+    }
+
+    @include breakpoint('medium') {
+      margin: var(--grid-spacing) calc(var(--grid-spacing) / 2) 0;
+    }
+  }
+
+  &:nth-child(2) {
+    margin-top: 0;
+
+    @include breakpoint('medium') {
+      margin-top: calc(var(--grid-spacing) / 2);
+    }
+  }
+
+  // Loop through grid map to apply column specific styles
+  // for both grid types.
+  @each $type, $widths in $grids {
+    @each $column, $width in $widths {
+      $cadence: $column * 2;
+      $start: $column + 1;
+      $difference: 1 - $width;
+      $percentage: #{$width * 100}#{'%'};
+
+      // Set column widths and generate offset layout.
+      [data-grid-columns='#{$column}'] > & {
+        width: 100%;
+
+        @include breakpoint('small') {
+          width: calc(50% - calc(var(--grid-spacing) / 4));
+
+          &:only-child {
+            width: 100%;
+          }
+        }
+
+        @include breakpoint('medium') {
+          width: calc(
+            #{$percentage} - #{calc(var(--grid-spacing) * #{$difference})}
+          );
+          margin-inline: calc(var(--grid-spacing) / 2);
+
+          &:nth-child(#{math.div($cadence, 2)}n + 1) {
+            margin-left: 0;
+            padding-left: 0;
+          }
+
+          &:nth-child(#{math.div($cadence, 2)}n + #{$column}) {
+            margin-right: 0;
+            padding-right: 0;
+          }
+
+          &:last-child:not(:first-child) {
+            margin-right: 0;
+          }
+
+          &:only-child {
+            width: 100%;
+          }
+        }
+
+        &:first-child,
+        &:nth-child(#{$column}),
+        &:nth-child(#{$column - 1}),
+        &:nth-child(#{$column - 2}) {
+          @include breakpoint('medium') {
+            margin-top: 0;
+          }
+        }
+      }
+
+      .grid--half-spacing[data-grid-columns='#{$column}'] > & {
+        @include breakpoint('medium') {
+          width: calc(
+            #{$percentage} - calc(var(--grid-spacing) * calc(#{$difference} / 2))
+          );
+          margin-inline: calc(var(--grid-spacing) / 4);
+
+          &:nth-child(#{math.div($cadence, 2)}n + 1) {
+            margin-left: 0;
+            padding-left: 0;
+          }
+
+          &:nth-child(#{math.div($cadence, 2)}n + #{$column}) {
+            margin-right: 0;
+            padding-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  [data-grid-columns='1'] & {
+    width: 100%;
+    margin: 0 0 calc(var(--grid-spacing) / 2);
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  [data-grid-columns='1'][data-grid-spacing='two-spacing'] &:not(:first-child) {
+    padding-top: calc(var(--grid-spacing) / 2);
+  }
+}

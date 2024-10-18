@@ -1,0 +1,45 @@
+{#
+ # Available variables:
+ # - link__content - the content of the link (typically text)
+ # - link__url - the url this link should poing to
+ # - link__attributes - array of attribute,value pairs
+ # - link__base_class - the base class name
+ # - link__modifiers - array of modifiers to add to the base classname
+ # - link__blockname - blockname prepended to the base classname
+ #
+ # Available blocks:
+ # - link__content - used to replace the content of the link
+ #     Example: to insert the image component
+ #}
+
+{% set link__base_class = link__base_class|default('link') %}
+
+{# If link__attributes is not defined, set it to an empty object by default #}
+{% set link__attributes = link__attributes|default({}) %}
+
+{% set link__attributes = link__attributes|merge({
+  'data-link-style': link__style|default('underline'),
+  'class': bem(link__base_class, link__modifiers, link__blockname, link__additional_classes),
+  'href': link__url,
+}) %}
+
+{% if aria_label %}
+	{% set link__attributes = link__attributes|merge({
+    'aria-label': aria_label,
+  }) %}
+{% endif %}
+
+{% if link__external %}
+	{% set link__attributes = link__attributes|merge({
+    'target': '_blank',
+  }) %}
+{% endif %}
+
+{% block link__label %}{% endblock %}
+<a {{ add_attributes(link__attributes) }}> {% block link__prefix %}{% endblock %}
+
+	{% block link__content %}
+		{{- link__content -}}
+	{% endblock %}
+
+</a>

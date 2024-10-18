@@ -1,0 +1,74 @@
+/* Mixin - Transition */
+$transition-duration-base: 0.3s;
+$transition-timing-function-base: ease-in-out;
+
+@mixin transition(
+  $transition-property: all,
+  $transition-duration: $transition-duration-base,
+  $transition-timing-function: $transition-timing-function-base
+) {
+  & {
+    transition: $transition-property $transition-duration
+      $transition-timing-function;
+  }
+}
+
+// This animation is to remove hidden items from screen readers and
+// keyboard navigation, while maintaining the slow "close" effect.
+@mixin animate-show($speed: $transition-duration-base, $delay: 0ms) {
+  & {
+    animation: #{$speed} show;
+    animation-fill-mode: forwards;
+    animation-delay: $delay;
+  }
+
+  @keyframes show {
+    // Start visible at 0% to avoid an occasional "flash" when closing.
+    0% {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    2% {
+      visibility: visible;
+    }
+
+    100% {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+@mixin animate-hidden(
+  $speed: $transition-duration-base,
+  $hide-position: 'false'
+) {
+  @if $hide-position == 'true' {
+    animation: hidden, position-change;
+  } @else {
+    animation: hidden;
+  }
+
+  & {
+    animation-duration: #{$speed};
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes hidden {
+    // Start visible at 0% to avoid an occasional "flash" when closing.
+    0% {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    99% {
+      visibility: visible;
+    }
+
+    100% {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+}

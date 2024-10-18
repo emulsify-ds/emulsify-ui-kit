@@ -1,0 +1,39 @@
+{% set figure__base_class = 'figure' %}
+{% set image__link__base_class = image__link__base_class|default('link') %}
+
+{% set figure__attributes = {
+  class: bem(figure__base_class, figure__modifiers, figure__blockname),
+} %}
+
+{% if figure__caption %}
+  {% set figure__attributes = figure__attributes|merge({
+    'aria-label': figure__caption,
+  }) %}
+{% endif %}
+
+<figure {{ add_attributes(figure__attributes) }}>
+  {% if image__url %}
+    <a {{ bem(image__link__base_class, image__link__modifiers, image__link__blockname|default(figure__base_class)) }} href="{{ image__url }}">
+  {% endif %}
+    {% block figure__content %}
+      {% include "@components/image/_responsive-image.twig" with {
+        responsive_image__blockname: responsive_image__blockname|default(figure__blockname),
+      } %}
+    {% endblock %}
+  {% if image__url %}
+    </a>
+  {% endif %}
+
+  <figcaption {{ bem('figure__caption', figcaption__modifiers, figcaption__blockname|default(figure__blockname)) }}>
+    {% if figure__caption and figure__show_caption %}
+      <span {{ bem('caption', figcaption__modifiers, figcaption__blockname|default(figure__blockname)) }}>
+        {{ figure__caption }}
+      </span>
+    {% endif %}
+    {% if figure__copyright and figure__show_copyright %}
+      <span {{ bem('copyright', figcaption__modifiers, figcaption__blockname|default(figure__blockname)) }}>
+        {{ figure__copyright }}
+      </span>
+    {% endif %}
+  </figcaption>
+</figure>

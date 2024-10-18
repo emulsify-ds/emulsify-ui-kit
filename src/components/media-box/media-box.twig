@@ -1,0 +1,65 @@
+{#
+ # Available Props:
+ # - media_box__width: feature (default) or highlight
+ # - media_box__position: image-left (default) or image-right
+ # - media_box__focus: equal (default), image, or text
+ #
+ # Available variables:
+ # - media_box__heading
+ # - media_box__subheading (optional)
+ # - media_box__text
+ #
+ # Available blocks:
+ # - media_box__media
+ #}
+
+{% set media_box__base_class = 'media-box' %}
+{% set media_box__attributes = {
+  'class': bem(media_box__base_class, media_box__modifiers, media_box__blockname)
+} %}
+{% set media_box__container__modifiers = media_box__container__modifiers|default([]) %}
+
+{% set media_box %}
+  <div {{ add_attributes(media_box__attributes) }}>
+    {% block media_box__media %}
+      {% if media_box__type == 'image' %}
+        {% include "@components/image/image.twig" with {
+          output_image_tag: true,
+          image__show_caption: media_box__show_caption,
+          image__show_copyright: media_box__show_copyright,
+          image__sizes: '100vw',
+          image__src: 'https://picsum.photos/320/213',
+          image__srcset: 'https://picsum.photos/320/213 320w, https://picsum.photos/480/320 480w, https://picsum.photos/640/427 640w, https://picsum.photos/800/533 800w, https://picsum.photos/960/640 960w, https://picsum.photos/1120/747 1120w, https://picsum.photos/1280/853 1280w, https://picsum.photos/1440/960 1440w, https://picsum.photos/1600/1067 1600w, https://picsum.photos/1760/1173 1760w, https://picsum.photos/1920/1280 1920w, https://picsum.photos/2080/1387 2080w, https://picsum.photos/2240/1493 2240w, https://picsum.photos/2400/1600 2400w',
+          image__caption: media_box__caption,
+          image__copyright: media_box__copyright,
+        } %}
+      {% else %}
+        {% include "@components/video/video.twig" with {
+          video__type: 'html5',
+          video__urls: [
+            'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4',
+            'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-webm-file.webm'
+          ],
+          video__show_caption: media_box__show_caption,
+          video__show_copyright: media_box__show_copyright,
+          video__caption: media_box__caption,
+          video__copyright: media_box__copyright,
+          video__show_placeholder: true,
+        } %}
+      {% endif %}
+    {% endblock %}
+  </div>
+{% endset %}
+
+{# Render the accordion within a generic container #}
+{% embed "@layout/container/container.twig" with {
+  container__component_width: media_box__width,
+  container__component_alignment: 'center',
+  container__modifiers: media_box__container__modifiers,
+  container__heading: media_box__heading,
+  container__text: media_box__text,
+}%}
+	{% block container__content %}
+		{{ media_box }}
+	{% endblock %}
+{% endembed %}

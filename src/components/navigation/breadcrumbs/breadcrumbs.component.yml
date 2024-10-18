@@ -1,0 +1,24 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Breadcrumbs
+group: Components/Navigation
+status: stable
+props:
+  type: object
+  required:
+    - breadcrumb
+  properties:
+    breadcrumb:
+      type: array
+      title: Breadcrumb items
+      description: The items of the breadcrumb.
+      data:
+        - url: '#'
+          text: 'Home'
+        - url: '#'
+          text: 'Second Level Page'
+        - url: '#'
+          text: 'Third Level Page'
+        - url: '#'
+          text: 'Fourth Level Page'
+        - text: 'Current Page'

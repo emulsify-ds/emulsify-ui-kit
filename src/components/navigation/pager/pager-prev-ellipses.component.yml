@@ -1,0 +1,81 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Pager with Previous Ellipses
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - current
+    - ellipses
+    - items
+  properties:
+    current:
+      type: integer
+      title: Current Page
+      description: 'Specifies the current active page number'
+      data: 8
+    ellipses:
+      type: object
+      title: Ellipses Visibility
+      description: 'Specifies whether to display ellipses for the previous page navigation'
+      properties:
+        previous:
+          type: boolean
+          title: Show Previous Ellipsis
+          description: 'Determines whether to display an ellipsis for the previous page'
+          data: true
+    items:
+      type: object
+      title: Page Items
+      description: 'Specifies the links for page navigation'
+      properties:
+        previous:
+          type: object
+          title: Previous Page Link
+          properties:
+            href:
+              type: string
+              title: Previous Page URL
+              description: 'URL for the previous page'
+              data: '#'
+        pages:
+          type: object
+          title: Page Links
+          description: 'Links for the page numbers'
+          properties:
+            5:
+              type: object
+              properties:
+                href:
+                  type: string
+                  title: Page 5 URL
+                  data: '#'
+            6:
+              type: object
+              properties:
+                href:
+                  type: string
+                  title: Page 6 URL
+                  data: '#'
+            7:
+              type: object
+              properties:
+                href:
+                  type: string
+                  title: Page 7 URL
+                  data: '#'
+            8:
+              type: object
+              properties:
+                href:
+                  type: string
+                  title: Page 8 URL
+                  data: '#'
+            9:
+              type: object
+              properties:
+                href:
+                  type: string
+                  title: Page 9 URL
+                  data: '#'

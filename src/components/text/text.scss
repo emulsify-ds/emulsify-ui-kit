@@ -1,0 +1,104 @@
+@use '../../foundation/breakpoints/breakpoints' as *;
+@use '../../foundation/spacing/spacing' as *;
+@use '../../foundation/typography/typography' as *;
+@use '../typography/text/text' as *;
+@use '../typography/heading/heading.scss' as *;
+@use '../link/link' as *;
+
+.text,
+.ck {
+  margin: 0;
+  z-index: 1;
+  position: relative;
+  word-break: break-word;
+
+  &[data-text-position='left'] {
+    margin-right: auto;
+  }
+
+  &[data-text-position='center'] {
+    margin-inline: auto;
+  }
+
+  &[data-text-position='right'] {
+    margin-left: auto;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &.ck-editor__top.ck-reset_all {
+    position: relative;
+    z-index: 2;
+  }
+
+  // Paragraphs
+  p {
+    margin: 0;
+  }
+
+  p:not(:last-child) {
+    @extend %paragraph;
+  }
+
+  blockquote {
+    @extend %blockquote;
+  }
+
+  hr {
+    @extend %hr;
+  }
+
+  a {
+    @include link;
+  }
+
+  // Headings
+  h1 {
+    @extend %h1;
+  }
+
+  h2 {
+    @extend %h2;
+  }
+
+  h3 {
+    @extend %h3;
+  }
+
+  h4 {
+    @extend %h4;
+  }
+
+  h5 {
+    @extend %h5;
+  }
+
+  h6 {
+    @extend %h6;
+  }
+
+  // Lists
+  ul,
+  ol {
+    margin-bottom: var(--spacing-lg);
+    margin-left: var(--spacing-xl);
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  li {
+    margin-bottom: var(--spacing-lg);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

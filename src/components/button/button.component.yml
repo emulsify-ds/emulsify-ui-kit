@@ -1,0 +1,15 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Button
+group: Components
+status: stable
+props:
+  type: object
+  properties:
+    button__additional_classes:
+      type: array
+      title: Additional classes
+      description: Additional classes for button.
+      data:
+        - 'button--hover'
+        - 'button--focus'

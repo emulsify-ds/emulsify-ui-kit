@@ -1,0 +1,16 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Code
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - code_content
+  properties:
+    code_content:
+      type: string
+      title: Code Content
+      description: 'The code snippet to be displayed in a preformatted block.'
+      data: >
+        &lt;pre {{ bem(code_base_class, code_modifiers, code_blockname) }}&gt;<br/>    &lt;code {{ bem('content', [], code_base_class) }}&gt;<br/>     {% block code_content %}  <br/>       {{- code_content -}}<br/>     {% endblock %}<br/>    &lt;/code&gt;<br/>  &lt;/pre&gt;

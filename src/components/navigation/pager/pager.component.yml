@@ -1,0 +1,82 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Pager
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - current
+    - ellipses
+    - items
+  properties:
+    current:
+      type: integer
+      title: Current Page
+      description: 'Specifies the current active page number'
+      data: 3
+    ellipses:
+      type: object
+      title: Ellipses Visibility
+      description: 'Specifies whether to display ellipses for next and previous page navigation'
+      properties:
+        next:
+          type: boolean
+          title: Show Next Ellipsis
+          description: 'Determines whether to display an ellipsis for the next page'
+          data: false
+        prev:
+          type: boolean
+          title: Show Previous Ellipsis
+          description: 'Determines whether to display an ellipsis for the previous page'
+          data: false
+    items:
+      type: object
+      title: Pagination Items
+      description: 'Defines the pagination items with their respective links'
+      properties:
+        pages:
+          type: object
+          title: Page Links
+          description: 'Provides the href links for the pagination pages'
+          properties:
+            1:
+              type: object
+              properties:
+                href:
+                  type: string
+                  title: Page 1 Link
+                  description: 'Link for page 1'
+                  data: '#'
+            2:
+              type: object
+              properties:
+                href:
+                  type: string
+                  title: Page 2 Link
+                  description: 'Link for page 2'
+                  data: '#'
+            3:
+              type: object
+              properties:
+                href:
+                  type: string
+                  title: Page 3 Link
+                  description: 'Link for page 3'
+                  data: '#'
+            4:
+              type: object
+              properties:
+                href:
+                  type: string
+                  title: Page 4 Link
+                  description: 'Link for page 4'
+                  data: '#'
+            5:
+              type: object
+              properties:
+                href:
+                  type: string
+                  title: Page 5 Link
+                  description: 'Link for page 5'
+                  data: '#'

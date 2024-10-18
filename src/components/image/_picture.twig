@@ -1,0 +1,17 @@
+{% set picture__base_class = picture__base_class|default('picture') %}
+
+<div {{ bem(picture__base_class, picture__modifiers, picture__blockname) }}>
+{% block picture__content %}
+  <picture {{ bem(picture__base_class, picture__modifiers, picture__blockname) }}>
+    {% if sources %}
+      {% for source_attributes in sources %}
+        <source{{ source_attributes }}/>
+      {% endfor %}
+    {% endif %}
+    {# The controlling image, with the fallback image in srcset. #}
+    {% include "@components/image/_image.twig" with {
+      image__blockname: picture__image__blockname|default(picture__blockname),
+    } %}
+  </picture>
+{% endblock %}
+</div>

@@ -1,0 +1,31 @@
+{#
+ # Available Variables:
+ # - text__content - string with formatted HTML.
+ #
+ # Available Blocks:
+ # - text_content
+ #}
+
+{% set text_field__base_class = 'text' %}
+
+{% set text %}
+	{% block text_content %}
+		{{ text__content }}
+	{% endblock %}
+{% endset %}
+
+{# Render the text within a generic container #}
+{% embed "@layout/container/container.twig" with {
+  container__component_width: text__width|default('compressed'),
+  container__component_alignment: text__alignment|default('center'),
+  container__heading: text_field__heading,
+  container__text: text__text,
+	container__bg_color: text__bg_color,
+	container__modifiers: text_field__container_modifiers,
+}%}
+	{% block container__content %}
+		<div {{ bem('text', text__modifiers, text__block_name ) }}>
+			{{ text }}
+		</div>
+	{% endblock %}
+{% endembed %}

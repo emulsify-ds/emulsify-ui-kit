@@ -1,45 +1,122 @@
 {#
 /**
  * @file
- * Theme override to display primary and secondary local tasks.
+ * Theme override to display primary and tabs local tasks.
  *
  * Available variables:
  * - primary: HTML list items representing primary tasks.
- * - secondary: HTML list items representing primary tasks.
+ * - tabs: HTML list items representing primary tasks.
+ * - field_heading: Optional heading for the tabs component.
+ * - field_tabs: The collection of tabs with title and content.
+ * - field_tabs_display: Defines how the tabs will visually display.
  *
- * Each item in these variables (primary and secondary) can be individually
- * themed in menu-local-task.html.twig.
  */
 #}
+{% set tabs__base_class = 'tabs' %}
+{% set tabs__modifiers = tabs__modifiers|default([]) %}
+{% set tabs__display = tabs__display|default('horiztonal-plain') %}
 
-{# Drupal Specific #}
-{% if primary %}
-  <h2 class="visually-hidden">{{ 'Primary tabs'|t }}</h2>
-  <ul class="tabs__nav tabs__nav--local-tasks">{{ primary }}</ul>
-{% endif %}
-{% if secondary %}
-  <h2 class="visually-hidden">{{ 'Secondary tabs'|t }}</h2>
-  <ul>{{ secondary }}</ul>
+{# Create unique tab ids #}
+{% set tab_keys = tab_keys|default([]) %}
+{% if tab_keys|length == 0 %}
+	{% for key, tab in tab_items %}
+		{% set unique_id = random('1234567890') ~ random('1234567890') ~ random('1234567890') ~ random('1234567890') %}
+		{% set tab__id = 'tab' ~ '-' ~ unique_id %}
+		{% set tab_keys = tab_keys|merge({(loop.index - 1) : tab__id}) %}
+	{% endfor %}
 {% endif %}
 
-{# Component Library Specific (javascript version) #}
-{% if not primary %}
-{{ attach_library('emulsify/tabs') }}
-  <div id="tabs" class="tabs no-js">
-    <ul class="tabs__nav">
-      {% for key, tab in tabs %}
-        {% include "@components/tabs/_tab.twig" with {
-          tab_link: "#tab-" ~ key,
-          tab_text: tab.tab_text,
-        } %}
-      {% endfor %}
-    </ul>
-    {% for key, tab in tabs %}
-      <div class="tabs__tab{% if key == 0 %} is-active{% endif %}">
-        <div id="tab-{{ key }}" class="tabs__content">
-          <p>{{ tab.tab_content }}</p>
-        </div>
-      </div>
-    {% endfor %}
-  </div>
-{% endif %}
+{% set scroll_left %}
+{% embed "@components/button/button.twig" with {
+    button__content: true,
+    button__base_class: 'scroll',
+    button__blockname: tabs__base_class,
+    button__modifiers: ['left'],
+    button__attributes: {
+      'aria-hidden': 'true',
+      'tabindex': '-1',
+    },
+    button__icon: {
+      left: true,
+      name: 'chevronLeft',
+      decorative: true,
+    },
+    } %}
+	{% block button__content %}
+		<span {{ bem('visually-hidden') }}>Scroll Left</span>
+	{% endblock %}
+{% endembed %}
+{% endset %}
+
+{% set scroll_right %}
+{% embed "@components/button/button.twig" with {
+    button__content: true,
+    button__base_class: 'scroll',
+    button__blockname: tabs__base_class,
+    button__type: 'filled',
+    button__modifiers: ['right'],
+    button__attributes: {
+      'aria-hidden': 'true',
+      'tabindex': '-1',
+    },
+    button__icon: {
+      right: true,
+      name: 'chevronRight',
+      decorative: true,
+    },
+    } %}
+	{% block button__content %}
+		<span {{ bem('visually-hidden') }}>Scroll Right</span>
+	{% endblock %}
+{% endembed %}
+{% endset %}
+
+{% set tabs %}
+<div {{ bem(tabs__base_class, tabs__modifiers, tabs__blockname, ['no-js']) }} data-tabs-display="{{ tabs__display }}">
+	<div {{ bem('wrapper', tabs__modifiers, tabs__base_class) }}>
+		{{ scroll_left }}
+		<ul {{ bem('nav', [], tabs__base_class) }}>
+			{% for key, tab in tabs %}
+				{% set tab__name = tab.tab__label|lower|replace({' ': '-', '&': 'and'}) ~ '-' ~ key %}
+				{% include "@components/tabs/_tab-label.twig" with {
+					tab__base_class: 'tab',
+					tab__blockname: tabs__base_class,
+					tab__link: '#' ~ tab__name,
+					tab__id: tab__name ~ '-tab',
+					tab__label: tab.tab__label,
+					tab__icon: tab.tab__icon,
+				} %}
+			{% endfor %}
+		</ul>
+		{{ scroll_right }}
+	</div>
+	<div {{ bem('content', [], tabs__base_class)}}>
+		{% block tab__content %}
+			{% for key, tab in tabs %}
+				{% set tab__name = tab.tab__label|lower|replace({' ': '-', '&': 'and'}) ~ '-' ~ key %}
+				{% set current_class = key == 0 ? ' is-active' : '' %}
+				{% include "@components/tabs/_tab-content.twig" with {
+					tab__content__base_class: 'tab__content',
+					tab__content__blockname: tabs__base_class,
+					tab__base_class: 'tab',
+					tab__blockname: tabs__base_class,
+					tab__content__id: '#' ~ tab__name,
+					tab__content: tab.tab__content,
+				} %}
+			{% endfor %}
+		{% endblock %}
+	</div>
+</div>
+{% endset %}
+
+{% embed "@layout/container/container.twig" with {
+  container__component_width: container__component_width|default('extended'),
+  container__component_alignment: 'center',
+  container__heading: tabs__heading,
+  container__text: tabs__text,
+	container__theme: tab__component_theme,
+}%}
+	{% block container__content %}
+		{{ tabs }}
+	{% endblock %}
+{% endembed %}
