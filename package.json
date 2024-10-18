@@ -1,7 +1,7 @@
 {
-  "name": "compound",
-  "version": "0.0.0-development",
-  "description": "Compound is the default Emulsify system, and includes variants for the platforms that Emulsify supports.",
+  "name": "Emulsify UI Kit",
+  "version": "1.0.0",
+  "description": "Emulsify UI Kit is the default Emulsify system that include design token integration with Figma.",
   "main": "index.js",
   "type": "module",
   "scripts": {
