@@ -56,7 +56,7 @@
     ]
   },
   "dependencies": {
-    "@emulsify/core": "^2.2.1",
+    "@emulsify/core": "^2.2.3",
     "@percy/cli": "^1.28.2",
     "@percy/storybook": "^5.0.1"
   },

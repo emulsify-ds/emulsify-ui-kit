@@ -9,6 +9,16 @@ props:
     - accordion__item__heading
     - accordion__item__content
   properties:
+    accordion__heading:
+      type: string
+      title: Heading
+      description: The heading of the accordion item.
+      data: This is the heading for the entire accordion.
+    accordion__text:
+      type: string
+      title: Accordion item content
+      description: The content of the accordion item.
+      data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a condimentum justo, a consectetur lacus. Nullam sagittis dignissim tincidunt. Quisque et sodales erat.'
     accordion__item__heading:
       type: string
       title: Heading

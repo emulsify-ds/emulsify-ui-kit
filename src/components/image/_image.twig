@@ -1,16 +1,16 @@
-{% set image_base_class = image_base_class|default('image') %}
+{% set image__base_class = image__base_class|default('image') %}
 
 <img
-  {{ bem(image_base_class, image_modifiers, image_blockname) }}
-  {% if image_srcset %}
-    srcset="{{ image_srcset }}"
+  {{ bem(image__base_class, image__modifiers, image__blockname) }}
+  {% if image__srcset %}
+    srcset="{{ image__srcset }}"
   {% endif %}
-  {% if image_sizes %}
-    sizes="{{ image_sizes }}"
+  {% if image__sizes %}
+    sizes="{{ image__sizes }}"
   {% endif %}
-  src="{{ image_src }}"
-  alt="{{ image_alt }}"
-  {% if image_title %}
-    title="{{ image_title }}"
+  src="{{ image__src }}"
+  alt="{{ image__alt }}"
+  {% if image__title %}
+    title="{{ image__title }}"
   {% endif %}
 />
