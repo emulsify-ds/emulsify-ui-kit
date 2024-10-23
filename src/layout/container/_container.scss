@@ -136,7 +136,7 @@
   &--with-bg {
     @include section-padding(2);
 
-    & {
+    &:not(:has(.breadcrumbs__wrapper)) {
       background-color: var(--color-primary-lighter);
     }
   }

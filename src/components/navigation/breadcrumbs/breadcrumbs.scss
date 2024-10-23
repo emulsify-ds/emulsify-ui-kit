@@ -22,6 +22,8 @@
   &:not(:last-child)::after {
     content: '/';
     margin-left: var(--spacing-md);
+    color: var(--breadcrumb-text-default);
+    font-size: var(--font-size-x-small);
   }
 }
 
@@ -29,11 +31,6 @@
   display: flex;
   position: relative;
   z-index: 1;
-
-  @include breakpoint('medium') {
-    margin-left: calc(var(--spacing-lg) * -1);
-    margin-bottom: 0;
-  }
 }
 
 .breadcrumbs {

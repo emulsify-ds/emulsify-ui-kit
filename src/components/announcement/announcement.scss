@@ -1,14 +1,23 @@
 @use '../../foundation/typography/typography' as *;
+@use '../../foundation/breakpoints/breakpoints' as *;
 
 .announcement {
   display: flex;
-  align-items: center;
-  column-gap: var(--spacing-xl);
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: var(--spacing-lg);
   padding: var(--spacing-xl);
+
+  @include breakpoint('medium') {
+    flex-direction: row;
+    column-gap: var(--spacing-xl);
+    align-items: center;
+  }
 }
 
 .announcement__icon {
   width: 3.5rem;
+  height: 3.5rem;
 }
 
 .announcement__content {
