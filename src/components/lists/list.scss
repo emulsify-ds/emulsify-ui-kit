@@ -1,0 +1,12 @@
+@use '../../foundation/breakpoints/breakpoints' as *;
+@use '../../foundation/spacing/spacing' as *;
+@use '../../foundation/utility/utility' as *;
+
+ul,
+ol,
+dl {
+  @include list-reset;
+
+  margin-left: var(--spacing-md);
+  list-style-type: none;
+}

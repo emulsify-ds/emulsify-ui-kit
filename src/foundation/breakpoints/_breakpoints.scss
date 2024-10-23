@@ -1,0 +1,67 @@
+/**
+ * Breakpoint Configuration
+ * @see https://github.com/Team-Sass/breakpoint/wiki
+ *
+ */
+
+/////////////////////
+// Global Breakpoints
+@use 'sass:map';
+@use 'sass:meta';
+@use '../utility/rem-calc' as *;
+
+$xsmall: rem-calc(610);
+$small: rem-calc(767);
+$medium: rem-calc(1040);
+$large: rem-calc(1280);
+$xlarge: rem-calc(1640);
+$xxlarge: rem-calc(1920);
+$xxxlarge: rem-calc(2560);
+$xsmall-down: rem-calc(#{$small - 0.05});
+$small-down: rem-calc(#{$medium - 0.05});
+$medium-down: rem-calc(#{$large - 0.05});
+$breakpoints: (
+  'xsmall': (
+    min-width: #{$xsmall},
+  ),
+  'xsmall-down': (
+    max-width: #{$xsmall-down},
+  ),
+  'small': (
+    min-width: #{$small},
+  ),
+  'small-down': (
+    max-width: #{$small-down},
+  ),
+  'medium': (
+    min-width: #{$medium},
+  ),
+  'medium-down': (
+    max-width: #{$medium-down},
+  ),
+  'large': (
+    min-width: #{$large},
+  ),
+  'xlarge': (
+    min-width: #{$xlarge},
+  ),
+  'xxlarge': (
+    min-width: #{$xxlarge},
+  ),
+);
+
+/// Mixin to manage responsive breakpoints
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints map
+@mixin breakpoint($breakpoint) {
+  // If the key exists in the map
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media #{meta.inspect(map.get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  } @else {
+    /* stylelint-disable-next-line at-rule-no-unknown */
+
+    @error "Unfortunately, no value could be retrieved from `#{$breakpoint}`. Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}

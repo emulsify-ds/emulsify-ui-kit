@@ -1,0 +1,105 @@
+@use '../../foundation/typography/typography' as *;
+@use '../../foundation/breakpoints/breakpoints' as *;
+
+.announcement {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: var(--spacing-lg);
+  padding: var(--spacing-xl);
+
+  @include breakpoint('medium') {
+    flex-direction: row;
+    column-gap: var(--spacing-xl);
+    align-items: center;
+  }
+}
+
+.announcement__icon {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.announcement__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  .heading {
+    @include h4;
+
+    margin: 0 0 var(--spacing-md);
+    color: var(--color-primary-darker);
+  }
+
+  p {
+    margin: 0;
+    color: var(--color-text-body);
+    font-size: var(--font-size-small);
+  }
+}
+
+.announcement__action button {
+  font-size: var(--font-size-small);
+}
+
+.announcement-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--spacing-xl);
+}
+
+/* Variants -- Default style for announcements */
+.announcement--default {
+  background-color: var(--announcement-background-default);
+}
+
+.announcement--default .announcement__icon {
+  fill: var(--announcement-heading-default);
+}
+
+.announcement__content--default .heading {
+  color: var(--announcement-heading-default);
+}
+
+.announcement__content--default p {
+  color: var(--color-text-body);
+}
+
+/* Variants -- Light style for announcements */
+.announcement--light {
+  background-color: var(--announcement-background-light);
+}
+
+.announcement--light .announcement__icon {
+  fill: var(--announcement-heading-dark);
+}
+
+.announcement__content--light .heading {
+  color: var(--announcement-heading-dark);
+}
+
+.announcement__content--light p {
+  color: var(--color-text-body);
+}
+
+/* Variants -- Dark style for announcements */
+.announcement--dark {
+  background-color: var(--announcement-background-dark);
+}
+
+.announcement--dark .announcement__icon {
+  fill: var(--announcement-heading-light);
+}
+
+.announcement__content--dark p,
+.announcement__content--dark .heading {
+  color: var(--announcement-heading-light);
+}
+
+.announcement__action--dark button[data-button-style='primary'],
+.announcement__action--dark button[data-button-style='primary']:hover,
+.announcement__action--dark button[data-button-style='primary']:focus {
+  color: var(--announcement-heading-dark);
+  background-color: var(--announcement-background-light);
+}

@@ -1,0 +1,24 @@
+{% if image__show_caption or image__show_copyright %}
+  {% set image_media %}
+    {% block figure_content %}
+      {% include "@components/image/_responsive-image.twig" with {
+        responsive_image__blockname: responsive_image__blockname|default(figure__blockname),
+      } %}
+    {% endblock %}
+  {% endset %}
+
+  {% embed "@components/image/_figure.twig" with {
+    figure__caption: image__caption,
+    figure__copyright: image__copyright,
+    figure__show_caption: image__show_caption,
+    figure__show_copyright: image__show_copyright,
+  } %}
+    {% block figure__content %}
+      {{ image_media }}
+    {% endblock %}
+  {% endembed %}
+{% else %}
+  {% block responsive_image %}
+    {% include "@components/image/_responsive-image.twig" %}
+  {% endblock %}
+{% endif %}

@@ -13,15 +13,15 @@
 } %}
 
 <div {{ add_attributes(logo__attributes) }}>
-  {% embed "@components/links/link/link.twig" with {
-    link_base_class: 'logo__link',
-    link_url: logo__url|default('/'),
+  {% embed "@components/link/link.twig" with {
+    link__base_class: 'logo__link',
+    link__url: logo__url|default('/'),
   } %}
-    {% block link_content %}
-      {% include "@components/images/image/responsive-image.twig" with {
+    {% block link__content %}
+      {% include "@components/image/responsive-image.twig" with {
         output_image_tag: true,
-        image_src: directory ? '/' ~ directory ~ '/images/logo.png' : 'logo.png',
-        image_alt: 'Logo',
+        image__src: directory ? '/' ~ directory ~ '/assets/images/logo.png' : 'logo.png',
+        image__alt: 'Logo',
         responsive_image_blockname: 'logo',
       } %}
     {% endblock %}

@@ -20,18 +20,25 @@
   'class': bem('content', accordion__item__modifiers, accordion__item__base_class),
 }) %}
 
-{% set accordion__item__button__content %}
-{{ accordion__item__heading }}
-{% include "@components/icons/_icon.twig" with {
-    icon__name: 'chevron-down',
+{% if accordion__anchor %}
+	{% set accordion__item__attributes = accordion__item__attributes|merge({
+		'id': accordion__anchor,
+	}) %}
+{% endif %}
+
+{% set accordion__item__cta__content %}
+  {{ accordion__item__heading }}
+  {% include "@components/icons/_icon.twig" with {
+    icon__name: 'angle-down',
     icon__blockname: accordion__item__base_class,
     icon__decorative: true,
   } %}
 {% endset %}
 
 {% set accordion__item__heading__content %}
-{% include "@components/button/button.twig" with {
-    button__content: accordion__item__button__content,
+  {% include "@components/button/button.twig" with {
+    button__content: accordion__item__cta__content,
+    button__style: 'clean',
     button__base_class: 'toggle',
     button__additional_classes: ['js-accordion-item__toggle'],
     button__blockname: accordion__item__base_class,
@@ -42,15 +49,15 @@
 {% endset %}
 
 <div {{ add_attributes(accordion__item__attributes) }}>
-	{% include "@components/text/headings/_heading.twig" with {
+	{% include "@components/typography/heading/heading.twig" with {
     heading__level: accordion__item__heading__level|default('2'),
     heading__blockname: accordion__item__base_class,
     heading: accordion__item__heading__content,
   } %}
 	<div {{ add_attributes(accordion__item__content__attributes) }}>
 		{% block accordion__item__content %}
-			{% include "@components/text/text/01-paragraph.twig" with {
-        paragraph_content: accordion__item__content,
+			{% include "@components/typography/text/text.twig" with {
+        text__content: accordion__item__content,
       } %}
 		{% endblock %}
 	</div>
