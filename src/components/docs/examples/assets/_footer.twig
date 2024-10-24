@@ -1,12 +1,12 @@
 <footer class="footer">
 	<div class="footer-content">
 		{% include "@components/docs/examples/assets/_logo.twig" %}
-		{% embed "@components/menus/social-menu/social-menu.twig" with {
+		{% embed "@components/navigation/social/social.twig" with {
 			menu_modifiers: ['footer']	
 		}%}
 			{% block list__content %}
 				{% for item in data.social_menu_items %}
-					{% include "@components/menus/social-menu/_social-menu-item.twig" %}
+					{% include "@components/navigation/social/_social-item.twig" %}
 				{% endfor %}
 			{% endblock %}
 		{% endembed %}

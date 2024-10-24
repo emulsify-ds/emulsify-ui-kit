@@ -1,5 +1,5 @@
 @use '../../foundation/typography/typography' as *;
-@use '../links/link/link.scss' as *;
+@use '../link/link.scss' as *;
 
 .card {
   display: flex;
@@ -33,8 +33,6 @@
 }
 
 .card__subheading {
-  @include h4;
-
   & {
     color: var(--card-color-subheading);
     margin: 0 0 var(--spacing-md);

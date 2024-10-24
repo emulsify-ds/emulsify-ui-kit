@@ -1,39 +1,202 @@
-// @use '../../src/tokens/figma.tokens.json';
+@use 'sass:map';
+@use '../../foundation/motion/motion' as *;
 
-.button {
-  background-color: var(--button-color-bkg);
-  padding: var(--button-padding-y) var(--button-padding-x);
-  color: var(--button-color-label);
-  border-radius: var(--button-radius);
-  border: var(--button-border-width-border) solid var(--button-border-color);
-  font-size: var(--font-size-body);
-  font-weight: var(--button-font-weight-label);
-  text-transform: var(--button-text-case);
-  text-decoration: none;
-  text-align: center;
-  transition: all 0.15s;
+$button-styles: (
+  primary: (
+    text: var(--button-color-label),
+    text-hover: var(--button-color-label-hover),
+    text-inverse: var(--button-color-bkg),
+    text-inverse-hover: var(--button-color-label),
+    bg: var(--button-color-bkg),
+    bg-hover: var(--button-color-bkg-hover),
+    bg-inverse: var(--button-color-label),
+    bg-inverse-hover: var(--button-color-bkg),
+    border: var(--button-border-color),
+    border-hover: var(--button-border-color-hover),
+    border-inverse: var(--button-color-label),
+    border-inverse-hover: var(--button-border-color),
+  ),
+  clean: (
+    text: var(--link-color-default),
+    text-hover: var(--link-color-hover),
+    text-inverse: var(--button-color-label-hover),
+    text-inverse-hover: var(--button-color-label-hover),
+    bg: transparent,
+    bg-hover: transparent,
+    bg-inverse: transparent,
+    bg-inverse-hover: transparent,
+    border: transparent,
+    border-hover: transparent,
+    border-inverse: transparent,
+    border-inverse-hover: transparent,
+  ),
+  disabled: (
+    text: var(--color-grays-200),
+    text-hover: var(--color-grays-200),
+    text-inverse: var(--color-grays-800),
+    text-inverse-hover: var(--color-grays-800),
+    bg: var(--color-grays-500),
+    bg-hover: var(--color-grays-500),
+    bg-inverse: var(--color-grays-300),
+    bg-inverse-hover: var(--color-grays-300),
+    border: var(--color-grays-500),
+    border-hover: var(--color-grays-500),
+    border-inverse: var(--color-grays-300),
+    border-inverse-hover: var(--color-grays-300),
+  ),
+);
 
-  &:hover,
-  &.button--hover {
-    background-color: var(--button-color-bkg-hover);
-    padding: var(--button-padding-y-hover) var(--button-padding-x-hover);
-    border: var(--button-border-width-border-hover) solid
-      var(--button-border-color-hover);
-    color: var(--button-color-label-hover);
-    text-decoration: underline;
+// The button-base mixin contains styles that apply to all buttons
+// regardless of color or size.
+@mixin button-base {
+  @include transition;
+
+  & {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: var(--button-border-width-border) solid;
+    font-size: var(--font-size-body);
+    font-weight: var(--button-font-weight-label);
     text-transform: var(--button-text-case);
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    border-radius: var(--button-radius);
+    line-height: var(--line-height-relaxed);
   }
 
-  &:focus,
-  &.button--focus {
-    background-color: var(--button-color-bkg-focus);
-    padding: var(--button-padding-y-focus) var(--button-padding-x-focus);
-    color: var(--button-color-label-focus);
-    border: var(--button-border-width-border-focus) solid
-      var(--button-border-color-focus);
-    outline: var(--button-border-width-outline-focus) dotted
-      var(--button-border-color-focus);
-    text-transform: var(--button-text-case);
-    outline-offset: 0.125rem;
+  &[disabled],
+  &[data-button-style='disabled'] {
+    cursor: not-allowed;
+  }
+
+  > * {
+    pointer-events: none;
+  }
+}
+
+// Mixin to define colors for one or more schemes.
+// Simply pass a color scheme to the mixin to get the colors defined in the map.
+// e.g. @include button-color(primary) will get all of the colors defined in the
+// "primary" section, including 'contrast' colors when appropriate.
+@mixin button-color(
+  $scheme,
+  $palette: map.get($button-styles, $scheme),
+  $map: $button-styles
+) {
+  &,
+  &:visited {
+    color: map.get($palette, text);
+    background-color: map.get($palette, bg);
+    border-color: map.get($palette, border);
+    opacity: 1;
+  }
+
+  svg {
+    fill: map.get($palette, text);
+  }
+
+  &:hover,
+  &:focus {
+    color: map.get($palette, text-hover);
+    background-color: map.get($palette, bg-hover);
+    border-color: map.get($palette, border-hover);
+
+    svg {
+      fill: map.get($palette, text-hover);
+    }
+  }
+
+  [data-component-theme*='inverse'] & {
+    color: map.get($palette, text-inverse);
+    background-color: map.get($palette, bg-inverse);
+    border-color: map.get($palette, border-inverse);
+    opacity: 1;
+
+    svg {
+      fill: map.get($palette, text-inverse);
+    }
+
+    &:hover,
+    &:focus {
+      color: map.get($palette, text-inverse-hover);
+      background-color: map.get($palette, bg-inverse-hover);
+      border-color: map.get($palette, border-inverse-hover);
+
+      svg {
+        fill: map.get($palette, text-inverse-hover);
+      }
+    }
+  }
+
+  &[disabled],
+  &[data-button-style='disabled'] {
+    background-color: map.get($palette, bg);
+    border-color: map.get($palette, border);
+    color: map.get($palette, text);
+
+    [data-component-theme*='inverse'] & {
+      color: map.get($palette, text-inverse);
+      background-color: map.get($palette, bg-inverse);
+      border-color: map.get($palette, border-inverse);
+
+      &:hover,
+      &:focus {
+        color: map.get($palette, text-inverse-hover);
+        background-color: map.get($palette, bg-inverse-hover);
+        border-color: map.get($palette, border-inverse-hover);
+      }
+    }
+  }
+}
+
+// Button size variations
+@mixin button-size($size: null) {
+  & {
+    padding: var(--button-padding-y) var(--button-padding-x);
+  }
+}
+
+@mixin button($type: null) {
+  @include button-base;
+  @include button-size;
+
+  @if $type {
+    @include button-color($type);
+  }
+
+  @each $scheme, $style in $button-styles {
+    &[data-button-style='#{$scheme}'] {
+      @include button-color($scheme);
+    }
+  }
+}
+
+.button {
+  @include button;
+
+  &:hover:is(a),
+  &:focus:is(a) {
+    text-decoration: underline;
+  }
+
+  &[data-button-alignment='right'] {
+    > [class*='__content'] {
+      margin-right: var(--spacing-md);
+    }
+  }
+
+  &[data-button-alignment='left'] {
+    > [class*='__content'] {
+      margin-left: var(--spacing-md);
+    }
+  }
+
+  svg {
+    display: block;
+    width: var(--size-xl);
+    max-height: var(--size-xl);
   }
 }
