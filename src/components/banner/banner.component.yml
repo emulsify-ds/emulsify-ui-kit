@@ -1,0 +1,74 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Banner
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - banner__title
+    - banner__content
+    - banner__button_text
+    - banner__button_url
+  properties:
+    banner__title:
+      type: string
+      title: Title
+      description: 'Specifies the title of the banner'
+      data: 'This is the banner title'
+    banner__content:
+      type: string
+      title: Content
+      description: 'Specifies the main content of the banner'
+      data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+    banner__button_text:
+      type: string
+      title: Button Text
+      description: 'Specifies the text displayed on the button'
+      data: 'Learn More'
+    banner__button_url:
+      type: string
+      title: Button URL
+      description: 'Specifies the URL the button will link to'
+      data: '#'
+    banner__background_image:
+      type: string
+      title: Background Image
+      description: 'Specifies the URL of the background image for the banner. Either this or banner__video should be provided.'
+      data: 'https://example.com/path/to/background-image.jpg'
+    banner__video:
+      type: string
+      title: Video URL
+      description: 'Specifies the URL of the video to be displayed. Either this or banner__background_image should be provided.'
+      data: ''
+    banner__alignment:
+      type: string
+      title: Alignment
+      description: 'Specifies the alignment of the content within the banner. Options include: left, center, right.'
+      enum:
+        - left
+        - center
+      data: 'center'
+  example:
+    - banner__title: 'THIS IS A BANNER HEADING'
+      banner__content: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>'
+      banner__button_text: 'this is a link'
+      banner__button_url: '#'
+      banner__background_image: ''
+    - banner__title: 'THIS IS A BANNER HEADING'
+      banner__content: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>'
+      banner__button_text: 'this is a link'
+      banner__button_url: '#'
+      banner__video: ''
+    - banner__title: 'THIS IS A BANNER HEADING'
+      banner__content: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>'
+      banner__button_text: 'this is a link'
+      banner__button_url: '#'
+      banner__background_image: ''
+      banner__alignment: 'center'
+    - banner__title: 'THIS IS A BANNER HEADING'
+      banner__content: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>'
+      banner__button_text: 'this is a link'
+      banner__button_url: '#'
+      banner__video: ''
+      banner__alignment: 'center'
