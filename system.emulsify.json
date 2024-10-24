@@ -13,36 +13,154 @@
       "platform": "drupal",
       "structureImplementations": [
         {
-          "name": "foundation",
-          "directory": "./src/foundation/"
-        },
-        {
-          "name": "layout",
-          "directory": "./src/layout/"
-        },
-        {
           "name": "components",
           "directory": "./src/components/"
         }
       ],
+      "directories": [
+        {
+          "name": "foundation",
+          "path": "./src/foundation",
+          "destinationPath": "./src/foundation",
+          "description": "Contains foundational sass functions for all components."
+        },
+        {
+          "name": "layout",
+          "path": "./src/layout",
+          "destinationPath": "./src/layout",
+          "description": "Contains base layout components"
+        },
+        {
+          "name": "tokens",
+          "path": "./src/tokens",
+          "destinationPath": "./src/tokens",
+          "description": "Contains all the token stories"
+        },
+        {
+          "name": "util",
+          "path": "./src/util",
+          "destinationPath": "./src/util",
+          "description": "Various helper scripts for constructing stories"
+        }
+      ],
       "components": [
         {
-          "name": "images",
+          "name": "accordion",
+          "structure": "components",
+          "dependency": ["button", "container", "icons", "typography"]
+        },
+        {
+          "name": "announcement",
+          "structure": "components",
+          "dependency": ["button", "icons", "typography"]
+        },
+        {
+          "name": "audio-player",
+          "structure": "components",
+          "dependency": []
+        },
+        {
+          "name": "blockquote",
+          "structure": "components",
+          "dependency": ["typography"]
+        },
+        {
+          "name": "button",
+          "structure": "components",
+          "required": true,
+          "dependency": ["icons"]
+        },
+        {
+          "name": "card",
+          "structure": "components",
+          "required": true,
+          "dependency": ["link", "image", "typography"]
+        },
+        {
+          "name": "forms",
           "structure": "components",
           "required": true,
           "dependency": []
         },
         {
-          "name": "links",
+          "name": "icons",
           "structure": "components",
           "required": true,
           "dependency": []
+        },
+        {
+          "name": "image",
+          "structure": "components",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "link",
+          "structure": "components",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "lists",
+          "structure": "components",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "logo",
+          "structure": "components",
+          "dependency": ["link", "image"]
+        },
+        {
+          "name": "media-box",
+          "structure": "components",
+          "dependency": ["container", "image", "video"]
+        },
+        {
+          "name": "navigation",
+          "structure": "components",
+          "required": true,
+          "dependency": ["button", "link", "list", "icons"]
+        },
+        {
+          "name": "status",
+          "structure": "components",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "tables",
+          "structure": "components",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "tabs",
+          "structure": "components",
+          "dependency": ["button", "container"]
         },
         {
           "name": "text",
           "structure": "components",
           "required": true,
-          "dependency": ["links"]
+          "dependency": ["container"]
+        },
+        {
+          "name": "text-with-image",
+          "structure": "components",
+          "dependency": ["container", "image", "link", "typography"]
+        },
+        {
+          "name": "typography",
+          "structure": "components",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "video",
+          "structure": "components",
+          "required": true,
+          "dependency": []
         }
       ]
     }
