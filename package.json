@@ -1,6 +1,6 @@
 {
   "name": "Emulsify UI Kit",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Emulsify UI Kit is the default Emulsify system that include design token integration with Figma.",
   "main": "index.js",
   "type": "module",
