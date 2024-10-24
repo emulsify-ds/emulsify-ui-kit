@@ -55,6 +55,96 @@
           "path": "./config/sd.config.json",
           "destinationPath": "./config/sd.config.json",
           "description": "Style Dictionary configuration"
+        },
+        {
+          "name": "icon-angle-down",
+          "path": "./assets/icons/angle-down.svg",
+          "destinationPath": "./assets/icons/angle-down.svg",
+          "description": "Icon - Angle Down"
+        },
+        {
+          "name": "icon-arrow-left",
+          "path": "./assets/icons/arrowLeft.svg",
+          "destinationPath": "./assets/icons/arrowLeft.svg",
+          "description": "Icon - Arrow Left"
+        },
+        {
+          "name": "icon-arrow-right",
+          "path": "./assets/icons/arrowRight.svg",
+          "destinationPath": "./assets/icons/arrowRight.svg",
+          "description": "Icon - Arrow Right"
+        },
+        {
+          "name": "icon-chevron-down",
+          "path": "./assets/icons/chevron-down.svg",
+          "destinationPath": "./assets/icons/chevron-down.svg",
+          "description": "Icon - Chevron Down"
+        },
+        {
+          "name": "icon-chevron-left",
+          "path": "./assets/icons/chevronLeft.svg",
+          "destinationPath": "./assets/icons/chevronLeft.svg",
+          "description": "Icon - Chevron Left"
+        },
+        {
+          "name": "icon-chevron-right",
+          "path": "./assets/icons/chevronRight.svg",
+          "destinationPath": "./assets/icons/chevronRight.svg",
+          "description": "Icon - Chevron Right"
+        },
+        {
+          "name": "icon-circle-info",
+          "path": "./assets/icons/circle-info.svg",
+          "destinationPath": "./assets/icons/circle-info.svg",
+          "description": "Icon - Circle Info"
+        },
+        {
+          "name": "icon-facebook",
+          "path": "./assets/icons/facebook.svg",
+          "destinationPath": "./assets/icons/facebook.svg",
+          "description": "Icon - Facebook"
+        },
+        {
+          "name": "icon-instagram",
+          "path": "./assets/icons/instagram.svg",
+          "destinationPath": "./assets/icons/instagram.svg",
+          "description": "Icon - Instagram"
+        },
+        {
+          "name": "icon-linkedin",
+          "path": "./assets/icons/linkedin.svg",
+          "destinationPath": "./assets/icons/linkedin.svg",
+          "description": "Icon - Linkedin"
+        },
+        {
+          "name": "icon-menu-close",
+          "path": "./assets/icons/menu-close.svg",
+          "destinationPath": "./assets/icons/menu-close.svg",
+          "description": "Icon - Menu Close"
+        },
+        {
+          "name": "icon-menu",
+          "path": "./assets/icons/menu.svg",
+          "destinationPath": "./assets/icons/menu.svg",
+          "description": "Icon - Menu"
+        },
+        {
+          "name": "icon-star-solid",
+          "path": "./assets/icons/star-solid.svg",
+          "destinationPath": "./assets/icons/star-solid.svg",
+          "description": "Icon - Star Solid"
+        },
+        {
+          "name": "icon-triangle-exclamation",
+          "path": "./assets/icons/triangle-exclamation.svg",
+          "destinationPath": "./assets/icons/triangle-exclamation.svg",
+          "description": "Icon - Triangle Exclamation"
+        },
+        {
+          "name": "icon-twitter",
+          "path": "./assets/icons/twitter.svg",
+          "destinationPath": "./assets/icons/twitter.svg",
+          "description": "Icon - Twitter"
         }
       ],
       "components": [
