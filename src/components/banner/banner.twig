@@ -15,8 +15,8 @@
 {{ attach_library('emulsify/banner') }}
 
 {% set banner__base_class = 'banner' %}
+{% set banner__attributes = banner__attributes|default({}) %}
 {% set banner__alignment = banner__alignment|default('left') %}
-{% set additional_attributes = additional_attributes|default() %}
 {% set has_image = not banner__video and banner__background_image %}
 {% set banner__modifiers = banner__modifiers|default([])|merge([banner__alignment]) %}
 
@@ -24,8 +24,11 @@
   {% set banner__modifiers = banner__modifiers|merge(['has-image']) %}
 {% endif %}
 
+{% set banner__attributes = {
+  'class': bem(banner__base_class, banner__modifiers, banner__blockname)
+} %}
+
 <div 
-  {{ bem(banner__base_class, banner__modifiers) }} 
   {{ add_attributes(additional_attributes) }}
   style="{% if has_image %}background-image: url('{{ banner__background_image }}');{% endif %}"
 >
@@ -58,7 +61,7 @@
   {# Render the main content #}
   <div {{ bem('content', [banner__alignment], banner__base_class) }}>
     {% if banner__title %}
-      {% include "@components/text/headings/heading.twig" with {
+      {% include "@components/typography/heading/heading.twig" with {
         heading__level: banner__heading__level|default('4'),
         heading: banner__title,
       } %}
