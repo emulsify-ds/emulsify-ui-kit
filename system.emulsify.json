@@ -43,6 +43,20 @@
           "description": "Various helper scripts for constructing stories"
         }
       ],
+      "files": [
+        {
+          "name": "configma",
+          "path": "./config/configma.json",
+          "destinationPath": "./config/configma.json",
+          "description": "Figma configuration file"
+        },
+        {
+          "name": "sd.config",
+          "path": "./config/sd.config.json",
+          "destinationPath": "./config/sd.config.json",
+          "description": "Style Dictionary configuration"
+        }
+      ],
       "components": [
         {
           "name": "accordion",
