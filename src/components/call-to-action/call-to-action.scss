@@ -1,0 +1,39 @@
+@use '../../foundation/breakpoints/breakpoints' as *;
+@use '../../foundation/typography/typography' as *;
+
+.call-to-action {
+  text-align: center;
+  padding: var(--spacing-2xl);
+  margin-block: var(--spacing-2xl);
+
+  &[data-component-theme='light-blue-bg'] {
+    background-color: var(--color-emulsify-blue-300);
+  }
+}
+
+.call-to-action__overline {
+  text-transform: uppercase;
+  font-weight: var(--font-weight-primary-bold);
+  color: var(--cta-color-eyebrow);
+}
+
+.call-to-action__heading {
+  @include h2;
+
+  margin: 0;
+  color: var(--cta-color-heading);
+}
+
+.call-to-action__content {
+  @include h5;
+
+  display: flex;
+  flex-flow:  column nowrap;
+  gap: 1rem;
+  color: var(--cta-color-body);
+  width: 100%;
+  max-width: 76ch;
+  font-weight: var(--font-weight-primary-regular);
+  line-height: var(--line-height-normal);
+  margin: 0 auto;
+}
