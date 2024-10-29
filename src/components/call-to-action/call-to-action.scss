@@ -25,15 +25,19 @@
 }
 
 .call-to-action__content {
-  @include h5;
-
   display: flex;
   flex-flow:  column nowrap;
-  gap: 1rem;
+  gap: 2rem;
   color: var(--cta-color-body);
   width: 100%;
+  margin: 0 auto;
   max-width: 76ch;
+}
+
+
+.call-to-action__text {
+  @include h4;
+
   font-weight: var(--font-weight-primary-regular);
   line-height: var(--line-height-normal);
-  margin: 0 auto;
 }
