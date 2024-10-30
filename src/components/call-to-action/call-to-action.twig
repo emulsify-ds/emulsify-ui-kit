@@ -1,16 +1,13 @@
 {#
  # Available Props:
- # - call_to_action__width: feature (default) or highlight
- # - call_to_action__position: image-left (default) or image-right
- # - call_to_action__focus: equal (default), image, or text
+ # - call_to_action__theme: white-bg (default), light-blue-bg
  #
  # Available variables:
  # - call_to_action__heading
- # - call_to_action__subheading (optional)
+ # - call_to_action__overline(optional)
  # - call_to_action__text
- #
- # Available blocks:
- # - call_to_action__image
+ # - call_to_action__button__text
+ # - call_to_action__button__url
  #}
 
 {% set call_to_action__base_class = 'call-to-action' %}
@@ -19,12 +16,6 @@
   'data-component-theme': call_to_action__theme|default('white-bg'),
   'class': bem(call_to_action__base_class, call_to_action__modifiers, call_to_action__blockname)
 } %}
-
-{% if call_to_action__copyright %}
-  {% set call_to_action__copyright_credit = '<p>' ~ call_to_action__copyright ~ '</p>'%}
-{% endif %}
-
-{% set text_content__image = call_to_action__caption ~ call_to_action__copyright_credit %}
 
 <div {{ add_attributes(call_to_action__attributes) }}>
   {# Content #}
@@ -46,10 +37,12 @@
       } %}
     {% endif %}
     {# Text #}
-    {% include "@components/typography/text/text.twig" with {
-      text__content: call_to_action__text,
-      text__blockname: call_to_action__base_class,
-    } %}
+    {% if call_to_action__text %}
+      {% include "@components/typography/text/text.twig" with {
+        text__content: call_to_action__text,
+        text__blockname: call_to_action__base_class,
+      } %}
+    {% endif %}
     {# optional link #}
     {# Render the action button #}
       {% if call_to_action__button__text and call_to_action__button__url %}
