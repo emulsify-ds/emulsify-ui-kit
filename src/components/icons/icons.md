@@ -34,8 +34,8 @@ Complex (BEM classes):
 
 ```
 {% include "@atoms/04-images/icons/_icon.twig" with {
-  icon_base_class: 'toggle',
-  icon_blockname: 'main-nav',
+  icon__base_class: 'toggle',
+  icon__blockname: 'main-nav',
   icon__name: 'menu',
 } %}
 ```

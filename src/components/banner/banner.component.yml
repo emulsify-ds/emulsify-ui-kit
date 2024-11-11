@@ -8,8 +8,8 @@ props:
   required:
     - banner__title
     - banner__content
-    - banner__button_text
-    - banner__button_url
+    - banner__button__content
+    - banner__button__url
   properties:
     banner__title:
       type: string
@@ -21,25 +21,30 @@ props:
       title: Content
       description: 'Specifies the main content of the banner'
       data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    banner__button_text:
+    banner__button__content:
       type: string
-      title: Button Text
+      title: Button Content
       description: 'Specifies the text displayed on the button'
       data: 'Learn More'
-    banner__button_url:
+    banner__button__url:
       type: string
       title: Button URL
       description: 'Specifies the URL the button will link to'
       data: '#'
-    banner__background_image:
+    banner__image__src:
       type: string
-      title: Background Image
-      description: 'Specifies the URL of the background image for the banner. Either this or banner__video should be provided.'
-      data: 'https://example.com/path/to/background-image.jpg'
+      title: Image's source
+      description: The image's source of the banner.
+      data: 'https://placehold.co/400'
+    banner__image__alt:
+      type: string
+      title: Image's alternative text
+      description: The image's alternative text of the banner.
+      data: 'This is the card image alt text'
     banner__video:
       type: string
       title: Video URL
-      description: 'Specifies the URL of the video to be displayed. Either this or banner__background_image should be provided.'
+      description: 'Specifies the URL of the video to be displayed. Either this or banner__image should be provided.'
       data: ''
     banner__alignment:
       type: string
@@ -52,23 +57,27 @@ props:
   example:
     - banner__title: 'THIS IS A BANNER HEADING'
       banner__content: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>'
-      banner__button_text: 'this is a link'
-      banner__button_url: '#'
-      banner__background_image: ''
+      banner__button__content: 'this is a link'
+      banner__button__url: '#'
+      banner__image__src: 'https://picsum.photos/890/215'
+      banner__image__alt: "This is the banner image's alt text"
     - banner__title: 'THIS IS A BANNER HEADING'
       banner__content: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>'
-      banner__button_text: 'this is a link'
-      banner__button_url: '#'
-      banner__video: ''
+      banner__button__content: 'this is a link'
+      banner__button__url: '#'
+      banner__videos:
+        - 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4'
+        - 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-webm-file.webm'
     - banner__title: 'THIS IS A BANNER HEADING'
       banner__content: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>'
-      banner__button_text: 'this is a link'
-      banner__button_url: '#'
-      banner__background_image: ''
+      banner__button__content: 'this is a link'
+      banner__button__url: '#'
+      banner__image__src: 'https://picsum.photos/890/215'
+      banner__image__alt: "This is the banner image's alt text"
       banner__alignment: 'center'
     - banner__title: 'THIS IS A BANNER HEADING'
       banner__content: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>'
-      banner__button_text: 'this is a link'
-      banner__button_url: '#'
-      banner__video: ''
+      banner__button__content: 'this is a link'
+      banner__button__url: '#'
+      banner__videos: ''
       banner__alignment: 'center'

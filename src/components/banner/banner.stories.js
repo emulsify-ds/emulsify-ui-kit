@@ -1,7 +1,6 @@
 import bannerTwig from './banner.twig';
 import { props } from './banner.component.yml';
-import bannerVideo from '../../../assets/audio/video-placeholder.mp4';
-import bannerImage from '../../../assets/images/example/banner-image.jpg';
+
 import './banner';
 
 export default {
@@ -12,18 +11,7 @@ export default {
   ],
 };
 
-function getBannerData(data) {
-  const newData = Object.assign({}, data);
-  if (data && typeof data === 'object' && 'banner__video' in data) {
-    newData.banner__video = bannerVideo;
-  }
-  if (data && typeof data === 'object' && 'banner__background_image' in data) {
-    newData.banner__background_image = bannerImage;
-  }
-  return newData;
-}
-
 export const Banner = () =>
   `<div class="banner-list">${props.example
-    .map((data) => bannerTwig(getBannerData(data)))
+    .map((data) => bannerTwig(data))
     .join('')}</div>`;
