@@ -6,78 +6,38 @@ status: stable
 props:
   type: object
   required:
-    - banner__title
-    - banner__content
-    - banner__button__content
-    - banner__button__url
+    - banner__heading
+    - banner__text
   properties:
-    banner__title:
+    banner__heading:
       type: string
       title: Title
       description: 'Specifies the title of the banner'
-      data: 'This is the banner title'
-    banner__content:
+      data: 'THIS IS A BANNER HEADING'
+    banner__text:
       type: string
       title: Content
       description: 'Specifies the main content of the banner'
-      data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    banner__button__content:
+      data: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>'
+    banner__link:
       type: string
-      title: Button Content
-      description: 'Specifies the text displayed on the button'
-      data: 'Learn More'
-    banner__button__url:
-      type: string
-      title: Button URL
-      description: 'Specifies the URL the button will link to'
-      data: '#'
-    banner__image__src:
+      title: Link Content
+      description: 'Specifies the text displayed on the link'
+      data: 'this is a link'
+    banner__image:
       type: string
       title: Image's source
       description: The image's source of the banner.
-      data: 'https://placehold.co/400'
-    banner__image__alt:
-      type: string
-      title: Image's alternative text
-      description: The image's alternative text of the banner.
-      data: 'This is the card image alt text'
+      data: 'https://picsum.photos/1480/360'
     banner__video:
       type: string
       title: Video URL
       description: 'Specifies the URL of the video to be displayed. Either this or banner__image should be provided.'
-      data: ''
+      data:
+        - 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4'
+        - 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-webm-file.webm'
     banner__alignment:
       type: string
       title: Alignment
       description: 'Specifies the alignment of the content within the banner. Options include: left, center, right.'
-      enum:
-        - left
-        - center
-      data: 'center'
-  example:
-    - banner__title: 'THIS IS A BANNER HEADING'
-      banner__content: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>'
-      banner__button__content: 'this is a link'
-      banner__button__url: '#'
-      banner__image__src: 'https://picsum.photos/890/215'
-      banner__image__alt: "This is the banner image's alt text"
-    - banner__title: 'THIS IS A BANNER HEADING'
-      banner__content: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>'
-      banner__button__content: 'this is a link'
-      banner__button__url: '#'
-      banner__videos:
-        - 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4'
-        - 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-webm-file.webm'
-    - banner__title: 'THIS IS A BANNER HEADING'
-      banner__content: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>'
-      banner__button__content: 'this is a link'
-      banner__button__url: '#'
-      banner__image__src: 'https://picsum.photos/890/215'
-      banner__image__alt: "This is the banner image's alt text"
-      banner__alignment: 'center'
-    - banner__title: 'THIS IS A BANNER HEADING'
-      banner__content: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>'
-      banner__button__content: 'this is a link'
-      banner__button__url: '#'
-      banner__videos: ''
-      banner__alignment: 'center'
+      data: 'left'
