@@ -1,7 +1,7 @@
 import video from './video.twig';
 
-import { props as videoEmbedProps } from './video-embed.component.yml';
-import { props as videoHTML5Props } from './video-html5.component.yml';
+import { props as videoEmbedProps } from './video-embed.yml';
+import { props as videoHTML5Props } from './video-html5.yml';
 
 import { mapDataToTwig } from '../../util/dataTransformers';
 import './video-embed';
