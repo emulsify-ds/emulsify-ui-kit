@@ -78,8 +78,8 @@
   --main-menu-color-dropdown-label: #0080b7;
   --main-menu-color-dropdown-label-hover: #006089;
   --link-color-default: #005f89;
-  --link-color-inverse: #fff;
   --link-color-hover: #00202e;
+  --link-color-inverse: #fff;
   --link-color-inverse-hover: #9ce1ff;
   --link-body: [object Object];
   --input-gap: 0.5rem;
@@ -100,7 +100,7 @@
   --footer-heading-dark: #0080b7;
   --footer-icon-default: #9ce1ff;
   --footer-icon-dark: #0080b7;
-  --fieldset-color-bg: white;
+  --fieldset-color-bg: #fff;
   --fieldset-color-border: #a9afb1;
   --fieldset-color-label: #00202e;
   --radius-fieldset: 0.25rem;
@@ -146,10 +146,10 @@
   --button-radius: 0.25rem;
   --button-radius-hover: 0.25rem;
   --button-radius-focus: 0.25rem;
-  --button-border-width-outline-focus: 2px;
-  --button-border-width-border: 2px;
-  --button-border-width-border-hover: 2px;
-  --button-border-width-border-focus: 2px;
+  --button-border-width-outline-focus: 1px;
+  --button-border-width-border: 1px;
+  --button-border-width-border-hover: 1px;
+  --button-border-width-border-focus: 1px;
   --button-text-case: uppercase;
   --button-border-color: #005f89;
   --button-border-color-hover: #00405b;

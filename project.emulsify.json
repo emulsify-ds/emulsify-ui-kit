@@ -12,8 +12,12 @@
     "checkout": "main"
   },
   "variant": {
-    "platform": "",
+    "platform": "drupal",
     "structureImplementations": [
+      {
+        "name": "components",
+        "directory": "./src/components/"
+      },
       {
         "name": "foundation",
         "directory": "./src/foundation/"
@@ -23,8 +27,8 @@
         "directory": "./src/layout/"
       },
       {
-        "name": "components",
-        "directory": "./src/components/"
+        "name": "tokens",
+        "directory": "./src/tokens/"
       }
     ]
   }

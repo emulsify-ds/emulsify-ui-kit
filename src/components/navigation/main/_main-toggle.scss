@@ -1,7 +1,5 @@
 @use '../../../foundation/breakpoints/breakpoints' as *;
 @use '../../../foundation/motion/motion' as *;
-@use '../../../foundation/functions/color' as *;
-@use '../../../foundation/spacing/spacing' as *;
 @use '../../../foundation/utility/utility' as *;
 
 .main-nav__toggle {
@@ -72,6 +70,7 @@
 
     @include breakpoint('medium') {
       top: var(--spacing-md);
+      right: var(--spacing-lg);
     }
 
     @include breakpoint('small-down') {
@@ -142,6 +141,13 @@
       .icon {
         transform: rotate(180deg);
       }
+    }
+  }
+
+  .main-nav__item--level-1.main-nav__item--with-sub & {
+    .icon {
+      height: var(--size-lg);
+      width: var(--size-lg);
     }
   }
 }

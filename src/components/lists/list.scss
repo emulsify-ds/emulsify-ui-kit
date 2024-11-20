@@ -1,25 +1,12 @@
+@use '../../foundation/breakpoints/breakpoints' as *;
+@use '../../foundation/spacing/spacing' as *;
 @use '../../foundation/utility/utility' as *;
 
-ul {
+ul,
+ol,
+dl {
   @include list-reset;
 
-  line-height: var(--line-height-normal);
-  margin-bottom: var(--spacing-lg);
-  padding-left: var(--spacing-lg);
-  list-style-type: disc;
-}
-
-ol {
-  @include list-reset;
-
-  line-height: var(--line-height-normal);
-  margin-bottom: var(--spacing-lg);
-  padding-left: var(--spacing-lg);
-  list-style-type: decimal;
-}
-
-.text-field {
-  li {
-    padding-left: var(--spacing-sm);
-  }
+  margin-left: var(--spacing-md);
+  list-style-type: none;
 }
