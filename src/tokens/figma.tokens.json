@@ -2520,6 +2520,30 @@
       }
     }
   },
+  "components/tooltip": {
+    "tooltip": {
+      "background": {
+        "dark": {
+          "value": "{color.grays.900}",
+          "type": "color"
+        },
+        "light": {
+          "value": "{color.grays.200}",
+          "type": "color"
+        }
+      },
+      "icon": {
+        "color": {
+          "value": "{color.text.white}",
+          "type": "color"
+        },
+        "background": {
+          "value": "{color.primary.dark}",
+          "type": "color"
+        }
+      }
+    }
+  },
   "storybook": {
     "colors": {
       "sb": {
@@ -2787,7 +2811,8 @@
         "components/banner": "enabled",
         "components/footer": "enabled",
         "components/header": "enabled",
-        "components/utilityMenu": "disabled"
+        "components/utilityMenu": "enabled",
+        "components/tooltip": "enabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:16908",
       "$figmaModeId": "23237:10",
@@ -2975,8 +3000,7 @@
       "name": "Emulsify Global",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "global": "enabled",
-        "components/utilityMenu": "disabled"
+        "global": "enabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17089",
       "$figmaModeId": "23237:11",
@@ -3028,8 +3052,7 @@
       "name": "Emulsify Semantic",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "semantic": "enabled",
-        "components/utilityMenu": "disabled"
+        "semantic": "enabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17133",
       "$figmaModeId": "23237:12",
@@ -3051,8 +3074,7 @@
       "name": "Emulsify Storybook only",
       "$figmaStyleReferences": {},
       "selectedTokenSets": {
-        "storybook": "source",
-        "components/utilityMenu": "disabled"
+        "storybook": "source"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17144",
       "$figmaModeId": "23237:13",
@@ -3081,7 +3103,8 @@
         "components/table": "enabled",
         "components/tabs": "enabled",
         "components/textField": "enabled",
-        "components/utilityMenu": "disabled"
+        "components/utilityMenu": "enabled",
+        "components/tooltip": "enabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17145",
       "$figmaModeId": "23237:14",
@@ -3235,7 +3258,8 @@
         "components/tabs": "enabled",
         "components/textField": "enabled",
         "semantic": "enabled",
-        "components/utilityMenu": "disabled"
+        "components/utilityMenu": "enabled",
+        "components/tooltip": "enabled"
       },
       "group": "WUP"
     },
@@ -3263,7 +3287,8 @@
         "components/table": "enabled",
         "components/tabs": "enabled",
         "components/textField": "enabled",
-        "components/utilityMenu": "disabled"
+        "components/utilityMenu": "enabled",
+        "components/tooltip": "enabled"
       },
       "group": "WUP"
     }
@@ -3295,6 +3320,7 @@
       "components/table",
       "components/tabs",
       "components/textField",
+      "components/tooltip",
       "storybook"
     ]
   }
