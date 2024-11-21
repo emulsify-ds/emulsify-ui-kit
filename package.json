@@ -24,7 +24,7 @@
     "storybook": "storybook dev -c node_modules/@emulsify/core/.storybook --ci -p 6006",
     "storybook-build": "npm run build && storybook build -c node_modules/@emulsify/core/.storybook -o .out",
     "storybook-deploy": "storybook-to-ghpages -o .out",
-    "style-dictionary:build": "node ./src/tokens/tokensTransform.js",
+    "style-dictionary:build": "node ./src/tokens/tokensTransform.mjs",
     "test": "jest --coverage  --config ./config/jest.config.js",
     "tokens:build": "npm run tokens:transform && npm run style-dictionary:build",
     "tokens:transform": "token-transformer ./src/tokens/figma.tokens.json ./src/tokens/transformed.tokens.json",
