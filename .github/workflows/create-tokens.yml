@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
         with:
-          node-version: 16.13
+          node-version: 20
       - name: Install Node Dependencies
         run: npm ci
       # Transform Figma Tokens JSON to something Style Dictionary can read, then

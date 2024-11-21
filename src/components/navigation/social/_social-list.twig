@@ -1,0 +1,20 @@
+{% set item__blockname = menu__base_class %}
+
+{% set menu__item %}
+{% block menu__item__content %}
+	{% for item in items %}
+		{% include "@components/navigation/social/_social-item.twig" %}
+	{% endfor %}
+{% endblock %}
+{% endset %}
+
+{# List #}
+{% embed "@components/lists/list.twig" with {
+  list__base_class: 'menu-list',
+  list__blockname: menu__base_class,
+  list__type: menu__list__type,
+}%}
+  {% block list__content %}
+    {{ menu__item }}
+  {% endblock %}
+{% endembed %}

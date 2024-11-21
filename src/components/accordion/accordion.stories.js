@@ -12,37 +12,56 @@ const accordionData = props.properties;
 export default {
   title: 'Components/Accordion',
   argTypes: {
+    width: {
+      name: 'Container Width',
+      control: { type: 'select' },
+      options: {
+        Small: 'compressed',
+        Medium: 'standard',
+      },
+    },
     heading: {
       name: 'Heading',
       type: 'string',
-      defaultValue: accordionData.accordion__item__heading.data,
     },
-    content: {
-      name: 'Content',
+    text: {
+      name: 'Intro',
       type: 'string',
-      defaultValue: accordionData.accordion__item__content.data,
+    },
+    itemHeading: {
+      name: 'Item Heading',
+      type: 'string',
+    },
+    itemContent: {
+      name: 'Item Content',
+      type: 'string',
     },
   },
-  decorators: [
-    (story) =>
-      `<div style="max-width: 890px; margin: 0 auto;">${story()}</div>`,
-  ],
+  args: {
+    heading: accordionData.accordion__heading.data,
+    text: accordionData.accordion__text.data,
+    itemHeading: accordionData.accordion__item__heading.data,
+    itemContent: accordionData.accordion__item__content.data,
+  },
 };
 
-export const Accordion = ({ heading, content }) =>
+export const Accordion = ({ width, heading, text, itemHeading, itemContent }) =>
   accordionTwig({
+    accordion__width: width,
+    accordion__heading: heading,
+    accordion__text: text,
     accordion__items: [
       {
-        accordion__item__heading: heading,
-        accordion__item__content: content,
+        accordion__item__heading: itemHeading,
+        accordion__item__content: itemContent,
       },
       {
-        accordion__item__heading: accordionData.accordion__item__heading.data,
-        accordion__item__content: accordionData.accordion__item__content.data,
+        accordion__item__heading: itemHeading,
+        accordion__item__content: itemContent,
       },
       {
-        accordion__item__heading: accordionData.accordion__item__heading.data,
-        accordion__item__content: accordionData.accordion__item__content.data,
+        accordion__item__heading: itemHeading,
+        accordion__item__content: itemContent,
       },
     ],
   });

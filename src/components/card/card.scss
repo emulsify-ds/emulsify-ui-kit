@@ -33,8 +33,6 @@
 }
 
 .card__subheading {
-  @include h4;
-
   & {
     color: var(--card-color-subheading);
     margin: 0 0 var(--spacing-md);

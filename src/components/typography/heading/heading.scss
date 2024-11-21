@@ -1,0 +1,34 @@
+@use '../../../foundation/breakpoints/breakpoints' as *;
+@use '../../../foundation/typography/typography' as *;
+
+/*
+ * Generic header styles:
+ * All arguments are optional. If not defined, the defaults below will be used
+*/
+
+%h1,
+.h1 {
+  @include h1;
+}
+
+%h2,
+.h2 {
+  @include h2;
+}
+
+%h3,
+.h3 {
+  @include h3;
+}
+
+%h4,
+.h4 {
+  @include h4;
+}
+
+%h5,
+%h6,
+.h5,
+.h6 {
+  @include h5;
+}

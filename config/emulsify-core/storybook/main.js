@@ -15,13 +15,6 @@ const configOverrides = {};
 //     '../../../@storybook/addon-themes',
 //     '../../../@storybook/addon-styling-webpack'
 //   ],
-//   core: {
-//     builder: 'webpack5',
-//   },
-//   framework: {
-//     name: '@storybook/html-webpack5',
-//     options: {},
-//   },
 //   docs: {
 //     autodocs: true,
 //   },
