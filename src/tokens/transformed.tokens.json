@@ -2798,7 +2798,8 @@
       "components/announcement": "enabled",
       "components/banner": "enabled",
       "components/footer": "enabled",
-      "components/header": "enabled"
+      "components/header": "enabled",
+      "components/utilityMenu": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:16908",
     "$figmaModeId": "23237:10",
@@ -2987,7 +2988,8 @@
     "id": "0a5c4562bd35f00ce8a339239980a3842147c0bd",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "global": "enabled"
+      "global": "enabled",
+      "components/utilityMenu": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17089",
     "$figmaModeId": "23237:11",
@@ -3040,7 +3042,8 @@
     "id": "ca91148967a5dcc80f7e50f6ccfe35b30efd5f2f",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic": "enabled"
+      "semantic": "enabled",
+      "components/utilityMenu": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17133",
     "$figmaModeId": "23237:12",
@@ -3063,7 +3066,8 @@
     "id": "16a10d373d39988a75c7d612cd449a633f373c44",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "storybook": "source"
+      "storybook": "source",
+      "components/utilityMenu": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17144",
     "$figmaModeId": "23237:13",
@@ -3092,7 +3096,8 @@
       "components/status": "enabled",
       "components/table": "enabled",
       "components/tabs": "enabled",
-      "components/textField": "enabled"
+      "components/textField": "enabled",
+      "components/utilityMenu": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17145",
     "$figmaModeId": "23237:14",
@@ -3246,7 +3251,8 @@
       "components/table": "enabled",
       "components/tabs": "enabled",
       "components/textField": "enabled",
-      "semantic": "enabled"
+      "semantic": "enabled",
+      "components/utilityMenu": "disabled"
     },
     "group": "WUP",
     "type": "other",
@@ -3274,7 +3280,8 @@
       "components/status": "enabled",
       "components/table": "enabled",
       "components/tabs": "enabled",
-      "components/textField": "enabled"
+      "components/textField": "enabled",
+      "components/utilityMenu": "disabled"
     },
     "group": "WUP",
     "type": "other",
