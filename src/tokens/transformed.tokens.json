@@ -21,6 +21,28 @@
       }
     }
   },
+  "tooltip": {
+    "background": {
+      "dark": {
+        "value": "#101618",
+        "type": "color"
+      },
+      "light": {
+        "value": "#d4d7d8",
+        "type": "color"
+      }
+    },
+    "icon": {
+      "color": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "background": {
+        "value": "#0080b7",
+        "type": "color"
+      }
+    }
+  },
   "textField": {
     "borderWidth": {
       "value": 1,
@@ -2554,6 +2576,10 @@
       "type": "other"
     },
     "25": {
+      "value": "components/tooltip",
+      "type": "other"
+    },
+    "26": {
       "value": "storybook",
       "type": "other"
     }
@@ -2798,7 +2824,9 @@
       "components/announcement": "enabled",
       "components/banner": "enabled",
       "components/footer": "enabled",
-      "components/header": "enabled"
+      "components/header": "enabled",
+      "components/utilityMenu": "enabled",
+      "components/tooltip": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:16908",
     "$figmaModeId": "23237:10",
@@ -3092,7 +3120,9 @@
       "components/status": "enabled",
       "components/table": "enabled",
       "components/tabs": "enabled",
-      "components/textField": "enabled"
+      "components/textField": "enabled",
+      "components/utilityMenu": "enabled",
+      "components/tooltip": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17145",
     "$figmaModeId": "23237:14",
@@ -3246,7 +3276,9 @@
       "components/table": "enabled",
       "components/tabs": "enabled",
       "components/textField": "enabled",
-      "semantic": "enabled"
+      "semantic": "enabled",
+      "components/utilityMenu": "enabled",
+      "components/tooltip": "enabled"
     },
     "group": "WUP",
     "type": "other",
@@ -3274,7 +3306,9 @@
       "components/status": "enabled",
       "components/table": "enabled",
       "components/tabs": "enabled",
-      "components/textField": "enabled"
+      "components/textField": "enabled",
+      "components/utilityMenu": "enabled",
+      "components/tooltip": "enabled"
     },
     "group": "WUP",
     "type": "other",

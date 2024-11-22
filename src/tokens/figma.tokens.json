@@ -2520,6 +2520,30 @@
       }
     }
   },
+  "components/tooltip": {
+    "tooltip": {
+      "background": {
+        "dark": {
+          "value": "{color.grays.900}",
+          "type": "color"
+        },
+        "light": {
+          "value": "{color.grays.200}",
+          "type": "color"
+        }
+      },
+      "icon": {
+        "color": {
+          "value": "{color.text.white}",
+          "type": "color"
+        },
+        "background": {
+          "value": "{color.primary.dark}",
+          "type": "color"
+        }
+      }
+    }
+  },
   "storybook": {
     "colors": {
       "sb": {
@@ -2786,7 +2810,9 @@
         "components/announcement": "enabled",
         "components/banner": "enabled",
         "components/footer": "enabled",
-        "components/header": "enabled"
+        "components/header": "enabled",
+        "components/utilityMenu": "enabled",
+        "components/tooltip": "enabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:16908",
       "$figmaModeId": "23237:10",
@@ -3076,7 +3102,9 @@
         "components/status": "enabled",
         "components/table": "enabled",
         "components/tabs": "enabled",
-        "components/textField": "enabled"
+        "components/textField": "enabled",
+        "components/utilityMenu": "enabled",
+        "components/tooltip": "enabled"
       },
       "$figmaCollectionId": "VariableCollectionId:23237:17145",
       "$figmaModeId": "23237:14",
@@ -3229,7 +3257,9 @@
         "components/table": "enabled",
         "components/tabs": "enabled",
         "components/textField": "enabled",
-        "semantic": "enabled"
+        "semantic": "enabled",
+        "components/utilityMenu": "enabled",
+        "components/tooltip": "enabled"
       },
       "group": "WUP"
     },
@@ -3256,7 +3286,9 @@
         "components/status": "enabled",
         "components/table": "enabled",
         "components/tabs": "enabled",
-        "components/textField": "enabled"
+        "components/textField": "enabled",
+        "components/utilityMenu": "enabled",
+        "components/tooltip": "enabled"
       },
       "group": "WUP"
     }
@@ -3288,6 +3320,7 @@
       "components/table",
       "components/tabs",
       "components/textField",
+      "components/tooltip",
       "storybook"
     ]
   }
