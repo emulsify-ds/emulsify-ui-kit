@@ -510,7 +510,7 @@
       "type": "spacing"
     },
     "heading": {
-      "value": "#006089",
+      "value": "#0080b7",
       "type": "color"
     },
     "body": {
@@ -519,15 +519,11 @@
     },
     "modal": {
       "padding-x": {
-        "value": 40,
+        "value": 32,
         "type": "spacing"
       },
-      "padding-bottom": {
+      "padding-y": {
         "value": 64,
-        "type": "spacing"
-      },
-      "padding-top": {
-        "value": 76,
         "type": "spacing"
       }
     }
