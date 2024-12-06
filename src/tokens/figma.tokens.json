@@ -2054,7 +2054,7 @@
         "type": "spacing"
       },
       "heading": {
-        "value": "{color.text.heading}",
+        "value": "{color.primary.dark}",
         "type": "color"
       },
       "body": {
@@ -2063,15 +2063,11 @@
       },
       "modal": {
         "padding-x": {
-          "value": "40",
+          "value": "{spacing.xl}",
           "type": "spacing"
         },
-        "padding-bottom": {
+        "padding-y": {
           "value": "{spacing.2xl}",
-          "type": "spacing"
-        },
-        "padding-top": {
-          "value": "76",
           "type": "spacing"
         }
       }
