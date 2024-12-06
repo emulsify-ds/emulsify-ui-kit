@@ -14,10 +14,10 @@ $grids: (
 
 // Utilize custom properties so they can be re-scoped
 :root {
-  --grid-spacing: #{s.space(4)};
+  --grid-spacing: var(--spacing-2xl);
 
   @include breakpoint('medium') {
-    --grid-spacing: #{s.space(2)};
+    --grid-spacing: var(--spacing-xl);
   }
 }
 
@@ -30,14 +30,14 @@ $grids: (
   }
 
   &[data-grid-spacing='no-spacing'] {
-    --grid-spacing: #{s.space(0)};
+    --grid-spacing: 0;
   }
 
   &[data-grid-spacing='two-spacing'] {
-    --grid-spacing: #{s.space(4)};
+    --grid-spacing: var(--spacing-xl);
 
     @include breakpoint('medium') {
-      --grid-spacing: #{s.space(6)};
+      --grid-spacing: var(--spacing-2xl);
     }
   }
 

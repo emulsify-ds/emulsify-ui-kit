@@ -22,7 +22,7 @@ Drupal.behaviors.breadcrumbs = {
     /**
      * getFirstVisible
      * @description Get the first item that is visible (not overflown).
-     * @return The value of the left edge of the first fully visible item plus
+     * @return {number} The value of the left edge of the first fully visible item plus
      * the width of the controls so that things aren't visually hidden by the
      * absolutely positioned elements.
      */
@@ -47,7 +47,7 @@ Drupal.behaviors.breadcrumbs = {
     /**
      * getLastHidden
      * @description Get the last item that is overflown (not visible).
-     * @return The value of the left edge of the first partially hidden item
+     * @return {number} The value of the left edge of the first partially hidden item
      * minus the width of the controls so that things aren't visually hidden by
      * the absolutely positioned elements.
      */
@@ -113,7 +113,7 @@ Drupal.behaviors.breadcrumbs = {
 
     /**
      * mouseNav
-     * @description Support mouse navigation when horizontal scrolling occurs.
+     * @direction Support mouse navigation when horizontal scrolling occurs.
      */
     function mouseNav(direction) {
       breadcrumbs.scrollLeft =

@@ -21,6 +21,28 @@
       }
     }
   },
+  "tooltip": {
+    "background": {
+      "dark": {
+        "value": "#101618",
+        "type": "color"
+      },
+      "light": {
+        "value": "#d4d7d8",
+        "type": "color"
+      }
+    },
+    "icon": {
+      "color": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "background": {
+        "value": "#0080b7",
+        "type": "color"
+      }
+    }
+  },
   "textField": {
     "borderWidth": {
       "value": 1,
@@ -323,6 +345,24 @@
       }
     }
   },
+  "utilityMenu": {
+    "color": {
+      "bg": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "link": {
+        "default": {
+          "value": "#006089",
+          "type": "color"
+        },
+        "hover": {
+          "value": "#0080b7",
+          "type": "color"
+        }
+      }
+    }
+  },
   "mainMenu": {
     "color": {
       "bg": {
@@ -375,6 +415,14 @@
       },
       "hover": {
         "value": "#00202e",
+        "type": "color"
+      },
+      "inverse": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "inverse-hover": {
+        "value": "#9ce1ff",
         "type": "color"
       }
     },
@@ -2536,34 +2584,42 @@
       "type": "other"
     },
     "18": {
-      "value": "components/pager",
+      "value": "components/utilityMenu",
       "type": "other"
     },
     "19": {
-      "value": "components/radioButton",
+      "value": "components/pager",
       "type": "other"
     },
     "20": {
-      "value": "components/selectdropdown",
+      "value": "components/radioButton",
       "type": "other"
     },
     "21": {
-      "value": "components/status",
+      "value": "components/selectdropdown",
       "type": "other"
     },
     "22": {
-      "value": "components/table",
+      "value": "components/status",
       "type": "other"
     },
     "23": {
-      "value": "components/tabs",
+      "value": "components/table",
       "type": "other"
     },
     "24": {
-      "value": "components/textField",
+      "value": "components/tabs",
       "type": "other"
     },
     "25": {
+      "value": "components/textField",
+      "type": "other"
+    },
+    "26": {
+      "value": "components/tooltip",
+      "type": "other"
+    },
+    "27": {
       "value": "storybook",
       "type": "other"
     }
@@ -2670,15 +2726,6 @@
       "pager.text.hover": "S:d5268cc95f0ca68a28f35d87395f9ce37893fe23,",
       "pager.text.focus": "S:d03b986e8d65e0c71a1837ec7325ffbce6d6aaa7,",
       "pager.fill.hover": "S:5bdc99f7ec11756cdef48ec3e13c9b4dd6f4ea81,",
-      "mainMenu.color.bg": "S:bf2522b49aa417ce534b5208e0f6beef55486cf3,",
-      "mainMenu.color.link.bg": "S:b11ab65866a7661d8fc26a7a62b099ef30061f50,",
-      "mainMenu.color.link.bg-hover": "S:af6ac50c749eaa990fbd9ffed40c1b9674a723a4,",
-      "mainMenu.color.link.label": "S:743bcf21f9c07a7963a7edb4225d95bca9b41703,",
-      "mainMenu.color.link.label-hover": "S:93bfd2e3b7bbd01dc37c4f80afe8e75e9924fdaf,",
-      "mainMenu.color.dropdown.bg": "S:79daec1641db62001cff89e93435729c39710614,",
-      "mainMenu.color.dropdown.bg-hover": "S:badcf257ef0a5a278b895483c36799c19afa98a4,",
-      "mainMenu.color.dropdown.label": "S:77771443996903bcb2c28595214f9e3a0c71d7e9,",
-      "mainMenu.color.dropdown.label-hover": "S:c3a0a9d457ae44f6f0e45c6a5c57e3bd57467383,",
       "link.default": "S:9fd4db376033a945bbc2bf5bfe8a698e68bd6f1a,",
       "link.hover": "S:e6b1afc9022d41b4217e773a9ab4abf90329cf46,",
       "color.fieldset.bg": "S:bfe975e6026fa7f0aa7fd11985d9ebaeb6565d17,",
@@ -2781,7 +2828,16 @@
       "color.grays.900": "S:d14dafeba041e023bd5c5d2c458c10f88801e824,",
       "color.grays.1000": "S:588f6731fa9753788b0b48bb7c575f3b94991a69,",
       "checkbox.color.label": "S:dd27f922df752738d999c185f11b67e77134feac,",
-      "checkbox.color.label-disabled": "S:72b6ef5a238e1bf6f232f7f0dc8f27095a075e3f,"
+      "checkbox.color.label-disabled": "S:72b6ef5a238e1bf6f232f7f0dc8f27095a075e3f,",
+      "utilityMenu.color.bg": "S:bf2522b49aa417ce534b5208e0f6beef55486cf3,",
+      "utilityMenu.color.link.bg": "S:b11ab65866a7661d8fc26a7a62b099ef30061f50,",
+      "utilityMenu.color.link.label-hover": "S:93bfd2e3b7bbd01dc37c4f80afe8e75e9924fdaf,",
+      "utilityMenu.color.dropdown.bg": "S:79daec1641db62001cff89e93435729c39710614,",
+      "utilityMenu.color.dropdown.bg-hover": "S:badcf257ef0a5a278b895483c36799c19afa98a4,",
+      "utilityMenu.color.dropdown.label": "S:77771443996903bcb2c28595214f9e3a0c71d7e9,",
+      "utilityMenu.color.dropdown.label-hover": "S:c3a0a9d457ae44f6f0e45c6a5c57e3bd57467383,",
+      "utilityMenu.color.link.default": "S:af6ac50c749eaa990fbd9ffed40c1b9674a723a4,",
+      "utilityMenu.color.link.hover": "S:743bcf21f9c07a7963a7edb4225d95bca9b41703,"
     },
     "selectedTokenSets": {
       "global": "enabled",
@@ -2808,7 +2864,9 @@
       "components/announcement": "enabled",
       "components/banner": "enabled",
       "components/footer": "enabled",
-      "components/header": "enabled"
+      "components/header": "enabled",
+      "components/utilityMenu": "enabled",
+      "components/tooltip": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:16908",
     "$figmaModeId": "23237:10",
@@ -2858,15 +2916,6 @@
       "pager.text.hover": "2e1149296e028f68d0590547182eb3fa046b0799",
       "pager.text.focus": "f597287eb8465595918f5af8c56a3f803417cf81",
       "pager.fill.hover": "e7c4c208bc4d7ed93b94794070642830984f1687",
-      "mainMenu.color.bg": "9b1706999c4ef658c6b885428bf9f6a3058eba23",
-      "mainMenu.color.link.bg": "9fe948d4cb455eec777d28db8baa8046d75174c2",
-      "mainMenu.color.link.bg-hover": "29ea5911b9675ae3920cf9f26602f612fe9e33d5",
-      "mainMenu.color.link.label": "a28d88530a052b75025ad58244a622f52538ffdb",
-      "mainMenu.color.link.label-hover": "cd95962e180170545de51bf2995158682ea61805",
-      "mainMenu.color.dropdown.bg": "4fcd08018cb0ac6de9ae851dfdb35da945fc9128",
-      "mainMenu.color.dropdown.bg-hover": "25fdd7d0cc2e181e8290710f0f489248ad541477",
-      "mainMenu.color.dropdown.label": "1ab6130383e91011e698dd88b0fc4fce93f24d83",
-      "mainMenu.color.dropdown.label-hover": "2b680d5fc3c7c9c9b5e245400274c58f66cc6268",
       "link.default": "52f2a6ae3ef87bb2b4c96e2b8316e609a1f3e4e0",
       "link.hover": "602f312f7c40299996ccaf31cd8340e88ddcd6a8",
       "input.color.label": "40806b82869b549ff22858fd677df5c1c6d22cad",
@@ -2988,7 +3037,16 @@
       "checkbox.spacing.gap": "59fbad63c0994ee956f8790e994534f9f5f5e922",
       "checkbox.color.label": "4db65c0b61319b6c85cdb9c1b683d84e2f65ff52",
       "checkbox.color.label-disabled": "3a5dec39f06f92904d80c2096f9c439ae0b5d09a",
-      "color.link-hover": "74d0f74b830a9dd07279967cea7c9f662178e310"
+      "color.link-hover": "74d0f74b830a9dd07279967cea7c9f662178e310",
+      "utilityMenu.color.bg": "9b1706999c4ef658c6b885428bf9f6a3058eba23",
+      "utilityMenu.color.link.bg": "9fe948d4cb455eec777d28db8baa8046d75174c2",
+      "utilityMenu.color.link.label-hover": "cd95962e180170545de51bf2995158682ea61805",
+      "utilityMenu.color.dropdown.bg": "4fcd08018cb0ac6de9ae851dfdb35da945fc9128",
+      "utilityMenu.color.dropdown.bg-hover": "25fdd7d0cc2e181e8290710f0f489248ad541477",
+      "utilityMenu.color.dropdown.label": "1ab6130383e91011e698dd88b0fc4fce93f24d83",
+      "utilityMenu.color.dropdown.label-hover": "2b680d5fc3c7c9c9b5e245400274c58f66cc6268",
+      "utilityMenu.color.link.default": "29ea5911b9675ae3920cf9f26602f612fe9e33d5",
+      "utilityMenu.color.link.hover": "a28d88530a052b75025ad58244a622f52538ffdb"
     },
     "type": "other",
     "value": "[object Object]"
@@ -3102,7 +3160,9 @@
       "components/status": "enabled",
       "components/table": "enabled",
       "components/tabs": "enabled",
-      "components/textField": "enabled"
+      "components/textField": "enabled",
+      "components/utilityMenu": "enabled",
+      "components/tooltip": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17145",
     "$figmaModeId": "23237:14",
@@ -3148,15 +3208,6 @@
       "pager.text.hover": "067e5560a9bcaee73e961d449ec580cabede8a17",
       "pager.text.focus": "039853336af697ea5a3d09db6b64f78e7c45c35d",
       "pager.fill.hover": "64071b977256beb9e45651dbbe696ac3dfb389d3",
-      "mainMenu.color.bg": "a51943758f0fa8a2af6ca92227fd91c67560e4b8",
-      "mainMenu.color.link.bg": "87170e49f0fdf73cfd66128db96c4441e700f071",
-      "mainMenu.color.link.bg-hover": "d2185c2db3e4a1b77be017df0fb5f3376c756f50",
-      "mainMenu.color.link.label": "4c190c6dffed1c15773123f079e53c195ae53054",
-      "mainMenu.color.link.label-hover": "7083b097eec3b0e13eb3c41105a6042afe4c575d",
-      "mainMenu.color.dropdown.bg": "f2bdc10d3b611073f278ef6b93be2d1d62720592",
-      "mainMenu.color.dropdown.bg-hover": "e7d24ba7865567a9e30d745dbcd34d8c4a196ddb",
-      "mainMenu.color.dropdown.label": "112a53e4cb87a782a992a38da3249f82d639e0d1",
-      "mainMenu.color.dropdown.label-hover": "3f9cb0ba9099ae87f86474c5c827f4e03f60da91",
       "link.default": "3faaab82a9c834600aaa7ad75621d14583bd9974",
       "link.hover": "e44dbb7433cdb45720e896b1126e28c9bff490e4",
       "input.color.label": "1b07b68bbc2c3339a39e57980e5b0dd66e848174",
@@ -3228,7 +3279,16 @@
       "blockQuote.padding.y": "398508657cd7d1bbd686f838a27db3f0c3ee3f74",
       "checkbox.spacing.gap": "e4d2049d0ee84eceee61f25e3264c2526cfe746a",
       "checkbox.color.label": "d2a0283754f673d1b92c74eef12f3bbe06845d3b",
-      "checkbox.color.label-disabled": "5cd5bb5326d33a62412e7579c0abd8c0bea97838"
+      "checkbox.color.label-disabled": "5cd5bb5326d33a62412e7579c0abd8c0bea97838",
+      "utilityMenu.color.bg": "a51943758f0fa8a2af6ca92227fd91c67560e4b8",
+      "utilityMenu.color.link.bg": "87170e49f0fdf73cfd66128db96c4441e700f071",
+      "utilityMenu.color.link.label-hover": "7083b097eec3b0e13eb3c41105a6042afe4c575d",
+      "utilityMenu.color.dropdown.bg": "f2bdc10d3b611073f278ef6b93be2d1d62720592",
+      "utilityMenu.color.dropdown.bg-hover": "e7d24ba7865567a9e30d745dbcd34d8c4a196ddb",
+      "utilityMenu.color.dropdown.label": "112a53e4cb87a782a992a38da3249f82d639e0d1",
+      "utilityMenu.color.dropdown.label-hover": "3f9cb0ba9099ae87f86474c5c827f4e03f60da91",
+      "utilityMenu.color.link.default": "d2185c2db3e4a1b77be017df0fb5f3376c756f50",
+      "utilityMenu.color.link.hover": "4c190c6dffed1c15773123f079e53c195ae53054"
     },
     "type": "other",
     "value": "[object Object]"
@@ -3256,7 +3316,9 @@
       "components/table": "enabled",
       "components/tabs": "enabled",
       "components/textField": "enabled",
-      "semantic": "enabled"
+      "semantic": "enabled",
+      "components/utilityMenu": "enabled",
+      "components/tooltip": "enabled"
     },
     "group": "WUP",
     "type": "other",
@@ -3284,7 +3346,9 @@
       "components/status": "enabled",
       "components/table": "enabled",
       "components/tabs": "enabled",
-      "components/textField": "enabled"
+      "components/textField": "enabled",
+      "components/utilityMenu": "enabled",
+      "components/tooltip": "enabled"
     },
     "group": "WUP",
     "type": "other",

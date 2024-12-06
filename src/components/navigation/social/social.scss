@@ -1,0 +1,35 @@
+@use '../../../foundation/utility/utility' as *;
+@use '../../link/link.scss' as *;
+
+.social-nav__menu-list {
+  @include list-reset;
+
+  & {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: var(--spacing-md);
+  }
+}
+
+.social-nav__link {
+  @include link;
+
+  & {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: var(--spacing-sm);
+    text-decoration: none;
+  }
+
+  &:focus,
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.social-nav__icon {
+  height: var(--size-xl);
+  width: var(--size-xl);
+  fill: currentColor;
+}

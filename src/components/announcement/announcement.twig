@@ -18,16 +18,15 @@
 <div {{ bem(announcement__base_class, [announcement__variant]) }} {{ add_attributes(additional_attributes) }}>
   {# Render the icon if provided #}
   {% if announcement__icon %}
-    {% include "@components/image/responsive-image.twig" with {
-      image_alt: 'icon',
-      output_image_tag: true,
-      image_src: announcement__icon,
-      responsive_image_blockname: announcement__base_class,
+    {% include "@components/icons/_icon.twig" with {
+      icon__name: 'star-solid',
+      icon__blockname: announcement__base_class,
+      icon__decorative: true,
     } %}
   {% endif %}
   {# Render the main content #}
   <div {{ bem('content', [announcement__variant], announcement__base_class) }}>
-    {% include "@components/text/headings/heading.twig" with {
+    {% include "@components/typography/heading/heading.twig" with {
       heading__level: announcement__heading__level|default('4'),
       heading: announcement__title,
     } %}
@@ -38,6 +37,7 @@
     <div {{ bem('action', [announcement__variant], announcement__base_class) }}>
       {% include "@components/button/button.twig" with {
         button__content: announcement__button_text,
+        button__style: 'primary',
         button__attributes: {
           'href': announcement__button_url,
         }
