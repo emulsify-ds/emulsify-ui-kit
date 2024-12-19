@@ -123,7 +123,7 @@
 .main-nav__link--level-1,
 .main-nav__link--level-2 {
   & {
-    font-size: var(--font-size-h6);
+    font-size: var(--font-size-body);
   }
 
   @include breakpoint('small-down') {
