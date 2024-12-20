@@ -297,13 +297,13 @@
           "type": "color"
         },
         "focus": {
-          "value": "#0080b7",
+          "value": "#006089",
           "type": "color"
         }
       },
       "fill": {
         "hover": {
-          "value": "#0080b7",
+          "value": "#006089",
           "type": "color"
         }
       }
