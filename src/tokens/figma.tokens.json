@@ -2217,13 +2217,13 @@
             "type": "color"
           },
           "focus": {
-            "value": "{color.primary.dark}",
+            "value": "{color.primary.darker}",
             "type": "color"
           }
         },
         "fill": {
           "hover": {
-            "value": "{color.primary.dark}",
+            "value": "{color.primary.darker}",
             "type": "color"
           }
         }
