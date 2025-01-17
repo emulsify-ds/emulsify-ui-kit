@@ -5,19 +5,23 @@ Drupal.behaviors.accordion = {
     const controls = context.querySelectorAll('.accordion__controls__item');
     // Classes
     const itemToggle = '.js-accordion-item__toggle';
+    const itemContent = '.accordion-item__content';
     const itemState = 'data-accordion-expanded';
     const buttonState = 'aria-expanded';
+    const contentState = 'aria-hidden';
 
     // Function to expand an accordion item.
-    const expand = (item, button) => {
+    const expand = (item, button, content) => {
       item.setAttribute(itemState, 'true');
       button.setAttribute(buttonState, 'true');
+      content.setAttribute(contentState, 'false');
     };
 
     // Function to collapse an accordion item.
-    const collapse = (item, button) => {
+    const collapse = (item, button, content) => {
       item.setAttribute(itemState, 'false');
       button.setAttribute(buttonState, 'false');
+      content.setAttribute(contentState, 'true');
     };
 
     /* eslint-disable */
@@ -50,16 +54,17 @@ Drupal.behaviors.accordion = {
     // Toggle accordion content when toggle is activated.
     items.forEach((item) => {
       const button = item.querySelector(itemToggle);
+      const content = item.querySelector(itemContent);
 
       const anchor = item.id;
       // eslint-disable-next-line
       const newUrl = `${getUrl()}` + '#' + `${anchor}`;
 
       // Hide all accordion content sections if JavaScript is enabled.
-      collapse(item, button);
+      collapse(item, button, content);
 
       if (item.getAttribute('id') && item.getAttribute('id') === getAnchor()) {
-        expand(item, button);
+        expand(item, button, content);
       }
 
       button.addEventListener('click', () => {
@@ -74,8 +79,8 @@ Drupal.behaviors.accordion = {
         }
         // Toggle the item's state.
         return button.getAttribute(buttonState) === 'true'
-          ? collapse(item, button)
-          : expand(item, button);
+          ? collapse(item, button, content)
+          : expand(item, button, content);
       });
     });
 
@@ -96,11 +101,12 @@ Drupal.behaviors.accordion = {
           // Iterate over
           allItems.forEach((item) => {
             const button = item.querySelector(itemToggle);
+            const content = item.querySelector(itemContent);
 
             if (action === false) {
-              collapse(item, button);
+              collapse(item, button, content);
             } else {
-              expand(item, button);
+              expand(item, button, content);
             }
           });
         });
