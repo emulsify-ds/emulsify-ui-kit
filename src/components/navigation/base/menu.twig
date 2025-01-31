@@ -40,8 +40,17 @@
 {% set menu__attributes = menu__attributes|merge({
   'id': menu__base_class,
   'class': bem(menu__base_class, menu__modifiers, menu__blockname, menu__additional_classes),
-  'aria-labelledby': menu__base_class ~ '__label',
 }) %}
+
+{% if menu_is_breadcrumb %}
+    {% set menu__attributes = menu__attributes|merge({
+    'aria-label': menu__name,
+    }) %}
+{% else %}
+    {% set menu__attributes = menu__attributes|merge({
+    'aria-labelledby': menu__base_class ~ '__label',
+    }) %}
+{% endif %}
 
 {# Create a unique ID for each accordion item #}
 {% set unique_id = random('1234567890') ~ random('1234567890') ~ random('1234567890') ~ random('1234567890') %}
@@ -88,7 +97,9 @@
 {% import _self as menus %}
 
 <nav {{ add_attributes(menu__attributes) }}>
-	<h2 id="{{ menu__attributes['aria-labelledby'] }}" {{ bem('visually-hidden') }}>{{ menu__name }}</h2>
+    {% if menu_is_breadcrumb != 'true' %}
+       <h2 id="{{ menu__attributes['aria-labelledby'] }}" {{ bem('visually-hidden') }}>{{ menu__name }}</h2>
+    {% endif %}
 	{% block menu_prefix %}{% endblock %}
 	{% if menu__toggle is defined %}
 		{{ menu_toggle }}
