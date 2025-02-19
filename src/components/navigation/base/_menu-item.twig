@@ -23,7 +23,7 @@
 {% endif %}
 
 {% set site_url = path("<current>") %}
-{% if site_url|render == item.url|render or item.is_active %}
+{% if site_url|render == item.url|render or item.is_active or item.url is empty %}
 	{% set link__attributes = link__attributes|merge({
     'aria-current': 'page',
   }) %}
