@@ -21,6 +21,28 @@
       }
     }
   },
+  "tooltip": {
+    "background": {
+      "dark": {
+        "value": "#101618",
+        "type": "color"
+      },
+      "light": {
+        "value": "#d4d7d8",
+        "type": "color"
+      }
+    },
+    "icon": {
+      "color": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "background": {
+        "value": "#0080b7",
+        "type": "color"
+      }
+    }
+  },
   "textField": {
     "borderWidth": {
       "value": 1,
@@ -275,13 +297,13 @@
           "type": "color"
         },
         "focus": {
-          "value": "#0080b7",
+          "value": "#006089",
           "type": "color"
         }
       },
       "fill": {
         "hover": {
-          "value": "#0080b7",
+          "value": "#006089",
           "type": "color"
         }
       }
@@ -475,6 +497,34 @@
       "text-icon": {
         "value": "#ffffff",
         "type": "color"
+      }
+    }
+  },
+  "gallery": {
+    "overlay": {
+      "value": "#00405b",
+      "type": "color"
+    },
+    "grid": {
+      "value": 32,
+      "type": "spacing"
+    },
+    "heading": {
+      "value": "#0080b7",
+      "type": "color"
+    },
+    "body": {
+      "value": "#00202e",
+      "type": "color"
+    },
+    "modal": {
+      "padding-x": {
+        "value": 32,
+        "type": "spacing"
+      },
+      "padding-y": {
+        "value": 64,
+        "type": "spacing"
       }
     }
   },
@@ -972,6 +1022,10 @@
       },
       "darker": {
         "value": "#006089",
+        "type": "color"
+      },
+      "darkest": {
+        "value": "#00405b",
         "type": "color"
       }
     },
@@ -2506,54 +2560,62 @@
       "type": "other"
     },
     "13": {
-      "value": "components/header",
+      "value": "components/gallery",
       "type": "other"
     },
     "14": {
-      "value": "components/input",
+      "value": "components/header",
       "type": "other"
     },
     "15": {
-      "value": "components/link",
+      "value": "components/input",
       "type": "other"
     },
     "16": {
-      "value": "components/mainMenu",
+      "value": "components/link",
       "type": "other"
     },
     "17": {
-      "value": "components/utilityMenu",
+      "value": "components/mainMenu",
       "type": "other"
     },
     "18": {
-      "value": "components/pager",
+      "value": "components/utilityMenu",
       "type": "other"
     },
     "19": {
-      "value": "components/radioButton",
+      "value": "components/pager",
       "type": "other"
     },
     "20": {
-      "value": "components/selectdropdown",
+      "value": "components/radioButton",
       "type": "other"
     },
     "21": {
-      "value": "components/status",
+      "value": "components/selectdropdown",
       "type": "other"
     },
     "22": {
-      "value": "components/table",
+      "value": "components/status",
       "type": "other"
     },
     "23": {
-      "value": "components/tabs",
+      "value": "components/table",
       "type": "other"
     },
     "24": {
-      "value": "components/textField",
+      "value": "components/tabs",
       "type": "other"
     },
     "25": {
+      "value": "components/textField",
+      "type": "other"
+    },
+    "26": {
+      "value": "components/tooltip",
+      "type": "other"
+    },
+    "27": {
       "value": "storybook",
       "type": "other"
     }
@@ -2798,7 +2860,9 @@
       "components/announcement": "enabled",
       "components/banner": "enabled",
       "components/footer": "enabled",
-      "components/header": "enabled"
+      "components/header": "enabled",
+      "components/utilityMenu": "enabled",
+      "components/tooltip": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:16908",
     "$figmaModeId": "23237:10",
@@ -3092,7 +3156,9 @@
       "components/status": "enabled",
       "components/table": "enabled",
       "components/tabs": "enabled",
-      "components/textField": "enabled"
+      "components/textField": "enabled",
+      "components/utilityMenu": "enabled",
+      "components/tooltip": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:23237:17145",
     "$figmaModeId": "23237:14",
@@ -3246,7 +3312,9 @@
       "components/table": "enabled",
       "components/tabs": "enabled",
       "components/textField": "enabled",
-      "semantic": "enabled"
+      "semantic": "enabled",
+      "components/utilityMenu": "enabled",
+      "components/tooltip": "enabled"
     },
     "group": "WUP",
     "type": "other",
@@ -3274,7 +3342,9 @@
       "components/status": "enabled",
       "components/table": "enabled",
       "components/tabs": "enabled",
-      "components/textField": "enabled"
+      "components/textField": "enabled",
+      "components/utilityMenu": "enabled",
+      "components/tooltip": "enabled"
     },
     "group": "WUP",
     "type": "other",

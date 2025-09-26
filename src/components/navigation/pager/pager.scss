@@ -28,7 +28,9 @@
   }
 
   &.is-active {
+    padding: 0.35rem 0.75rem;
     color: var(--pager-color-text-focus);
+    border: 2px solid var(--pager-color-fill-hover);
 
     &:hover,
     &:focus {

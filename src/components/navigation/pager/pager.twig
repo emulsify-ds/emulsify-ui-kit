@@ -60,25 +60,28 @@
       {% endif %}
       {# Add an ellipsis if there are further previous pages. #}
       {% if ellipses.previous %}
-        <li {{ bem('item', ['ellipsis'], pager__base_class) }} role="presentation">&hellip;</li>
+        <li {{ bem('item', ['ellipsis'], pager__base_class) }} role="presentation">
+          <span aria-hidden="true">&hellip;</span>
+          <span class="sr-only">Previous pages are hidden</span>
+        </li>
       {% endif %}
       {# Now generate the actual pager piece. #}
       {% for key, item in items.pages %}
         {% set current_class = current == key ? 'is-active' : '' %}
         {% set aria_current = current == key ? 'aria-current="page"' : '' %}
         <li {{ bem('item', [], pager__base_class, [current_class]) }}>
-          {% set title = current == key ? 'Current page'|t : 'Go to page @key'|t({'@key': key}) %}
-          <a {{ bem('link', [], pager__base_class, [current_class]) }} href="{{ item.href }}" title="{{ title }}"{{ item.attributes|without('href', 'title') }} {{ aria_current }}>
-            <span {{ bem('visually-hidden') }}>
-              {{ current == key ? 'Current page'|t : 'Page '|t }}
-            </span>
+          {% set title = current != key ? 'title="Go to page"' : '' %}
+          <a {{ bem('link', [], pager__base_class, [current_class]) }} href="{{ item.href }}" {{ title }} {{ item.attributes|without('href', 'title') }} {{ aria_current }}>
             {{- key -}}
           </a>
         </li>
       {% endfor %}
       {# Add an ellipsis if there are further next pages. #}
       {% if ellipses.next %}
-        <li {{ bem('item', ['ellipsis'], pager__base_class) }} role="presentation">&hellip;</li>
+        <li {{ bem('item', ['ellipsis'], pager__base_class) }} role="presentation">
+          <span aria-hidden="true">&hellip;</span>
+          <span class="sr-only">Next pages are hidden</span>
+        </li>
       {% endif %}
       {# Print next item if we are not on the last page. #}
       {% if items.next %}

@@ -1,0 +1,61 @@
+{#
+ # Available Props:
+ # - call_to_action__theme: white-bg (default), light-blue-bg
+ #
+ # Available variables:
+ # - call_to_action__heading
+ # - call_to_action__overline(optional)
+ # - call_to_action__text
+ # - call_to_action__button__text
+ # - call_to_action__button__url
+ #}
+
+{% set call_to_action__base_class = 'call-to-action' %}
+
+{% set call_to_action__attributes = {
+  'data-component-theme': call_to_action__theme|default('white-bg'),
+  'class': bem(call_to_action__base_class, call_to_action__modifiers, call_to_action__blockname)
+} %}
+
+<div {{ add_attributes(call_to_action__attributes) }}>
+  {# Content #}
+  <div {{ bem('content', [], call_to_action__base_class) }}>
+    {# Text overline #}
+    {% if call_to_action__overline %}
+      {% include "@components/typography/text/text.twig" with {
+        text__content: call_to_action__overline,
+        text__blockname: call_to_action__base_class,
+        text__base_class: 'overline',
+      } %}
+    {% endif %}
+    {# Heading #}
+    {% if call_to_action__heading %}
+      {% include "@components/typography/heading/heading.twig" with {
+        heading: call_to_action__heading,
+        heading__level: '2',
+        heading__blockname: call_to_action__base_class,
+      } %}
+    {% endif %}
+    {# Text #}
+    {% if call_to_action__text %}
+      {% include "@components/typography/text/text.twig" with {
+        text__content: call_to_action__text,
+        text__blockname: call_to_action__base_class,
+      } %}
+    {% endif %}
+    {# optional link #}
+    {# Render the action button #}
+      {% if call_to_action__button__text and call_to_action__button__url %}
+        <div {{ bem('action', [call_to_action__variant], call_to_action__base_class) }}>
+          {% include "@components/button/button.twig" with {
+            button__content: call_to_action__button__text,
+            button__style: 'primary',
+            button__attributes: {
+              'href': call_to_action__button__url,
+            }
+          } %}
+        </div>
+      {% endif %}
+  </div>
+</div>
+
