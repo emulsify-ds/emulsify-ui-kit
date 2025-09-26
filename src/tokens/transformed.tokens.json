@@ -500,6 +500,34 @@
       }
     }
   },
+  "gallery": {
+    "overlay": {
+      "value": "#00405b",
+      "type": "color"
+    },
+    "grid": {
+      "value": 32,
+      "type": "spacing"
+    },
+    "heading": {
+      "value": "#0080b7",
+      "type": "color"
+    },
+    "body": {
+      "value": "#00202e",
+      "type": "color"
+    },
+    "modal": {
+      "padding-x": {
+        "value": 32,
+        "type": "spacing"
+      },
+      "padding-y": {
+        "value": 64,
+        "type": "spacing"
+      }
+    }
+  },
   "footer": {
     "background": {
       "default": {
@@ -994,6 +1022,10 @@
       },
       "darker": {
         "value": "#006089",
+        "type": "color"
+      },
+      "darkest": {
+        "value": "#00405b",
         "type": "color"
       }
     },
@@ -2528,58 +2560,62 @@
       "type": "other"
     },
     "13": {
-      "value": "components/header",
+      "value": "components/gallery",
       "type": "other"
     },
     "14": {
-      "value": "components/input",
+      "value": "components/header",
       "type": "other"
     },
     "15": {
-      "value": "components/link",
+      "value": "components/input",
       "type": "other"
     },
     "16": {
-      "value": "components/mainMenu",
+      "value": "components/link",
       "type": "other"
     },
     "17": {
-      "value": "components/utilityMenu",
+      "value": "components/mainMenu",
       "type": "other"
     },
     "18": {
-      "value": "components/pager",
+      "value": "components/utilityMenu",
       "type": "other"
     },
     "19": {
-      "value": "components/radioButton",
+      "value": "components/pager",
       "type": "other"
     },
     "20": {
-      "value": "components/selectdropdown",
+      "value": "components/radioButton",
       "type": "other"
     },
     "21": {
-      "value": "components/status",
+      "value": "components/selectdropdown",
       "type": "other"
     },
     "22": {
-      "value": "components/table",
+      "value": "components/status",
       "type": "other"
     },
     "23": {
-      "value": "components/tabs",
+      "value": "components/table",
       "type": "other"
     },
     "24": {
-      "value": "components/textField",
+      "value": "components/tabs",
       "type": "other"
     },
     "25": {
-      "value": "components/tooltip",
+      "value": "components/textField",
       "type": "other"
     },
     "26": {
+      "value": "components/tooltip",
+      "type": "other"
+    },
+    "27": {
       "value": "storybook",
       "type": "other"
     }
