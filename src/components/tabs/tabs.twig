@@ -75,7 +75,7 @@
 <div {{ bem(tabs__base_class, tabs__modifiers, tabs__blockname, ['no-js']) }} data-tabs-display="{{ tabs__display }}">
 	<div {{ bem('wrapper', tabs__modifiers, tabs__base_class) }}>
 		{{ scroll_left }}
-		<ul {{ bem('nav', [], tabs__base_class) }}>
+		<ul {{ bem('nav', [], tabs__base_class) }} role="tablist">
 			{% for key, tab in tabs %}
 				{% set tab__name = tab.tab__label|lower|replace({' ': '-', '&': 'and'}) ~ '-' ~ key %}
 				{% include "@components/tabs/_tab-label.twig" with {
@@ -102,6 +102,7 @@
 					tab__blockname: tabs__base_class,
 					tab__content__id: '#' ~ tab__name,
 					tab__content: tab.tab__content,
+					tab__id: tab__name ~ '-tab',
 				} %}
 			{% endfor %}
 		{% endblock %}

@@ -25,12 +25,13 @@
 {# if Storybook atoms example, add ul wrapper #}
 <li{{attributes}} {{ bem(tab__base_class, tab__modifiers, tab__blockname) }}>
 	{% set current_class = key == 0 ? ' is-active' : '' %}
+	{% set is_selected = key == 0 %}
 	{% if tab__icon %}
-		<a href="{{ tab__link }}" id="{{ tab__id }}" {{ bem('link', [], tab__base_class, [current_class])}}>
+		<a href="{{ tab__link }}" id="{{ tab__id }}" {{ bem('link', [], tab__base_class, [current_class])}} role="tab" aria-selected="{{ is_selected }}" tabindex="0">
 			<span {{ bem('text', [], tab__base_class, [current_class])}}>{{ tab__label }}</span>
 		</a>
 	{% else %}
-		<a href="{{ tab__link }}" id="{{ tab__id }}" {{ bem('link', [], tab__base_class, [current_class])}}>
+		<a href="{{ tab__link }}" id="{{ tab__id }}" {{ bem('link', [], tab__base_class, [current_class])}} role="tab" aria-selected="{{ is_selected }}" tabindex="0">
       <span {{ bem('text', [], tab__base_class, [current_class])}}>{{ tab__label }}</span>
     </a>
 	{% endif %}
