@@ -1,0 +1,114 @@
+{#
+ # Available Variables:
+ # - banner__heading: The title of the banner.
+ # - banner__text: The main content of the banner.
+ # - banner__link_items: links or buttons below the main content.
+ #
+ # - banner__image: Decorative background image.
+ # - banner__video: The URL of the video to be displayed. If provided, background_image will be ignored.
+ #
+ # - banner__alignment: Specifies the alignment of the content within the banner. Options include 'left', 'center'.
+ # - banner__variant: Specifies the style variant for the banner component (e.g., default, light, dark).
+ # - banner__attributes: HTML attributes for the banner container.
+ #
+ # Available Blocks:
+ # - banner_media
+ # - banner__media_caption
+#}
+
+{% set banner__base_class = 'banner' %}
+{% set banner__modifiers = banner__modifiers|default([]) %}
+{% set banner__attributes = banner__attributes|default({}) %}
+
+{% set banner__attributes = banner__attributes|merge({
+  'class': bem(banner__base_class, banner__modifiers, banner__blockname),
+  'data-banner-alignment': banner__alignment|default('left'),
+}) %}
+
+{% set banner_media %}
+<div {{ bem('media', [], banner__base_class) }}>
+  {% block banner__media %}
+    {% if banner__media == 'image' %}
+      <img src="{{banner__image}}" alt="This is the banner image alt text"/>
+    {% else %}
+      {% set video_id = 'video-' ~ random('1234567890') ~ random('1234567890') ~ random('1234567890') ~ random('1234567890') %}
+
+      {% include "@components/video/video.twig" with {
+        video__type: 'html5',
+        video__urls: banner__video,
+        video__show_placeholder: false,
+        video__blockname: banner__base_class,
+        video_object__attributes: {
+          'id': video_id,
+          'preload': 'true',
+          'muted': 'true',
+          'playsinline': 'true',
+          'webkit-playsinline': 'true',
+          'aria-hidden': 'true',
+          'loop': 'true',
+          'autoplay': 'true',
+        },
+      } %}
+
+      {% include "@components/video/playback-button.twig" with {
+        playback__blockname: banner__base_class,
+        playback__video_id: video_id,
+      } %}
+    {% endif %}
+  {% endblock %}
+</div>
+{% block banner__media_caption %}{% endblock %}
+{% endset %}
+
+{% set banner %}
+<div {{ add_attributes(banner__attributes) }}>
+  <div {{ bem('content', [], banner__base_class) }}>
+    {% if banner__heading %}
+      {% include "@components/typography/heading/heading.twig" with {
+        heading: banner__heading,
+        heading__level: banner__heading__level|default('4'),
+        heading__blockname: banner__base_class,
+      } %}
+    {% endif %}
+
+    {% if banner__text %}
+      {% include "@components/typography/text/text.twig" with {
+        text__content: banner__text,
+        text__blockname: banner__base_class,
+      } %}
+    {% endif %}
+
+    {% if banner__link_items|length > 0 %}
+      <div {{ bem('links', [], banner__base_class) }}>
+        {% for item in banner__link_items %}
+          {% include "@components/button/button.twig" with {
+            button__element: 'a',
+            button__style: 'primary',
+            button__content: item.content,
+            button__attributes: {
+              'href': item.url,
+            }
+          } %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endset %}
+
+{# Render the banner within a generic container #}
+{% embed "@layout/container/container.twig" with {
+  container__component_width: banner__width|default('compressed'),
+	container__modifiers: banner__container_modifiers,
+  container__component_alignment: 'center',
+  container__theme: banner__theme|default('inverse'),
+}%}
+	{% block container__content %}
+		{{ banner }}
+	{% endblock %}
+
+  {% block container__suffix %}
+    {{ banner_media }}
+  {% endblock %}
+{% endembed %}
+
