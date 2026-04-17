@@ -33,3 +33,9 @@ props:
       title: Media Box copyright
       description: The copyright associated with the media box.
       data: 'Photo taken by John Doe'
+
+slots:
+  media_box__media:
+    title: Media-Box Media
+    description: Override the default media-box media rendering
+    data: ''

@@ -41,3 +41,13 @@ props:
       title: Alignment
       description: 'Specifies the alignment of the content within the banner. Options include: left, center, right.'
       data: 'left'
+
+slots:
+  banner__media:
+    title: Banner Media
+    description: Override the default banner media rendering
+    data: ''
+  banner__media_caption:
+    title: Banner Media Caption
+    description: Override the default banner media caption rendering
+    data: ''
