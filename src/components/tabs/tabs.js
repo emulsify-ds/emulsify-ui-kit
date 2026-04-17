@@ -59,7 +59,15 @@ Drupal.behaviors.tabs = {
               tabNavigationLinks[Number(activeIndex)].classList.remove(
                 'is-active',
               );
+              tabNavigationLinks[Number(activeIndex)].setAttribute(
+                'aria-selected',
+                'false',
+              );
               tabNavigationLinks[Number(index)].classList.add('is-active');
+              tabNavigationLinks[Number(index)].setAttribute(
+                'aria-selected',
+                'true',
+              );
               tabContentContainers[Number(activeIndex)].classList.remove(
                 'is-active',
               );
@@ -277,6 +285,25 @@ Drupal.behaviors.tabsNavScroll = {
             mouseNav('right');
           } else {
             mouseNav('left');
+          }
+        });
+
+        // Make scroll buttons accessible
+        control.removeAttribute('aria-hidden'); // Remove hidden for screen readers
+        control.setAttribute('tabindex', '0'); // Make keyboard focusable
+        control.setAttribute('role', 'button'); // Explicit role
+        control.setAttribute(
+          'aria-label',
+          control.classList.contains('tabs__scroll--right')
+            ? 'Scroll Right'
+            : 'Scroll Left',
+        );
+
+        // Keyboard support
+        control.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            control.click(); // Trigger existing click behavior
           }
         });
       });
