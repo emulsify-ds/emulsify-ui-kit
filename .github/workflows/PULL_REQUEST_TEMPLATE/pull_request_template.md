@@ -12,6 +12,10 @@
 - [ ] Step1
 - [ ] Step2
 
+### Accessibility
+
+- This meets the [Accessibility](https://www.notion.so/fourkitchens/ENG-Best-Practice-Accessibility-Policy-9576a65b905243a1acbc4bd8ac989794?source=copy_link) best practices
+
 **Closes issues**
 <!-- Put "closes #XXXX" in your comment to auto-close the issue that your PR fixes (if there is one). -->
 
