@@ -1,0 +1,8 @@
+{% embed "@components/navigation/base/menu.twig" with {
+  menu__name: 'Social Navigation',
+  menu__base_class: 'social-nav',
+} %}
+  {% block menu_list__content %}
+    {% include "@components/navigation/social/_social-list.twig" %}
+  {% endblock %}
+{% endembed %}

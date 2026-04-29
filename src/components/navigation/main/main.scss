@@ -1,0 +1,15 @@
+@forward './main-wrapper';
+@forward './main-list';
+@forward './main-item';
+@forward './main-link';
+@forward './main-toggle';
+
+@use '../../../foundation/breakpoints/breakpoints' as *;
+
+.main-nav {
+  display: flex;
+
+  @include breakpoint('medium') {
+    align-self: center;
+  }
+}

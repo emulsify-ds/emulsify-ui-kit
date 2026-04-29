@@ -1,0 +1,36 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Figure
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - image_src
+    - image_alt
+  properties:
+    output_image_tag:
+      type: boolean
+      title: Output image tag
+      description: Specifies whether to output the image tag
+      data: true
+    image__url:
+      type: string
+      title: Image URL
+      description: 'Specifies the URL that the image links to'
+      data: '#'
+    image__src:
+      type: string
+      title: Source
+      description: 'Specifies the path to the image'
+      data: 'https://placehold.co/1200x600'
+    image__alt:
+      type: string
+      title: Alternate text
+      description: 'Specifies an alternate text for the image'
+      data: 'This is the alt text'
+    image__caption:
+      type: string
+      title: Image caption
+      description: 'Specifies the caption for the image'
+      data: 'This is an image caption.'

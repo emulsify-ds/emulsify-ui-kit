@@ -13,12 +13,12 @@ export default {
     quote: {
       name: 'Quote',
       type: 'string',
-      defaultValue: blockquoteData.block_quote__quote.data,
+      defaultValue: blockquoteData.blockquote__quote.data,
     },
     attribution: {
       name: 'Attribution',
       type: 'string',
-      defaultValue: blockquoteData.block_quote__attribution.data,
+      defaultValue: blockquoteData.blockquote__attribution.data,
     },
     style: {
       name: 'Style',
@@ -36,25 +36,25 @@ export default {
 
 export const blockquote = ({ style, quote, attribution, ariaLabel }) => `
   ${blockquoteTwig({
-    block_quote__quote: blockquoteData.block_quote__quote.data,
-    block_quote__attribution: blockquoteData.block_quote__attribution.data,
-    block_quote__aria_label: 'Block Quote with bar graphic to the left',
+    blockquote__quote: blockquoteData.blockquote__quote.data,
+    blockquote__attribution: blockquoteData.blockquote__attribution.data,
+    blockquote__aria_label: 'Block Quote with bar graphic to the left',
   })}
   ${blockquoteTwig({
-    block_quote__quote: blockquoteData.block_quote__quote.data,
-    block_quote__style: 'bar-right',
-    block_quote__aria_label: 'Block Quote with bar graphic to the right',
+    blockquote__quote: blockquoteData.blockquote__quote.data,
+    blockquote__style: 'bar-right',
+    blockquote__aria_label: 'Block Quote with bar graphic to the right',
   })}
   ${blockquoteTwig({
-    block_quote__quote: blockquoteData.block_quote__quote.data,
-    block_quote__attribution: blockquoteData.block_quote__attribution.data,
-    block_quote__style: 'quote-left',
-    block_quote__aria_label: 'Block Quote with quote icon to the left',
+    blockquote__quote: blockquoteData.blockquote__quote.data,
+    blockquote__attribution: blockquoteData.blockquote__attribution.data,
+    blockquote__style: 'quote-left',
+    blockquote__aria_label: 'Block Quote with quote icon to the left',
   })}
   ${blockquoteTwig({
-    block_quote__quote: quote,
-    block_quote__attribution: attribution,
-    block_quote__style: style,
-    block_quote__aria_label: ariaLabel,
+    blockquote__quote: quote,
+    blockquote__attribution: attribution,
+    blockquote__style: style,
+    blockquote__aria_label: ariaLabel,
   })}
 `;

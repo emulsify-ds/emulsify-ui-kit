@@ -1,0 +1,35 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Media Box
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - media_box__media
+  properties:
+    media_box__heading:
+      type: string
+      title: Media Box heading
+      description: The main title/heading of the media box.
+      data: 'This is the card image alt text'
+    media_box__text:
+      type: string
+      title: Media Box text
+      description: The longer description area associated with the media box.
+      data: '<p>Lorem ipsum dolor sit amet, <strong>consectetur adipiscing</strong> elit. Curabitur purus velit, luctus id scelerisque id, gravida vitae ante. Aenean condimentum, velit sed dignissim varius, libero metus auctor eros, vitae vulputate libero leo sit amet nunc. Duis ultricies massa ante, eget ornare turpis <a href="#">facilisis</a>.</p>'
+    media_box__media:
+      type: string
+      title: Media Box media
+      description: The image's source of the media box.
+      data: 'https://placehold.co/400'
+    media_box__caption:
+      type: string
+      title: Media Box caption
+      description: The caption associated with the media box.
+      data: 'This is a sample caption associated with the media box.'
+    media_box__copyright:
+      type: string
+      title: Media Box copyright
+      description: The copyright associated with the media box.
+      data: 'Photo taken by John Doe'

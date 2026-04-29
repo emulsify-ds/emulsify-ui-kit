@@ -1,0 +1,62 @@
+@mixin visually-hidden {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  word-wrap: normal;
+}
+
+.visually-hidden,
+.sr-only {
+  @include visually-hidden;
+}
+
+// These are abstracted from the general use `focus` mixin below to support
+// use-cases like `focus-within` that apply to an "outer" element when something
+// "inside" has focus. e.g. The utility nav search box.
+@mixin focus-styles {
+  outline: var(--spacing-xs) dotted var(--color-emulsify-blue-900) !important;
+  outline-offset: var(--spacing-xs);
+}
+
+@mixin focus {
+  &:focus-visible {
+    @include focus-styles;
+  }
+
+  // Remove browser focus indicator from browsers that support `:focus-visible`
+  // This allows older browsers (e.g. Safari) to show default styles, while
+  // modern browsers use our focus designs.
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@mixin list-reset {
+  list-style: none;
+  margin: 0;
+  padding-inline: 0;
+}
+
+@mixin clearfix {
+  &::after {
+    content: ' ';
+    display: block;
+    clear: both;
+    margin: 0;
+  }
+}
+
+* {
+  @include focus;
+}
+
+body {
+  color: var(--colors-text-body);
+}
+
+body[data-body-frozen] {
+  overflow: hidden;
+  max-height: 100vh;
+}

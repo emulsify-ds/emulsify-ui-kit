@@ -1,0 +1,47 @@
+@use 'sass:math';
+@use '../breakpoints/breakpoints' as *;
+
+@mixin section-padding-top($multiplier: 1) {
+  & {
+    padding-top: var(--spacing-xl);
+  }
+
+  @include breakpoint('large') {
+    padding-top: calc(var(--spacing-xl) * #{$multiplier});
+  }
+}
+
+@mixin section-padding-bottom($multiplier: 1) {
+  & {
+    padding-bottom: var(--spacing-xl);
+  }
+
+  @include breakpoint('large') {
+    padding-bottom: calc(var(--spacing-xl) * #{$multiplier});
+  }
+}
+
+@mixin section-padding($multiplier: 1) {
+  @include section-padding-top($multiplier);
+  @include section-padding-bottom($multiplier);
+}
+
+@mixin margin-gap-top($multiplier: 1) {
+  & {
+    margin-top: calc(var(--spacing-xl) * #{$multiplier});
+  }
+
+  @include breakpoint('large') {
+    margin-top: calc(var(--spacing-2xl) * #{$multiplier});
+  }
+}
+
+@mixin margin-gap-bottom($multiplier: 1) {
+  &:not(:last-child) {
+    margin-bottom: calc(var(--spacing-xl) * #{$multiplier});
+
+    @include breakpoint('large') {
+      margin-bottom: calc(var(--spacing-2xl) * #{$multiplier});
+    }
+  }
+}

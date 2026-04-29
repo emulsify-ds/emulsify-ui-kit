@@ -1,0 +1,21 @@
+<div>
+  <h2 class="sb-title">Spacing Tokens</h2>
+
+  <ul class="sb-list">
+    {% for spacing, value in _context.spacing %}
+      <li class="sb-list__item">
+        <span class="sb-list__label">{{spacing}}</span>
+        <span class="sb-list__value">{{value.value}}px</span>
+        <span class="sb-list__custom-property">
+          <code class=" sb-custom-property-name">var(--spacing-{{spacing}})</code>
+        </span>
+
+        <ul class="sb-spacing-wrapper" style="gap: {{value.value}}px; padding-left: 0;">
+          {% for i in [1,1,1,1,1,1,1] %}
+            <li class="sb-list__visualization" style="width: 50px; height: 50px; background-color: var(--colors-sb-visualization);"></li>
+          {% endfor %}
+        </ul>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

@@ -1,0 +1,5 @@
+breadcrumb:
+  - url: '#'
+    text: 'Home'
+  - url: '#'
+    text: 'Your Education'

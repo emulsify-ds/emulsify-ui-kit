@@ -1,3 +1,5 @@
+@use '../../../foundation/utility/utility' as *;
+
 .form-item--radios,
 .form-item--radio__item {
   @include list-reset;
@@ -52,7 +54,7 @@
 
 .form-item--radio__item {
   input[type='radio'] {
-    @include sr-only;
+    @include visually-hidden;
   }
 
   input[type='radio']:checked + .form-item--radio__item--label::after {

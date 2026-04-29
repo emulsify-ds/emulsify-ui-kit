@@ -1,6 +1,8 @@
 import status from './status.twig';
+import { props } from './status.component.yml';
+import { mapDataToTwig } from '../../util/dataTransformers';
 
-import statusData from './status.yml';
+const statusData = mapDataToTwig(props.properties);
 
 /**
  * Storybook Definition.

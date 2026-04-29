@@ -1,0 +1,31 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Call To Action
+group: Components
+status: stable
+props:
+  type: object
+  properties:
+    call_to_action__overline:
+      type: string
+      title: Title
+    call_to_action__heading:
+      type: string
+      title: Title
+      description: The heading of the call to action.
+      data: 'This is a call to take action heading'
+    call_to_action__text:
+      type: string
+      title: Content
+      description: 'Specifies the main content of the text with image'
+      data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
+    call_to_action__button__text:
+      type: string
+      title: Button Text
+      description: 'Specifies the link label'
+      data: 'Student Research Opportunities'
+    call_to_action__button__url:
+      type: string
+      title: Button URL
+      description: 'Specifies the URL the link will link to'
+      data: '#'

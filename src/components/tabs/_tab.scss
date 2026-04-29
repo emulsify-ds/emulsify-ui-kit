@@ -1,5 +1,6 @@
-.tabs__link,
-.tabs__link--local-tasks {
+@use '../../foundation/breakpoints/breakpoints' as *;
+
+.tab__link {
   background-color: var(--tabs-color-bg-default);
   border-bottom: var(--size-md) solid var(--tabs-color-bg-default);
   color: var(--tabs-color-text-default);
@@ -12,7 +13,7 @@
   text-decoration: none;
   transition: color 0.3s;
 
-  @include large {
+  @include breakpoint('medium') {
     display: inline-block;
     position: relative;
     top: var(--spacing-md);

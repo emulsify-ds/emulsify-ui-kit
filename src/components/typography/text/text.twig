@@ -1,0 +1,15 @@
+{#
+ # Available Props:
+ # - text__element: div (default), p, pre, etc.
+ #
+ # Available Variables:
+ # - text__content: We're using raw here to support Drupal's wysiwyg editor.
+ #}
+
+{% set text__base_class = text__base_class|default('text') %}
+{% set text__element = text__element|default('div') %}
+
+<{{text__element}} {{ bem(text__base_class, text__modifiers, text__blockname) }}>
+	{{- text__content|raw -}}
+	{% block text_suffix %}{% endblock %}
+</{{text__element}}>

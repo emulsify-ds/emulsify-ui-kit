@@ -1,0 +1,44 @@
+{% set image__base_class = image__base_class|default('image') %}
+
+{% set image__attributes = image__attributes|default({
+  'class': bem(image__base_class, image__modifiers, image__blockname),
+  'src': image__src,
+}) %}
+
+{% if image__srcset %}
+  {% set image__attributes = image__attributes|merge({
+    'srcset': image__srcset,
+  }) %}
+{% endif %}
+
+{% if image__sizes %}
+  {% set image__attributes = image__attributes|merge({
+    'sizes': image__sizes,
+  }) %}
+{% endif %}
+
+{% if image__alt %}
+  {% set image__attributes = image__attributes|merge({
+    'alt': image__alt,
+  }) %}
+{% endif %}
+
+{% if image__title %}
+  {% set image__attributes = image__attributes|merge({
+    'title': image__title,
+  }) %}
+{% endif %}
+
+{% if image__width %}
+  {% set image__attributes = image__attributes|merge({
+    'title': image__width,
+  }) %}
+{% endif %}
+
+{% if image__height %}
+  {% set image__attributes = image__attributes|merge({
+    'title': image__height,
+  }) %}
+{% endif %}
+
+<img {{ add_attributes(image__attributes) }}/>

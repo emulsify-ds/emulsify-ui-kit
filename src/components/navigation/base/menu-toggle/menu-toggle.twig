@@ -1,0 +1,32 @@
+{% set menu_toggle__base_class = menu__base_class ~ '__toggle' %}
+{% set menu_toggle__menu__label = menu_toggle__menu__label|default('Menu') %}
+{% set menu_toggle__style = menu_toggle__style|default('clean') %}
+{% set menu_toggle__attributes = menu_toggle__attributes|default([]) %}
+{% set menu_toggle__attributes = menu_toggle__attributes|merge({
+  'data-menu-level': menu_toggle__menu__level,
+  'aria-label': menu_toggle__menu__label,
+}) %}
+
+{# Default menu_toggle label/icon #}
+{% set menu_toggle__content_default %}
+  <span {{ bem('bars', [], menu_toggle__base_class) }}>
+    <span {{ bem('bar', [], menu_toggle__base_class) }}></span>
+    <span {{ bem('bar', [], menu_toggle__base_class) }}></span>
+    <span {{ bem('bar', [], menu_toggle__base_class) }}></span>
+  </span>
+  <span {{ bem('text', [], menu_toggle__base_class) }}>{{ menu_toggle__menu__label }}</span>
+{% endset %}
+{% set menu_toggle__content = menu_toggle__content|default(menu_toggle__content_default) %}
+
+{% embed "@components/button/button.twig" with {
+  button__content: true,
+  button__additional_classes: [menu_toggle__base_class],
+  button__style: menu_toggle__style,
+  button__icon: menu_toggle__icon,
+  aria_expanded: 'false',
+  button__attributes: menu_toggle__attributes,
+} %}
+	{% block button__content %}
+		{{ menu_toggle__content }}
+	{% endblock %}
+{% endembed %}

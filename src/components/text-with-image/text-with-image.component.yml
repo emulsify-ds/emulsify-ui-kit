@@ -1,0 +1,36 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Text with Image
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - text_with_image__heading
+    - text_with_image__text
+  properties:
+    text_with_image__overline:
+      type: string
+      title: Title
+      description: 'An option overline that shows above the heading'
+      data: 'Bisons in the lab'
+    text_with_image__heading:
+      type: string
+      title: Title
+      description: The heading of the accordion item.
+      data: 'Selena Chase, NDSU Volleyball 24 Team'
+    text_with_image__text:
+      type: string
+      title: Content
+      description: 'Specifies the main content of the text with image'
+      data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
+    text_with_image__link__content:
+      type: string
+      title: Button Text
+      description: 'Specifies the link label'
+      data: 'Student Research Opportunities'
+    text_with_image__link__url:
+      type: string
+      title: Button URL
+      description: 'Specifies the URL the link will link to'
+      data: '#'

@@ -1,0 +1,99 @@
+@use '../../foundation/motion/motion' as *;
+
+// Exterior link indicator.
+@mixin ext-link {
+  &::after {
+    @include transition;
+
+    & {
+      content: '';
+      display: inline-block;
+      position: relative;
+      height: var(--size-lg);
+      width: var(--size-lg);
+      padding: 0;
+      background-color: var(--link-color-default);
+      mask-image: url('data:image/svg+xml;utf8,<svg width="9" height="9" viewBox="0 0 7 7" xmlns="http://www.w3.org/2000/svg"><path d="M5.75194 2.10284L1.07171 6.8102C0.94509 6.93681 0.798036 7.00012 0.630543 7.00012C0.463411 7.00012 0.316537 6.93681 0.189922 6.8102C0.0633074 6.68358 0 6.53653 0 6.36904C0 6.2019 0.0633074 6.05503 0.189922 5.92842L4.89729 1.24818H0.949612C0.777778 1.24818 0.630905 1.18705 0.508992 1.06477C0.386718 0.942861 0.325581 0.795988 0.325581 0.624153C0.325581 0.452318 0.386718 0.305264 0.508992 0.18299C0.630905 0.0610781 0.777778 0.00012207 0.949612 0.00012207H6.37597C6.5478 0.00012207 6.69468 0.0610781 6.81659 0.18299C6.93886 0.305264 7 0.452318 7 0.624153V6.05051C7 6.22234 6.93886 6.36922 6.81659 6.49113C6.69468 6.6134 6.5478 6.67454 6.37597 6.67454C6.20413 6.67454 6.05726 6.6134 5.93535 6.49113C5.81308 6.36922 5.75194 6.22234 5.75194 6.05051V2.10284Z"/></svg>');
+      mask-repeat: no-repeat;
+      mask-position: center center;
+    }
+  }
+
+  &:hover::after,
+  &:focus::after {
+    background-color: var(--link-color-hover);
+  }
+
+  [data-component-theme*='inverse'] & {
+    &::after {
+      background-color: var(--link-color-inverse);
+    }
+
+    &:hover::after,
+    &:focus::after {
+      background-color: var(--link-color-inverse-hover);
+    }
+  }
+}
+
+@mixin link($style: underline) {
+  @include transition;
+
+  & {
+    color: var(--link-color-default);
+    text-decoration: underline;
+    position: relative;
+    display: inline-block;
+  }
+
+  @if $style == 'no-underline' {
+    & {
+      text-decoration: none;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    color: var(--link-color-hover);
+    text-decoration: none;
+
+    @if $style == 'no-underline' {
+      & {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &:focus {
+    outline: var(--spacing-xs) dotted clr(text, dark);
+    outline-offset: var(--spacing-xs);
+  }
+
+  &[data-extlink],
+  &[target='_blank'] {
+    @include ext-link;
+  }
+
+  [data-component-theme*='inverse'] & {
+    color: var(--link-color-inverse);
+
+    &:hover,
+    &:focus {
+      color: var(--link-color-inverse-hover);
+    }
+  }
+}
+
+// Reset link
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.link {
+  @include link;
+}
+
+[data-link-style='no-underline'] {
+  @include link('no-underline');
+}

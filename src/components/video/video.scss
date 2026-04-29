@@ -1,0 +1,32 @@
+/* Responsive Video using CSS only */
+.video {
+  iframe {
+    height: 100%;
+    width: 100%;
+  }
+
+  video {
+    height: auto;
+    width: 100%;
+  }
+}
+
+.video__wrap {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  position: relative;
+}
+
+.playback__button {
+  cursor: pointer;
+  border-radius: 50%;
+  width: var(--spacing-xl);
+  height: var(--spacing-xl);
+  border: 3px solid var(--color-white);
+  background-color: var(--color-primary-lighter);
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}

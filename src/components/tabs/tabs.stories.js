@@ -1,8 +1,11 @@
+// Twig templates
 import tabsTwig from './tabs.twig';
-
-import tabData from './tabs.yml';
-
+// Utility
+import { mapDataToTwig } from '../../util/dataTransformers';
 import './tabs';
+// Data
+import { props } from './tabs.component.yml';
+const tabData = mapDataToTwig(props.properties);
 
 /**
  * Storybook Definition.

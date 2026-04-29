@@ -1,0 +1,33 @@
+responsive_images:
+  16x9:
+    output_image_tag: true
+    image__srcset: 'https://picsum.photos/320/180 320w, https://picsum.photos/480/270 480w, https://picsum.photos/640/360 640w, https://picsum.photos/800/450 800w, https://picsum.photos/960/540 960w, https://picsum.photos/1120/630 1120w, https://picsum.photos/1280/720 1280w, https://picsum.photos/1440/810 1440w, https://picsum.photos/1600/900 1600w, https://picsum.photos/1760/990 1760w, https://picsum.photos/1920/1080 1920w, https://picsum.photos/2080/1170 2080w, https://picsum.photos/2240/1260 2240w, https://picsum.photos/2400/1350 2400w'
+    image__sizes: '100vw'
+    image__src: 'https://picsum.photos/320/180'
+    image__alt: 'A 16 by 9 image'
+  3x2:
+    output_image_tag: true
+    image__srcset: 'https://picsum.photos/320/213 320w, https://picsum.photos/480/320 480w, https://picsum.photos/640/427 640w, https://picsum.photos/800/533 800w, https://picsum.photos/960/640 960w, https://picsum.photos/1120/747 1120w, https://picsum.photos/1280/853 1280w, https://picsum.photos/1440/960 1440w, https://picsum.photos/1600/1067 1600w, https://picsum.photos/1760/1173 1760w, https://picsum.photos/1920/1280 1920w, https://picsum.photos/2080/1387 2080w, https://picsum.photos/2240/1493 2240w, https://picsum.photos/2400/1600 2400w'
+    image__sizes: '100vw'
+    image__src: 'https://picsum.photos/320/213'
+    image__alt: 'A 3 by 2 image'
+  1x1:
+    output_image_tag: true
+    image__srcset: 'https://picsum.photos/320 320w, https://picsum.photos/480 480w, https://picsum.photos/640 640w, https://picsum.photos/800 800w, https://picsum.photos/960 960w, https://picsum.photos/1120 1120w, https://picsum.photos/1280 1280w, https://picsum.photos/1440 1440w, https://picsum.photos/1600 1600w, https://picsum.photos/1760 1760w, https://picsum.photos/1920 1920w, https://picsum.photos/2080 2080w, https://picsum.photos/2240 2240w, https://picsum.photos/2400 2400w'
+    image__sizes: '50vw'
+    image__src: 'https://picsum.photos/320'
+    image__alt: 'A 1 by 1 image'
+  1x1.6:
+    output_image_tag: true
+    image__srcset: 'https://picsum.photos/320/512 320w, https://picsum.photos/480/768 480w, https://picsum.photos/640/1024 640w, https://picsum.photos/800/1280 800w, https://picsum.photos/960/1536 960w, https://picsum.photos/1120/1792 1120w, https://picsum.photos/1280/2048 1280w, https://picsum.photos/1440/2304 1440w, https://picsum.photos/1600/2560 1600w, https://picsum.photos/1760/2816 1760w, https://picsum.photos/1920/3072 1920w, https://picsum.photos/2080/3328 2080w, https://picsum.photos/2240/3584 2240w, https://picsum.photos/2400/3840 2400w'
+    image__sizes: '100vw'
+    image__src: 'https://picsum.photos/320/512'
+    image__alt: 'A 1 by 1.6 image'
+  4x3:
+    output_image_tag: true
+    image__srcset: 'https://picsum.photos/320/240 320w, https://picsum.photos/480/360 480w, https://picsum.photos/640/480 640w, https://picsum.photos/800/600 800w, https://picsum.photos/960/720 960w, https://picsum.photos/1120/840 1120w, https://picsum.photos/1280/960 1280w, https://picsum.photos/1440/1080 1440w, https://picsum.photos/1600/1200 1600w, https://picsum.photos/1760/1320 1760w, https://picsum.photos/1920/1440 1920w, https://picsum.photos/2080/1560 2080w, https://picsum.photos/2240/1680 2240w, https://picsum.photos/2400/1800 2400w'
+    image__sizes: '100vw'
+    image__src: 'https://picsum.photos/320/240'
+    image__alt: 'A 4 by 3 image'
+image__caption: 'This is a sample caption associated with the figure.'
+image__copyright: 'Photo taken by John Doe'

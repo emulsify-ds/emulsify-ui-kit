@@ -1,0 +1,15 @@
+<div>
+  <h2 class="sb-title">Type Faces</h2>
+
+  <ul class="sb-list">
+    {% for fontFamily, value in _context.fontFamily %}
+      <li class="sb-list__item">
+        <span class="sb-list__value">{{value.value}}</span>
+        <span class="sb-list__custom-property">
+          <code class="sb-custom-property-name">var(--font-family-{{fontFamily}})</code>
+        </span>
+        <h2 class="sb-list__label" style="font-family: {{value.value}};">{{fontFamily}}</h2>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

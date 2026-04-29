@@ -1,0 +1,57 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Headings
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - heading__level
+    - heading
+  properties:
+    heading__level:
+      type: integer
+      title: Level
+      description: 'The level of the heading (1 to 6).'
+      data: 1
+    heading:
+      type: string
+      title: Content
+      description: 'The text content of the heading.'
+      data: 'This is an H1 Example'
+    heading_url:
+      type: string
+      title: URL
+      description: 'Optional URL for the heading, if it should be a link.'
+      data: 'https://emulsify.info/'
+  example:
+    - heading__level: 1
+      heading: 'This is an H1 Example'
+    - heading__level: 2
+      heading: 'This is an H2 Example'
+    - heading__level: 3
+      heading: 'This is an H3 Example'
+    - heading__level: 4
+      heading: 'This is an H4 Example'
+    - heading__level: 5
+      heading: 'This is an H5 Example'
+    - heading__level: 6
+      heading: 'This is an H6 Example'
+    - heading__level: 1
+      heading: 'This is an H1 Example with a link'
+      heading_url: 'https://emulsify.info/'
+    - heading__level: 2
+      heading: 'This is an H2 Example with a link'
+      heading_url: 'https://emulsify.info/'
+    - heading__level: 3
+      heading: 'This is an H3 Example with a link'
+      heading_url: 'https://emulsify.info/'
+    - heading__level: 4
+      heading: 'This is an H4 Example with a link'
+      heading_url: 'https://emulsify.info/'
+    - heading__level: 5
+      heading: 'This is an H5 Example with a link'
+      heading_url: 'https://emulsify.info/'
+    - heading__level: 6
+      heading: 'This is an H6 Example with a link'
+      heading_url: 'https://emulsify.info/'

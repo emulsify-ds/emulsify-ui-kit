@@ -1,0 +1,37 @@
+{#
+ # Available variables:
+ # - playback__base_class - the base classname
+ # - playback__video_id - id from video tag
+ # - playback__modifiers
+ # - playback__blockname
+ #
+ # Available blocks:
+ # - none
+#}
+
+{% set playback__base_class = playback__base_class|default('playback') %}
+{% set playback__attributes = playback__attributes|default({}) %}
+{% set playback__modifiers = playback__modifiers|default([]) %}
+
+{% set playback__attributes = playback__attributes|merge({
+  'class': bem(playback__base_class, playback__modifiers, playback__blockname),
+  'data-video-id': playback__video_id,
+}) %}
+
+<div {{ add_attributes(playback__attributes) }}>
+  <button {{ bem('button', [], playback__base_class) }}>
+    <span {{ bem('label', [], playback__base_class, ['visually-hidden']) }}></span>
+    {% include "@components/icons/_icon.twig" with {
+      icon__name: 'pause',
+      icon__decorative: true,
+      icon__base_class: 'pause',
+      icon__blockname: playback__base_class,
+    } %}
+    {% include "@components/icons/_icon.twig" with {
+      icon__name: 'play',
+      icon__decorative: true,
+      icon__base_class: 'play',
+      icon__blockname: playback__base_class,
+    } %}
+  </button>
+</div>
