@@ -18,3 +18,9 @@ props:
       title: Content
       description: 'Specifies the main content of the blockquote.'
       data: 'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
+
+slots:
+  blockquote__content:
+    title: Blockquote Content
+    description: Override the default blockquote content rendering
+    data: ''

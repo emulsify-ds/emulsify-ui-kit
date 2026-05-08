@@ -13,3 +13,13 @@ props:
       data:
         - 'button--hover'
         - 'button--focus'
+
+slots:
+  button__icon:
+    title: Button Icon
+    description: Override the default button icon rendering
+    data: ''
+  button__content:
+    title: Button Content
+    description: Override the default button content rendering
+    data: ''
