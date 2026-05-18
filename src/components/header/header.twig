@@ -1,56 +1,95 @@
 {% set header__base_class = 'header' %}
-{% set header__base_class = 'header' %}
 {% set header__search_placeholder = header__search_placeholder|default('Search placeholder') %}
 
-<header {{ bem(header__base_class) }} {{ add_attributes(additional_attributes) }}>
-  <div {{ bem('branding', [], header__base_class) }}>
-    {{ header__branding|raw }}
-  </div>
-  <nav {{ bem('menu', [], header__base_class) }}>
-    <ul>
-      {% for item in header__menu %}
-        <li {{ bem('menu-item', [], header__base_class) }}>
-          <a {{ bem('menu-link', [], header__base_class) }} href="{{ item.url }}">
-            {{ item.label }}
-          </a>
-          {% if item.submenu %}
+{% set search_form %}
+  <div {{ bem('wrapper', [], header__base_class ~ '__search-form') }} aria-hidden="true">
+    {% block header__search %}
+      <form {{ bem('search-form', [], header__base_class) }} action="">
+        <input {{ bem('input', [], header__base_class ~ '__search-form') }} type="search" placeholder="{{ header__search_placeholder }}">
+        <div {{ bem('actions', [], header__base_class ~ '__search-form') }}>
+          <button type="button" {{ bem('submit', [], header__base_class ~ '__search-form') }}>
+            <span class="visually-hidden">{{ header__submit_label|default('Search') }}</span>
             {% include "@components/icons/_icon.twig" with {
+              icon__name: 'search',
               icon__decorative: true,
-              icon__base_class: 'toggle',
-              icon__name: 'chevron-down',
-              icon__blockname: header__base_class,
             } %}
-            <ul {{ bem('submenu', [], header__base_class) }}>
-              {% for subitem in item.submenu %}
-                <li {{ bem('submenu-item', [], header__base_class) }}>
-                  <a href="{{ subitem.url }}">{{ subitem.label }}</a>
-                </li>
-              {% endfor %}
-            </ul>
-          {% endif %}
-        </li>
-      {% endfor %}
-    </ul>
-  </nav>
-  <div {{ bem('search-form', [], header__base_class) }}>
-    <input {{ bem('search-input', [], header__base_class) }} type="search" placeholder="{{ header__search_placeholder }}">
-    <div {{ bem('form-actions', [], header__base_class) }}>
-      <button {{ bem('submit', [], header__base_class) }}>
-        {% include "@components/icons/_icon.twig" with {
-          icon__name: 'search',
-          icon__decorative: true,
-          icon__base_class: 'icon',
-          icon__blockname: header__base_class,
-        } %}
-      </button>
-      <button {{ bem('cancel', [], header__base_class) }}>
-        {% include "@components/icons/_icon.twig" with {
-          icon__name: 'close',
-          icon__decorative: true,
-          icon__base_class: 'icon',
-          icon__blockname: header__base_class,
-        } %}
-      </button>
-    </div>
+          </button>
+          <button type="button" {{ bem('toggle', [], header__base_class ~ '__search-form') }}>
+            <span class="visually-hidden">{{ header__cancel_label|default('Close') }}</span>
+            {% include "@components/icons/_icon.twig" with {
+              icon__name: 'close',
+              icon__decorative: true,
+            } %}
+          </button>
+        </div>
+      </form>
+    {% endblock %}
   </div>
+{% endset %}
+
+<header {{ bem(header__base_class) }} {{ add_attributes(additional_attributes) }}>
+  {# Branding #}
+  <div {{ bem('branding', [], header__base_class) }}>
+    {% block header__branding %}
+      {% include "@components/logo/logo.twig" with {
+        image_src: directory ? '/' ~ directory ~ '/assets/images/logo-text.svg' : 'logo-text.svg',
+      } %}
+    {% endblock %}
+  </div>
+  {# Main navigation #}
+  <nav {{ bem('menu', [], header__base_class) }}>
+    <div {{ bem('search', ['mobile'], header__base_class) }}></div>
+    {% block header__menu %}
+      <ul>
+        {% for item in header__menu %}
+          <li {{ bem('menu-item', [], header__base_class) }}>
+            <a {{ bem('link', [], header__base_class ~ '__menu-item') }} href="{{ item.url }}">
+              {{ item.label }}
+            </a>
+            {% if item.submenu %}
+              <button type="button" {{ bem('toggle', [], header__base_class ~ '__menu-item') }} aria-expanded="false" aria-controls="">
+                {% include "@components/icons/_icon.twig" with {
+                  icon__decorative: true,
+                  icon__name: 'chevron-down',
+                } %}
+              </button>
+              <ul {{ bem('submenu', [], header__base_class ~ '__menu-item') }}>
+                {% for subitem in item.submenu %}
+                  <li {{ bem('submenu-item', [], header__base_class) }}>
+                    <a {{ bem('link', [], header__base_class ~ '__submenu-item') }} href="{{ subitem.url }}">{{ subitem.label }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endblock %}
+  </nav>
+  <div {{ bem('search', ['desktop'], header__base_class) }}>
+    {# Search toggle button #}
+    <button type="button" {{ bem('toggle', [], header__base_class ~ '__search-form') }} aria-expanded="false" aria-controls="">
+      <span>{{ header__search_label|default('Search') }}</span>
+      {% include "@components/icons/_icon.twig" with {
+        icon__decorative: true,
+        icon__name: 'search',
+        icon__modifiers: ['search'],
+      } %}
+      {% include "@components/icons/_icon.twig" with {
+        icon__decorative: true,
+        icon__name: 'close',
+        icon__modifiers: ['close'],
+      } %}
+    </button>
+    {{ search_form }}
+  </div>
+  {# Mobile menu toggle button #}
+  <button type="button" {{ bem('toggle', [], header__base_class ~ '__mobile-menu') }} aria-expanded="false">
+    <span class="visually-hidden">{{ header__menu_label|default('Menu') }}</span>
+    <div {{ bem('hamburger', [], header__base_class ~ '__mobile-menu') }}>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
 </header>
