@@ -5,10 +5,11 @@
   display: flex;
   width: 100%;
   min-height: 5rem;
-  padding-inline: var(--spacing-md);
+  padding-inline: var(--spacing-xl);
   justify-content: space-between;
   align-items: center;
   position: relative;
+  box-shadow: 0 4px 4px 0 rgba(197, 197, 197, 0.25);
 
   @include breakpoint('medium') {
     justify-content: flex-start;
@@ -27,6 +28,7 @@
     height: 2.5rem;
 
     @include breakpoint('medium') {
+      margin-left: var(--spacing-xl);
       height: 3.5rem;
     }
   }
@@ -252,16 +254,17 @@
   }
 
   .header__search-form__input {
-    color: var(--color-primary-dark);
+    color: var(--color-text-body);
     border-bottom-color: var(--color-primary-dark);
 
     &::placeholder {
-      color: var(--color-primary-dark);
+      color: var(--color-text-body);
       opacity: 0.7;
     }
 
     &::-ms-input-placeholder {
-      color: var(--color-primary-dark);
+      color: var(--color-text-body);
+      opacity: 0.7;
     }
   }
 
