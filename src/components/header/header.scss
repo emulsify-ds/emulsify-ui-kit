@@ -32,6 +32,11 @@
       height: 3.5rem;
     }
   }
+
+  .logo__link {
+    height: 100%;
+    display: flex;
+  }
 }
 
 /* Menu */
@@ -237,7 +242,7 @@
 }
 
 .header__search--mobile {
-  padding-block: var(--spacing-xl);
+  padding-block: var(--spacing-md) var(--spacing-xl);
   padding-inline: var(--spacing-md);
 
   .header__search-form__wrapper {
@@ -250,10 +255,12 @@
 
   .header__search-form {
     background-color: transparent;
-    padding: 0 var(--spacing-lg);
+    padding: 0 0 0 var(--spacing-lg);
   }
 
   .header__search-form__input {
+    flex: 1;
+    width: inherit;
     color: var(--color-text-body);
     border-bottom-color: var(--color-primary-dark);
 
