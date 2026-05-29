@@ -6,42 +6,11 @@ status: stable
 props:
   type: object
   properties:
-    header__menu:
-      type: array
-      title: Menu Items
-      description: The list of menu items to display in the header.
-      items:
-        type: object
-        properties:
-          label:
-            type: string
-          url:
-            type: string
-          submenu:
-            type: array
-      data:
-        - label: Academics
-          submenu:
-            - label: Undergraduate
-              url: #
-            - label: Postgraduate
-              url: #
-        - label: Admissions
-          url: /admissions
-          submenu:
-            - label: International
-              url: #
-            - label: Domestic
-              url: #
-        - label: Research
-          url: #
-        - label: About
-          url: #
-    header__search_placeholder:
-      type: string
-      title: Search Placeholder
-      description: The placeholder text for the search input.
-      data: Search placeholder
+    header__show_search:
+      type: boolean
+      title: Show Search
+      description: Control visibility of the search form in the header.
+      data: true
 slots:
   header__branding:
     title: Branding

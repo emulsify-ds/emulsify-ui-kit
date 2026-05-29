@@ -1,8 +1,17 @@
+// Markup.
 import template from './header.twig';
-import { props } from './header.component.yml';
-import './header';
 
-const headerData = props.properties;
+// Data.
+import { props as mainMenuProps } from '../navigation/main/main.component.yml';
+import { props as searchProps } from '../search/search.component.yml';
+
+// JavaScript.
+import '../navigation/base/menu-toggle/menu-toggle';
+import '../navigation/main/main';
+import '../search/search';
+
+const mainMenuData = mainMenuProps.properties;
+const searchData = searchProps.properties;
 
 /**
  * Storybook Definition.
@@ -10,7 +19,7 @@ const headerData = props.properties;
 export default {
   title: 'Components/Header',
   argTypes: {
-    menu: {
+    mainMenu: {
       name: 'Menu Items',
       control: { type: 'object' },
     },
@@ -18,17 +27,25 @@ export default {
       name: 'Search Placeholder',
       type: 'string',
     },
+    showSearch: {
+      name: 'Show Search',
+      control: { type: 'boolean' },
+    },
   },
   args: {
-    menu: headerData.header__menu.data,
-    searchPlaceholder: headerData.header__search_placeholder.data,
+    mainMenu: mainMenuData.items.data,
+    searchLabel: searchData.search__label.data,
+    searchPlaceholder: searchData.search__placeholder.data,
+    showSearch: true,
   },
 };
 
-export const Header = ({ menu, searchPlaceholder }) =>
+export const Header = ({ mainMenu, searchPlaceholder, searchLabel, showSearch }) =>
   template({
-    header__menu: menu,
-    header__search_placeholder: searchPlaceholder,
+    header__menu: mainMenu,
     header__branding: '<img src="assets/images/logo.svg" alt="Branding">',
+    header__show_search: showSearch,
+    header__search__placeholder: searchPlaceholder,
+    header__search__label: searchLabel,
   });
 
