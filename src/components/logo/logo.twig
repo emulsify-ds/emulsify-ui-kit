@@ -20,8 +20,8 @@
     {% block link__content %}
       {% include "@components/image/responsive-image.twig" with {
         output_image_tag: true,
-        image__src: directory ? '/' ~ directory ~ '/assets/images/logo.png' : 'logo.png',
-        image__alt: 'Logo',
+        image__src: image_src|default(directory ? '/' ~ directory ~ '/assets/images/logo.png' : 'logo.png'),
+        image__alt: image_alt|default('Logo'),
         responsive_image_blockname: 'logo',
       } %}
     {% endblock %}

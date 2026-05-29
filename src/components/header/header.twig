@@ -1,0 +1,46 @@
+{#
+ # Header Component Template
+ # Available Variables:
+ # - header__base_class: (string) base BEM class, default 'header'
+ # - header__search__placeholder: (string) placeholder text for search input
+ # - header__search__label: (string) label for search toggle button
+ # - header__menu_label: (string) label for mobile menu toggle
+ # - additional_attributes: (array) HTML attributes for the header element
+ # - search_form: (string) rendered search form markup
+ #
+ # Available Blocks (Slots):
+ # - header__branding
+ # - header__menu
+ #}
+
+{% set header__base_class = 'header' %}
+
+<header {{ bem(header__base_class) }} {{ add_attributes(additional_attributes) }}>
+  {# Branding #}
+  <div {{ bem('branding', [], header__base_class) }}>
+    {% block header__branding %}
+      {% include "@components/logo/logo.twig" with {
+        image_src: directory ? '/' ~ directory ~ '/assets/images/logo-text.svg' : 'logo-text.svg',
+      } %}
+    {% endblock %}
+  </div>
+  {# Main navigation #}
+  <div {{ bem('menu', [], header__base_class) }}>
+    {% block header__menu %}
+      {% include "@components/navigation/main/main.twig" with {
+        items: header__menu,
+      } %}
+    {% endblock %}
+  </div>
+  {# Search form #}
+  {% if header__show_search %}
+    <div {{ bem('search', [], header__base_class) }}>
+      {% block header__search %}
+        {% include '@components/search/search.twig' with {
+          search__placeholder: header__search__placeholder,
+          search__label: header__search__label,
+        } %}
+      {% endblock %}
+  </div>
+  {% endif %}
+</header>
