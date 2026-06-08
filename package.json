@@ -4,6 +4,9 @@
   "description": "Emulsify UI Kit is the default Emulsify system that include design token integration with Figma.",
   "main": "index.js",
   "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "a11y": "npm run storybook-build && node_modules/@emulsify/core/scripts/a11y.js -r",
     "build": "webpack --config node_modules/@emulsify/core/config/webpack/webpack.prod.js",
