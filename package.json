@@ -9,10 +9,10 @@
   },
   "scripts": {
     "a11y": "npm run storybook-build && node_modules/@emulsify/core/scripts/a11y.js -r",
-    "build": "webpack --config node_modules/@emulsify/core/config/webpack/webpack.prod.js",
-    "build-dev": "webpack --config node_modules/@emulsify/core/config/webpack/webpack.dev.js",
+    "build": "npm run ensure-dist && vite build --config node_modules/@emulsify/core/config/vite/vite.config.js",
     "coverage": "npm run test && open-cli .coverage/lcov-report/index.html",
-    "develop": "npm run build-dev && concurrently --raw \"npm run webpack\" \"npm run storybook\"",
+    "develop": "npm run ensure-dist && concurrently --raw --no-shell npm:vite npm:storybook",
+    "ensure-dist": "rm -rf components dist && mkdir -p components dist",
     "format": "npm run lint-fix; npm run prettier-fix",
     "husky:commit-msg": "commitlint --edit $1",
     "husky:pre-commit": "lint-staged",
@@ -34,7 +34,7 @@
     "twatch": "jest --no-coverage --watch --verbose",
     "visreg": "percy storybook http://localhost:6006",
     "visreg-ci": "percy storybook .out",
-    "webpack": "webpack --watch --config node_modules/@emulsify/core/config/webpack/webpack.dev.js"
+    "vite": "vite build --watch --config node_modules/@emulsify/core/config/vite/vite.config.js"
   },
   "repository": {
     "type": "git",
