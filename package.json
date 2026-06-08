@@ -77,5 +77,10 @@
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "semantic-release": "^24.1.2"
+  },
+  "overrides": {
+    "glob": "^13.0.6",
+    "locutus": "^3.0.36",
+    "minimatch@3.0.x": "^3.1.5"
   }
 }
