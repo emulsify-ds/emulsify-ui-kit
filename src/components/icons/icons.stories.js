@@ -1,12 +1,14 @@
-import iconTwig from './icons.twig';
+import { renderTwig } from "@emulsify/core/storybook";
+import iconTwig from "./icons.twig";
 
-const svgIcons = require.context('../../../assets/icons/', true, /\.svg$/);
-const icons = [];
-svgIcons.keys().forEach((key) => {
-  const icon = key.split('./')[1].split('.')[0];
-  icons.push(icon);
+// Use import.meta.glob to find all .svg files in the directory and subdirectories
+const svgIcons = import.meta.glob("../../../assets/icons/**/*.svg");
+
+// Extract clean file names
+const icons = Object.keys(svgIcons).map((path) => {
+  return path.replace("../../../assets/icons/", "").replace(".svg", "");
 });
 
-export default { title: 'Components/Media/Icons' };
+export default { title: "Components/Media/Icons" };
 
-export const Icons = () => iconTwig({ icons });
+export const Icons = () => renderTwig(iconTwig({ icons }), { context });
