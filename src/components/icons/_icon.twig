@@ -25,18 +25,18 @@
 }) %}
 
 {% if icon__decorative %}
-  {% set icon__attributes = icon__attributes|merge({
+	{% set icon__attributes = icon__attributes|merge({
     'aria-hidden': 'true',
     'role': 'img',
   }) %}
-  {% elseif icon__role %}
-  {% set icon__attributes = icon__attributes|merge({
+{% elseif icon__role %}
+	{% set icon__attributes = icon__attributes|merge({
     'role': icon_role,
   }) %}
 {% endif %}
 
 {% if icon_desc %}
-  {% set icon__attributes = icon__attributes|merge({
+	{% set icon__attributes = icon__attributes|merge({
     'aria-describedby': 'desc-' ~ unique__name,
   }) %}
 {% endif %}
@@ -48,5 +48,5 @@
 	{% if icon__desc %}
 		<desc id="desc-{{ unique__name }}">{{ icon__desc }}</desc>
 	{% endif %}
-	<use xlink:href="{{ icon__url }}icons.svg#{{ icon__name }}"></use>
+	<use xlink:href="{{ icon__url }}/assets/icons.svg#{{ icon__name }}"></use>
 </svg>

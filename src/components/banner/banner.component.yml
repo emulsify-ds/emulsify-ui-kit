@@ -28,7 +28,7 @@ props:
       type: string
       title: Image's source
       description: The image's source of the banner.
-      data: 'https://picsum.photos/1480/360'
+      data: 'https://placehold.co/1480x360'
     banner__video:
       type: string
       title: Video URL

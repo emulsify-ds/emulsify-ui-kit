@@ -9,10 +9,10 @@
     background-repeat: no-repeat;
 
     @if $position == 'left' {
-      background-image: url('../../../../assets/icons/chevronLeft.svg');
+      background-image: url('../../../../assets/icons/chevron-left.svg');
       background-position: var(--spacing-md) 48%;
     } @else {
-      background-image: url('../../../../assets/icons/chevronRight.svg');
+      background-image: url('../../../../assets/icons/chevron-right.svg');
       background-position: calc(100% + var(--spacing-sm)) 42%;
     }
   }
@@ -167,7 +167,7 @@
   }
 
   .icon {
-    fill: var(--button-color-label);
+    color: var(--button-color-label);
   }
 }
 
@@ -188,7 +188,7 @@
   }
 
   .icon {
-    fill: var(--button-color-label);
+    color: var(--button-color-label);
   }
 
   [data-breadcrumbs-overflow='expanded'] & {
