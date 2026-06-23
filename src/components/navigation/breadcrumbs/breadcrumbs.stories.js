@@ -1,18 +1,24 @@
-// Markup.
+import { renderTwig } from '@emulsify/core/storybook';
+import breadcrumbsDataProps from './breadcrumbs.component.yml';
 import breadcrumbsTwig from './breadcrumbs.twig';
 
-// Data.
-import breadcrumbsDataProps from './breadcrumbs.component.yml';
-
-// JavaScript
 import './breadcrumbs';
 
-const breadcrumbsData = breadcrumbsDataProps.props.properties.breadcrumb.data;
+const { properties } = breadcrumbsDataProps.props;
 
-/**
- * Storybook Definition.
- */
-export default { title: 'Components/Navigation/Breadcrumbs' };
+export default {
+  title: 'Components/Navigation/Breadcrumbs',
+  render: renderTwig(breadcrumbsTwig),
+  argTypes: {
+    breadcrumbs_items: {
+      name: 'Breadcrumbs Items',
+      control: 'object',
+    },
+  },
+};
 
-export const Breadcrumbs = () =>
-  breadcrumbsTwig({ breadcrumbs_items: breadcrumbsData });
+export const breadcrumbs = {
+  args: {
+    breadcrumbs_items: properties.breadcrumb.data,
+  },
+};

@@ -1,8 +1,9 @@
-import logo from './logo.twig';
+import { renderTwig } from '@emulsify/core/storybook';
+import logoTwig from './logo.twig';
 
-/**
- * Storybook Definition.
- */
-export default { title: 'Components/Logo' };
+export default {
+  title: 'Components/Logo',
+  render: renderTwig(logoTwig),
+};
 
-export const Logo = () => logo();
+export const logo = {};

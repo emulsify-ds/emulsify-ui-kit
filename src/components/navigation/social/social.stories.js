@@ -1,13 +1,23 @@
-// Markup.
+import { renderTwig } from '@emulsify/core/storybook';
+
 import socialNavTwig from './social.twig';
 import socialNavDataProps from './social.component.yml';
 
-// Data.
-const socialNavData = socialNavDataProps.props.properties.items.data;
+const { properties } = socialNavDataProps.props;
 
-/**
- * Storybook Definition.
- */
-export default { title: 'Components/Navigation/Social' };
+export default {
+  title: 'Components/Navigation/Social',
+  render: renderTwig(socialNavTwig),
+  argTypes: {
+    items: {
+      name: 'Social Items',
+      control: 'object',
+    },
+  },
+};
 
-export const social = () => socialNavTwig({ items: socialNavData });
+export const social = {
+  args: {
+    items: properties.items.data,
+  },
+};
