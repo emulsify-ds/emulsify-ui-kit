@@ -20,7 +20,7 @@
     "husky:pre-commit": "lint-staged",
     "lint": "npm run lint-js; npm run lint-styles",
     "lint-fix": "npm run lint-js -- --fix; npm run lint-styles -- --fix",
-    "lint-js": "eslint --config ./config/emulsify-core/eslintrc.config.json --no-eslintrc --no-error-on-unmatched-pattern ./src",
+    "lint-js": "eslint --config config/emulsify-core/eslint.config.js --no-error-on-unmatched-pattern ./config ./src ./components",
     "lint-staged": "lint-staged",
     "lint-styles": "stylelint --config ./config/emulsify-core/stylelintrc.config.json './src/**/*.scss'",
     "prettier": "prettier --config ./config/emulsify-core/prettierrc.config.json --ignore-path ./config/emulsify-core/.prettierignore --ignore-unknown \"./src/**/*.{js,yml,scss,md}\"",
