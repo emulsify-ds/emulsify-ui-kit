@@ -76,7 +76,9 @@
     "@storybook/storybook-deployer": "2.8.16",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
-    "semantic-release": "^24.1.2"
+    "semantic-release": "^24.1.2",
+    "style-dictionary": "^5.5.0",
+    "token-transformer": "^0.0.33"
   },
   "overrides": {
     "glob": "^13.0.6",
