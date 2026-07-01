@@ -1,7 +1,7 @@
 import { renderTwig } from '@emulsify/core/storybook';
 
-import listTwig from './list.twig';
 import listData from './list.component.yml';
+import listTwig from './list.twig';
 
 const { properties } = listData.props;
 
@@ -10,7 +10,7 @@ export default {
   render: renderTwig(listTwig),
   decorators: [
     (Story) => (
-      <div className="cl-container">
+      <div className="cl-container text">
         <Story />
       </div>
     ),
