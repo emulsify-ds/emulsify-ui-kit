@@ -14,3 +14,9 @@ props:
         - "This is a list of items that doesn't need numbers."
         - 'Amet consectetur purus justo feugiat mattis sit ultricies odio. Pellentesque pellentesque sit sed porttitor duis interdum.'
         - 'Elementum elit est, vitae feugiat enim odio cursus. Enim cum dictum gravida amet id eget.'
+
+slots:
+  list__content:
+    title: List Content
+    description: Override the default list content rendering
+    data: ''

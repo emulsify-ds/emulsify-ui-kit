@@ -51,3 +51,9 @@ props:
       title: Link's url
       description: The link's url of the card.
       data: '#'
+
+slots:
+  card__img:
+    title: Card Image
+    description: Override the default card image rendering
+    data: ''

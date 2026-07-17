@@ -25,3 +25,17 @@ props:
       description: The attribute of the link.
       data:
         title: 'This is a small tooltip description of the link'
+
+slots:
+  link__label:
+    title: Link Label
+    description: Override the default link label rendering
+    data: ''
+  link__prefix:
+    title: Link Prefix
+    description: Override the default link prefix rendering
+    data: ''
+  link__content:
+    title: Link Content
+    description: Override the default link content rendering
+    data: ''

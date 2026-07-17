@@ -34,3 +34,9 @@ props:
       title: Button URL
       description: 'Specifies the URL the link will link to'
       data: '#'
+
+slots:
+  text_with_image__image:
+    title: Image of Text with Image
+    description: Override the default image for text with image rendering
+    data: ''

@@ -34,3 +34,9 @@ props:
       title: Image caption
       description: 'Specifies the caption for the image'
       data: 'This is an image caption.'
+
+slots:
+  figure__content:
+    title: Figure Content
+    description: Override the default figure content rendering
+    data: ''

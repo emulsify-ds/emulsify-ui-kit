@@ -1,7 +1,7 @@
 
 {% set tab__modifiers = tab__modifiers|default([]) %}
 
-<div id="{{ tab__content__id }}" {{ bem(tab__content__base_class, tab__modifiers, tab__content__blockname, [current_class])}}>
+<div id="{{ tab__content__id }}" {{ bem(tab__content__base_class, tab__modifiers, tab__content__blockname, [current_class])}} role="tabpanel" aria-labelledby="{{ tab__id }}">
   {% block tab__content__components %}
     {{ tab__content }}
   {% endblock %}

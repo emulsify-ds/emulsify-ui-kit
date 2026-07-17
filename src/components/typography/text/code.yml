@@ -14,3 +14,9 @@ props:
       description: 'The code snippet to be displayed in a preformatted block.'
       data: >
         &lt;pre {{ bem(code_base_class, code_modifiers, code_blockname) }}&gt;<br/>    &lt;code {{ bem('content', [], code_base_class) }}&gt;<br/>     {% block code_content %}  <br/>       {{- code_content -}}<br/>     {% endblock %}<br/>    &lt;/code&gt;<br/>  &lt;/pre&gt;
+
+slots:
+  code_content:
+    title: Code Content
+    description: Override the default code content rendering
+    data: ''
