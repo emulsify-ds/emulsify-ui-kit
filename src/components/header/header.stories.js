@@ -1,51 +1,55 @@
 // Markup.
-import template from './header.twig';
+import { renderTwig } from '@emulsify/core/storybook';
+import headerTwig from './header.twig';
 
 // Data.
-import { props as mainMenuProps } from '../navigation/main/main.component.yml';
-import { props as searchProps } from '../search/search.component.yml';
+import mainMenuData from '../navigation/main/main.component.yml';
+import searchData from '../search/search.component.yml';
 
 // JavaScript.
 import '../navigation/base/menu-toggle/menu-toggle';
 import '../navigation/main/main';
 import '../search/search';
 
-const mainMenuData = mainMenuProps.properties;
-const searchData = searchProps.properties;
+const mainMenuProps = mainMenuData.props.properties;
+const searchProps = searchData.props.properties;
 
 /**
  * Storybook Definition.
  */
 export default {
   title: 'Components/Header',
+  render: renderTwig(headerTwig),
   argTypes: {
-    mainMenu: {
+    header__menu: {
       name: 'Menu Items',
       control: { type: 'object' },
     },
-    searchPlaceholder: {
+    header__search__placeholder: {
       name: 'Search Placeholder',
-      type: 'string',
+      control: { type: 'text' },
     },
-    showSearch: {
+    header__search__label: {
+      name: 'Search Label',
+      control: { type: 'text' },
+    },
+    header__show_search: {
       name: 'Show Search',
       control: { type: 'boolean' },
     },
-  },
-  args: {
-    mainMenu: mainMenuData.items.data,
-    searchLabel: searchData.search__label.data,
-    searchPlaceholder: searchData.search__placeholder.data,
-    showSearch: true,
+    header__branding: {
+      name: 'Branding HTML',
+      control: { type: 'text' },
+    },
   },
 };
 
-export const Header = ({ mainMenu, searchPlaceholder, searchLabel, showSearch }) =>
-  template({
-    header__menu: mainMenu,
+export const header = {
+  args: {
+    header__menu: mainMenuProps.items.data,
     header__branding: '<img src="assets/images/logo.svg" alt="Branding">',
-    header__show_search: showSearch,
-    header__search__placeholder: searchPlaceholder,
-    header__search__label: searchLabel,
-  });
-
+    header__show_search: true,
+    header__search__placeholder: searchProps.search__placeholder.data,
+    header__search__label: searchProps.search__label.data,
+  },
+};

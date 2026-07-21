@@ -20,7 +20,7 @@
   <div {{ bem('branding', [], header__base_class) }}>
     {% block header__branding %}
       {% include "@components/logo/logo.twig" with {
-        image_src: directory ? '/' ~ directory ~ '/assets/images/logo-text.svg' : 'logo-text.svg',
+        image_src: '/assets/images/logo-text.svg',
       } %}
     {% endblock %}
   </div>
