@@ -11,4 +11,21 @@ import emulsifyCoreConfig from '../../node_modules/@emulsify/core/config/eslint.
 //     'no-unused-vars': 'warn',
 //   },
 // },
-export default defineConfig([...emulsifyCoreConfig]);
+export default defineConfig([
+  ...emulsifyCoreConfig,
+  {
+    languageOptions: {
+      parserOptions: {
+        babelOptions: {
+          parserOpts: { plugins: ['jsx'] },
+        },
+      },
+    },
+    rules: {
+      'no-unused-vars': [
+        'warn',
+        { varsIgnorePattern: '^[A-Z]', argsIgnorePattern: '^[A-Z]' },
+      ],
+    },
+  },
+]);
