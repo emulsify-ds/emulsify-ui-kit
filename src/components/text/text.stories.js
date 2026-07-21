@@ -1,8 +1,8 @@
-// Twig templates
-import textFieldTwig from './text.twig';
+import { renderTwig } from '@emulsify/core/storybook';
 
-// Data files
+import textFieldTwig from './text.twig';
 import { props } from './text.component.yml';
+
 const textData = props.properties;
 
 /**
@@ -10,9 +10,17 @@ const textData = props.properties;
  */
 export default {
   title: 'Components/Text',
+  render: renderTwig(textFieldTwig),
+  argTypes: {
+    text__content: {
+      name: 'Content',
+      control: 'text',
+    },
+  },
 };
 
-export const Text = () =>
-  textFieldTwig({
+export const text = {
+  args: {
     text__content: textData.text__content.data,
-  });
+  },
+};

@@ -14,5 +14,5 @@ props:
       title: Audio player content
       description: The content of the audio players.
       data:
-        - '../../media/ball.ogg'
-        - '../../media/ball.mp3'
+        - '/assets/audio/ball.ogg'
+        - '/assets/audio/ball.mp3'

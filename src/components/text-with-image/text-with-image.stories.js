@@ -1,67 +1,52 @@
-// Twig templates
+import { renderTwig } from '@emulsify/core/storybook';
+
 import textWithImageTwig from './text-with-image.twig';
-// Data files
 import { props } from './text-with-image.component.yml';
+
 const textWithImageData = props.properties;
 
-/**
- * Storybook Definition.
- */
 export default {
   title: 'Components/Text With Image',
+  render: renderTwig(textWithImageTwig),
   argTypes: {
-    position: {
+    text_with_image__position: {
       name: 'Image Position',
-      control: { type: 'select' },
-      options: {
-        Left: 'left',
-        Right: 'right',
-      },
+      control: 'select',
+      options: ['left', 'right'],
     },
-    focus: {
+    text_with_image__focus: {
       name: 'Component Focus',
-      control: { type: 'select' },
-      options: {
-        Equal: 'equal',
-        Image: 'image',
-        Text: 'text',
-      },
+      control: 'select',
+      options: ['equal', 'image', 'text'],
     },
-    heading: {
+    text_with_image__heading: {
       name: 'Heading',
-      type: 'string',
+      control: 'text',
     },
-    text: {
+    text_with_image__text: {
       name: 'Text',
-      type: 'string',
+      control: 'text',
     },
-    linkContent: {
+    text_with_image__link__content: {
       name: 'Link Content (optional)',
-      type: 'string',
+      control: 'text',
     },
-  },
-  args: {
-    position: 'left',
-    focus: 'equal',
-    heading: textWithImageData.text_with_image__heading.data,
-    text: textWithImageData.text_with_image__text.data,
-    linkContent: textWithImageData.text_with_image__link__content.data,
+    text_with_image__link__url: {
+      name: 'Link URL',
+      control: 'text',
+    },
   },
 };
 
-export const TextWithImage = ({
-  position,
-  focus,
-  heading,
-  text,
-  linkContent,
-}) =>
-  textWithImageTwig({
-    text_with_image__position: position,
-    text_with_image__focus: focus,
-    text_with_image__heading: heading,
-    text_with_image__text: text,
-    text_with_image__link__content: linkContent,
+export const textWithImage = {
+  args: {
+    text_with_image__position: 'left',
+    text_with_image__focus: 'equal',
+    text_with_image__heading: textWithImageData.text_with_image__heading.data,
+    text_with_image__text: textWithImageData.text_with_image__text.data,
+    text_with_image__link__content:
+      textWithImageData.text_with_image__link__content.data,
     text_with_image__link__url:
       textWithImageData.text_with_image__link__url.data,
-  });
+  },
+};

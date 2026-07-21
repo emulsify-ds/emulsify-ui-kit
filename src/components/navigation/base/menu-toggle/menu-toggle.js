@@ -3,31 +3,35 @@ Drupal.behaviors.menuToggle = {
     // Selectors
     const menu = context.querySelectorAll('.menu-with-toggle');
 
-    // Function to trap focus when mobile menu is expanded.
+    // Close submenu when keyboard focus leaves it (Tab past last item
+    // or Shift+Tab before first item). This follows the WAI-ARIA
+    // disclosure navigation pattern instead of trapping focus.
     function trapKeyboard(menuItem) {
       if (menuItem.nextElementSibling) {
-        const focusableElements = menuItem.nextElementSibling.querySelectorAll(
+        const submenu = menuItem.nextElementSibling;
+        const focusableElements = submenu.querySelectorAll(
           'button, [href], [tabindex]',
         );
         const firstFocusableElement = focusableElements[0];
         const lastFocusableElement =
           focusableElements[focusableElements.length - 1];
 
-        menuItem.nextElementSibling.addEventListener('keydown', (e) => {
+        submenu.addEventListener('keydown', (e) => {
           const isTabPressed = e.key === 'Tab' || e.keyCode === 9;
 
           if (!isTabPressed) {
             return;
           }
 
+          // When focus leaves the submenu, close it and let focus flow naturally.
           if (e.shiftKey) {
             if (document.activeElement === firstFocusableElement) {
-              e.preventDefault();
-              lastFocusableElement.focus();
+              menuItem.parentElement.classList.remove('sub--open');
+              menuItem.setAttribute('aria-expanded', 'false');
             }
           } else if (document.activeElement === lastFocusableElement) {
-            e.preventDefault();
-            firstFocusableElement.focus();
+            menuItem.parentElement.classList.remove('sub--open');
+            menuItem.setAttribute('aria-expanded', 'false');
           }
         });
       }
@@ -148,9 +152,7 @@ Drupal.behaviors.menuToggle = {
       }
     }
 
-    // eslint-disable-next-line func-names
     const observer = new MutationObserver(function (mutations) {
-      // eslint-disable-next-line func-names
       mutations.forEach(function (mutation) {
         if (
           mutation.type === 'attributes' &&

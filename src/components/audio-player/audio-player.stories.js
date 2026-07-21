@@ -1,18 +1,22 @@
-import template from './audio-player.twig';
-import { props } from './audio-player.component.yml';
-import figma from '../../../config/configma.json';
-
-const audioData = props.properties.audio_content.data;
+import { renderTwig } from '@emulsify/core/storybook';
+import audioPlayerData from './audio-player.component.yml';
+import audioPlayerTwig from './audio-player.twig';
 
 export default {
   title: 'Components/Media/Audio Player',
+  render: renderTwig(audioPlayerTwig),
+  argTypes: {
+    audio_content: {
+      name: 'Audio Content',
+      control: 'text',
+    },
+  },
 };
 
-export const AudioPlayer = () => template({ audio_content: audioData });
+const { properties } = audioPlayerData.props;
 
-AudioPlayer.parameters = {
-  design: {
-    type: 'figma',
-    url: figma.url + figma.audioPlayer,
+export const audioPlayer = {
+  args: {
+    audio_content: properties.audio_content.data,
   },
 };

@@ -39,4 +39,21 @@ ProjectStyleDictionary.registerTransform({
   },
 });
 
+ProjectStyleDictionary.registerTransform({
+  name: 'color/shortHex',
+  type: 'value',
+  filter(token) {
+    return token.type === 'color';
+  },
+  transform(token) {
+    if (typeof token.value === 'string') {
+      return token.value.replace(
+        /^#([0-9a-fA-F])\1([0-9a-fA-F])\2([0-9a-fA-F])\3$/i,
+        '#$1$2$3',
+      );
+    }
+    return token.value;
+  },
+});
+
 ProjectStyleDictionary.buildAllPlatforms();

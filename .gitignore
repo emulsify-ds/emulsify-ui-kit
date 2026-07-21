@@ -113,3 +113,6 @@ dist
 
 # System
 .DS_Store
+
+# Jest
+.coverage

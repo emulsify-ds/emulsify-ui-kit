@@ -43,12 +43,6 @@
   font-size: var(--font-size-small);
 }
 
-.announcement-list {
-  display: flex;
-  flex-direction: column;
-  row-gap: var(--spacing-xl);
-}
-
 /* Variants -- Default style for announcements */
 .announcement--default {
   background-color: var(--announcement-background-default);

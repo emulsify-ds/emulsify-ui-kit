@@ -1,21 +1,40 @@
+import { renderTwig } from '@emulsify/core/storybook';
+
+import listData from './list.component.yml';
 import listTwig from './list.twig';
-import { props } from './list.component.yml';
 
-const listData = props.properties.list__items.data;
+const { properties } = listData.props;
 
-/**
- * Storybook Definition.
- */
-export default { title: 'Components/Typography' };
+export default {
+  title: 'Components/Typography/List',
+  render: renderTwig(listTwig),
+  decorators: [
+    (Story) => (
+      <div className="cl-container text">
+        <Story />
+      </div>
+    ),
+  ],
+  argTypes: {
+    list__items: { name: 'Items', control: 'object' },
+    list__type: {
+      name: 'Type',
+      control: 'select',
+      options: ['ul', 'ol'],
+    },
+  },
+};
 
-export const ListUnordered = () => `
-  <div class="text-field">
-    ${listTwig({ list__items: listData })}
-  </div>
-`;
+export const unordered = {
+  args: {
+    list__items: properties.list__items.data,
+    list__type: 'ul',
+  },
+};
 
-export const ListOrdered = () => `
-<div class="text-field">
-  ${listTwig({ list__items: listData, list__type: 'ol' })}
-</div>
-`;
+export const ordered = {
+  args: {
+    list__items: properties.list__items.data,
+    list__type: 'ol',
+  },
+};

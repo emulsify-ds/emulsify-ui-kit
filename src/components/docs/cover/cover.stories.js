@@ -1,10 +1,9 @@
-import template from './cover.twig';
-import backgroundImage from '../../../../assets/images/cover.png';
-
-const data = { backgroundImage };
+import { renderTwig } from '@emulsify/core/storybook';
+import coverTwig from './cover.twig';
 
 export default {
   title: 'Docs/Cover',
+  render: renderTwig(coverTwig),
 };
 
-export const Cover = () => template(data);
+export const cover = {};

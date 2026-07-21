@@ -1,0 +1,45 @@
+{#
+  # Search Component Template
+  # Available Variables:
+  # - search__placeholder: (string) placeholder text for the search input
+  # - search__label: (string) label for the toggle button
+  #}
+
+{% set search__base_class = 'search' %}
+{% set search__label = search__label|default('Search') %}
+{% set search__placeholder = search__placeholder|default('Search') %}
+
+{% set search_form %}
+  <div {{ bem('wrapper', [], search__base_class ~ '__form') }} aria-hidden="true">
+    {% block header__search %}
+      <form {{ bem('form', [], search__base_class) }} action="">
+        <input {{ bem('input', [], search__base_class ~ '__form') }} type="search" placeholder="{{ search__placeholder }}">
+        <div {{ bem('actions', [], search__base_class ~ '__form') }}>
+          <button type="button" {{ bem('submit', [], search__base_class ~ '__form') }}>
+            <span class="visually-hidden">{{ search__label }}</span>
+            {% include "@components/icons/_icon.twig" with {
+              icon__name: 'search',
+              icon__decorative: true,
+            } %}
+          </button>
+          <button type="button" {{ bem('toggle', [], search__base_class) }}>
+            <span class="visually-hidden">{{ header__cancel_label|default('Close') }}</span>
+            {% include "@components/icons/_icon.twig" with {
+              icon__name: 'close',
+              icon__decorative: true,
+            } %}
+          </button>
+        </div>
+      </form>
+    {% endblock %}
+  </div>
+{% endset %}
+
+<div {{ bem(search__base_class) }}>
+  <button type="button" {{ bem('toggle', [], search__base_class) }} aria-expanded="false" aria-controls="">
+    <span>{{ search__label }}</span>
+    {% include "@components/icons/_icon.twig" with { icon__decorative: true, icon__name: 'search', icon__modifiers: ['search'] } %}
+    {% include "@components/icons/_icon.twig" with { icon__decorative: true, icon__name: 'close', icon__modifiers: ['close'] } %}
+  </button>
+  {{ search_form }}
+</div>
