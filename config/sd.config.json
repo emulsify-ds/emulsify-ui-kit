@@ -10,6 +10,7 @@
         "time/seconds",
         "html/icon",
         "color/css",
+        "color/shortHex",
         "toRem/pxToRem",
         "toPX/appendPX"
       ],
