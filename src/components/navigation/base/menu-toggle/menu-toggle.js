@@ -148,9 +148,7 @@ Drupal.behaviors.menuToggle = {
       }
     }
 
-    // eslint-disable-next-line func-names
     const observer = new MutationObserver(function (mutations) {
-      // eslint-disable-next-line func-names
       mutations.forEach(function (mutation) {
         if (
           mutation.type === 'attributes' &&

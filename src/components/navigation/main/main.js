@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 Drupal.behaviors.mainNav = {
   attach(context) {
     if (context !== document && !context.querySelector('#main-nav')) {
