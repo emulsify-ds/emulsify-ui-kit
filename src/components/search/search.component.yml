@@ -1,0 +1,23 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: HeaderSearch
+group: Components
+status: stable
+props:
+  type: object
+  properties:
+    search__placeholder:
+      type: string
+      title: Search Placeholder
+      description: Placeholder text for search input.
+      data: Search
+    search__label:
+      type: string
+      title: Search Label
+      description: Label for the search toggle button.
+      data: Search
+slots:
+  # Search form markup provided by parent
+  search_form:
+    title: Search Form
+    description: Rendered search form markup.
