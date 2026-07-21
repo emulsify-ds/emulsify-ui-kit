@@ -1,36 +1,36 @@
+import { renderTwig } from '@emulsify/core/storybook';
+
 import gridTwig from './grid.twig';
 import gridData from './grid.yml';
 
-/**
- * Storybook Definition.
- */
 export default {
   title: 'Layout/Grid',
+  render: renderTwig(gridTwig),
+  decorators: [
+    (Story) => (
+      <div className="cl-container">
+        <Story />
+      </div>
+    ),
+  ],
   argTypes: {
-    columnNumber: {
+    grid__columns: {
       name: 'Column Number',
-      control: { type: 'select' },
+      control: 'select',
       options: ['1', '2', '3', '4'],
     },
-    gridSpacing: {
+    grid__spacing: {
       name: 'Grid Spacing',
-      control: { type: 'select' },
-      options: {
-        '0x Spacing': 'no-spacing',
-        '1x Spacing': '',
-        '2x Spacing': 'two-spacing',
-      },
+      control: 'select',
+      options: ['no-spacing', '', 'two-spacing'],
     },
-  },
-  args: {
-    columnNumber: '3',
-    gridSpacing: '',
   },
 };
 
-export const grid = ({ columnNumber, gridSpacing }) =>
-  gridTwig({
+export const grid = {
+  args: {
     ...gridData,
-    grid__columns: columnNumber,
-    grid__spacing: gridSpacing,
-  });
+    grid__columns: '3',
+    grid__spacing: '',
+  },
+};

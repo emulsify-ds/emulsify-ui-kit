@@ -2,7 +2,6 @@ Drupal.behaviors.tabs = {
   attach(context) {
     const el = context.querySelectorAll('.tabs');
 
-    /* eslint-disable */
     /**
      * getUrl
      * @description Get the value of the anchor link in the URL.
@@ -16,7 +15,6 @@ Drupal.behaviors.tabs = {
         window.location.pathname
       );
     }
-    /* eslint-enable */
 
     /**
      * getAnchor
@@ -45,7 +43,7 @@ Drupal.behaviors.tabs = {
 
         tabNavigationLinks.forEach((link, index) => {
           const anchor = link.href.split('#');
-          // eslint-disable-next-line
+
           const newUrl = `${getUrl()}` + '#' + `${anchor[1]}`;
 
           link.addEventListener('click', (l) => {

@@ -20,4 +20,4 @@ const configOverrides = {};
 //   },
 // };
 
-module.exports = {configOverrides};
+export { configOverrides };

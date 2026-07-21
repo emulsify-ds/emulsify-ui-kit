@@ -1,42 +1,37 @@
+import { renderTwig } from '@emulsify/core/storybook';
+
 import imageTwig from './image.twig';
 import imageData from './image.yml';
 
-/**
- * Storybook Definition.
- */
 export default {
   title: 'Components/Media/Image',
+  render: renderTwig(imageTwig),
   argTypes: {
-    show_caption: {
+    image__show_caption: {
       name: 'Show Image Caption',
-      type: 'boolean',
+      control: 'boolean',
     },
-    caption: {
+    image__caption: {
       name: 'Caption',
-      type: 'string',
+      control: 'text',
     },
-    show_copyright: {
-      name: 'Show Image Caption',
-      type: 'boolean',
+    image__show_copyright: {
+      name: 'Show Image Copyright',
+      control: 'boolean',
     },
-    copyright: {
+    image__copyright: {
       name: 'Copyright',
-      type: 'string',
+      control: 'text',
     },
-  },
-  args: {
-    show_caption: true,
-    caption: imageData.image__caption,
-    show_copyright: true,
-    copyright: imageData.image__copyright,
   },
 };
 
-export const image = ({ show_caption, caption, show_copyright, copyright }) =>
-  imageTwig({
+export const image = {
+  args: {
     ...imageData.responsive_images['1x1'],
-    image__show_caption: show_caption,
-    image__show_copyright: show_copyright,
-    image__caption: caption,
-    image__copyright: copyright,
-  });
+    image__show_caption: true,
+    image__caption: imageData.image__caption,
+    image__show_copyright: true,
+    image__copyright: imageData.image__copyright,
+  },
+};

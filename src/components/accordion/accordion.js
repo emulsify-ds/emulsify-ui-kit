@@ -11,13 +11,13 @@ Drupal.behaviors.accordion = {
     const expand = (item, button, content) => {
       item.setAttribute(itemState, 'true');
       button.setAttribute(buttonState, 'true');
-      content.setAttribute(contentState, 'false');
+      if (content) content.setAttribute(contentState, 'false');
     };
 
     const collapse = (item, button, content) => {
       item.setAttribute(itemState, 'false');
       button.setAttribute(buttonState, 'false');
-      content.setAttribute(contentState, 'true');
+      if (content) content.setAttribute(contentState, 'true');
     };
 
     // Get base URL and anchor (unchanged)
@@ -38,6 +38,7 @@ Drupal.behaviors.accordion = {
 
     // Utility to update aria-disabled on "Expand all" / "Collapse all"
     const updateControlStates = (accordionRoot) => {
+      if (!accordionRoot) return;
       const expandButton = accordionRoot.querySelector(
         '.js-accordion__toggle-all--expand',
       );
@@ -71,8 +72,12 @@ Drupal.behaviors.accordion = {
     // Initialize accordion items
     items.forEach((item) => {
       const button = item.querySelector(itemToggle);
-      const content = item.querySelector(itemContent);
+      const content =
+        item.querySelector(itemContent) ||
+        item.querySelector('.accordion-item > div:last-child');
       const accordionRoot = item.closest('.accordion');
+
+      if (!button) return;
 
       collapse(item, button, content);
 
@@ -80,7 +85,9 @@ Drupal.behaviors.accordion = {
         expand(item, button, content);
       }
 
-      button.addEventListener('click', () => {
+      button.removeEventListener('click', button._accordionHandler);
+
+      button._accordionHandler = () => {
         const anchor = item.id;
         const newUrl = `${getUrl()}#${anchor}`;
 
@@ -104,35 +111,55 @@ Drupal.behaviors.accordion = {
 
         // Update control buttons state after toggling
         updateControlStates(accordionRoot);
-      });
+      };
+
+      button.addEventListener('click', button._accordionHandler);
     });
 
     // Initialize control buttons (Expand All / Collapse All)
     controls.forEach((control) => {
       const accordionRoot = control.closest('.accordion');
+      if (!accordionRoot) return;
+
       const allItems = accordionRoot.querySelectorAll('.js-accordion-item');
       const toggleAllButton = control.querySelector(
         '.js-accordion-item__toggle_all',
       );
 
-      toggleAllButton.addEventListener('click', (e) => {
+      if (!toggleAllButton) return;
+
+      toggleAllButton.removeEventListener(
+        'click',
+        toggleAllButton._toggleAllHandler,
+      );
+
+      toggleAllButton._toggleAllHandler = (e) => {
         const action = e.target.classList.contains(
           'js-accordion__toggle-all--expand',
         );
 
         allItems.forEach((item) => {
           const button = item.querySelector(itemToggle);
-          const content = item.querySelector(itemContent);
-          if (action) {
-            expand(item, button, content);
-          } else {
-            collapse(item, button, content);
+          const content =
+            item.querySelector(itemContent) ||
+            item.querySelector('.accordion-item > div:last-child');
+          if (button) {
+            if (action) {
+              expand(item, button, content);
+            } else {
+              collapse(item, button, content);
+            }
           }
         });
 
         // Refresh aria-disabled states after bulk toggle
         updateControlStates(accordionRoot);
-      });
+      };
+
+      toggleAllButton.addEventListener(
+        'click',
+        toggleAllButton._toggleAllHandler,
+      );
 
       // Initialize on page load
       updateControlStates(accordionRoot);

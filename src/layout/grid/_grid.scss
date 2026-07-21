@@ -170,7 +170,9 @@ $grids: (
       .grid--half-spacing[data-grid-columns='#{$column}'] > & {
         @include breakpoint('medium') {
           width: calc(
-            #{$percentage} - calc(var(--grid-spacing) * calc(#{$difference} / 2))
+            #{$percentage} - calc(
+                var(--grid-spacing) * calc(#{$difference} / 2)
+              )
           );
           margin-inline: calc(var(--grid-spacing) / 4);
 

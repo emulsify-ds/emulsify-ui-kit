@@ -42,6 +42,7 @@
     text-align: center;
     position: relative;
     padding: var(--spacing-xl);
+    background-image: url('/assets/images/example/hero.jpg');
 
     &::after {
       content: '';
