@@ -1,0 +1,182 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Page Title
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - page_title__heading
+  properties:
+    page_title__heading:
+      type: string
+      title: Page title heading
+      description: The main title/heading of the page title.
+      data: 'Research that advances health, design and technology for the next generation'
+    page_title__subheading:
+      type: string
+      title: Page title subheading
+      description: The secondary title/heading of the page title.
+      data: 'A collaborative approach to discovery, innovation and impact across campus.'
+    page_title__link_primary__label:
+      type: string
+      title: Primary link label
+      description: Optional label for the first link shown below the subheading.
+      data: ''
+    page_title__link_primary__url:
+      type: string
+      title: Primary link URL
+      description: Optional URL for the first link shown below the subheading.
+      data: '#'
+    page_title__link_primary__link_style:
+      type: string
+      title: Primary link style
+      description: Optional link style passed to the primary page-title CTA when rendered as a text link.
+      data: 'icon-right'
+    page_title__link_primary__link_icon__name:
+      type: string
+      title: Primary link icon name
+      description: Optional icon name passed to the primary page-title CTA when rendered as a text link.
+      data: 'arrow-right'
+    page_title__link_primary__button__icon:
+      type: object
+      title: Primary button icon
+      description: Optional icon config passed to the primary page-title CTA when rendered as a button.
+      properties:
+        left:
+          type: boolean
+          title: Primary button icon left
+          data: false
+        right:
+          type: boolean
+          title: Primary button icon right
+          data: true
+        name:
+          type: string
+          title: Primary button icon name
+          data: 'arrow-right'
+        decorative:
+          type: boolean
+          title: Primary button icon decorative
+          data: true
+    page_title__link_secondary__label:
+      type: string
+      title: Secondary link label
+      description: Optional label for the second link shown below the subheading.
+      data: ''
+    page_title__link_secondary__url:
+      type: string
+      title: Secondary link URL
+      description: Optional URL for the second link shown below the subheading.
+      data: '#'
+    page_title__link_secondary__link_style:
+      type: string
+      title: Secondary link style
+      description: Optional link style passed to the secondary page-title CTA when rendered as a text link.
+      data: 'icon-right'
+    page_title__link_secondary__link_icon__name:
+      type: string
+      title: Secondary link icon name
+      description: Optional icon name passed to the secondary page-title CTA when rendered as a text link.
+      data: 'arrow-right'
+    page_title__link_secondary__button__icon:
+      type: object
+      title: Secondary button icon
+      description: Optional icon config passed to the secondary page-title CTA when rendered as a button.
+      properties:
+        left:
+          type: boolean
+          title: Secondary button icon left
+          data: false
+        right:
+          type: boolean
+          title: Secondary button icon right
+          data: true
+        name:
+          type: string
+          title: Secondary button icon name
+          data: 'arrow-right'
+        decorative:
+          type: boolean
+          title: Secondary button icon decorative
+          data: true
+    page_title__link_tertiary__label:
+      type: string
+      title: Tertiary link label
+      description: Optional label for the third link shown below the subheading.
+      data: ''
+    page_title__link_tertiary__url:
+      type: string
+      title: Tertiary link URL
+      description: Optional URL for the third link shown below the subheading.
+      data: '#'
+    page_title__link_tertiary__link_style:
+      type: string
+      title: Tertiary link style
+      description: Optional link style passed to the tertiary page-title CTA when rendered as a text link.
+      data: 'icon-right'
+    page_title__link_tertiary__link_icon__name:
+      type: string
+      title: Tertiary link icon name
+      description: Optional icon name passed to the tertiary page-title CTA when rendered as a text link.
+      data: 'arrow-right'
+    page_title__overline:
+      type: string
+      title: Page title overline
+      description: The eyebrow heading of the page title.
+      data: 'Jul. 22, 2026'
+    page_title__theme:
+      type: string
+      title: Container theme
+      description: Theme applied to the page title container.
+      data: ''
+    page_title__show_media:
+      type: boolean
+      title: Show media
+      description: Toggles media rendering in the page title component.
+      data: false
+    image__src:
+      type: string
+      title: Image src
+      description: Source for the page-title image.
+      data: 'https://picsum.photos/1200/675'
+    image__srcset:
+      type: string
+      title: Image srcset
+      description: Responsive srcset for the page-title image.
+      data: 'https://picsum.photos/640/360 640w, https://picsum.photos/960/540 960w, https://picsum.photos/1200/675 1200w'
+    image__sizes:
+      type: string
+      title: Image sizes
+      description: Sizes attribute for the page-title image.
+      data: '100vw'
+    image__alt:
+      type: string
+      title: Image alt
+      description: Alt text for the page-title image.
+      data: 'Example page title image'
+    page_title__media__video__embed:
+      type: string
+      title: Media video embed
+      description: Optional iframe embed markup when media type is video.
+      data: '<iframe width="560" height="315" src="https://www.youtube.com/embed/wsSMq07AdwM?si=uP77hhiyYCVz77ga" title="YouTube video player" frameborder="0" allowfullscreen></iframe>'
+    page_title__media__show_caption:
+      type: boolean
+      title: Show media caption
+      description: Displays the media caption when supported by media type.
+      data: false
+    page_title__media__caption:
+      type: string
+      title: Media caption
+      description: Optional media caption text.
+      data: 'This is a sample caption.'
+    page_title__media__show_copyright:
+      type: boolean
+      title: Show media copyright
+      description: Displays media copyright text when supported by media type.
+      data: false
+    page_title__media__copyright:
+      type: string
+      title: Media copyright
+      description: Optional media copyright text.
+      data: 'Photo by John Doe'
