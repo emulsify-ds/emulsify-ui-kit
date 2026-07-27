@@ -37,6 +37,11 @@ export default {
       options: ['left', 'center', 'right'],
       type: 'select',
     },
+    layout: {
+      name: 'Component Layout',
+      options: ['inline', 'stacked'],
+      type: 'select',
+    },
     heading: {
       name: 'Container Heading',
       control: {
@@ -52,9 +57,10 @@ export default {
   },
   args: {
     backgroundColor: false,
-    width: 'standard',
+    width: 'content',
     spacing: '',
     alignment: 'center',
+    layout: 'inline',
     heading: 'This is an example container heading',
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget eleifend ex, non ullamcorper tellus. Nullam in lectus a nulla feugiat ultricies in sed lectus. Maecenas tincidunt eu massa sit amet molestie.',
   },
@@ -66,6 +72,7 @@ export const container = ({
   width,
   spacing,
   alignment,
+  layout,
   heading,
   text,
 }) =>
@@ -74,6 +81,7 @@ export const container = ({
     container__component_width: width,
     container__modifiers: [spacing],
     container__component_alignment: alignment,
+    container__layout: layout,
     container__heading: heading,
     container__text: text,
   });

@@ -41,56 +41,44 @@
 
 // Body mixins
 @mixin body-xl {
-  font-size: clamp(
-    #{$font-size-24},
-    #{$font-size-24} + 0.2778vw,
-    #{$font-size-28}
-  );
+  font-size: var(--font-size-lead);
   line-height: var(--line-height-loose);
   font-family: var(--font-family-secondary);
   font-weight: 400;
 }
 
 @mixin body-l {
-  font-size: clamp(
-    #{$font-size-20},
-    #{$font-size-20} + 0.2778vw,
-    #{$font-size-24}
-  );
+  font-size: var(--font-size-lead);
   line-height: var(--line-height-loose);
   font-family: var(--font-family-secondary);
   font-weight: 400;
 }
 
-@mixin body-default {
-  font-size: clamp(
-    #{$font-size-15},
-    #{$font-size-15} + 0.2778vw,
-    #{$font-size-16}
-  );
+@mixin body {
+  font-size: var(--font-size-body);
   line-height: var(--line-height-loose);
   font-family: var(--font-family-secondary);
   font-weight: 400;
 }
 
 @mixin body-s {
-  font-size: clamp(
-    #{$font-size-13},
-    #{$font-size-13} + 0.2778vw,
-    #{$font-size-14}
-  );
+  font-size: var(--font-size-small);
   line-height: var(--line-height-loose);
   font-family: var(--font-family-secondary);
   font-weight: 400;
 }
 
 @mixin body-xs {
-  font-size: clamp(
-    #{$font-size-12},
-    #{$font-size-12} + 0.2778vw,
-    #{$font-size-13}
-  );
+  font-size: var(--font-size-x-small);
   line-height: var(--line-height-loose);
   font-family: var(--font-family-secondary);
   font-weight: 400;
+}
+
+@mixin overline {
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-loose);
+  font-family: var(--font-family-primary);
+  text-transform: uppercase;
+  font-weight: 700;
 }
