@@ -1,60 +1,149 @@
 {#
  # Available Variables:
- # - container__modifiers: standard, space, tight to control vertical padding.
+ # - container__id
+ # - container__modifiers: content, space, tight to control vertical padding.
  # - container__heading
  # - container__subheading
+ # - container__link__url - (optional)
+ # - container__link__content - (optional)
+ # - container__show_link
+ # - container__layout: 'inline' | 'stacked'
+ #
+ # Available blocks:
+ # - container__content
+ # - container__suffix
  #}
 
 {% set container__base_class = 'container' %}
+{% set container__element = container__element|default('div') %}
 {% set container__modifiers = container__modifiers|default([]) %}
 {% set container__inner_modifiers = container__inner_modifiers|default([]) %}
 {% set container__attributes = container__attributes|default([]) %}
+{% set container__additional_classes = container__additional_classes|default([]) %}
+{% set container__inner__attributes = container__inner__attributes|default([]) %}
+{% set container__component_width = container__component_width|default('content') %}
+{% set container__intro__after = container__intro__after|default(false) %}
+{% set container__inner__additional_classes = container__inner__additional_classes|default([]) %}
+{% set container__id = container__id|default('') %}
 
 {% if container__theme %}
-  {% set container__attributes = container__attributes|merge({
+	{% set container__attributes = container__attributes|merge({
     'data-component-theme': container__theme,
   }) %}
 {% endif %}
 
-{% if container__bg_color %}
-  {% set container__modifiers = container__modifiers|merge(['with-bg']) %}
+{% if container__bg_color is defined
+  and container__bg_color is not same as(false)
+  and container__bg_color is not same as(null)
+  and container__bg_color is not empty
+  and container__bg_color|trim|lower not in ['default', 'default light'] %}
+	{% set container__modifiers = container__modifiers|merge(['with-bg']) %}
 {% endif %}
 
 {% if container__component_width %}
-  {% set container__attributes = container__attributes|merge({
+	{% set container__attributes = container__attributes|merge({
     'data-component-width': container__component_width,
   }) %}
 {% endif %}
 
+{% if container__show_bg_texture %}
+	{% set container__attributes = container__attributes|merge({
+    'data-texture-alignment': container__bg_texture,
+  }) %}
+{% endif %}
+
+{% if container__layout %}
+	{% set container__attributes = container__attributes|merge({
+    'data-component-layout': container__layout,
+  }) %}
+{% endif %}
+
 {% set container__attributes = container__attributes|merge({
-  'class': bem(container__base_class, container__modifiers, []),
+  'class': bem(container__base_class, container__modifiers, container__blockname, container__additional_classes),
   'data-component-alignment': container__component_alignment|default('center'),
+  'data-align-container-intro': container__align_intro|default('left'),
 }) %}
 
-<div {{ add_attributes(container__attributes) }}>
-  <div {{ bem('inner', container__inner_modifiers, container__base_class) }}>
-    {% if container__heading or container__text %}
-      <div {{ bem('intro', container__inner_modifiers, container__base_class) }}>
-        {% if container__heading %}
-          {% include "@components/typography/heading/heading.twig" with {
-            heading__level: container__heading_level|default('2'),
-            heading: container__heading,
-            heading__blockname: container__base_class,
-            heading__modifiers: container__heading__modifiers,
-          } %}
-        {% endif %}
-        {% if container__text %}
-          {% include "@components/typography/text/text.twig" with {
-              text__blockname: container__base_class,
-              text__content: container__text,
-            } %}
-        {% endif %}
-      </div>
-    {% endif %}
+{% set container__inner__attributes = container__inner__attributes|merge({
+  'class': bem('inner', container__inner_modifiers, container__base_class, container__inner_additional_classes),
+}) %}
 
-    {% block container__content %}
-      {% include "@layout/placeholder/placeholder.twig" with { place_holder: "Placeholder Content" } %}
-    {% endblock %}
-  </div>
-  {% block container__suffix %}{% endblock %}
-</div>
+{% if container__id %}
+	{% set container__attributes = container__attributes|merge({
+    'id': 'section-' ~ container__id,
+  }) %}
+{% endif %}
+
+{% set container__intro__content %}
+{% if container__heading or container__text or container__show_link or container__overline %}
+	<div {{ bem('intro', container__inner_modifiers, container__base_class, container__inner__additional_classes) }}>
+		{% if container__overline %}
+			<div {{ bem('overline', [], container__base_class) }}>
+				{{ container__overline }}
+			</div>
+		{% endif %}
+		{% if container__heading %}
+			{% include "@components/typography/heading/heading.twig" with {
+          heading__level: container__heading_level|default('2'),
+          heading: container__heading,
+          heading__blockname: container__base_class,
+          heading__modifiers: container__heading__modifiers,
+          heading__additional_classes: container__heading__additional_classes,
+        } %}
+		{% endif %}
+		{% if container__text %}
+			{% include "@components/typography/text/text.twig" with {
+          text__blockname: container__base_class,
+          text__content: container__text,
+        } %}
+		{% endif %}
+		{% if container__show_link %}
+			{% block container__intro__link %}
+				{% include "@components/link/link.twig" with {
+            link__content: container__link__content,
+            link__url: container__link__url,
+            link__style: 'icon-right',
+          } %}
+			{% endblock %}
+		{% endif %}
+	</div>
+{% endif %}
+{% endset %}
+
+{% set container__prefix__content %}
+{% block container__prefix %}{% endblock %}
+{% endset %}
+
+<{{container__element}} {{ add_attributes(container__attributes) }}>
+
+	{% if container__prefix__intro == false %}
+		{{ container__prefix__content }}
+	{% endif %}
+
+	<div {{ add_attributes(container__inner__attributes) }}>
+		{% if container__prefix__intro == true %}
+			{{ container__prefix__content }}
+		{% endif %}
+
+		{% if container__intro__after == false %}
+			{{ container__intro__content }}
+		{% endif %}
+
+		{% block container__content %}
+			{% include "@layout/placeholder/placeholder.twig" with { place_holder: "Placeholder Content" } %}
+		{% endblock %}
+
+		{% if container__intro__after == true %}
+			{{ container__intro__content }}
+		{% endif %}
+	</div>
+
+	{% block container__suffix %}{% endblock %}
+
+	{# {% if container__show_bg_texture %}
+		{% include "@components/textures/_texture.twig" with {
+      texture__name: container__bg_texture,
+      texture__decorative: true,
+    } %}
+	{% endif %} #}
+</{{container__element}}>

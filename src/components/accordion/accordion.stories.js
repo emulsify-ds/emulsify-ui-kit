@@ -16,8 +16,11 @@ export default {
       name: 'Container Width',
       control: { type: 'select' },
       options: {
-        Small: 'compressed',
+        Small: 'compact',
         Medium: 'standard',
+        Large: 'extended',
+        Max: 'max',
+        Full: 'full',
       },
     },
     heading: {
@@ -38,6 +41,7 @@ export default {
     },
   },
   args: {
+    width: 'compact',
     heading: accordionData.accordion__heading.data,
     text: accordionData.accordion__text.data,
     itemHeading: accordionData.accordion__item__heading.data,
