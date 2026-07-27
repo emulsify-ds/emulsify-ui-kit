@@ -1,0 +1,71 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Stats Group
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - stats_group__items
+  properties:
+    stats_group__heading:
+      type: string
+      title: Heading
+      description: Optional heading shown above the stat grid.
+      data: ''
+    stats_group__content:
+      type: string
+      title: Intro text
+      description: Optional intro copy shown below the heading.
+      data: ''
+    stats_group__id:
+      type: string
+      title: Section id
+      description: Optional id suffix passed to the container wrapper.
+      data: ''
+    stats_group__heading_level:
+      type: string
+      title: Heading level
+      description: Configurable heading level for the section title and statistics.
+      data: '2'
+    stats_group__container_width:
+      type: string
+      title: Container width
+      description: Controls the outer container width (content, wide, or full).
+      data: 'wide'
+    stats_group__alignment:
+      type: string
+      title: Alignment
+      description: Controls the alignment of the container content.
+      data: 'left'
+    stats_group__theme:
+      type: string
+      title: Theme
+      description: Theme applied to the wrapping container.
+      data: 'option-1 light'
+    stats_group__bg_color:
+      type: boolean
+      title: Background color
+      description: Enables a background treatment on the container when supported.
+      data: false
+    stats_group__animate:
+      type: boolean
+      title: Animate entries
+      description: Enables optional entrance animation. Content stays visible if animation is disabled or reduced motion is preferred.
+      data: false
+    stats_group__grid_columns:
+      type: string
+      title: Grid columns
+      description: Optional override for the responsive column count. Leave blank to let the component auto-select based on item count.
+      data: ''
+    stats_group__items:
+      type: array
+      title: Statistic
+      description: Required collection of stat items. Each item should include a metric and supporting description; additional item-level overrides can be passed when needed.
+      data:
+        - metric: '$29,587'
+          description: 'For Texas residents'
+        - metric: '$30,333'
+          description: 'Border-state residents'
+        - metric: '$34,432'
+          description: 'Out-of-State residents'

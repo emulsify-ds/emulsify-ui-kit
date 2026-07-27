@@ -1,0 +1,23 @@
+{% set stats_group_item__base_class = 'stats-group__item' %}
+{% set stats_group_item__modifiers = stats_group_item__modifiers|default([]) %}
+{% set stats_group_item__attributes = stats_group_item__attributes|default({}) %}
+
+{% set stats_group_item__attributes = stats_group_item__attributes|merge({
+  'class': bem(stats_group_item__base_class, stats_group_item__modifiers),
+}) %}
+
+<div {{ add_attributes(stats_group_item__attributes) }}>
+	{% include "@components/typography/heading/heading.twig" with {
+    heading__level: stats_group_item__heading_level|default('2'),
+    heading__blockname: stats_group_item__base_class,
+    heading: stats_group_item__metric,
+  } %}
+
+  {% block stats_group_item__description %}
+    {% include "@components/typography/text/text.twig" with {
+      text__content: stats_group_item__description,
+      text__blockname: stats_group__base_class,
+      text__element: 'div',
+    } %}
+  {% endblock %}
+</div>
