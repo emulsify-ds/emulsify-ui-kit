@@ -1,0 +1,72 @@
+{#
+ # Available Variables:
+ # - stats_group__heading: plain text for container heading
+ # - stats_group__content: formatted text for container intro
+ # - stats_group__id: optional container id suffix
+ # - stats_group__theme: optional component theme
+ # - stats_group__items: Array of stats group items with separate metric/description values
+ # - stats_group__grid_columns: Number of columns for the stats group grid
+ #}
+{% set stats_group__base_class = 'stats-group' %}
+{% set stats_group__modifiers = stats_group__modifiers|default([]) %}
+{% set stats_group__attributes = stats_group__attributes|default({}) %}
+{% set stats_group__heading = stats_group__heading|default('') %}
+{% set stats_group__content = stats_group__content|default('') %}
+{% set stats_group__id = stats_group__id|default('') %}
+{% set stats_group__items = stats_group__items|default([]) %}
+{% set stats_group__theme = stats_group__theme|default('option-1 light') %}
+{% set stats_group__heading_level = stats_group__heading_level|default('2') %}
+{% set stats_group__container_width = stats_group__container_width|default('wide') %}
+{% set stats_group__alignment = stats_group__alignment|default('left') %}
+{% set stats_group__bg_color = stats_group__bg_color|default(false) %}
+{% set stats_group__motion = stats_group__motion|default(false) %}
+
+{% set stats_group__attributes = stats_group__attributes|merge({
+	'class': bem(stats_group__base_class, stats_group__modifiers),
+	'data-component-motion': stats_group__motion ? 'true' : 'false',
+}) %}
+
+{% set stats_group__items %}
+{% block stats_group__items__block %}
+	{% if stats_group__items|length > 0 %}
+		{% for item in stats_group__items %}
+			{% include "@components/stats-group/_stats-group-item.twig" with {
+				stats_group_item__metric: item.metric,
+				stats_group_item__description: item.description,
+			} %}
+		{% endfor %}
+	{% endif %}
+{% endblock %}
+{% endset %}
+
+{% set stats_group %}
+	<div {{ add_attributes(stats_group__attributes) }}>
+		{% embed "@layout/grid/grid.twig" with {
+			grid__spacing: 'one-spacing',
+			grid__modifiers: ['stats-group'],
+			grid__columns: stats_group__grid_columns|default('3'),
+		}%}
+			{% block grid__content %}
+				{{ stats_group__items }}
+			{% endblock %}
+		{% endembed %}
+	</div>
+{% endset %}
+
+{# Render the stats_group within a generic container #}
+{% embed "@layout/container/container.twig" with {
+  container__component_alignment: stats_group__alignment|default('center'),
+  container__component_width: stats_group__width|default('compact'),
+  container__theme: stats_group__theme,
+  container__heading: stats_group__heading,
+  container__text: stats_group__content,
+  container__id: stats_group__id,
+  container__bg_color: stats_group__bg_color,
+  container__heading_level: stats_group__heading_level,
+  container__modifiers: ['two-spacing', stats_group__base_class],
+  container__additional_classes: container__additional_classes|default([]),
+}%}
+	{% block container__content %}
+		{{ stats_group }}
+	{% endblock %}
+{% endembed %}
