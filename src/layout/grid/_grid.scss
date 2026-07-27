@@ -1,114 +1,155 @@
 @use 'sass:math';
 @use '../../foundation/breakpoints/breakpoints' as *;
-@use '../../foundation/spacing/spacing' as s;
+@use '../../foundation/spacing/spacing' as *;
+@use '../../foundation/typography/typography' as *;
 
 // Define grid columns and their widths
 $grids: (
-  equal: (
-    1: 1,
+  equal: (1: 1,
     2: 0.5,
     3: 0.3333,
     4: 0.25,
+    5: 0.2,
+    6: 0.1666,
   ),
+);
+$focus: (
+  1: 1,
+  2: 0.75,
+  3: 0.5,
+  4: 0.33,
 );
 
 // Utilize custom properties so they can be re-scoped
 :root {
-  --grid-spacing: var(--spacing-2xl);
-
-  @include breakpoint('medium') {
-    --grid-spacing: var(--spacing-xl);
-  }
+  --grid-spacing: var(--spacing-xl);
 }
 
 .grid {
   width: 100%;
 
-  @include breakpoint('medium') {
+  @container (min-width: #{$medium}) {
     display: flex;
     flex-flow: row wrap;
   }
 
   &[data-grid-spacing='no-spacing'] {
-    --grid-spacing: 0;
+    --grid-spacing: 0rem;
   }
 
-  &[data-grid-spacing='two-spacing'] {
-    --grid-spacing: var(--spacing-xl);
+  &[data-grid-spacing='half-spacing'] {
+    --grid-spacing: #{var(--spacing-lg)};
 
     @include breakpoint('medium') {
-      --grid-spacing: var(--spacing-2xl);
+      --grid-spacing: #{calc(var(--spacing-lg) * 1.5)};
     }
   }
 
-  + .grid {
-    @include s.margin-gap-top(1);
-    @include s.section-padding-top(1);
+  &[data-grid-spacing='one-spacing'] {
+    --grid-spacing: #{var(--spacing-xl)};
+
+    @include breakpoint('medium') {
+      --grid-spacing: #{calc(var(--spacing-lg) * 2.5)};
+    }
   }
 
-  > .grid {
+  &[data-grid-spacing='two-spacing'] {
+    --grid-spacing: #{calc(var(--spacing-lg) * 3)};
+
+    @include breakpoint('medium') {
+      --grid-spacing: #{var(--spacing-2xl)};
+    }
+  }
+
+  &[data-grid-spacing='three-spacing'] {
+    --grid-spacing: #{var(--spacing-2xl)};
+
+    @include breakpoint('medium') {
+      --grid-spacing: #{calc(var(--spacing-lg) * 6)};
+    }
+  }
+
+  +.grid {
+    @include margin-gap-top(1);
+    @include section-padding-top(1);
+  }
+
+  >.grid {
     padding: 0;
     margin: 0;
     border: 0;
   }
+
+  >*:not(.grid__inner):not(:empty) {
+    width: 100%;
+    flex: 1 1 100%;
+    margin-bottom: calc(var(--grid-spacing) / 2);
+  }
 }
 
 .grid__inner {
-  flex: 1;
+  flex: 1 1 100%;
   display: flex;
   flex-flow: row wrap;
+  container-type: inline-size;
+  gap: var(--grid-spacing);
+  align-items: stretch;
+
+  [data-grid-columns='1']>& {
+    flex-flow: column nowrap;
+
+    @container (max-width: #{$xsmall}) {
+      gap: calc(var(--grid-spacing) / 2);
+    }
+  }
 
   .place-holder__content {
     font-size: 18px;
   }
+
+  // exposed view filters.
+  >form,
+  >.exposed-filters {
+    flex: 1 1 100%;
+  }
 }
 
-.grid__inner > * {
+.grid__inner>*:not(form, .exposed-filters) {
   position: relative;
-  margin: calc(var(--grid-spacing) / 2) auto 0;
 
-  @include breakpoint('small') {
-    margin: calc(var(--grid-spacing) / 2) auto;
+  [data-grid-separators] &:not(:first-child) {
+    border-top: 1px solid;
+    border-color: var(--color-primary-default);
 
-    &:last-child {
-      margin: calc(var(--grid-spacing) / 2) 0 0 calc(var(--grid-spacing) / 2);
+    [data-component-theme*='dark'] & {
+      border-color: var(--color-primary-dark);
     }
   }
 
-  @include breakpoint('small-down') {
-    &:nth-child(2n + 1) {
-      margin-left: 0;
-      padding-left: 0;
-    }
+  [data-grid-separators] &:last-child {
+    border-bottom: 1px solid;
+    border-color: var(--color-primary-default);
+    padding-bottom: var(--grid-spacing);
+  }
 
-    &:nth-child(2n + 2) {
-      margin-right: 0;
-      padding-right: 0;
+  [data-grid-separators][data-grid-columns='1'] &:last-child {
+    @container (max-width: #{$xsmall}) {
+      padding-bottom: calc(var(--grid-spacing) / 2);
     }
   }
 
-  @include breakpoint('medium') {
-    margin: calc(var(--grid-spacing) / 2) calc(var(--grid-spacing) / 2) 0;
+  [data-grid-separators] &:not(:only-child):not(:first-child) {
+    padding-top: var(--grid-spacing);
   }
 
-  &:first-child {
-    margin-block: 0 calc(var(--grid-spacing) / 2);
-
-    @include breakpoint('small') {
-      margin: 0 auto 0 0;
-    }
-
-    @include breakpoint('medium') {
-      margin: var(--grid-spacing) calc(var(--grid-spacing) / 2) 0;
+  [data-grid-separators][data-grid-columns='1'] &:not(:only-child):not(:first-child) {
+    @container (max-width: #{$xsmall}) {
+      padding-top: calc(var(--grid-spacing) / 2);
     }
   }
 
-  &:nth-child(2) {
-    margin-top: 0;
-
-    @include breakpoint('medium') {
-      margin-top: calc(var(--grid-spacing) / 2);
-    }
+  >.teaser:not(:first-child) {
+    padding-top: var(--grid-spacing);
   }
 
   // Loop through grid map to apply column specific styles
@@ -121,83 +162,181 @@ $grids: (
       $percentage: #{$width * 100}#{'%'};
 
       // Set column widths and generate offset layout.
-      [data-grid-columns='#{$column}'] > & {
+      [data-grid-columns='#{$column}']>&:not(:empty) {
         width: 100%;
 
-        @include breakpoint('small') {
-          width: calc(50% - calc(var(--grid-spacing) / 4));
+        &:has(+ :empty) {
+          flex: 1;
+        }
+
+        @container (min-width: #{$small}) {
+          width: calc(50% - calc(var(--grid-spacing) / 2));
 
           &:only-child {
             width: 100%;
           }
         }
 
-        @include breakpoint('medium') {
-          width: calc(
-            #{$percentage} - #{calc(var(--grid-spacing) * #{$difference})}
-          );
-          margin-inline: calc(var(--grid-spacing) / 2);
+        @container (min-width: #{$medium}) {
+          width: calc(#{$percentage} - #{calc(var(--grid-spacing) * #{$difference})
+        });
 
-          &:nth-child(#{math.div($cadence, 2)}n + 1) {
-            margin-left: 0;
-            padding-left: 0;
-          }
-
-          &:nth-child(#{math.div($cadence, 2)}n + #{$column}) {
-            margin-right: 0;
-            padding-right: 0;
-          }
-
-          &:last-child:not(:first-child) {
-            margin-right: 0;
-          }
-
-          &:only-child {
-            width: 100%;
-          }
+        &:nth-child(#{math.div($cadence, 2)}n + 1) {
+          padding-left: 0;
         }
 
-        &:first-child,
-        &:nth-child(#{$column}),
-        &:nth-child(#{$column - 1}),
-        &:nth-child(#{$column - 2}) {
-          @include breakpoint('medium') {
-            margin-top: 0;
-          }
+        &:nth-child(#{math.div($cadence, 2)}n + #{$column}) {
+          padding-right: 0;
+        }
+
+        &:only-child {
+          width: 100%;
         }
       }
 
-      .grid--half-spacing[data-grid-columns='#{$column}'] > & {
-        @include breakpoint('medium') {
-          width: calc(
-            #{$percentage} - calc(var(--grid-spacing) * calc(#{$difference} / 2))
-          );
-          margin-inline: calc(var(--grid-spacing) / 4);
+      &:first-child,
+      &:nth-child(#{$column}),
+      &:nth-child(#{$column - 1}),
+      &:nth-child(#{$column - 2}) {
+        @container (min-width: #{$medium}) {}
+      }
+    }
 
-          &:nth-child(#{math.div($cadence, 2)}n + 1) {
-            margin-left: 0;
-            padding-left: 0;
-          }
+    .grid--half-spacing[data-grid-columns='#{$column}']>& {
+      @container (min-width: #{$medium}) {
+        width: calc(#{$percentage} - calc(var(--grid-spacing) * calc(#{$difference} / 2)));
 
-          &:nth-child(#{math.div($cadence, 2)}n + #{$column}) {
-            margin-right: 0;
-            padding-right: 0;
-          }
+        &:nth-child(#{math.div($cadence, 2)}n + 1) {
+          padding-left: 0;
+        }
+
+        &:nth-child(#{math.div($cadence, 2)}n + #{$column}) {
+          padding-right: 0;
         }
       }
     }
   }
+}
 
-  [data-grid-columns='1'] & {
-    width: 100%;
-    margin: 0 0 calc(var(--grid-spacing) / 2);
+// TODO: Rewrite the following column focus styles to utilize an @each loop.
+// https://app.clickup.com/t/36718269/NDSU-430
+// Two Column Focus
+[data-grid-type='focus'][data-grid-columns='2'][data-grid-column-focus='1']>& {
+  @container (min-width: #{$medium}) {
+    &:nth-child(2n + 1) {
+      width: calc(70% - calc(var(--grid-spacing) / 2));
+    }
 
-    &:last-child {
-      margin: 0;
+    &:not(:nth-child(2n + 1)) {
+      width: calc(30% - calc(var(--grid-spacing) / 2));
     }
   }
+}
 
-  [data-grid-columns='1'][data-grid-spacing='two-spacing'] &:not(:first-child) {
-    padding-top: calc(var(--grid-spacing) / 2);
+[data-grid-type='focus'][data-grid-columns='2'][data-grid-column-focus='2']>& {
+  @container (min-width: #{$medium}) {
+    &:nth-child(2n + 2) {
+      width: calc(70% - var(--grid-spacing));
+    }
+
+    &:not(:nth-child(2n + 2)) {
+      width: calc(30% - var(--grid-spacing));
+    }
   }
+}
+
+// Three Column Focus
+[data-grid-type='focus'][data-grid-columns='3'][data-grid-column-focus='1']>& {
+  @container (min-width: #{$medium}) {
+    &:nth-child(3n + 1) {
+      width: 50%;
+    }
+
+    &:not(:nth-child(3n + 1)) {
+      width: calc(25% - var(--grid-spacing));
+    }
+  }
+}
+
+[data-grid-type='focus'][data-grid-columns='3'][data-grid-column-focus='2']>& {
+  @container (min-width: #{$medium}) {
+    &:nth-child(3n + 2) {
+      width: 50%;
+    }
+
+    &:not(:nth-child(3n + 2)) {
+      width: calc(25% - var(--grid-spacing));
+    }
+  }
+}
+
+[data-grid-type='focus'][data-grid-columns='3'][data-grid-column-focus='3']>& {
+  @container (min-width: #{$medium}) {
+    &:nth-child(3n + 3) {
+      width: 50%;
+    }
+
+    &:not(:nth-child(3n + 3)) {
+      width: calc(25% - var(--grid-spacing));
+    }
+  }
+}
+
+// Four Column Focus
+[data-grid-type='focus'][data-grid-columns='4'][data-grid-column-focus='1']>& {
+  @container (min-width: #{$medium}) {
+    &:nth-child(4n + 1) {
+      width: calc(40% - var(--grid-spacing));
+    }
+
+    &:not(:nth-child(4n + 1)) {
+      width: calc(20% - var(--grid-spacing));
+    }
+  }
+}
+
+[data-grid-type='focus'][data-grid-columns='4'][data-grid-column-focus='2']>& {
+  @container (min-width: #{$medium}) {
+    &:nth-child(4n + 2) {
+      width: calc(40% - var(--grid-spacing));
+    }
+
+    &:not(:nth-child(4n + 2)) {
+      width: calc(20% - var(--grid-spacing));
+    }
+  }
+}
+
+[data-grid-type='focus'][data-grid-columns='4'][data-grid-column-focus='3']>& {
+  @container (min-width: #{$medium}) {
+    &:nth-child(4n + 3) {
+      width: calc(40% - var(--grid-spacing));
+    }
+
+    &:not(:nth-child(4n + 3)) {
+      width: calc(20% - var(--grid-spacing));
+    }
+  }
+}
+
+[data-grid-type='focus'][data-grid-columns='4'][data-grid-column-focus='4']>& {
+  @container (min-width: #{$medium}) {
+    &:nth-child(4n + 4) {
+      width: calc(40% - var(--grid-spacing));
+    }
+
+    &:not(:nth-child(4n + 4)) {
+      width: calc(20% - var(--grid-spacing));
+    }
+  }
+}
+
+// One Column
+[data-grid-columns='1']>&:not(:empty) {
+  width: 100%;
+}
+
+[data-grid-columns='1'][data-grid-spacing='two-spacing']>&:not(:first-child) {
+  padding-top: calc(var(--grid-spacing) * 0.5);
+}
 }
