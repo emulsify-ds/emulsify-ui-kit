@@ -1,0 +1,71 @@
+{#
+ # Available Variables:
+ # - items: Array of tag items. Each item may include:
+ #   - title: Visible tag label.
+ #   - url: Destination URL for the tag link.
+ #   - color: Optional. Named variant (primary | dark | yellow | green) or any
+ #           valid CSS color value (e.g. rgb(0, 55, 103), #ca4b0c).
+ # - tags__base_class: Optional base class override.
+ # - tags__modifiers: Optional modifier classes for the wrapper list.
+ # - tags__blockname: Optional BEM blockname override.
+ # - tags__attributes: Optional attributes for the wrapper list element.
+ # - tags__addition_classes: Optional additional classes for the wrapper list.
+ #
+ # Available Blocks:
+ # - tags__items
+ #}
+
+{# Normalize the tags API before delegating the wrapper markup to list.twig. #}
+{% set tags__base_class = tags__base_class|default('tags') %}
+{% set tags__modifiers = tags__modifiers|default(['inline']) %}
+{% set tags__attributes = tags__attributes|default([]) %}
+{% set tags__list_modifiers = tags__modifiers %}
+
+{% set tag_items %}
+  {% for item in items %}
+    {# Pass optional item-level color data through to linked and static tag output. #}
+    {% set tag__attributes = {} %}
+    {% if item.color %}
+      {% set tag__attributes = {
+        'data-tag-color': item.color,
+      } %}
+    {% endif %}
+
+    {% embed "@components/lists/_list-item.twig" with {
+      list__item__blockname: tags__base_class,
+    } %}
+      {% block list__item__content %}
+        {% if item.url %}
+          {% include "@components/link/link.twig" with {
+            link__attributes: tag__attributes,
+            link__blockname: tags__base_class,
+            link__content: item.title,
+            link__url: item.url,
+          } %}
+        {% else %}
+          <span {{ add_attributes(tag__attributes|merge({
+            'class': bem('link', [], tags__base_class),
+          })) }}>
+            {{ item.title }}
+          </span>
+        {% endif %}
+      {% endblock %}
+    {% endembed %}
+  {% endfor %}
+{% endset %}
+
+{% if items is not empty %}
+  {% embed "@components/lists/list.twig" with {
+    list__items: items,
+    list__base_class: tags__base_class,
+    list__modifiers: tags__list_modifiers,
+    list__blockname: tags__blockname,
+    list__attributes: tags__attributes,
+    list__addition_classes: tags__addition_classes,
+  } %}
+    {% block list__content %}
+      {{ tag_items }}
+    {% endblock %}
+  {% endembed %}
+{% endif %}
+
