@@ -1,0 +1,94 @@
+@use '../../foundation/breakpoints/breakpoints' as *;
+@use '../../foundation/typography/typography' as *;
+@use '../../foundation/spacing/spacing' as *;
+
+:root {
+  --tags-color-bg-default: var(--color-primary-dark);
+  --tags-color-text-default: var(--color-white);
+
+  --tags-color-bg-dark: var(--color-grays-900);
+  --tags-color-text-dark: var(--color-white);
+
+  --tags-color-bg-yellow: var(--status-color-warning-bg);
+  --tags-color-text-yellow: var(--color-text-body);
+
+  --tags-color-bg-green: var(--status-color-success-bg);
+  --tags-color-text-green: var(--color-white);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs) var(--spacing-md);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tags__item {
+  display: inline-flex;
+}
+
+.tags__link {
+  @include body-sm;
+
+  display: block;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--spacing-sm);
+  background-color: var(--tags-color-bg-default);
+  color: var(--tags-color-text-default);
+  text-decoration: none;
+  line-height: 1.25;
+
+  &[data-tag-color="primary"] {
+    background-color: var(--tags-color-bg-default);
+    color: var(--tags-color-text-default);
+  }
+
+  &[data-tag-color="dark"] {
+    background-color: var(--tags-color-bg-dark);
+    color: var(--tags-color-text-dark);
+  }
+
+  &[data-tag-color="yellow"] {
+    background-color: var(--tags-color-bg-yellow);
+    color: var(--tags-color-text-yellow);
+  }
+
+  &[data-tag-color="green"] {
+    background-color: var(--tags-color-bg-green);
+    color: var(--tags-color-text-green);
+  }
+
+  &:not([data-tag-color]) {
+    border: var(--border-sm) solid var(--color-primary-dark);
+    background-color: var(--color-white);
+    border-radius: var(--spacing-lg);
+    color: var(--color-text-body);
+    padding: 0 var(--spacing-md);
+  }
+
+  &:is(a):hover {
+    text-decoration: underline;
+  }
+
+  &:is(a):active {
+    opacity: 0.8;
+  }
+
+  &:is(a):focus-visible {
+    outline: var(--border-md) solid var(--color-primary-darkest);
+    outline-offset: var(--spacing-xs);
+    text-decoration: underline;
+  }
+}
+
+.teaser {
+  .tags {
+    margin-left: auto;
+  }
+}
