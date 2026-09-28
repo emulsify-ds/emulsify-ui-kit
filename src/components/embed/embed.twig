@@ -1,0 +1,96 @@
+{#
+/**
+ * Embed
+ *
+ * Wraps consumer-provided iframe/embed markup in a responsive,
+ * aspect-ratio-controlled container with an optional heading,
+ * introductory text, and caption. Heading, introductory text, container
+ * width, alignment, theme, and background are all delegated to
+ * "@layout/container/container.twig" - see that component for details.
+ *
+ * TRUST BOUNDARY - READ BEFORE USE
+ * This component does not sanitize `embed_content` (or the
+ * `embed_content` block override below); both are rendered with the
+ * Twig "raw" filter, the same approach used by the existing Video
+ * component's `video_content`. Only pass markup that is either:
+ *   1. Authored directly in a trusted Twig template, via the
+ *      `embed_content` block, or
+ *   2. Already sanitized/allow-listed by the consuming application or
+ *      CMS before it reaches this component.
+ * Never pass raw, unsanitized end-user input into `embed_content`. This
+ * component cannot guarantee the accessibility of third-party iframe
+ * contents - that responsibility belongs to the embed provider. See
+ * README.md in this directory for the full integration guidance.
+ *
+ * Available variables:
+ * - embed__heading - optional heading text.
+ * - embed__heading_level - heading level, 1-6 (default: 2).
+ * - embed__text - optional introductory markup, rendered raw.
+ * - embed_content - the embed markup (typically an <iframe>), rendered
+ *   raw. The iframe must include a descriptive "title" attribute; a
+ *   missing title is invalid input and will be flagged by the project's
+ *   automated accessibility checks (axe rule "frame-title").
+ * - embed__caption - optional caption/supporting text below the embed.
+ * - embed__ratio - aspect ratio preset: 16-9 (default), 4-3, 1-1, custom.
+ * - embed__ratio_custom - CSS aspect-ratio value used when embed__ratio
+ *   is "custom", e.g. "21 / 9".
+ * - embed__width - container width, passed to @layout/container.
+ * - embed__alignment - container alignment, passed to @layout/container.
+ * - embed__theme - container theme, passed to @layout/container.
+ * - embed__bg_color - container background, passed to @layout/container.
+ *
+ * Available blocks:
+ * - embed_content - override the default embed content rendering. Use
+ *   this to insert trusted, template-authored embed markup instead of
+ *   the raw `embed_content` string prop.
+ */
+#}
+{% set embed__base_class = embed__base_class|default('embed') %}
+{% set embed__modifiers = embed__modifiers|default([]) %}
+{% set embed__attributes = embed__attributes|default({}) %}
+{% set embed__ratio = embed__ratio|default('16-9') %}
+
+{% set embed__attributes = embed__attributes|merge({
+  'class': bem(embed__base_class, embed__modifiers, embed__blockname),
+}) %}
+
+{% set embed__media_attributes = {
+  'class': bem('media', embed__media_modifiers|default([]), embed__base_class),
+  'data-embed-ratio': embed__ratio,
+} %}
+
+{% if embed__ratio == 'custom' and embed__ratio_custom %}
+  {% set embed__media_attributes = embed__media_attributes|merge({
+    'style': 'aspect-ratio: ' ~ embed__ratio_custom ~ ';',
+  }) %}
+{% endif %}
+
+{% set embed %}
+  <figure {{ add_attributes(embed__attributes) }}>
+    <div {{ add_attributes(embed__media_attributes) }}>
+      {% block embed_content %}
+        {{ embed_content|raw }}
+      {% endblock %}
+    </div>
+    {% if embed__caption %}
+      <figcaption {{ bem('caption', [], embed__base_class) }}>
+        {{ embed__caption|raw }}
+      </figcaption>
+    {% endif %}
+  </figure>
+{% endset %}
+
+{% embed "@layout/container/container.twig" with {
+  container__component_width: embed__width|default('standard'),
+  container__component_alignment: embed__alignment|default('center'),
+  container__theme: embed__theme,
+  container__bg_color: embed__bg_color,
+  container__heading: embed__heading,
+  container__heading_level: embed__heading_level|default('2'),
+  container__text: embed__text,
+  container__modifiers: embed__container_modifiers,
+} %}
+  {% block container__content %}
+    {{ embed }}
+  {% endblock %}
+{% endembed %}
