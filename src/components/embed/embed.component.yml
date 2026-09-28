@@ -1,0 +1,76 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Embed
+group: Components
+status: stable
+props:
+  type: object
+  required:
+    - embed_content
+  properties:
+    embed__heading:
+      type: string
+      title: Heading
+      description: 'Optional heading rendered above the embed by the shared container component. Omit to render no heading and no empty wrapper.'
+      data: 'Watch the highlight reel'
+    embed__heading_level:
+      type: string
+      title: Heading level
+      description: 'Heading level (1-6) used for embed__heading. Defaults to 2.'
+      data: '2'
+    embed__text:
+      type: string
+      title: Introductory text
+      description: 'Optional introductory copy rendered with the heading. Expected to already be CMS-sanitized; rendered raw.'
+      data: '<p>A short recap of this quarter, hosted on our video platform.</p>'
+    embed_content:
+      type: string
+      title: Embed content
+      description: >-
+        Raw embed markup, typically an <iframe>. Rendered with the Twig
+        "raw" filter and NOT sanitized by this component - only pass
+        markup that is trusted or has already been sanitized by the
+        consuming application. The markup must include a descriptive
+        iframe "title" attribute.
+      data: '<iframe title="Sample embed video" src="https://www.youtube-nocookie.com/embed/M7lc1UVf-VE" width="854" height="480" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+    embed__caption:
+      type: string
+      title: Caption
+      description: 'Optional caption or supporting text displayed below the embed, inside a figcaption.'
+      data: 'Recorded live at the 2026 Emulsify Summit.'
+    embed__ratio:
+      type: string
+      title: Aspect ratio
+      description: 'One of 16-9 (default), 4-3, 1-1, or custom.'
+      data: '16-9'
+    embed__ratio_custom:
+      type: string
+      title: Custom aspect ratio
+      description: 'CSS aspect-ratio value used when embed__ratio is "custom", e.g. "21 / 9".'
+      data: '21 / 9'
+    embed__width:
+      type: string
+      title: Container width
+      description: 'Passed through to the shared container component: compressed, standard, extended, max, or full.'
+      data: 'standard'
+    embed__alignment:
+      type: string
+      title: Container alignment
+      description: 'Passed through to the shared container component: left, center, or right.'
+      data: 'center'
+    embed__theme:
+      type: string
+      title: Container theme
+      description: 'Passed through to the shared container component, e.g. "inverse".'
+      data: ''
+    embed__bg_color:
+      type: boolean
+      title: Container background
+      description: 'Passed through to the shared container component to enable its background treatment.'
+      data: false
+
+slots:
+  embed_content:
+    title: Embed content
+    description: 'Override the default embed content rendering with trusted, template-authored markup.'
+    data: ''

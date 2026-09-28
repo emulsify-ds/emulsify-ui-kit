@@ -1,0 +1,41 @@
+.embed {
+  margin: 0;
+
+  // Overrides the `figure` normalize margin reset used elsewhere so the
+  // component can be dropped into any container width unmodified.
+}
+
+.embed__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  // Deliberately no `overflow: hidden` here: the iframe is sized to
+  // exactly fill this box via `width`/`height: 100%`, so nothing needs
+  // clipping. Clipping would cut off the embedded content's own focus
+  // outline and can break its fullscreen affordances in some browsers.
+
+  &[data-embed-ratio='4-3'] {
+    aspect-ratio: 4 / 3;
+  }
+
+  &[data-embed-ratio='1-1'] {
+    aspect-ratio: 1 / 1;
+  }
+
+  &[data-embed-ratio='custom'] {
+    aspect-ratio: var(--embed-aspect-ratio, 16 / 9);
+  }
+
+  :is(iframe, embed, object) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+.embed__caption {
+  margin-top: var(--spacing-md);
+  font-size: var(--font-size-x-small);
+}
