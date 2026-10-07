@@ -1,0 +1,91 @@
+{#
+ # Available variables:
+ # - offcanvas__heading - (required) accessible heading of the dialog.
+ # - offcanvas__id - stable unique ID for the dialog, defaults to the heading slug.
+ # - offcanvas__heading__level - heading level, defaults to 2.
+ # - offcanvas__show_heading - false visually hides the heading.
+ # - offcanvas__type - pane (default) or modal.
+ # - offcanvas__direction - pane direction: top, right (default), bottom or left.
+ # - offcanvas__theme - light (default) or dark.
+ # - offcanvas__trigger__text - text of the trigger button.
+ # - offcanvas__modifiers - array of modifiers for the wrapper.
+ # - offcanvas__blockname - blockname prepended to the wrapper base class.
+ #
+ # Available blocks:
+ # - offcanvas__trigger - content of the trigger button.
+ # - offcanvas__content - main content of the dialog.
+ # - offcanvas__suffix - optional footer content of the dialog.
+ #}
+
+{% set offcanvas__base_class = 'offcanvas' %}
+{% set offcanvas__dialog__id = offcanvas__id|default('offcanvas-' ~ offcanvas__heading|clean_class) %}
+{% set offcanvas__type = offcanvas__type|default('pane') %}
+
+{% set offcanvas__dialog__attributes = {
+  'id': offcanvas__dialog__id,
+  'class': bem('dialog', [], offcanvas__base_class, ['js-offcanvas']),
+  'aria-labelledby': offcanvas__dialog__id ~ '-heading',
+  'tabindex': '-1',
+  'data-offcanvas-type': offcanvas__type,
+  'data-offcanvas-theme': offcanvas__theme|default('light'),
+} %}
+
+{% if offcanvas__type == 'pane' %}
+  {% set offcanvas__dialog__attributes = offcanvas__dialog__attributes|merge({
+    'data-offcanvas-direction': offcanvas__direction|default('right'),
+  }) %}
+{% endif %}
+
+<div {{ bem(offcanvas__base_class, offcanvas__modifiers, offcanvas__blockname) }}>
+  {% set offcanvas__trigger__content %}
+    {% block offcanvas__trigger %}
+      {{ offcanvas__trigger__text|default(offcanvas__heading) }}
+    {% endblock %}
+  {% endset %}
+  {% include "@components/button/button.twig" with {
+    button__content: offcanvas__trigger__content,
+    button__style: 'primary',
+    button__additional_classes: ['offcanvas__trigger'],
+    button__attributes: {
+      'type': 'button',
+      'data-offcanvas-trigger': '',
+    },
+    aria_expanded: 'false',
+    aria_controls: offcanvas__dialog__id,
+  } %}
+
+  <dialog {{ add_attributes(offcanvas__dialog__attributes) }}>
+    <div {{ bem('header', [], offcanvas__base_class) }}>
+      <h{{ offcanvas__heading__level|default(2) }} {{ add_attributes({
+        'id': offcanvas__dialog__id ~ '-heading',
+        'class': bem('heading', [], offcanvas__base_class, offcanvas__show_heading is same as(false) ? ['visually-hidden'] : []),
+      }) }}>{{ offcanvas__heading }}</h{{ offcanvas__heading__level|default(2) }}>
+      <button {{ add_attributes({
+        'type': 'button',
+        'class': bem('close', [], offcanvas__base_class),
+        'data-offcanvas-close': '',
+        'aria-label': 'Close ' ~ offcanvas__heading,
+      }) }}>
+        {% include "@components/icons/_icon.twig" with {
+          icon__name: 'xmark',
+          icon__blockname: offcanvas__base_class,
+          icon__decorative: true,
+        } %}
+      </button>
+    </div>
+
+    <div {{ bem('content', [], offcanvas__base_class) }}>
+      {% block offcanvas__content %}
+        {{ offcanvas__content }}
+      {% endblock %}
+    </div>
+
+    {% if offcanvas__suffix %}
+      <div {{ bem('suffix', [], offcanvas__base_class) }}>
+        {% block offcanvas__suffix %}
+          {{ offcanvas__suffix }}
+        {% endblock %}
+      </div>
+    {% endif %}
+  </dialog>
+</div>
