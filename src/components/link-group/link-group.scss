@@ -1,0 +1,146 @@
+@use '../../foundation/breakpoints/breakpoints' as *;
+
+.link-group__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+  margin: 0;
+  padding: 0;
+
+  // Boxes stack on small screens and use two columns from medium up.
+  [data-link-group-display='boxes'] & {
+    display: grid;
+    gap: var(--spacing-xl);
+
+    @include breakpoint('medium') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+.link-group__item {
+  display: flex;
+  margin: 0;
+}
+
+.link-group__item > a {
+  gap: var(--spacing-md);
+  text-align: start;
+}
+
+// Button labels are smaller than the default button, like the reference.
+.link-group__item .button {
+  font-size: var(--font-size-small);
+}
+
+.link-group__item .button__content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+// Scoped to the item so it also overrides the button icon size.
+.link-group__item .link-group__icon {
+  flex-shrink: 0;
+  width: var(--size-lg);
+  height: var(--size-lg);
+  fill: currentcolor;
+}
+
+// Boxes always end with an arrow that nudges forward on hover.
+.link-group__arrow {
+  flex-shrink: 0;
+  width: calc(var(--size-lg) * 1.5);
+  height: calc(var(--size-lg) * 1.5);
+  fill: var(--color-primary-darker);
+  transition:
+    transform 0.3s ease-in-out,
+    fill 0.3s ease-in-out;
+
+  .link-group__link:hover & {
+    fill: currentcolor;
+    transform: translateX(var(--spacing-sm));
+  }
+}
+
+// The whole box is the link, so the full card is clickable without nesting.
+.link-group__link {
+  display: flex;
+  align-items: center;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  padding: var(--spacing-xl);
+  border-inline-start: var(--spacing-md) solid var(--color-primary-darker);
+  box-shadow: 0 0 var(--spacing-lg) 0
+    color-mix(
+      in srgb,
+      var(--color-primary-darker) var(--opacity-20),
+      transparent
+    );
+  font-size: var(--font-size-h5);
+  font-weight: bold;
+  color: var(--color-text-body);
+  background-color: var(--color-white);
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+
+  // Fill grows from the border to the right on hover.
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: var(--color-primary-darker);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover {
+    color: var(--color-text-white);
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+
+  &:active::after {
+    background-color: var(--color-primary-darkest);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link-group__link,
+  .link-group__link::after,
+  .link-group__arrow {
+    transition: none;
+  }
+}
+
+// With a background, the button display floats the content in a white box over a colored band.
+.container--link-group.container--with-bg[data-link-group-display='button'] {
+  display: flow-root;
+  margin-bottom: var(--spacing-2xl);
+  padding-bottom: 0;
+  background-color: var(--color-primary-darker);
+
+  @include breakpoint('medium') {
+    padding-inline: var(--spacing-xl);
+  }
+
+  .container__inner {
+    padding: var(--spacing-xl);
+    color: var(--color-text-body);
+    background-color: var(--color-white);
+    box-shadow: 0 var(--spacing-lg) var(--spacing-xl) 0
+      color-mix(in srgb, var(--color-black) var(--opacity-20), transparent);
+
+    // Hang below the band by a fixed amount, whatever the container padding.
+    margin-bottom: calc(var(--spacing-2xl) * -1);
+
+    @include breakpoint('medium') {
+      padding: var(--spacing-2xl);
+    }
+  }
+}

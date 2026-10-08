@@ -1,0 +1,92 @@
+{#
+ # Available variables:
+ # - link_group__heading - optional section heading.
+ # - link_group__heading_level - heading level, defaults to 2.
+ # - link_group__text - optional intro text.
+ # - link_group__items - (required) array of items:
+ #   - label - (required) link text.
+ #   - url - (required) link destination.
+ #   - icon - optional UI kit icon name, decorative by default (button display only; boxes show an arrow).
+ #   - icon_label - optional text that makes the icon meaningful for assistive technology.
+ # - link_group__display - button (default) or boxes. Buttons only look like buttons; they stay links.
+ # - link_group__width - container width, defaults to standard.
+ # - link_group__alignment - container alignment, defaults to left.
+ # - link_group__bg_color - adds the container background.
+ #
+ # Available blocks:
+ # - link_group__items - replace the default item rendering.
+ #}
+
+{% set link_group__base_class = 'link-group' %}
+{% set link_group__display = link_group__display|default('button') %}
+
+{% set link_group__list %}
+  {% block link_group__items %}
+    {% embed "@components/lists/list.twig" with {
+      list__blockname: link_group__base_class,
+    } %}
+      {% block list__content %}
+        {% for item in link_group__items %}
+          {% set link_group__item__content %}
+            {% if item.icon and link_group__display != 'boxes' %}
+              {% include "@components/icons/_icon.twig" with {
+                icon__name: item.icon,
+                icon__blockname: link_group__base_class,
+                icon__decorative: true,
+              } %}
+              {% if item.icon_label %}
+                <span class="visually-hidden">{{ item.icon_label }}</span>
+              {% endif %}
+            {% endif %}
+            <span {{ bem('label', [], link_group__base_class) }}>{{ item.label }}</span>
+          {% endset %}
+
+          {% embed "@components/lists/_list-item.twig" with {
+            list__item__blockname: link_group__base_class,
+          } %}
+            {% block list__item__content %}
+              {% if link_group__display == 'boxes' %}
+                {% embed "@components/link/link.twig" with {
+                  link__url: item.url,
+                  link__blockname: link_group__base_class,
+                } %}
+                  {% block link__content %}
+                    {{ link_group__item__content }}
+                    {% include "@components/icons/_icon.twig" with {
+                      icon__name: 'arrowRight',
+                      icon__base_class: 'arrow',
+                      icon__blockname: link_group__base_class,
+                      icon__decorative: true,
+                    } %}
+                  {% endblock %}
+                {% endembed %}
+              {% else %}
+                {% include "@components/button/button.twig" with {
+                  button__element: 'a',
+                  button__href: item.url,
+                  button__content: link_group__item__content,
+                  button__style: 'primary',
+                } %}
+              {% endif %}
+            {% endblock %}
+          {% endembed %}
+        {% endfor %}
+      {% endblock %}
+    {% endembed %}
+  {% endblock %}
+{% endset %}
+
+{% embed "@layout/container/container.twig" with {
+  container__modifiers: [link_group__base_class],
+  container__attributes: { 'data-link-group-display': link_group__display },
+  container__heading: link_group__heading,
+  container__heading_level: link_group__heading_level|default('2'),
+  container__text: link_group__text,
+  container__component_width: link_group__width|default('standard'),
+  container__component_alignment: link_group__alignment|default('left'),
+  container__bg_color: link_group__bg_color,
+} %}
+  {% block container__content %}
+    {{ link_group__list }}
+  {% endblock %}
+{% endembed %}
