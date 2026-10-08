@@ -14,11 +14,6 @@ export default {
       control: { type: 'select' },
       options: props.properties.link_group__display.enum,
     },
-    link_group__theme: {
-      name: 'Theme',
-      control: { type: 'select' },
-      options: props.properties.link_group__theme.enum,
-    },
     link_group__width: {
       name: 'Width',
       control: { type: 'select' },
@@ -37,6 +32,7 @@ export default {
     link_group__heading: { name: 'Heading', type: 'string' },
     link_group__text: { name: 'Intro text', type: 'string' },
     link_group__bg_color: { name: 'Background color', type: 'boolean' },
+    link_group__items: { table: { disable: true } },
   },
   args: mapDataToTwig(props.properties),
 };

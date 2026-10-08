@@ -26,11 +26,11 @@
 .link-group__item > a {
   gap: var(--spacing-md);
   text-align: start;
+}
 
-  // The global focus outline matches the inverse background, so lighten it there.
-  [data-component-theme='inverse'] &:focus-visible {
-    outline-color: var(--color-white) !important;
-  }
+// Button labels are smaller than the default button, like the reference.
+.link-group__item .button {
+  font-size: var(--font-size-small);
 }
 
 .link-group__item .button__content {
@@ -50,17 +50,15 @@
 // Boxes always end with an arrow that nudges forward on hover.
 .link-group__arrow {
   flex-shrink: 0;
-  width: var(--size-lg);
-  height: var(--size-lg);
+  width: calc(var(--size-lg) * 1.5);
+  height: calc(var(--size-lg) * 1.5);
   fill: var(--color-primary-darker);
-  transition: transform 0.2s ease-in-out;
+  transition:
+    transform 0.3s ease-in-out,
+    fill 0.3s ease-in-out;
 
-  [data-component-theme='inverse'] &,
   .link-group__link:hover & {
     fill: currentcolor;
-  }
-
-  .link-group__link:hover & {
     transform: translateX(var(--spacing-sm));
   }
 }
@@ -69,6 +67,8 @@
 .link-group__link {
   display: flex;
   align-items: center;
+  position: relative;
+  isolation: isolate;
   width: 100%;
   padding: var(--spacing-xl);
   border-inline-start: var(--spacing-md) solid var(--color-primary-darker);
@@ -78,58 +78,51 @@
       var(--color-primary-darker) var(--opacity-20),
       transparent
     );
+  font-size: var(--font-size-h5);
   font-weight: bold;
   color: var(--color-text-body);
   background-color: var(--color-white);
   text-decoration: none;
-  transition:
-    background-color 0.2s ease-in-out,
-    color 0.2s ease-in-out;
+  transition: color 0.3s ease-in-out;
+
+  // Fill grows from the border to the right on hover.
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: var(--color-primary-darker);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+  }
 
   &:hover {
     color: var(--color-text-white);
-    background-color: var(--color-primary-darker);
   }
 
-  &:active {
+  &:hover::after {
+    transform: scaleX(1);
+  }
+
+  &:active::after {
     background-color: var(--color-primary-darkest);
-  }
-
-  [data-component-theme='inverse'] & {
-    border-color: var(--color-white);
-    color: var(--color-text-white);
-    background-color: var(--color-primary-darker);
-
-    &:hover {
-      color: var(--color-text-body);
-      background-color: var(--color-white);
-    }
-
-    &:active {
-      background-color: var(--color-primary-lighter);
-    }
-  }
-}
-
-.container--link-group[data-component-theme='inverse'] {
-  color: var(--color-text-white);
-  background-color: var(--color-primary-darkest);
-
-  .container__heading {
-    color: inherit;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .link-group__link,
+  .link-group__link::after,
   .link-group__arrow {
     transition: none;
   }
 }
 
-// Button display floats the content in a white box over a colored band.
-.container--link-group[data-link-group-display='button'] {
+// With a background, the button display floats the content in a white box over a colored band.
+.container--link-group.container--with-bg[data-link-group-display='button'] {
+  display: flow-root;
   margin-bottom: var(--spacing-2xl);
+  padding-bottom: 0;
   background-color: var(--color-primary-darker);
 
   @include breakpoint('medium') {
@@ -142,15 +135,12 @@
     background-color: var(--color-white);
     box-shadow: 0 var(--spacing-lg) var(--spacing-xl) 0
       color-mix(in srgb, var(--color-black) var(--opacity-20), transparent);
-    transform: translateY(var(--spacing-2xl));
+
+    // Hang below the band by a fixed amount, whatever the container padding.
+    margin-bottom: calc(var(--spacing-2xl) * -1);
 
     @include breakpoint('medium') {
       padding: var(--spacing-2xl);
     }
-  }
-
-  &[data-component-theme='inverse'] .container__inner {
-    color: var(--color-text-white);
-    background-color: var(--color-primary-darkest);
   }
 }

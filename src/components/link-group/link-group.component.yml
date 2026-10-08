@@ -49,17 +49,11 @@ props:
         - center
         - right
       data: left
-    link_group__theme:
-      type: string
-      title: Theme
-      enum:
-        - default
-        - inverse
-      data: default
     link_group__bg_color:
       type: boolean
       title: Background color
-      data: false
+      description: Adds the container background; with the button display it floats the links in a white box.
+      data: true
     link_group__items:
       type: array
       title: Items
