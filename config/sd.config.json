@@ -1,7 +1,5 @@
 {
-  "source": [
-    "src/tokens/transformed.tokens.json"
-  ],
+  "source": ["src/tokens/transformed.tokens.json"],
   "platforms": {
     "css": {
       "transforms": [
@@ -10,6 +8,7 @@
         "time/seconds",
         "html/icon",
         "color/css",
+        "color/css-short",
         "toRem/pxToRem",
         "toPX/appendPX"
       ],

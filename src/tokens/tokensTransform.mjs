@@ -39,4 +39,15 @@ ProjectStyleDictionary.registerTransform({
   },
 });
 
+ProjectStyleDictionary.registerTransform({
+  name: 'color/css-short',
+  type: 'value',
+  filter(token) {
+    return token.type === 'color';
+  },
+  transform(token) {
+    return token.value.replace(/^#(.)\1(.)\2(.)\3$/i, '#$1$2$3');
+  },
+});
+
 ProjectStyleDictionary.buildAllPlatforms();
