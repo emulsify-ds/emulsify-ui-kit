@@ -5,12 +5,10 @@
 .main-nav__menu-list {
   @include list-reset;
 
-  & {
-    display: flex;
-    flex-flow: column nowrap;
-    width: 100%;
-    margin: 0 auto;
-  }
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  margin: 0 auto;
 
   @include breakpoint('medium') {
     flex-flow: row nowrap;

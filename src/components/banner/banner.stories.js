@@ -20,8 +20,8 @@ export default {
       name: 'Banner Alignment',
       type: 'select',
       options: {
-        'Left': 'left',
-        'Center': 'center',
+        Left: 'left',
+        Center: 'center',
       },
     },
     heading: {
@@ -46,21 +46,18 @@ export default {
   },
 };
 
-export const Banner = ({
-  type,
-  alignment,
-  heading,
-  text,
-  link,
-}) => bannerTwig({
-  banner__image: bannerData.banner__image.data,
-  banner__video: bannerData.banner__video.data,
-  banner__media: type,
-  banner__alignment: alignment,
-  banner__heading: heading,
-  banner__text: text,
-  banner__link_items: [{
-    url: '#',
-    content: link,
-  }]
-});
+export const Banner = ({ type, alignment, heading, text, link }) =>
+  bannerTwig({
+    banner__image: bannerData.banner__image.data,
+    banner__video: bannerData.banner__video.data,
+    banner__media: type,
+    banner__alignment: alignment,
+    banner__heading: heading,
+    banner__text: text,
+    banner__link_items: [
+      {
+        url: '#',
+        content: link,
+      },
+    ],
+  });

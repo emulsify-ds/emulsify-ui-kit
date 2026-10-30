@@ -7,17 +7,15 @@
 .main-nav__placeholder {
   @include link('no-underline');
 
-  & {
-    color: var(--main-menu-color-link-label);
-    display: block;
-    flex: 1 1 auto;
-    font-size: var(--font-size-h5);
-    line-height: var(--line-heights-none);
-    padding: var(--spacing-md) var(--spacing-lg);
-    text-decoration: none;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
+  color: var(--main-menu-color-link-label);
+  display: block;
+  flex: 1 1 auto;
+  font-size: var(--font-size-h5);
+  line-height: var(--line-heights-none);
+  padding: var(--spacing-md) var(--spacing-lg);
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
 
   @include breakpoint('medium') {
     border-bottom: none;
@@ -122,9 +120,7 @@
 
 .main-nav__link--level-1,
 .main-nav__link--level-2 {
-  & {
-    font-size: var(--font-size-body);
-  }
+  font-size: var(--font-size-body);
 
   @include breakpoint('small-down') {
     padding-left: var(--spacing-xl);

@@ -4,31 +4,25 @@
 .main-nav__menu-list-wrapper {
   @include transition;
 
-  & {
-    @include animate-hidden;
+  @include animate-hidden;
 
-    & {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: var(--main-menu-color-bg);
-      overflow: auto;
-    }
-  }
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--main-menu-color-bg);
+  overflow: auto;
 
   @include breakpoint('medium') {
     @include animate-show;
 
-    & {
-      position: relative;
-      top: auto;
-      width: auto;
-      left: auto;
-      border: none;
-      overflow: visible;
-      min-height: auto;
-    }
+    position: relative;
+    top: auto;
+    width: auto;
+    left: auto;
+    border: none;
+    overflow: visible;
+    min-height: auto;
   }
 
   // Open subnav on click.
@@ -36,9 +30,7 @@
   .sub--open > & {
     @include animate-show;
 
-    & {
-      max-height: 100vh;
-    }
+    max-height: 100vh;
   }
 
   // Open subnav on hover.
@@ -46,9 +38,7 @@
     @include breakpoint('medium') {
       @include animate-show;
 
-      & {
-        max-height: 100vh;
-      }
+      max-height: 100vh;
     }
   }
 
@@ -67,13 +57,11 @@
     @include animate-hidden;
     @include transition($transition-duration: 500ms);
 
-    & {
-      position: relative;
-      overflow: hidden;
-      top: auto;
-      margin: 0;
-      max-height: 0;
-    }
+    position: relative;
+    overflow: hidden;
+    top: auto;
+    margin: 0;
+    max-height: 0;
 
     @include breakpoint('small-down') {
       border-top: 1px solid var(--button-color-bkg);
@@ -95,17 +83,15 @@
     @include animate-hidden;
     @include transition($transition-duration: 500ms);
 
-    & {
-      position: relative;
-      overflow: hidden;
-      top: auto;
-      padding: 0;
-      margin: 0;
-      background-color: var(--main-menu-color-dropdown-bg);
-      border-top: 1px solid var(--button-color-bkg);
-      border-bottom: 1px solid var(--button-color-bkg);
-      max-height: 0;
-    }
+    position: relative;
+    overflow: hidden;
+    top: auto;
+    padding: 0;
+    margin: 0;
+    background-color: var(--main-menu-color-dropdown-bg);
+    border-top: 1px solid var(--button-color-bkg);
+    border-bottom: 1px solid var(--button-color-bkg);
+    max-height: 0;
 
     @include breakpoint('small-down') {
       border-bottom: 0;

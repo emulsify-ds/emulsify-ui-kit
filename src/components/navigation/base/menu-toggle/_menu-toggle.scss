@@ -31,13 +31,11 @@ nav > [class$='__toggle'] {
 [class$='__toggle__bar'] {
   @include transition($transition-duration: 100ms);
 
-  & {
-    position: absolute;
-    display: block;
-    height: var(--size-xs);
-    width: 100%;
-    background: var(--button-color-label);
-  }
+  position: absolute;
+  display: block;
+  height: var(--size-xs);
+  width: 100%;
+  background: var(--button-color-label);
 
   &:nth-child(1) {
     top: -0.1rem;
@@ -53,11 +51,9 @@ nav > [class$='__toggle'] {
       $transition-duration: 100ms
     );
 
-    & {
-      top: 50%;
-      transform: translateY(-50%);
-      opacity: 1;
-    }
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
 
     @include main-menu-is-open {
       opacity: 0;

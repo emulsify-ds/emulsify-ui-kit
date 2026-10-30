@@ -100,9 +100,7 @@
 .container {
   @include section-padding;
 
-  & {
-    position: relative;
-  }
+  position: relative;
 
   + .container--with-bg {
     @include margin-gap-top;
@@ -155,9 +153,7 @@
   &--spacing-top {
     @include section-padding-top;
 
-    & {
-      padding-bottom: 0;
-    }
+    padding-bottom: 0;
   }
 
   &--spacing-bottom {

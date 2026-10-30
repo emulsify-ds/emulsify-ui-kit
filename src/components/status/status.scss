@@ -3,9 +3,7 @@
 .status__list {
   @include list-reset;
 
-  & {
-    margin-bottom: var(--spacing-lg);
-  }
+  margin-bottom: var(--spacing-lg);
 }
 
 .status {

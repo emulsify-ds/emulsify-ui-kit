@@ -4,10 +4,8 @@
 .form-item {
   @include clearfix;
 
-  & {
-    color: var(--color-text-body);
-    margin-bottom: 1em;
-  }
+  color: var(--color-text-body);
+  margin-bottom: 1em;
 }
 
 .form-item__label {
