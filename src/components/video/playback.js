@@ -103,7 +103,7 @@ Drupal.behaviors.playbackButtons = {
       const refs = fetchButtonRefs(button);
 
       console.log(refs);
-      
+
       if (refs.button && refs.video) {
         refs.button.addEventListener('click', () => toggleVideo(refs));
         setInitialState(refs);

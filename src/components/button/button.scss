@@ -51,21 +51,19 @@ $button-styles: (
 @mixin button-base {
   @include transition;
 
-  & {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    border: var(--button-border-width-border) solid;
-    font-size: var(--font-size-body);
-    font-weight: var(--button-font-weight-label);
-    text-transform: var(--button-text-case);
-    text-decoration: none;
-    text-align: center;
-    cursor: pointer;
-    border-radius: var(--button-radius);
-    line-height: var(--line-height-relaxed);
-  }
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: var(--button-border-width-border) solid;
+  font-size: var(--font-size-body);
+  font-weight: var(--button-font-weight-label);
+  text-transform: var(--button-text-case);
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  border-radius: var(--button-radius);
+  line-height: var(--line-height-relaxed);
 
   &[disabled],
   &[data-button-style='disabled'] {
@@ -154,9 +152,7 @@ $button-styles: (
 
 // Button size variations
 @mixin button-size($size: null) {
-  & {
-    padding: var(--button-padding-y) var(--button-padding-x);
-  }
+  padding: var(--button-padding-y) var(--button-padding-x);
 }
 
 @mixin button($type: null) {

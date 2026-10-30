@@ -63,31 +63,25 @@
 .breadcrumbs__menu-list {
   @include list-reset;
 
-  & {
-    display: inline-flex;
-    flex-flow: row;
-  }
+  display: inline-flex;
+  flex-flow: row;
 }
 
 .breadcrumbs__item {
   @include breadcrumb-spacer;
 
-  & {
-    display: flex;
-    align-items: center;
-    padding: var(--spacing-sm);
-  }
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-sm);
 
   .breadcrumbs__link {
     @include link('no-underline');
 
-    & {
-      white-space: nowrap;
-      color: var(--breadcrumb-text-default);
-      padding: 0 0 var(--spacing-xs);
-      display: block;
-      font-size: var(--font-size-x-small);
-    }
+    white-space: nowrap;
+    color: var(--breadcrumb-text-default);
+    padding: 0 0 var(--spacing-xs);
+    display: block;
+    font-size: var(--font-size-x-small);
 
     &:hover,
     &:focus {
@@ -108,17 +102,15 @@
 .breadcrumbs__scroll {
   @include transition(opacity);
 
-  & {
-    position: absolute;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 0;
-    z-index: 1;
-    opacity: 0;
-    visibility: hidden;
-  }
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
 
   &--left {
     left: 0;
@@ -174,11 +166,9 @@
 .breadcrumbs__toggle {
   @include breadcrumb-nav('left');
 
-  & {
-    display: flex;
-    white-space: nowrap;
-    margin: 0;
-  }
+  display: flex;
+  white-space: nowrap;
+  margin: 0;
 
   // Main breadcrumb toggle.
   .breadcrumbs__wrapper > & {

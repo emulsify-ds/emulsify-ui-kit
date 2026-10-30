@@ -26,14 +26,13 @@
 
 .call-to-action__content {
   display: flex;
-  flex-flow:  column nowrap;
+  flex-flow: column nowrap;
   gap: 1rem;
   color: var(--cta-color-body);
   width: 100%;
   margin: 0 auto;
   max-width: 76ch;
 }
-
 
 .call-to-action__text {
   @include h4;

@@ -1,7 +1,6 @@
 import announcementTwig from './announcement.twig';
 import { props } from './announcement.component.yml';
-import announcementDarkIcon from '../../../assets/images/example/announcement-icon--dark.svg';
-import announcementLightIcon from '../../../assets/images/example/announcement-icon--light.svg';
+import announcementIcon from '../../../assets/icons/star-solid.svg';
 
 export default {
   title: 'Components/Announcement',
@@ -12,8 +11,8 @@ export default {
 };
 
 const icons = {
-  'icon-light': announcementLightIcon,
-  'icon-dark': announcementDarkIcon,
+  'icon-light': announcementIcon,
+  'icon-dark': announcementIcon,
 };
 
 function getAnnouncementData(data) {

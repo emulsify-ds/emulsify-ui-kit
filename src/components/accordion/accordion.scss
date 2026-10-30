@@ -18,10 +18,8 @@
 .accordion__controls {
   @include list-reset;
 
-  & {
-    display: flex;
-    margin-bottom: var(--spacing-lg);
-  }
+  display: flex;
+  margin-bottom: var(--spacing-lg);
 }
 
 .accordion__controls__item {
@@ -33,16 +31,14 @@
 }
 
 .button.accordion__toggle-all {
-  & {
-    display: flex;
-    gap: var(--spacing-lg);
-    align-items: center;
-    cursor: pointer;
-    padding: 0;
-    line-height: var(--line-height-tight);
-    font-weight: var(--font-weight-primary-regular);
-    text-transform: none;
-  }
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+  line-height: var(--line-height-tight);
+  font-weight: var(--font-weight-primary-regular);
+  text-transform: none;
 
   .toggle-all__content {
     display: flex;
@@ -54,10 +50,8 @@
 .accordion-item__icon {
   @include transition;
 
-  & {
-    height: var(--size-xl);
-    width: var(--size-xl);
-  }
+  height: var(--size-xl);
+  width: var(--size-xl);
 
   [aria-expanded='true'] & {
     transform: rotate(-180deg);
@@ -66,20 +60,18 @@
 }
 
 .accordion-item__toggle {
-  & {
-    background: none;
-    border: none;
-    display: flex;
-    gap: var(--spacing-lg);
-    align-items: center;
-    justify-content: flex-start;
-    text-align: start;
-    width: 100%;
-    padding: 0 var(--spacing-lg) 0 0;
-    position: relative;
-    cursor: pointer;
-    text-transform: none;
-  }
+  background: none;
+  border: none;
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: center;
+  justify-content: flex-start;
+  text-align: start;
+  width: 100%;
+  padding: 0 var(--spacing-lg) 0 0;
+  position: relative;
+  cursor: pointer;
+  text-transform: none;
 
   [data-accordion-expanded='true'] & {
     color: var(--accordion-color-header);
