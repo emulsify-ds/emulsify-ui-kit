@@ -1,67 +1,51 @@
-import link from './link.twig';
-import { props } from './link.component.yml';
+import { renderTwig } from '@emulsify/core/storybook';
+import linkData from './link.component.yml';
+import linkTwig from './link.twig';
 
-const linkData = props.properties;
+const { properties } = linkData.props;
 
-/**
- * Storybook Definition.
- */
-export default { title: 'Components/Typography/Links' };
+export default {
+  title: 'Components/Typography/Links',
+  render: renderTwig(linkTwig),
+};
 
-export const links = () => `
-  <div class="cl-container cl-spaced-row">
-  ${link({
-    link__url: linkData.link__url.data,
-    link__content: linkData.link__content.data,
-    link__attributes: linkData.link__attributes.data,
-  })}
-  ${link({
-    link__url: linkData.link__url.data,
-    link__content: linkData.link__content.data,
-    link__attributes: {
-      target: '_blank',
-    },
-  })}
-  ${link({
-    link__url: linkData.link__url.data,
-    link__content: linkData.link__content.data,
+export const basic = {
+  args: {
+    link__url: properties.link__url.data,
+    link__content: properties.link__content.data,
+    link__attributes: properties.link__attributes.data,
+    link__style: 'default',
+  },
+  decorators: [
+    (Story) => (
+      <div className="cl-container">
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export const noUnderline = {
+  args: {
+    ...basic.args,
     link__style: 'no-underline',
-  })}
-  ${link({
-    link__url: linkData.link__url.data,
-    link__content: linkData.link__content.data,
-    link__style: 'no-underline',
-    link__attributes: {
-      target: '_blank',
-    },
-  })}
-  </div>
-  <div class="cl-container cl-spaced-row" data-component-theme="inverse">
-  ${link({
-    link__url: linkData.link__url.data,
-    link__content: linkData.link__content.data,
-    link__attributes: linkData.link__attributes.data,
-  })}
-  ${link({
-    link__url: linkData.link__url.data,
-    link__content: linkData.link__content.data,
-    link__attributes: {
-      target: '_blank',
-    },
-  })}
-  ${link({
-    link__url: linkData.link__url.data,
-    link__content: linkData.link__content.data,
-    link__attributes: linkData.link__attributes.data,
-    link__style: 'no-underline',
-  })}
-  ${link({
-    link__url: linkData.link__url.data,
-    link__content: linkData.link__content.data,
-    link__style: 'no-underline',
-    link__attributes: {
-      target: '_blank',
-    },
-  })}
-  </div>
-`;
+  },
+  decorators: [
+    (Story) => (
+      <div className="cl-container">
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export const inverse = {
+  args: basic.args,
+  decorators: [
+    (Story) => (
+      <div className="cl-container" data-component-theme="inverse">
+        <Story />
+      </div>
+    ),
+  ],
+};

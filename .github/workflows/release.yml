@@ -1,22 +1,30 @@
+# Publishes the release metadata and tags when changes land on main.
 name: Release
 on:
   push:
     branches: [main]
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  id-token: write
 jobs:
   release:
+    name: Release Package
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Install Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '24'
       - name: Install
-        run: npm install
+        run: npm ci
       - name: Release
+        # Semantic Release reads commit history and publishing tokens from CI.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

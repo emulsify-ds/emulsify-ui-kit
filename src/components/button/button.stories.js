@@ -1,123 +1,76 @@
+import { renderTwig } from '@emulsify/core/storybook';
 import buttonTwig from './button.twig';
-
-// control data.
-// import controlData from '../../util/controlData.yml';
 
 export default {
   title: 'Components/Button',
-  decorators: [(story) => `${story()}`],
-  parameters: {
-    layout: 'fullscreen',
-  },
+  render: renderTwig(buttonTwig),
   argTypes: {
-    buttonElement: {
-      type: 'select',
+    button__element: {
       name: 'Button Element',
-      options: {
-        '<button>': 'button',
-        '<a>': 'a',
-      },
+      control: 'select',
+      options: ['button', 'a'],
     },
-    buttonStyle: {
-      type: 'select',
+    button__style: {
       name: 'Button Style',
-      options: {
-        Primary: 'primary',
-        Clean: 'clean',
-        Disabled: 'disabled',
-      },
+      control: 'select',
+      options: ['primary', 'clean', 'disabled'],
     },
+    button__content: { name: 'Content', control: 'text' },
+    button__href: { name: 'Href', control: 'text' },
+    button__icon_only: { name: 'Icon Only (A11y)', control: 'text' },
+    button__icon: { table: { disable: true } },
   },
+  decorators: [
+    (Story) => (
+      <div className="cl-container">
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export const basic = {
   args: {
-    buttonElement: 'button',
-    buttonStyle: 'primary',
+    button__element: 'button',
+    button__style: 'primary',
+    button__content: 'Primary Button',
+    button__href: '#',
   },
 };
 
-export const Button = ({ buttonElement, buttonStyle }) => `
-  <div class="cl-container">
-    <h1>${buttonStyle}</h1>
-  </div>
-  <div class="cl-container cl-spaced-row">
-    ${buttonTwig({
-      button__element: buttonElement,
-      button__href: '#',
-      button__content: `${buttonStyle} Button`,
-      button__style: buttonStyle,
-    })}
-    ${buttonTwig({
-      button__element: buttonElement,
-      button__href: '#',
-      button__content: `${buttonStyle} Icon Right`,
-      button__style: buttonStyle,
-      button__icon: {
-        right: true,
-        name: 'arrowRight',
-        decorative: true,
-      },
-    })}
-    ${buttonTwig({
-      button__element: buttonElement,
-      button__href: '#',
-      button__content: `${buttonStyle} Icon Left`,
-      button__style: buttonStyle,
-      button__icon: {
-        left: true,
-        name: 'arrowLeft',
-        decorative: true,
-      },
-    })}
-    ${buttonTwig({
-      button__element: buttonElement,
-      button__href: '#',
-      button__style: buttonStyle,
-      button__icon_only: 'Main Menu',
-      button__icon: {
-        left: true,
-        name: 'menu',
-        decorative: true,
-      },
-    })}
-  </div>
-  <div class="cl-container cl-spaced-row" data-component-theme="inverse">
-    ${buttonTwig({
-      button__element: buttonElement,
-      button__href: '#',
-      button__content: `${buttonStyle} Button`,
-      button__style: buttonStyle,
-    })}
-    ${buttonTwig({
-      button__element: buttonElement,
-      button__href: '#',
-      button__content: `${buttonStyle} Icon Right`,
-      button__style: buttonStyle,
-      button__icon: {
-        right: true,
-        name: 'arrowRight',
-        decorative: true,
-      },
-    })}
-    ${buttonTwig({
-      button__element: buttonElement,
-      button__href: '#',
-      button__content: `${buttonStyle} Icon Left`,
-      button__style: buttonStyle,
-      button__icon: {
-        left: true,
-        name: 'arrowLeft',
-        decorative: true,
-      },
-    })}
-    ${buttonTwig({
-      button__element: buttonElement,
-      button__href: '#',
-      button__style: buttonStyle,
-      button__icon_only: 'Main Menu',
-      button__icon: {
-        left: true,
-        name: 'menu',
-        decorative: true,
-      },
-    })}
-  </div>
-`;
+export const iconRight = {
+  args: {
+    ...basic.args,
+    button__content: 'Primary Icon Right',
+    button__icon: {
+      right: true,
+      name: 'arrow-right',
+      decorative: true,
+    },
+  },
+};
+
+export const iconLeft = {
+  args: {
+    ...basic.args,
+    button__content: 'Primary Icon Left',
+    button__icon: {
+      left: true,
+      name: 'arrow-left',
+      decorative: true,
+    },
+  },
+};
+
+export const iconOnly = {
+  args: {
+    ...basic.args,
+    button__content: '',
+    button__icon_only: 'Main Menu',
+    button__icon: {
+      left: true,
+      name: 'menu',
+      decorative: true,
+    },
+  },
+};

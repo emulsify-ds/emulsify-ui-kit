@@ -1,15 +1,17 @@
-// Twig templates
+import { renderTwig } from '@emulsify/core/storybook';
+
 import tabsTwig from './tabs.twig';
-// Utility
 import { mapDataToTwig } from '../../util/dataTransformers';
 import './tabs';
-// Data
 import { props } from './tabs.component.yml';
-const tabData = mapDataToTwig(props.properties);
 
-/**
- * Storybook Definition.
- */
-export default { title: 'Components/Tabs' };
+const contextData = mapDataToTwig(props.properties);
 
-export const tabs = () => tabsTwig(tabData);
+export default {
+  title: 'Components/Tabs',
+  render: renderTwig(tabsTwig),
+};
+
+export const tabs = {
+  args: contextData,
+};

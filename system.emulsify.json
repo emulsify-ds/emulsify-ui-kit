@@ -64,14 +64,14 @@
         },
         {
           "name": "icon-arrow-left",
-          "path": "./assets/icons/arrowLeft.svg",
-          "destinationPath": "./assets/icons/arrowLeft.svg",
+          "path": "./assets/icons/arrow-left.svg",
+          "destinationPath": "./assets/icons/arrow-left.svg",
           "description": "Icon - Arrow Left"
         },
         {
           "name": "icon-arrow-right",
-          "path": "./assets/icons/arrowRight.svg",
-          "destinationPath": "./assets/icons/arrowRight.svg",
+          "path": "./assets/icons/arrow-right.svg",
+          "destinationPath": "./assets/icons/arrow-right.svg",
           "description": "Icon - Arrow Right"
         },
         {
@@ -82,14 +82,14 @@
         },
         {
           "name": "icon-chevron-left",
-          "path": "./assets/icons/chevronLeft.svg",
-          "destinationPath": "./assets/icons/chevronLeft.svg",
+          "path": "./assets/icons/chevron-left.svg",
+          "destinationPath": "./assets/icons/chevron-left.svg",
           "description": "Icon - Chevron Left"
         },
         {
           "name": "icon-chevron-right",
-          "path": "./assets/icons/chevronRight.svg",
-          "destinationPath": "./assets/icons/chevronRight.svg",
+          "path": "./assets/icons/chevron-right.svg",
+          "destinationPath": "./assets/icons/chevron-right.svg",
           "description": "Icon - Chevron Right"
         },
         {
