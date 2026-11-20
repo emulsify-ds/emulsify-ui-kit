@@ -1,0 +1,72 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Offcanvas
+group: Components
+status: stable
+description: Pane or centered modal built on the native <dialog> element (showModal), so focus, inert background and top layer are native. Only offcanvas.js is required (no Drupal behaviors). One active modal at a time is recommended; a dialog opened from inside another stacks on top and Escape closes the topmost first.
+props:
+  type: object
+  required:
+    - offcanvas__heading
+  properties:
+    offcanvas__heading:
+      type: string
+      title: Heading
+      description: Accessible heading of the dialog, also used to name the close button.
+      data: 'Offcanvas heading'
+    offcanvas__id:
+      type: string
+      title: ID
+      description: Stable unique ID of the dialog. Defaults to a slug of the heading; set it when two instances share a heading.
+    offcanvas__show_heading:
+      type: boolean
+      title: Show heading
+      description: Set to false to visually hide the heading while keeping it for assistive technology.
+      data: true
+    offcanvas__type:
+      type: string
+      title: Type
+      enum:
+        - pane
+        - modal
+      data: pane
+    offcanvas__direction:
+      type: string
+      title: Pane direction
+      enum:
+        - top
+        - right
+        - bottom
+        - left
+      data: right
+    offcanvas__theme:
+      type: string
+      title: Theme
+      enum:
+        - light
+        - dark
+      data: light
+    offcanvas__trigger__text:
+      type: string
+      title: Trigger text
+      description: Text of the trigger button. Defaults to the heading.
+      data: 'Open offcanvas'
+    offcanvas__content:
+      type: string
+      title: Content
+      data: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in tincidunt nisi, vitae imperdiet tortor. Duis <a href="#">malesuada mattis</a> gravida. Sed sit amet ipsum justo. Nunc aliquet varius tristique. Mauris commodo, tellus venenatis varius volutpat, nisi nibh efficitur neque, ut viverra odio nunc sit amet augue.</p><p>Nulla aliquet nulla non eros tempor, id bibendum orci auctor. Donec nunc justo, facilisis vel viverra vehicula, sollicitudin id metus. Maecenas vulputate vulputate ex, vitae fermentum lacus molestie quis. Sed volutpat lectus metus, ut feugiat mi lobortis at.</p><p>Donec varius lectus arcu, bibendum laoreet nunc ultrices nec. Nam malesuada sagittis nunc, in venenatis sapien sollicitudin in. Curabitur pharetra, sapien non tincidunt fermentum, nibh nisl luctus urna, a commodo justo mi at tortor.</p><p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae. Aenean consequat, mauris nec sodales posuere, velit lorem tempor ipsum, eget hendrerit sem elit sit amet arcu. Integer porta ultricies <a href="#">turpis vel tempus</a>.</p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus euismod metus non lectus dignissim, a porta augue tincidunt. Morbi eu ligula vel nunc sodales viverra sed vitae lacus.</p><p>Suspendisse potenti. Quisque ut dolor at sapien aliquam fermentum. Etiam non ex vel turpis cursus dictum. Fusce congue, ante in sagittis faucibus, mi felis pulvinar mauris, sed consequat mi erat eget lectus.</p>'
+    offcanvas__suffix:
+      type: string
+      title: Suffix
+      data: '<p>Optional suffix content.</p>'
+
+slots:
+  offcanvas__trigger:
+    title: Trigger
+    description: Content of the trigger button.
+  offcanvas__content:
+    title: Content
+    description: Main content of the dialog.
+  offcanvas__suffix:
+    title: Suffix
+    description: Optional footer content of the dialog.

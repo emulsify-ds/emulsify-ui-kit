@@ -1,18 +1,25 @@
-// Markup.
+import { renderTwig } from '@emulsify/core/storybook';
+import mainMenuDataProps from './main.component.yml';
 import mainNavTwig from './main.twig';
 
-// Data.
-import mainMenuDataProps from './main.component.yml';
-
-// JavaScript
 import '../base/menu-toggle/menu-toggle';
 import './main';
 
-const mainNavData = mainMenuDataProps.props.properties.items.data;
+const { properties } = mainMenuDataProps.props;
 
-/**
- * Storybook Definition.
- */
-export default { title: 'Components/Navigation/Main' };
+export default {
+  title: 'Components/Navigation/Main',
+  render: renderTwig(mainNavTwig),
+  argTypes: {
+    items: {
+      name: 'Menu Items',
+      control: 'object',
+    },
+  },
+};
 
-export const Main = () => mainNavTwig({ items: mainNavData });
+export const main = {
+  args: {
+    items: properties.items.data,
+  },
+};

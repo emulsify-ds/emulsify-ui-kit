@@ -1,30 +1,78 @@
+import { renderTwig } from '@emulsify/core/storybook';
+import announcementData from './announcement.component.yml';
 import announcementTwig from './announcement.twig';
-import { props } from './announcement.component.yml';
-import announcementDarkIcon from '../../../assets/images/example/announcement-icon--dark.svg';
-import announcementLightIcon from '../../../assets/images/example/announcement-icon--light.svg';
 
 export default {
   title: 'Components/Announcement',
+  render: renderTwig(announcementTwig),
   decorators: [
-    (story) =>
-      `<div style="max-width: 1121px; margin: 0 auto;">${story()}</div>`,
+    (Story) => (
+      <div className="cl-container">
+        <Story />
+      </div>
+    ),
   ],
+  argTypes: {
+    announcement__title: {
+      name: 'Title',
+      control: 'text',
+    },
+    announcement__content: {
+      name: 'Content',
+      control: 'text',
+    },
+    announcement__button_text: {
+      name: 'Button Text',
+      control: 'text',
+    },
+    announcement__button_url: {
+      table: {
+        disable: true,
+      },
+    },
+    announcement__icon: {
+      table: {
+        disable: true,
+      },
+    },
+    announcement__variant: {
+      table: {
+        disable: true,
+      },
+    },
+  },
 };
 
-const icons = {
-  'icon-light': announcementLightIcon,
-  'icon-dark': announcementDarkIcon,
+const { properties } = announcementData.props;
+
+export const basic = {
+  args: {
+    announcement__title: properties.announcement__title.data,
+    announcement__content: properties.announcement__content.data,
+    announcement__button_text: properties.announcement__button_text.data,
+    announcement__button_url: properties.announcement__button_url.data,
+    announcement__icon: properties.announcement__icon.data,
+    announcement__variant: properties.announcement__variant.data,
+  },
 };
 
-function getAnnouncementData(data) {
-  const newData = Object.assign({}, data);
-  if (data && typeof data === 'object' && 'announcement__icon' in data) {
-    newData.announcement__icon = icons[data.announcement__icon];
-  }
-  return newData;
-}
+export const light = {
+  args: {
+    ...basic.args,
+    announcement__variant: 'light',
+  },
+};
 
-export const Announcement = () =>
-  `<div class="announcement-list">${props.example
-    .map((data) => announcementTwig(getAnnouncementData(data)))
-    .join('')}</div>`;
+export const dark = {
+  args: {
+    ...basic.args,
+    announcement__variant: 'dark',
+  },
+};
+
+export const noIcon = {
+  args: {
+    ...basic.args,
+    announcement__icon: null,
+  },
+};

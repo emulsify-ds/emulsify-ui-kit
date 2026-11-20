@@ -1,41 +1,29 @@
-// Component Twig
+import { renderTwig } from '@emulsify/core/storybook';
+
 import containerTwig from './container.twig';
 
-// Menu Location
 export default {
   title: 'Layout/Container',
+  render: renderTwig(containerTwig),
   argTypes: {
-    backgroundColor: {
+    container__bg_color: {
       name: 'Background Color',
-      control: {
-        type: 'boolean',
-      },
-      defaultValue: false,
+      control: 'boolean',
     },
-    width: {
+    container__component_width: {
       name: 'Container Width',
-      control: { type: 'select' },
-      options: {
-        Small: 'compressed',
-        Medium: 'standard',
-        Large: 'extended',
-        Max: 'max',
-        Full: 'full',
-      },
+      control: 'select',
+      options: ['compressed', 'standard', 'extended', 'max', 'full'],
     },
-    spacing: {
+    container__modifiers: {
       name: 'Container Spacing',
-      control: { type: 'select' },
-      options: {
-        '0x Spacing': 'no-spacing',
-        '1x Spacing': '',
-        '2x Spacing': 'two-spacing',
-      },
+      control: 'select',
+      options: ['no-spacing', 'two-spacing'],
     },
-    alignment: {
+    container__component_alignment: {
       name: 'Component Alignment',
+      control: 'select',
       options: ['left', 'center', 'right'],
-      type: 'select',
     },
     layout: {
       name: 'Component Layout',
@@ -44,17 +32,16 @@ export default {
     },
     heading: {
       name: 'Container Heading',
-      control: {
-        type: 'text',
-      },
+      control: 'text',
     },
-    text: {
+    container__text: {
       name: 'Container Text',
-      control: {
-        type: 'text',
-      },
+      control: 'text',
     },
   },
+};
+
+export const container = {
   args: {
     backgroundColor: false,
     width: 'content',

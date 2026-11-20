@@ -1,0 +1,23 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Header
+group: Components
+status: stable
+props:
+  type: object
+  properties:
+    header__show_search:
+      type: boolean
+      title: Show Search
+      description: Control visibility of the search form in the header.
+      data: true
+slots:
+  header__branding:
+    title: Branding
+    description: Branding content (logo, site name, etc).
+  header__menu:
+    title: Menu
+    description: Navigation menu content.
+  header__search:
+    title: Search
+    description: Search form content.

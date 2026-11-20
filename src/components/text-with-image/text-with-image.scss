@@ -65,7 +65,7 @@
 
 .text-with-image__content {
   flex: 1 1 auto;
-  word-break: break-word;
+  overflow-wrap: break-word;
   align-self: flex-start;
   margin-left: auto;
 
