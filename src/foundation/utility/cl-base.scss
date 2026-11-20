@@ -101,6 +101,7 @@
   inset: 0;
   background-size: cover;
   background-position: bottom right;
+  background-image: url('/assets/images/cover.png');
   padding: var(--spacing-2xl) !important;
   display: flex;
   justify-content: flex-end;
@@ -150,4 +151,8 @@
 
 [data-component-theme*='inverse'] {
   background-color: var(--colors-sb-text-body);
+}
+
+.sb-max-w-md {
+  max-width: 400px;
 }

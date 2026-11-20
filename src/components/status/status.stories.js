@@ -1,12 +1,18 @@
-import status from './status.twig';
+import { renderTwig } from '@emulsify/core/storybook';
+
+import statusTwig from './status.twig';
 import { props } from './status.component.yml';
 import { mapDataToTwig } from '../../util/dataTransformers';
 
 const statusData = mapDataToTwig(props.properties);
 
-/**
- * Storybook Definition.
- */
-export default { title: 'Components/Status' };
+export default {
+  title: 'Components/Status',
+  render: renderTwig(statusTwig),
+};
 
-export const statusExamples = () => status(statusData);
+export const statusExamples = {
+  args: {
+    ...statusData,
+  },
+};

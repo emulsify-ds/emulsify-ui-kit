@@ -1,60 +1,60 @@
+import { renderTwig } from '@emulsify/core/storybook';
+import blockquoteData from './blockquote.component.yml';
 import blockquoteTwig from './blockquote.twig';
 
-import { props } from './blockquote.component.yml';
+const { properties } = blockquoteData.props;
 
-const blockquoteData = props.properties;
-
-/**
- * Storybook Definition.
- */
 export default {
   title: 'Components/Blockquote',
+  render: renderTwig(blockquoteTwig),
   argTypes: {
-    quote: {
+    blockquote__quote: {
       name: 'Quote',
-      type: 'string',
-      defaultValue: blockquoteData.blockquote__quote.data,
+      control: 'text',
     },
-    attribution: {
+    blockquote__attribution: {
       name: 'Attribution',
-      type: 'string',
-      defaultValue: blockquoteData.blockquote__attribution.data,
+      control: 'text',
     },
-    style: {
+    blockquote__style: {
       name: 'Style',
-      options: ['bar-left', 'bar-right', 'quote-left'],
-      type: 'select',
-      defaultValue: 'bar-left',
+      control: 'select',
+      options: properties.blockquote__style?.enum || [
+        'bar-left',
+        'bar-right',
+        'quote-left',
+      ],
     },
-    ariaLabel: {
+    blockquote__aria_label: {
       name: 'aria-label attribute',
-      type: 'string',
-      defaultValue: 'Block Quote default value with bar graphic to the left',
+      control: 'text',
     },
   },
 };
 
-export const blockquote = ({ style, quote, attribution, ariaLabel }) => `
-  ${blockquoteTwig({
-    blockquote__quote: blockquoteData.blockquote__quote.data,
-    blockquote__attribution: blockquoteData.blockquote__attribution.data,
+export const barLeft = {
+  args: {
+    blockquote__quote: properties.blockquote__quote.data,
+    blockquote__attribution: properties.blockquote__attribution.data,
+    blockquote__style: 'bar-left',
     blockquote__aria_label: 'Block Quote with bar graphic to the left',
-  })}
-  ${blockquoteTwig({
-    blockquote__quote: blockquoteData.blockquote__quote.data,
+  },
+};
+
+export const barRight = {
+  args: {
+    blockquote__quote: properties.blockquote__quote.data,
+    blockquote__attribution: properties.blockquote__attribution.data,
     blockquote__style: 'bar-right',
     blockquote__aria_label: 'Block Quote with bar graphic to the right',
-  })}
-  ${blockquoteTwig({
-    blockquote__quote: blockquoteData.blockquote__quote.data,
-    blockquote__attribution: blockquoteData.blockquote__attribution.data,
+  },
+};
+
+export const quoteLeft = {
+  args: {
+    blockquote__quote: properties.blockquote__quote.data,
+    blockquote__attribution: properties.blockquote__attribution.data,
     blockquote__style: 'quote-left',
     blockquote__aria_label: 'Block Quote with quote icon to the left',
-  })}
-  ${blockquoteTwig({
-    blockquote__quote: quote,
-    blockquote__attribution: attribution,
-    blockquote__style: style,
-    blockquote__aria_label: ariaLabel,
-  })}
-`;
+  },
+};

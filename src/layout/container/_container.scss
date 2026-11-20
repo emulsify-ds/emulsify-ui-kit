@@ -1,116 +1,130 @@
 @use '../../foundation/breakpoints/breakpoints' as *;
+@use '../../foundation/utility/utility' as *;
 @use '../../foundation/spacing/spacing' as *;
 @use '../../foundation/typography/typography' as *;
 @use '../../foundation/motion/motion' as *;
+@use '../../foundation/utility/rem-calc' as *;
+@use '../../components/link/link' as *;
 
-// Utilize custom properties so they can be rescoped
+// Utilize custom properties so they can be rescoped.
 :root {
-  --content-width-compressed: #{$small};
-  --content-width-small: #{$small};
-  --content-width: #{$medium};
-  --content-width-wide: #{$large};
+  --content-width-compressed: min(92vw, #{$xsmall});
+  --content-width-compact: min(92vw, #{$small});
+  --content-width: min(92vw, #{$medium});
+  --content-width-wide: min(92vw, #{$large});
   --content-width-max: #{$xlarge};
-  --content-width-full: #{$xxlarge};
+  --content-width-page: #{$xxxlarge};
+  --content-width-full: 100vw;
 }
 
-[class*='__inner'] {
-  max-width: 100%;
-  margin-inline: auto;
-  width: 100%;
-
-  @include breakpoint('large') {
-    width: var(--content-width-wide);
-  }
-
-  [data-component-width='max'] & {
-    width: 100%;
-    max-width: var(--content-width-max);
-  }
-
-  [data-component-width='full'] & {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  // Component widths
-  > * {
-    [data-component-width='wide'] & {
-      width: 100%;
-      max-width: var(--content-width-wide);
-    }
-
-    [data-component-width='standard'] & {
-      width: 100%;
-      max-width: var(--content-width);
-    }
-
-    [data-component-width='compressed'] & {
-      width: 100%;
-      max-width: var(--content-width-compressed);
-    }
-
-    // collapse embedded __inners
-    [class*='__inner'] {
-      width: auto;
-    }
-
-    // Component alignments
-    [data-component-alignment='left'] & {
-      margin-right: auto;
-    }
-
-    [data-component-alignment='center'] & {
-      margin-inline: auto;
-    }
-
-    [data-component-alignment='right'] & {
-      margin-left: auto;
-    }
-  }
-
-  > .container__intro {
-    [data-component-width='full'] & {
-      width: 100%;
-      max-width: var(--content-width-wide);
-    }
-
-    // Component alignments
-    [data-component-alignment='left'] & {
-      margin-right: auto;
-    }
-
-    [data-component-alignment='center'] & {
-      margin-inline: auto;
-    }
-
-    [data-component-alignment='right'] & {
-      margin-left: auto;
-    }
-  }
-}
-
-.container__inner {
-  position: relative;
-
-  .container--inline & {
-    min-height: 13rem;
-  }
-}
-
+// Styles for container wrappers.
 .container {
   @include section-padding;
 
   & {
-    position: relative;
-  }
-
-  + .container--with-bg {
-    @include margin-gap-top;
-  }
-
-  &[data-component-width='full'] {
     width: 100%;
-    max-width: 100%;
+    max-width: var(--content-width-page);
+    position: relative;
+    margin-inline: auto;
+    container-type: inline-size;
+  }
+
+  &.container--layout-split {
+
+    // Prevent overflow issues for non-preview instances of layout.
+    body:not([class*='gin']) & {
+      overflow: hidden;
+    }
+
+    .container:first-child {
+      padding-top: 0;
+    }
+
+    .container:last-child,
+    .container:nth-last-child(2):has(.lpb-btn--add) {
+      padding-bottom: 0;
+    }
+  }
+
+  // Last component that has normal spacing needs double spacing within articles.
+  &:last-child:not(.container--no-spacing):not(.container--two-spacing,
+    .container--three-spacing) {
+    article>& {
+      @include section-padding-bottom(3);
+    }
+  }
+
+  &:first-child:not(.container--no-spacing):not(.container--two-spacing,
+    .container--three-spacing) {
+    article>& {
+      @include section-padding-top(3);
+    }
+  }
+
+  // // Add extra padding to components that come before section footers.
+  // &:nth-last-child(2):not(.container--no-spacing):not(
+  //     .container--two-spacing,
+  //     .container--three-spacing
+  //   ) {
+  //   article > &:has(+ .container--section-footer) {
+  //     @include section-padding-bottom(2);
+  //   }
+  // }
+
+  // &:not(.container--with-bg) + .container--with-bg {
+  //   @include margin-gap-top;
+  // }
+
+  // &:not(.container--with-bg) + .container:not(.container--with-bg) {
+  //   @include margin-gap-top;
+  // }
+
+  &[data-component-width='container-width-wide'] {
+    width: 100%;
+    max-width: var(--content-width-full);
+  }
+
+  [data-component-width='page'] & {
+    width: 100%;
+    max-width: var(--content-width-page);
+  }
+
+  &--with-bg {
+    @include section-padding;
+
+    &:not(:has(.breadcrumbs__wrapper)) {
+      background-color: var(--color-primary-lighter);
+    }
+  }
+
+  &--embedded {
+    padding: 0;
+    margin: 0;
+
+    &.container--with-bg {
+      align-self: flex-start;
+
+      .container {
+        padding: var(--spacing-xl);
+      }
+    }
+  }
+
+  &--no-spacing {
+    padding: 0;
+    margin-block: 0;
+
+    +.container--with-bg:not(
+      .container--no-spacing,
+      .container--two-spacing,
+      .container--three-spacing
+    ) {
+      @include section-padding-top(2);
+    }
+  }
+
+  &--quarter-spacing {
+    @include section-padding(0.33);
   }
 
   &--half-spacing {
@@ -125,6 +139,14 @@
     @include section-padding(2);
   }
 
+  &--three-spacing {
+    @include section-padding(3);
+  }
+
+  &--four-spacing {
+    @include section-padding(4);
+  }
+
   &--no-bottom {
     padding-bottom: 0;
   }
@@ -133,67 +155,302 @@
     padding-top: 0;
   }
 
-  &--with-bg {
-    @include section-padding(2);
-
-    &:not(:has(.breadcrumbs__wrapper)) {
-      background-color: var(--color-primary-lighter);
-    }
-  }
-
-  .container:not([class*='container--']),
-  &--no-spacing {
-    padding: 0;
-    margin-block: 0;
-
-    + .waypoint-anchor + .container--with-bg,
-    + .paragraph-anchor + .waypoint-anchor + .container--with-bg {
-      @include margin-gap-top(2);
-    }
-  }
-
   &--spacing-top {
     @include section-padding-top;
+  }
 
-    & {
-      padding-bottom: 0;
-    }
+  &--two-spacing-top {
+    @include section-padding-top(2);
   }
 
   &--spacing-bottom {
     @include section-padding-bottom;
   }
 
-  &--embedded {
-    padding: 0;
-    margin: 0;
+  &--half-bottom {
+    @include section-padding-bottom(0.5);
+  }
 
-    &.container--with-bg {
-      align-self: flex-start;
+  &--two-spacing-bottom {
+    @include section-padding-bottom(2);
+  }
 
-      .container__inner {
-        padding: var(--spacing-xl);
+  &--three-spacing-bottom {
+    @include section-padding-bottom(2);
+  }
+}
+
+.container__inner {
+  max-width: 100%;
+  margin-inline: auto;
+  width: var(--content-width-wide);
+
+  // Prevent overflow issues when editing.
+  // .js-lpb-component & {
+  //   overflow: hidden;
+  //   padding: 3px;
+  // }
+
+  [data-component-width='full'] & {
+    width: 100%;
+    max-width: var(--content-width-full);
+  }
+
+  [data-component-width='page'] & {
+    width: 100%;
+    max-width: var(--content-width-page);
+  }
+
+  >*:not(.container__intro) {
+
+    // Component widths.
+    [data-component-width='max'] & {
+      width: 100%;
+      max-width: var(--content-width-max);
+    }
+
+    [data-component-width='wide'] & {
+      width: 100%;
+      max-width: var(--content-width-wide);
+    }
+
+    [data-component-width='content'] &,
+    [data-component-width='standard'] & {
+      width: 100%;
+      max-width: var(--content-width);
+    }
+
+    [data-component-width='compact'] & {
+      width: 100%;
+      max-width: var(--content-width-compact);
+    }
+
+    [data-component-width='compressed'] &,
+    [data-component-width='narrow'] & {
+      width: 100%;
+      max-width: var(--content-width-compressed);
+    }
+
+    // Component alignments.
+    [data-component-alignment*='center'] &,
+    [data-component-alignment*='top'] & {
+      @container (min-width: #{$small}) {
+        margin-inline: auto;
       }
+    }
+
+    [data-component-alignment='left'] & {
+      margin-inline: 0 auto;
+    }
+
+    [data-component-alignment='right'] & {
+      margin-inline: auto 0;
+    }
+  }
+
+  // Component layouts.
+  [data-component-layout='inline'] & {
+    display: flex;
+    flex-flow: column nowrap;
+
+    @container (min-width: #{$small}) {
+      flex-flow: row nowrap;
+      gap: #{calc(var(--spacing-lg) * 3)};
     }
   }
 }
 
-.container__heading {
-  margin: 0 0 var(--spacing-xl);
+// Styles for container introduction elements.
+.container__intro {
+  margin: 0 auto #{calc(var(--spacing-xl) * 2.5)};
+  max-width: var(--content-width-compact);
 
-  &:is(h2) {
+  @container (min-width: #{$small}) {
+    margin-bottom: #{calc(var(--spacing-lg) * 3)};
+  }
+
+  &:has(.container__heading:last-child) {
+    margin-bottom: #{calc(var(--spacing-xl) * 1.5)};
+  }
+
+  [data-component-layout='inline'] & {
+    @container (min-width: #{$small}) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      max-width: 40%;
+      margin-bottom: 0;
+    }
+
+    @container (min-width: #{$medium}) {
+      max-width: rem-calc(285);
+    }
+  }
+
+  [data-component-layout='inline'] &+* {
+    @container (min-width: #{$medium}) {
+      flex: 1 1 100%;
+    }
+  }
+
+  [data-component-alignment='left'] & {
+    margin-left: 0;
+  }
+
+  [data-component-alignment='right'] & {
+    margin-right: 0;
+  }
+
+  [data-align-container-intro='center'] & {
+    text-align: center;
+
+    >* {
+      margin-inline: auto;
+    }
+  }
+
+  [data-align-container-intro='right'] & {
+    text-align: right;
+
+    >* {
+      margin-left: auto;
+    }
+  }
+}
+
+.container__overline {
+  @include overline;
+
+  &:not(:last-child) {
+    margin-bottom: var(--spacing-md);
+  }
+}
+
+.container__heading {
+  display: inline-flex;
+  align-content: center;
+  gap: var(--spacing-xl);
+  align-items: baseline;
+  margin: 0;
+
+  &:is(h2),
+  &:is(.h2) {
     @include h2;
   }
 
-  &:is(h3) {
+  &:is(h3),
+  &:is(.h3) {
     @include h3;
   }
 
+  &:is(h4),
+  &:is(.h4) {
+    @include h4;
+  }
+
+  &:is(h5),
+  &:is(.h5) {
+    @include h5;
+  }
+
   &:not(:last-child) {
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: #{calc(var(--spacing-xl) * 1.5)};
+  }
+
+  &:has(+ .link-emulsify:last-child) {
+    margin-bottom: 0;
+  }
+
+  &:last-child {
+    margin: 0;
+  }
+
+  .container--bordered & {
+    text-align: left;
+  }
+
+  >a:not([hreflang]) {
+    @include link('icon-right');
+    @include body;
+  }
+
+  +.link-emulsify,
+  +.ed11y-element+.link-emulsify {
+    padding-left: var(--spacing-xl);
   }
 }
 
 .container__text {
   margin-bottom: var(--spacing-xl);
+
+  @container (min-width: #{$small}) {
+    max-width: var(--content-width-compact);
+  }
+
+  [data-component-layout='inline'] & {
+    margin-bottom: 0;
+  }
+}
+
+.animate-sections>.container:not(.no-animate) {
+  @media (prefers-reduced-motion: no-preference) {
+    @include breakpoint('medium') {
+      opacity: 0;
+    }
+  }
+
+  &.scrolled {
+    @include breakpoint('medium') {
+      @include animate-slide-up-fade-in($speed: 300ms, $delay: 100ms);
+    }
+  }
+}
+
+article>.container:first-child:not(.container--with-bg) {
+  @include section-padding-top(2);
+
+  @include breakpoint('medium') {
+    @include section-padding-top(3.5);
+  }
+}
+
+article>.container:last-child:not(.container--with-bg) {
+  @include section-padding-top(2);
+
+  @include breakpoint('medium') {
+    @include section-padding-top(3.5);
+  }
+}
+
+article>.container:not(.container--with-bg)+.container.container--with-bg {
+  @include section-padding-top(2);
+
+  @include breakpoint('medium') {
+    @include section-padding-top(3.5);
+  }
+}
+
+article>.container--with-bg+.container:not(.container--with-bg) {
+  @include section-padding-top(2);
+
+  @include breakpoint('medium') {
+    @include section-padding-top(3.5);
+  }
+}
+
+.container--view-content {
+  @media (prefers-reduced-motion: no-preference) {
+    opacity: 0;
+  }
+
+  & {
+    @include animate-slide-up-fade-in($speed: 300ms, $delay: 300ms);
+  }
+}
+
+.container.exposed-filters-visual-view {
+  @include breakpoint('small-down') {
+    padding: 0;
+  }
 }

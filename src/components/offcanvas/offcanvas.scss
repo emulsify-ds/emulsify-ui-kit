@@ -1,0 +1,151 @@
+// Prevent background scrolling while any offcanvas is open.
+html:has(.offcanvas__dialog[open]) {
+  overflow: hidden;
+}
+
+.offcanvas__dialog {
+  --offcanvas-background: var(--color-white);
+  --offcanvas-text: var(--color-text-body);
+  --offcanvas-icon: var(--color-primary-darker);
+  --offcanvas-hidden: translateX(100%);
+
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  max-width: 100vw;
+  max-height: 100dvh;
+  overflow: hidden;
+  color: var(--offcanvas-text);
+  background-color: var(--offcanvas-background);
+
+  &[open] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &::backdrop {
+    background-color: color-mix(
+      in srgb,
+      var(--color-text-body) var(--opacity-60),
+      transparent
+    );
+  }
+
+  &[data-offcanvas-theme='dark'] {
+    --offcanvas-background: var(--color-primary-darkest);
+    --offcanvas-text: var(--color-text-white);
+    --offcanvas-icon: var(--color-white);
+  }
+
+  // Panes.
+  &[data-offcanvas-type='pane'] {
+    inset: 0 0 0 auto;
+    width: min(var(--breakpoint-sm), 100vw);
+    height: 100dvh;
+  }
+
+  &[data-offcanvas-direction='left'] {
+    --offcanvas-hidden: translateX(-100%);
+
+    inset: 0 auto 0 0;
+  }
+
+  &[data-offcanvas-direction='top'],
+  &[data-offcanvas-direction='bottom'] {
+    width: 100vw;
+    height: auto;
+  }
+
+  &[data-offcanvas-direction='top'] {
+    --offcanvas-hidden: translateY(-100%);
+
+    inset: 0 0 auto;
+  }
+
+  &[data-offcanvas-direction='bottom'] {
+    --offcanvas-hidden: translateY(100%);
+
+    inset: auto 0 0;
+  }
+
+  // Centered modal.
+  &[data-offcanvas-type='modal'] {
+    --offcanvas-hidden: scale(0.95);
+
+    margin: auto;
+    width: min(var(--breakpoint-md), calc(100vw - var(--spacing-xl)));
+    max-height: calc(100dvh - var(--spacing-xl));
+    border-radius: var(--radius-md);
+  }
+}
+
+.offcanvas__header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg) var(--spacing-lg) 0;
+}
+
+.offcanvas__heading {
+  margin: 0;
+  color: inherit;
+}
+
+.offcanvas__close {
+  display: flex;
+  margin-inline-start: auto;
+  padding: var(--spacing-sm);
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.offcanvas__icon {
+  width: var(--size-xl);
+  height: var(--size-xl);
+  fill: var(--offcanvas-icon);
+}
+
+// Content scrolls internally so the header and suffix stay visible.
+.offcanvas__content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--spacing-lg);
+}
+
+.offcanvas__suffix {
+  padding: var(--spacing-lg);
+  border-top: 1px solid currentcolor;
+}
+
+// Slide/fade only when motion is allowed; closing waits for this transition in JS.
+@media (prefers-reduced-motion: no-preference) {
+  .offcanvas__dialog,
+  .offcanvas__dialog::backdrop {
+    transition:
+      opacity 0.3s ease-in-out,
+      transform 0.3s ease-in-out;
+  }
+
+  .offcanvas__dialog[data-closing] {
+    opacity: 0;
+    transform: var(--offcanvas-hidden);
+  }
+
+  .offcanvas__dialog[data-closing]::backdrop {
+    opacity: 0;
+  }
+
+  @starting-style {
+    .offcanvas__dialog[open] {
+      opacity: 0;
+      transform: var(--offcanvas-hidden);
+    }
+
+    .offcanvas__dialog[open]::backdrop {
+      opacity: 0;
+    }
+  }
+}
