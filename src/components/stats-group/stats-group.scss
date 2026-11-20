@@ -1,0 +1,112 @@
+@use '../../foundation/breakpoints/breakpoints' as *;
+@use '../../foundation/spacing/spacing' as *;
+@use '../../foundation/typography/typography' as *;
+@use '../../foundation/motion/motion' as *;
+@use '../../foundation/utility/utility' as *;
+
+.container--stats-group {
+  --stats-group-animate-speed: 1000ms;
+
+  display: block;
+  position: relative;
+  background-color: transparent;
+
+  &[data-texture-alignment='hands'] {
+    overflow: visible;
+  }
+
+  > .container__inner {
+    padding-bottom: var(--spacing-2xl);
+  }
+
+  .grid {
+    @include blurred-overlay;
+
+    & {
+      position: relative;
+      z-index: 2;
+    }
+
+    &::before {
+      opacity: 0.45;
+      filter: blur(3rem);
+    }
+  }
+}
+
+.stats-group__item {
+  border-top: solid var(--spacing-md) var(--color-primary-dark);
+  padding: var(--spacing-xl) var(--spacing-xl) calc(#{var(--spacing-lg)} * 2.5) !important;
+  position: relative;
+  text-align: center;
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  opacity: 0;
+  z-index: 2;
+  background-color: var(--color-white);
+
+  [data-component-motion='true'] &,
+  .gin--edit-form & {
+    @include animate-slide-up-fade-in($speed: var(--stats-group-animate-speed));
+
+    &:nth-child(4n + 2) {
+      @include animate-slide-up-fade-in(
+        $speed: var(--stats-group-animate-speed),
+        $delay: 250ms
+      );
+    }
+
+    &:nth-child(4n + 3) {
+      @include animate-slide-up-fade-in(
+        $speed: var(--stats-group-animate-speed),
+        $delay: 500ms
+      );
+    }
+
+    &:nth-child(4n + 4) {
+      @include animate-slide-up-fade-in(
+        $speed: var(--stats-group-animate-speed),
+        $delay: 750ms
+      );
+    }
+  }
+
+  [data-component-motion='false'] & {
+    opacity: 1;
+    animation: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 1;
+    animation: none;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.stats-group__item__heading {
+  @include h1;
+
+  & {
+    color: var(--color-primary-dark);
+    padding: 0 0 var(--spacing-xl);
+    margin: 0;
+
+    &::after {
+      content: '';
+      display: block;
+      margin: calc(#{var(--spacing-lg)} * 1.5) auto 0;
+      width: var(--spacing-2xl);
+      height: var(--spacing-sm);
+      background-color: var(--color-primary-dark);
+    }
+  }
+}
+
+.stats-group__item__text {
+  margin: 0;
+}

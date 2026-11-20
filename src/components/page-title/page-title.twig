@@ -1,0 +1,231 @@
+{#
+ # Available variables:
+ # - page_title__heading (required)
+ # - page_title__subheading (optional)
+ # - page_title__overline (optional)
+ # - page_title__overline__url (optional)
+ # - page_title__overline__link_attributes (optional)
+ # - page_title__theme (optional)
+ # - page_title__width (optional)
+ # - page_title__alignment (optional)
+ # - page_title__container__modifiers (optional)
+ # - page_title__show_media (optional)
+ # - page_title__link_primary__label (optional)
+ # - page_title__link_primary__url (optional)
+ # - page_title__link_primary__link_style (optional)
+ # - page_title__link_primary__link_icon__name (optional)
+ # - page_title__link_secondary__label (optional)
+ # - page_title__link_secondary__url (optional)
+ # - page_title__link_secondary__link_style (optional)
+ # - page_title__link_secondary__link_icon__name (optional)
+ # - page_title__link_secondary__button__icon (optional)
+ # - page_title__link_tertiary__label (optional)
+ # - page_title__link_tertiary__url (optional)
+ # - page_title__link_tertiary__link_style (optional)
+ # - page_title__link_tertiary__link_icon__name (optional)
+ #
+ # Available media variables:
+ # - page_title__media__show_caption
+ # - page_title__media__show_copyright
+ # - page_title__media__caption
+ # - page_title__media__copyright
+ #
+ # Available blocks:
+ # - page_title__media
+ # - page_title__description
+ # - page_title__links
+ # - container__content
+ #}
+
+{% set page_title__base_class = 'page-title' %}
+{% set page_title__modifiers = page_title__modifiers|default([]) %}
+{% set page_title__attributes = page_title__attributes|default([]) %}
+{% set page_title__attributes = page_title__attributes|merge({
+  'class': bem(page_title__base_class, page_title__modifiers, page_title__blockname),
+}) %}
+
+{% set page_title__container__modifiers = page_title__container__modifiers|default(['two-spacing']) %}
+{% set page_title__container__modifiers = ['page-title']|merge(page_title__container__modifiers) %}
+{% set page_title__show_media = page_title__show_media|default(false) %}
+{% set page_title__overline__url = page_title__overline__url|default('') %}
+{% set page_title__overline__link_attributes = page_title__overline__link_attributes|default({}) %}
+{% set page_title__has_link_primary = page_title__link_primary__label|default('')|trim != '' %}
+{% set page_title__has_link_secondary = page_title__link_secondary__label|default('')|trim != '' %}
+{% set page_title__has_link_tertiary = page_title__link_tertiary__label|default('')|trim != '' %}
+{% set page_title__use_text_links = page_title__has_link_primary and page_title__has_link_secondary and page_title__has_link_tertiary %}
+{% set page_title__default_link_style = 'underline' %}
+{% set page_title__default_link_icon__name = 'arrowRight' %}
+{% set page_title__default_button__icon = {
+  right: true,
+  name: page_title__default_link_icon__name,
+  decorative: true,
+} %}
+{% set page_title__link_primary__link_style = page_title__link_primary__link_style|default(page_title__default_link_style) %}
+{% set page_title__link_primary__link_icon__name = page_title__link_primary__link_icon__name|default(page_title__default_link_icon__name) %}
+{% set page_title__link_secondary__link_style = page_title__link_secondary__link_style|default(page_title__default_link_style) %}
+{% set page_title__link_secondary__link_icon__name = page_title__link_secondary__link_icon__name|default(page_title__default_link_icon__name) %}
+{% set page_title__link_secondary__button__icon = page_title__link_secondary__button__icon|default(page_title__default_button__icon) %}
+{% set page_title__link_tertiary__link_style = page_title__link_tertiary__link_style|default(page_title__default_link_style) %}
+{% set page_title__link_tertiary__link_icon__name = page_title__link_tertiary__link_icon__name|default(page_title__default_link_icon__name) %}
+
+{% if page_title__layout == 'stacked' and page_title__show_media %}
+  {% set page_title__container__modifiers = page_title__container__modifiers|merge(['no-bottom']) %}
+{% endif %}
+
+{% set page_title__link_primary %}
+  {% block page_title__link_primary %}
+    {% if page_title__has_link_primary %}
+      {% if page_title__use_text_links %}
+        {% include "@components/link/link.twig" with {
+          link__blockname: page_title__base_class,
+          link__additional_classes: ['link'],
+          link__style: page_title__link_primary__link_style,
+          link__content: page_title__link_primary__label,
+          link__url: page_title__link_primary__url|default('#'),
+        } %}
+      {% else %}
+        {% include "@components/button/button.twig" with {
+          button__blockname: page_title__base_class,
+          button__additional_classes: ['button'],
+          button__element: 'a',
+          button__href: page_title__link_primary__url|default('#'),
+          button__style: 'primary',
+          button__content: page_title__link_primary__label,
+          button__icon: page_title__link_secondary__button__icon,
+        } %}
+      {% endif %}
+    {% endif %}
+  {% endblock %}
+{% endset %}
+
+{% set page_title__link_secondary %}
+  {% block page_title__link_secondary %}
+    {% if page_title__has_link_secondary %}
+      {% if page_title__use_text_links %}
+        {% include "@components/link/link.twig" with {
+          link__blockname: page_title__base_class,
+          link__additional_classes: ['link'],
+          link__style: page_title__link_secondary__link_style,
+          link__content: page_title__link_secondary__label,
+          link__url: page_title__link_secondary__url|default('#'),
+        } %}
+      {% else %}
+        {% include "@components/button/button.twig" with {
+          button__blockname: page_title__base_class,
+          button__additional_classes: ['button'],
+          button__element: 'a',
+          button__href: page_title__link_secondary__url|default('#'),
+          button__style: 'secondary',
+          button__content: page_title__link_secondary__label,
+          button__icon: page_title__link_secondary__button__icon,
+        } %}
+      {% endif %}
+    {% endif %}
+  {% endblock %}
+{% endset %}
+
+{% set page_title__link_tertiary %}
+  {% block page_title__link_tertiary %}
+    {% if page_title__has_link_tertiary %}
+      {% include "@components/link/link.twig" with {
+        link__blockname: page_title__base_class,
+        link__additional_classes: ['link'],
+        link__style: page_title__link_tertiary__link_style,
+        link__content: page_title__link_tertiary__label,
+        link__url: page_title__link_tertiary__url|default('#'),
+      } %}
+    {% endif %}
+  {% endblock %}
+{% endset %}
+
+{% set page_title__media %}
+  {% if page_title__show_media %}
+    <div {{ bem('media', page_title__modifiers, page_title__base_class) }}>
+      {% block page_title__media %}
+        {% include "@components/media-box/media-box.twig" with {
+        media_box__container__modifiers: ['no-spacing'],
+        media_box__bg_color: false,
+        media_box__type: 'image',
+        media_box__show_caption: page_title__media__show_caption|default(false),
+        media_box__show_copyright: page_title__media__show_copyright|default(false),
+        media_box__caption: page_title__media__caption,
+        media_box__copyright: page_title__media__copyright,
+      } %}
+      {% endblock %}
+    </div>
+  {% endif %}
+{% endset %}
+
+{# page title #}
+{% set page_title %}
+  <div {{ add_attributes(page_title__attributes) }}>
+		{# Overline heading #}
+		{% if page_title__overline %}
+      {% if page_title__overline__url %}
+        {% set page_title__overline__link_attributes = page_title__overline__link_attributes|merge({
+          'class': bem('overline-link', [], page_title__base_class),
+          'href': page_title__overline__url,
+        }) %}
+        <p {{ bem('overline', [], page_title__base_class) }}>
+          <a {{ add_attributes(page_title__overline__link_attributes) }}>{{ page_title__overline|raw }}</a>
+        </p>
+      {% else %}
+        {% include "@components/typography/text/text.twig" with {
+          text__element: 'p',
+          text__content: page_title__overline,
+          text__base_class: 'overline',
+          text__blockname: page_title__base_class,
+        } %}
+      {% endif %}
+		{% endif %}
+
+		{# Main H1 for the page #}
+		{% include "@components/typography/heading/heading.twig" with {
+			heading__level: '1',
+			heading: page_title__heading,
+			heading__blockname: page_title__base_class,
+		} %}
+
+		{# Optional subheading #}
+		{% if page_title__subheading %}
+			{% include "@components/typography/text/text.twig" with {
+        text__element: 'p',
+        text__content: page_title__subheading,
+        text__base_class: 'subheading',
+        text__blockname: page_title__base_class,
+      } %}
+		{% endif %}
+
+    {# Optional description #}
+    {% if page_title__description %}
+      <div {{ bem('description', [], page_title__base_class) }}>
+        {% block page_title__description %}
+          {{ page_title__description }}
+        {% endblock %}
+      </div> 
+    {% endif %}
+
+    {% if page_title__link_primary|trim|striptags or page_title__link_secondary|trim|striptags or page_title__link_tertiary|trim|striptags %}
+      <div {{ bem('links', [], page_title__base_class) }}>
+        {{ page_title__link_primary }}
+        {{ page_title__link_secondary }}
+        {{ page_title__link_tertiary }}
+      </div>
+    {% endif %}
+	</div>
+{% endset %}
+
+{# Render the accordion within a generic container #}
+{% embed "@layout/container/container.twig" with {
+	container__component_width: page_title__width|default('wide'),
+  container__layout: page_title__layout|default('inline'),
+	container__component_alignment: page_title__alignment|default('center'),
+  container__align_intro: page_title__align_intro|default('left'),
+  container__modifiers: page_title__container__modifiers,
+  container__bg_color: page_title__bg_color|default(false),
+}%}
+	{% block container__content %}
+		{{ page_title }}
+		{{ page_title__media }}
+	{% endblock %}
+{% endembed %}

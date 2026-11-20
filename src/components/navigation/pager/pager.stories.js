@@ -1,3 +1,5 @@
+import { renderTwig } from '@emulsify/core/storybook';
+
 import pagerTwig from './pager.twig';
 import { mapDataToTwig } from '../../../util/dataTransformers.js';
 
@@ -13,13 +15,37 @@ const pagerPrevEllipsesData = mapDataToTwig(pagerPrevEllipsesProps.properties);
 const pagerBothEllipsesData = mapDataToTwig(pagerBothEllipsesProps.properties);
 const pagerFirstLastData = mapDataToTwig(pagerFirstLastProps.properties);
 
-/**
- * Storybook Definition.
- */
-export default { title: 'Components/Navigation/Pager' };
+export default {
+  title: 'Components/Navigation/Pager',
+  render: renderTwig(pagerTwig),
+};
 
-export const basic = () => pagerTwig(pagerData);
-export const withNext = () => pagerTwig(pagerNextEllipsesData);
-export const withPrevious = () => pagerTwig(pagerPrevEllipsesData);
-export const withBoth = () => pagerTwig(pagerBothEllipsesData);
-export const withFirstAndLast = () => pagerTwig(pagerFirstLastData);
+export const basic = {
+  args: {
+    ...pagerData,
+  },
+};
+
+export const withNext = {
+  args: {
+    ...pagerNextEllipsesData,
+  },
+};
+
+export const withPrevious = {
+  args: {
+    ...pagerPrevEllipsesData,
+  },
+};
+
+export const withBoth = {
+  args: {
+    ...pagerBothEllipsesData,
+  },
+};
+
+export const withFirstAndLast = {
+  args: {
+    ...pagerFirstLastData,
+  },
+};
