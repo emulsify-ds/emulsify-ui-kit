@@ -25,7 +25,12 @@ export default {
       control: 'select',
       options: ['left', 'center', 'right'],
     },
-    container__heading: {
+    layout: {
+      name: 'Component Layout',
+      options: ['inline', 'stacked'],
+      type: 'select',
+    },
+    heading: {
       name: 'Container Heading',
       control: 'text',
     },
@@ -38,12 +43,32 @@ export default {
 
 export const container = {
   args: {
-    container__bg_color: false,
-    container__component_width: 'standard',
-    container__modifiers: '',
-    container__component_alignment: 'center',
-    container__heading: 'This is an example container heading',
-    container__text:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget eleifend ex, non ullamcorper tellus. Nullam in lectus a nulla feugiat ultricies in sed lectus. Maecenas tincidunt eu massa sit amet molestie.',
+    backgroundColor: false,
+    width: 'content',
+    spacing: '',
+    alignment: 'center',
+    layout: 'inline',
+    heading: 'This is an example container heading',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget eleifend ex, non ullamcorper tellus. Nullam in lectus a nulla feugiat ultricies in sed lectus. Maecenas tincidunt eu massa sit amet molestie.',
   },
 };
+
+// Component Examples
+export const container = ({
+  backgroundColor,
+  width,
+  spacing,
+  alignment,
+  layout,
+  heading,
+  text,
+}) =>
+  containerTwig({
+    container__bg_color: backgroundColor,
+    container__component_width: width,
+    container__modifiers: [spacing],
+    container__component_alignment: alignment,
+    container__layout: layout,
+    container__heading: heading,
+    container__text: text,
+  });

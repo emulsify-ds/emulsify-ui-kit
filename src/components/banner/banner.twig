@@ -98,7 +98,7 @@
 
 {# Render the banner within a generic container #}
 {% embed "@layout/container/container.twig" with {
-  container__component_width: banner__width|default('compressed'),
+  container__component_width: banner__width|default('compact'),
 	container__modifiers: banner__container_modifiers,
   container__component_alignment: 'center',
   container__theme: banner__theme|default('inverse'),

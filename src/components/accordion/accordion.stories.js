@@ -7,7 +7,18 @@ export default {
   title: 'Components/Accordion',
   render: renderTwig(accordionTwig),
   argTypes: {
-    accordion__heading: {
+    width: {
+      name: 'Container Width',
+      control: { type: 'select' },
+      options: {
+        Small: 'compact',
+        Medium: 'standard',
+        Large: 'extended',
+        Max: 'max',
+        Full: 'full',
+      },
+    },
+    heading: {
       name: 'Heading',
       control: 'text',
     },
