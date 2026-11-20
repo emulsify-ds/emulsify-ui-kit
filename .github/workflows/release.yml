@@ -1,31 +1,38 @@
-# Publishes the release metadata and tags when changes land on main.
+# Commits matching package versions, tags the commit, and publishes a GitHub release.
 name: Release
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+concurrency:
+  group: release-main
+  cancel-in-progress: false
 permissions:
   contents: write
   issues: write
   pull-requests: write
-  id-token: write
 jobs:
   release:
     name: Release Package
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
+          token: ${{ secrets.RELEASE_TOKEN || secrets.GITHUB_TOKEN }}
       - name: Install Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7.1.0
         with:
-          node-version: '24'
+          node-version-file: .nvmrc
+          cache: npm
       - name: Install
         run: npm ci
+      - name: Verify release configuration
+        run: npm run test:release
       - name: Release
-        # Semantic Release reads commit history and publishing tokens from CI.
+        # npm updates both manifests before git commits and tags the release.
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN || secrets.GITHUB_TOKEN }}
+          HUSKY: '0'
         run: npm run semantic-release

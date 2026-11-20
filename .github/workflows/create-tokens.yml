@@ -6,19 +6,24 @@ on:
 
 jobs:
   build:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
+    env:
+      HUSKY: '0'
     permissions:
       # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
       contents: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7.0.1
         with:
-          persist-credentials: true
+          ref: ${{ github.head_ref || github.ref_name }}
+          token: ${{ secrets.RELEASE_TOKEN || secrets.GITHUB_TOKEN }}
       - name: Setup Node.js environment
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v7.1.0
         with:
-          node-version: 24
+          node-version-file: .nvmrc
+          cache: npm
       - name: Install Node Dependencies
         run: npm ci
       # Transform Figma Tokens JSON to something Style Dictionary can read, then
@@ -27,7 +32,8 @@ jobs:
         run: npm run tokens:build
       # Add files that were created during a run, e.g. created files from Style
       # Dictionary or token-transformer.
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v7.2.1
         with:
-          personal_token: ${{ secrets.ADD_TO_PROJECT_PAT }} 
+          branch: ${{ github.head_ref || github.ref_name }}
           commit_message: 'feat: create tokens'
+          file_pattern: 'src/tokens/'

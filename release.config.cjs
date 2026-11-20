@@ -7,27 +7,19 @@ module.exports = {
   branches: ['main'],
   repositoryUrl: 'https://github.com/emulsify-ds/emulsify-ui-kit.git',
   plugins: [
-    // Conventional commit analysis determines the next release version.
-    [
-      '@semantic-release/commit-analyzer',
-      {
-        preset: 'angular',
-        // Release the semantic-release rollout as a minor version.
-        releaseRules: [
-          { breaking: true, release: 'major' },
-          { type: 'chore', scope: 'emulsif-570', release: 'minor' },
-        ],
-        parserOpts: {
-          noteKeywords: ['BREAKING CHANGE', 'BREAKING CHANGES', 'BREAKING'],
-        },
-      },
-    ],
+    ['@semantic-release/commit-analyzer', { preset: 'conventionalcommits' }],
+    // The 2.x rollout is a major release even when its PR is squash-merged.
+    './config/semantic-release-v2.js',
     [
       '@semantic-release/release-notes-generator',
       {
+        // The current notes generator requires the Angular preset's writer API.
+        // Parse Conventional Commit headers here too, including the breaking !.
         preset: 'angular',
         parserOpts: {
-          noteKeywords: ['BREAKING CHANGE', 'BREAKING CHANGES', 'BREAKING'],
+          headerPattern: /^(\w*)(?:\((.*)\))?!?: (.*)$/,
+          breakingHeaderPattern: /^(\w*)(?:\((.*)\))?!: (.*)$/,
+          noteKeywords: ['BREAKING CHANGE', 'BREAKING-CHANGE'],
         },
         writerOpts: {
           commitsSort: ['subject', 'scope'],
@@ -35,6 +27,14 @@ module.exports = {
       },
     ],
     ['@semantic-release/npm', { npmPublish: false }],
+    [
+      '@semantic-release/git',
+      {
+        assets: ['package.json', 'package-lock.json'],
+        message:
+          'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
+      },
+    ],
     '@semantic-release/github',
   ],
 };
