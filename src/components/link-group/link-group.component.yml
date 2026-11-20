@@ -1,0 +1,108 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Link Group
+group: Components
+status: stable
+description: A list of related links shown as buttons or boxes. The button display only looks like a button; every item stays a link.
+props:
+  type: object
+  required:
+    - link_group__items
+  properties:
+    link_group__heading:
+      type: string
+      title: Heading
+      description: Optional section heading.
+      data: 'Quick links'
+    link_group__heading_level:
+      type: integer
+      title: Heading level
+      enum: [2, 3, 4, 5, 6]
+      data: 2
+    link_group__text:
+      type: string
+      title: Intro text
+      description: Optional introductory text.
+      data: 'Find the resources you need to get started.'
+    link_group__display:
+      type: string
+      title: Display
+      enum:
+        - button
+        - boxes
+      data: button
+    link_group__width:
+      type: string
+      title: Width
+      enum:
+        - compressed
+        - standard
+        - wide
+        - max
+        - full
+      data: standard
+    link_group__alignment:
+      type: string
+      title: Alignment
+      enum:
+        - left
+        - center
+        - right
+      data: left
+    link_group__bg_color:
+      type: boolean
+      title: Background color
+      description: Adds the container background; with the button display it floats the links in a white box.
+      data: true
+    link_group__items:
+      type: array
+      title: Items
+      items:
+        type: object
+        required:
+          - label
+          - url
+        properties:
+          label:
+            type: string
+            title: Label
+          url:
+            type: string
+            title: URL
+          icon:
+            type: string
+            title: Icon
+            description: UI kit icon name. Decorative unless icon_label is set.
+          icon_label:
+            type: string
+            title: Icon label
+            description: Accessible text for a meaningful icon.
+      data:
+        - label: 'Admissions'
+          url: '#'
+          icon: 'circle-info'
+        - label: 'Featured programs'
+          url: '#'
+          icon: 'star-solid'
+        - label: 'Virtual tour'
+          url: '#'
+          icon: 'play'
+        - label: 'Campus alerts'
+          url: '#'
+          icon: 'triangle-exclamation'
+        - label: 'Financial aid'
+          url: '#'
+        - label: 'Student life'
+          url: '#'
+          icon: 'instagram'
+        - label: 'Library'
+          url: '#'
+        - label: 'Follow us'
+          url: '#'
+          icon: 'linkedin'
+          icon_label: 'LinkedIn:'
+
+slots:
+  link_group__items:
+    title: Items
+    description: Replace the default list for advanced item rendering.
