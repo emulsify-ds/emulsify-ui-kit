@@ -1,0 +1,35 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+
+name: Tags
+group: Components
+status: stable
+props:
+  type: object
+  properties:
+    items:
+      type: array
+      title: Tag items
+      description: >
+        Array of tag items. Each item may include:
+          - title (required): Visible tag label.
+          - url (optional): If present, the tag renders as a link.
+          - color (optional): Named variant (primary | dark | yellow | green)
+            or any valid CSS color value (e.g. rgb(0, 55, 103), #ca4b0c).
+            Omit to render the default outlined pill style.
+            When using arbitrary colors, a minimum contrast ratio of 4.5:1
+            against the tag text is required (WCAG 2.1 AA) — the implementer
+            is responsible for validating that.
+      data:
+        - title: General Public
+        - title: Major
+          url: '#'
+          color: 'rgb(0, 0, 0)'
+        - title: Minor
+          url: '#'
+          color: 'rgb(0, 55, 103)'
+        - title: Masters
+          url: '#'
+          color: 'rgb(202, 75, 12)'
+        - title: Graduate Certificate
+          url: '#'
+          color: 'rgb(120, 157, 74)'
