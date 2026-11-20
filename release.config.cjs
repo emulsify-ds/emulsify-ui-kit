@@ -12,6 +12,11 @@ module.exports = {
       '@semantic-release/commit-analyzer',
       {
         preset: 'angular',
+        // Release the semantic-release rollout as a minor version.
+        releaseRules: [
+          { breaking: true, release: 'major' },
+          { type: 'chore', scope: 'emulsif-570', release: 'minor' },
+        ],
         parserOpts: {
           noteKeywords: ['BREAKING CHANGE', 'BREAKING CHANGES', 'BREAKING'],
         },

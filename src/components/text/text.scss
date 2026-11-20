@@ -10,7 +10,7 @@
   margin: 0;
   z-index: 1;
   position: relative;
-  word-break: break-word;
+  overflow-wrap: break-word;
 
   &[data-text-position='left'] {
     margin-right: auto;

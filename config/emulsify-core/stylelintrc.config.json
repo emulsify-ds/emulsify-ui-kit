@@ -3,6 +3,7 @@
     "../../node_modules/@emulsify/core/config/.stylelintrc.json"
   ],
   "rules": {
-    "no-duplicate-selectors": null
+    "no-duplicate-selectors": null,
+    "block-no-redundant-nested-style-rules": null
   }
 }

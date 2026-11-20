@@ -1,87 +1,60 @@
-// Twig templates
+import { renderTwig } from '@emulsify/core/storybook';
+import mediaBoxData from './media-box.component.yml';
 import mediaBoxTwig from './media-box.twig';
-// Data files
-import { props } from './media-box.component.yml';
-const mediaBoxData = props.properties;
-
 import '../video/video-embed';
 
-/**
- * Storybook Definition.
- */
+const { properties } = mediaBoxData.props;
+
 export default {
   title: 'Components/Media Box',
+  render: renderTwig(mediaBoxTwig),
   argTypes: {
-    type: {
+    media_box__type: {
       name: 'Media Type',
-      control: { type: 'select' },
-      options: {
-        Image: 'image',
-        Video: 'video',
-      },
+      control: 'select',
+      options: ['image', 'video'],
     },
-    width: {
+    media_box__width: {
       name: 'Media Box Width',
-      control: { type: 'select' },
-      options: {
-        Compact: 'compact',
-        Standard: 'standard',
-      },
+      control: 'select',
+      options: ['compact', 'standard'],
     },
-    heading: {
+    media_box__heading: {
       name: 'Heading',
-      type: 'string',
+      control: 'text',
     },
-    text: {
+    media_box__text: {
       name: 'Text',
-      type: 'string',
+      control: 'text',
     },
-    show_caption: {
+    media_box__show_caption: {
       name: 'Show Media Caption',
-      type: 'boolean',
+      control: 'boolean',
     },
-    caption: {
+    media_box__caption: {
       name: 'Caption',
-      type: 'string',
+      control: 'text',
     },
-    show_copyright: {
-      name: 'Show Media Caption',
-      type: 'boolean',
+    media_box__show_copyright: {
+      name: 'Show Media Copyright',
+      control: 'boolean',
     },
-    copyright: {
+    media_box__copyright: {
       name: 'Copyright',
-      type: 'string',
+      control: 'text',
     },
-  },
-  args: {
-    type: 'image',
-    width: 'compact',
-    heading: mediaBoxData.media_box__heading.data,
-    text: mediaBoxData.media_box__text.data,
-    show_caption: true,
-    caption: mediaBoxData.media_box__caption.data,
-    show_copyright: true,
-    copyright: mediaBoxData.media_box__copyright.data,
   },
 };
 
-export const mediaBox = ({
-  type,
-  width,
-  heading,
-  text,
-  show_caption,
-  caption,
-  show_copyright,
-  copyright,
-}) =>
-  mediaBoxTwig({
-    media_box__type: type,
-    media_box__width: width,
-    media_box__show_caption: show_caption,
-    media_box__caption: caption,
-    media_box__show_copyright: show_copyright,
-    media_box__copyright: copyright,
-    media_box__heading: heading,
-    media_box__text: text,
-  });
+export const mediaBox = {
+  args: {
+    media_box__type: 'image',
+    media_box__width: 'compact',
+    media_box__heading: properties.media_box__heading.data,
+    media_box__text: properties.media_box__text.data,
+    media_box__show_caption: true,
+    media_box__caption: properties.media_box__caption.data,
+    media_box__show_copyright: true,
+    media_box__copyright: properties.media_box__copyright.data,
+  },
+};

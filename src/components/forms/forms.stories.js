@@ -1,23 +1,51 @@
-import checkbox from './checkbox/checkbox.twig';
-import radio from './radio/radio.twig';
-import select from './select/select.twig';
-import textfields from './textfields/textfields.twig';
+import { renderTwig } from '@emulsify/core/storybook';
 
-import { props } from './forms.yml';
+import checkboxTwig from './checkbox/checkbox.twig';
+import radioTwig from './radio/radio.twig';
+import selectTwig from './select/select.twig';
+import textfieldsTwig from './textfields/textfields.twig';
 
-const checkboxData = props.properties.checkboxes.data;
-const radioData = props.properties.radios.data;
-const selectOptionsData = props.properties.select.data;
+import formsData from './forms.yml';
 
-/**
- * Storybook Definition.
- */
-export default { title: 'Components/Forms' };
+const { properties } = formsData.props;
 
-export const checkboxes = () => checkbox({ checkboxes: checkboxData });
+export default {
+  title: 'Components/Forms',
+  argTypes: {
+    checkboxes: { control: 'object' },
+    radios: { control: 'object' },
+    select: { control: 'object' },
+  },
+  decorators: [
+    (Story) => (
+      <div className="cl-container">
+        <Story />
+      </div>
+    ),
+  ],
+};
 
-export const radioButtons = () => radio({ radios: radioData });
+export const checkboxes = {
+  render: renderTwig(checkboxTwig),
+  args: {
+    checkboxes: properties.checkboxes.data,
+  },
+};
 
-export const selectDropdowns = () => select({ select: selectOptionsData });
+export const radioButtons = {
+  render: renderTwig(radioTwig),
+  args: {
+    radios: properties.radios.data,
+  },
+};
 
-export const textfieldsExamples = () => textfields();
+export const selectDropdowns = {
+  render: renderTwig(selectTwig),
+  args: {
+    select: properties.select.data,
+  },
+};
+
+export const textfieldsExamples = {
+  render: renderTwig(textfieldsTwig),
+};
