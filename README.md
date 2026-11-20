@@ -123,7 +123,45 @@ Button.parameters = {
 
 ## Contributing to this UI Kit
 
-To come. TKTK
+Use the Node.js version in `.nvmrc` (26.13.1) and install the locked dependencies:
+
+```sh
+nvm use
+npm ci
+npm run develop
+```
+
+Before opening a pull request, run `npm run lint`, `npm run test`,
+`npm run test:release`, and `npm run storybook-build`.
+
+### Releases
+
+The Release workflow runs when changes are pushed or merged into `main`.
+Conventional commits determine the next version: `fix:` creates a patch,
+`feat:` creates a minor release, and `feat!:` or a `BREAKING CHANGE:` footer
+creates a major release. Other commit types do not create a release by themselves.
+For squash merges, use a conventional commit as the pull request title and keep
+any breaking change footer in the squash commit message.
+
+The `release-2.x` rollout intentionally creates `2.0.0`, regardless of its merge
+commit title. Its one-time release plugin requests a major release while the last
+tag is below 2.0.0 and verifies that the result is exactly `2.0.0`. Once that tag
+exists, subsequent releases follow conventional commits normally. The bootstrap
+plugin can then be removed from `release.config.cjs`.
+
+Before tagging, semantic-release updates `package.json` and `package-lock.json`
+and commits any version changes to `main` as `chore(release): VERSION [skip ci]`.
+The GitHub release, tag, and both package versions agree, including when the
+merged branch already contains the calculated version.
+This project publishes GitHub releases; npm registry publishing is disabled.
+
+Configure a repository Actions secret named `RELEASE_TOKEN` with repository
+contents, issues, and pull requests write access and permission to bypass `main`'s
+required pull request review. The existing branch protection exempts
+administrators, so a token owned
+by an administrator can push the version commit. The workflow uses this token
+for checkout, the version commit, tags, and the GitHub release; it falls back to
+`GITHUB_TOKEN` for repositories whose rules already permit the workflow token.
 
 ### Contributors
 

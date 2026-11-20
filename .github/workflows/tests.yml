@@ -1,29 +1,40 @@
 name: Tests
 on:
   pull_request:
-    types: [ready_for_review]
+    types: [opened, synchronize, reopened, ready_for_review]
+permissions:
+  contents: read
+  pull-requests: read
 jobs:
   visual-regression:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7.0.1
         # Check whether components were changed.
         # Then below, we can only run steps if there's something to test.
-      - uses: dorny/paths-filter@v2
+      - uses: dorny/paths-filter@v4.0.3
         id: component_changes
         with:
           filters: |
             components:
-              - 'components/**'
+              - 'src/**'
+              - 'assets/**'
+              - 'config/**'
+              - 'package*.json'
+              - '.nvmrc'
+              - '.github/workflows/tests.yml'
       - name: Setup Node
-        if: steps.component_changes.outputs.components == 'true'
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v7.1.0
         with:
-          node-version: 24
+          node-version-file: .nvmrc
+          cache: npm
       - name: Install dependencies
-        if: steps.component_changes.outputs.components == 'true'
         run: npm ci
+      - name: Check release configuration
+        run: npm run test:release
+      - name: Lint
+        run: npm run lint
       - name: Build storybook
         if: steps.component_changes.outputs.components == 'true'
         run: npm run storybook-build
@@ -36,17 +47,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7.0.1
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v7.1.0
         with:
-          node-version: 24
+          node-version-file: .nvmrc
       - name: Install CLI
-        run: npm install -g @emulsify/cli
+        run: npm install -g @emulsify/cli@2.4.1
       - name: Install starter
-        run: emulsify init "Emulsify Drupal Starter" . --platform drupal
+        run: emulsify init "Emulsify Drupal Starter" . --platform drupal --yes
       - name: Install system and all components
         run: |
+          git branch emulsify-ci-system "$GITHUB_SHA"
           cd emulsify_drupal_starter
-          emulsify system install --repository https://github.com/emulsify-ds/compound.git --checkout ${{ github.head_ref }}
-          emulsify component install --all
+          emulsify system install --repository "$GITHUB_WORKSPACE" --checkout emulsify-ci-system --all --yes

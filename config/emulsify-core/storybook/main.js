@@ -1,23 +1,26 @@
-// Pass an empty configOverrides by default.
-const configOverrides = {};
+import { mergeConfig, transformWithOxc } from 'vite';
 
-// Uncomment the following section to override the default Emulsify Core configuration.
-// Doing so is a complete override so no configuration from Emulsify Core's main.js will be inherited.
-// See https://storybook.js.org/docs/7/configure for details.
-// const configOverrides = {
-//   stories: [
-//     '../../../../src/**/*.stories.@(js|jsx|ts|tsx)',
-//   ],
-//   addons: [
-//     '../../../@storybook/addon-a11y',
-//     '../../../@storybook/addon-links',
-//     '../../../@storybook/addon-essentials',
-//     '../../../@storybook/addon-themes',
-//     '../../../@storybook/addon-styling-webpack'
-//   ],
-//   docs: {
-//     autodocs: true,
-//   },
-// };
+export function extendConfig(config) {
+  return {
+    ...config,
+    async viteFinal(viteConfig, context) {
+      return mergeConfig(await config.viteFinal(viteConfig, context), {
+        plugins: [
+          {
+            name: 'storybook-jsx-in-js',
+            enforce: 'pre',
+            transform(code, id) {
+              if (!/\.stories\.js(?:\?|$)/.test(id)) return null;
 
-export { configOverrides };
+              // Story decorators contain JSX in .js files.
+              return transformWithOxc(code, id, {
+                lang: 'jsx',
+                jsx: { runtime: 'automatic' },
+              });
+            },
+          },
+        ],
+      });
+    },
+  };
+}
