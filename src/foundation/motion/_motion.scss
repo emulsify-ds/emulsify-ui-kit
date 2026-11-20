@@ -73,8 +73,10 @@ $transition-timing-function-base: ease-in-out;
   }
 }
 
-@mixin animate-slide-up-fade-in($speed: $transition-duration-base,
-  $delay: 0ms) {
+@mixin animate-slide-up-fade-in(
+  $speed: $transition-duration-base,
+  $delay: 0ms
+) {
   @media (prefers-reduced-motion: no-preference) {
     animation: slide-up $speed;
     animation-fill-mode: forwards;

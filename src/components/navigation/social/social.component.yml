@@ -13,9 +13,9 @@ props:
       title: Social menu items
       description: The items of the social menu.
       data:
-        - title: 'Twitter'
+        - title: 'X'
           url: '#'
-          icon: 'twitter'
+          icon: 'x'
         - title: 'Facebook'
           url: '#'
           icon: 'facebook'

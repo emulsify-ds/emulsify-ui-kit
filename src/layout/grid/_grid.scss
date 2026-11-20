@@ -5,7 +5,8 @@
 
 // Define grid columns and their widths
 $grids: (
-  equal: (1: 1,
+  equal: (
+    1: 1,
     2: 0.5,
     3: 0.3333,
     4: 0.25,
@@ -69,18 +70,18 @@ $focus: (
     }
   }
 
-  +.grid {
+  + .grid {
     @include margin-gap-top(1);
     @include section-padding-top(1);
   }
 
-  >.grid {
+  > .grid {
     padding: 0;
     margin: 0;
     border: 0;
   }
 
-  >*:not(.grid__inner):not(:empty) {
+  > *:not(.grid__inner):not(:empty) {
     width: 100%;
     flex: 1 1 100%;
     margin-bottom: calc(var(--grid-spacing) / 2);
@@ -95,7 +96,7 @@ $focus: (
   gap: var(--grid-spacing);
   align-items: stretch;
 
-  [data-grid-columns='1']>& {
+  [data-grid-columns='1'] > & {
     flex-flow: column nowrap;
 
     @container (max-width: #{$xsmall}) {
@@ -108,13 +109,13 @@ $focus: (
   }
 
   // exposed view filters.
-  >form,
-  >.exposed-filters {
+  > form,
+  > .exposed-filters {
     flex: 1 1 100%;
   }
 }
 
-.grid__inner>*:not(form, .exposed-filters) {
+.grid__inner > *:not(form, .exposed-filters) {
   position: relative;
 
   [data-grid-separators] &:not(:first-child) {
@@ -142,13 +143,14 @@ $focus: (
     padding-top: var(--grid-spacing);
   }
 
-  [data-grid-separators][data-grid-columns='1'] &:not(:only-child):not(:first-child) {
+  [data-grid-separators][data-grid-columns='1']
+    &:not(:only-child):not(:first-child) {
     @container (max-width: #{$xsmall}) {
       padding-top: calc(var(--grid-spacing) / 2);
     }
   }
 
-  >.teaser:not(:first-child) {
+  > .teaser:not(:first-child) {
     padding-top: var(--grid-spacing);
   }
 
@@ -162,7 +164,7 @@ $focus: (
       $percentage: #{$width * 100}#{'%'};
 
       // Set column widths and generate offset layout.
-      [data-grid-columns='#{$column}']>&:not(:empty) {
+      [data-grid-columns='#{$column}'] > &:not(:empty) {
         width: 100%;
 
         &:has(+ :empty) {
@@ -178,165 +180,173 @@ $focus: (
         }
 
         @container (min-width: #{$medium}) {
-          width: calc(#{$percentage} - #{calc(var(--grid-spacing) * #{$difference})
-        });
+          width: calc(
+            #{$percentage} - #{calc(var(--grid-spacing) * #{$difference})}
+          );
 
-        &:nth-child(#{math.div($cadence, 2)}n + 1) {
-          padding-left: 0;
-        }
+          &:nth-child(#{math.div($cadence, 2)}n + 1) {
+            padding-left: 0;
+          }
 
-        &:nth-child(#{math.div($cadence, 2)}n + #{$column}) {
-          padding-right: 0;
-        }
+          &:nth-child(#{math.div($cadence, 2)}n + #{$column}) {
+            padding-right: 0;
+          }
 
-        &:only-child {
-          width: 100%;
-        }
-      }
-
-      &:first-child,
-      &:nth-child(#{$column}),
-      &:nth-child(#{$column - 1}),
-      &:nth-child(#{$column - 2}) {
-        @container (min-width: #{$medium}) {}
-      }
-    }
-
-    .grid--half-spacing[data-grid-columns='#{$column}']>& {
-      @container (min-width: #{$medium}) {
-        width: calc(#{$percentage} - calc(var(--grid-spacing) * calc(#{$difference} / 2)));
-
-        &:nth-child(#{math.div($cadence, 2)}n + 1) {
-          padding-left: 0;
-        }
-
-        &:nth-child(#{math.div($cadence, 2)}n + #{$column}) {
-          padding-right: 0;
+          &:only-child {
+            width: 100%;
+          }
         }
       }
+
+      .grid--half-spacing[data-grid-columns='#{$column}'] > & {
+        @container (min-width: #{$medium}) {
+          width: calc(
+            #{$percentage} - calc(
+                var(--grid-spacing) * calc(#{$difference} / 2)
+              )
+          );
+
+          &:nth-child(#{math.div($cadence, 2)}n + 1) {
+            padding-left: 0;
+          }
+
+          &:nth-child(#{math.div($cadence, 2)}n + #{$column}) {
+            padding-right: 0;
+          }
+        }
+      }
     }
   }
-}
 
-// TODO: Rewrite the following column focus styles to utilize an @each loop.
-// https://app.clickup.com/t/36718269/NDSU-430
-// Two Column Focus
-[data-grid-type='focus'][data-grid-columns='2'][data-grid-column-focus='1']>& {
-  @container (min-width: #{$medium}) {
-    &:nth-child(2n + 1) {
-      width: calc(70% - calc(var(--grid-spacing) / 2));
-    }
+  // TODO: Rewrite the following column focus styles to utilize an @each loop.
+  // https://app.clickup.com/t/36718269/NDSU-430
+  // Two Column Focus
+  [data-grid-type='focus'][data-grid-columns='2'][data-grid-column-focus='1']
+    > & {
+    @container (min-width: #{$medium}) {
+      &:nth-child(2n + 1) {
+        width: calc(70% - calc(var(--grid-spacing) / 2));
+      }
 
-    &:not(:nth-child(2n + 1)) {
-      width: calc(30% - calc(var(--grid-spacing) / 2));
-    }
-  }
-}
-
-[data-grid-type='focus'][data-grid-columns='2'][data-grid-column-focus='2']>& {
-  @container (min-width: #{$medium}) {
-    &:nth-child(2n + 2) {
-      width: calc(70% - var(--grid-spacing));
-    }
-
-    &:not(:nth-child(2n + 2)) {
-      width: calc(30% - var(--grid-spacing));
+      &:not(:nth-child(2n + 1)) {
+        width: calc(30% - calc(var(--grid-spacing) / 2));
+      }
     }
   }
-}
 
-// Three Column Focus
-[data-grid-type='focus'][data-grid-columns='3'][data-grid-column-focus='1']>& {
-  @container (min-width: #{$medium}) {
-    &:nth-child(3n + 1) {
-      width: 50%;
-    }
+  [data-grid-type='focus'][data-grid-columns='2'][data-grid-column-focus='2']
+    > & {
+    @container (min-width: #{$medium}) {
+      &:nth-child(2n + 2) {
+        width: calc(70% - var(--grid-spacing));
+      }
 
-    &:not(:nth-child(3n + 1)) {
-      width: calc(25% - var(--grid-spacing));
-    }
-  }
-}
-
-[data-grid-type='focus'][data-grid-columns='3'][data-grid-column-focus='2']>& {
-  @container (min-width: #{$medium}) {
-    &:nth-child(3n + 2) {
-      width: 50%;
-    }
-
-    &:not(:nth-child(3n + 2)) {
-      width: calc(25% - var(--grid-spacing));
+      &:not(:nth-child(2n + 2)) {
+        width: calc(30% - var(--grid-spacing));
+      }
     }
   }
-}
 
-[data-grid-type='focus'][data-grid-columns='3'][data-grid-column-focus='3']>& {
-  @container (min-width: #{$medium}) {
-    &:nth-child(3n + 3) {
-      width: 50%;
-    }
+  // Three Column Focus
+  [data-grid-type='focus'][data-grid-columns='3'][data-grid-column-focus='1']
+    > & {
+    @container (min-width: #{$medium}) {
+      &:nth-child(3n + 1) {
+        width: 50%;
+      }
 
-    &:not(:nth-child(3n + 3)) {
-      width: calc(25% - var(--grid-spacing));
-    }
-  }
-}
-
-// Four Column Focus
-[data-grid-type='focus'][data-grid-columns='4'][data-grid-column-focus='1']>& {
-  @container (min-width: #{$medium}) {
-    &:nth-child(4n + 1) {
-      width: calc(40% - var(--grid-spacing));
-    }
-
-    &:not(:nth-child(4n + 1)) {
-      width: calc(20% - var(--grid-spacing));
+      &:not(:nth-child(3n + 1)) {
+        width: calc(25% - var(--grid-spacing));
+      }
     }
   }
-}
 
-[data-grid-type='focus'][data-grid-columns='4'][data-grid-column-focus='2']>& {
-  @container (min-width: #{$medium}) {
-    &:nth-child(4n + 2) {
-      width: calc(40% - var(--grid-spacing));
-    }
+  [data-grid-type='focus'][data-grid-columns='3'][data-grid-column-focus='2']
+    > & {
+    @container (min-width: #{$medium}) {
+      &:nth-child(3n + 2) {
+        width: 50%;
+      }
 
-    &:not(:nth-child(4n + 2)) {
-      width: calc(20% - var(--grid-spacing));
-    }
-  }
-}
-
-[data-grid-type='focus'][data-grid-columns='4'][data-grid-column-focus='3']>& {
-  @container (min-width: #{$medium}) {
-    &:nth-child(4n + 3) {
-      width: calc(40% - var(--grid-spacing));
-    }
-
-    &:not(:nth-child(4n + 3)) {
-      width: calc(20% - var(--grid-spacing));
+      &:not(:nth-child(3n + 2)) {
+        width: calc(25% - var(--grid-spacing));
+      }
     }
   }
-}
 
-[data-grid-type='focus'][data-grid-columns='4'][data-grid-column-focus='4']>& {
-  @container (min-width: #{$medium}) {
-    &:nth-child(4n + 4) {
-      width: calc(40% - var(--grid-spacing));
-    }
+  [data-grid-type='focus'][data-grid-columns='3'][data-grid-column-focus='3']
+    > & {
+    @container (min-width: #{$medium}) {
+      &:nth-child(3n + 3) {
+        width: 50%;
+      }
 
-    &:not(:nth-child(4n + 4)) {
-      width: calc(20% - var(--grid-spacing));
+      &:not(:nth-child(3n + 3)) {
+        width: calc(25% - var(--grid-spacing));
+      }
     }
   }
-}
 
-// One Column
-[data-grid-columns='1']>&:not(:empty) {
-  width: 100%;
-}
+  // Four Column Focus
+  [data-grid-type='focus'][data-grid-columns='4'][data-grid-column-focus='1']
+    > & {
+    @container (min-width: #{$medium}) {
+      &:nth-child(4n + 1) {
+        width: calc(40% - var(--grid-spacing));
+      }
 
-[data-grid-columns='1'][data-grid-spacing='two-spacing']>&:not(:first-child) {
-  padding-top: calc(var(--grid-spacing) * 0.5);
-}
+      &:not(:nth-child(4n + 1)) {
+        width: calc(20% - var(--grid-spacing));
+      }
+    }
+  }
+
+  [data-grid-type='focus'][data-grid-columns='4'][data-grid-column-focus='2']
+    > & {
+    @container (min-width: #{$medium}) {
+      &:nth-child(4n + 2) {
+        width: calc(40% - var(--grid-spacing));
+      }
+
+      &:not(:nth-child(4n + 2)) {
+        width: calc(20% - var(--grid-spacing));
+      }
+    }
+  }
+
+  [data-grid-type='focus'][data-grid-columns='4'][data-grid-column-focus='3']
+    > & {
+    @container (min-width: #{$medium}) {
+      &:nth-child(4n + 3) {
+        width: calc(40% - var(--grid-spacing));
+      }
+
+      &:not(:nth-child(4n + 3)) {
+        width: calc(20% - var(--grid-spacing));
+      }
+    }
+  }
+
+  [data-grid-type='focus'][data-grid-columns='4'][data-grid-column-focus='4']
+    > & {
+    @container (min-width: #{$medium}) {
+      &:nth-child(4n + 4) {
+        width: calc(40% - var(--grid-spacing));
+      }
+
+      &:not(:nth-child(4n + 4)) {
+        width: calc(20% - var(--grid-spacing));
+      }
+    }
+  }
+
+  // One Column
+  [data-grid-columns='1'] > &:not(:empty) {
+    width: 100%;
+  }
+
+  [data-grid-columns='1'][data-grid-spacing='two-spacing']
+    > &:not(:first-child) {
+    padding-top: calc(var(--grid-spacing) * 0.5);
+  }
 }
