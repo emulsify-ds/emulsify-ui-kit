@@ -38,7 +38,7 @@ menu_items:
   - title: 'About'
     url: '#'
 cards:
-  - card__image__src: './static/images/example/watch-Image-1.png'
+  - card__image__src: '/assets/images/example/watch-Image.png'
     card__image__alt: "This is the card image's alt text"
     card__image__output_image_tag: true
     card__subheading: 'social science ‘23'
@@ -48,7 +48,7 @@ cards:
     card__link__url: '#'
     card__modifiers:
       - 'horizontal'
-  - card__image__src: 'https://placehold.co/400'
+  - card__image__src: '/assets/images/example/watch-Image-1.png'
     card__image__alt: "This is the card image's alt text"
     card__image__output_image_tag: true
     card__subheading: 'Medicine ‘24'
@@ -56,7 +56,7 @@ cards:
     card__body: 'Studying trauma and its impact.'
     card__link__text: 'Read more about this card'
     card__link__url: '#'
-  - card__image__src: 'https://placehold.co/400'
+  - card__image__src: '/assets/images/example/watch-Image-2.png'
     card__image__alt: "This is the card image's alt text"
     card__image__output_image_tag: true
     card__subheading: 'Engineering ‘25'
@@ -65,7 +65,7 @@ cards:
     card__link__text: 'Read more about this card'
     card__link__url: '#'
 celebratingCards:
-  - card__image__src: 'https://placehold.co/250x200'
+  - card__image__src: '/assets/images/example/celebrating-Image-1.png'
     card__image__alt: "This is the card image's alt text"
     card__image__output_image_tag: true
     card__subheading: 'Student Opportunities'
@@ -73,7 +73,7 @@ celebratingCards:
     card__body: 'May 09, 2023'
     card__modifiers:
       - 'horizontal'
-  - card__image__src: 'https://placehold.co/250x200'
+  - card__image__src: '/assets/images/example/celebrating-Image-2.png'
     card__image__alt: "This is the card image's alt text"
     card__image__output_image_tag: true
     card__subheading: 'University News'
@@ -81,7 +81,7 @@ celebratingCards:
     card__body: 'May 09, 2023'
     card__modifiers:
       - 'horizontal'
-  - card__image__src: 'https://placehold.co/250x200'
+  - card__image__src: '/assets/images/example/celebrating-Image-3.png'
     card__image__alt: "This is the card image's alt text"
     card__image__output_image_tag: true
     card__subheading: 'Research'
@@ -89,7 +89,7 @@ celebratingCards:
     card__body: 'May 01, 2023'
     card__modifiers:
       - 'horizontal'
-  - card__image__src: 'https://placehold.co/250x200'
+  - card__image__src: '/assets/images/example/celebrating-Image-4.png'
     card__image__alt: "This is the card image's alt text"
     card__image__output_image_tag: true
     card__subheading: 'Arts and Humanities'

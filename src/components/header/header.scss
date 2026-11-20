@@ -1,0 +1,66 @@
+@use '../../foundation/utility/rem-calc' as *;
+@use '../../foundation/breakpoints/breakpoints' as *;
+
+.header {
+  display: flex;
+  width: 100%;
+  min-height: 5rem;
+  padding-inline: var(--spacing-xl) var(--spacing-lg);
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 4px 4px 0 rgba(197, 197, 197, 0.25);
+
+  @include breakpoint('medium') {
+    justify-content: flex-start;
+    align-items: stretch;
+    padding-inline: 0;
+  }
+}
+
+/* Branding */
+.header__branding {
+  display: flex;
+  align-items: center;
+
+  .logo {
+    width: auto;
+    height: 2.5rem;
+
+    @include breakpoint('medium') {
+      margin-left: var(--spacing-xl);
+      height: 3.5rem;
+    }
+  }
+
+  .logo__link {
+    height: 100%;
+    display: flex;
+  }
+}
+
+/* Main navigation */
+.header__menu {
+  @include breakpoint('medium') {
+    flex: 1;
+    display: flex;
+    justify-content: end;
+    margin-right: var(--spacing-xl);
+  }
+}
+
+.main-nav__menu-list-wrapper--level-0 {
+  .header & {
+    top: 100%;
+    padding-right: var(--spacing-lg);
+  }
+}
+
+/* Search form */
+.header__search {
+  display: none;
+
+  @include breakpoint('medium') {
+    display: block;
+  }
+}

@@ -1,6 +1,10 @@
 @use '../../foundation/typography/typography' as *;
 
-@mixin overlay-darken($color: var(--color-primary-dark), $opacity: 0.75, $blend-mode: multiply) {
+@mixin overlay-darken(
+  $color: var(--color-primary-dark),
+  $opacity: 0.75,
+  $blend-mode: multiply
+) {
   &::before {
     content: '';
     top: 0;

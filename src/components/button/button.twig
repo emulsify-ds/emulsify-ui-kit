@@ -105,7 +105,7 @@
 	{% if button__icon.left is defined %}
 		{{- icon -}}
 	{% endif %}
-	{% if button__content is defined %}
+	{% if button__content %}
 		{% block button__content %}
 			<span {{ bem('content', [], button__base_class) }}>
 				{{- button__content -}}
