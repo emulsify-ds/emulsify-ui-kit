@@ -30,7 +30,6 @@
   }
 
   &.container--layout-split {
-
     // Prevent overflow issues for non-preview instances of layout.
     body:not([class*='gin']) & {
       overflow: hidden;
@@ -47,16 +46,20 @@
   }
 
   // Last component that has normal spacing needs double spacing within articles.
-  &:last-child:not(.container--no-spacing):not(.container--two-spacing,
-    .container--three-spacing) {
-    article>& {
+  &:last-child:not(.container--no-spacing):not(
+      .container--two-spacing,
+      .container--three-spacing
+    ) {
+    article > & {
       @include section-padding-bottom(3);
     }
   }
 
-  &:first-child:not(.container--no-spacing):not(.container--two-spacing,
-    .container--three-spacing) {
-    article>& {
+  &:first-child:not(.container--no-spacing):not(
+      .container--two-spacing,
+      .container--three-spacing
+    ) {
+    article > & {
       @include section-padding-top(3);
     }
   }
@@ -114,11 +117,11 @@
     padding: 0;
     margin-block: 0;
 
-    +.container--with-bg:not(
-      .container--no-spacing,
-      .container--two-spacing,
-      .container--three-spacing
-    ) {
+    + .container--with-bg:not(
+        .container--no-spacing,
+        .container--two-spacing,
+        .container--three-spacing
+      ) {
       @include section-padding-top(2);
     }
   }
@@ -201,8 +204,7 @@
     max-width: var(--content-width-page);
   }
 
-  >*:not(.container__intro) {
-
+  > *:not(.container__intro) {
     // Component widths.
     [data-component-width='max'] & {
       width: 100%;
@@ -288,7 +290,7 @@
     }
   }
 
-  [data-component-layout='inline'] &+* {
+  [data-component-layout='inline'] & + * {
     @container (min-width: #{$medium}) {
       flex: 1 1 100%;
     }
@@ -305,7 +307,7 @@
   [data-align-container-intro='center'] & {
     text-align: center;
 
-    >* {
+    > * {
       margin-inline: auto;
     }
   }
@@ -313,7 +315,7 @@
   [data-align-container-intro='right'] & {
     text-align: right;
 
-    >* {
+    > * {
       margin-left: auto;
     }
   }
@@ -370,13 +372,13 @@
     text-align: left;
   }
 
-  >a:not([hreflang]) {
+  > a:not([hreflang]) {
     @include link('icon-right');
     @include body;
   }
 
-  +.link-emulsify,
-  +.ed11y-element+.link-emulsify {
+  + .link-emulsify,
+  + .ed11y-element + .link-emulsify {
     padding-left: var(--spacing-xl);
   }
 }
@@ -393,7 +395,7 @@
   }
 }
 
-.animate-sections>.container:not(.no-animate) {
+.animate-sections > .container:not(.no-animate) {
   @media (prefers-reduced-motion: no-preference) {
     @include breakpoint('medium') {
       opacity: 0;
@@ -407,7 +409,7 @@
   }
 }
 
-article>.container:first-child:not(.container--with-bg) {
+article > .container:first-child:not(.container--with-bg) {
   @include section-padding-top(2);
 
   @include breakpoint('medium') {
@@ -415,7 +417,7 @@ article>.container:first-child:not(.container--with-bg) {
   }
 }
 
-article>.container:last-child:not(.container--with-bg) {
+article > .container:last-child:not(.container--with-bg) {
   @include section-padding-top(2);
 
   @include breakpoint('medium') {
@@ -423,7 +425,7 @@ article>.container:last-child:not(.container--with-bg) {
   }
 }
 
-article>.container:not(.container--with-bg)+.container.container--with-bg {
+article > .container:not(.container--with-bg) + .container.container--with-bg {
   @include section-padding-top(2);
 
   @include breakpoint('medium') {
@@ -431,7 +433,7 @@ article>.container:not(.container--with-bg)+.container.container--with-bg {
   }
 }
 
-article>.container--with-bg+.container:not(.container--with-bg) {
+article > .container--with-bg + .container:not(.container--with-bg) {
   @include section-padding-top(2);
 
   @include breakpoint('medium') {

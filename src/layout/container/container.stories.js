@@ -13,24 +13,29 @@ export default {
     container__component_width: {
       name: 'Container Width',
       control: 'select',
-      options: ['compressed', 'standard', 'extended', 'max', 'full'],
+      options: ['content', 'compressed', 'standard', 'extended', 'max', 'full'],
     },
     container__modifiers: {
       name: 'Container Spacing',
       control: 'select',
-      options: ['no-spacing', 'two-spacing'],
+      options: ['no-spacing', '', 'two-spacing'],
+      mapping: {
+        'no-spacing': ['no-spacing'],
+        '': [],
+        'two-spacing': ['two-spacing'],
+      },
     },
     container__component_alignment: {
       name: 'Component Alignment',
       control: 'select',
       options: ['left', 'center', 'right'],
     },
-    layout: {
+    container__layout: {
       name: 'Component Layout',
       options: ['inline', 'stacked'],
-      type: 'select',
+      control: 'select',
     },
-    heading: {
+    container__heading: {
       name: 'Container Heading',
       control: 'text',
     },
@@ -43,32 +48,13 @@ export default {
 
 export const container = {
   args: {
-    backgroundColor: false,
-    width: 'content',
-    spacing: '',
-    alignment: 'center',
-    layout: 'inline',
-    heading: 'This is an example container heading',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget eleifend ex, non ullamcorper tellus. Nullam in lectus a nulla feugiat ultricies in sed lectus. Maecenas tincidunt eu massa sit amet molestie.',
+    container__bg_color: false,
+    container__component_width: 'content',
+    container__modifiers: '',
+    container__component_alignment: 'center',
+    container__layout: 'inline',
+    container__heading: 'This is an example container heading',
+    container__text:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget eleifend ex, non ullamcorper tellus. Nullam in lectus a nulla feugiat ultricies in sed lectus. Maecenas tincidunt eu massa sit amet molestie.',
   },
 };
-
-// Component Examples
-export const container = ({
-  backgroundColor,
-  width,
-  spacing,
-  alignment,
-  layout,
-  heading,
-  text,
-}) =>
-  containerTwig({
-    container__bg_color: backgroundColor,
-    container__component_width: width,
-    container__modifiers: [spacing],
-    container__component_alignment: alignment,
-    container__layout: layout,
-    container__heading: heading,
-    container__text: text,
-  });

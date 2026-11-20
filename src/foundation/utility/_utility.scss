@@ -48,6 +48,25 @@
   }
 }
 
+@mixin blurred-overlay {
+  &::before {
+    content: '';
+    position: absolute;
+    top: 45%;
+    right: 0;
+    left: 0;
+    z-index: 2;
+    display: block;
+    width: calc(var(--content-width-wide) + rem-calc(120));
+    max-width: 100%;
+    height: 60%;
+    margin: auto;
+    background: var(--color-black);
+    opacity: 0.5;
+    filter: blur(62px);
+  }
+}
+
 * {
   @include focus;
 }

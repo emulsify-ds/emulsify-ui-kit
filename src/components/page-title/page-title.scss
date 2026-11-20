@@ -80,7 +80,7 @@
   .page-title__text,
   .page-title__text:hover {
     @include body-s;
-    
+
     & {
       text-decoration: none;
       color: clr('black');
@@ -137,7 +137,8 @@
     display: block;
     background-color: clr('black', 0.33);
     position: absolute;
-    inset: calc(#{var(--spacing-lg)} * 3) var(--spacing-2xl) calc((#{var(--spacing-lg)} * 1.5) * -1);
+    inset: calc(#{var(--spacing-lg)} * 3) var(--spacing-2xl)
+      calc((#{var(--spacing-lg)} * 1.5) * -1);
     filter: blur(1.5rem);
     z-index: -1;
   }
@@ -181,11 +182,10 @@
   }
 
   &[data-component-layout='stacked'] {
-    
     &:has(.page-title__media) {
       margin-bottom: calc(#{var(--spacing-2xl)} * 2);
     }
-  
+
     > .container__inner {
       flex-flow: column nowrap;
     }
