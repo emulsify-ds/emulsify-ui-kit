@@ -4,8 +4,12 @@ Drupal.behaviors.headerSearch = {
     // Helper to close search form
     const closeSearch = () => {
       document.querySelectorAll('.header.search-active').forEach((header) => {
-        header.querySelectorAll('.search__toggle').forEach((t) => t.setAttribute('aria-expanded', 'false'));
-        header.querySelector('.search__form__wrapper')?.setAttribute('aria-hidden', 'true');
+        header
+          .querySelectorAll('.search__toggle')
+          .forEach((t) => t.setAttribute('aria-expanded', 'false'));
+        header
+          .querySelector('.search__form__wrapper')
+          ?.setAttribute('aria-hidden', 'true');
         header.classList.remove('search-active');
       });
     };
@@ -15,7 +19,9 @@ Drupal.behaviors.headerSearch = {
       const isMobile = window.innerWidth < 1040;
       const searchForm = document.querySelector('.search__form');
       const desktopContainer = document.querySelector('.search__form__wrapper');
-      const mobileContainer = document.querySelector('.header__menu > nav > div');
+      const mobileContainer = document.querySelector(
+        '.header__menu > nav > div',
+      );
 
       if (!searchForm || !mobileContainer || !desktopContainer) return;
 
@@ -46,10 +52,12 @@ Drupal.behaviors.headerSearch = {
           header.classList.add('search-active');
           toggle.setAttribute('aria-expanded', 'true');
           header.querySelector('input[type="search"]')?.focus();
-          header.querySelector('.search__form__wrapper')?.setAttribute('aria-hidden', 'false');
+          header
+            .querySelector('.search__form__wrapper')
+            ?.setAttribute('aria-hidden', 'false');
         }
       });
-    }); 
+    });
 
     // Global listeners.
     if (!window.headerSearchInitialized) {
@@ -65,5 +73,5 @@ Drupal.behaviors.headerSearch = {
         if (e.key === 'Escape') closeSearch();
       });
     }
-  }
+  },
 };

@@ -16,16 +16,20 @@
   overflow: hidden;
   visibility: hidden;
   z-index: 1;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s;
+  transition:
+    max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.4s;
 
-   @include breakpoint('medium') {
+  @include breakpoint('medium') {
     top: 0;
     right: 0;
     left: auto;
     height: 100%;
     max-height: none;
     max-width: 0;
-    transition: max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s;
+    transition:
+      max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 0.4s;
   }
 
   &[aria-hidden='false'] {
@@ -48,7 +52,6 @@
   background-color: var(--color-white);
 
   @include breakpoint('medium') {
-    padding-block: 0;
     position: absolute;
     right: 0;
     width: auto;
@@ -78,14 +81,6 @@
 
 .search__form__input::placeholder {
   opacity: 1;
-  color: var(--color-primary-dark);
-
-  @include breakpoint('medium') {
-    color: var(--color-white);
-  }
-}
-
-.search__form__input::-ms-input-placeholder {
   color: var(--color-primary-dark);
 
   @include breakpoint('medium') {

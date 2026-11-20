@@ -9,7 +9,7 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  box-shadow: 0 4px 4px 0 rgba(197, 197, 197, 0.25);
+  box-shadow: 0 4px 4px 0 rgb(197 197 197 / 25%);
 
   @include breakpoint('medium') {
     justify-content: flex-start;

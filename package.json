@@ -1,6 +1,6 @@
 {
   "name": "Emulsify UI Kit",
-  "version": "2.0.0",
+  "version": "1.12.0",
   "description": "Emulsify UI Kit is the default Emulsify system that include design token integration with Figma.",
   "main": "index.js",
   "type": "module",
@@ -40,15 +40,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/emulsify-ds/compound.git"
+    "url": "git+https://github.com/emulsify-ds/emulsify-ui-kit.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/emulsify-ds/compound/issues"
+    "url": "https://github.com/emulsify-ds/emulsify-ui-kit/issues"
   },
-  "homepage": "https://github.com/emulsify-ds/compound#readme",
+  "homepage": "https://github.com/emulsify-ds/emulsify-ui-kit#readme",
   "lint-staged": {
     "src/**/*.js": [
       "npm run lint-js -- --fix"
@@ -72,6 +72,7 @@
     "@semantic-release/commit-analyzer": "^13.0.0",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^11.0.0",
+    "@semantic-release/npm": "^13.1.5",
     "@semantic-release/release-notes-generator": "^14.0.0",
     "@storybook/storybook-deployer": "2.8.16",
     "husky": "^9.1.6",
