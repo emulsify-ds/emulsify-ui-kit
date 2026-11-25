@@ -7,13 +7,7 @@ export default {
 const sourcePath = fileURLToPath(
   new URL('../../../src/', import.meta.url),
 ).replaceAll('\\', '/');
-const orderedRoots = [
-  'base/',
-  'tokens/',
-  'layout/',
-  'components/',
-  'storybook/',
-];
+const orderedRoots = ['base/', 'layout/', 'components/', 'storybook/'];
 
 function storyRootOrder(glob) {
   const index = orderedRoots.findIndex(

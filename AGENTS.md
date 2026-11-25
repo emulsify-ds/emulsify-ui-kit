@@ -30,9 +30,9 @@ The Tests workflow runs `npm ci` and `npm run validate` on pull requests. It run
 | Path | Purpose |
 | --- | --- |
 | `src/components/` | Component source, metadata, templates, styles, scripts, docs, and stories. |
-| `src/base/` | Shared styles and Sass utilities. The Twig namespace is `@base`. |
+| `src/base/` | Shared styles, Sass utilities, generated tokens, and Base stories. The Twig namespace is `@base`. |
 | `src/layout/` | The container, grid, and placeholder layout primitives. Include these by path. |
-| `src/tokens/` | Figma token inputs, build scripts, and token stories. |
+| `src/tokens/` | Tokens Studio source and token build script. |
 | `src/util/` | Storybook helpers. Keep these outside the Drupal asset build. |
 | `src/storybook/` | Welcome, guides, and examples. The `examples` implementation provides the `@examples` Twig namespace. |
 | `assets/` | Fonts, icons, images, audio, and video. |
@@ -40,7 +40,7 @@ The Tests workflow runs `npm ci` and `npm run validate` on pull requests. It run
 | `tests/` | Repository-wide contract and release checks. |
 | `docs/` | The [2.0 roadmap](docs/2.0/roadmap.md) and [migration guide](docs/migration-2.0.md). |
 
-Edit source files and regenerate output with the appropriate build. Leave `components/`, `dist/`, `.out/`, and generated token files such as `src/tokens/transformed.tokens.json` and `src/tokens/tokens.scss` untouched by hand.
+Edit source files and regenerate output with the appropriate build. Leave `components/` and the generated `dist/` and `.out/` directories untouched by hand. Edit `src/tokens/figma.tokens.json` and run `npm run tokens:build` to update `_maps.scss`, `_custom-properties.scss`, and `tokens.json` in `src/base/tokens/`. Keep `legacy-1x.scss` frozen until step 15.
 
 ## Component contract
 
@@ -71,6 +71,7 @@ List enforced components in `tests/contract-allowlist.json` by path relative to 
 ## Storybook conventions
 
 - Use the sidebar groups Welcome, Guides, Base, Layout, Components, and Examples in that order. Place component stories under `Components/<Component>` and token stories under `Base/<Topic>`.
+- Build Base token previews from `src/base/tokens/tokens.json` and use the copy controls in `src/util/_copy-usage.twig` for token examples.
 - Use `tags: ['autodocs']` and source `parameters.docs` from the sibling `.docs.js` file. Put standalone MDX pages under `src/storybook/` and prefix their stylesheets with `sb-` for Storybook-only output.
 - Use `argsFromSchema(component.props)` from `src/util/argsFromSchema.js` to seed args from each prop's first example or default. Merge the `args` and `argTypes` from `createContainerWidthControls()` and `createContainerThemeControls()` in `src/util/storybookContainerControls.js` when the story needs appearance controls.
 - Wrap Twig rendering with `withStorybookContainer()` from `src/util/storybookContainer.js`. Use `renderTwig()` with its default context and map story args inside the wrapper's callback so width and theme reach it. Use `withStorybookPadding()` to retain the existing padding when migrating a legacy preview.
@@ -114,7 +115,7 @@ render: renderTwig(
 
 ### Base API
 
-Import the API with `@use '../../base' as *;`, adjusting the relative path for nested components. Load `src/base/base.scss` as the global stylesheet so its root spacing properties are available.
+Import the API with `@use '../../base' as *;`, adjusting the relative path for nested components. Load `src/base/base.scss` as the global stylesheet to provide the token properties. Set `data-component-theme="default light"` or `data-component-theme="default dark"` on the theme's wrapper.
 
 The global stylesheet establishes a root query container for standalone components. Add `container-type: inline-size` to a closer wrapper when a component should respond to that wrapper's width.
 
@@ -122,6 +123,9 @@ The global stylesheet establishes a root query container for standalone componen
 | --- | --- |
 | `space($px)` | Use the unitless keys 2, 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64, 80, 96, and 120. The function returns `var(--space-N, <rem>)` and raises a Sass error for an off-scale key. |
 | `breakpoint($breakpoint, $media: false)` | Use `sm` 360, `md` 768, `lg` 1024, `xl` 1280, or `xxl` 1440. The `md-down`, `lg-down`, and `xl-down` queries cap width 0.05rem below their named cutoff. Use `$media: true` for viewport queries. Unknown names raise a Sass error. |
+| `font-size($key)`, `font-family($key)`, `font-weight($key)`, `line-height($key)`, `letter-spacing($key)` | Use the keys from the generated maps. Each function returns the relevant custom property with a resolved fallback. |
+| `fluid-type($min-px, $max-px)` | Return a clamped size between two pixel values, interpolating from the `sm` to the `xl` viewport width. |
+| `typography($style)` | Emit the resolved declarations for a typography style from `$typography`. Set the color separately with a color role. |
 | `grid-tracks($tracks: 12)` | Set up a one-column grid that expands at the `md` container breakpoint, with a `--grid-spacing` gutter that falls back to `space(40)`. |
 | `grid-column($span, $start: auto, $from: 'md')` | Place an item on the tracks at the selected container breakpoint. Use `$from: none` for unconditional placement. |
 | `str-replace($string, $search, $replace: '')` | Replace all occurrences of a substring. |
@@ -129,7 +133,7 @@ The global stylesheet establishes a root query container for standalone componen
 | `focus`, `focus-styles`, `visually-hidden` | Apply the shared focus treatment, reuse its outline declarations, or hide content visually while keeping it available to assistive technology. |
 | `motion-safe`, `transition($properties, $duration: 0.3s, $delay: 0ms, $allow-discrete: false)` | Apply motion only when the user expresses no reduced-motion preference. |
 
-Step 5 replaces the breakpoint map with generated values and supplies `--clr-focus`. The container and grid keep their existing raw width values in `_legacy-breakpoints.scss` through step 6.
+The generated token maps supply spacing, breakpoints, and typography. The global focus treatment uses `--clr-focus`. The container and grid keep their existing raw width values in `_legacy-breakpoints.scss` through step 6.
 
 ## Traps
 
