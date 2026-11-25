@@ -1,3 +1,11 @@
 @forward './utility/normalize';
 @forward './utility/utility';
 @forward './typography/fonts';
+
+@use './spacing/space' as spacing;
+
+:root {
+  @each $px, $size in spacing.$spacings {
+    --space-#{$px}: #{$size};
+  }
+}

@@ -1,0 +1,34 @@
+@use 'sass:list';
+@use './motion';
+
+@mixin motion-safe {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
+
+@mixin transition(
+  $properties,
+  $duration: motion.$transition-duration-base,
+  $delay: 0ms,
+  $allow-discrete: false
+) {
+  $transitions: ();
+
+  @each $property in $properties {
+    $definition: $property
+      $duration
+      motion.$transition-timing-function-base
+      $delay;
+
+    @if $allow-discrete {
+      $definition: list.append($definition, allow-discrete);
+    }
+
+    $transitions: list.append($transitions, $definition, comma);
+  }
+
+  @include motion-safe {
+    transition: $transitions;
+  }
+}

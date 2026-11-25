@@ -1,0 +1,24 @@
+@mixin visually-hidden {
+  position: absolute !important;
+  clip-path: inset(50%);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  overflow-wrap: normal;
+}
+
+@mixin focus-styles {
+  outline: var(--spacing-xs) dotted var(--color-emulsify-blue-900) !important;
+  outline-offset: var(--spacing-xs);
+}
+
+@mixin focus {
+  &:focus-visible {
+    @include focus-styles;
+  }
+
+  // Browsers without :focus-visible retain their default focus indicator.
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}

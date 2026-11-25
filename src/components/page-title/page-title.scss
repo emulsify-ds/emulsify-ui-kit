@@ -176,7 +176,7 @@
   &[data-component-layout='inline'] > .container__inner {
     flex-flow: column nowrap;
 
-    @include breakpoint('medium') {
+    @include breakpoint('lg', $media: true) {
       flex-flow: row nowrap;
     }
   }

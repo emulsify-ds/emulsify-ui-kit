@@ -8,7 +8,7 @@
   row-gap: var(--spacing-lg);
   padding: var(--spacing-xl);
 
-  @include breakpoint('medium') {
+  @include breakpoint('lg', $media: true) {
     flex-direction: row;
     column-gap: var(--spacing-xl);
     align-items: center;

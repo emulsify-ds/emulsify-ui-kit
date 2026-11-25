@@ -17,7 +17,8 @@ Run commands from the repository root. `nvm use` selects Node 24 LTS from `.nvmr
 | `npm run lint` | Run ESLint and Stylelint. |
 | `npm test` | Run the Jest suite with coverage. |
 | `npm run test:contract` | Check the component contract and report violations. |
-| `npm run validate` | Run lint, the component contract checks, release tests, and Jest. |
+| `npm run test:sass` | Run Sass True assertions and check Sass compilation errors. |
+| `npm run validate` | Run lint, component contract checks, release tests, Sass tests, and Jest. |
 | `npm run inspect:components` | Inspect components with Emulsify Core. |
 | `npm run a11y` | Build Storybook and run its accessibility audit. |
 | `npm run tokens:build` | Transform Figma tokens and rebuild the generated token files. |
@@ -113,7 +114,20 @@ render: renderTwig(
 
 ### Base API
 
-Steps 4 and 5 fill in the Base API reference.
+Import the API with `@use '../../base' as *;`, adjusting the relative path for nested components. Load `src/base/base.scss` as the global stylesheet so its root spacing properties are available.
+
+| API | Use |
+| --- | --- |
+| `space($px)` | Use the unitless keys 2, 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64, 80, 96, and 120. The function returns `var(--space-N, <rem>)` and raises a Sass error for an off-scale key. |
+| `breakpoint($breakpoint, $media: false)` | Use `sm` 360, `md` 768, `lg` 1024, `xl` 1280, or `xxl` 1440. The `md-down`, `lg-down`, and `xl-down` queries cap width 0.05rem below their named cutoff. Use `$media: true` for viewport queries. Unknown names raise a Sass error. |
+| `grid-tracks($tracks: 12)` | Set up a one-column grid that expands at the `md` container breakpoint, with a `--grid-spacing` gutter that falls back to `space(40)`. |
+| `grid-column($span, $start: auto, $from: 'md')` | Place an item on the tracks at the selected container breakpoint. Use `$from: none` for unconditional placement. |
+| `str-replace($string, $search, $replace: '')` | Replace all occurrences of a substring. |
+| `safe-map-get($map, $key, $label: 'value', $fn-name: 'safe-map-get')` | Look up a Sass map entry and raise a Sass error for a missing key or invalid map. |
+| `focus`, `focus-styles`, `visually-hidden` | Apply the shared focus treatment, reuse its outline declarations, or hide content visually while keeping it available to assistive technology. |
+| `motion-safe`, `transition($properties, $duration: 0.3s, $delay: 0ms, $allow-discrete: false)` | Apply motion only when the user expresses no reduced-motion preference. |
+
+Step 5 replaces the breakpoint map with generated values and supplies `--clr-focus`. The container and grid keep their existing raw width values in `_legacy-breakpoints.scss` through step 6.
 
 ## Traps
 

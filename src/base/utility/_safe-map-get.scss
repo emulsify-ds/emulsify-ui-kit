@@ -1,0 +1,14 @@
+@use 'sass:map';
+@use 'sass:meta';
+
+@function safe-map-get($map, $key, $label: 'value', $fn-name: 'safe-map-get') {
+  @if meta.type-of($map) != map and $map != () {
+    @error '#{$fn-name}(): #{$label} map is null or not a map.';
+  }
+
+  @if not map.has-key($map, $key) {
+    @error '#{$fn-name}(): missing #{$label} "#{$key}".';
+  }
+
+  @return map.get($map, $key);
+}

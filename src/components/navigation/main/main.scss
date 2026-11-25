@@ -9,7 +9,7 @@
 .main-nav {
   display: flex;
 
-  @include breakpoint('medium') {
+  @include breakpoint('lg', $media: true) {
     align-self: center;
   }
 }
