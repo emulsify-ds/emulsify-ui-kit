@@ -5,7 +5,7 @@ export default {
   collectCoverageFrom: [
     'components/**/*.{js,mjs,cjs}',
     'src/**/*.{js,mjs,cjs}',
-    '!src/tokens/tokensTransform.mjs',
+    '!src/tokens/build-tokens.mjs',
   ],
   coverageDirectory: '.coverage',
   passWithNoTests: true,

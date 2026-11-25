@@ -1,3 +1,5 @@
+@use '../spacing/space' as *;
+
 @mixin visually-hidden {
   position: absolute !important;
   clip-path: inset(50%);
@@ -8,8 +10,8 @@
 }
 
 @mixin focus-styles {
-  outline: var(--spacing-xs) dotted var(--color-emulsify-blue-900) !important;
-  outline-offset: var(--spacing-xs);
+  outline: space(2) dotted var(--clr-focus) !important;
+  outline-offset: space(2);
 }
 
 @mixin focus {

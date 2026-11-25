@@ -11,6 +11,38 @@
   }
 }
 
+@include test.describe('Typography') {
+  @include test.it('uses the font size property with a token fallback') {
+    @include test.assert-equal(
+      base.font-size('body'),
+      var(--fs-body, 1.125rem)
+    );
+  }
+
+  @include test.it('scales fluid type between the sm and xl breakpoints') {
+    @include test.assert-equal(
+      base.fluid-type(20, 66),
+      clamp(1.25rem, 0.125rem + 5vw, 4.125rem)
+    );
+  }
+
+  @include test.it('applies the heading style without setting its color') {
+    @include test.assert {
+      @include test.output {
+        @include base.h1;
+      }
+
+      @include test.expect {
+        font-family: Inter;
+        font-weight: 700;
+        line-height: 1;
+        font-size: 3rem;
+        letter-spacing: 0;
+      }
+    }
+  }
+}
+
 @include test.describe('breakpoint()') {
   @include test.it('uses a container query by default') {
     @include test.assert {

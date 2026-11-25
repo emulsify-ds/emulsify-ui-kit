@@ -1,38 +1,5 @@
 @use 'sass:map';
-@use '../utility/rem-calc' as *;
-
-$md: rem-calc(768);
-$lg: rem-calc(1024);
-$xl: rem-calc(1280);
-$query-gap: 0.05rem;
-
-// Step 5 will generate this map from tokens.
-$breakpoints: (
-  'sm': (
-    min-width: rem-calc(360),
-  ),
-  'md': (
-    min-width: $md,
-  ),
-  'md-down': (
-    max-width: $md - $query-gap,
-  ),
-  'lg': (
-    min-width: $lg,
-  ),
-  'lg-down': (
-    max-width: $lg - $query-gap,
-  ),
-  'xl': (
-    min-width: $xl,
-  ),
-  'xl-down': (
-    max-width: $xl - $query-gap,
-  ),
-  'xxl': (
-    min-width: rem-calc(1440),
-  ),
-);
+@use '../tokens/maps' as *;
 
 // Container queries need a size container ancestor. Use $media for viewport rules.
 @mixin breakpoint($breakpoint, $media: false) {

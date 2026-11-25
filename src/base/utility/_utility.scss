@@ -45,7 +45,8 @@
 }
 
 body {
-  color: var(--colors-text-body);
+  color: var(--clr-body);
+  background-color: var(--clr-background);
 }
 
 body[data-body-frozen] {

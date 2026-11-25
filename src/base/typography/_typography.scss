@@ -1,84 +1,90 @@
-// Heading mixins
+@use '../tokens/maps' as *;
+@use '../utility/safe-map-get' as *;
+
+@function font-size($size) {
+  @return var(
+    --fs-#{$size},
+    safe-map-get($font-sizes, $size, 'font size', 'font-size')
+  );
+}
+
+@function font-family($family) {
+  @return var(
+    --ff-#{$family},
+    safe-map-get($font-families, $family, 'font family', 'font-family')
+  );
+}
+
+@function font-weight($weight) {
+  @return var(
+    --fw-#{$weight},
+    safe-map-get($font-weights, $weight, 'font weight', 'font-weight')
+  );
+}
+
+@function line-height($height) {
+  @return var(
+    --lh-#{$height},
+    safe-map-get($line-heights, $height, 'line height', 'line-height')
+  );
+}
+
+@function letter-spacing($spacing) {
+  @return var(
+    --ls-#{$spacing},
+    safe-map-get($letter-spacings, $spacing, 'letter spacing', 'letter-spacing')
+  );
+}
+
+// Composite styles carry typography only. Resolve color in the caller's theme.
+@mixin typography($style) {
+  $properties: safe-map-get($typography, $style, 'type style', 'typography');
+
+  @each $property, $value in $properties {
+    #{$property}: $value;
+  }
+}
+
 @mixin h1 {
-  font-size: var(--font-size-h1);
-  font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-primary-bold);
-  letter-spacing: var(--letter-spacing-tight);
-  line-height: var(--line-height-none);
+  @include typography(h1);
 }
 
 @mixin h2 {
-  font-size: var(--font-size-h2);
-  font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-primary-bold);
-  letter-spacing: var(--letter-spacing-tight);
-  line-height: var(--line-height-none);
+  @include typography(h2);
 }
 
 @mixin h3 {
-  font-size: var(--font-size-h3);
-  font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-primary-bold);
-  letter-spacing: var(--letter-spacing-0);
-  line-height: var(--line-height-none);
+  @include typography(h3);
 }
 
 @mixin h4 {
-  font-size: var(--font-size-h4);
-  font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-primary-bold);
-  letter-spacing: var(--letter-spacing-0);
-  line-height: var(--line-height-none);
+  @include typography(h4);
 }
 
 @mixin h5 {
-  font-size: var(--font-size-h5);
-  font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-primary-bold);
-  letter-spacing: var(--letter-spacing-0);
-  line-height: var(--line-height-none);
+  @include typography(h5);
 }
 
-// Body mixins
 @mixin body-xl {
-  font-size: var(--font-size-lead);
-  line-height: var(--line-height-loose);
-  font-family: var(--font-family-secondary);
-  font-weight: 400;
+  @include typography(body-xl);
 }
 
 @mixin body-l {
-  font-size: var(--font-size-lead);
-  line-height: var(--line-height-loose);
-  font-family: var(--font-family-secondary);
-  font-weight: 400;
+  @include typography(body-l);
 }
 
 @mixin body {
-  font-size: var(--font-size-body);
-  line-height: var(--line-height-loose);
-  font-family: var(--font-family-secondary);
-  font-weight: 400;
+  @include typography(body);
 }
 
 @mixin body-s {
-  font-size: var(--font-size-small);
-  line-height: var(--line-height-loose);
-  font-family: var(--font-family-secondary);
-  font-weight: 400;
+  @include typography(body-s);
 }
 
 @mixin body-xs {
-  font-size: var(--font-size-x-small);
-  line-height: var(--line-height-loose);
-  font-family: var(--font-family-secondary);
-  font-weight: 400;
+  @include typography(body-xs);
 }
 
 @mixin overline {
-  font-size: var(--font-size-caption);
-  line-height: var(--line-height-loose);
-  font-family: var(--font-family-primary);
-  text-transform: uppercase;
-  font-weight: 700;
+  @include typography(overline);
 }

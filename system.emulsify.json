@@ -34,7 +34,7 @@
           "name": "tokens",
           "path": "./src/tokens",
           "destinationPath": "./src/tokens",
-          "description": "Contains all the token stories"
+          "description": "Tokens Studio source JSON and the Base token build script."
         },
         {
           "name": "util",
@@ -48,13 +48,13 @@
           "name": "configma",
           "path": "./config/configma.json",
           "destinationPath": "./config/configma.json",
-          "description": "Figma configuration file"
+          "description": "Figma links for Base token and component stories."
         },
         {
           "name": "sd.config",
           "path": "./config/sd.config.json",
           "destinationPath": "./config/sd.config.json",
-          "description": "Style Dictionary configuration"
+          "description": "Style Dictionary settings for generating the Base tokens."
         },
         {
           "name": "icon-angle-down",

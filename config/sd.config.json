@@ -1,25 +1,10 @@
 {
-  "source": [
-    "src/tokens/transformed.tokens.json"
-  ],
+  "source": ["src/tokens/figma.tokens.json"],
+  "preprocessors": ["tokens-studio"],
   "platforms": {
     "css": {
-      "transforms": [
-        "attribute/cti",
-        "name/kebab",
-        "time/seconds",
-        "html/icon",
-        "color/css",
-        "color/shortHex",
-        "toRem/pxToRem",
-        "toPX/appendPX"
-      ],
-      "files": [
-        {
-          "destination": "src/tokens/tokens.scss",
-          "format": "css/variables"
-        }
-      ]
+      "transformGroup": "tokens-studio",
+      "buildPath": "src/base/tokens/"
     }
   }
 }

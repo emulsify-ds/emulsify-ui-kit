@@ -1,0 +1,21 @@
+@use 'sass:map';
+@use 'sass:math';
+@use '../tokens/maps' as *;
+@use '../utility/rem-calc' as *;
+
+// Interpolate resolved type sizes between the sm and xl viewport widths.
+@function fluid-type($min-px, $max-px) {
+  $min: rem-calc($min-px);
+  $max: rem-calc($max-px);
+
+  @if $min > $max {
+    @error 'fluid-type() expects the smaller size first.';
+  }
+
+  $start: map.get($breakpoints, sm, min-width);
+  $end: map.get($breakpoints, xl, min-width);
+  $slope: math.div($max - $min, $end - $start);
+  $intercept: $min - $slope * $start;
+
+  @return clamp($min, calc($intercept + $slope * 100vw), $max);
+}
