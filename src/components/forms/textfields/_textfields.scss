@@ -1,5 +1,5 @@
-@use '../../../foundation/breakpoints/breakpoints' as *;
-@use '../../../foundation/utility/utility' as *;
+@use '../../../base/breakpoints/breakpoints' as *;
+@use '../../../base/utility/utility' as *;
 
 .form-item {
   @include clearfix;
@@ -18,7 +18,7 @@
   font-weight: bold;
   line-height: var(--input-label-lineheight);
 
-  @include breakpoint('xsmall') {
+  @include breakpoint('md') {
     display: block;
     margin-right: 2%;
     padding: 0.6em 0;

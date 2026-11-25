@@ -1,0 +1,13 @@
+@forward './utility/normalize';
+@forward './utility/utility';
+@forward './typography/fonts';
+
+@use './spacing/space' as *;
+
+:root {
+  container-type: inline-size;
+
+  @each $px, $size in $spacings {
+    --space-#{$px}: #{$size};
+  }
+}

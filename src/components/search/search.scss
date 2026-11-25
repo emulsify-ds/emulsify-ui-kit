@@ -1,5 +1,5 @@
-@use '../../foundation/utility/rem-calc' as *;
-@use '../../foundation/breakpoints/breakpoints' as *;
+@use '../../base/utility/rem-calc' as *;
+@use '../../base/breakpoints/breakpoints' as *;
 
 .search {
   display: block;
@@ -20,7 +20,7 @@
     max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
     visibility 0.4s;
 
-  @include breakpoint('medium') {
+  @include breakpoint('lg') {
     top: 0;
     right: 0;
     left: auto;
@@ -36,7 +36,7 @@
     max-height: rem-calc(100);
     visibility: visible;
 
-    @include breakpoint('medium') {
+    @include breakpoint('lg') {
       max-width: rem-calc(560);
     }
   }
@@ -51,7 +51,7 @@
   padding-inline: 0;
   background-color: var(--color-white);
 
-  @include breakpoint('medium') {
+  @include breakpoint('lg') {
     position: absolute;
     right: 0;
     width: auto;
@@ -73,7 +73,7 @@
   padding-left: var(--spacing-lg);
   border-bottom: 1px solid var(--color-primary-darker);
 
-  @include breakpoint('medium') {
+  @include breakpoint('lg') {
     border-bottom: 1px solid var(--color-white);
     color: var(--color-white);
   }
@@ -83,7 +83,7 @@
   opacity: 1;
   color: var(--color-primary-dark);
 
-  @include breakpoint('medium') {
+  @include breakpoint('lg') {
     color: var(--color-white);
   }
 }
@@ -100,14 +100,14 @@
     padding: var(--spacing-md);
     background-color: transparent;
 
-    @include breakpoint('medium') {
+    @include breakpoint('lg') {
       display: flex;
     }
 
     &.search__toggle {
       display: none;
 
-      @include breakpoint('medium') {
+      @include breakpoint('lg') {
         display: flex;
       }
     }
@@ -119,7 +119,7 @@
       user-select: none;
       color: var(--color-primary-dark);
 
-      @include breakpoint('medium') {
+      @include breakpoint('lg') {
         color: var(--color-white);
       }
     }
@@ -142,7 +142,7 @@
   padding: 0 var(--spacing-md);
   margin-inline: auto var(--spacing-md);
 
-  @include breakpoint('medium') {
+  @include breakpoint('lg') {
     background-color: var(--color-primary-dark);
     padding: 0 var(--spacing-xl);
     color: var(--color-white);
@@ -152,7 +152,7 @@
   span {
     display: none;
 
-    @include breakpoint('medium') {
+    @include breakpoint('lg') {
       display: block;
     }
   }

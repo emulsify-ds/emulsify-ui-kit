@@ -9,7 +9,6 @@ const sourcePath = fileURLToPath(
 ).replaceAll('\\', '/');
 const orderedRoots = [
   'base/',
-  'foundation/',
   'tokens/',
   'layout/',
   'components/',

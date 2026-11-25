@@ -6,7 +6,7 @@
     padding-top: var(--spacing-xl);
   }
 
-  @include breakpoint('large') {
+  @include breakpoint('xl') {
     padding-top: calc(var(--spacing-xl) * #{$multiplier});
   }
 }
@@ -16,7 +16,7 @@
     padding-bottom: var(--spacing-xl);
   }
 
-  @include breakpoint('large') {
+  @include breakpoint('xl') {
     padding-bottom: calc(var(--spacing-xl) * #{$multiplier});
   }
 }
@@ -31,7 +31,7 @@
     margin-top: calc(var(--spacing-xl) * #{$multiplier});
   }
 
-  @include breakpoint('large') {
+  @include breakpoint('xl') {
     margin-top: calc(var(--spacing-2xl) * #{$multiplier});
   }
 }
@@ -40,7 +40,7 @@
   &:not(:last-child) {
     margin-bottom: calc(var(--spacing-xl) * #{$multiplier});
 
-    @include breakpoint('large') {
+    @include breakpoint('xl') {
       margin-bottom: calc(var(--spacing-2xl) * #{$multiplier});
     }
   }

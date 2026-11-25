@@ -4,12 +4,12 @@
 @forward './main-link';
 @forward './main-toggle';
 
-@use '../../../foundation/breakpoints/breakpoints' as *;
+@use '../../../base/breakpoints/breakpoints' as *;
 
 .main-nav {
   display: flex;
 
-  @include breakpoint('medium') {
+  @include breakpoint('lg') {
     align-self: center;
   }
 }

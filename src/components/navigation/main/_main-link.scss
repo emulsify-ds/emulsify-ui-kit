@@ -1,6 +1,6 @@
-@use '../../../foundation/breakpoints/breakpoints' as *;
-@use '../../../foundation/motion/motion' as *;
-@use '../../../foundation/typography/typography' as *;
+@use '../../../base/breakpoints/breakpoints' as *;
+@use '../../../base/motion/motion' as *;
+@use '../../../base/typography/typography' as *;
 @use '../../link/link' as *;
 
 .main-nav__link,
@@ -19,7 +19,7 @@
     text-transform: uppercase;
   }
 
-  @include breakpoint('medium') {
+  @include breakpoint('lg') {
     border-bottom: none;
     display: inline-block;
     position: relative;
@@ -46,7 +46,7 @@
     overflow: visible;
 
     &--active::after {
-      @include breakpoint('medium') {
+      @include breakpoint('lg') {
         content: '';
         display: block;
         position: absolute;
@@ -54,7 +54,7 @@
     }
 
     &--active::before {
-      @include breakpoint('small-down') {
+      @include breakpoint('lg-down') {
         content: '';
         display: block;
         position: absolute;
@@ -85,7 +85,7 @@
   align-content: center;
   overflow: visible;
 
-  @include breakpoint('medium') {
+  @include breakpoint('lg') {
     width: auto;
   }
 
@@ -102,7 +102,7 @@
   }
 
   .main-nav__item:last-child > & {
-    @include breakpoint('medium') {
+    @include breakpoint('lg') {
       border-bottom: 0;
       padding-bottom: var(--spacing-lg);
     }
@@ -126,7 +126,7 @@
     font-size: var(--font-size-body);
   }
 
-  @include breakpoint('small-down') {
+  @include breakpoint('lg-down') {
     padding-left: var(--spacing-xl);
   }
 }

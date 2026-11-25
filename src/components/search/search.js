@@ -1,3 +1,12 @@
+const searchLayoutObservers = new WeakMap();
+const desktopSearchSelector = '.header__search';
+
+function desktopSearchesWithin(context) {
+  return context.matches?.(desktopSearchSelector)
+    ? [context]
+    : [...context.querySelectorAll(desktopSearchSelector)];
+}
+
 // Search component behavior for header
 Drupal.behaviors.headerSearch = {
   attach(context) {
@@ -15,29 +24,44 @@ Drupal.behaviors.headerSearch = {
     };
 
     // Helper to handle search form location
-    const handleSearchLocation = () => {
-      const isMobile = window.innerWidth < 1040;
-      const searchForm = document.querySelector('.search__form');
-      const desktopContainer = document.querySelector('.search__form__wrapper');
-      const mobileContainer = document.querySelector(
+    const handleSearchLocation = (desktopSearch) => {
+      const header = desktopSearch.closest('.header');
+      const searchForm = header?.querySelector('.search__form');
+      const desktopContainer = desktopSearch.querySelector(
+        '.search__form__wrapper',
+      );
+      const mobileContainer = header?.querySelector(
         '.header__menu > nav > div',
       );
 
       if (!searchForm || !mobileContainer || !desktopContainer) return;
 
-      if (isMobile) {
-        if (searchForm.parentElement !== mobileContainer) {
-          mobileContainer.prepend(searchForm);
-        }
-      } else {
-        if (searchForm.parentElement !== desktopContainer) {
-          desktopContainer.prepend(searchForm);
-        }
+      const container =
+        getComputedStyle(desktopSearch).display === 'none'
+          ? mobileContainer
+          : desktopContainer;
+      if (searchForm.parentElement !== container) {
+        container.prepend(searchForm);
+        closeSearch();
       }
     };
 
-    // Initial calls
-    handleSearchLocation();
+    const desktopSearches = new Set(desktopSearchesWithin(context));
+    const closestDesktopSearch = context
+      .closest?.('.header')
+      ?.querySelector(desktopSearchSelector);
+    if (closestDesktopSearch) desktopSearches.add(closestDesktopSearch);
+    desktopSearches.forEach(handleSearchLocation);
+
+    once('header-search-layout', [...desktopSearches]).forEach(
+      (desktopSearch) => {
+        const observer = new ResizeObserver(() =>
+          handleSearchLocation(desktopSearch),
+        );
+        observer.observe(desktopSearch);
+        searchLayoutObservers.set(desktopSearch, observer);
+      },
+    );
 
     // Search Toggles
     context.querySelectorAll('.search__toggle').forEach((toggle) => {
@@ -62,16 +86,19 @@ Drupal.behaviors.headerSearch = {
     // Global listeners.
     if (!window.headerSearchInitialized) {
       window.headerSearchInitialized = true;
-      const mediaQuery = window.matchMedia('(min-width: 1040px)');
-      const handleBreakpointChange = () => {
-        handleSearchLocation();
-        closeSearch();
-      };
-
-      mediaQuery.addEventListener('change', handleBreakpointChange);
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeSearch();
       });
     }
+  },
+  detach(context, settings, trigger) {
+    if (trigger !== 'unload') return;
+
+    once
+      .remove('header-search-layout', desktopSearchesWithin(context))
+      .forEach((desktopSearch) => {
+        searchLayoutObservers.get(desktopSearch)?.disconnect();
+        searchLayoutObservers.delete(desktopSearch);
+      });
   },
 };

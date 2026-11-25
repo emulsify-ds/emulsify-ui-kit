@@ -1,4 +1,4 @@
-@use '../../foundation/utility/utility' as *;
+@use '../../base/utility/utility' as *;
 
 .status__list {
   @include list-reset;

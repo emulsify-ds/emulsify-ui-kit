@@ -1,9 +1,10 @@
-@use '../../foundation/breakpoints/breakpoints' as *;
-@use '../../foundation/utility/utility' as *;
-@use '../../foundation/spacing/spacing' as *;
-@use '../../foundation/typography/typography' as *;
-@use '../../foundation/motion/motion' as *;
-@use '../../foundation/utility/rem-calc' as *;
+@use '../../base/breakpoints/breakpoints' as *;
+@use '../../base/breakpoints/legacy-breakpoints' as *;
+@use '../../base/utility/utility' as *;
+@use '../../base/spacing/spacing' as *;
+@use '../../base/typography/typography' as *;
+@use '../../base/motion/motion' as *;
+@use '../../base/utility/rem-calc' as *;
 @use '../../components/link/link' as *;
 
 // Utilize custom properties so they can be rescoped.
@@ -397,13 +398,13 @@
 
 .animate-sections > .container:not(.no-animate) {
   @media (prefers-reduced-motion: no-preference) {
-    @include breakpoint('medium') {
+    @include breakpoint('lg') {
       opacity: 0;
     }
   }
 
   &.scrolled {
-    @include breakpoint('medium') {
+    @include breakpoint('lg') {
       @include animate-slide-up-fade-in($speed: 300ms, $delay: 100ms);
     }
   }
@@ -412,7 +413,7 @@
 article > .container:first-child:not(.container--with-bg) {
   @include section-padding-top(2);
 
-  @include breakpoint('medium') {
+  @include breakpoint('lg') {
     @include section-padding-top(3.5);
   }
 }
@@ -420,7 +421,7 @@ article > .container:first-child:not(.container--with-bg) {
 article > .container:last-child:not(.container--with-bg) {
   @include section-padding-top(2);
 
-  @include breakpoint('medium') {
+  @include breakpoint('lg') {
     @include section-padding-top(3.5);
   }
 }
@@ -428,7 +429,7 @@ article > .container:last-child:not(.container--with-bg) {
 article > .container:not(.container--with-bg) + .container.container--with-bg {
   @include section-padding-top(2);
 
-  @include breakpoint('medium') {
+  @include breakpoint('lg') {
     @include section-padding-top(3.5);
   }
 }
@@ -436,7 +437,7 @@ article > .container:not(.container--with-bg) + .container.container--with-bg {
 article > .container--with-bg + .container:not(.container--with-bg) {
   @include section-padding-top(2);
 
-  @include breakpoint('medium') {
+  @include breakpoint('lg') {
     @include section-padding-top(3.5);
   }
 }
@@ -452,7 +453,7 @@ article > .container--with-bg + .container:not(.container--with-bg) {
 }
 
 .container.exposed-filters-visual-view {
-  @include breakpoint('small-down') {
+  @include breakpoint('lg-down') {
     padding: 0;
   }
 }

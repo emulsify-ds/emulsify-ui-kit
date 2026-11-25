@@ -33,10 +33,11 @@
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --config ./config/jest.config.js",
     "test:contract": "node --test tests/contract.test.mjs",
     "test:release": "node --test tests/release.test.mjs",
+    "test:sass": "node --test tests/sass.test.mjs",
     "tokens:build": "npm run tokens:transform && npm run style-dictionary:build",
     "tokens:transform": "node ./src/tokens/transform-tokens.mjs",
     "twatch": "jest --no-coverage --watch --verbose",
-    "validate": "npm run lint && npm run test:contract && npm run test:release && npm test",
+    "validate": "npm run lint && npm run test:contract && npm run test:release && npm run test:sass && npm test",
     "visreg": "percy storybook http://localhost:6006",
     "visreg-ci": "percy storybook .out",
     "vite": "vite build --watch --config node_modules/@emulsify/core/config/vite/vite.config.js"
@@ -86,6 +87,8 @@
     "lint-staged": "^17.6.1",
     "postcss-scss": "^4.0.9",
     "postcss-value-parser": "^4.2.0",
+    "sass": "^1.108.2",
+    "sass-true": "^10.1.0",
     "semantic-release": "^25.0.9",
     "style-dictionary": "^5.8.0",
     "token-transformer": "^0.0.33"

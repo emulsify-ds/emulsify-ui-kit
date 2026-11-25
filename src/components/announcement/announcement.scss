@@ -1,5 +1,5 @@
-@use '../../foundation/typography/typography' as *;
-@use '../../foundation/breakpoints/breakpoints' as *;
+@use '../../base/typography/typography' as *;
+@use '../../base/breakpoints/breakpoints' as *;
 
 .announcement {
   display: flex;
@@ -8,7 +8,7 @@
   row-gap: var(--spacing-lg);
   padding: var(--spacing-xl);
 
-  @include breakpoint('medium') {
+  @include breakpoint('lg') {
     flex-direction: row;
     column-gap: var(--spacing-xl);
     align-items: center;

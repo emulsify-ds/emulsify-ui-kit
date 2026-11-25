@@ -1,0 +1,28 @@
+@use 'sass:map';
+@use '../utility/rem-calc' as *;
+
+$spacings: (
+  2: rem-calc(2),
+  4: rem-calc(4),
+  8: rem-calc(8),
+  12: rem-calc(12),
+  16: rem-calc(16),
+  20: rem-calc(20),
+  24: rem-calc(24),
+  32: rem-calc(32),
+  40: rem-calc(40),
+  48: rem-calc(48),
+  56: rem-calc(56),
+  64: rem-calc(64),
+  80: rem-calc(80),
+  96: rem-calc(96),
+  120: rem-calc(120),
+);
+
+@function space($px) {
+  @if not map.has-key($spacings, $px) {
+    @error 'Unknown spacing "#{$px}". Available steps: #{map.keys($spacings)}.';
+  }
+
+  @return var(--space-#{$px}, map.get($spacings, $px));
+}

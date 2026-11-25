@@ -1,6 +1,6 @@
-@use '../../foundation/breakpoints/breakpoints' as *;
-@use '../../foundation/typography/typography' as *;
-@use '../../foundation/spacing/spacing' as *;
+@use '../../base/breakpoints/breakpoints' as *;
+@use '../../base/typography/typography' as *;
+@use '../../base/spacing/spacing' as *;
 @use '../button/button' as *;
 @use '../link/link' as *;
 
@@ -176,7 +176,7 @@
   &[data-component-layout='inline'] > .container__inner {
     flex-flow: column nowrap;
 
-    @include breakpoint('medium') {
+    @include breakpoint('lg') {
       flex-flow: row nowrap;
     }
   }

@@ -1,0 +1,101 @@
+@use 'true' as test with (
+  $terminal-output: false
+);
+@use '../src/base' as base;
+
+@include test.describe('space()') {
+  @include test.it('uses the spacing property with a rem fallback') {
+    @include test.assert-equal(base.space(2), var(--space-2, 0.125rem));
+    @include test.assert-equal(base.space(40), var(--space-40, 2.5rem));
+    @include test.assert-equal(base.space(120), var(--space-120, 7.5rem));
+  }
+}
+
+@include test.describe('breakpoint()') {
+  @include test.it('uses a container query by default') {
+    @include test.assert {
+      @include test.output {
+        @include base.breakpoint('md') {
+          display: block;
+        }
+      }
+
+      @include test.expect {
+        @container (min-width: 48rem) {
+          display: block;
+        }
+      }
+    }
+  }
+
+  @include test.it('uses a viewport query when requested') {
+    @include test.assert {
+      @include test.output {
+        @include base.breakpoint('lg-down', $media: true) {
+          display: block;
+        }
+      }
+
+      @include test.expect {
+        @media (max-width: 63.95rem) {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@include test.describe('grid-column()') {
+  @include test.it('uses the default container query for automatic placement') {
+    @include test.assert {
+      @include test.output {
+        @include base.grid-column(5);
+      }
+
+      @include test.expect {
+        @container (min-width: 48rem) {
+          grid-column: auto / span 5;
+        }
+      }
+    }
+  }
+
+  @include test.it('uses an explicit grid start and breakpoint') {
+    @include test.assert {
+      @include test.output {
+        @include base.grid-column(7, $start: 6, $from: 'lg');
+      }
+
+      @include test.expect {
+        @container (min-width: 64rem) {
+          grid-column: 6 / span 7;
+        }
+      }
+    }
+  }
+
+  @include test.it('writes an unconditional declaration with no breakpoint') {
+    @include test.assert {
+      @include test.output {
+        @include base.grid-column(12, $from: none);
+      }
+
+      @include test.expect {
+        grid-column: auto / span 12;
+      }
+    }
+  }
+}
+
+@include test.describe('safe-map-get()') {
+  @include test.it('retrieves values including false and null') {
+    $values: (
+      focus: black,
+      enabled: false,
+      override: null,
+    );
+    @include test.assert-equal(base.safe-map-get($values, focus), black);
+    @include test.assert-equal(base.safe-map-get($values, enabled), false);
+    @include test.assert-equal(base.safe-map-get($values, override), null);
+  }
+}

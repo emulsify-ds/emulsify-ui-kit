@@ -1,0 +1,10 @@
+@use '../utility/rem-calc' as *;
+
+// Temporary layout widths. Step 6 replaces their uses and step 15 removes them.
+$xsmall: rem-calc(610);
+$small: rem-calc(767);
+$medium: rem-calc(1040);
+$large: rem-calc(1280);
+$xlarge: rem-calc(1640);
+$xxlarge: rem-calc(1920);
+$xxxlarge: rem-calc(2560);

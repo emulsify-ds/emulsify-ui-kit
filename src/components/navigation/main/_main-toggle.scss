@@ -1,6 +1,6 @@
-@use '../../../foundation/breakpoints/breakpoints' as *;
-@use '../../../foundation/motion/motion' as *;
-@use '../../../foundation/utility/utility' as *;
+@use '../../../base/breakpoints/breakpoints' as *;
+@use '../../../base/motion/motion' as *;
+@use '../../../base/utility/utility' as *;
 
 .main-nav__toggle {
   font-size: 0;
@@ -12,7 +12,7 @@
   }
 
   &:not([data-menu-level='level-1']) {
-    @include breakpoint('medium') {
+    @include breakpoint('lg') {
       @include animate-hidden;
 
       & {
@@ -24,7 +24,7 @@
   &[data-menu-level='level-0'] {
     padding: var(--button-padding-x);
 
-    @include breakpoint('medium') {
+    @include breakpoint('lg') {
       display: none;
     }
 
@@ -47,7 +47,7 @@
     height: auto;
     z-index: 1;
 
-    @include breakpoint('medium') {
+    @include breakpoint('lg') {
       position: absolute;
     }
 
@@ -68,12 +68,12 @@
     top: 0;
     right: 0;
 
-    @include breakpoint('medium') {
+    @include breakpoint('lg') {
       top: var(--spacing-md);
       right: var(--spacing-lg);
     }
 
-    @include breakpoint('small-down') {
+    @include breakpoint('lg-down') {
       border-radius: 0;
       background-color: var(--button-color-bkg);
       padding: calc(var(--button-padding-x) / 4);
@@ -89,7 +89,7 @@
 
     &:focus,
     &:hover {
-      @include breakpoint('small-down') {
+      @include breakpoint('lg-down') {
         background-color: var(--button-color-bkg);
 
         .icon {
@@ -106,17 +106,17 @@
     background-color: var(--button-color-bkg);
     padding: calc(var(--button-padding-x) / 4);
 
-    @include breakpoint('medium') {
+    @include breakpoint('lg') {
       top: var(--spacing-sm);
       right: var(--spacing-sm);
     }
 
-    @include breakpoint('small-down') {
+    @include breakpoint('lg-down') {
       border-radius: 0;
     }
 
     .sub--open > & {
-      @include breakpoint('small-down') {
+      @include breakpoint('lg-down') {
         border-radius: var(--button-radius) var(--button-radius) 0 0;
       }
     }
@@ -137,7 +137,7 @@
   }
 
   .main-nav__item.main-nav__item--level-0:hover > & {
-    @include breakpoint('medium') {
+    @include breakpoint('lg') {
       .icon {
         transform: rotate(180deg);
       }
