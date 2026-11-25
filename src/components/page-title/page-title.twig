@@ -180,11 +180,11 @@
 		{% endif %}
 
 		{# Main H1 for the page #}
-		{% include "@components/typography/heading/heading.twig" with {
+		{{ include('@components/heading/heading.twig', {
 			heading__level: '1',
-			heading: page_title__heading,
+			heading__content: page_title__heading,
 			heading__blockname: page_title__base_class,
-		} %}
+		}, with_context: false) }}
 
 		{# Optional subheading #}
 		{% if page_title__subheading %}

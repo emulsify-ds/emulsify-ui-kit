@@ -26,10 +26,10 @@
   {% endif %}
   {# Render the main content #}
   <div {{ bem('content', [announcement__variant], announcement__base_class) }}>
-    {% include "@components/typography/heading/heading.twig" with {
+    {{ include('@components/heading/heading.twig', {
       heading__level: announcement__heading__level|default('4'),
-      heading: announcement__title,
-    } %}
+      heading__content: announcement__title,
+    }, with_context: false) }}
     <p>{{ announcement__content }}</p>
   </div>
   {# Render the action button #}

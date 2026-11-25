@@ -1,4 +1,10 @@
 {
-  "components": ["cta", "layout/container", "layout/grid", "layout/placeholder"],
+  "components": [
+    "cta",
+    "heading",
+    "layout/container",
+    "layout/grid",
+    "layout/placeholder"
+  ],
   "enforceGlobal": false
 }

@@ -64,11 +64,11 @@
 <div {{ add_attributes(banner__attributes) }}>
   <div {{ bem('content', [], banner__base_class) }}>
     {% if banner__heading %}
-      {% include "@components/typography/heading/heading.twig" with {
-        heading: banner__heading,
+      {{ include('@components/heading/heading.twig', {
+        heading__content: banner__heading,
         heading__level: banner__heading__level|default('4'),
         heading__blockname: banner__base_class,
-      } %}
+      }, with_context: false) }}
     {% endif %}
 
     {% if banner__text %}

@@ -151,12 +151,12 @@
         {
           "name": "accordion",
           "structure": "components",
-          "dependency": ["button", "icons", "typography"]
+          "dependency": ["button", "icons", "heading", "typography"]
         },
         {
           "name": "announcement",
           "structure": "components",
-          "dependency": ["button", "icons", "typography"]
+          "dependency": ["button", "icons", "heading"]
         },
         {
           "name": "audio-player",
@@ -178,7 +178,7 @@
           "name": "card",
           "structure": "components",
           "required": true,
-          "dependency": ["link", "image", "typography"]
+          "dependency": ["link", "image", "heading", "typography"]
         },
         {
           "name": "cta",
@@ -187,6 +187,12 @@
         },
         {
           "name": "forms",
+          "structure": "components",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "heading",
           "structure": "components",
           "required": true,
           "dependency": []
@@ -257,7 +263,7 @@
         {
           "name": "text-with-image",
           "structure": "components",
-          "dependency": ["image", "link", "typography"]
+          "dependency": ["image", "link", "heading", "typography"]
         },
         {
           "name": "typography",

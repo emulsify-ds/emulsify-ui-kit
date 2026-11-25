@@ -30,11 +30,11 @@
     {% endif %}
     {# Heading #}
     {% if call_to_action__heading %}
-      {% include "@components/typography/heading/heading.twig" with {
-        heading: call_to_action__heading,
+      {{ include('@components/heading/heading.twig', {
+        heading__content: call_to_action__heading,
         heading__level: '2',
         heading__blockname: call_to_action__base_class,
-      } %}
+      }, with_context: false) }}
     {% endif %}
     {# Text #}
     {% if call_to_action__text %}
