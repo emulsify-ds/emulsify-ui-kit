@@ -141,10 +141,10 @@
           "description": "Icon - Triangle Exclamation"
         },
         {
-          "name": "icon-twitter",
-          "path": "./assets/icons/twitter.svg",
-          "destinationPath": "./assets/icons/twitter.svg",
-          "description": "Icon - Twitter"
+          "name": "icon-x",
+          "path": "./assets/icons/x.svg",
+          "destinationPath": "./assets/icons/x.svg",
+          "description": "Icon - X"
         }
       ],
       "components": [

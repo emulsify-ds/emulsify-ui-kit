@@ -3,7 +3,7 @@ import { createRequire } from 'node:module';
 import test from 'node:test';
 import { analyzeCommits } from '@semantic-release/commit-analyzer';
 import { generateNotes } from '@semantic-release/release-notes-generator';
-import { resolveConfig } from '@semantic-release/core';
+import resolveConfig from 'semantic-release/lib/get-config.js';
 import * as rollout from '../config/semantic-release-v2.js';
 
 const require = createRequire(import.meta.url);
@@ -96,11 +96,7 @@ test('the configured plugin pipeline forces the rollout once and then follows co
     stdout: process.stdout,
     stderr: process.stderr,
   };
-  const { options, plugins } = await resolveConfig(
-    context,
-    { dryRun: true },
-    { buildPlugins: true },
-  );
+  const { options, plugins } = await resolveConfig(context, { dryRun: true });
   for (const [version, message, expected] of [
     ['1.11.0', 'Merge release-2.x', 'major'],
     ['1.12.0', 'fix: update dependencies', 'major'],
@@ -139,7 +135,7 @@ test('release notes include features, fixes, and breaking changes', async () => 
           'feat!: replace the old API\n\nBREAKING CHANGE: consumers must use the new API',
           3,
         ),
-        commit('chore!: require Node 26', 4),
+        commit('chore!: require Node 24', 4),
       ],
     },
   );
@@ -148,7 +144,7 @@ test('release notes include features, fixes, and breaking changes', async () => 
     'add the new component',
     'repair the old component',
     'consumers must use the new API',
-    'require Node 26',
+    'require Node 24',
   ]) {
     assert.ok(notes.includes(text), `Release notes omit ${text}`);
   }

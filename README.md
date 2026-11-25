@@ -28,7 +28,18 @@ The Emulsify UI Kit has two distinct building blocks: the Figma and the code rep
 
 ### Use the Emulsify CLI
 
-Instructions to come. TKTK
+Use Node.js 24.13.0 or newer and run these commands from the directory where you want to create the Drupal starter.
+
+```sh
+npm install -g @emulsify/cli@2.4.1
+emulsify init "Emulsify Drupal Starter" . --platform drupal --yes
+cd emulsify_drupal_starter
+emulsify system install \
+  --repository https://github.com/emulsify-ds/emulsify-ui-kit.git \
+  --checkout release-2.x --all --yes
+```
+
+Replace `release-2.x` with the tag or branch you want to install.
 
 ### Deploy to Netlify
 
@@ -51,7 +62,7 @@ A complete component meets the following criteria:
 1. Design tokens are defined as their own set in Figma, in the Token Studio plugin, and they use references to values defined in `semantic` as much as possible.
 2. The component has an independent frame in Figma.
 3. The component's CSS file uses the generated design tokens as much as possible. See button example below.
-4. A component's story connects to the corresponding Figma frame, defined in `.storybook/configma.json`.
+4. A component's story connects to the corresponding Figma frame, defined in `config/configma.json`.
 5. The component passes WCAG 2 AA.
 
 ## Example component
@@ -105,7 +116,7 @@ See [this whiteboard](https://www.figma.com/file/l6MIPQCewbIJoKvZpxhAwr/Token-Na
 
 1. In Figma, select the frame to share and activate the Share button (in the upper right hand corner).
 2. In the share modal make sure that "Link to selected frame" is checked and activate "Copy link".
-3. Open `.storybook/configma.json` and confirm the following:
+3. Open `config/configma.json` and confirm the following:
 4. Using this example: `https://www.figma.com/file/[FIGMA_FILE_ID]/[FIGMA_FILE_NAME]?node-id=[NODE_ID]`
 5. Confirm that `url` has the correct `FIGMA_FILE_ID` and `FIGMA_FILE_NAME`.
 6. Add your component name to the file as a key with the `NODE_ID` being the value.
@@ -123,7 +134,7 @@ Button.parameters = {
 
 ## Contributing to this UI Kit
 
-Use the Node.js version in `.nvmrc` (26.13.1) and install the locked dependencies:
+Use Node.js 24 LTS (`.nvmrc`), version 24.13.0 or newer, and install the locked dependencies:
 
 ```sh
 nvm use
