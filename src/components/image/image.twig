@@ -1,24 +1,74 @@
-{% if image__show_caption or image__show_copyright %}
-  {% set image_media %}
-    {% block figure_content %}
-      {% include "@components/image/_responsive-image.twig" with {
-        responsive_image__blockname: responsive_image__blockname|default(figure__blockname),
-      } %}
-    {% endblock %}
+{#
+ # Responsive image with optional caption and credit.
+ # Props: image__src, image__alt, image__decorative, image__srcset,
+ # image__sizes, image__sources, image__width, image__height, image__loading,
+ # image__title, image__url, image__caption, image__credit, image__blockname,
+ # image__modifiers, image__additional_classes, image__attributes.
+ #}
+
+{% set image__decorative = image__decorative is same as(true) %}
+{% set image__alt = image__decorative ? '' : image__alt|default('') %}
+{% if image__src and (image__decorative or image__alt|trim is not empty) %}
+  {% set image__attributes = image__attributes|default({}) %}
+  {% set image__classes = image__attributes.class|default([]) %}
+  {% set image__classes = image__classes is iterable ? image__classes : [image__classes] %}
+  {% set image__classes = ['image']|merge(image__classes)|merge(image__additional_classes|default([])) %}
+  {% set image__attributes = image__attributes|merge({
+    class: bem('image', image__modifiers, image__blockname, image__classes),
+    src: image__src,
+    alt: null,
+    srcset: image__srcset|default(null),
+    sizes: image__sizes|default(null),
+    width: image__width|default(null),
+    height: image__height|default(null),
+    loading: image__loading|default('lazy'),
+    title: image__title|default(null),
+  }) %}
+
+  {% set image %}
+    {% if image__sources is not empty %}
+      <picture {{ bem('picture', [], 'image') }}>
+        {% for source in image__sources %}
+          <source {{ add_attributes({
+            srcset: source.srcset,
+            sizes: source.sizes|default(null),
+            media: source.media|default(null),
+            type: source.type|default(null),
+          }) }}>
+        {% endfor %}
+    {% endif %}
+    <img {{ add_attributes(image__attributes) }} alt="{{ image__alt|e('html_attr') }}">
+    {% if image__sources is not empty %}
+      </picture>
+    {% endif %}
   {% endset %}
 
-  {% embed "@components/image/_figure.twig" with {
-    figure__caption: image__caption,
-    figure__copyright: image__copyright,
-    figure__show_caption: image__show_caption,
-    figure__show_copyright: image__show_copyright,
-  } %}
-    {% block figure__content %}
-      {{ image_media }}
-    {% endblock %}
-  {% endembed %}
-{% else %}
-  {% block responsive_image %}
-    {% include "@components/image/_responsive-image.twig" %}
-  {% endblock %}
+  {% set image__url = image__url|default('')|trim %}
+  {% set image__scheme = image__url|split(':')|first %}
+  {% if ':' in image__url and '/' not in image__scheme and '?' not in image__scheme and '#' not in image__scheme and image__scheme|lower not in ['http', 'https'] %}
+    {% set image__url = '' %}
+  {% endif %}
+  {% set image__media %}
+    {% if image__url and not image__decorative %}
+      <a {{ add_attributes({ class: bem('link', [], 'image'), href: image__url }) }}>{{ image }}</a>
+    {% else %}
+      {{ image }}
+    {% endif %}
+  {% endset %}
+
+  {% if image__caption|default('')|trim or image__credit|default('')|trim %}
+    <figure {{ bem('figure', [], 'image') }}>
+      {{ image__media }}
+      <figcaption {{ bem('caption', [], 'image') }}>
+        {% if image__caption|default('')|trim %}
+          <span>{{ image__caption|e('html', null, true) }}</span>
+        {% endif %}
+        {% if image__credit|default('')|trim %}
+          <span {{ bem('credit', [], 'image') }}>{{ image__credit|e('html', null, true) }}</span>
+        {% endif %}
+      </figcaption>
+    </figure>
+  {% else %}
+    {{ image__media }}
+  {% endif %}
 {% endif %}

@@ -17,10 +17,6 @@ export default {
       name: 'Image Alt Text',
       control: 'text',
     },
-    card__image__output_image_tag: {
-      name: 'Output Image Tag',
-      control: 'boolean',
-    },
     card__heading: {
       name: 'Heading',
       control: 'text',
@@ -55,8 +51,6 @@ export const CardVertical = {
   args: {
     card__image__src: properties.card__image__src.data,
     card__image__alt: properties.card__image__alt.data,
-    card__image__output_image_tag:
-      properties.card__image__output_image_tag.data,
     card__heading: properties.card__heading.data,
     card__subheading: properties.card__subheading.data,
     card__body: properties.card__body.data,
@@ -70,8 +64,6 @@ export const cardHorizontal = {
   args: {
     card__image__src: 'https://placehold.co/250x200',
     card__image__alt: properties.card__image__alt.data,
-    card__image__output_image_tag:
-      properties.card__image__output_image_tag.data,
     card__heading: properties.card__heading.data,
     card__subheading: properties.card__subheading.data,
     card__body: properties.card__body.data,

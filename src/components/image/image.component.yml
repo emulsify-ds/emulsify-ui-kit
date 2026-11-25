@@ -1,0 +1,120 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Image
+description: Responsive image with optional art direction, caption, and credit.
+group: Components
+status: stable
+props:
+  type: object
+  required: [image__src, image__alt]
+  oneOf:
+    - properties:
+        image__alt:
+          pattern: '\S'
+        image__decorative:
+          enum: [false, null]
+    - required: [image__decorative]
+      properties:
+        image__decorative:
+          enum: [true]
+  properties:
+    image__src:
+      type: string
+      title: Image source
+      description: URL of the fallback image.
+      minLength: 1
+      examples: [assets/images/example/basic-camera-image.png]
+    image__alt:
+      type: string
+      title: Alternative text
+      description: Describe the meaningful content or link purpose. Use an empty string for a decorative image.
+      examples: ['A film camera on a tripod']
+    image__decorative:
+      type: [boolean, 'null']
+      title: Decorative image
+      description: Use empty alternative text and render the image without a link.
+      default: false
+    image__srcset:
+      type: [string, 'null']
+      title: Source set
+      description: Comma-separated candidates and their widths or pixel densities.
+      default: null
+    image__sizes:
+      type: [string, 'null']
+      title: Sizes
+      description: Browser slot sizes for width-based responsive candidates.
+      default: null
+    image__sources:
+      type: [array, 'null']
+      title: Picture sources
+      description: Ordered art-direction or format alternatives for a picture element.
+      default: []
+      items:
+        type: object
+        required: [srcset]
+        properties:
+          srcset:
+            type: string
+          sizes:
+            type: [string, 'null']
+          media:
+            type: [string, 'null']
+          type:
+            type: [string, 'null']
+    image__width:
+      type: [integer, 'null']
+      title: Width
+      description: Intrinsic width of the fallback image in pixels.
+      minimum: 1
+      default: null
+    image__height:
+      type: [integer, 'null']
+      title: Height
+      description: Intrinsic height of the fallback image in pixels.
+      minimum: 1
+      default: null
+    image__loading:
+      type: [string, 'null']
+      title: Loading behavior
+      description: Use eager for an image above the fold.
+      enum: [lazy, eager, null]
+      default: lazy
+    image__title:
+      type: [string, 'null']
+      title: Advisory title
+      description: Optional supplementary title for the image.
+      default: null
+    image__url:
+      type: [string, 'null']
+      title: Destination URL
+      description: Relative or HTTP destination for an image that serves as a link.
+      default: null
+    image__caption:
+      type: [string, 'null']
+      title: Caption
+      description: Visible caption. A caption or credit creates a figure.
+      default: null
+    image__credit:
+      type: [string, 'null']
+      title: Credit
+      description: Visible attribution or copyright notice.
+      default: null
+    image__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Parent block for the BEM image class.
+    image__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers for the image.
+      items:
+        type: string
+    image__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: Extra classes applied to the image element.
+      items:
+        type: string
+    image__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Extra attributes applied to the image element.

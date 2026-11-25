@@ -24,16 +24,15 @@
   <div {{ add_attributes(media_box__attributes) }}>
     {% block media_box__media %}
       {% if media_box__type == 'image' %}
-        {% include "@components/image/image.twig" with {
-          output_image_tag: true,
-          image__show_caption: media_box__show_caption,
-          image__show_copyright: media_box__show_copyright,
-          image__sizes: '100vw',
-          image__src: 'https://placehold.co/320x213',
-          image__srcset: 'https://placehold.co/320x213 320w, https://placehold.co/480x320 480w, https://placehold.co/640x427 640w, https://placehold.co/800x533 800w, https://placehold.co/960x640 960w, https://placehold.co/1120x747 1120w, https://placehold.co/1280x853 1280w, https://placehold.co/1440x960 1440w, https://placehold.co/1600x1067 1600w, https://placehold.co/1760x1173 1760w, https://placehold.co/1920x1280 1920w, https://placehold.co/2080x1387 2080w, https://placehold.co/2240x1493 2240w, https://placehold.co/2400x1600 2400w',
-          image__caption: media_box__caption,
-          image__copyright: media_box__copyright,
-        } %}
+        {{ include('@components/image/image.twig', {
+          image__src: media_box__image__src|default('https://placehold.co/320x213'),
+          image__alt: media_box__image__alt|default(''),
+          image__decorative: media_box__image__decorative or media_box__image__src is empty,
+          image__srcset: media_box__image__srcset,
+          image__sizes: media_box__image__sizes|default('100vw'),
+          image__caption: media_box__show_caption ? media_box__caption : null,
+          image__credit: media_box__show_copyright ? media_box__copyright : null,
+        }, with_context: false) }}
       {% else %}
         {% include "@components/video/video.twig" with {
           video__type: 'html5',

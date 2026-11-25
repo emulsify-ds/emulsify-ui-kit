@@ -12,10 +12,11 @@
     }, with_context: false) }}
 		<p>In the first semester, students embark on a captivating journey through time, exploring the evolution of cinema from its early beginnings to the present day. They delve into the works of influential filmmakers, iconic films, and significant movements, cultivating a deep appreciation for the artistic, cultural, and social impact of cinema.</p>
 		<br>
-		{% include "@components/image/responsive-image.twig" with {
+		{{ include('@components/image/image.twig', {
 			image__src: '/assets/images/example/basic-camera-image.png',
 			image__alt: '',
-		} %}
+			image__decorative: true,
+		}, with_context: false) }}
 		<br>
 		{{ include('@components/heading/heading.twig', {
       heading__content: 'Analyzing Films: Unraveling the Layers of Meaning',

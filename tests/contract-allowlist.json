@@ -5,6 +5,7 @@
     "cta",
     "heading",
     "icon",
+    "image",
     "layout/container",
     "layout/grid",
     "layout/placeholder",
