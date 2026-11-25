@@ -56,9 +56,10 @@
   }, with_context: false) }}
 	<div {{ add_attributes(accordion__item__content__attributes) }}>
 		{% block accordion__item__content %}
-			{% include "@components/typography/text/text.twig" with {
+			{{ include('@components/text/_text.twig', {
+        text__element: 'div',
         text__content: accordion__item__content,
-      } %}
+      }, with_context: false) }}
 		{% endblock %}
 	</div>
 </div>

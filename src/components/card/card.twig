@@ -90,12 +90,12 @@
 
 		{# Body #}
 		{% if card__body %}
-			{% include "@components/typography/text/paragraph.twig" with {
-        paragraph_base_class: card__body__base_class|default('body'),
-        paragraph_modifiers: card__body__modifiers,
-        paragraph_blockname: card__base_class,
-        paragraph_content: card__body,
-      } %}
+			{{ include('@components/text/_text.twig', {
+        text__base_class: card__body__base_class|default('body'),
+        text__modifiers: card__body__modifiers,
+        text__blockname: card__base_class,
+        text__content: card__body,
+      }, with_context: false) }}
 		{% endif %}
 		{# Link #}
 		{% if card__link__url %}

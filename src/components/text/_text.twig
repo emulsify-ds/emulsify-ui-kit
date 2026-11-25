@@ -1,0 +1,25 @@
+{#
+ # Single text element for composed components.
+ #
+ # Props:
+ # - text__element: p (default), div, or span.
+ # - text__content: Text or processed markup valid for the chosen element.
+ # - text__base_class: BEM base class, default text.
+ # - text__blockname: Optional parent BEM block.
+ # - text__modifiers: BEM modifiers for the element.
+ # - text__additional_classes: Additional classes for the element.
+ # - text__attributes: Additional attributes for the element.
+ #
+ # Slots:
+ # - text__element_content: Replaces the default element content.
+ #}
+{% set text__element = text__element in ['p', 'div', 'span'] ? text__element : 'p' %}
+{% set text__attributes = text__attributes|default({})|merge({
+  class: bem(text__base_class|default('text'), text__modifiers, text__blockname, text__additional_classes),
+}) %}
+
+<{{ text__element }} {{ add_attributes(text__attributes) }}>
+  {%- block text__element_content -%}
+    {{- text__element_content|default(text__content) -}}
+  {%- endblock -%}
+</{{ text__element }}>

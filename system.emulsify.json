@@ -151,7 +151,7 @@
         {
           "name": "accordion",
           "structure": "components",
-          "dependency": ["button", "icons", "heading", "typography"]
+          "dependency": ["button", "icons", "heading", "text"]
         },
         {
           "name": "announcement",
@@ -178,7 +178,7 @@
           "name": "card",
           "structure": "components",
           "required": true,
-          "dependency": ["link", "image", "heading", "typography"]
+          "dependency": ["link", "image", "heading", "text"]
         },
         {
           "name": "cta",
@@ -263,7 +263,7 @@
         {
           "name": "text-with-image",
           "structure": "components",
-          "dependency": ["image", "link", "heading", "typography"]
+          "dependency": ["image", "link", "heading", "text"]
         },
         {
           "name": "typography",

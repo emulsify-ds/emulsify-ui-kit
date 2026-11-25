@@ -14,10 +14,10 @@
   }, with_context: false) }}
 
   {% block stats_group_item__description %}
-    {% include "@components/typography/text/text.twig" with {
+    {{ include('@components/text/_text.twig', {
       text__content: stats_group_item__description,
       text__blockname: stats_group__base_class,
       text__element: 'div',
-    } %}
+    }, with_context: false) }}
   {% endblock %}
 </div>

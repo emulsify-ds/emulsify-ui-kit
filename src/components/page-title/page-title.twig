@@ -170,12 +170,12 @@
           <a {{ add_attributes(page_title__overline__link_attributes) }}>{{ page_title__overline|raw }}</a>
         </p>
       {% else %}
-        {% include "@components/typography/text/text.twig" with {
+        {{ include('@components/text/_text.twig', {
           text__element: 'p',
           text__content: page_title__overline,
           text__base_class: 'overline',
           text__blockname: page_title__base_class,
-        } %}
+        }, with_context: false) }}
       {% endif %}
 		{% endif %}
 
@@ -188,12 +188,12 @@
 
 		{# Optional subheading #}
 		{% if page_title__subheading %}
-			{% include "@components/typography/text/text.twig" with {
+			{{ include('@components/text/_text.twig', {
         text__element: 'p',
         text__content: page_title__subheading,
         text__base_class: 'subheading',
         text__blockname: page_title__base_class,
-      } %}
+      }, with_context: false) }}
 		{% endif %}
 
     {# Optional description #}

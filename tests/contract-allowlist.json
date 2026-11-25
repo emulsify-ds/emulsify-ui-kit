@@ -4,7 +4,8 @@
     "heading",
     "layout/container",
     "layout/grid",
-    "layout/placeholder"
+    "layout/placeholder",
+    "text"
   ],
   "enforceGlobal": false
 }

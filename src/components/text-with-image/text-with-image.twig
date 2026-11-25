@@ -40,10 +40,11 @@
         }, with_context: false) }}
       {% endif %}
       {# Text #}
-      {% include "@components/typography/text/text.twig" with {
+      {{ include('@components/text/_text.twig', {
+        text__element: 'div',
         text__content: text_with_image__text,
         text__blockname: text_with_image__base_class,
-      } %}
+      }, with_context: false) }}
       {# optional link #}
       {% if text_with_image__link__url %}
         {% include "@components/link/link.twig" with {
@@ -67,10 +68,11 @@
 
       {% if text_with_image__show_captions
         and text_content__image %}
-          {% include "@components/typography/text/text.twig" with {
+          {{ include('@components/text/_text.twig', {
+            text__element: 'div',
             text__content: text_content__image,
             text__base_class: 'caption-credit-wrapper',
-          } %}
+          }, with_context: false) }}
       {% endif %}
     </div>
   </div>
