@@ -17,6 +17,7 @@
     "format": "npm run lint-fix && npm run prettier-fix",
     "husky:commit-msg": "commitlint --edit $1",
     "husky:pre-commit": "lint-staged",
+    "inspect:components": "emulsify-inspect-components",
     "lint": "npm run lint-js && npm run lint-styles",
     "lint-fix": "npm run lint-js -- --fix && npm run lint-styles -- --fix",
     "lint-js": "eslint --config config/emulsify-core/eslint.config.js --no-error-on-unmatched-pattern ./config ./src ./components",
@@ -29,11 +30,13 @@
     "storybook-build": "npm run build && storybook build -c node_modules/@emulsify/core/.storybook -o .out",
     "storybook-deploy": "storybook-to-ghpages -o .out",
     "style-dictionary:build": "node ./src/tokens/tokensTransform.mjs",
-    "test": "jest --coverage  --config ./config/jest.config.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --config ./config/jest.config.js",
+    "test:contract": "node --test tests/contract.test.mjs",
     "test:release": "node --test tests/release.test.mjs",
     "tokens:build": "npm run tokens:transform && npm run style-dictionary:build",
     "tokens:transform": "node ./src/tokens/transform-tokens.mjs",
     "twatch": "jest --no-coverage --watch --verbose",
+    "validate": "npm run lint && npm run test:contract && npm run test:release && npm test",
     "visreg": "percy storybook http://localhost:6006",
     "visreg-ci": "percy storybook .out",
     "vite": "vite build --watch --config node_modules/@emulsify/core/config/vite/vite.config.js"
@@ -64,6 +67,7 @@
     "@emulsify/core": "^4.5.2"
   },
   "devDependencies": {
+    "@babel/parser": "^7.29.15",
     "@commitlint/cli": "^21.2.4",
     "@commitlint/config-conventional": "^21.2.4",
     "@percy/cli": "^1.33.1",
@@ -76,7 +80,10 @@
     "@storybook/storybook-deployer": "2.8.16",
     "conventional-changelog-conventionalcommits": "^10.4.1",
     "husky": "^9.1.7",
+    "js-yaml": "^5.5.0",
     "lint-staged": "^17.6.1",
+    "postcss-scss": "^4.0.9",
+    "postcss-value-parser": "^4.2.0",
     "semantic-release": "^25.0.9",
     "style-dictionary": "^5.8.0",
     "token-transformer": "^0.0.33"
