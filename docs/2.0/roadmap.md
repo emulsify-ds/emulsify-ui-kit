@@ -26,7 +26,7 @@ Coordinate the 16 refinement steps for the single Emulsify UI Kit 2.0.0 release.
 - [x] 2 Rules and checks
 - [x] 3 Storybook infrastructure
 - [x] 4 Base layer
-- [ ] 5 Tokens
+- [x] 5 Tokens
 - [ ] 6 Layout primitives
 - [ ] 7 CTA
 - [ ] 8 Wave A: heading, text, blockquote, code, icon, image, list, video
@@ -93,3 +93,11 @@ The report also found 30 global violations. The `blockquote.component.yml` basen
 - Existing breakpoint calls use container queries. The Base stylesheet supplies the root fallback for standalone components. Use a closer size container when the component should respond to the width of its layout.
 - Step 5 will generate the hand-written breakpoint map and supply `--clr-focus`. Step 6 will migrate the raw layout widths and replace the existing spacing mixins. Step 15 removes `_legacy-breakpoints.scss`.
 - `npm run test:sass` exercises the public API. The build comparison for this step covers two renamed CSS paths, 15 new root spacing properties, the root query container, and the breakpoint changes.
+
+### Step 5 Tokens
+
+- Edit `src/tokens/figma.tokens.json` and run `npm run tokens:build`. The generated Sass maps, theme properties, and preview JSON live in `src/base/tokens/`. The Base previews use that JSON and native token copy buttons.
+- Use `var(--clr-<role>)` with `data-component-theme="default light"` or `data-component-theme="default dark"`. Focus contrast against the theme background is 11.14:1 in light and 7.55:1 in dark. Check component-level foreground and background pairs as each component migrates.
+- Use `typography($style)` for composite type declarations, the scalar type functions for individual properties, and `fluid-type($min-px, $max-px)` when a size should scale between the `sm` and `xl` viewport widths.
+- Keep `legacy-1x.scss` frozen while components migrate. Step 15 removes that stylesheet. Preserve its property names as a contract test fixture before removing it so the check continues to reject 1.x tokens.
+- Component and Storybook token sets remain in Tokens Studio. The build emits shared tokens exclusively. Use the [migration table](../migration-2.0.md#tokens) and local hooks when replacing old component properties.

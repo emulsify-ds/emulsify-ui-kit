@@ -26,14 +26,10 @@ jobs:
           cache: npm
       - name: Install Node Dependencies
         run: npm ci
-      # Transform Figma Tokens JSON to something Style Dictionary can read, then
-      # Convert tokens according to Style Dictionary config
-      - name: Build Style Dictionary
+      - name: Build Base tokens
         run: npm run tokens:build
-      # Add files that were created during a run, e.g. created files from Style
-      # Dictionary or token-transformer.
       - uses: stefanzweifel/git-auto-commit-action@v7.2.1
         with:
           branch: ${{ github.head_ref || github.ref_name }}
           commit_message: 'feat: create tokens'
-          file_pattern: 'src/tokens/'
+          file_pattern: 'src/tokens/ src/base/tokens/'
