@@ -65,13 +65,16 @@
     height: 100%;
     object-fit: cover;
   }
-}
 
-.banner__playback {
-  z-index: 5;
-  position: absolute;
-  bottom: var(--spacing-xl);
-  right: var(--spacing-xl);
+  .video__wrap {
+    block-size: 100%;
+  }
+
+  .video__placeholder {
+    z-index: 5;
+    inset: auto var(--spacing-xl) var(--spacing-xl) auto;
+    transform: none;
+  }
 }
 
 .banner__content {

@@ -29,7 +29,7 @@ Coordinate the 16 refinement steps for the single Emulsify UI Kit 2.0.0 release.
 - [x] 5 Tokens
 - [x] 6 Layout primitives
 - [x] 7 CTA
-- [ ] 8 Wave A: heading, text, blockquote, code, icon, image, list, video
+- [x] 8 Wave A: heading, text, blockquote, code, icon, image, list, video
 - [ ] 9 Wave B1: teaser, card, media-box, text-with-image, callout
 - [ ] 10 Wave B2: banner, announcement, stats-group, tags, status
 - [ ] 11 Wave B3: table, embed, audio-player, logo, link-group
@@ -116,3 +116,11 @@ The report also found 30 global violations. The `blockquote.component.yml` basen
 - CTA uses inherited light and dark roles. Choose one appearance modifier from `primary`, `secondary`, `link`, or `clean`. The legacy icon partial remains in use until the icon wave. Button and Link remain available under Deprecated during the migration waves. Step 15 removes them.
 - The Base anchor rule has zero specificity. Local selectors still win. Recheck `.text a` in Wave A, the card heading and CTA link styles in Wave B1, `.main-nav__link`, `.main-nav__placeholder`, `.breadcrumbs__link`, and `.social-nav__link` in Wave C2, and `.page-title__overline-link` in Wave D as their legacy `link` mixins are removed.
 - Tags, Pager, Tabs, and Link Group have their own decoration rules. Verify inline links and navigation affordances when revising those selectors. Use the Base `link-underline` mixin when a local style needs the shared underline behavior.
+
+### Step 8 Wave A primitives
+
+- Use singular paths for Heading, Text, Blockquote, Code, Icon, Image, List, and Video. Heading uses an independent display modifier and optional plain link. Pass formatted Drupal content to Text, or use `text/_text.twig` to compose a single element.
+- Inline icons use `@assets/icons/` and stable IDs from `icon__id`. The gallery is under Base/Icons. Declare the `assets` namespace in consuming themes that lack it.
+- Use `image__src`, `image__alt`, and optional responsive or figure props when forwarding images from a section. Video supports titled embeds, caption tracks, and native controls with a motion-aware playback enhancement.
+- The [migration guide](../migration-2.0.md#heading-text-blockquote-and-code) lists the removed paths, renamed props, and updated Storybook entries. Later component waves should reuse these primitives and update their manifest dependencies.
+- Legacy browser findings to revisit include the Tags green label contrast in Wave B2, the Search mobile toggle name in Wave C2, and Page Title's Storybook layout control options in Wave D.

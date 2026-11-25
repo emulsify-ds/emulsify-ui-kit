@@ -10,7 +10,8 @@
     "layout/grid",
     "layout/placeholder",
     "list",
-    "text"
+    "text",
+    "video"
   ],
   "enforceGlobal": false
 }

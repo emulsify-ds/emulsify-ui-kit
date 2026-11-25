@@ -55,7 +55,7 @@ Edit source files and regenerate output with the appropriate build. Leave `compo
 | SCSS | Use color roles and omit hex colors and 1.x token custom properties. |
 | Global | Each `*.component.yml` has a unique basename. `system.emulsify.json` lists exactly the component directories and names only dependencies that exist. |
 
-List enforced components in `tests/contract-allowlist.json` by path relative to `src/components/`, for example `typography/heading`. Use `layout/<name>` for primitives. Violations fail the contract test for those entries. The test reports warnings for the other components. Global SDC violations are warnings until step 15 enables `enforceGlobal`.
+List enforced components in `tests/contract-allowlist.json` by path relative to `src/components/`, for example `heading`. Use `layout/<name>` for layout primitives. Violations fail the contract test for those entries. The test reports warnings for the other components. Global SDC violations are warnings until step 15 enables `enforceGlobal`.
 
 ## Refining a component
 

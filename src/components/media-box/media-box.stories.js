@@ -1,7 +1,7 @@
 import { renderTwig } from '@emulsify/core/storybook';
 import mediaBoxData from './media-box.component.yml';
 import mediaBoxTwig from './media-box.twig';
-import '../video/video-embed';
+import '../video/video.js';
 
 const { properties } = mediaBoxData.props;
 

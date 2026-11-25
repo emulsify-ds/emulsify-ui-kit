@@ -34,18 +34,13 @@
           image__credit: media_box__show_copyright ? media_box__copyright : null,
         }, with_context: false) }}
       {% else %}
-        {% include "@components/video/video.twig" with {
+        {{ include('@components/video/video.twig', {
           video__type: 'html5',
-          video__urls: [
-            'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4',
-            'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-webm-file.webm'
-          ],
-          video__show_caption: media_box__show_caption,
-          video__show_copyright: media_box__show_copyright,
-          video__caption: media_box__caption,
-          video__copyright: media_box__copyright,
-          video__show_placeholder: true,
-        } %}
+          video__title: media_box__heading|default('Media Box video'|t),
+          video__sources: [{ src: 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4', type: 'video/mp4' }],
+          video__caption: media_box__show_caption ? media_box__caption : null,
+          video__credit: media_box__show_copyright ? media_box__copyright : null,
+        }, with_context: false) }}
       {% endif %}
     {% endblock %}
   </div>
