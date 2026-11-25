@@ -1,38 +1,53 @@
-{% set grid__base_class = 'grid' %}
-{% set grid__modifiers = grid__modifiers|default([]) %}
-{% set grid__item__alignment = grid__item__alignment|default('standard') %}
-{% set grid__item__count = grid__item__count|default('even') %}
-{% set grid__separators = grid__separators|default(false) %}
-{% set grid__spacing = grid__spacing|default('') %}
-{% set grid__attributes = grid__attributes|default([]) %}
-{% set grid__inner__attributes = grid__attributes|default([]) %}
+{#
+ # Responsive item grid.
+ #
+ # Layout props: grid__columns, grid__alignment, grid__last_item_alignment,
+ # grid__type, grid__column_focus, grid__spacing.
+ # Content props: grid__items, grid__inner__content.
+ # Wrapper props: grid__blockname, grid__modifiers, grid__additional_classes,
+ # grid__attributes, grid__inner__additional_classes, grid__inner__attributes.
+ # Blocks: grid__heading, grid__prefix, grid__content, grid__suffix.
+ #}
+
+{% set grid__columns = grid__columns|default(3) ~ '' %}
+{% set grid__columns = grid__columns in ['1', '2', '3', '4', '5', '6'] ? grid__columns : '3' %}
+{% set grid__column_focus = grid__column_focus|default('') ~ '' %}
+{% set grid__focus_active = grid__type|default('equal') == 'focus'
+  and grid__columns != '1'
+  and grid__column_focus in ['1', '2', '3', '4', '5', '6']
+  and grid__column_focus <= grid__columns %}
+
+{% set grid__blockname = grid__blockname|default('') %}
+{% set grid__attributes = grid__attributes|default({}) %}
+{% set grid__inner__attributes = grid__inner__attributes|default({}) %}
+{% set grid__classes = grid__additional_classes|default([])|merge(grid__blockname ? ['grid'] : []) %}
 
 {% set grid__attributes = grid__attributes|merge({
-  'class': bem(grid__base_class, grid__modifiers, grid__blockname),
-  'data-grid-columns': grid__columns|default('3'),
-	'data-grid-count-class': grid__item__count,
-	'data-grid-spacing': grid__spacing|default(''),
+  class: bem('grid', grid__modifiers|default([]), grid__blockname, grid__classes),
+  'data-grid-columns': grid__columns,
+  'data-grid-alignment': grid__alignment|default('left'),
+  'data-grid-last-item-alignment': grid__last_item_alignment|default('none'),
+  'data-grid-type': grid__focus_active ? 'focus' : 'equal',
+  'data-grid-column-focus': grid__focus_active ? grid__column_focus : null,
+  'data-grid-spacing': grid__spacing|default('one'),
 }) %}
-
 {% set grid__inner__attributes = grid__inner__attributes|merge({
-  'class': bem('inner', [], grid__base_class, grid__inner__additional_classes),
+  class: bem('inner', [], 'grid', grid__inner__additional_classes|default([])),
 }) %}
-
-{% if grid__separators %}
-	{% set grid__attributes = grid__attributes|merge({
-		'data-grid-separators': 'true',
-	}) %}
-{% endif %}
 
 <div {{ add_attributes(grid__attributes) }}>
-	{% block grid__heading %}{% endblock %}
-	<div {{ add_attributes(grid__inner__attributes) }}>
-		{% block grid__prefix %}{% endblock %}
-		{% block grid__content %}
-			{% for item in grid__items %}
-				{% include "@layout/placeholder/placeholder.twig" with { place_holder: "Placeholder Content" } %}
-			{% endfor %}
-		{% endblock %}
-		{% block grid__suffix %}{% endblock %}
-	</div>
+  {% block grid__heading %}{% endblock %}
+  {% block grid__prefix %}{% endblock %}
+  <div {{ add_attributes(grid__inner__attributes) }}>
+    {% block grid__content %}
+      {% if grid__inner__content is not empty %}
+        {{ grid__inner__content }}
+      {% else %}
+        {% for item in grid__items|default([]) %}
+          {% include '@layout/placeholder/placeholder.twig' with { placeholder__text: item } only %}
+        {% endfor %}
+      {% endif %}
+    {% endblock %}
+  </div>
+  {% block grid__suffix %}{% endblock %}
 </div>
