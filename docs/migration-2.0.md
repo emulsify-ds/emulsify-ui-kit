@@ -32,6 +32,8 @@ Update bookmarks, embeds, and other links to renamed Storybook entries.
 | `components-cards--*` | `components-card--*` |
 | `components-headers-page-title--*` | `components-page-title--*` |
 | `components-media-*` | `components-*` |
+| `components-button--*` | `deprecated-button--*` |
+| `components-typography-links--*` | `deprecated-link--*` |
 
 ## Tokens
 
@@ -176,5 +178,26 @@ Update Placeholder story links from `layout-place-holder--place-holder` to `layo
 `withStorybookContainer()` now paints the active theme background. Pass `{ bgColor: false }` as its options to keep the story canvas background.
 
 ## Components
+
+### Button and Link → CTA
+
+Use `@components/cta/cta.twig` for calls to action. Use a plain anchor for in-text links and let the Base stylesheet supply the themed underline, hover, and focus styles. Button and Link remain available during the component waves. Their Storybook examples are under Deprecated.
+
+| Button or Link input | CTA input |
+| --- | --- |
+| `button__content`, `link__content` | `cta__text` for a text label. Override the `cta__content` block for a custom label. |
+| `button__href`, `button__attributes.href`, `link__url` | `cta__url`. Pass a Drupal link render array as `cta__link`. |
+| `button__element` | `cta__element` accepts `a`, `button`, or `span`. CTA defaults to `a`, so specify `button` for in-page actions. |
+| `button__type` | `cta__button_type` sets the native `type` attribute in place of `button-action`. Use `button`, `submit`, or `reset`. The default `button` does not submit the enclosing form. |
+| `button__style`, `button__modifiers`, `link__modifiers`, `link__style` | `cta__modifiers` accepts `primary`, `secondary`, `link`, and `clean` as appearance choices. Use `primary` for a filled button and `link` for a text-style CTA. |
+| `button__icon.name`, `button__icon.left`, `button__icon.right` | Pass the icon name to `cta__icon` and use `cta__icon_position: 'left'` or `'right'`. |
+| `button__external`, `link__external` | `cta__new_tab`. CTA adds the target, safe `rel` values, and an accessible new-tab notice. |
+| `button__blockname`, `link__blockname` | `cta__blockname` |
+| `button__additional_classes`, `link__additional_classes` | `cta__additional_classes`. Use it for any old base class needed by local code. |
+| `button__attributes`, `link__attributes`, standalone ARIA values | `cta__attributes`. Use `aria-label` to label an icon-only CTA. Use `disabled` for a disabled button. |
+
+Keep old style-only values such as `filled` out of `cta__button_type`. Set a CTA appearance modifier instead. Use `cta__attributes` for native and ARIA state and the `cta__content` slot for custom label markup. CTA uses the inherited light or dark color roles. Remove inverse or dark appearance modifiers when migrating.
+
+Pass relative URLs or HTTP, HTTPS, email, and telephone URLs in `cta__url`. Use `cta__link` to preserve routed URLs and Drupal link options. Include the new-tab notice in any accessible name you supply through `aria-label` or `aria-labelledby`.
 
 ## Removed

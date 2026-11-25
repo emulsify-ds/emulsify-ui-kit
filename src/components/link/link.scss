@@ -84,12 +84,6 @@
   }
 }
 
-// Reset link
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 .link {
   @include link;
 }

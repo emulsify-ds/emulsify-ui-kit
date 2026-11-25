@@ -1,0 +1,76 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Call to action
+description: Presents a navigation link or an action with an optional decorative icon.
+group: Components
+status: stable
+props:
+  type: object
+  properties:
+    cta__text:
+      type: [string, 'null']
+      title: Label
+      description: Descriptive action text. When omitted, use the Drupal link title.
+      examples: ['View event details']
+    cta__url:
+      type: [string, 'null']
+      title: Destination
+      description: Destination for an anchor. A supplied Drupal link takes precedence.
+      examples: ['/events']
+    cta__link:
+      type: [object, 'null']
+      title: Drupal link
+      description: Drupal link render array containing a URL object and title. Applies to anchors.
+      default: null
+    cta__element:
+      type: [string, 'null']
+      title: Element
+      description: Use an anchor for navigation, a button for an action, or a span for presentational content.
+      enum: [a, button, span, null]
+      default: a
+    cta__button_type:
+      type: [string, 'null']
+      title: Button type
+      description: Native type attribute for buttons. Defaults to button to prevent accidental form submission.
+      enum: [button, submit, reset, null]
+      default: button
+    cta__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers. The first primary, secondary, link, or clean modifier selects the visual style.
+      items:
+        type: string
+      default: [primary]
+    cta__icon:
+      type: [string, 'null']
+      title: Icon
+      description: Name of a decorative icon from the sprite.
+      examples: [arrow-right]
+    cta__icon_position:
+      type: [string, 'null']
+      title: Icon position
+      description: Position of the icon relative to the label.
+      enum: [left, right, null]
+      default: right
+    cta__new_tab:
+      type: [boolean, 'null']
+      title: Open in a new tab
+      description: Opens the anchor destination in a new tab and adds an accessible announcement.
+      default: false
+    cta__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Optional BEM block name for the root element.
+    cta__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: Extra classes for the root element.
+      items:
+        type: string
+    cta__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Additional HTML attributes for the root element.
+slots:
+  cta__content:
+    title: Label content
+    description: Custom phrasing content for the label. Keep interactive elements outside this slot.

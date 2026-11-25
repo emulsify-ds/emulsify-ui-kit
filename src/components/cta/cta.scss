@@ -1,0 +1,95 @@
+@use '../../base' as *;
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: space(8);
+  box-sizing: border-box;
+  min-inline-size: space(24);
+  min-block-size: space(24);
+  max-inline-size: 100%;
+  padding: 0;
+  border: 0 solid currentColor;
+  background-color: var(--cta-background-color, transparent);
+  color: var(--cta-color, var(--clr-link));
+  font: inherit;
+  text-align: center;
+  text-decoration: none;
+
+  @include focus;
+  @include transition(
+    (color, background-color, border-color),
+    var(--mo-duration)
+  );
+
+  &:where(a[href], button:enabled) {
+    cursor: pointer;
+
+    &:is(:hover, :focus-visible) {
+      color: var(--cta-color-hover, var(--clr-link-hover));
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: var(--op-60);
+  }
+
+  &[data-cta-variant='primary'],
+  &[data-cta-variant='secondary'] {
+    padding: space(8) space(16);
+    border-width: var(--bw-sm);
+    border-radius: var(--r-sm);
+    font-size: font-size('body');
+    font-weight: font-weight('primary-bold');
+    line-height: line-height('relaxed');
+    text-transform: uppercase;
+  }
+
+  &[data-cta-variant='primary'] {
+    border-color: transparent;
+    background-color: var(--cta-background-color, var(--clr-link));
+    color: var(--cta-color, var(--clr-background));
+
+    &:where(a[href], button:enabled):is(:hover, :focus-visible) {
+      background-color: var(
+        --cta-background-color-hover,
+        color-mix(in srgb, var(--clr-link), var(--clr-body))
+      );
+      color: var(--cta-color-hover, var(--clr-background));
+    }
+  }
+
+  &[data-cta-variant='secondary']:where(a[href], button:enabled):is(
+      :hover,
+      :focus-visible
+    ) {
+    background-color: var(
+      --cta-background-color-hover,
+      color-mix(in srgb, var(--clr-link) 8%, var(--clr-background))
+    );
+  }
+
+  &[data-cta-variant='link'] .cta__label,
+  &[data-cta-variant='clean']:where(a[href], button:enabled):is(
+      :hover,
+      :focus-visible
+    )
+    .cta__label {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+}
+
+.cta__label {
+  overflow-wrap: anywhere;
+}
+
+.cta__icon {
+  display: block;
+  flex: none;
+  inline-size: space(20);
+  block-size: space(20);
+  fill: currentColor;
+}

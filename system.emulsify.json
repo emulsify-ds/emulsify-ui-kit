@@ -181,6 +181,11 @@
           "dependency": ["link", "image", "typography"]
         },
         {
+          "name": "cta",
+          "structure": "components",
+          "dependency": ["icons"]
+        },
+        {
           "name": "forms",
           "structure": "components",
           "required": true,
