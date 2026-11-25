@@ -1,6 +1,8 @@
 @forward './breakpoints/breakpoints' show breakpoint;
 @forward './motion/motion-mixins';
 @forward './spacing/space' show space;
+@forward './typography/fluid-type';
+@forward './typography/typography';
 @forward './utility/accessibility';
 @forward './utility/placement';
 @forward './utility/safe-map-get';
