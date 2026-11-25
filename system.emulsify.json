@@ -181,7 +181,7 @@
         {
           "name": "accordion",
           "structure": "components",
-          "dependency": ["button", "icon", "heading", "text"]
+          "dependency": ["button", "icon", "heading", "text", "list"]
         },
         {
           "name": "announcement",
@@ -251,7 +251,7 @@
           "dependency": []
         },
         {
-          "name": "lists",
+          "name": "list",
           "structure": "components",
           "required": true,
           "dependency": []

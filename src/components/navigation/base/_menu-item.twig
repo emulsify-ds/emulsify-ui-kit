@@ -83,7 +83,7 @@
 {% if item|keys|first matches '/^\\d+$/' %}
 	{% for subitem in item %}
 		{% if not loop.last %}
-			{% embed "@components/lists/_list-item.twig" with {
+			{% embed "@components/list/_list-item.twig" with {
 				list__item__base_class: 'item',
 				list__item__modifiers: item__modifiers,
 				list__item__blockname: item__blockname,
@@ -108,7 +108,7 @@
 <span class="visually-hidden">{{ item.title ~ ' Menu' }}</span>
 {% endset %}
 
-{% embed "@components/lists/_list-item.twig" with {
+{% embed "@components/list/_list-item.twig" with {
   list__item__base_class: 'item',
   list__item__modifiers: item__modifiers,
   list__item__blockname: item__blockname,

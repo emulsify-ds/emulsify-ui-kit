@@ -9,6 +9,7 @@
     "layout/container",
     "layout/grid",
     "layout/placeholder",
+    "list",
     "text"
   ],
   "enforceGlobal": false

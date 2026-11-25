@@ -1,0 +1,28 @@
+{#
+ # - list__item: Text, rendered content, or an object containing content and children.
+ # - list__item__base_class: Base class, defaulting to item.
+ # - list__item__blockname: Parent BEM block name.
+ # - list__item__modifiers: BEM modifiers.
+ # - list__item__additional_classes: Additional CSS classes.
+ # - list__item__attributes: Additional attributes on the list item.
+ # - list__type: List element inherited by nested lists unless overridden.
+ # - list__item__content: Block for rendered item content.
+ #}
+{% set list__item_object = list__item is iterable and list__item.content is defined %}
+{% set list__item_value = list__item_object ? list__item.content : list__item|default(list__item__content|default('')) %}
+{% set list__item_children = list__item_object ? list__item.children|default({}) : {} %}
+{% set list__item_modifiers = list__item__modifiers|default(list__item_object ? list__item.modifiers|default([]) : []) %}
+{% set list__item_classes = list__item__additional_classes|default(list__item_object ? list__item.additional_classes|default([]) : []) %}
+{% set list__item_attrs = list__item__attributes|default(list__item_object ? list__item.attributes|default({}) : {}) %}
+{% set attributes = bem(list__item__base_class|default('item'), list__item_modifiers, list__item__blockname|default('list'), list__item_classes) %}
+
+<li {{ add_attributes(list__item_attrs) }}>
+  {% block list__item__content %}{{ list__item_value }}{% endblock %}
+  {% if list__item_children.items|default([])|length %}
+    {{ include('@components/list/list.twig', {
+      list__items: list__item_children.items,
+      list__type: list__item_children.type|default(list__type),
+      list__modifiers: list__item_children.modifiers|default([]),
+    }, with_context: false) }}
+  {% endif %}
+</li>

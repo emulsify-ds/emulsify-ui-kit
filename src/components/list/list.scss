@@ -1,0 +1,46 @@
+@use '../../base' as *;
+
+:where([data-list-style]) {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+:where([data-list-style='default']) {
+  padding-inline-start: space(24);
+  color: var(--clr-body);
+}
+
+:where([data-list-style='default']) > li + li {
+  margin-block-start: space(8);
+}
+
+:where([data-list-style='default']) > li > :where([data-list-style]) {
+  margin-block-start: space(4);
+}
+
+:where(ol[data-list-style='default']) {
+  list-style-type: decimal;
+
+  :where(ol[data-list-style='default']) {
+    list-style-type: lower-alpha;
+
+    :where(ol[data-list-style='default']) {
+      list-style-type: lower-roman;
+    }
+  }
+}
+
+:where([data-list-style='plain'], [data-list-style='inline']) {
+  padding-inline-start: 0;
+  list-style: none;
+}
+
+:where([data-list-style='inline']) {
+  display: flex;
+  flex-flow: column wrap;
+  gap: space(8) space(16);
+
+  @include breakpoint('sm') {
+    flex-direction: row;
+  }
+}

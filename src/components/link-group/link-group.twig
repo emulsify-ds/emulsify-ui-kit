@@ -22,7 +22,7 @@
 
 {% set link_group__list %}
   {% block link_group__items %}
-    {% embed "@components/lists/list.twig" with {
+    {% embed "@components/list/list.twig" with {
       list__blockname: link_group__base_class,
     } %}
       {% block list__content %}
@@ -41,7 +41,7 @@
             <span {{ bem('label', [], link_group__base_class) }}>{{ item.label }}</span>
           {% endset %}
 
-          {% embed "@components/lists/_list-item.twig" with {
+          {% embed "@components/list/_list-item.twig" with {
             list__item__blockname: link_group__base_class,
           } %}
             {% block list__item__content %}
