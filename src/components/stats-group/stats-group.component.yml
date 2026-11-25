@@ -31,7 +31,8 @@ props:
     stats_group__container_width:
       type: string
       title: Container width
-      description: Controls the outer container width (content, wide, or full).
+      description: Controls the width of the shared container.
+      enum: [narrow, content, wide, full]
       data: 'wide'
     stats_group__alignment:
       type: string
@@ -42,7 +43,7 @@ props:
       type: string
       title: Theme
       description: Theme applied to the wrapping container.
-      data: 'option-1 light'
+      data: 'default'
     stats_group__bg_color:
       type: boolean
       title: Background color
@@ -56,7 +57,7 @@ props:
     stats_group__grid_columns:
       type: string
       title: Grid columns
-      description: Optional override for the responsive column count. Leave blank to let the component auto-select based on item count.
+      description: Responsive column ceiling from 1 to 6. Defaults to 3.
       data: ''
     stats_group__items:
       type: array

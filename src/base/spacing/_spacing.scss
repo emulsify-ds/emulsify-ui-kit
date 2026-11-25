@@ -1,24 +1,23 @@
 @use 'sass:math';
 @use '../breakpoints/breakpoints' as *;
+@use './space' as *;
 
-@mixin section-padding-top($multiplier: 1) {
+@mixin -responsive-section-space($property, $multiplier) {
   & {
-    padding-top: var(--spacing-xl);
+    #{$property}: calc(#{space(32)} * #{math.div($multiplier, 1.25)});
   }
 
-  @include breakpoint('xl') {
-    padding-top: calc(var(--spacing-xl) * #{$multiplier});
+  @include breakpoint('md') {
+    #{$property}: calc(#{space(32)} * $multiplier);
   }
 }
 
-@mixin section-padding-bottom($multiplier: 1) {
-  & {
-    padding-bottom: var(--spacing-xl);
-  }
+@mixin section-padding-top($multiplier: 1) {
+  @include -responsive-section-space(padding-top, $multiplier);
+}
 
-  @include breakpoint('xl') {
-    padding-bottom: calc(var(--spacing-xl) * #{$multiplier});
-  }
+@mixin section-padding-bottom($multiplier: 1) {
+  @include -responsive-section-space(padding-bottom, $multiplier);
 }
 
 @mixin section-padding($multiplier: 1) {
@@ -27,21 +26,9 @@
 }
 
 @mixin margin-gap-top($multiplier: 1) {
-  & {
-    margin-top: calc(var(--spacing-xl) * #{$multiplier});
-  }
-
-  @include breakpoint('xl') {
-    margin-top: calc(var(--spacing-2xl) * #{$multiplier});
-  }
+  @include -responsive-section-space(margin-top, $multiplier);
 }
 
 @mixin margin-gap-bottom($multiplier: 1) {
-  &:not(:last-child) {
-    margin-bottom: calc(var(--spacing-xl) * #{$multiplier});
-
-    @include breakpoint('xl') {
-      margin-bottom: calc(var(--spacing-2xl) * #{$multiplier});
-    }
-  }
+  @include -responsive-section-space(margin-bottom, $multiplier);
 }

@@ -9,6 +9,7 @@ import parseValue from 'postcss-value-parser';
 
 const root = resolve(import.meta.dirname, '..');
 const componentRoot = join(root, 'src/components');
+const layoutRoot = join(root, 'src/layout');
 const schemaSuffix = '.component.yml';
 const schemaUrl =
   'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json';
@@ -354,9 +355,8 @@ function checkScss(source, file, issue) {
     issue(`replace 1.x token properties: ${[...tokens].join(', ')}`);
 }
 
-function checkComponent(directory, schemas, componentDirectories) {
-  const name = basename(directory);
-  const path = join(componentRoot, directory);
+function checkComponent(path, schemas, expectedSchema, componentDirectories) {
+  const name = basename(path);
   const issues = [];
   const record = (file) => (message) =>
     issues.push(`${posixPath(file)}: ${message}`);
@@ -366,14 +366,13 @@ function checkComponent(directory, schemas, componentDirectories) {
     .filter((file) => {
       let parent = dirname(file);
       while (parent !== '.') {
-        if (componentDirectories.has(join(directory, parent))) return false;
+        if (componentDirectories.has(join(path, parent))) return false;
         parent = dirname(parent);
       }
       return true;
     })
     .sort();
 
-  const expectedSchema = `${name}${schemaSuffix}`;
   const expectedTwig = `${name}.twig`;
   const docs = `${name}.docs.js`;
   const stories = `${name}.stories.js`;
@@ -514,19 +513,30 @@ function report(t, name, issues, enforce) {
 const schemas = globSync(`**/*${schemaSuffix}`, { cwd: componentRoot }).sort();
 const components = Map.groupBy(schemas, (file) => dirname(file));
 const componentDirectories = new Set(components.keys());
+const layoutDirectories = globSync('*/', { cwd: layoutRoot }).sort();
+const contractDirectories = new Set([
+  ...[...componentDirectories].map((directory) =>
+    join(componentRoot, directory),
+  ),
+  ...layoutDirectories.map((directory) => join(layoutRoot, directory)),
+]);
+const layoutName = (directory) => `layout/${posixPath(directory)}`;
 
-test('contract allowlist entries identify existing component directories', () => {
+test('contract allowlist entries identify existing component or layout directories', () => {
   assert.ok(Array.isArray(allowlist), 'components must be an array');
   assert.equal(
     typeof enforceGlobal,
     'boolean',
     'enforceGlobal must be a boolean',
   );
-  const knownDirectories = new Set([...componentDirectories].map(posixPath));
+  const knownDirectories = new Set([
+    ...[...componentDirectories].map(posixPath),
+    ...layoutDirectories.map(layoutName),
+  ]);
   for (const name of allowlist) {
     assert.ok(
       knownDirectories.has(name),
-      `unknown component directory ${JSON.stringify(name)}`,
+      `unknown contract directory ${JSON.stringify(name)}`,
     );
   }
 });
@@ -535,9 +545,24 @@ for (const [directory, files] of components) {
   const name = posixPath(directory);
   test(`component contract: ${name}`, (t) => {
     const issues = checkComponent(
-      directory,
+      join(componentRoot, directory),
       files.map((file) => basename(file)),
-      componentDirectories,
+      `${basename(directory)}${schemaSuffix}`,
+      contractDirectories,
+    );
+    report(t, name, issues, allowlist.includes(name));
+  });
+}
+
+for (const directory of layoutDirectories) {
+  const name = layoutName(directory);
+  const path = join(layoutRoot, directory);
+  test(`layout contract: ${name}`, (t) => {
+    const issues = checkComponent(
+      path,
+      globSync('*.yml', { cwd: path }).sort(),
+      `${directory}.yml`,
+      contractDirectories,
     );
     report(t, name, issues, allowlist.includes(name));
   });

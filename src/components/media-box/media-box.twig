@@ -1,6 +1,7 @@
 {#
  # Available Props:
- # - media_box__width: feature (default) or highlight
+ # - media_box__width: narrow, content, wide or full
+ # - media_box__spacing: spacing preset for the surrounding container
  # - media_box__position: image-left (default) or image-right
  # - media_box__focus: equal (default), image, or text
  #
@@ -53,8 +54,9 @@
 
 {# Render the accordion within a generic container #}
 {% embed "@layout/container/container.twig" with {
-  container__component_width: media_box__width,
-  container__component_alignment: 'center',
+  container__width: media_box__width,
+  container__alignment: 'center',
+  container__spacing: media_box__spacing,
   container__modifiers: media_box__container__modifiers,
   container__heading: media_box__heading,
   container__text: media_box__text,

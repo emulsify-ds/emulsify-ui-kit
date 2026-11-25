@@ -83,12 +83,7 @@ export default {
     spacing: {
       name: 'Container Spacing',
       control: { type: 'select' },
-      options: {
-        '0x Spacing': 'no-spacing',
-        '1x Spacing': '',
-        '2x Spacing': 'two-spacing',
-        '3x Spacing': 'three-spacing',
-      },
+      options: ['none', 'one', 'two', 'three'],
       table: {
         category: 'Container Controls',
       },
@@ -118,7 +113,7 @@ export default {
     pageTitleMediaShowCopyright: false,
     pageTitleMediaCopyright: pageTitleData.page_title__media__copyright.data,
     backgroundColor: false,
-    spacing: 'two-spacing',
+    spacing: 'two',
     layout: 'stacked',
   },
 };
@@ -162,7 +157,7 @@ export const pageTitle = ({
     page_title__media__show_copyright: pageTitleMediaShowCopyright,
     page_title__media__copyright: pageTitleMediaCopyright,
     page_title__bg_color: backgroundColor,
-    page_title__container__modifiers: spacing ? [spacing] : [],
+    page_title__spacing: spacing,
     page_title__layout: layout,
   });
 };

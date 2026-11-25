@@ -1,31 +1,100 @@
-grid__items:
-  - grid_item_1
-  - grid_item_2
-  - grid_item_3
-  - grid_item_4
-  - grid_item_5
-  - grid_item_6
-  - grid_item_7
-  - grid_item_8
-  - grid_item_9
-  - grid_item_10
-  - grid_item_11
-  - grid_item_12
-  - grid_item_13
-  - grid_item_14
-  - grid_item_15
-  - grid_item_16
-  - grid_item_17
-  - grid_item_18
-  - grid_item_19
-  - grid_item_20
-  - grid_item_21
-  - grid_item_22
-  - grid_item_23
-  - grid_item_24
-  - grid_item_25
-  - grid_item_26
-  - grid_item_27
-  - grid_item_28
-  - grid_item_29
-  - grid_item_30
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Grid
+description: A responsive layout for collections of related items.
+group: Layout
+status: stable
+props:
+  type: object
+  properties:
+    grid__columns:
+      type: integer
+      title: Columns
+      description: Maximum number of columns as the available width increases.
+      enum: [1, 2, 3, 4, 5, 6]
+      default: 3
+    grid__alignment:
+      type: string
+      title: Final row alignment
+      description: Horizontal alignment of items in the incomplete final row.
+      enum: [left, center, right]
+      default: left
+    grid__last_item_alignment:
+      type: string
+      title: Last item alignment
+      description: Use a directional value to give the last item its own row.
+      enum: [none, left, center, right]
+      default: none
+    grid__type:
+      type: string
+      title: Track type
+      description: Equal tracks or a single wider track at the column ceiling.
+      enum: [equal, focus]
+      default: equal
+    grid__column_focus:
+      type: [integer, 'null']
+      title: Focused column
+      description: One-based position of the wider track in a focus grid.
+      enum: [null, 1, 2, 3, 4, 5, 6]
+      default: null
+    grid__spacing:
+      type: string
+      title: Spacing
+      description: Gap between grid items in both directions.
+      enum: [none, quarter, half, one, two, three, four]
+      default: one
+    grid__items:
+      type: [array, 'null']
+      title: Placeholder items
+      description: Example labels for a grid preview.
+      items:
+        type: string
+      examples:
+        - ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5']
+    grid__inner__content:
+      type: [string, 'null']
+      title: Rendered items
+      description: Pre-rendered Twig markup for direct grid children.
+      default: null
+    grid__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Optional parent block name for a BEM element class.
+    grid__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers for the outer grid.
+      items:
+        type: string
+    grid__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: Optional classes applied to the outer grid.
+      items:
+        type: string
+    grid__attributes:
+      type: [object, 'null']
+      title: Wrapper attributes
+      description: Additional HTML attributes on the outer grid.
+    grid__inner__additional_classes:
+      type: [array, 'null']
+      title: Additional inner classes
+      description: Optional classes applied to the inner grid.
+      items:
+        type: string
+    grid__inner__attributes:
+      type: [object, 'null']
+      title: Inner attributes
+      description: Additional HTML attributes on the inner grid.
+slots:
+  grid__heading:
+    title: Heading
+    description: Rendered heading for the grid.
+  grid__prefix:
+    title: Prefix
+    description: Markup above the item tracks.
+  grid__content:
+    title: Items
+    description: The collection of direct grid children.
+  grid__suffix:
+    title: Suffix
+    description: Markup below the item tracks.

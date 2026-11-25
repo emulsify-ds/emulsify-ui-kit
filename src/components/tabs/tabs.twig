@@ -111,11 +111,12 @@
 {% endset %}
 
 {% embed "@layout/container/container.twig" with {
-  container__component_width: container__component_width|default('extended'),
-  container__component_alignment: 'center',
+  container__width: tabs__width|default(container__component_width|default('wide')),
+  container__alignment: 'center',
   container__heading: tabs__heading,
   container__text: tabs__text,
-	container__theme: tab__component_theme,
+	container__theme: tabs__theme|default(tab__component_theme),
+	container__theme__variation: tabs__theme__variation,
 }%}
 	{% block container__content %}
 		{{ tabs }}

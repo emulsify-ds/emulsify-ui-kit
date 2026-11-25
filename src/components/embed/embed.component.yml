@@ -51,8 +51,9 @@ props:
     embed__width:
       type: string
       title: Container width
-      description: 'Passed through to the shared container component: compressed, standard, extended, max, or full.'
-      data: 'standard'
+      description: Width of the shared container.
+      enum: [narrow, content, wide, full]
+      data: 'content'
     embed__alignment:
       type: string
       title: Container alignment
@@ -61,8 +62,13 @@ props:
     embed__theme:
       type: string
       title: Container theme
-      description: 'Passed through to the shared container component, e.g. "inverse".'
+      description: Name of the theme applied to the shared container.
       data: ''
+    embed__theme__variation:
+      type: string
+      title: Container theme variation
+      description: Selects the light or dark variation of the container theme.
+      enum: [light, dark]
     embed__bg_color:
       type: boolean
       title: Container background

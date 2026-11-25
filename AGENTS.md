@@ -46,7 +46,7 @@ Edit source files and regenerate output with the appropriate build. Leave `compo
 
 | Area | Rule |
 | --- | --- |
-| Files | A directory under `src/components/` with a `*.component.yml` is a component. Name `<name>.component.yml`, `<name>.twig`, `<name>.docs.js`, and `<name>.stories.js` after that directory. `<name>.scss`, `<name>.js`, `<name>.test.js`, and `_partials` are optional. Step 6 adds checks for `src/layout/<name>/<name>.yml`. |
+| Files | A directory under `src/components/` with a `*.component.yml` is a component. Name `<name>.component.yml`, `<name>.twig`, `<name>.docs.js`, and `<name>.stories.js` after that directory. The layout primitives follow the same contract with `<name>.yml` in `src/layout/<name>/`. `<name>.scss`, `<name>.js`, `<name>.test.js`, and `_partials` are optional. |
 | Schema | Set `$schema` to `https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json`. Set `name`, `description`, `group`, and `status`. Give every prop `type`, `title`, and `description`. Provide `examples`, `default`, or `enum` for each prop except `*__blockname`, `*__modifiers`, `*__additional_classes`, and `*__attributes`. Omit `data:` keys. Use distinct prop and slot names and declare a prop for each entry in `required`. |
 | Twig | Start with a `{# … #}` doc comment that names every prop and slot. Use stable IDs and omit `random()`. |
 | Stories | Include the `autodocs` tag and set `parameters.docs` from the sibling `.docs.js` module. Write stories without JSX. |
@@ -55,7 +55,7 @@ Edit source files and regenerate output with the appropriate build. Leave `compo
 | SCSS | Use color roles and omit hex colors and 1.x token custom properties. |
 | Global | Each `*.component.yml` has a unique basename. `system.emulsify.json` lists exactly the component directories and names only dependencies that exist. |
 
-List enforced components in `tests/contract-allowlist.json` by path relative to `src/components/`, for example `typography/heading`. Violations fail the contract test for those components. The test reports warnings for the other components. Global violations are warnings until step 15 enables `enforceGlobal`.
+List enforced components in `tests/contract-allowlist.json` by path relative to `src/components/`, for example `typography/heading`. Use `layout/<name>` for primitives. Violations fail the contract test for those entries. The test reports warnings for the other components. Global SDC violations are warnings until step 15 enables `enforceGlobal`.
 
 ## Refining a component
 
@@ -106,6 +106,8 @@ render: renderTwig(
 | `__blockname`, `__modifiers`, `__additional_classes`, `__attributes` | Prefix each with the block name for class and attribute customization. |
 | `__heading`, `__heading_level` | Prefix each with the block name. Support heading levels 2–6. |
 
+Embed `@layout/container/container.twig` for sections and forward the shared props to the corresponding `container__*` keys. `__container__modifiers` maps to `container__modifiers`. Use `narrow`, `content`, `wide`, or `full` for width. Set vertical spacing through `container__spacing` and keep modifiers for component-specific classes. Put the composed markup in `container__content`. For repeated items with equal or focused columns, embed `@layout/grid/grid.twig` and render the direct grid items in `grid__content`.
+
 ## Styling
 
 - For 2.0 component styles, load the shared Sass API with `@use '../../base' as *;`.
@@ -133,7 +135,7 @@ The global stylesheet establishes a root query container for standalone componen
 | `focus`, `focus-styles`, `visually-hidden` | Apply the shared focus treatment, reuse its outline declarations, or hide content visually while keeping it available to assistive technology. |
 | `motion-safe`, `transition($properties, $duration: 0.3s, $delay: 0ms, $allow-discrete: false)` | Apply motion only when the user expresses no reduced-motion preference. |
 
-The generated token maps supply spacing, breakpoints, and typography. The global focus treatment uses `--clr-focus`. The container and grid keep their existing raw width values in `_legacy-breakpoints.scss` through step 6.
+The generated token maps supply spacing, breakpoints, and typography. The global focus treatment uses `--clr-focus`. The container and grid both establish query containers on their outer and inner wrappers. Use the Base/Placement guide for an example of scoped 12-track placement inside a section.
 
 ## Traps
 

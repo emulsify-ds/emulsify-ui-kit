@@ -28,7 +28,7 @@
           "name": "layout",
           "path": "./src/layout",
           "destinationPath": "./src/layout",
-          "description": "Contains base layout components"
+          "description": "Installs the container, grid, and placeholder layout primitives."
         },
         {
           "name": "tokens",
@@ -151,7 +151,7 @@
         {
           "name": "accordion",
           "structure": "components",
-          "dependency": ["button", "container", "icons", "typography"]
+          "dependency": ["button", "icons", "typography"]
         },
         {
           "name": "announcement",
@@ -218,7 +218,7 @@
         {
           "name": "media-box",
           "structure": "components",
-          "dependency": ["container", "image", "video"]
+          "dependency": ["image", "video"]
         },
         {
           "name": "navigation",
@@ -241,18 +241,18 @@
         {
           "name": "tabs",
           "structure": "components",
-          "dependency": ["button", "container"]
+          "dependency": ["button"]
         },
         {
           "name": "text",
           "structure": "components",
           "required": true,
-          "dependency": ["container"]
+          "dependency": []
         },
         {
           "name": "text-with-image",
           "structure": "components",
-          "dependency": ["container", "image", "link", "typography"]
+          "dependency": ["image", "link", "typography"]
         },
         {
           "name": "typography",

@@ -1,4 +1,4 @@
 {
-  "components": [],
+  "components": ["layout/container", "layout/grid", "layout/placeholder"],
   "enforceGlobal": false
 }

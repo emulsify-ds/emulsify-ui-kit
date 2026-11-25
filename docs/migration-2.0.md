@@ -114,9 +114,66 @@ The Tokens Studio `components/*` and `storybook` sets remain available for desig
 
 The cutoffs are rem equivalents at a 16 px base. A `-down` query caps the width 0.05rem below its cutoff. The UI Kit maps both legacy `xsmall` calls to `md` so the textfield label spacing and text-focused image sizing begin at 768 px.
 
-The old Sass width variables live in `src/base/breakpoints/_legacy-breakpoints.scss` during the layout migration. Replace their use in new code with the named breakpoint API.
+Use the named breakpoint API in place of the old Sass width variables. `_legacy-breakpoints.scss` was removed after the layout primitives moved to generated breakpoints.
 
 ## Layout
+
+Embed `@layout/container/container.twig` and `@layout/grid/grid.twig` by path. Include `@layout/placeholder/placeholder.twig` by path as well. The CLI installs all three with the `layout` directory.
+
+### Width and alignment
+
+Rename `container__component_width` to `container__width` and `container__component_alignment` to `container__alignment`. The inner container uses these named widths, subject to the available width of its parent. The width hooks can be set on an ancestor to change its local limits.
+
+| 1.x width | 2.0 width | 2.0 width hook |
+| --- | --- | --- |
+| `compressed`, `compact`, `narrow` | `narrow` | `--content-width-narrow`, derived from `md` |
+| `content`, `standard` | `content` | `--content-width`, derived from `lg` |
+| `extended`, `wide`, `max` | `wide` | `--content-width-wide`, derived from `xl` |
+| `page`, `full` | `full` | `--content-width-full`, defaults to 100% |
+
+### Spacing
+
+Set `container__spacing` for section padding and `grid__spacing` for the gap. For Page Title, set `page_title__spacing` in place of a spacing modifier. For an embedded Media Box, set `media_box__spacing` to `none` to omit section padding.
+
+| 1.x container class or grid spacing | 2.0 value |
+| --- | --- |
+| `container--no-spacing` or `no-spacing` | `none` |
+| `container--quarter-spacing` or `quarter-spacing` | `quarter` |
+| `container--half-spacing`, `grid--half-spacing`, or `half-spacing` | `half` |
+| `container--one-spacing`, `one-spacing`, or omitted spacing | `one` |
+| `container--two-spacing` or `two-spacing` | `two` |
+| `container--three-spacing` or `three-spacing` | `three` |
+| `container--four-spacing` or `four-spacing` | `four` |
+| `container--no-top` or `container--no-bottom` | `none-top` or `none-bottom` |
+| `container--spacing-top` or `container--spacing-bottom` | `one-top` or `one-bottom` |
+| `container--half-bottom` | `half-bottom` |
+| `container--two-spacing-top` or `container--two-spacing-bottom` | `two-top` or `two-bottom` |
+| `container--three-spacing-bottom` | `three-bottom` |
+
+The container's `-top` and `-bottom` variants set the named edge and keep one unit on the opposite edge. `three-bottom` applies three units to the bottom. Section padding and margin-gap mixins use `space(32)` as one unit at `md` and above and 80% of that below `md`. `margin-gap-bottom()` now applies to the last child as well. Scope `--grid-spacing` to override a grid's gap.
+
+### Classes and composition
+
+| 1.x class or markup hook | 2.0 class, prop, or block |
+| --- | --- |
+| `.container--*-spacing` | `[data-component-spacing]` on the container, set with `container__spacing` |
+| `.container--with-bg` | `container__bg_color: true` to paint the theme background |
+| `data-component-theme="inverse"` or `"standard"` | `container__theme: 'default'` with `container__theme__variation: 'dark'` or `'light'` |
+| `container__inner_additional_classes` | `container__inner__additional_classes` |
+| `container__prefix__intro` | Use `container__prefix` above the wrapper or `container__content` inside it |
+| `container__show_link` | Supply the link label and URL or fill `container__intro__link` |
+| `.container--layout-split`, `.container--embedded`, `.container--bordered`, or `.container--view-content` | Express the layout with width, alignment, spacing, or `container__style: 'contained'`. Add project-specific styling where needed. |
+| `data-grid-count-class` or `grid__item__count` | Pass `grid__columns` as a ceiling from 1 to 6. Grid handles the active item count. |
+| `grid__item__alignment` | `grid__alignment` for the final row and `grid__last_item_alignment` for a separate last row |
+| `grid__separators` or `data-grid-separators` | Use item-level borders or project-specific styling. |
+| `.place-holder` and `.place-holder__content` | `.placeholder` and `.placeholder__content` |
+| `place_holder` and `place_holder__modifiers` | `placeholder__text` and `placeholder__modifiers` |
+
+Keep grid items as direct children of `grid__content`. The heading, prefix, and suffix blocks render outside the tracks. Pass `grid__inner__attributes` for the inner element and `grid__attributes` for the outer element. The Grid Docs tab covers final-row alignment and the focus-column fallback.
+
+Update Placeholder story links from `layout-place-holder--place-holder` to `layout-placeholder--placeholder`. Use the Base/Placement guide for `grid-tracks()` and `grid-column()` examples.
+
+`withStorybookContainer()` now paints the active theme background. Pass `{ bgColor: false }` as its options to keep the story canvas background.
 
 ## Components
 

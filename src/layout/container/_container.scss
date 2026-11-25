@@ -1,459 +1,181 @@
-@use '../../base/breakpoints/breakpoints' as *;
-@use '../../base/breakpoints/legacy-breakpoints' as *;
-@use '../../base/utility/utility' as *;
+@use 'sass:map';
+@use '../../base' as *;
 @use '../../base/spacing/spacing' as *;
-@use '../../base/typography/typography' as *;
-@use '../../base/motion/motion' as *;
-@use '../../base/utility/rem-calc' as *;
-@use '../../components/link/link' as *;
+@use '../../base/tokens/maps' as *;
 
-// Utilize custom properties so they can be rescoped.
+// Consumers can rescope these width limits on any ancestor.
 :root {
-  --content-width-compressed: min(92vw, #{$xsmall});
-  --content-width-compact: min(92vw, #{$small});
-  --content-width: min(92vw, #{$medium});
-  --content-width-wide: min(92vw, #{$large});
-  --content-width-max: #{$xlarge};
-  --content-width-page: #{$xxxlarge};
-  --content-width-full: 100vw;
+  --content-width-narrow: #{map.get($breakpoints, 'md', 'min-width')};
+  --content-width: #{map.get($breakpoints, 'lg', 'min-width')};
+  --content-width-wide: #{map.get($breakpoints, 'xl', 'min-width')};
+  --content-width-full: 100%;
 }
 
-// Styles for container wrappers.
+$container-spacings: (
+  'none': 0,
+  'quarter': 0.25,
+  'half': 0.5,
+  'one': 1,
+  'two': 2,
+  'three': 3,
+  'four': 4,
+);
+
 .container {
+  inline-size: 100%;
+  position: relative;
+  container-type: inline-size;
+  color: var(--clr-body);
+
   @include section-padding;
 
-  & {
-    width: 100%;
-    max-width: var(--content-width-page);
-    position: relative;
-    margin-inline: auto;
-    container-type: inline-size;
-  }
-
-  &.container--layout-split {
-    // Prevent overflow issues for non-preview instances of layout.
-    body:not([class*='gin']) & {
-      overflow: hidden;
+  @each $spacing, $multiplier in $container-spacings {
+    &[data-component-spacing='#{$spacing}'] {
+      @include section-padding($multiplier);
     }
 
-    .container:first-child {
-      padding-top: 0;
+    &[data-component-spacing='#{$spacing}-top'] {
+      @include section-padding-top($multiplier);
     }
 
-    .container:last-child,
-    .container:nth-last-child(2):has(.lpb-btn--add) {
-      padding-bottom: 0;
+    &[data-component-spacing='#{$spacing}-bottom'] {
+      @include section-padding-bottom($multiplier);
     }
   }
 
-  // Last component that has normal spacing needs double spacing within articles.
-  &:last-child:not(.container--no-spacing):not(
-      .container--two-spacing,
-      .container--three-spacing
-    ) {
-    article > & {
-      @include section-padding-bottom(3);
-    }
-  }
-
-  &:first-child:not(.container--no-spacing):not(
-      .container--two-spacing,
-      .container--three-spacing
-    ) {
-    article > & {
-      @include section-padding-top(3);
-    }
-  }
-
-  // // Add extra padding to components that come before section footers.
-  // &:nth-last-child(2):not(.container--no-spacing):not(
-  //     .container--two-spacing,
-  //     .container--three-spacing
-  //   ) {
-  //   article > &:has(+ .container--section-footer) {
-  //     @include section-padding-bottom(2);
-  //   }
-  // }
-
-  // &:not(.container--with-bg) + .container--with-bg {
-  //   @include margin-gap-top;
-  // }
-
-  // &:not(.container--with-bg) + .container:not(.container--with-bg) {
-  //   @include margin-gap-top;
-  // }
-
-  &[data-component-width='container-width-wide'] {
-    width: 100%;
-    max-width: var(--content-width-full);
-  }
-
-  [data-component-width='page'] & {
-    width: 100%;
-    max-width: var(--content-width-page);
-  }
-
-  &--with-bg {
-    @include section-padding;
-
-    &:not(:has(.breadcrumbs__wrapper)) {
-      background-color: var(--color-primary-lighter);
-    }
-  }
-
-  &--embedded {
-    padding: 0;
-    margin: 0;
-
-    &.container--with-bg {
-      align-self: flex-start;
-
-      .container {
-        padding: var(--spacing-xl);
-      }
-    }
-  }
-
-  &--no-spacing {
-    padding: 0;
-    margin-block: 0;
-
-    + .container--with-bg:not(
-        .container--no-spacing,
-        .container--two-spacing,
-        .container--three-spacing
-      ) {
-      @include section-padding-top(2);
-    }
-  }
-
-  &--quarter-spacing {
-    @include section-padding(0.33);
-  }
-
-  &--half-spacing {
-    @include section-padding(0.5);
-  }
-
-  &--one-spacing {
-    @include section-padding;
-  }
-
-  &--two-spacing {
-    @include section-padding(2);
-  }
-
-  &--three-spacing {
-    @include section-padding(3);
-  }
-
-  &--four-spacing {
-    @include section-padding(4);
-  }
-
-  &--no-bottom {
-    padding-bottom: 0;
-  }
-
-  &--no-top {
-    padding-top: 0;
-  }
-
-  &--spacing-top {
-    @include section-padding-top;
-  }
-
-  &--two-spacing-top {
-    @include section-padding-top(2);
-  }
-
-  &--spacing-bottom {
-    @include section-padding-bottom;
-  }
-
-  &--half-bottom {
-    @include section-padding-bottom(0.5);
-  }
-
-  &--two-spacing-bottom {
-    @include section-padding-bottom(2);
-  }
-
-  &--three-spacing-bottom {
-    @include section-padding-bottom(2);
+  &[data-component-bg='true']:not([data-component-style='contained']) {
+    background-color: var(--clr-background);
   }
 }
 
 .container__inner {
-  max-width: 100%;
+  box-sizing: border-box;
+  inline-size: min(92%, var(--content-width));
+  min-inline-size: 0;
+  max-inline-size: 100%;
   margin-inline: auto;
-  width: var(--content-width-wide);
+  container-type: inline-size;
 
-  // Prevent overflow issues when editing.
-  // .js-lpb-component & {
-  //   overflow: hidden;
-  //   padding: 3px;
-  // }
-
-  [data-component-width='full'] & {
-    width: 100%;
-    max-width: var(--content-width-full);
+  .container[data-component-width='narrow'] > & {
+    inline-size: min(92%, var(--content-width-narrow));
   }
 
-  [data-component-width='page'] & {
-    width: 100%;
-    max-width: var(--content-width-page);
+  .container[data-component-width='wide'] > & {
+    inline-size: min(92%, var(--content-width-wide));
   }
 
-  > *:not(.container__intro) {
-    // Component widths.
-    [data-component-width='max'] & {
-      width: 100%;
-      max-width: var(--content-width-max);
-    }
+  .container[data-component-alignment='left'] > & {
+    margin-inline: 4% auto;
+  }
 
-    [data-component-width='wide'] & {
-      width: 100%;
-      max-width: var(--content-width-wide);
-    }
+  .container[data-component-alignment='right'] > & {
+    margin-inline: auto 4%;
+  }
 
-    [data-component-width='content'] &,
-    [data-component-width='standard'] & {
-      width: 100%;
-      max-width: var(--content-width);
-    }
+  .container[data-component-width='full'] > & {
+    inline-size: var(--content-width-full);
+    margin-inline: auto;
+  }
 
-    [data-component-width='compact'] & {
-      width: 100%;
-      max-width: var(--content-width-compact);
-    }
+  .container[data-component-style='contained'] > & {
+    padding: space(16);
+    background-color: var(--clr-background);
 
-    [data-component-width='compressed'] &,
-    [data-component-width='narrow'] & {
-      width: 100%;
-      max-width: var(--content-width-compressed);
+    @include breakpoint('md') {
+      padding: space(40);
     }
+  }
 
-    // Component alignments.
-    [data-component-alignment*='center'] &,
-    [data-component-alignment*='top'] & {
-      @container (min-width: #{$small}) {
-        margin-inline: auto;
+  .container[data-component-layout='inline'] > & {
+    @include breakpoint('md') {
+      display: flex;
+      gap: space(48);
+
+      > * {
+        min-inline-size: 0;
       }
-    }
 
-    [data-component-alignment='left'] & {
-      margin-inline: 0 auto;
-    }
+      > .container__intro {
+        flex: 0 1 40%;
+        margin-block-end: 0;
+      }
 
-    [data-component-alignment='right'] & {
-      margin-inline: auto 0;
-    }
-  }
-
-  // Component layouts.
-  [data-component-layout='inline'] & {
-    display: flex;
-    flex-flow: column nowrap;
-
-    @container (min-width: #{$small}) {
-      flex-flow: row nowrap;
-      gap: #{calc(var(--spacing-lg) * 3)};
+      > :not(.container__intro) {
+        flex: 1;
+      }
     }
   }
 }
 
-// Styles for container introduction elements.
 .container__intro {
-  margin: 0 auto #{calc(var(--spacing-xl) * 2.5)};
-  max-width: var(--content-width-compact);
+  display: grid;
+  gap: space(8);
+  margin-block-end: space(24);
+  overflow-wrap: anywhere;
 
-  @container (min-width: #{$small}) {
-    margin-bottom: #{calc(var(--spacing-lg) * 3)};
+  &:last-child {
+    margin-block: space(24) 0;
   }
 
-  &:has(.container__heading:last-child) {
-    margin-bottom: #{calc(var(--spacing-xl) * 1.5)};
-  }
-
-  [data-component-layout='inline'] & {
-    @container (min-width: #{$small}) {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      width: 100%;
-      max-width: 40%;
-      margin-bottom: 0;
-    }
-
-    @container (min-width: #{$medium}) {
-      max-width: rem-calc(285);
-    }
-  }
-
-  [data-component-layout='inline'] & + * {
-    @container (min-width: #{$medium}) {
-      flex: 1 1 100%;
-    }
-  }
-
-  [data-component-alignment='left'] & {
-    margin-left: 0;
-  }
-
-  [data-component-alignment='right'] & {
-    margin-right: 0;
-  }
-
-  [data-align-container-intro='center'] & {
+  .container[data-align-container-intro='center'] > .container__inner > & {
     text-align: center;
-
-    > * {
-      margin-inline: auto;
-    }
   }
 
-  [data-align-container-intro='right'] & {
+  .container[data-align-container-intro='right'] > .container__inner > & {
     text-align: right;
-
-    > * {
-      margin-left: auto;
-    }
   }
 }
 
 .container__overline {
   @include overline;
-
-  &:not(:last-child) {
-    margin-bottom: var(--spacing-md);
-  }
 }
 
 .container__heading {
-  display: inline-flex;
-  align-content: center;
-  gap: var(--spacing-xl);
-  align-items: baseline;
   margin: 0;
+  color: var(--clr-heading);
+}
 
-  &:is(h2),
-  &:is(.h2) {
-    @include h2;
-  }
-
-  &:is(h3),
-  &:is(.h3) {
-    @include h3;
-  }
-
-  &:is(h4),
-  &:is(.h4) {
-    @include h4;
-  }
-
-  &:is(h5),
-  &:is(.h5) {
-    @include h5;
-  }
-
-  &:not(:last-child) {
-    margin-bottom: #{calc(var(--spacing-xl) * 1.5)};
-  }
-
-  &:has(+ .link-emulsify:last-child) {
-    margin-bottom: 0;
-  }
-
-  &:last-child {
-    margin: 0;
-  }
-
-  .container--bordered & {
-    text-align: left;
-  }
-
-  > a:not([hreflang]) {
-    @include link('icon-right');
-    @include body;
-  }
-
-  + .link-emulsify,
-  + .ed11y-element + .link-emulsify {
-    padding-left: var(--spacing-xl);
+@each $level, $style in (2: 'h2', 3: 'h3', 4: 'h4', 5: 'h5', 6: 'h5') {
+  h#{$level}.container__heading {
+    @include typography($style);
   }
 }
 
-.container__text {
-  margin-bottom: var(--spacing-xl);
-
-  @container (min-width: #{$small}) {
-    max-width: var(--content-width-compact);
-  }
-
-  [data-component-layout='inline'] & {
-    margin-bottom: 0;
-  }
+.container__subheading {
+  @include body;
 }
 
-.animate-sections > .container:not(.no-animate) {
-  @media (prefers-reduced-motion: no-preference) {
-    @include breakpoint('lg') {
-      opacity: 0;
-    }
-  }
-
-  &.scrolled {
-    @include breakpoint('lg') {
-      @include animate-slide-up-fade-in($speed: 300ms, $delay: 100ms);
-    }
-  }
+.container__text > :first-child {
+  margin-block-start: 0;
 }
 
-article > .container:first-child:not(.container--with-bg) {
-  @include section-padding-top(2);
-
-  @include breakpoint('lg') {
-    @include section-padding-top(3.5);
-  }
+.container__text > :last-child {
+  margin-block-end: 0;
 }
 
-article > .container:last-child:not(.container--with-bg) {
-  @include section-padding-top(2);
+.container__link {
+  justify-self: start;
+  display: inline-grid;
+  align-items: center;
+  min-block-size: space(24);
+  color: var(--clr-link);
+  text-decoration: underline;
 
-  @include breakpoint('lg') {
-    @include section-padding-top(3.5);
-  }
-}
-
-article > .container:not(.container--with-bg) + .container.container--with-bg {
-  @include section-padding-top(2);
-
-  @include breakpoint('lg') {
-    @include section-padding-top(3.5);
-  }
-}
-
-article > .container--with-bg + .container:not(.container--with-bg) {
-  @include section-padding-top(2);
-
-  @include breakpoint('lg') {
-    @include section-padding-top(3.5);
-  }
-}
-
-.container--view-content {
-  @media (prefers-reduced-motion: no-preference) {
-    opacity: 0;
+  &:hover {
+    color: var(--clr-link-hover);
   }
 
-  & {
-    @include animate-slide-up-fade-in($speed: 300ms, $delay: 300ms);
+  .container[data-align-container-intro='center']
+    > .container__inner
+    > .container__intro
+    > & {
+    justify-self: center;
   }
-}
 
-.container.exposed-filters-visual-view {
-  @include breakpoint('lg-down') {
-    padding: 0;
+  .container[data-align-container-intro='right']
+    > .container__inner
+    > .container__intro
+    > & {
+    justify-self: end;
   }
 }

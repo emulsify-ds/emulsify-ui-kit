@@ -17,7 +17,7 @@ export default {
     media_box__width: {
       name: 'Media Box Width',
       control: 'select',
-      options: ['compact', 'standard'],
+      options: ['narrow', 'content', 'wide', 'full'],
     },
     media_box__heading: {
       name: 'Heading',
@@ -49,7 +49,7 @@ export default {
 export const mediaBox = {
   args: {
     media_box__type: 'image',
-    media_box__width: 'compact',
+    media_box__width: 'narrow',
     media_box__heading: properties.media_box__heading.data,
     media_box__text: properties.media_box__text.data,
     media_box__show_caption: true,

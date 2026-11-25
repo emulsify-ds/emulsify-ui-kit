@@ -30,7 +30,7 @@ export default {
     gridColumns: {
       name: 'Column Number',
       control: { type: 'select' },
-      options: ['1', '2', '3', '4'],
+      options: ['1', '2', '3', '4', '5', '6'],
     },
     motion: {
       name: 'Motion',
@@ -41,10 +41,7 @@ export default {
     width: {
       name: 'Container Width',
       control: { type: 'select' },
-      options: {
-        Compact: 'compact',
-        Standard: 'standard',
-      },
+      options: ['narrow', 'content', 'wide', 'full'],
       table: {
         category: 'Container Controls',
       },
@@ -77,7 +74,7 @@ export default {
     headingLevel: statsData.stats_group__heading_level.data,
     text: statsData.stats_group__content.data,
     gridColumns: '3',
-    width: 'compact',
+    width: 'narrow',
     alignment: 'center',
     backgroundColor: false,
     motion: false,

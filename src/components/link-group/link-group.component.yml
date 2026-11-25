@@ -35,12 +35,11 @@ props:
       type: string
       title: Width
       enum:
-        - compressed
-        - standard
+        - narrow
+        - content
         - wide
-        - max
         - full
-      data: standard
+      data: content
     link_group__alignment:
       type: string
       title: Alignment
