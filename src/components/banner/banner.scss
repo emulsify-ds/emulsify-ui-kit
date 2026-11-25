@@ -1,4 +1,4 @@
-@use '../../foundation/typography/typography' as *;
+@use '../../base/typography/typography' as *;
 
 @mixin overlay-darken(
   $color: var(--color-primary-dark),

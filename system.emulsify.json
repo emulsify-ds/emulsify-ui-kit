@@ -19,10 +19,10 @@
       ],
       "directories": [
         {
-          "name": "foundation",
-          "path": "./src/foundation",
-          "destinationPath": "./src/foundation",
-          "description": "Contains foundational sass functions for all components."
+          "name": "base",
+          "path": "./src/base",
+          "destinationPath": "./src/base",
+          "description": "Shared Sass functions, mixins, and base styles."
         },
         {
           "name": "layout",

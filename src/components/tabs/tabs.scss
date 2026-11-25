@@ -1,7 +1,7 @@
 @forward './tab';
-@use '../../foundation/breakpoints/breakpoints' as *;
-@use '../../foundation/utility/utility' as *;
-@use '../../foundation/motion/motion' as *;
+@use '../../base/breakpoints/breakpoints' as *;
+@use '../../base/utility/utility' as *;
+@use '../../base/motion/motion' as *;
 
 /* Tab navigation wrapper */
 .tabs__wrapper {

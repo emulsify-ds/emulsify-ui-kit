@@ -20,8 +20,8 @@
         "directory": "./src/components/"
       },
       {
-        "name": "foundation",
-        "directory": "./src/foundation/"
+        "name": "base",
+        "directory": "./src/base/"
       },
       {
         "name": "layout",

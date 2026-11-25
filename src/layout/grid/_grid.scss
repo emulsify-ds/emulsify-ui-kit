@@ -1,7 +1,7 @@
 @use 'sass:math';
-@use '../../foundation/breakpoints/breakpoints' as *;
-@use '../../foundation/spacing/spacing' as *;
-@use '../../foundation/typography/typography' as *;
+@use '../../base/breakpoints/breakpoints' as *;
+@use '../../base/spacing/spacing' as *;
+@use '../../base/typography/typography' as *;
 
 // Define grid columns and their widths
 $grids: (

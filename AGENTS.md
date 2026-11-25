@@ -29,7 +29,7 @@ The Tests workflow runs `npm ci` and `npm run validate` on pull requests. It run
 | Path | Purpose |
 | --- | --- |
 | `src/components/` | Component source, metadata, templates, styles, scripts, docs, and stories. |
-| `src/foundation/` | Shared styles and utilities. Step 4 moves this to `src/base/` and changes the Twig namespace to `@base`. |
+| `src/base/` | Shared styles and Sass utilities. The Twig namespace is `@base`. |
 | `src/layout/` | The container, grid, and placeholder layout primitives. Include these by path. |
 | `src/tokens/` | Figma token inputs, build scripts, and token stories. |
 | `src/util/` | Storybook helpers. Keep these outside the Drupal asset build. |
