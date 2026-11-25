@@ -144,7 +144,7 @@
   }
 
   [data-component-layout='stacked'] & {
-    max-width: var(--content-width-small);
+    max-width: var(--content-width-narrow);
     margin-bottom: calc((#{var(--spacing-2xl)} * 2) * -1);
   }
 

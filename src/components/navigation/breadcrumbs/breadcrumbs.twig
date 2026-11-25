@@ -82,11 +82,12 @@
 {# Render breadcrumbs within a container #}
 {% if breadcrumbs_items.1 %}
 	{% embed "@layout/container/container.twig" with {
-    container__component_width: 'extended',
-    container__component_alignment: 'left',
-    container__bg_color: 'true',
-    container__modifiers: ['no-spacing'],
-    container__theme: breadcrumbs__theme|default('standard'),
+    container__width: 'wide',
+    container__alignment: 'left',
+    container__bg_color: true,
+    container__spacing: 'none',
+    container__theme: breadcrumbs__theme,
+    container__theme__variation: breadcrumbs__theme__variation,
   }%}
 		{% block container__content %}
 			<div {{ bem('wrapper', [], breadcrumbs__base_class) }}>

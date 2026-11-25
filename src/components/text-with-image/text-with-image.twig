@@ -78,8 +78,8 @@
 
 {# Render the accordion within a generic container #}
 {% embed "@layout/container/container.twig" with {
-  container__component_width: 'standard',
-  container__component_alignment: 'center',
+  container__width: 'content',
+  container__alignment: 'center',
 }%}
 	{% block container__content %}
 		{{ text_with_image }}

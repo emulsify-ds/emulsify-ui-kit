@@ -130,6 +130,11 @@ props:
       title: Container theme
       description: Theme applied to the page title container.
       data: ''
+    page_title__spacing:
+      type: string
+      title: Container spacing
+      description: Selects a spacing preset for the page title container.
+      default: two
     page_title__show_media:
       type: boolean
       title: Show media

@@ -48,7 +48,7 @@ describe('Storybook containers', () => {
       themeVariation: 'dark',
       width: 'narrow',
       alignment: 'left',
-      spacing: 'tight',
+      spacing: 'half',
     };
     const preview = document.createElement('div');
     preview.innerHTML = template(args);
@@ -59,7 +59,8 @@ describe('Storybook containers', () => {
       componentTheme: 'default dark',
       componentWidth: 'narrow',
       componentAlignment: 'left',
-      componentSpacing: 'tight',
+      componentSpacing: 'half',
+      componentBg: 'true',
     });
     expect(
       container.querySelector('.container__inner.example-content p')
@@ -72,6 +73,7 @@ describe('Storybook containers', () => {
     const template = withStorybookContainer(() => '<p>Preview</p>', {
       componentWidth: 'wide',
       spacing: 'compact" & tight',
+      bgColor: false,
     });
     preview.innerHTML = template({ width: 'narrow' });
     const { dataset } = preview.firstElementChild;
@@ -82,6 +84,7 @@ describe('Storybook containers', () => {
       componentAlignment: 'center',
       componentSpacing: 'compact" & tight',
     });
+    expect(dataset.componentBg).toBeUndefined();
   });
 
   test('preserves the classes, nested wrapper and theme of legacy previews', () => {

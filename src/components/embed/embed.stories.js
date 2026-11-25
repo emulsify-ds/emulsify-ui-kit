@@ -59,23 +59,17 @@ export default {
     width: {
       name: 'Container width',
       control: { type: 'select' },
-      options: {
-        Compressed: 'compressed',
-        Standard: 'standard',
-        Extended: 'extended',
-        Max: 'max',
-        Full: 'full',
-      },
+      options: ['narrow', 'content', 'wide', 'full'],
     },
     alignment: {
       name: 'Container alignment',
       control: { type: 'select' },
       options: ['left', 'center', 'right'],
     },
-    theme: {
-      name: 'Container theme',
+    themeVariation: {
+      name: 'Container theme variation',
       control: { type: 'select' },
-      options: { Default: '', Inverse: 'inverse' },
+      options: ['light', 'dark'],
     },
     backgroundColor: {
       name: 'Container background',
@@ -92,7 +86,7 @@ export default {
     ratioCustom: embedData.embed__ratio_custom.data,
     width: embedData.embed__width.data,
     alignment: embedData.embed__alignment.data,
-    theme: '',
+    themeVariation: 'light',
     backgroundColor: false,
   },
 };
@@ -111,7 +105,7 @@ export const embed = ({
   ratioCustom,
   width,
   alignment,
-  theme,
+  themeVariation,
   backgroundColor,
 }) =>
   embedTwig({
@@ -124,6 +118,7 @@ export const embed = ({
     embed__ratio_custom: ratioCustom,
     embed__width: width,
     embed__alignment: alignment,
-    embed__theme: theme,
+    embed__theme: 'default',
+    embed__theme__variation: themeVariation,
     embed__bg_color: backgroundColor,
   });

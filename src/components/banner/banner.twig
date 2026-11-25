@@ -98,10 +98,12 @@
 
 {# Render the banner within a generic container #}
 {% embed "@layout/container/container.twig" with {
-  container__component_width: banner__width|default('compact'),
+  container__width: banner__width|default('narrow'),
 	container__modifiers: banner__container_modifiers,
-  container__component_alignment: 'center',
-  container__theme: banner__theme|default('inverse'),
+  container__alignment: 'center',
+  container__theme: banner__theme|default('default'),
+  container__theme__variation: banner__theme__variation|default('dark'),
+  container__bg_color: banner__bg_color is defined and banner__bg_color is not same as(null) ? banner__bg_color : true,
 }%}
 	{% block container__content %}
 		{{ banner }}

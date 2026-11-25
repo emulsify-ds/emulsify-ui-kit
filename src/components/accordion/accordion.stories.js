@@ -7,16 +7,10 @@ export default {
   title: 'Components/Accordion',
   render: renderTwig(accordionTwig),
   argTypes: {
-    width: {
+    accordion__width: {
       name: 'Container Width',
       control: { type: 'select' },
-      options: {
-        Small: 'compact',
-        Medium: 'standard',
-        Large: 'extended',
-        Max: 'max',
-        Full: 'full',
-      },
+      options: ['narrow', 'content', 'wide', 'full'],
     },
     heading: {
       name: 'Heading',
@@ -38,6 +32,7 @@ const { properties } = accordionData.props;
 
 export const accordion = {
   args: {
+    accordion__width: 'narrow',
     accordion__heading: properties.accordion__heading.data,
     accordion__text: properties.accordion__text.data,
     accordion__items: properties.accordion__items.data,
