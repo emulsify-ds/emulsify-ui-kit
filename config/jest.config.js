@@ -1,4 +1,5 @@
 export default {
+  rootDir: '..',
   testEnvironment: 'jsdom',
   testMatch: ['<rootDir>/{components,src}/**/*.{test,spec}.{js,mjs,cjs}'],
   collectCoverageFrom: [

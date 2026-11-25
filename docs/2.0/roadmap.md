@@ -23,7 +23,7 @@ Coordinate the 16 refinement steps for the single Emulsify UI Kit 2.0.0 release.
 ## Steps
 
 - [x] 1 Tooling and hygiene
-- [ ] 2 Rules and checks
+- [x] 2 Rules and checks
 - [ ] 3 Storybook infrastructure
 - [ ] 4 Base layer
 - [ ] 5 Tokens
@@ -40,3 +40,42 @@ Coordinate the 16 refinement steps for the single Emulsify UI Kit 2.0.0 release.
 - [ ] 16 Docs, accessibility gate, ready for review
 
 ## Notes for later steps
+
+### Step 2 contract baseline
+
+`npm run test:contract` reported 547 violations across 30 component directories. The allowlist starts empty. Add a directory to it after bringing that component up to the contract.
+
+| Component directory | Violations |
+| --- | ---: |
+| `accordion` | 19 |
+| `announcement` | 19 |
+| `audio-player` | 7 |
+| `banner` | 23 |
+| `blockquote` | 10 |
+| `button` | 12 |
+| `call-to-action` | 16 |
+| `card` | 23 |
+| `embed` | 30 |
+| `header` | 10 |
+| `link` | 16 |
+| `link-group` | 23 |
+| `lists` | 11 |
+| `media-box` | 19 |
+| `navigation/breadcrumbs` | 10 |
+| `navigation/main` | 14 |
+| `navigation/pager` | 17 |
+| `navigation/social` | 9 |
+| `offcanvas` | 27 |
+| `page-title` | 74 |
+| `search` | 12 |
+| `stats-group` | 33 |
+| `status` | 16 |
+| `tables` | 14 |
+| `tabs` | 13 |
+| `tags` | 9 |
+| `text` | 9 |
+| `text-with-image` | 20 |
+| `typography/heading` | 11 |
+| `typography/text` | 21 |
+
+The report also found 30 global violations. The `blockquote.component.yml` basename appears twice. The manifest lists seven entries without component metadata, omits 16 component directories, and has six dependency references to absent entries (`container` and `list`). Step 15 enables `enforceGlobal` and makes hex colors a Stylelint error.

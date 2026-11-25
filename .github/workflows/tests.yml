@@ -31,10 +31,8 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
-      - name: Check release configuration
-        run: npm run test:release
-      - name: Lint
-        run: npm run lint
+      - name: Validate
+        run: npm run validate
       - name: Build storybook
         if: steps.component_changes.outputs.components == 'true'
         run: npm run storybook-build
