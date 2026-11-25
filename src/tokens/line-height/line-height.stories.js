@@ -7,7 +7,7 @@ import tokens from '../transformed.tokens.json';
 const data = { lineHeight: tokens['line-height'] };
 
 export default {
-  title: 'Tokens/Line Height',
+  title: 'Base/Line Height',
   render: renderTwig(withStorybookPadding(template)),
 };
 

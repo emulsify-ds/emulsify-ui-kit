@@ -3,7 +3,7 @@ import audioPlayerData from './audio-player.component.yml';
 import audioPlayerTwig from './audio-player.twig';
 
 export default {
-  title: 'Components/Media/Audio Player',
+  title: 'Components/Audio Player',
   render: renderTwig(audioPlayerTwig),
   argTypes: {
     audio_content: {

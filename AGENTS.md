@@ -33,6 +33,7 @@ The Tests workflow runs `npm ci` and `npm run validate` on pull requests. It run
 | `src/layout/` | The container, grid, and placeholder layout primitives. Include these by path. |
 | `src/tokens/` | Figma token inputs, build scripts, and token stories. |
 | `src/util/` | Storybook helpers. Keep these outside the Drupal asset build. |
+| `src/storybook/` | Welcome, guides, and examples. The `examples` implementation provides the `@examples` Twig namespace. |
 | `assets/` | Fonts, icons, images, audio, and video. |
 | `config/` | Emulsify Core, Figma, Jest, and token build configuration. |
 | `tests/` | Repository-wide contract and release checks. |
@@ -65,6 +66,23 @@ List enforced components in `tests/contract-allowlist.json` by path relative to 
 6. Add the component to `tests/contract-allowlist.json` once it passes the contract.
 7. Update `system.emulsify.json` and [the migration guide](docs/migration-2.0.md) for the change.
 8. Make one commit per component.
+
+## Storybook conventions
+
+- Use the sidebar groups Welcome, Guides, Base, Layout, Components, and Examples in that order. Place component stories under `Components/<Component>` and token stories under `Base/<Topic>`.
+- Use `tags: ['autodocs']` and source `parameters.docs` from the sibling `.docs.js` file. Put standalone MDX pages under `src/storybook/` and prefix their stylesheets with `sb-` for Storybook-only output.
+- Use `argsFromSchema(component.props)` from `src/util/argsFromSchema.js` to seed args from each prop's first example or default. Merge the `args` and `argTypes` from `createContainerWidthControls()` and `createContainerThemeControls()` in `src/util/storybookContainerControls.js` when the story needs appearance controls.
+- Wrap Twig rendering with `withStorybookContainer()` from `src/util/storybookContainer.js`. Use `renderTwig()` with its default context and map story args inside the wrapper's callback so width and theme reach it. Use `withStorybookPadding()` to retain the existing padding when migrating a legacy preview.
+
+```js
+render: renderTwig(
+  withStorybookContainer((args) =>
+    exampleTwig({ ...args, example__label: args.label }),
+  ),
+),
+```
+
+- The preview loads `once()` for Drupal behaviors and the copy helper for Base token stories. A native button with `class="js-copy-trigger"` and `data-usage` containing the code snippet enables copying and status feedback.
 
 ## Twig conventions
 

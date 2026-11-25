@@ -90,35 +90,26 @@
   border-radius: var(--radius-sm);
 }
 
+.sb-copy-trigger {
+  min-inline-size: 24px;
+  min-block-size: 24px;
+  padding: 0;
+  border: 1px solid currentcolor;
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  color: inherit;
+  cursor: copy;
+
+  &:focus-visible {
+    outline: 2px solid currentcolor;
+    outline-offset: 2px;
+  }
+}
+
 .sb-spacing-wrapper {
   display: flex;
   flex-flow: row nowrap;
   background-color: #d606c1;
-}
-
-.sb-cover {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: bottom right;
-  background-image: url('/assets/images/cover.png');
-  padding: var(--spacing-2xl) !important;
-  display: flex;
-  justify-content: flex-end;
-  flex-flow: column nowrap;
-
-  &__logo {
-    max-width: 300px;
-    display: block;
-  }
-
-  &__title {
-    color: var(--color-white);
-    font-family: var(--font-family-body), serif !important;
-    font-size: var(--font-size-colossus);
-    line-height: var(--line-height-none);
-    margin: 0;
-  }
 }
 
 .sb_lozenge {

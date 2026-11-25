@@ -5,7 +5,7 @@ import motionTwig from './motion.twig';
 import motionData from './motion.yml';
 
 export default {
-  title: 'Tokens/Motion',
+  title: 'Base/Motion',
   render: renderTwig(withStorybookPadding(motionTwig)),
 };
 

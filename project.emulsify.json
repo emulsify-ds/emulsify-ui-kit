@@ -30,6 +30,10 @@
       {
         "name": "tokens",
         "directory": "./src/tokens/"
+      },
+      {
+        "name": "examples",
+        "directory": "./src/storybook/"
       }
     ]
   }

@@ -8,7 +8,7 @@ import tokens from '../transformed.tokens.json';
 const data = { spacing: tokens.spacing };
 
 export default {
-  title: 'Tokens/Spacing',
+  title: 'Base/Spacing',
   render: renderTwig(withStorybookPadding(template)),
 };
 

@@ -7,7 +7,7 @@
         <span class="sb-list__label">{{spacing}}</span>
         <span class="sb-list__value">{{value.value}}px</span>
         <span class="sb-list__custom-property">
-          <code class=" sb-custom-property-name">var(--spacing-{{spacing}})</code>
+          {% include '../../util/_copy-usage.twig' with { usage: 'var(--spacing-' ~ spacing ~ ')' } only %}
         </span>
 
         <ul class="sb-spacing-wrapper" style="gap: {{value.value}}px; padding-left: 0;">

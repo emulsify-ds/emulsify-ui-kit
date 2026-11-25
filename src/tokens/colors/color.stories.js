@@ -7,7 +7,7 @@ import tokens from '../transformed.tokens.json';
 const colorsData = { colors: tokens.color };
 
 export default {
-  title: 'Tokens/Colors',
+  title: 'Base/Colors',
   render: renderTwig(withStorybookPadding(colorsTwig)),
 };
 

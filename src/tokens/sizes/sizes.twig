@@ -7,7 +7,7 @@
         <span class="sb-list__label">{{size}}</span>
         <span class="sb-list__value">{{value.value}}px</span>
         <span class="sb-list__custom-property">
-          <code class=" sb-custom-property-name">var(--size-{{size}})</code>
+          {% include '../../util/_copy-usage.twig' with { usage: 'var(--size-' ~ size ~ ')' } only %}
         </span>
         <span class="sb-list__visualization" style="width: {{value.value}}px; height: {{value.value}}px; background-color: var(--colors-sb-visualization);"></span>
       </li>

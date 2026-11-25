@@ -7,7 +7,7 @@
 				<span class="sb-list__label">{{fontSize}}</span>
 				<span class="sb-list__value">{{value.value}}px</span>
 				<span class="sb-list__custom-property">
-					<code class=" sb-custom-property-name">var(--font-size-{{fontSize}})</code>
+					{% include '../../util/_copy-usage.twig' with { usage: 'var(--font-size-' ~ fontSize ~ ')' } only %}
 				</span>
 
 				<p style="font-size: var(--font-size-{{fontSize}}); margin: 0;">{{fontSize|capitalize}}

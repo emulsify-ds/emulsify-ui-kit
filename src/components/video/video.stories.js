@@ -12,7 +12,7 @@ const videoEmbedData = mapDataToTwig(videoEmbedProps.properties);
 const videoHTML5Data = mapDataToTwig(videoHTML5Props.properties);
 
 export default {
-  title: 'Components/Media/Video',
+  title: 'Components/Video',
   render: renderTwig(videoTwig),
 };
 

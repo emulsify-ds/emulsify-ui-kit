@@ -6,7 +6,7 @@ import cardTwig from './card.twig';
 const { properties } = cardData.props;
 
 export default {
-  title: 'Components/Cards',
+  title: 'Components/Card',
   render: renderTwig(withStorybookPadding(cardTwig)),
   argTypes: {
     card__image__src: {

@@ -8,7 +8,7 @@ import tokens from '../transformed.tokens.json';
 const typeFacesData = { fontFamily: tokens['font-family'] };
 
 export default {
-  title: 'Tokens/Type Faces',
+  title: 'Base/Type Faces',
   render: renderTwig(withStorybookPadding(typeFacesTwig)),
 };
 

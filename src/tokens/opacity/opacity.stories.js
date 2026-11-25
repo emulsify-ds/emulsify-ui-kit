@@ -8,7 +8,7 @@ import tokens from '../transformed.tokens.json';
 const data = { opacity: tokens.opacity };
 
 export default {
-  title: 'Tokens/Opacity',
+  title: 'Base/Opacity',
   render: renderTwig(withStorybookPadding(template)),
 };
 

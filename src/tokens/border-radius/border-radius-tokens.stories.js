@@ -7,7 +7,7 @@ import tokens from '../transformed.tokens.json';
 const data = { radius: tokens.radius };
 
 export default {
-  title: 'Tokens/Border Radius',
+  title: 'Base/Border Radius',
   render: renderTwig(withStorybookPadding(template)),
 };
 

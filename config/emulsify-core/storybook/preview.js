@@ -13,16 +13,7 @@ export const overrideParams = {
   options: {
     storySort: {
       method: 'alphabetical',
-      order: [
-        'Docs',
-        ['Intro', '*'],
-        'Tokens',
-        ['Readme', '*'],
-        'Components',
-        ['Readme', '*'],
-        'Layout',
-        ['Readme', '*'],
-      ],
+      order: ['Welcome', 'Guides', 'Base', 'Layout', 'Components', 'Examples'],
       locales: 'en-US',
     },
   },

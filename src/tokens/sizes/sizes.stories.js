@@ -7,7 +7,7 @@ import tokens from '../transformed.tokens.json';
 const sizeData = { size: tokens.size };
 
 export default {
-  title: 'Tokens/Sizes',
+  title: 'Base/Sizes',
   render: renderTwig(withStorybookPadding(sizeTwig)),
 };
 

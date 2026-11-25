@@ -7,7 +7,7 @@ import tokens from '../transformed.tokens.json';
 const typeScaleData = { fontSize: tokens['font-size'] };
 
 export default {
-  title: 'Tokens/Type Scale',
+  title: 'Base/Type Scale',
   render: renderTwig(withStorybookPadding(typeScaleTwig)),
 };
 

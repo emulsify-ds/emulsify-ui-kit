@@ -24,7 +24,7 @@ Coordinate the 16 refinement steps for the single Emulsify UI Kit 2.0.0 release.
 
 - [x] 1 Tooling and hygiene
 - [x] 2 Rules and checks
-- [ ] 3 Storybook infrastructure
+- [x] 3 Storybook infrastructure
 - [ ] 4 Base layer
 - [ ] 5 Tokens
 - [ ] 6 Layout primitives
@@ -79,3 +79,10 @@ Coordinate the 16 refinement steps for the single Emulsify UI Kit 2.0.0 release.
 | `typography/text` | 21 |
 
 The report also found 30 global violations. The `blockquote.component.yml` basename appears twice. The manifest lists seven entries without component metadata, omits 16 component directories, and has six dependency references to absent entries (`container` and `list`). Step 15 enables `enforceGlobal` and makes hex colors a Stylelint error.
+
+### Step 3 Storybook infrastructure
+
+- Enable `autodocs` on refreshed stories and load prose from the sibling `.docs.js`. Examples/Basic demonstrates the Docs entry.
+- Use `argsFromSchema()` for schema defaults and `withStorybookContainer()` for new appearance controls. Map args inside the render callback. Existing previews use `withStorybookPadding()` until their layouts are refined.
+- The Storybook preview exposes `once()` for Drupal behaviors. Base token copy controls use native buttons with `data-usage` and the delegated clipboard helper.
+- Welcome and examples live under `src/storybook/`. Their styles use the Storybook output bucket. Story IDs that changed are listed in the [migration guide](../migration-2.0.md#storybook).

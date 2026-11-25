@@ -3,7 +3,7 @@ import template from './home.twig';
 import data from './home.yml';
 
 export default {
-  title: 'Pages/Home',
+  title: 'Examples/Home',
   render: renderTwig(template),
 };
 

@@ -8,7 +8,7 @@ import tokens from '../transformed.tokens.json';
 const data = { border: tokens.border };
 
 export default {
-  title: 'Tokens/Borders',
+  title: 'Base/Borders',
   render: renderTwig(withStorybookPadding(template)),
 };
 

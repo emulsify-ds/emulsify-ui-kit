@@ -8,7 +8,7 @@ import tokens from '../transformed.tokens.json';
 const data = { breakpoint: tokens.breakpoint };
 
 export default {
-  title: 'Tokens/Breakpoints',
+  title: 'Base/Breakpoints',
   render: renderTwig(withStorybookPadding(template)),
 };
 

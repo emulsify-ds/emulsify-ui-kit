@@ -7,7 +7,7 @@
         <span class="sb-list__label">{{border}}</span>
         <span class="sb-list__value">{{value.value}}px</span>
         <span class="sb-list__custom-property">
-          <code class=" sb-custom-property-name">var(--border-{{border}})</code>
+          {% include '../../util/_copy-usage.twig' with { usage: 'var(--border-' ~ border ~ ')' } only %}
         </span>
         <span class="sb-list__visualization" style="height: {{value.value}}px; background-color: var(--colors-sb-visualization); width: 300px;"></span>
       </li>
