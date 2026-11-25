@@ -1,4 +1,5 @@
 import { renderTwig } from '@emulsify/core/storybook';
+import { withStorybookPadding } from '../../util/storybookContainer.js';
 import template from './line-height.twig';
 import figma from '../../../config/configma.json';
 import tokens from '../transformed.tokens.json';
@@ -7,14 +8,7 @@ const data = { lineHeight: tokens['line-height'] };
 
 export default {
   title: 'Tokens/Line Height',
-  render: renderTwig(template),
-  decorators: [
-    (Story) => (
-      <div className="cl-container">
-        <Story />
-      </div>
-    ),
-  ],
+  render: renderTwig(withStorybookPadding(template)),
 };
 
 export const LineHeight = {

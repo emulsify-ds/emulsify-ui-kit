@@ -1,5 +1,6 @@
 import { renderTwig } from '@emulsify/core/storybook';
 import { mapDataToTwig } from '../../util/dataTransformers';
+import { withStorybookPadding } from '../../util/storybookContainer.js';
 
 import paragraphTwig from './text/inline-elements.twig';
 import blockquoteTwig from './text/blockquote.twig';
@@ -14,22 +15,14 @@ import { props as codeProps } from './text/code.component.yml';
 const blockquoteData = mapDataToTwig(blockquoteProps.properties);
 const headingData = mapDataToTwig(headingProps.properties);
 const codeData = mapDataToTwig(codeProps.properties);
+const padding = { innerClass: 'text-long' };
 
 export default {
   title: 'Components/Typography',
-  decorators: [
-    (Story) => (
-      <div className="cl-container">
-        <div className="text-long">
-          <Story />
-        </div>
-      </div>
-    ),
-  ],
 };
 
 export const headings = {
-  render: renderTwig(headingTwig),
+  render: renderTwig(withStorybookPadding(headingTwig, padding)),
   args: headingData,
   argTypes: {
     heading__level: {
@@ -50,19 +43,19 @@ export const headings = {
 };
 
 export const blockquote = {
-  render: renderTwig(blockquoteTwig),
+  render: renderTwig(withStorybookPadding(blockquoteTwig, padding)),
   args: blockquoteData,
 };
 
 export const preformatted = {
-  render: renderTwig(preTwig),
+  render: renderTwig(withStorybookPadding(preTwig, padding)),
 };
 
 export const random = {
-  render: renderTwig(paragraphTwig),
+  render: renderTwig(withStorybookPadding(paragraphTwig, padding)),
 };
 
 export const code = {
-  render: renderTwig(codeTwig),
+  render: renderTwig(withStorybookPadding(codeTwig, padding)),
   args: codeData,
 };

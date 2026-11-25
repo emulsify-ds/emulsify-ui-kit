@@ -1,5 +1,6 @@
 // The package export omits the leading `./` required by Vite.
 import once from '../../../node_modules/@drupal/once/src/once.js';
+import '../../../src/util/copy-usage.js';
 
 window.once = once;
 

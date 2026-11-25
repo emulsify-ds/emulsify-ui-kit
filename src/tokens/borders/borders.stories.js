@@ -1,4 +1,5 @@
 import { renderTwig } from '@emulsify/core/storybook';
+import { withStorybookPadding } from '../../util/storybookContainer.js';
 
 import template from './borders.twig';
 import figma from '../../../config/configma.json';
@@ -8,14 +9,7 @@ const data = { border: tokens.border };
 
 export default {
   title: 'Tokens/Borders',
-  render: renderTwig(template),
-  decorators: [
-    (Story) => (
-      <div className="cl-container">
-        <Story />
-      </div>
-    ),
-  ],
+  render: renderTwig(withStorybookPadding(template)),
 };
 
 export const Borders = {

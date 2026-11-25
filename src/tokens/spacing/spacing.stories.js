@@ -1,4 +1,5 @@
 import { renderTwig } from '@emulsify/core/storybook';
+import { withStorybookPadding } from '../../util/storybookContainer.js';
 
 import template from './spacing.twig';
 import figma from '../../../config/configma.json';
@@ -8,14 +9,7 @@ const data = { spacing: tokens.spacing };
 
 export default {
   title: 'Tokens/Spacing',
-  render: renderTwig(template),
-  decorators: [
-    (Story) => (
-      <div className="cl-container">
-        <Story />
-      </div>
-    ),
-  ],
+  render: renderTwig(withStorybookPadding(template)),
 };
 
 export const Spacing = {

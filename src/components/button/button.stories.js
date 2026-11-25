@@ -1,9 +1,10 @@
 import { renderTwig } from '@emulsify/core/storybook';
+import { withStorybookPadding } from '../../util/storybookContainer.js';
 import buttonTwig from './button.twig';
 
 export default {
   title: 'Components/Button',
-  render: renderTwig(buttonTwig),
+  render: renderTwig(withStorybookPadding(buttonTwig)),
   argTypes: {
     button__element: {
       name: 'Button Element',
@@ -20,13 +21,6 @@ export default {
     button__icon_only: { name: 'Icon Only (A11y)', control: 'text' },
     button__icon: { table: { disable: true } },
   },
-  decorators: [
-    (Story) => (
-      <div className="cl-container">
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export const basic = {
