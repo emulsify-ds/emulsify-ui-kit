@@ -29,13 +29,11 @@
     "storybook": "storybook dev -c node_modules/@emulsify/core/.storybook --ci -p 6006",
     "storybook-build": "npm run build && storybook build -c node_modules/@emulsify/core/.storybook -o .out",
     "storybook-deploy": "storybook-to-ghpages -o .out",
-    "style-dictionary:build": "node ./src/tokens/tokensTransform.mjs",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --config ./config/jest.config.js",
     "test:contract": "node --test tests/contract.test.mjs",
     "test:release": "node --test tests/release.test.mjs",
     "test:sass": "node --test tests/sass.test.mjs",
-    "tokens:build": "npm run tokens:transform && npm run style-dictionary:build",
-    "tokens:transform": "node ./src/tokens/transform-tokens.mjs",
+    "tokens:build": "node ./src/tokens/build-tokens.mjs",
     "twatch": "jest --no-coverage --watch --verbose",
     "validate": "npm run lint && npm run test:contract && npm run test:release && npm run test:sass && npm test",
     "visreg": "percy storybook http://localhost:6006",
@@ -81,6 +79,7 @@
     "@semantic-release/release-notes-generator": "^14.1.1",
     "@storybook/addon-docs": "10.6.5",
     "@storybook/storybook-deployer": "2.8.16",
+    "@tokens-studio/sd-transforms": "^2.0.3",
     "conventional-changelog-conventionalcommits": "^10.4.1",
     "husky": "^9.1.7",
     "js-yaml": "^5.5.0",
@@ -90,8 +89,7 @@
     "sass": "^1.108.2",
     "sass-true": "^10.1.0",
     "semantic-release": "^25.0.9",
-    "style-dictionary": "^5.8.0",
-    "token-transformer": "^0.0.33"
+    "style-dictionary": "^5.8.0"
   },
   "overrides": {
     "glob": "^14.0.6",
