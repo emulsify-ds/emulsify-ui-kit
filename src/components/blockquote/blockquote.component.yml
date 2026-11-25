@@ -1,21 +1,56 @@
-$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
-
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: Blockquote
+description: Presents a quotation and optional attribution as one figure.
 group: Components
 status: stable
 props:
   type: object
-  required:
-    - blockquote__quote
-    - blockquote__attribution
   properties:
     blockquote__quote:
-      type: string
-      title: Quote
-      description: The quote/content of the blockquote item.
-      data: <p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.</p>
+      type: [string, object, 'null']
+      title: Quotation
+      description: The quoted text or a rendered formatted quotation.
+      examples: ['Leave enough room for an idea to grow.']
     blockquote__attribution:
-      type: string
+      type: [string, 'null']
       title: Attribution
-      description: The attribution of the blockquote item.
-      data: 'Lorem Ipsum'
+      description: The speaker or author of the quotation.
+      examples: [Workshop facilitator]
+    blockquote__attribution_secondary:
+      type: [string, 'null']
+      title: Secondary attribution
+      description: Optional source or context shown after the attribution.
+      examples: [Opening remarks]
+    blockquote__style:
+      type: [string, 'null']
+      title: Style
+      description: Shows a start bar, end bar, or decorative quotation mark.
+      enum: [bar-left, bar-right, quote-left, null]
+      default: bar-left
+    blockquote__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Optional parent BEM block for the figure.
+    blockquote__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers for the figure.
+      items:
+        type: string
+    blockquote__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: Extra classes for the figure.
+      items:
+        type: string
+    blockquote__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Additional attributes for the figure.
+slots:
+  blockquote__quote_content:
+    title: Quote content
+    description: Replaces the default quote with rendered markup.
+  blockquote__attribution_content:
+    title: Attribution content
+    description: Replaces the text attribution with rendered markup.

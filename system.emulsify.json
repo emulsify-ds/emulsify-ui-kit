@@ -166,7 +166,7 @@
         {
           "name": "blockquote",
           "structure": "components",
-          "dependency": ["typography"]
+          "dependency": []
         },
         {
           "name": "button",

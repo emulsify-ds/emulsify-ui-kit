@@ -1,53 +1,44 @@
-.blockquote {
-  width: 573px;
-  padding: var(--block-quote-padding-x) 0;
-}
+@use '../../base' as *;
 
-.blockquote__quote {
-  border-left: none;
+.blockquote {
+  color: var(--blockquote-text-color, var(--clr-body));
   margin: 0;
 
-  p {
-    font-size: var(--font-size-small);
-    font-family: var(--font-family-secondary);
-    font-weight: var(--font-weight-secondary-regular);
-    line-height: var(--line-height-normal);
-    letter-spacing: var(--letter-spacing-0);
-    text-transform: var(--text-case-none);
-    text-decoration: var(--text-decoration-none);
+  > .blockquote__quote {
+    @include body;
+
+    & {
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+  }
+
+  &[data-blockquote-style='bar-left'] {
+    border-inline-start: space(4) solid
+      var(--blockquote-accent-color, var(--clr-heading));
+    padding-inline-start: space(16);
+  }
+
+  &[data-blockquote-style='bar-right'] {
+    border-inline-end: space(4) solid
+      var(--blockquote-accent-color, var(--clr-heading));
+    padding-inline-end: space(16);
+  }
+
+  &[data-blockquote-style='quote-left']::before {
+    content: '“' / '';
+    display: block;
+    color: var(--blockquote-accent-color, var(--clr-heading));
+    font-size: font-size('hero');
+    line-height: 0.75;
   }
 }
 
-.blockquote__blockquote {
-  [data-blockquote-style='bar-left'] & {
-    padding-left: var(--block-quote-padding-x);
-    border-left: var(--size-md) solid var(--color-text-body);
-  }
-
-  [data-blockquote-style='bar-right'] & {
-    padding-right: var(--block-quote-padding-x);
-    border-right: var(--size-md) solid var(--color-text-body);
-    text-align: right;
-  }
-
-  [data-blockquote-style='quote-left'] & {
-    position: relative;
-
-    &::before {
-      content: '“';
-      position: relative;
-      font-size: var(--font-size-display);
-      line-height: var(--line-height-normal);
-      color: var(--color-text-body);
-    }
-
-    .blockquote__quote p {
-      margin: var(--block-quote-padding-y) var(--paragraph-spacing-0);
-    }
-  }
-}
-
-.blockquote__attribution {
-  font-size: var(--font-size-caption);
-  color: var(--color-text-body);
+.blockquote__caption {
+  display: flex;
+  flex-wrap: wrap;
+  gap: space(4) space(8);
+  margin-block-start: space(12);
+  font-size: font-size('small');
+  overflow-wrap: anywhere;
 }
