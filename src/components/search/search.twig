@@ -17,17 +17,17 @@
         <div {{ bem('actions', [], search__base_class ~ '__form') }}>
           <button type="button" {{ bem('submit', [], search__base_class ~ '__form') }}>
             <span class="visually-hidden">{{ search__label }}</span>
-            {% include "@components/icons/_icon.twig" with {
+            {{ include('@components/icon/icon.twig', {
               icon__name: 'search',
               icon__decorative: true,
-            } %}
+            }, with_context: false) }}
           </button>
           <button type="button" {{ bem('toggle', [], search__base_class) }}>
             <span class="visually-hidden">{{ header__cancel_label|default('Close') }}</span>
-            {% include "@components/icons/_icon.twig" with {
+            {{ include('@components/icon/icon.twig', {
               icon__name: 'close',
               icon__decorative: true,
-            } %}
+            }, with_context: false) }}
           </button>
         </div>
       </form>
@@ -38,8 +38,8 @@
 <div {{ bem(search__base_class) }}>
   <button type="button" {{ bem('toggle', [], search__base_class) }} aria-expanded="false" aria-controls="">
     <span>{{ search__label }}</span>
-    {% include "@components/icons/_icon.twig" with { icon__decorative: true, icon__name: 'search', icon__modifiers: ['search'] } %}
-    {% include "@components/icons/_icon.twig" with { icon__decorative: true, icon__name: 'close', icon__modifiers: ['close'] } %}
+    {{ include('@components/icon/icon.twig', { icon__decorative: true, icon__name: 'search', icon__modifiers: ['search'] }, with_context: false) }}
+    {{ include('@components/icon/icon.twig', { icon__decorative: true, icon__name: 'close', icon__modifiers: ['close'] }, with_context: false) }}
   </button>
   {{ search_form }}
 </div>

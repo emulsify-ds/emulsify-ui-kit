@@ -18,11 +18,11 @@
 <div {{ bem(announcement__base_class, [announcement__variant]) }} {{ add_attributes(additional_attributes) }}>
   {# Render the icon if provided #}
   {% if announcement__icon %}
-    {% include "@components/icons/_icon.twig" with {
+    {{ include('@components/icon/icon.twig', {
       icon__name: 'star-solid',
       icon__blockname: announcement__base_class,
       icon__decorative: true,
-    } %}
+    }, with_context: false) }}
   {% endif %}
   {# Render the main content #}
   <div {{ bem('content', [announcement__variant], announcement__base_class) }}>

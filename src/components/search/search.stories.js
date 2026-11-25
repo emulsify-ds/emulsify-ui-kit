@@ -1,3 +1,5 @@
+import { renderTwig } from '@emulsify/core/storybook';
+
 import template from './search.twig';
 import { props } from './search.component.yml';
 
@@ -8,6 +10,7 @@ import './search';
  */
 export default {
   title: 'Components/Search',
+  render: renderTwig(template),
   argTypes: {
     header__search_placeholder: {
       name: 'Placeholder',
@@ -24,4 +27,4 @@ export default {
   },
 };
 
-export const Search = (args) => template(args);
+export const Search = {};

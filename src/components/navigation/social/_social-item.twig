@@ -41,10 +41,10 @@
     link__style: 'icon',
   } %}
     {% block link__content %}
-      {% include "@components/icons/_icon.twig" with {
+      {{ include('@components/icon/icon.twig', {
         icon__name: item.title|lower,
         icon__blockname: menu__base_class,
-      } %}
+      }, with_context: false) }}
       <span {{ bem('text', [], menu_class, ['visually-hidden']) }}>{{ item.title }}</span>
     {% endblock %}
   {% endembed %}

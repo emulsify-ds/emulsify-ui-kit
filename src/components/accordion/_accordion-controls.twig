@@ -5,20 +5,20 @@
 
 {% set expand_button__content %}
   {{'Expand all'}}
-  {% include "@components/icons/_icon.twig" with {
+  {{ include('@components/icon/icon.twig', {
     icon__name: 'angle-down',
     icon__blockname: accordion__base_class,
     icon__decorative: true,
-  } %}
+  }, with_context: false) }}
 {% endset %}
 
 {% set collapse_button__content %}
   {{'Collapse all'}}
-  {% include "@components/icons/_icon.twig" with {
+  {{ include('@components/icon/icon.twig', {
     icon__name: 'angle-down',
     icon__blockname: accordion__base_class,
     icon__decorative: true,
-  } %}
+  }, with_context: false) }}
 {% endset %}
 
 {% embed "@components/lists/list.twig" with {

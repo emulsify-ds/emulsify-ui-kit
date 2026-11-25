@@ -145,18 +145,48 @@
           "path": "./assets/icons/x.svg",
           "destinationPath": "./assets/icons/x.svg",
           "description": "Icon - X"
+        },
+        {
+          "name": "icon-close",
+          "path": "./assets/icons/close.svg",
+          "destinationPath": "./assets/icons/close.svg",
+          "description": "Icon - Close"
+        },
+        {
+          "name": "icon-pause",
+          "path": "./assets/icons/pause.svg",
+          "destinationPath": "./assets/icons/pause.svg",
+          "description": "Icon - Pause"
+        },
+        {
+          "name": "icon-play",
+          "path": "./assets/icons/play.svg",
+          "destinationPath": "./assets/icons/play.svg",
+          "description": "Icon - Play"
+        },
+        {
+          "name": "icon-search",
+          "path": "./assets/icons/search.svg",
+          "destinationPath": "./assets/icons/search.svg",
+          "description": "Icon - Search"
+        },
+        {
+          "name": "icon-xmark",
+          "path": "./assets/icons/xmark.svg",
+          "destinationPath": "./assets/icons/xmark.svg",
+          "description": "Icon - Xmark"
         }
       ],
       "components": [
         {
           "name": "accordion",
           "structure": "components",
-          "dependency": ["button", "icons", "heading", "text"]
+          "dependency": ["button", "icon", "heading", "text"]
         },
         {
           "name": "announcement",
           "structure": "components",
-          "dependency": ["button", "icons", "heading"]
+          "dependency": ["button", "icon", "heading"]
         },
         {
           "name": "audio-player",
@@ -172,7 +202,7 @@
           "name": "button",
           "structure": "components",
           "required": true,
-          "dependency": ["icons"]
+          "dependency": ["icon"]
         },
         {
           "name": "card",
@@ -188,7 +218,7 @@
         {
           "name": "cta",
           "structure": "components",
-          "dependency": ["icons"]
+          "dependency": ["icon"]
         },
         {
           "name": "forms",
@@ -203,7 +233,7 @@
           "dependency": []
         },
         {
-          "name": "icons",
+          "name": "icon",
           "structure": "components",
           "required": true,
           "dependency": []
@@ -240,7 +270,7 @@
           "name": "navigation",
           "structure": "components",
           "required": true,
-          "dependency": ["button", "link", "list", "icons"]
+          "dependency": ["button", "link", "list", "icon"]
         },
         {
           "name": "status",
