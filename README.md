@@ -67,7 +67,7 @@ A complete component meets the following criteria:
 
 ## Example component
 
-The [button component](https://emulsify-ds.github.io/emulsify-ui-kit/?path=/story/components-button--button) serves as an example of how variables are used to connect Figma with the code.
+The [deprecated Button story](https://emulsify-ds.github.io/emulsify-ui-kit/?path=/story/deprecated-button--basic) shows the 1.x Figma token integration. Use CTA for new actions.
 
 ```css
 .button {

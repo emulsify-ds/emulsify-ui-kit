@@ -1,0 +1,114 @@
+{#
+ # Props:
+ # - cta__text: Action label. Defaults to the link render array's title.
+ # - cta__url: Destination for an anchor.
+ # - cta__link: Drupal link render array for an anchor.
+ # - cta__element: 'a', 'button', or presentational 'span'.
+ # - cta__button_type: 'button', 'submit', or 'reset'.
+ # - cta__modifiers: The first recognized style selects the visual variant.
+ # - cta__icon: Decorative icon name.
+ # - cta__icon_position: 'left' or 'right'.
+ # - cta__new_tab: Open the destination in a new tab with an announcement.
+ # - cta__blockname: Optional parent BEM block name.
+ # - cta__additional_classes: Additional classes for the root element.
+ # - cta__attributes: Additional attributes for the root element.
+ #
+ # Slots:
+ # - cta__content: Replace the default action label.
+ #}
+
+{% set cta__element = cta__element in ['a', 'button', 'span'] ? cta__element : 'a' %}
+{% set cta__button_type = cta__button_type in ['button', 'submit', 'reset'] ? cta__button_type : 'button' %}
+{% set cta__modifiers = cta__modifiers|default([]) %}
+{% set cta__variant = null %}
+{% for modifier in cta__modifiers %}
+  {% if cta__variant is null and modifier in ['primary', 'secondary', 'link', 'clean'] %}
+    {% set cta__variant = modifier %}
+  {% endif %}
+{% endfor %}
+{% set cta__icon_position = cta__icon_position == 'left' ? 'left' : 'right' %}
+{% set cta__link = cta__element == 'a' and cta__link['#type']|default('') == 'link' and cta__link['#url'] is not empty ? cta__link : {} %}
+{% set cta__link_options = cta__link['#options']|default({}) %}
+{% set cta__drupal_link = cta__link['#url'].options is defined %}
+{% set cta__extra_classes = cta__additional_classes|default([])|merge(cta__blockname ? ['cta'] : []) %}
+
+{# Render-element options take precedence over its element attributes. #}
+{% set cta__attribute_values = {} %}
+{% for source in [
+  cta__link['#attributes']|default({}),
+  cta__link_options.attributes|default({}),
+  cta__attributes|default({}),
+] %}
+  {% set cta__attribute_values = cta__attribute_values|merge(source) %}
+  {% set source_classes = source.class|default([]) %}
+  {% set cta__extra_classes = cta__extra_classes|merge(source_classes is iterable ? source_classes : [source_classes]) %}
+{% endfor %}
+
+{% set cta__href = null %}
+{% if cta__element == 'a' and not cta__drupal_link %}
+  {% set cta__href = cta__link['#url']|default(cta__url|default(cta__attribute_values.href))|default('')|trim %}
+  {% set url_prefix = cta__href|split(':')|first %}
+  {# Accept relative URLs and common safe schemes. #}
+  {% if ':' in cta__href and '/' not in url_prefix and '?' not in url_prefix and '#' not in url_prefix and url_prefix|lower not in ['http', 'https', 'mailto', 'tel'] %}
+    {% set cta__href = null %}
+  {% endif %}
+{% endif %}
+
+{% set cta__target = cta__attribute_values.target|default(cta__link['#url'].options.attributes.target|default(null)) %}
+{% set cta__opens_new_tab = (cta__href or cta__drupal_link) and (cta__new_tab is same as(true) or cta__target == '_blank') %}
+{% set cta__rel = cta__attribute_values.rel|default(cta__link['#url'].options.attributes.rel|default('')) %}
+{% if cta__opens_new_tab %}
+  {% set rel_tokens = cta__rel is iterable ? cta__rel : cta__rel|split(' ') %}
+  {% set cta__rel = [] %}
+  {% for token in rel_tokens %}
+    {% if token and token|lower not in ['opener', 'noopener', 'noreferrer'] %}
+      {% set cta__rel = cta__rel|merge([token]) %}
+    {% endif %}
+  {% endfor %}
+  {% set cta__rel = cta__rel|merge(['noopener', 'noreferrer'])|join(' ') %}
+{% endif %}
+
+{% set attributes = bem('cta', cta__modifiers, cta__blockname, cta__extra_classes) %}
+{% set cta__render_attributes = add_attributes(cta__attribute_values|merge({
+  class: [],
+  href: cta__href|default(null),
+  type: cta__element == 'button' ? cta__button_type : null,
+  target: cta__opens_new_tab ? '_blank' : (cta__element == 'a' ? cta__target : null),
+  rel: cta__element == 'a' ? cta__rel|default(null) : null,
+  'data-cta-variant': cta__variant|default('primary'),
+})) %}
+
+{% set cta__rendered_icon %}
+  {%- if cta__icon -%}
+    {{- include('@components/icons/_icon.twig', {
+      icon__name: cta__icon,
+      icon__blockname: 'cta',
+      icon__decorative: true,
+      directory: directory|default(null),
+    }, with_context: false) -}}
+  {%- endif -%}
+{% endset %}
+
+{% set cta__rendered_content %}
+  {%- if cta__icon_position == 'left' -%}{{- cta__rendered_icon -}}{%- endif -%}
+  <span {{ bem('label', [], 'cta') }}>
+    {%- block cta__content -%}
+      {{- cta__text|default(cta__link['#title']|default(''))|e('html', null, true) -}}
+    {%- endblock -%}
+  </span>
+  {%- if cta__icon_position == 'right' -%}{{- cta__rendered_icon -}}{%- endif -%}
+  {%- if cta__opens_new_tab -%}
+    <span class="visually-hidden"> {{ '(opens in a new tab)'|t }}</span>
+  {%- endif -%}
+{% endset %}
+
+{% if cta__drupal_link %}
+  {# Clone the URL and let Drupal keep its render access and cache metadata. #}
+  {% set cta__rendered_link = link(cta__rendered_content, cta__link['#url']) %}
+  {{ cta__link|merge(cta__rendered_link)|merge({
+    '#attributes': {},
+    '#options': cta__link_options|merge({ attributes: cta__render_attributes.toArray() }),
+  })|render }}
+{% else %}
+  <{{ cta__element }} {{ cta__render_attributes }}>{{ cta__rendered_content }}</{{ cta__element }}>
+{% endif %}

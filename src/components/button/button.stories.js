@@ -3,7 +3,15 @@ import { withStorybookPadding } from '../../util/storybookContainer.js';
 import buttonTwig from './button.twig';
 
 export default {
-  title: 'Components/Button',
+  title: 'Deprecated/Button',
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'Deprecated. Use Components → CTA for new actions.',
+      },
+    },
+  },
   render: renderTwig(withStorybookPadding(buttonTwig)),
   argTypes: {
     button__element: {

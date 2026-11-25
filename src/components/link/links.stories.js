@@ -6,7 +6,16 @@ import linkTwig from './link.twig';
 const { properties } = linkData.props;
 
 export default {
-  title: 'Components/Typography/Links',
+  title: 'Deprecated/Link',
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Deprecated. Use Components → CTA for actions and a plain anchor for text links.',
+      },
+    },
+  },
   render: renderTwig(withStorybookPadding(linkTwig)),
 };
 
