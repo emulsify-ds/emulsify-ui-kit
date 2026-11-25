@@ -181,6 +181,11 @@
           "dependency": ["link", "image", "heading", "text"]
         },
         {
+          "name": "code",
+          "structure": "components",
+          "dependency": []
+        },
+        {
           "name": "cta",
           "structure": "components",
           "dependency": ["icons"]
@@ -264,12 +269,6 @@
           "name": "text-with-image",
           "structure": "components",
           "dependency": ["image", "link", "heading", "text"]
-        },
-        {
-          "name": "typography",
-          "structure": "components",
-          "required": true,
-          "dependency": []
         },
         {
           "name": "video",

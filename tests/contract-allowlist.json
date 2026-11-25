@@ -1,6 +1,7 @@
 {
   "components": [
     "blockquote",
+    "code",
     "cta",
     "heading",
     "layout/container",
