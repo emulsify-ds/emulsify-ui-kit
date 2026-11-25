@@ -1,5 +1,9 @@
 import { mergeConfig, transformWithOxc } from 'vite';
 
+export default {
+  addons: ['@storybook/addon-docs'],
+};
+
 export function extendConfig(config) {
   return {
     ...config,
