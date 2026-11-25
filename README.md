@@ -123,7 +123,7 @@ Button.parameters = {
 
 ## Contributing to this UI Kit
 
-Use the Node.js version in `.nvmrc` (26.13.1) and install the locked dependencies:
+Use Node.js 24 LTS (`.nvmrc`), version 24.13.0 or newer, and install the locked dependencies:
 
 ```sh
 nvm use

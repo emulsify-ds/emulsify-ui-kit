@@ -1,7 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { transformTokens } from 'token-transformer';
 
-// Use the library API because the legacy CLI's yargs loader fails on Node 26.
+// Use the library API to avoid the legacy CLI's yargs loader.
 const tokens = JSON.parse(
   await readFile(new URL('./figma.tokens.json', import.meta.url), 'utf8'),
 );
