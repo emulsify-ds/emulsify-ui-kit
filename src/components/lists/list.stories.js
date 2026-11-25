@@ -1,4 +1,5 @@
 import { renderTwig } from '@emulsify/core/storybook';
+import { withStorybookPadding } from '../../util/storybookContainer.js';
 
 import listData from './list.component.yml';
 import listTwig from './list.twig';
@@ -7,14 +8,9 @@ const { properties } = listData.props;
 
 export default {
   title: 'Components/Typography/List',
-  render: renderTwig(listTwig),
-  decorators: [
-    (Story) => (
-      <div className="cl-container text">
-        <Story />
-      </div>
-    ),
-  ],
+  render: renderTwig(
+    withStorybookPadding(listTwig, { className: 'cl-container text' }),
+  ),
   argTypes: {
     list__items: { name: 'Items', control: 'object' },
     list__type: {

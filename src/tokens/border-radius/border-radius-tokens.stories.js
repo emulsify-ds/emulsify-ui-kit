@@ -1,4 +1,5 @@
 import { renderTwig } from '@emulsify/core/storybook';
+import { withStorybookPadding } from '../../util/storybookContainer.js';
 import template from './border-radius-tokens.twig';
 import figma from '../../../config/configma.json';
 import tokens from '../transformed.tokens.json';
@@ -6,15 +7,8 @@ import tokens from '../transformed.tokens.json';
 const data = { radius: tokens.radius };
 
 export default {
-  title: 'Tokens/Border Radius',
-  render: renderTwig(template),
-  decorators: [
-    (Story) => (
-      <div className="cl-container">
-        <Story />
-      </div>
-    ),
-  ],
+  title: 'Base/Border Radius',
+  render: renderTwig(withStorybookPadding(template)),
 };
 
 export const borderRadius = {

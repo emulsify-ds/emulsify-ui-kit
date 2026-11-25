@@ -1,17 +1,11 @@
 import { renderTwig } from '@emulsify/core/storybook';
+import { withStorybookPadding } from '../../util/storybookContainer.js';
 import announcementData from './announcement.component.yml';
 import announcementTwig from './announcement.twig';
 
 export default {
   title: 'Components/Announcement',
-  render: renderTwig(announcementTwig),
-  decorators: [
-    (Story) => (
-      <div className="cl-container">
-        <Story />
-      </div>
-    ),
-  ],
+  render: renderTwig(withStorybookPadding(announcementTwig)),
   argTypes: {
     announcement__title: {
       name: 'Title',

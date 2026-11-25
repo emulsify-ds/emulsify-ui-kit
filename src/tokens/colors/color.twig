@@ -9,7 +9,7 @@
           <span class="sb-list__label">{{ color }}</span>
           <span class="sb-list__value">{{value.value}}</span>
           <span class="sb-list__custom-property">
-            <code class="sb-custom-property-name">var(--color-{{color}})</code>
+            {% include '../../util/_copy-usage.twig' with { usage: 'var(--color-' ~ color ~ ')' } only %}
           </span>
           <span class="sb-list__visualization" style="background-color: var(--color-{{color}});"></span>
         </li>
@@ -22,7 +22,7 @@
               <span class="sb-list__label">{{ nestedColor }}</span>
               <span class="sb-list__value">{{nestedValue.value}}</span>
               <span class="sb-list__custom-property">
-                <code class="sb-custom-property-name">var(--color-{{ color|lower|replace({'emulsifyblue': 'emulsify-blue'}) }}-{{nestedColor}})</code>
+                {% include '../../util/_copy-usage.twig' with { usage: 'var(--color-' ~ (color|lower|replace({'emulsifyblue': 'emulsify-blue'})) ~ '-' ~ nestedColor ~ ')' } only %}
               </span>
               <span class="sb-list__visualization" style="background-color: var(--color-{{ color|lower|replace({'emulsifyblue': 'emulsify-blue'}) }}-{{nestedColor}});"></span>
             </li>
@@ -32,7 +32,12 @@
                 <span class="sb-list__label">{{ nestedColor }} {{ colorFamily }}</span>
                 <span class="sb-list__value">{{ colorFamilyValue.value }}</span>
                 <span class="sb-list__custom-property">
-                  <code class="sb-custom-property-name">var(--color-{{ color|lower }}-{{ nestedColor }}-{{colorFamily}})</code>
+                  {% set usage = 'var(--color-' ~ (color|lower) ~ '-' ~ nestedColor ~ '-' ~ colorFamily ~ ')' %}
+                  {% if colorFamilyValue.value is defined %}
+                    {% include '../../util/_copy-usage.twig' with { usage: usage } only %}
+                  {% else %}
+                    <code class="sb-custom-property-name">{{ usage|e }}</code>
+                  {% endif %}
                 </span>
                 <span class="sb-list__visualization" style="background-color: var(--color-{{ color|lower }}-{{ nestedColor }}-{{colorFamily}});"></span>
               </li>

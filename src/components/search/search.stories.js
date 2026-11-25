@@ -7,7 +7,7 @@ import './search';
  * Storybook definition for Search component.
  */
 export default {
-  title: 'Component/Search',
+  title: 'Components/Search',
   argTypes: {
     header__search_placeholder: {
       name: 'Placeholder',

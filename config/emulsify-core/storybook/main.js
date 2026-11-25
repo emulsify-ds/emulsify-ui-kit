@@ -1,26 +1,38 @@
-import { mergeConfig, transformWithOxc } from 'vite';
+import { fileURLToPath } from 'node:url';
+
+export default {
+  addons: ['@storybook/addon-docs'],
+};
+
+const sourcePath = fileURLToPath(
+  new URL('../../../src/', import.meta.url),
+).replaceAll('\\', '/');
+const orderedRoots = [
+  'base/',
+  'foundation/',
+  'tokens/',
+  'layout/',
+  'components/',
+  'storybook/',
+];
+
+function storyRootOrder(glob) {
+  const index = orderedRoots.findIndex(
+    (directory) =>
+      typeof glob === 'string' && glob.startsWith(`${sourcePath}${directory}`),
+  );
+  return index === -1 ? orderedRoots.length : index;
+}
 
 export function extendConfig(config) {
   return {
     ...config,
-    async viteFinal(viteConfig, context) {
-      return mergeConfig(await config.viteFinal(viteConfig, context), {
-        plugins: [
-          {
-            name: 'storybook-jsx-in-js',
-            enforce: 'pre',
-            transform(code, id) {
-              if (!/\.stories\.js(?:\?|$)/.test(id)) return null;
-
-              // Story decorators contain JSX in .js files.
-              return transformWithOxc(code, id, {
-                lang: 'jsx',
-                jsx: { runtime: 'automatic' },
-              });
-            },
-          },
-        ],
-      });
-    },
+    stories: [
+      // Welcome and guides are MDX pages. Example stories come last.
+      `${sourcePath}storybook/**/*.mdx`,
+      ...config.stories.toSorted(
+        (a, b) => storyRootOrder(a) - storyRootOrder(b),
+      ),
+    ],
   };
 }

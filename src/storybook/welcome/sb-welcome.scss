@@ -1,0 +1,22 @@
+.sb-cover {
+  min-height: 24rem;
+  background: url('/assets/images/cover.png') bottom right / cover;
+  padding: var(--spacing-2xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  &__title {
+    color: var(--color-white);
+    font-family: var(--font-family-body), serif;
+    font-size: clamp(2rem, 6vw, var(--font-size-colossus));
+    line-height: var(--line-height-none);
+    margin: 0 0 var(--spacing-lg);
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+  }
+}

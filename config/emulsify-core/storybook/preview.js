@@ -1,3 +1,9 @@
+// The package export omits the leading `./` required by Vite.
+import once from '../../../node_modules/@drupal/once/src/once.js';
+import '../../../src/util/copy-usage.js';
+
+window.once = once;
+
 // export global parameters as config overrides.
 // This is useful for reorganizing your stories.
 // See https://storybook.js.org/docs/writing-stories/parameters#story-parameters.
@@ -7,16 +13,7 @@ export const overrideParams = {
   options: {
     storySort: {
       method: 'alphabetical',
-      order: [
-        'Docs',
-        ['Intro', '*'],
-        'Tokens',
-        ['Readme', '*'],
-        'Components',
-        ['Readme', '*'],
-        'Layout',
-        ['Readme', '*'],
-      ],
+      order: ['Welcome', 'Guides', 'Base', 'Layout', 'Components', 'Examples'],
       locales: 'en-US',
     },
   },

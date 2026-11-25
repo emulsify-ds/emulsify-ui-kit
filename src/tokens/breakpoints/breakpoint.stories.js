@@ -1,4 +1,5 @@
 import { renderTwig } from '@emulsify/core/storybook';
+import { withStorybookPadding } from '../../util/storybookContainer.js';
 
 import template from './breakpoints.twig';
 import figma from '../../../config/configma.json';
@@ -7,15 +8,8 @@ import tokens from '../transformed.tokens.json';
 const data = { breakpoint: tokens.breakpoint };
 
 export default {
-  title: 'Tokens/Breakpoints',
-  render: renderTwig(template),
-  decorators: [
-    (Story) => (
-      <div className="cl-container">
-        <Story />
-      </div>
-    ),
-  ],
+  title: 'Base/Breakpoints',
+  render: renderTwig(withStorybookPadding(template)),
 };
 
 export const Breakpoints = {

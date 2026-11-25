@@ -11,7 +11,7 @@ const pageTitleData = props.properties;
  * Storybook Definition.
  */
 export default {
-  title: 'Components/Headers/Page Title',
+  title: 'Components/Page Title',
   argTypes: {
     pageTitleHeading: {
       name: 'Heading',

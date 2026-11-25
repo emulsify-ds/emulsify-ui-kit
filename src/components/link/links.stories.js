@@ -1,4 +1,5 @@
 import { renderTwig } from '@emulsify/core/storybook';
+import { withStorybookPadding } from '../../util/storybookContainer.js';
 import linkData from './link.component.yml';
 import linkTwig from './link.twig';
 
@@ -6,7 +7,7 @@ const { properties } = linkData.props;
 
 export default {
   title: 'Components/Typography/Links',
-  render: renderTwig(linkTwig),
+  render: renderTwig(withStorybookPadding(linkTwig)),
 };
 
 export const basic = {
@@ -16,13 +17,6 @@ export const basic = {
     link__attributes: properties.link__attributes.data,
     link__style: 'default',
   },
-  decorators: [
-    (Story) => (
-      <div className="cl-container">
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export const noUnderline = {
@@ -30,22 +24,9 @@ export const noUnderline = {
     ...basic.args,
     link__style: 'no-underline',
   },
-  decorators: [
-    (Story) => (
-      <div className="cl-container">
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export const inverse = {
   args: basic.args,
-  decorators: [
-    (Story) => (
-      <div className="cl-container" data-component-theme="inverse">
-        <Story />
-      </div>
-    ),
-  ],
+  render: renderTwig(withStorybookPadding(linkTwig, { theme: 'inverse' })),
 };

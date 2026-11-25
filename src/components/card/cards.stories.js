@@ -1,12 +1,13 @@
 import { renderTwig } from '@emulsify/core/storybook';
+import { withStorybookPadding } from '../../util/storybookContainer.js';
 import cardData from './card.component.yml';
 import cardTwig from './card.twig';
 
 const { properties } = cardData.props;
 
 export default {
-  title: 'Components/Cards',
-  render: renderTwig(cardTwig),
+  title: 'Components/Card',
+  render: renderTwig(withStorybookPadding(cardTwig)),
   argTypes: {
     card__image__src: {
       name: 'Image Source',
@@ -48,15 +49,9 @@ export default {
 };
 
 export const CardVertical = {
-  decorators: [
-    (Story) => (
-      <div className="cl-container">
-        <div className="sb-max-w-md">
-          <Story />
-        </div>
-      </div>
-    ),
-  ],
+  render: renderTwig(
+    withStorybookPadding(cardTwig, { innerClass: 'sb-max-w-md' }),
+  ),
   args: {
     card__image__src: properties.card__image__src.data,
     card__image__alt: properties.card__image__alt.data,
@@ -72,13 +67,6 @@ export const CardVertical = {
 };
 
 export const cardHorizontal = {
-  decorators: [
-    (Story) => (
-      <div className="cl-container">
-        <Story />
-      </div>
-    ),
-  ],
   args: {
     card__image__src: 'https://placehold.co/250x200',
     card__image__alt: properties.card__image__alt.data,

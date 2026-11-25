@@ -8,7 +8,7 @@ const filesNames = Object.keys(svgIcons).map((path) =>
 );
 
 export default {
-  title: 'Components/Media/Icons',
+  title: 'Components/Icons',
   render: renderTwig(iconTwig),
 };
 

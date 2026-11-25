@@ -4,7 +4,7 @@ import imageTwig from './image.twig';
 import imageData from './image.yml';
 
 export default {
-  title: 'Components/Media/Image',
+  title: 'Components/Image',
   render: renderTwig(imageTwig),
   argTypes: {
     image__show_caption: {
