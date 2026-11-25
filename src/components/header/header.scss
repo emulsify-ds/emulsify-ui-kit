@@ -11,7 +11,7 @@
   position: relative;
   box-shadow: 0 4px 4px 0 rgb(197 197 197 / 25%);
 
-  @include breakpoint('lg', $media: true) {
+  @include breakpoint('lg') {
     justify-content: flex-start;
     align-items: stretch;
     padding-inline: 0;
@@ -27,7 +27,7 @@
     width: auto;
     height: 2.5rem;
 
-    @include breakpoint('lg', $media: true) {
+    @include breakpoint('lg') {
       margin-left: var(--spacing-xl);
       height: 3.5rem;
     }
@@ -41,7 +41,7 @@
 
 /* Main navigation */
 .header__menu {
-  @include breakpoint('lg', $media: true) {
+  @include breakpoint('lg') {
     flex: 1;
     display: flex;
     justify-content: end;
@@ -60,7 +60,7 @@
 .header__search {
   display: none;
 
-  @include breakpoint('lg', $media: true) {
+  @include breakpoint('lg') {
     display: block;
   }
 }

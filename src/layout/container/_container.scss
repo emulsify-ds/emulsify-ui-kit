@@ -398,13 +398,13 @@
 
 .animate-sections > .container:not(.no-animate) {
   @media (prefers-reduced-motion: no-preference) {
-    @include breakpoint('lg', $media: true) {
+    @include breakpoint('lg') {
       opacity: 0;
     }
   }
 
   &.scrolled {
-    @include breakpoint('lg', $media: true) {
+    @include breakpoint('lg') {
       @include animate-slide-up-fade-in($speed: 300ms, $delay: 100ms);
     }
   }
@@ -413,7 +413,7 @@
 article > .container:first-child:not(.container--with-bg) {
   @include section-padding-top(2);
 
-  @include breakpoint('lg', $media: true) {
+  @include breakpoint('lg') {
     @include section-padding-top(3.5);
   }
 }
@@ -421,7 +421,7 @@ article > .container:first-child:not(.container--with-bg) {
 article > .container:last-child:not(.container--with-bg) {
   @include section-padding-top(2);
 
-  @include breakpoint('lg', $media: true) {
+  @include breakpoint('lg') {
     @include section-padding-top(3.5);
   }
 }
@@ -429,7 +429,7 @@ article > .container:last-child:not(.container--with-bg) {
 article > .container:not(.container--with-bg) + .container.container--with-bg {
   @include section-padding-top(2);
 
-  @include breakpoint('lg', $media: true) {
+  @include breakpoint('lg') {
     @include section-padding-top(3.5);
   }
 }
@@ -437,7 +437,7 @@ article > .container:not(.container--with-bg) + .container.container--with-bg {
 article > .container--with-bg + .container:not(.container--with-bg) {
   @include section-padding-top(2);
 
-  @include breakpoint('lg', $media: true) {
+  @include breakpoint('lg') {
     @include section-padding-top(3.5);
   }
 }
@@ -453,7 +453,7 @@ article > .container--with-bg + .container:not(.container--with-bg) {
 }
 
 .container.exposed-filters-visual-view {
-  @include breakpoint('lg-down', $media: true) {
+  @include breakpoint('lg-down') {
     padding: 0;
   }
 }

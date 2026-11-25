@@ -41,7 +41,7 @@
   max-width: 100%;
   display: none;
 
-  @include breakpoint('lg', $media: true) {
+  @include breakpoint('lg') {
     display: flex;
   }
 
@@ -195,7 +195,7 @@
     display: none;
   }
 
-  @include breakpoint('lg', $media: true) {
+  @include breakpoint('lg') {
     display: none;
   }
 }

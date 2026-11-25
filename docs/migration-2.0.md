@@ -33,7 +33,7 @@ Update bookmarks, embeds, and other links to renamed Storybook entries.
 
 ## Breakpoints
 
-`breakpoint()` emits a container query by default. Use `@include breakpoint('md', $media: true)` for a viewport query. Existing viewport call sites in the UI Kit now pass `$media: true` explicitly.
+`breakpoint()` emits a container query by default. Existing UI Kit calls now query their nearest ancestor size container. The Base stylesheet provides a root fallback for standalone components. Use `@include breakpoint('md', $media: true)` for external rules that should continue to query the viewport.
 
 | 1.x name | 2.0 name | Previous cutoff | New cutoff |
 | --- | --- | ---: | ---: |

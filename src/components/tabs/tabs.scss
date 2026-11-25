@@ -29,7 +29,7 @@
     display: none;
   }
 
-  @include breakpoint('lg', $media: true) {
+  @include breakpoint('lg') {
     display: flex;
   }
 }

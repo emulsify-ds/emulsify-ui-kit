@@ -13,7 +13,7 @@
   text-decoration: none;
   transition: color 0.3s;
 
-  @include breakpoint('lg', $media: true) {
+  @include breakpoint('lg') {
     display: inline-block;
     position: relative;
     top: var(--spacing-md);

@@ -1,15 +1,15 @@
 @use 'sass:map';
-@use '../utility/rem-calc' as rem;
+@use '../utility/rem-calc' as *;
 
-$md: rem.rem-calc(768);
-$lg: rem.rem-calc(1024);
-$xl: rem.rem-calc(1280);
+$md: rem-calc(768);
+$lg: rem-calc(1024);
+$xl: rem-calc(1280);
 $query-gap: 0.05rem;
 
 // Step 5 will generate this map from tokens.
 $breakpoints: (
   'sm': (
-    min-width: rem.rem-calc(360),
+    min-width: rem-calc(360),
   ),
   'md': (
     min-width: $md,
@@ -30,7 +30,7 @@ $breakpoints: (
     max-width: $xl - $query-gap,
   ),
   'xxl': (
-    min-width: rem.rem-calc(1440),
+    min-width: rem-calc(1440),
   ),
 );
 

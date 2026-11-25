@@ -90,6 +90,6 @@ The report also found 30 global violations. The `blockquote.component.yml` basen
 ### Step 4 Base layer
 
 - Import the public Sass API from `src/base/`. Use `base.scss` for the global stylesheet and `@base` for Twig paths.
-- Existing breakpoint calls still use viewport queries. During component refinement, switch appropriate rules to container queries, and check that the component has a size container ancestor.
+- Existing breakpoint calls use container queries. The Base stylesheet supplies the root fallback for standalone components. Use a closer size container when the component should respond to the width of its layout.
 - Step 5 will generate the hand-written breakpoint map and supply `--clr-focus`. Step 6 will migrate the raw layout widths and replace the existing spacing mixins. Step 15 removes `_legacy-breakpoints.scss`.
-- `npm run test:sass` exercises the public API. The build comparison for this step found two renamed CSS paths, 15 new root spacing properties, and the planned viewport threshold changes.
+- `npm run test:sass` exercises the public API. The build comparison for this step covers two renamed CSS paths, 15 new root spacing properties, the root query container, and the breakpoint changes.

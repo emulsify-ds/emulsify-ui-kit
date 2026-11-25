@@ -9,7 +9,7 @@
   &:not(:last-child) {
     border-bottom: 1px solid var(--button-color-bkg);
 
-    @include breakpoint('lg', $media: true) {
+    @include breakpoint('lg') {
       border-bottom: 0;
     }
   }

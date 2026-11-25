@@ -4,7 +4,7 @@
 .text-with-image {
   display: flex;
 
-  @include breakpoint('xl', $media: true) {
+  @include breakpoint('xl') {
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
@@ -14,7 +14,7 @@
     &[data-component-focus='image'] {
       flex-direction: column-reverse;
 
-      @include breakpoint('xl', $media: true) {
+      @include breakpoint('xl') {
         flex-direction: row-reverse;
       }
     }
@@ -22,7 +22,7 @@
     &[data-component-focus='equal'] {
       flex-direction: column-reverse;
 
-      @include breakpoint('md', $media: true) {
+      @include breakpoint('md') {
         flex-direction: row-reverse;
       }
     }
@@ -30,7 +30,7 @@
     &[data-component-focus='text'] {
       flex-direction: column-reverse;
 
-      @include breakpoint('md', $media: true) {
+      @include breakpoint('md') {
         flex-direction: row-reverse;
       }
     }
@@ -40,7 +40,7 @@
     &[data-component-focus='image'] {
       flex-direction: column-reverse;
 
-      @include breakpoint('xl', $media: true) {
+      @include breakpoint('xl') {
         flex-flow: row nowrap;
       }
     }
@@ -48,7 +48,7 @@
     &[data-component-focus='equal'] {
       flex-direction: column-reverse;
 
-      @include breakpoint('md', $media: true) {
+      @include breakpoint('md') {
         flex-flow: row nowrap;
       }
     }
@@ -56,7 +56,7 @@
     &[data-component-focus='text'] {
       flex-direction: column-reverse;
 
-      @include breakpoint('md', $media: true) {
+      @include breakpoint('md') {
         flex-flow: row nowrap;
       }
     }
@@ -69,19 +69,19 @@
   align-self: flex-start;
   margin-left: auto;
 
-  @include breakpoint('xl', $media: true) {
+  @include breakpoint('xl') {
     flex: 1 50%;
     margin: 0;
   }
 
   [data-image-position='left'] & {
-    @include breakpoint('md', $media: true) {
+    @include breakpoint('md') {
       padding-left: var(--spacing-xl);
     }
   }
 
   [data-image-position='right'] & {
-    @include breakpoint('md', $media: true) {
+    @include breakpoint('md') {
       padding-right: var(--spacing-xl);
     }
   }
@@ -90,7 +90,7 @@
     flex: 1 1 50%;
     width: 90%;
 
-    @include breakpoint('lg', $media: true) {
+    @include breakpoint('lg') {
       width: 100%;
     }
   }
@@ -99,7 +99,7 @@
     flex: 1 1 40%;
     width: 90%;
 
-    @include breakpoint('xl', $media: true) {
+    @include breakpoint('xl') {
       width: 100%;
     }
   }
@@ -108,7 +108,7 @@
     flex: 1 1 60%;
     width: 90%;
 
-    @include breakpoint('xl', $media: true) {
+    @include breakpoint('xl') {
       width: 100%;
     }
   }
@@ -120,7 +120,7 @@
   position: relative;
   margin-right: auto;
 
-  @include breakpoint('xl', $media: true) {
+  @include breakpoint('xl') {
     margin-bottom: 0;
     margin-right: 0;
   }
@@ -129,7 +129,7 @@
     flex: 1 1 50%;
     width: 80%;
 
-    @include breakpoint('lg', $media: true) {
+    @include breakpoint('lg') {
       width: 50%;
     }
   }
@@ -138,7 +138,7 @@
     flex: 1 1 60%;
     width: 80%;
 
-    @include breakpoint('xl', $media: true) {
+    @include breakpoint('xl') {
       width: 100%;
     }
   }
@@ -147,7 +147,7 @@
     flex: 1 1 40%;
     width: 80%;
 
-    @include breakpoint('md', $media: true) {
+    @include breakpoint('md') {
       width: 50%;
     }
   }

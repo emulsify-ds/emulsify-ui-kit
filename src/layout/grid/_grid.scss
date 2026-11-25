@@ -42,7 +42,7 @@ $focus: (
   &[data-grid-spacing='half-spacing'] {
     --grid-spacing: #{var(--spacing-lg)};
 
-    @include breakpoint('lg', $media: true) {
+    @include breakpoint('lg') {
       --grid-spacing: #{calc(var(--spacing-lg) * 1.5)};
     }
   }
@@ -50,7 +50,7 @@ $focus: (
   &[data-grid-spacing='one-spacing'] {
     --grid-spacing: #{var(--spacing-xl)};
 
-    @include breakpoint('lg', $media: true) {
+    @include breakpoint('lg') {
       --grid-spacing: #{calc(var(--spacing-lg) * 2.5)};
     }
   }
@@ -58,7 +58,7 @@ $focus: (
   &[data-grid-spacing='two-spacing'] {
     --grid-spacing: #{calc(var(--spacing-lg) * 3)};
 
-    @include breakpoint('lg', $media: true) {
+    @include breakpoint('lg') {
       --grid-spacing: #{var(--spacing-2xl)};
     }
   }
@@ -66,7 +66,7 @@ $focus: (
   &[data-grid-spacing='three-spacing'] {
     --grid-spacing: #{var(--spacing-2xl)};
 
-    @include breakpoint('lg', $media: true) {
+    @include breakpoint('lg') {
       --grid-spacing: #{calc(var(--spacing-lg) * 6)};
     }
   }

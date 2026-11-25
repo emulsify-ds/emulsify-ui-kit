@@ -12,7 +12,7 @@
     margin: 0 auto;
   }
 
-  @include breakpoint('lg', $media: true) {
+  @include breakpoint('lg') {
     flex-flow: row nowrap;
     margin: 0;
     width: auto;
@@ -28,7 +28,7 @@
     display: none;
     gap: var(--spacing-md);
 
-    @include breakpoint('lg', $media: true) {
+    @include breakpoint('lg') {
       display: flex;
     }
 

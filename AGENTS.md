@@ -116,6 +116,8 @@ render: renderTwig(
 
 Import the API with `@use '../../base' as *;`, adjusting the relative path for nested components. Load `src/base/base.scss` as the global stylesheet so its root spacing properties are available.
 
+The global stylesheet establishes a root query container for standalone components. Add `container-type: inline-size` to a closer wrapper when a component should respond to that wrapper's width.
+
 | API | Use |
 | --- | --- |
 | `space($px)` | Use the unitless keys 2, 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64, 80, 96, and 120. The function returns `var(--space-N, <rem>)` and raises a Sass error for an off-scale key. |

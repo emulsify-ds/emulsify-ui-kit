@@ -12,7 +12,7 @@
     display: grid;
     gap: var(--spacing-xl);
 
-    @include breakpoint('lg', $media: true) {
+    @include breakpoint('lg') {
       grid-template-columns: repeat(2, 1fr);
     }
   }
@@ -125,7 +125,7 @@
   padding-bottom: 0;
   background-color: var(--color-primary-darker);
 
-  @include breakpoint('lg', $media: true) {
+  @include breakpoint('lg') {
     padding-inline: var(--spacing-xl);
   }
 
@@ -139,7 +139,7 @@
     // Hang below the band by a fixed amount, whatever the container padding.
     margin-bottom: calc(var(--spacing-2xl) * -1);
 
-    @include breakpoint('lg', $media: true) {
+    @include breakpoint('lg') {
       padding: var(--spacing-2xl);
     }
   }

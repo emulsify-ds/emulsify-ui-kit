@@ -2,10 +2,12 @@
 @forward './utility/utility';
 @forward './typography/fonts';
 
-@use './spacing/space' as spacing;
+@use './spacing/space' as *;
 
 :root {
-  @each $px, $size in spacing.$spacings {
+  container-type: inline-size;
+
+  @each $px, $size in $spacings {
     --space-#{$px}: #{$size};
   }
 }
