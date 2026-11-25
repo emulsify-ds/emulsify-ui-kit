@@ -1,0 +1,63 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Base/Placement" />
+
+# Placement
+
+Use the Base Sass mixins to position parts of a component on a twelve-track
+grid. Use the <a href="./?path=/docs/layout-grid--docs" target="_top">Grid primitive</a>
+for collections of items with a consistent layout.
+
+## Set the tracks
+
+Import the shared Sass API with `@use '../../base' as *;`, adjusting the path
+for your component's directory. Apply `grid-tracks($tracks: 12)` to the element
+that contains the items.
+
+The layout has one track below `md`. At `md` and above, the available width
+is split among the requested number of tracks. The gap uses `--grid-spacing`
+with a `space(40)` fallback. Set `--grid-spacing` on the grid or a containing
+element to adjust the gap.
+
+## Place the items
+
+`grid-column($span, $start: auto, $from: 'md')` sets a child's position and
+span. Use a numbered start line when the item needs to begin at a specific
+track. Use `auto` for CSS auto-placement. Pass `$from: none` to emit an
+unconditional declaration, such as inside a container query you already
+opened. Use another breakpoint name to place the item at a different width.
+
+These queries follow the nearest size container. The wrapper can establish
+`container-type: inline-size` so the grid and its items share a query
+container. Keep the default breakpoint for multi-track placements to avoid
+creating implicit columns in the single-track layout.
+
+## Example
+
+This layout stacks below `md`. At `md`, the description takes five tracks
+and the illustration takes seven tracks.
+
+<div className="sb-placement">
+  <div className="sb-placement__tracks">
+    <div className="sb-placement__description">Description</div>
+    <div className="sb-placement__illustration">Illustration</div>
+  </div>
+</div>
+
+```scss
+.example {
+  container-type: inline-size;
+}
+
+.example__tracks {
+  @include grid-tracks;
+}
+
+.example__description {
+  @include grid-column(5);
+}
+
+.example__illustration {
+  @include grid-column(7, $start: 6);
+}
+```

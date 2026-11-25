@@ -124,7 +124,7 @@ props:
       type: [string, 'null']
       title: Intro link URL
       description: Destination for the optional introduction link.
-      examples: ['?path=/story/layout-grid--grid']
+      examples: ['?id=layout-grid--grid&viewMode=story']
     container__link__content:
       type: [string, 'null']
       title: Intro link label

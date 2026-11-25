@@ -27,7 +27,7 @@ Coordinate the 16 refinement steps for the single Emulsify UI Kit 2.0.0 release.
 - [x] 3 Storybook infrastructure
 - [x] 4 Base layer
 - [x] 5 Tokens
-- [ ] 6 Layout primitives
+- [x] 6 Layout primitives
 - [ ] 7 CTA
 - [ ] 8 Wave A: heading, text, blockquote, code, icon, image, list, video
 - [ ] 9 Wave B1: teaser, card, media-box, text-with-image, callout
@@ -91,7 +91,7 @@ The report also found 30 global violations. The `blockquote.component.yml` basen
 
 - Import the public Sass API from `src/base/`. Use `base.scss` for the global stylesheet and `@base` for Twig paths.
 - Existing breakpoint calls use container queries. The Base stylesheet supplies the root fallback for standalone components. Use a closer size container when the component should respond to the width of its layout.
-- Step 5 will generate the hand-written breakpoint map and supply `--clr-focus`. Step 6 will migrate the raw layout widths and replace the existing spacing mixins. Step 15 removes `_legacy-breakpoints.scss`.
+- Step 5 generates the breakpoint map and supplies `--clr-focus`. Step 6 migrates the raw layout widths and removes `_legacy-breakpoints.scss`.
 - `npm run test:sass` exercises the public API. The build comparison for this step covers two renamed CSS paths, 15 new root spacing properties, the root query container, and the breakpoint changes.
 
 ### Step 5 Tokens
@@ -101,3 +101,11 @@ The report also found 30 global violations. The `blockquote.component.yml` basen
 - Use `typography($style)` for composite type declarations, the scalar type functions for individual properties, and `fluid-type($min-px, $max-px)` when a size should scale between the `sm` and `xl` viewport widths.
 - Keep `legacy-1x.scss` frozen while components migrate. Step 15 removes that stylesheet. Preserve its property names as a contract test fixture before removing it so the check continues to reject 1.x tokens.
 - Component and Storybook token sets remain in Tokens Studio. The build emits shared tokens exclusively. Use the [migration table](../migration-2.0.md#tokens) and local hooks when replacing old component properties.
+
+### Step 6 Layout primitives
+
+- Embed the container by path for sections. Forward the shared section props, use the four width values and `container__spacing`, and fill the `container__content` block. Omit the theme props to inherit the surrounding theme.
+- The outer and inner container and grid wrappers establish size containers. Grid uses 1 track below `md`, up to 2 at `md`, up to 4 at `lg`, and the configured ceiling at `xl`. Keep items as direct grid children. Use Base/Placement when positioning parts of a component on a shared 12-track grid.
+- Set `--content-width-narrow`, `--content-width`, `--content-width-wide`, or `--content-width-full` on an ancestor for local width limits. Scope `--grid-spacing` for a custom grid gap.
+- Container, Grid, and Placeholder follow the enforced contract with `<name>.yml` schemas. Follow their Layout Docs tabs for examples. The CLI installs them through the layout directory.
+- The [layout migration tables](../migration-2.0.md#layout) cover old widths, spacing modifiers, classes, and template props.

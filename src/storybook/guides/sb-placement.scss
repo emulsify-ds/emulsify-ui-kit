@@ -1,0 +1,26 @@
+@use '../../base' as *;
+
+.sb-placement {
+  container-type: inline-size;
+
+  &__tracks {
+    @include grid-tracks;
+  }
+
+  &__description,
+  &__illustration {
+    padding: space(16);
+    color: var(--clr-body);
+    background-color: var(--clr-background);
+    border: var(--bw-sm) solid var(--clr-border);
+    overflow-wrap: anywhere;
+  }
+
+  &__description {
+    @include grid-column(5);
+  }
+
+  &__illustration {
+    @include grid-column(7, $start: 6);
+  }
+}

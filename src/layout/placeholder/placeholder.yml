@@ -1,0 +1,29 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Placeholder
+description: A labeled sample area for demonstrating a layout.
+group: Layout
+status: stable
+props:
+  type: object
+  properties:
+    placeholder__text:
+      title: Text
+      description: Visible label for the sample area.
+      type: [string, 'null']
+      default: Placeholder
+    placeholder__modifiers:
+      title: Modifiers
+      description: BEM modifiers for the placeholder.
+      type: [array, 'null']
+      items:
+        type: string
+    placeholder__additional_classes:
+      title: Additional classes
+      description: CSS classes to add to the outer element.
+      type: [array, 'null']
+      items:
+        type: string
+    placeholder__attributes:
+      title: Attributes
+      description: HTML attributes to add to the outer element.
+      type: [object, 'null']
