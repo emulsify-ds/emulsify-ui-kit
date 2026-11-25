@@ -1,0 +1,26 @@
+@use '../motion/motion-mixins' as *;
+
+@mixin link-underline {
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+
+  &:where(:hover, :focus-visible) {
+    text-decoration-thickness: 0.14em;
+  }
+
+  @include motion-safe {
+    transition: text-decoration-thickness var(--mo-duration) var(--mo-easing);
+  }
+}
+
+@mixin plain-link {
+  color: var(--clr-link);
+  overflow-wrap: anywhere;
+
+  @include link-underline;
+
+  &:where(:hover, :focus-visible) {
+    color: var(--clr-link-hover);
+  }
+}

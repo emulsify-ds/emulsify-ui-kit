@@ -3,7 +3,13 @@
 @forward './typography/fonts';
 
 @use './tokens/custom-properties';
+@use './typography/links' as *;
 
 :root {
   container-type: inline-size;
+}
+
+// Component selectors can override the plain-link defaults in any asset order.
+:where(a:not(.cta, [class*='__cta'])) {
+  @include plain-link;
 }

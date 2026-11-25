@@ -99,7 +99,7 @@ render: renderTwig(
 
 | Props or slot | Use |
 | --- | --- |
-| `<block>__ctas` | Render up to two `{ content, url, icon?, icon_position? }` items with `cta`. |
+| `<block>__ctas` | Render up to two `{ content, url, icon?, icon_position? }` items with `cta`. Map `content` to `cta__text` and forward the other item keys to their `cta__*` props. |
 | `<block>__image__*` | Forward these props to `image`. |
 | `<block>__media_content` | Provide this slot for composed media. |
 | `__width`, `__theme`, `__theme__variation`, `__bg_color`, `__spacing`, `__id`, `__container__modifiers` | Prefix each with the block name and forward through the shared container contract. |
@@ -107,6 +107,8 @@ render: renderTwig(
 | `__heading`, `__heading_level` | Prefix each with the block name. Support heading levels 2–6. |
 
 Embed `@layout/container/container.twig` for sections and forward the shared props to the corresponding `container__*` keys. `__container__modifiers` maps to `container__modifiers`. Use `narrow`, `content`, `wide`, or `full` for width. Set vertical spacing through `container__spacing` and keep modifiers for component-specific classes. Put the composed markup in `container__content`. For repeated items with equal or focused columns, embed `@layout/grid/grid.twig` and render the direct grid items in `grid__content`.
+
+Include `@components/cta/cta.twig` for calls to action. Use an anchor for navigation, a button for actions, and a span for a presentational label inside a linked composite. Use a plain anchor for text links. The Base stylesheet provides their color, underline, and focus styles.
 
 ## Styling
 
@@ -128,6 +130,7 @@ The global stylesheet establishes a root query container for standalone componen
 | `font-size($key)`, `font-family($key)`, `font-weight($key)`, `line-height($key)`, `letter-spacing($key)` | Use the keys from the generated maps. Each function returns the relevant custom property with a resolved fallback. |
 | `fluid-type($min-px, $max-px)` | Return a clamped size between two pixel values, interpolating from the `sm` to the `xl` viewport width. |
 | `typography($style)` | Emit the resolved declarations for a typography style from `$typography`. Set the color separately with a color role. |
+| `link-underline` | Apply the Base underline and its motion-safe hover and focus treatment to a custom link style. |
 | `grid-tracks($tracks: 12)` | Set up a one-column grid that expands at the `md` container breakpoint, with a `--grid-spacing` gutter that falls back to `space(40)`. |
 | `grid-column($span, $start: auto, $from: 'md')` | Place an item on the tracks at the selected container breakpoint. Use `$from: none` for unconditional placement. |
 | `str-replace($string, $search, $replace: '')` | Replace all occurrences of a substring. |

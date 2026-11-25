@@ -28,7 +28,7 @@ Coordinate the 16 refinement steps for the single Emulsify UI Kit 2.0.0 release.
 - [x] 4 Base layer
 - [x] 5 Tokens
 - [x] 6 Layout primitives
-- [ ] 7 CTA
+- [x] 7 CTA
 - [ ] 8 Wave A: heading, text, blockquote, code, icon, image, list, video
 - [ ] 9 Wave B1: teaser, card, media-box, text-with-image, callout
 - [ ] 10 Wave B2: banner, announcement, stats-group, tags, status
@@ -109,3 +109,10 @@ The report also found 30 global violations. The `blockquote.component.yml` basen
 - Set `--content-width-narrow`, `--content-width`, `--content-width-wide`, or `--content-width-full` on an ancestor for local width limits. Scope `--grid-spacing` for a custom grid gap.
 - Container, Grid, and Placeholder follow the enforced contract with `<name>.yml` schemas. Follow their Layout Docs tabs for examples. The CLI installs them through the layout directory.
 - The [layout migration tables](../migration-2.0.md#layout) cover old widths, spacing modifiers, classes, and template props.
+
+### Step 7 CTA and plain links
+
+- Include `@components/cta/cta.twig` for calls to action. Set `cta__element: 'button'` for actions and opt into `submit` or `reset` using `cta__button_type`. Use `cta__text` for labels and `cta__content` for custom label markup. Use a plain anchor for text links. The [CTA migration table](../migration-2.0.md#button-and-link--cta) maps the legacy props.
+- CTA uses inherited light and dark roles. Choose one appearance modifier from `primary`, `secondary`, `link`, or `clean`. The legacy icon partial remains in use until the icon wave. Button and Link remain available under Deprecated during the migration waves. Step 15 removes them.
+- The Base anchor rule has zero specificity. Local selectors still win. Recheck `.text a` in Wave A, the card heading and CTA link styles in Wave B1, `.main-nav__link`, `.main-nav__placeholder`, `.breadcrumbs__link`, and `.social-nav__link` in Wave C2, and `.page-title__overline-link` in Wave D as their legacy `link` mixins are removed.
+- Tags, Pager, Tabs, and Link Group have their own decoration rules. Verify inline links and navigation affordances when revising those selectors. Use the Base `link-underline` mixin when a local style needs the shared underline behavior.
