@@ -265,4 +265,8 @@ Replace the `card` SDC or `@components/card/card.twig` include with `teaser` or 
 
 The heading carries the destination. Move secondary destinations, including links from the old Card subheading, outside the teaser. Omit the media source or set `teaser__show_media: false` to hide the media. Replace custom Card element classes with Teaser selectors and its local theme properties.
 
+### Media Box
+
+- Rename the `media_box__media` slot to `media_box__media_content`. Use `media_box__image__src` and `media_box__image__alt` for images, or `media_box__video__sources` or `media_box__video__embed_url` with `media_box__video__title` for video. Supply real sources in place of the old demo placeholders. For built-in media, prefer `media_box__image__caption` and `media_box__image__credit` or the corresponding `__video__*` fields. Include attribution in custom slot markup when overriding the media.
+
 ## Removed

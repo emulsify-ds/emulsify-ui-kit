@@ -142,20 +142,18 @@
   {% if page_title__show_media %}
     <div {{ bem('media', page_title__modifiers, page_title__base_class) }}>
       {% block page_title__media %}
-        {% include "@components/media-box/media-box.twig" with {
-        media_box__spacing: 'none',
-        media_box__bg_color: false,
-        media_box__type: 'image',
-        media_box__image__src: image__src,
-        media_box__image__alt: image__alt,
-        media_box__image__decorative: image__decorative,
-        media_box__image__srcset: image__srcset,
-        media_box__image__sizes: image__sizes,
-        media_box__show_caption: page_title__media__show_caption|default(false),
-        media_box__show_copyright: page_title__media__show_copyright|default(false),
-        media_box__caption: page_title__media__caption,
-        media_box__copyright: page_title__media__copyright,
-      } %}
+        {{ include('@components/media-box/media-box.twig', {
+          media_box__spacing: 'none',
+          media_box__bg_color: false,
+          media_box__type: 'image',
+          media_box__image__src: image__src,
+          media_box__image__alt: image__alt,
+          media_box__image__decorative: image__decorative,
+          media_box__image__srcset: image__srcset,
+          media_box__image__sizes: image__sizes,
+          media_box__image__caption: page_title__media__show_caption ? page_title__media__caption : null,
+          media_box__image__credit: page_title__media__show_copyright ? page_title__media__copyright : null,
+        }, with_context: false) }}
       {% endblock %}
     </div>
   {% endif %}
