@@ -204,12 +204,6 @@
           "dependency": []
         },
         {
-          "name": "button",
-          "structure": "components",
-          "required": true,
-          "dependency": ["icon"]
-        },
-        {
           "name": "callout",
           "structure": "components",
           "dependency": ["cta", "heading", "text"]
@@ -259,12 +253,6 @@
         },
         {
           "name": "image",
-          "structure": "components",
-          "required": true,
-          "dependency": []
-        },
-        {
-          "name": "link",
           "structure": "components",
           "required": true,
           "dependency": []

@@ -38,23 +38,3 @@ export function withStorybookContainer(render, options = {}) {
     </div>`;
   };
 }
-
-/**
- * Keep the existing preview padding for stories using legacy layout classes.
- */
-export function withStorybookPadding(
-  render,
-  { className = 'cl-container', innerClass, theme } = {},
-) {
-  return (args = {}) => {
-    const content = render(args);
-    const themeAttribute = theme
-      ? ` data-component-theme="${escapeAttribute(theme)}"`
-      : '';
-    const inner = innerClass
-      ? `<div class="${escapeAttribute(innerClass)}">${content}</div>`
-      : content;
-
-    return `<div class="${escapeAttribute(className)}"${themeAttribute}>${inner}</div>`;
-  };
-}

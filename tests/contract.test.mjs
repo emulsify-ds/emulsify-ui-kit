@@ -28,12 +28,9 @@ const readJson = (path) => JSON.parse(read(path));
 const { components: allowlist, enforceGlobal } = readJson(
   join(import.meta.dirname, 'contract-allowlist.json'),
 );
-const legacyProperties = new Set();
-scss
-  .parse(read(join(root, 'src/base/tokens/legacy-1x.scss')))
-  .walkDecls(/^--/, ({ prop }) => {
-    legacyProperties.add(prop);
-  });
+const legacyProperties = new Set(
+  readJson(join(import.meta.dirname, 'fixtures/1x-token-names.json')),
+);
 
 const isMapping = (value) =>
   value !== null && typeof value === 'object' && !Array.isArray(value);

@@ -61,50 +61,20 @@ A complete component meets the following criteria:
 
 1. Design tokens are defined as their own set in Figma, in the Token Studio plugin, and they use references to values defined in `semantic` as much as possible.
 2. The component has an independent frame in Figma.
-3. The component's CSS file uses the generated design tokens as much as possible. See button example below.
+3. Use the generated Base tokens and expose component custom properties for local overrides. See the CTA example below.
 4. A component's story connects to the corresponding Figma frame, defined in `config/configma.json`.
-5. The component passes WCAG 2 AA.
+5. The component passes WCAG 2.2 AA.
 
 ## Example component
 
-The [deprecated Button story](https://emulsify-ds.github.io/emulsify-ui-kit/?path=/story/deprecated-button--basic) shows the 1.x Figma token integration. Use CTA for new actions.
+CTA inherits the active theme. Set its local properties on an ancestor to customize the actions within that section. [CTA documentation](https://emulsify-ds.github.io/emulsify-ui-kit/?path=/docs/components-cta--docs)
 
 ```css
-.button {
-  background-color: var(--button-color-bkg);
-  padding: var(--button-padding-y) var(--button-padding-x);
-  color: var(--button-color-label);
-  border-radius: var(--button-radius);
-  border: var(--button-border-width-border) solid var(--button-border-color);
-  font-size: var(--font-size-small);
-  font-weight: var(--button-font-weight-label);
-  text-transform: var(--button-text-case);
-  text-decoration: none;
-
-  &:hover,
-  &.button--hover {
-    background-color: var(--button-color-bkg-hover);
-    padding: var(--button-padding-y-hover) var(--button-padding-x-hover);
-    border: var(--button-border-width-border-hover) solid var(
-        --button-border-color-hover
-      );
-    color: var(--button-color-label-hover);
-    text-decoration: underline;
-    text-transform: var(--button-text-case);
-  }
-
-  &:focus,
-  &.button--focus {
-    padding: var(--button-padding-y-focus) var(--button-padding-x-focus);
-    color: var(--button-color-label-focus);
-    border: var(--button-border-width-border-focus) solid var(
-        --button-border-color-focus
-      );
-    outline: var(--button-border-width-outline-focus) solid var(
-        --button-color-outline-focus
-      );
-    text-transform: var(--button-text-case);
-  }
+.newsletter-actions {
+  --cta-background-color: var(--clr-body);
+  --cta-color: var(--clr-background);
+  --cta-background-color-hover: var(--clr-link);
+  --cta-color-hover: var(--clr-background);
 }
 ```
 
@@ -124,10 +94,10 @@ See [this whiteboard](https://www.figma.com/file/l6MIPQCewbIJoKvZpxhAwr/Token-Na
 8. In the parameters of your story, include `figma.$KEY` as shown below.
 
 ```js
-Button.parameters = {
+Spacing.parameters = {
   design: {
     type: 'figma',
-    url: figma.url + figma.button,
+    url: figma.url + figma.spacing,
   },
 };
 ```
@@ -142,8 +112,8 @@ npm ci
 npm run develop
 ```
 
-Before opening a pull request, run `npm run lint`, `npm run test`,
-`npm run test:release`, and `npm run storybook-build`.
+Before opening a pull request, run `npm run validate` and `npm run storybook-build`.
+Validation includes lint, the component contract, release tests, Sass tests, and Jest.
 
 ### Releases
 

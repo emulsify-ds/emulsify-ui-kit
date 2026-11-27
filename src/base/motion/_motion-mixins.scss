@@ -1,5 +1,4 @@
 @use 'sass:list';
-@use './motion';
 
 @mixin motion-safe {
   @media (prefers-reduced-motion: no-preference) {
@@ -9,17 +8,14 @@
 
 @mixin transition(
   $properties,
-  $duration: motion.$transition-duration-base,
+  $duration: 0.3s,
   $delay: 0ms,
   $allow-discrete: false
 ) {
   $transitions: ();
 
   @each $property in $properties {
-    $definition: $property
-      $duration
-      motion.$transition-timing-function-base
-      $delay;
+    $definition: $property $duration ease-in-out $delay;
 
     @if $allow-discrete {
       $definition: list.append($definition, allow-discrete);
