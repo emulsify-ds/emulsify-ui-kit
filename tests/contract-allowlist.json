@@ -28,6 +28,7 @@
     "navigation/pager",
     "navigation/social",
     "offcanvas",
+    "page-title",
     "search",
     "stats-group",
     "status",

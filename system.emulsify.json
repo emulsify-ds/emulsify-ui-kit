@@ -326,6 +326,11 @@
           "dependency": ["cta"]
         },
         {
+          "name": "page-title",
+          "structure": "components",
+          "dependency": ["cta", "heading", "image", "navigation/breadcrumbs"]
+        },
+        {
           "name": "search",
           "structure": "components",
           "dependency": ["cta"]

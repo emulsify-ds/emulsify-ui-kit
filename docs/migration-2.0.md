@@ -429,4 +429,17 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 
 Load the Header, Main Navigation, shared menu toggle, Offcanvas, and Search behaviors. Give each Header a stable `header__id`. To enable the skip link, point `header__skip_target` to the bare ID of a `<main>` with `tabindex="-1"`.
 
+### Page Title
+
+| Earlier input | 2.0 input |
+| --- | --- |
+| Primary and secondary `page_title__link_*` fields or blocks | Use up to two `page_title__ctas` items with `content`, `url`, and optional `icon` and `icon_position`. The first action uses the primary style and the second uses the secondary style. |
+| Tertiary CTA or `page_title__links` block | Move additional links into the page content. |
+| `page_title__description` | `page_title__description_content` slot. |
+| `page_title__media` block, `page_title__show_media`, separate image and video fields | Compose Image or Video in the `page_title__media_content` slot. Set caption and credit on that child component. Omit the slot for a title without media. |
+| `page_title__overline__link_attributes` | The optional overline link uses CTA link styling. Supply its destination with `page_title__overline__url`. |
+| `page_title__align_intro` | Use the shared alignment for the section and local styles for copy alignment. Set `page_title__media_alignment` for placement in the inline layout. |
+
+Supply one `page_title__heading` for the page's h1. Pass a rendered navigation trail through `page_title__breadcrumbs_content` when needed. Update styles targeting `.page-title__links`, `.page-title__overline-link`, or the automatic `.container--page-title` class to target the new action wrapper, overline CTA, or explicit Container modifiers.
+
 ## Removed
