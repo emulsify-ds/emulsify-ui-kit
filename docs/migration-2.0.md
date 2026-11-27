@@ -380,4 +380,10 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - For the Base Menu SDC, pass `base__items` and a page-unique `base__id`. Set `base__label` to name the landmark. Use `base__toggle` for the outer disclosure, `base__disclosures` for submenus, and `base__items_content` to supply complete list items. The shared `menu.twig` partial accepts `menu__items` or the legacy `items` variable, and `menu__id` for the stable menu ID.
 - Supply stable menu item keys or `id` values when possible. The menu derives disclosure IDs from the menu ID and item path. Use `menu_toggle__label` and `menu_toggle__controls` for direct uses of the toggle partial. Update scripts and styles that rely on the old wrapper expansion classes to use the button's `aria-expanded` and the panel's `hidden` state.
 
+### Main Navigation
+
+- Pass `main__items` to `@components/navigation/main/main.twig`. The legacy `items` alias also works. Supply a different `main__id` for each instance on a page, and set `main__label` when the page has multiple navigation landmarks. The shared menu toggle behavior is part of `navigation/base`.
+- Submenus open from separate disclosure buttons. Parent links keep their destinations, and the old repeated parent item is removed from the submenu. Escape closes the open submenu and returns focus to its button.
+- Main switches layouts when its links exceed the available width. Keep the menu in a shrinkable wrapper in a flex header. Use `data-menu-mode` to style the `inline` and `compact` states in place of fixed-breakpoint menu styles.
+
 ## Removed

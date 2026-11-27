@@ -1,7 +1,17 @@
-{% include "@components/navigation/base/menu.twig" with {
+{#
+ # Props: main__id, main__label, main__items, items (legacy), main__toggle_label,
+ # main__blockname, main__modifiers, main__additional_classes, main__attributes.
+ #}
+{{ include('@components/navigation/base/menu.twig', {
+  menu__id: main__id|default('main-nav'),
   menu__base_class: 'main-nav',
-  menu__name: 'main',
+  menu__name: main__label|default('Main navigation'|t),
+  menu__items: main__items|default(items|default([])),
   menu__toggle: true,
   menu__level_toggle: true,
-  menu__attributes: {'aria-expanded': 'false'},
-} %}
+  menu__toggle_label: main__toggle_label,
+  menu__blockname: main__blockname,
+  menu__modifiers: main__modifiers,
+  menu__additional_classes: main__additional_classes,
+  menu__attributes: main__attributes|default({})|merge({'data-menu-collapse-on-overflow': 'true'}),
+}, with_context: false) }}

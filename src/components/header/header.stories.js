@@ -5,13 +5,14 @@ import headerTwig from './header.twig';
 // Data.
 import mainMenuData from '../navigation/main/main.component.yml';
 import searchData from '../search/search.component.yml';
+import { argsFromSchema } from '../../util/argsFromSchema.js';
 
 // JavaScript.
 import '../navigation/base/menu-toggle/menu-toggle';
 import '../navigation/main/main';
 import '../search/search';
 
-const mainMenuProps = mainMenuData.props.properties;
+const mainMenuProps = argsFromSchema(mainMenuData.props);
 const searchProps = searchData.props.properties;
 
 /**
@@ -46,7 +47,7 @@ export default {
 
 export const header = {
   args: {
-    header__menu: mainMenuProps.items.data,
+    header__menu: mainMenuProps.main__items,
     header__branding: '<img src="assets/images/logo.svg" alt="Branding">',
     header__show_search: true,
     header__search__placeholder: searchProps.search__placeholder.data,

@@ -31,9 +31,10 @@
   {# Main navigation #}
   <div {{ bem('menu', [], header__base_class) }}>
     {% block header__menu %}
-      {% include "@components/navigation/main/main.twig" with {
-        items: header__menu,
-      } %}
+      {{ include('@components/navigation/main/main.twig', {
+        main__id: 'header-main-navigation',
+        main__items: header__menu,
+      }, with_context: false) }}
     {% endblock %}
   </div>
   {# Search form #}

@@ -1,6 +1,8 @@
 import { renderTwig } from '@emulsify/core/storybook';
 import template from './home.twig';
 import data from './home.yml';
+import '../../components/navigation/base/menu-toggle/menu-toggle.js';
+import '../../components/navigation/main/main.js';
 
 export default {
   title: 'Examples/Home',

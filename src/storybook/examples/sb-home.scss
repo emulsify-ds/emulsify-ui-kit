@@ -1,4 +1,4 @@
-@use '../../base/typography/typography' as *;
+@use '../../base' as *;
 @use '../../base/utility/utility' as *;
 
 .example {
@@ -11,13 +11,20 @@
 
   .header {
     display: flex;
-    flex-flow: row nowrap;
+    flex-wrap: wrap;
     align-items: center;
+    gap: space(16);
     padding: var(--spacing-lg) var(--spacing-xl);
   }
 
   .logo {
+    max-inline-size: 100%;
     margin-right: auto;
+
+    svg {
+      max-inline-size: 100%;
+      block-size: auto;
+    }
   }
 
   .logo-text {
@@ -28,8 +35,8 @@
     fill: var(--color-primary-default);
   }
 
-  .logo + nav {
-    margin-right: var(--spacing-xl);
+  .header > .main-nav {
+    flex: 1 1 space(96);
   }
 
   .hero {

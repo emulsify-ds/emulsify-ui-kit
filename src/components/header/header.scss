@@ -41,18 +41,13 @@
 
 /* Main navigation */
 .header__menu {
+  min-inline-size: 0;
+
   @include breakpoint('lg') {
     flex: 1;
     display: flex;
     justify-content: end;
     margin-right: var(--spacing-xl);
-  }
-}
-
-.main-nav__menu-list-wrapper--level-0 {
-  .header & {
-    top: 100%;
-    padding-right: var(--spacing-lg);
   }
 }
 
