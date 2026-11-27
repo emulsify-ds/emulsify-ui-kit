@@ -306,7 +306,7 @@
         {
           "name": "tabs",
           "structure": "components",
-          "dependency": ["button"]
+          "dependency": ["cta", "heading"]
         },
         {
           "name": "tags",

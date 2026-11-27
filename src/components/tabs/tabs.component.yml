@@ -1,43 +1,148 @@
-$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
-
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: Tabs
+description: A keyboard-operable tab list with panels readable before JavaScript runs.
 group: Components
 status: stable
+libraryOverrides:
+  dependencies: [core/drupal, core/once]
 props:
   type: object
+  required: [tabs__id]
   properties:
-    tabs:
-      type: array
-      title: Tab Items
-      description: Array of tab items.
-      data:
-        - tab__label: 'Tab 1'
-          tab__content: 'Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'
-        - tab__label: 'Tab 2'
-          tab__content: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
-        - tab__label: 'Tab 3'
-          tab__content: 'Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.'
-        - tab__label: 'Tab 4'
-          tab__content: 'Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'
-        - tab__label: 'Tab 5'
-          tab__content: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
-        - tab__label: 'Tab 6'
-          tab__content: 'Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.'
-        - tab__label: 'Tab 1'
-          tab__content: 'Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'
-        - tab__label: 'Tab 2'
-          tab__content: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
-        - tab__label: 'Tab 3'
-          tab__content: 'Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.'
-        - tab__label: 'Tab 4'
-          tab__content: 'Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'
-        - tab__label: 'Tab 5'
-          tab__content: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
-        - tab__label: 'Tab 6'
-          tab__content: 'Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.'
-
+    tabs__id:
+      type: string
+      title: Tabs ID
+      description: Stable suffix unique to this tab set on the page.
+      pattern: '^[A-Za-z0-9][A-Za-z0-9_-]*$'
+      examples: ['library-visit']
+    tabs__items:
+      type: [array, 'null']
+      title: Tab items
+      description: Ordered set of tab labels and panel content.
+      default: []
+      items:
+        type: object
+        required: [id, label, content]
+        properties:
+          id:
+            type: string
+            description: Stable suffix unique within this tab set.
+            pattern: '^[A-Za-z0-9][A-Za-z0-9_-]*$'
+          label:
+            type: string
+            description: Short, descriptive tab label.
+            pattern: '\S'
+          content:
+            type: [string, object, array]
+            description: Text, trusted markup, or a Drupal render array for the panel.
+          icon:
+            type: [string, 'null']
+            description: Optional decorative UI Kit icon.
+      examples:
+        - - id: hours
+            label: Opening hours
+            content: The library opens at 9 a.m. on weekdays and 10 a.m. on weekends.
+          - id: services
+            label: Services
+            content: Borrow books, use a study room, or ask a librarian for help.
+          - id: access
+            label: Building access
+            content: Use the ramp on the north side for a step-free entrance.
+    tabs__active:
+      type: [string, 'null']
+      title: Initially selected item
+      description: ID of the initially selected item. A matching URL fragment has priority.
+      default: null
+    tabs__label:
+      type: [string, 'null']
+      title: Accessible label
+      description: Name of the tab list when the visible heading is omitted.
+      pattern: '\S'
+      examples: ['Library visitor information']
+    tabs__heading:
+      type: [string, 'null']
+      title: Heading
+      description: A visible heading that also names the tab list.
+      examples: ['Visiting the library']
+    tabs__heading_level:
+      type: [integer, 'null']
+      title: Heading level
+      description: Semantic level of the section heading.
+      enum: [2, 3, 4, 5, 6, null]
+      default: 2
+    tabs__text:
+      type: [string, array, object, 'null']
+      title: Introduction
+      description: Optional introductory text, trusted markup, or rendered content.
+      default: null
+    tabs__display:
+      type: [string, 'null']
+      title: Display
+      description: Horizontal layout with an underline marking the selected tab.
+      enum: [horizontal-plain, null]
+      default: horizontal-plain
+    tabs__width:
+      type: [string, 'null']
+      title: Width
+      description: Maximum width of the layout container.
+      enum: [narrow, content, wide, full, null]
+      default: wide
+    tabs__alignment:
+      type: [string, 'null']
+      title: Alignment
+      description: Horizontal placement of the inner container.
+      enum: [left, center, right, null]
+      default: center
+    tabs__theme:
+      type: [string, 'null']
+      title: Theme
+      description: Name of the theme supplied to the layout container.
+      enum: [default, null]
+      default: null
+    tabs__theme__variation:
+      type: [string, 'null']
+      title: Theme variation
+      description: Choose a light or dark variation for the container.
+      enum: [light, dark, null]
+      default: null
+    tabs__bg_color:
+      type: [boolean, 'null']
+      title: Background
+      description: Paint the container with the active theme background.
+      default: false
+    tabs__spacing:
+      type: [string, 'null']
+      title: Section spacing
+      description: Vertical spacing preset from the container component.
+      examples: ['one']
+    tabs__container__modifiers:
+      type: [array, 'null']
+      title: Container modifiers
+      description: Additional BEM modifiers on the section container.
+      default: []
+      items:
+        type: string
+    tabs__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Optional parent BEM block name.
+    tabs__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers for the tabs wrapper.
+      items:
+        type: string
+    tabs__additional_classes:
+      type: [array, 'null']
+      title: Classes
+      description: Additional classes for the tabs wrapper.
+      items:
+        type: string
+    tabs__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Attributes for the tabs wrapper.
 slots:
-  tab__content:
-    title: Tab Content
-    description: Override the default tab content rendering
-    data: ''
+  tabs__panels_content:
+    title: Tab panels
+    description: Replace the generated panels with complete tabpanel elements.

@@ -362,4 +362,10 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - Rename the `accordion__items` slot to `accordion__items_content`. For a custom item partial, pass both IDs and use its `accordion__item__body_content` slot. Replace `accordion__block_name` with `accordion__blockname` and use `.accordion__heading` and `.accordion__panel` for styling.
 - Set `accordion__show_controls: true` to offer expand-all and collapse-all controls. Items start expanded in server output and collapse when the Drupal behavior attaches, except for the item referenced by the URL fragment.
 
+### Tabs
+
+- Replace the `tabs` prop with `tabs__items` and map each `tab__label`, `tab__content`, and `tab__icon` item key to `label`, `content`, and `icon`. Add a unique `id` to each item and a page-unique `tabs__id` to the component.
+- Replace the `tab__content` slot with `tabs__panels_content`. Custom panels need an ID of `tabs-{tabs__id}:panel:{id}` and `aria-labelledby="tabs-{tabs__id}:tab:{id}"` to match their controls. Update existing tab fragments to the new panel IDs.
+- Replace `container__component_width` and `tab__component_theme` inputs with `tabs__width` and the shared Tabs theme props. Use the corrected `horizontal-plain` display name. Tabs wrap at narrow widths in place of the old overflow scroll controls. Use `.tabs__tab` and `.tabs__panel` for component styling.
+
 ## Removed
