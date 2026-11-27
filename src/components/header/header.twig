@@ -1,55 +1,112 @@
 {#
- # Header Component Template
- # Available Variables:
- # - header__base_class: (string) base BEM class, default 'header'
- # - header__search__placeholder: (string) placeholder text for search input
- # - header__search__label: (string) label for search toggle button
- # - header__menu_label: (string) label for mobile menu toggle
- # - additional_attributes: (array) HTML attributes for the header element
- # - search_form: (string) rendered search form markup
- #
- # Available Blocks (Slots):
- # - header__branding
- # - header__menu
+ # Props: header__id, header__items, header__nav_label, header__menu_label,
+ # header__logo__src, header__logo__alt, header__logo__url, header__logo__width,
+ # header__logo__height, header__skip_target, header__skip_label,
+ # header__show_search, header__search__placeholder, header__search__label,
+ # header__search__action, header__search__input_name, header__theme,
+ # header__theme__variation, header__blockname, header__modifiers,
+ # header__additional_classes, header__attributes.
+ # Slots: header__branding_content, header__navigation_content,
+ # header__search_content, header__search_form_content.
  #}
+{% set header_id = header__id|default('site-header')|trim ?: 'site-header' %}
+{% set menu_label = header__menu_label|default('Menu'|t) %}
+{% set attributes = header__attributes ?? additional_attributes ?? {} %}
+{% if attributes.toArray is defined %}
+  {% set attributes = attributes.toArray() %}
+{% endif %}
+{% set classes = attributes.class|default([]) %}
+{% set classes = classes is iterable ? classes : [classes] %}
+{% set classes = classes|merge(header__additional_classes|default([])) %}
+{% set attributes = attributes|merge({
+  class: bem('header', header__modifiers, header__blockname, classes|merge(header__blockname ? ['header'] : [])),
+  id: header_id,
+  'data-header': 'true',
+}) %}
+{% if header__theme or header__theme__variation %}
+  {% set attributes = attributes|merge({
+    'data-component-theme': header__theme|default('default') ~ ' ' ~ (header__theme__variation == 'dark' ? 'dark' : 'light'),
+  }) %}
+{% endif %}
 
-{% set header__base_class = 'header' %}
+{% set logo %}
+  {{ include('@components/logo/logo.twig', {
+    logo__src: header__logo__src,
+    logo__alt: header__logo__alt,
+    logo__url: header__logo__url,
+    logo__width: header__logo__width,
+    logo__height: header__logo__height,
+  }, with_context: false) }}
+{% endset %}
+{% set branding %}
+  {% block header__branding_content %}{{ header__branding_content ?? logo }}{% endblock %}
+{% endset %}
 
-<header {{ bem(header__base_class) }} {{ add_attributes(additional_attributes) }}>
-  {# Branding #}
-  <div {{ bem('branding', [], header__base_class) }}>
-    {% block header__branding %}
-      {{ include('@components/logo/logo.twig', {
-        logo__src: '/assets/images/logo-text.svg',
-        logo__alt: 'Emulsify UI Kit home'|t,
-        logo__url: '/',
-        logo__width: 175,
-        logo__height: 60,
-      }, with_context: false) }}
-    {% endblock %}
-  </div>
-  {# Main navigation #}
-  <div {{ bem('menu', [], header__base_class) }}>
-    {% block header__menu %}
-      {{ include('@components/navigation/main/main.twig', {
-        main__id: 'header-main-navigation',
-        main__items: header__menu,
-      }, with_context: false) }}
-    {% endblock %}
-  </div>
-  {# Search form #}
-  {% if header__show_search %}
-    <div {{ bem('search', [], header__base_class) }}>
-      {% block header__search %}
-        {{ include('@components/search/search.twig', {
-          search__id: 'header-site-search',
-          search__show_toggle: true,
-          search__show_label: false,
-          search__placeholder: header__search__placeholder,
-          search__label: header__search__label,
-          search__form_content: search_form,
-        }, with_context: false) }}
-      {% endblock %}
-  </div>
+{% set main_navigation %}
+  {{ include('@components/navigation/main/main.twig', {
+    main__id: header_id ~ '-navigation',
+    main__items: header__items ?? header__menu ?? [],
+    main__label: header__nav_label,
+    main__toggle_label: menu_label,
+  }, with_context: false) }}
+{% endset %}
+{% set navigation %}
+  {% block header__navigation_content %}{{ header__navigation_content ?? main_navigation }}{% endblock %}
+{% endset %}
+
+{% set search_form_content %}
+  {% block header__search_form_content %}{{ header__search_form_content ?? search_form }}{% endblock %}
+{% endset %}
+{% set site_search %}
+  {% if header__show_search is same as(true) %}
+    {{ include('@components/search/search.twig', {
+      search__id: header_id ~ '-search',
+      search__show_toggle: true,
+      search__show_label: false,
+      search__placeholder: header__search__placeholder,
+      search__label: header__search__label,
+      search__action: header__search__action,
+      search__input_name: header__search__input_name,
+      search__form_content: search_form_content|trim ? search_form_content : null,
+    }, with_context: false) }}
   {% endif %}
+{% endset %}
+{% set search %}
+  {% block header__search_content %}{{ header__search_content ?? site_search }}{% endblock %}
+{% endset %}
+
+{% set skip_target = header__skip_target|default('')|trim %}
+{% set drawer_content %}<div data-header-nav-drawer></div>{% endset %}
+<header {{ add_attributes(attributes) }}>
+  {% if skip_target %}
+    {{ include('@components/cta/cta.twig', {
+      cta__text: header__skip_label|default('Skip to main content'|t),
+      cta__url: '#' ~ skip_target|url_encode,
+      cta__modifiers: ['primary'],
+      cta__additional_classes: ['header__skip-link'],
+    }, with_context: false) }}
+  {% endif %}
+  <div {{ bem('bar', [], 'header') }} data-header-bar>
+    {% if branding|trim %}
+      <div {{ bem('branding', [], 'header') }}>{{ branding }}</div>
+    {% endif %}
+    {% if navigation|trim %}
+      <div {{ bem('navigation', [], 'header') }} data-header-nav-home>
+        <div data-header-menu>{{ navigation }}</div>
+      </div>
+    {% endif %}
+    {% if search|trim %}
+      <div {{ bem('search', [], 'header') }}>{{ search }}</div>
+    {% endif %}
+    {% if navigation|trim %}
+      {{ include('@components/offcanvas/offcanvas.twig', {
+        offcanvas__id: header_id ~ '-dialog',
+        offcanvas__heading: menu_label,
+        offcanvas__type: 'modal',
+        offcanvas__content: drawer_content,
+        offcanvas__additional_classes: ['header__drawer'],
+        offcanvas__attributes: {'data-header-drawer': 'true', hidden: true},
+      }, with_context: false) }}
+    {% endif %}
+  </div>
 </header>

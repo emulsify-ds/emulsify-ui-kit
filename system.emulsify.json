@@ -236,10 +236,20 @@
           "dependency": ["cta"]
         },
         {
+          "name": "header",
+          "structure": "components",
+          "dependency": ["cta", "logo", "navigation/main", "offcanvas", "search"]
+        },
+        {
           "name": "heading",
           "structure": "components",
           "required": true,
           "dependency": []
+        },
+        {
+          "name": "hero",
+          "structure": "components",
+          "dependency": ["cta", "heading", "image", "text", "video"]
         },
         {
           "name": "icon",
@@ -314,6 +324,11 @@
           "name": "offcanvas",
           "structure": "components",
           "dependency": ["cta"]
+        },
+        {
+          "name": "page-title",
+          "structure": "components",
+          "dependency": ["cta", "heading", "image", "navigation/breadcrumbs"]
         },
         {
           "name": "search",

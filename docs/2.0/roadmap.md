@@ -35,7 +35,7 @@ Coordinate the 16 refinement steps for the single Emulsify UI Kit 2.0.0 release.
 - [x] 11 Wave B3: table, embed, audio-player, logo, link-group
 - [x] 12 Wave C1: accordion, tabs, offcanvas
 - [x] 13 Wave C2: navigation, search, forms
-- [ ] 14 Wave D: hero, header, page-title
+- [x] 14 Wave D: hero, header, page-title
 - [ ] 15 Cleanup
 - [ ] 16 Docs, accessibility gate, ready for review
 
@@ -159,3 +159,10 @@ The report also found 30 global violations. The `blockquote.component.yml` basen
 - Use `search__form_content` for a rendered Drupal search form. Set a unique `search__id` when enabling Search's inline disclosure, and keep its input label available at all widths.
 - Load `forms.scss` for the five field style groups. Keep Drupal field descriptions, error attributes, and native select markup when wiring Form API fields.
 - The [Wave C2 migration entries](../migration-2.0.md#navigation-base) list the five CLI navigation entries and the changed props and slots. All seven component contracts are enforced. The repository accessibility audit covered all 16 Wave C2 stories.
+
+### Step 14 Wave D page-level components
+
+- Use Hero for a page or section introduction and set the heading level to match the page outline. Background playback uses Video's visible play and pause control and honors reduced motion. Keep meaningful video in the foreground with a title and captions.
+- Header derives its dialog, navigation, and search IDs from `header__id`. Set `header__skip_target` to a focusable main landmark. On small containers Header moves the existing navigation into Offcanvas and keeps an inline fallback for browsers without JavaScript.
+- Page Title owns one h1 and accepts rendered breadcrumbs, description, and media in separate slots. Supply secondary destinations through the CTA array or the page body.
+- Examples/Home composes Hero, Teaser grids, and Callout. Examples/Basic pairs Header, Page Title, Breadcrumbs, Forms, and Callout. The accessibility audit covered the eight component stories and both composed pages. See the [Wave D migration entries](../migration-2.0.md#hero) for the changed props and slots.

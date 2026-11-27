@@ -1,65 +1,83 @@
-@use '../../base/utility/rem-calc' as *;
-@use '../../base/breakpoints/breakpoints' as *;
+@use '../../base' as *;
 
 .header {
-  display: flex;
-  width: 100%;
-  min-height: 5rem;
-  padding-inline: var(--spacing-xl) var(--spacing-lg);
-  justify-content: space-between;
-  align-items: center;
   position: relative;
-  box-shadow: 0 4px 4px 0 rgb(197 197 197 / 25%);
-
-  @include breakpoint('lg') {
-    justify-content: flex-start;
-    align-items: stretch;
-    padding-inline: 0;
-  }
+  container-type: inline-size;
+  color: var(--clr-body);
+  background-color: var(--header-background, var(--clr-background));
+  border-block-end: var(--bw-sm) solid var(--header-border, var(--clr-border));
 }
 
-/* Branding */
-.header__branding {
+.header__bar {
+  --header-menu-mode: compact;
+
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-
-  .logo {
-    width: auto;
-    height: 2.5rem;
-
-    @include breakpoint('lg') {
-      margin-left: var(--spacing-xl);
-      height: 3.5rem;
-    }
-  }
-
-  .logo__link {
-    height: 100%;
-    display: flex;
-  }
-}
-
-/* Main navigation */
-.header__menu {
-  min-inline-size: 0;
+  gap: space(12);
+  padding: space(12) space(16);
 
   @include breakpoint('lg') {
-    flex: 1;
-    display: flex;
-    justify-content: end;
-    margin-right: var(--spacing-xl);
+    --header-menu-mode: wide;
+
+    gap: space(24);
+    padding-inline: space(32);
   }
 }
 
-/* Search form */
+.header__branding,
+.header__navigation,
 .header__search {
-  display: flex;
-  align-items: center;
+  min-inline-size: 0;
+}
 
-  [data-search-toggle]:not([hidden]) + [data-search-panel] {
-    position: absolute;
-    z-index: 2;
-    inset-block-start: 100%;
-    inset-inline: 0;
+.header__branding {
+  flex: 1;
+  overflow-wrap: anywhere;
+
+  @include breakpoint('lg') {
+    flex: 0 1 auto;
+  }
+}
+
+.header__navigation {
+  flex: 1 1 100%;
+
+  @include breakpoint('lg') {
+    flex: 1 1 space(120);
+  }
+}
+
+.header__branding img {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+.header__drawer {
+  --offcanvas-modal-width: 28rem;
+}
+
+.header__drawer[hidden],
+.header__navigation[hidden] {
+  display: none;
+}
+
+.header__search [data-search-toggle]:not([hidden]) + [data-search-panel] {
+  position: absolute;
+  z-index: 2;
+  inset-block-start: 100%;
+  inset-inline-end: 0;
+  max-inline-size: 100%;
+}
+
+.header__skip-link {
+  position: absolute;
+  z-index: 3;
+  inset-block-start: space(8);
+  inset-inline-start: space(8);
+
+  &:not(:focus) {
+    @include visually-hidden;
   }
 }

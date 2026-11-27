@@ -73,14 +73,15 @@ describe('video playback', () => {
   once.remove = (id, nodes) => nodes.filter((node) => bound.delete(node));
 
   let reduceMotion = false;
+  let motion;
 
   beforeAll(async () => {
     globalThis.Drupal = { behaviors: {} };
     globalThis.once = once;
     window.matchMedia = jest.fn(() => {
-      const query = new EventTarget();
-      query.matches = reduceMotion;
-      return query;
+      motion = new EventTarget();
+      motion.matches = reduceMotion;
+      return motion;
     });
     await import('./video.js');
   });
@@ -140,15 +141,42 @@ describe('video playback', () => {
     expect(enabled.media.play).toHaveBeenCalledTimes(1);
   });
 
-  it('keeps native playback available when autoplay is blocked', async () => {
+  it('pauses decorative playback when the motion preference changes', () => {
+    reduceMotion = false;
     const { element, media, button, behavior } = setup({
       video__autoplay: true,
+      video__decorative: true,
+    });
+    expect(media.controls).toBe(true);
+    expect(media.hasAttribute('aria-hidden')).toBe(false);
+    behavior.attach(element);
+    expect(media.controls).toBe(false);
+    expect(media.getAttribute('aria-hidden')).toBe('true');
+    expect(button.hidden).toBe(false);
+    expect(button.textContent).toBe('Pause video');
+
+    const change = new Event('change');
+    change.matches = true;
+    motion.dispatchEvent(change);
+    expect(media.pause).toHaveBeenCalledTimes(1);
+    expect(button.textContent).toBe('Play video');
+
+    behavior.detach(element, {}, 'unload');
+    expect(media.controls).toBe(true);
+    expect(media.hasAttribute('aria-hidden')).toBe(false);
+  });
+
+  it('exposes the native playback controls when decorative autoplay is blocked', async () => {
+    const { element, media, button, behavior } = setup({
+      video__autoplay: true,
+      video__decorative: true,
     });
     media.play.mockRejectedValue(new DOMException('', 'NotAllowedError'));
     behavior.attach(element);
     await Promise.resolve();
 
     expect(media.controls).toBe(true);
+    expect(media.hasAttribute('aria-hidden')).toBe(false);
     expect(button.textContent).toBe('Play video');
   });
 });

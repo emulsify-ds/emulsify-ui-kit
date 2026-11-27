@@ -1,29 +1,30 @@
-<footer class="footer">
-	<div class="footer-content">
-		{% include "@examples/examples/assets/_logo.twig" %}
-		{{ include('@components/navigation/social/social.twig', {
-      social__items: social_menu_items|default([]),
-      social__modifiers: ['footer'],
-      social__attributes: {'data-component-theme': 'default dark'},
+<footer class="example__footer" data-component-theme="default dark">
+  <div class="example__footer-inner">
+    {{ include('@components/logo/logo.twig', {
+      logo__src: 'assets/images/logo.svg',
+      logo__alt: 'Emulsify UI Kit home',
+      logo__url: './?path=/story/examples-home--home',
+      logo__width: 48,
     }, with_context: false) }}
-	</div>
-	<nav>
-		<h3 class="footer-h3">QUICK LINKS & RESOURCES</h3>
-		<ul class="footer-links">
-			<li>Accessibility Statement</li>
-			<li>Advising</li>
-			<li>Careers</li>
-			<li>Consumer Info/Achievement</li>
-			<li>Contact Us</li>
-			<li>COVID-19 Response</li>
-			<li>Departments A-Z</li>
-			<li>Diversity, Equity and Inclusion</li>
-			<li>Find People</li>
-			<li>Information Technology</li>
-			<li>LGBTQ+</li>
-			<li>Nondiscrimination and Anti-Harassment Policy</li>
-			<li>Privacy Policy</li>
-		</ul>
-	</nav>
-
+    {{ include('@components/navigation/social/social.twig', {
+      social__items: social_menu_items,
+    }, with_context: false) }}
+    <nav aria-label="Quick links and resources">
+      <ul class="example__quick-links" role="list">
+        <li><a href="/accessibility">Accessibility Statement</a></li>
+        <li><a href="/advising">Advising</a></li>
+        <li><a href="/career-development">Career Development</a></li>
+        <li><a href="/consumer-information">Consumer Info/Achievement</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+        <li><a href="/covid-19">COVID-19 Response</a></li>
+        <li><a href="/departments">Departments A-Z</a></li>
+        <li><a href="/directory">Directory</a></li>
+        <li><a href="/student-life/organizations">Find People</a></li>
+        <li><a href="/technology">Information Technology</a></li>
+        <li><a href="/student-life/lgbtq">LGBTQ+</a></li>
+        <li><a href="/policies/non-discrimination">Non-Discrimination and Anti-Harassment Policy</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+      </ul>
+    </nav>
+  </div>
 </footer>

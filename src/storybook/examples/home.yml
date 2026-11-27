@@ -38,7 +38,8 @@ menu_items:
   - title: 'About'
     url: '#'
 teasers:
-  - teaser__image__src: '/assets/images/example/watch-Image.png'
+  - teaser__style: card
+    teaser__image__src: 'assets/images/example/watch-Image.png'
     teaser__image__alt: ''
     teaser__image__decorative: true
     teaser__subheading: 'social science ‘23'
@@ -48,7 +49,8 @@ teasers:
       - content: 'Read profile'
     teaser__url: '#'
     teaser__layout: inline
-  - teaser__image__src: '/assets/images/example/watch-Image-1.png'
+  - teaser__style: card
+    teaser__image__src: 'assets/images/example/watch-Image-1.png'
     teaser__image__alt: ''
     teaser__image__decorative: true
     teaser__subheading: 'Medicine ‘24'
@@ -57,7 +59,8 @@ teasers:
     teaser__ctas:
       - content: 'Read profile'
     teaser__url: '#'
-  - teaser__image__src: '/assets/images/example/watch-Image-2.png'
+  - teaser__style: card
+    teaser__image__src: 'assets/images/example/watch-Image-2.png'
     teaser__image__alt: ''
     teaser__image__decorative: true
     teaser__subheading: 'Engineering ‘25'
@@ -67,28 +70,32 @@ teasers:
       - content: 'Read profile'
     teaser__url: '#'
 celebratingTeasers:
-  - teaser__image__src: '/assets/images/example/celebrating-Image-1.png'
+  - teaser__style: card
+    teaser__image__src: 'assets/images/example/celebrating-Image-1.png'
     teaser__image__alt: ''
     teaser__image__decorative: true
     teaser__subheading: 'Student Opportunities'
     teaser__heading: 'Recent Honors College Graduate Selected for Fulbright English Teaching Award to Spain'
     teaser__content: 'May 09, 2023'
     teaser__layout: inline
-  - teaser__image__src: '/assets/images/example/celebrating-Image-2.png'
+  - teaser__style: card
+    teaser__image__src: 'assets/images/example/celebrating-Image-2.png'
     teaser__image__alt: ''
     teaser__image__decorative: true
     teaser__subheading: 'University News'
     teaser__heading: 'Council of Trustees approved three naming resolutions'
     teaser__content: 'May 09, 2023'
     teaser__layout: inline
-  - teaser__image__src: '/assets/images/example/celebrating-Image-3.png'
+  - teaser__style: card
+    teaser__image__src: 'assets/images/example/celebrating-Image-3.png'
     teaser__image__alt: ''
     teaser__image__decorative: true
     teaser__subheading: 'Research'
     teaser__heading: 'WUP is set to "level up" its quantum capabilities with an $11.6 million investment'
     teaser__content: 'May 01, 2023'
     teaser__layout: inline
-  - teaser__image__src: '/assets/images/example/celebrating-Image-4.png'
+  - teaser__style: card
+    teaser__image__src: 'assets/images/example/celebrating-Image-4.png'
     teaser__image__alt: ''
     teaser__image__decorative: true
     teaser__subheading: 'Arts and Humanities'

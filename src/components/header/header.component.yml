@@ -1,23 +1,149 @@
-$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
-
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: Header
+description: A page banner with branding, primary navigation, and optional search.
 group: Components
 status: stable
+libraryOverrides:
+  dependencies: [core/drupal, core/once]
 props:
   type: object
   properties:
+    header__id:
+      type: [string, 'null']
+      title: Header ID
+      description: Stable page-unique ID and prefix for the navigation and dialog.
+      default: site-header
+    header__items:
+      type: [array, object, 'null']
+      title: Navigation items
+      description: Nested navigation items accepted by Main Navigation.
+      examples:
+        - - id: collections
+            title: Collections
+            url: /collections
+            below:
+              - id: archive
+                title: Digital archive
+                url: /collections/archive
+          - id: events
+            title: Events
+            url: /events
+          - id: visit
+            title: Visit
+            url: /visit
+    header__nav_label:
+      type: [string, 'null']
+      title: Navigation name
+      description: Accessible name for the primary navigation landmark.
+      default: null
+    header__menu_label:
+      type: [string, 'null']
+      title: Menu label
+      description: Visible label for the compact menu and its dialog.
+      default: null
+    header__logo__src:
+      type: [string, 'null']
+      title: Logo source
+      description: Image URL for the default branding.
+      examples: ['/assets/images/logo-text.svg']
+    header__logo__alt:
+      type: [string, 'null']
+      title: Logo alternative text
+      description: Text alternative identifying the organization and destination.
+      examples: ['Emulsify UI Kit home']
+    header__logo__url:
+      type: [string, 'null']
+      title: Logo destination
+      description: Optional URL for the logo link.
+      examples: ['/']
+    header__logo__width:
+      type: [integer, 'null']
+      title: Logo intrinsic width
+      description: Intrinsic width in pixels.
+      examples: [175]
+    header__logo__height:
+      type: [integer, 'null']
+      title: Logo intrinsic height
+      description: Intrinsic height in pixels.
+      examples: [60]
+    header__skip_target:
+      type: [string, 'null']
+      title: Skip link target
+      description: ID of the main content landmark without the leading hash.
+      examples: ['main-content']
+    header__skip_label:
+      type: [string, 'null']
+      title: Skip link text
+      description: Visible label on keyboard focus.
+      default: null
     header__show_search:
-      type: boolean
+      type: [boolean, 'null']
       title: Show Search
-      description: Control visibility of the search form in the header.
-      data: true
+      description: Render the site's search disclosure.
+      default: false
+      examples: [true]
+    header__search__placeholder:
+      type: [string, 'null']
+      title: Search placeholder
+      description: Optional input hint for the built-in Search form.
+      default: null
+    header__search__label:
+      type: [string, 'null']
+      title: Search field label
+      description: Accessible name for the Search input.
+      default: null
+    header__search__action:
+      type: [string, 'null']
+      title: Search URL
+      description: Destination for the built-in GET form.
+      default: '/search'
+    header__search__input_name:
+      type: [string, 'null']
+      title: Search parameter
+      description: Query parameter submitted by the built-in form.
+      default: keys
+    header__theme:
+      type: [string, 'null']
+      title: Theme
+      description: Optional theme name for the header and dialog.
+      enum: [default, null]
+      default: null
+    header__theme__variation:
+      type: [string, 'null']
+      title: Theme variation
+      description: Inherit the surrounding theme or set a light or dark appearance.
+      enum: [light, dark, null]
+      default: null
+    header__blockname:
+      type: [string, 'null']
+      title: BEM parent
+      description: Optional parent block for the header.
+    header__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: Optional BEM modifiers for the header.
+      items:
+        type: string
+    header__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: Extra classes for the header.
+      items:
+        type: string
+    header__attributes:
+      type: [object, 'null']
+      title: HTML attributes
+      description: Additional attributes for the header landmark.
 slots:
-  header__branding:
+  header__branding_content:
     title: Branding
-    description: Branding content (logo, site name, etc).
-  header__menu:
-    title: Menu
-    description: Navigation menu content.
-  header__search:
+    description: Supply custom branding markup in place of Logo.
+  header__navigation_content:
+    title: Primary navigation
+    description: Supply a complete navigation landmark to be moved into the compact dialog.
+  header__search_content:
     title: Search
-    description: Search form content.
+    description: Replace the whole search region, including its toggle.
+  header__search_form_content:
+    title: Search form
+    description: Replace the built-in GET form while retaining the Search disclosure.

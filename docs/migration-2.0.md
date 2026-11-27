@@ -411,4 +411,35 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - `forms.component.yml` defines the Forms SDC. The former `forms.yml` demo data now lives in the stories. Pass fields and actions through the `forms__fields_content` slot when using the native wrapper. Keep the wrapper supplied by Drupal for Form API forms.
 - Compile `forms.scss` to include the five field style groups. Form API and the field partials use native labels, descriptions, required states, and errors. Keep each field's existing `aria-describedby` IDs and append the error ID when adding an inline error. Style theme variations through the inherited color roles.
 
+### Hero
+
+- Use `@components/hero/hero.twig` for a page introduction. Set `hero__heading_level: 1` when Hero owns the page title. Use levels 2–6 within a page that already has a title. Pass up to two `{ content, url, icon?, icon_position? }` items as `hero__ctas`.
+- Choose `hero__media_type: 'image'`, `'video'`, or `'none'`. Supply a text alternative for a meaningful image, or leave its alt text empty for decoration. Use `hero__media_content` for composed markup and the shared section props for width, spacing, and theme.
+- Use `hero__video__background: true` for decorative, muted looping video. Include the Video behavior to enable motion-aware playback and a visible pause button. Use a regular video with captions and a title for meaningful media.
+
+### Header
+
+| Earlier input | 2.0 input |
+| --- | --- |
+| `header__branding` slot | `header__branding_content` or the `header__logo__*` props. Supply an image source and a text alternative for the default Logo composition. |
+| `header__menu` slot | `header__navigation_content`. Pass the menu tree in `header__items`. Twig still accepts the `header__menu` data alias. |
+| `header__search` slot | `header__search_content` for the entire search region, or `header__search_form_content` for a rendered form inside Search. Twig still accepts the `search_form` variable. |
+| `additional_attributes` | `header__attributes`. Use `header__id` for the instance ID. |
+| Custom selectors on `.header__menu` | Use `.header__navigation` for the inline placement. Offcanvas contains the same navigation at smaller container widths. |
+
+Load the Header, Main Navigation, shared menu toggle, Offcanvas, and Search behaviors. Give each Header a stable `header__id`. To enable the skip link, point `header__skip_target` to the bare ID of a `<main>` with `tabindex="-1"`.
+
+### Page Title
+
+| Earlier input | 2.0 input |
+| --- | --- |
+| Primary and secondary `page_title__link_*` fields or blocks | Use up to two `page_title__ctas` items with `content`, `url`, and optional `icon` and `icon_position`. The first action uses the primary style and the second uses the secondary style. |
+| Tertiary CTA or `page_title__links` block | Move additional links into the page content. |
+| `page_title__description` | `page_title__description_content` slot. |
+| `page_title__media` block, `page_title__show_media`, separate image and video fields | Compose Image or Video in the `page_title__media_content` slot. Set caption and credit on that child component. Omit the slot for a title without media. |
+| `page_title__overline__link_attributes` | The optional overline link uses CTA link styling. Supply its destination with `page_title__overline__url`. |
+| `page_title__align_intro` | Use the shared alignment for the section and local styles for copy alignment. Set `page_title__media_alignment` for placement in the inline layout. |
+
+Supply one `page_title__heading` for the page's h1. Pass a rendered navigation trail through `page_title__breadcrumbs_content` when needed. Update styles targeting `.page-title__links`, `.page-title__overline-link`, or the automatic `.container--page-title` class to target the new action wrapper, overline CTA, or explicit Container modifiers.
+
 ## Removed

@@ -1,187 +1,139 @@
-$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
-
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: Page Title
+description: The page heading with optional breadcrumbs, supporting content, actions, and media.
 group: Components
 status: stable
 props:
   type: object
-  required:
-    - page_title__heading
+  required: [page_title__heading]
   properties:
     page_title__heading:
       type: string
-      title: Page title heading
-      description: The main title/heading of the page title.
-      data: 'Research that advances health, design and technology for the next generation'
-    page_title__subheading:
-      type: string
-      title: Page title subheading
-      description: The secondary title/heading of the page title.
-      data: 'A collaborative approach to discovery, innovation and impact across campus.'
-    page_title__link_primary__label:
-      type: string
-      title: Primary link label
-      description: Optional label for the first link shown below the subheading.
-      data: ''
-    page_title__link_primary__url:
-      type: string
-      title: Primary link URL
-      description: Optional URL for the first link shown below the subheading.
-      data: '#'
-    page_title__link_primary__link_style:
-      type: string
-      title: Primary link style
-      description: Optional link style passed to the primary page-title CTA when rendered as a text link.
-      data: 'icon-right'
-    page_title__link_primary__link_icon__name:
-      type: string
-      title: Primary link icon name
-      description: Optional icon name passed to the primary page-title CTA when rendered as a text link.
-      data: 'arrow-right'
-    page_title__link_primary__button__icon:
-      type: object
-      title: Primary button icon
-      description: Optional icon config passed to the primary page-title CTA when rendered as a button.
-      properties:
-        left:
-          type: boolean
-          title: Primary button icon left
-          data: false
-        right:
-          type: boolean
-          title: Primary button icon right
-          data: true
-        name:
-          type: string
-          title: Primary button icon name
-          data: 'arrow-right'
-        decorative:
-          type: boolean
-          title: Primary button icon decorative
-          data: true
-    page_title__link_secondary__label:
-      type: string
-      title: Secondary link label
-      description: Optional label for the second link shown below the subheading.
-      data: ''
-    page_title__link_secondary__url:
-      type: string
-      title: Secondary link URL
-      description: Optional URL for the second link shown below the subheading.
-      data: '#'
-    page_title__link_secondary__link_style:
-      type: string
-      title: Secondary link style
-      description: Optional link style passed to the secondary page-title CTA when rendered as a text link.
-      data: 'icon-right'
-    page_title__link_secondary__link_icon__name:
-      type: string
-      title: Secondary link icon name
-      description: Optional icon name passed to the secondary page-title CTA when rendered as a text link.
-      data: 'arrow-right'
-    page_title__link_secondary__button__icon:
-      type: object
-      title: Secondary button icon
-      description: Optional icon config passed to the secondary page-title CTA when rendered as a button.
-      properties:
-        left:
-          type: boolean
-          title: Secondary button icon left
-          data: false
-        right:
-          type: boolean
-          title: Secondary button icon right
-          data: true
-        name:
-          type: string
-          title: Secondary button icon name
-          data: 'arrow-right'
-        decorative:
-          type: boolean
-          title: Secondary button icon decorative
-          data: true
-    page_title__link_tertiary__label:
-      type: string
-      title: Tertiary link label
-      description: Optional label for the third link shown below the subheading.
-      data: ''
-    page_title__link_tertiary__url:
-      type: string
-      title: Tertiary link URL
-      description: Optional URL for the third link shown below the subheading.
-      data: '#'
-    page_title__link_tertiary__link_style:
-      type: string
-      title: Tertiary link style
-      description: Optional link style passed to the tertiary page-title CTA when rendered as a text link.
-      data: 'icon-right'
-    page_title__link_tertiary__link_icon__name:
-      type: string
-      title: Tertiary link icon name
-      description: Optional icon name passed to the tertiary page-title CTA when rendered as a text link.
-      data: 'arrow-right'
+      title: Heading
+      description: The primary heading for the page. Rendered as an h1.
+      minLength: 1
+      examples: ['Explore the film collection']
     page_title__overline:
-      type: string
-      title: Page title overline
-      description: The eyebrow heading of the page title.
-      data: 'Jul. 22, 2026'
+      type: [string, 'null']
+      title: Overline
+      description: A short category or context label above the heading.
+      default: null
+    page_title__overline__url:
+      type: [string, 'null']
+      title: Overline URL
+      description: Optional destination for the overline label.
+      format: uri-reference
+      default: null
+    page_title__subheading:
+      type: [string, 'null']
+      title: Subheading
+      description: Short supporting text beneath the page heading.
+      default: null
+    page_title__ctas:
+      type: [array, 'null']
+      title: Calls to action
+      description: Up to two links to the main tasks on the page.
+      default: []
+      maxItems: 2
+      items:
+        type: object
+        required: [content, url]
+        additionalProperties: false
+        properties:
+          content:
+            type: string
+          url:
+            type: string
+            format: uri-reference
+          icon:
+            type: string
+          icon_position:
+            type: string
+            enum: [left, right]
+    page_title__layout:
+      type: [string, 'null']
+      title: Media layout
+      description: Position the media beside the heading on wide layouts or stack it below.
+      enum: [inline, stacked, null]
+      default: inline
+    page_title__media_alignment:
+      type: [string, 'null']
+      title: Media placement
+      description: Place the media to the left or right of the copy in the inline layout.
+      enum: [left, right, null]
+      default: right
+    page_title__width:
+      type: [string, 'null']
+      title: Container width
+      description: Width of the page title container.
+      enum: [narrow, content, wide, full, null]
+      default: wide
+    page_title__alignment:
+      type: [string, 'null']
+      title: Container alignment
+      description: Alignment of the container's inner wrapper.
+      enum: [left, center, right, null]
+      default: center
     page_title__theme:
-      type: string
-      title: Container theme
-      description: Theme applied to the page title container.
-      data: ''
+      type: [string, 'null']
+      title: Theme
+      description: Container theme name. Inherits the surrounding theme when omitted.
+      default: null
+    page_title__theme__variation:
+      type: [string, 'null']
+      title: Theme variation
+      description: Light or dark color roles.
+      enum: [light, dark, null]
+      default: null
+    page_title__bg_color:
+      type: [boolean, 'null']
+      title: Background color
+      description: Paint the section with the active theme's background color.
+      default: false
     page_title__spacing:
-      type: string
+      type: [string, 'null']
       title: Container spacing
-      description: Selects a spacing preset for the page title container.
+      description: Container spacing preset for the page title.
       default: two
-    page_title__show_media:
-      type: boolean
-      title: Show media
-      description: Toggles media rendering in the page title component.
-      data: false
-    image__src:
-      type: string
-      title: Image src
-      description: Source for the page-title image.
-      data: 'https://picsum.photos/1200/675'
-    image__srcset:
-      type: string
-      title: Image srcset
-      description: Responsive srcset for the page-title image.
-      data: 'https://picsum.photos/640/360 640w, https://picsum.photos/960/540 960w, https://picsum.photos/1200/675 1200w'
-    image__sizes:
-      type: string
-      title: Image sizes
-      description: Sizes attribute for the page-title image.
-      data: '100vw'
-    image__alt:
-      type: string
-      title: Image alt
-      description: Alt text for the page-title image.
-      data: 'Example page title image'
-    page_title__media__video__embed:
-      type: string
-      title: Media video embed
-      description: Optional iframe embed markup when media type is video.
-      data: '<iframe width="560" height="315" src="https://www.youtube.com/embed/wsSMq07AdwM?si=uP77hhiyYCVz77ga" title="YouTube video player" frameborder="0" allowfullscreen></iframe>'
-    page_title__media__show_caption:
-      type: boolean
-      title: Show media caption
-      description: Displays the media caption when supported by media type.
-      data: false
-    page_title__media__caption:
-      type: string
-      title: Media caption
-      description: Optional media caption text.
-      data: 'This is a sample caption.'
-    page_title__media__show_copyright:
-      type: boolean
-      title: Show media copyright
-      description: Displays media copyright text when supported by media type.
-      data: false
-    page_title__media__copyright:
-      type: string
-      title: Media copyright
-      description: Optional media copyright text.
-      data: 'Photo by John Doe'
+    page_title__id:
+      type: [string, 'null']
+      title: Section ID
+      description: Stable anchor suffix for the surrounding container.
+      default: null
+    page_title__container__modifiers:
+      type: [array, 'null']
+      title: Container modifiers
+      description: BEM modifiers applied to the container.
+      default: []
+      items:
+        type: string
+    page_title__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Parent block used for the Page Title BEM class.
+    page_title__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: Optional BEM modifiers for the Page Title wrapper.
+      items:
+        type: string
+    page_title__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: Additional classes for the Page Title wrapper.
+      items:
+        type: string
+    page_title__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Additional HTML attributes for the Page Title wrapper.
+slots:
+  page_title__breadcrumbs_content:
+    title: Breadcrumbs
+    description: An optional navigation trail before the heading.
+  page_title__description_content:
+    title: Description
+    description: Optional formatted text below the subheading.
+  page_title__media_content:
+    title: Media
+    description: Optional composed image or video. Supply an alternative for meaningful media.
