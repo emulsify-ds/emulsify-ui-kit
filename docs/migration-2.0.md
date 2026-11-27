@@ -302,4 +302,10 @@ Callout forwards the shared container props and supports two CTAs. Its styles us
 
 Media stacks below the copy on narrow sections and sits beside it at wider widths. Video starts paused with native controls. Pass a unique `banner__id` for a stable `#section-{id}` anchor and, when a heading is present, its accessible section label.
 
+### Announcement
+
+- Replace `announcement__title` with `announcement__heading` and `announcement__heading__level` with the integer `announcement__heading_level`.
+- Replace `announcement__button_text` and `announcement__button_url` with the `content` and `url` fields in `announcement__ctas`. Replace `additional_attributes` with `announcement__attributes`.
+- Set `announcement__icon` to an icon name, and supply plain text in `announcement__content`. Replace the `light` or `dark` variant with `announcement__variant: 'tint'` inside the corresponding theme wrapper.
+
 ## Removed

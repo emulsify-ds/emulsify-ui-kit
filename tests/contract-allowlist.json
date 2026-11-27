@@ -1,5 +1,6 @@
 {
   "components": [
+    "announcement",
     "banner",
     "blockquote",
     "callout",

@@ -1,98 +1,93 @@
-$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
-
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: Announcement
+description: A notice with a heading, short message, and optional actions.
 group: Components
 status: stable
+libraryOverrides:
+  dependencies: [core/drupal, core/once]
 props:
   type: object
-  required:
-    - announcement__title
-    - announcement__content
   properties:
-    announcement__title:
+    announcement__heading:
       type: string
-      title: Title
-      description: 'Specifies the title of the announcement'
-      data: 'This is an announcement title'
+      title: Heading
+      description: The title of the announcement.
+      examples: ['Library hours are changing']
+    announcement__heading_level:
+      type: [integer, 'null']
+      title: Heading level
+      description: The level in the surrounding document outline.
+      enum: [2, 3, 4, 5, 6, null]
+      default: 4
     announcement__content:
       type: string
       title: Content
-      description: 'Specifies the main content of the announcement'
-      data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
-    announcement__button_text:
-      type: string
-      title: Button Text
-      description: 'Specifies the text displayed on the button'
-      data: 'Go to site'
-    announcement__button_url:
-      type: string
-      title: Button URL
-      description: 'Specifies the URL the button will link to'
-      data: '#'
+      description: The plain text of the notice.
+      examples: ['Starting Monday, the library will close at 6 p.m.']
     announcement__icon:
-      type: string
+      type: [string, 'null']
       title: Icon
-      description: '(Optional) Specifies the URL of the icon image for the announcement'
-      data: 'https://placehold.co/60x60'
+      description: An optional decorative icon from the icon library.
+      examples: [circle-info]
     announcement__variant:
-      type: string
+      type: [string, 'null']
       title: Variant
-      description: 'Specifies the style variant for the announcement component'
-      enum:
-        - default
-        - light
-        - dark
-      data: 'default'
-  example:
-    - announcement__title: 'This is an announcement title'
-      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
-      announcement__button_text: 'Go to site'
-      announcement__button_url: '#'
-      announcement__icon: 'icon-dark'
-    - announcement__title: 'This is an announcement title'
-      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
-      announcement__icon: 'icon-dark'
-    - announcement__title: 'This is an announcement title'
-      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
-      announcement__button_text: 'Go to site'
-      announcement__button_url: '#'
-    - announcement__title: 'This is an announcement title'
-      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
-
-    - announcement__title: 'This is an announcement title'
-      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
-      announcement__button_text: 'Go to site'
-      announcement__button_url: '#'
-      announcement__icon: 'icon-dark'
-      announcement__variant: 'light'
-    - announcement__title: 'This is an announcement title'
-      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
-      announcement__icon: 'icon-dark'
-      announcement__variant: 'light'
-    - announcement__title: 'This is an announcement title'
-      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
-      announcement__button_text: 'Go to site'
-      announcement__button_url: '#'
-      announcement__variant: 'light'
-    - announcement__title: 'This is an announcement title'
-      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
-      announcement__variant: 'light'
-
-    - announcement__title: 'This is an announcement title'
-      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
-      announcement__button_text: 'Go to site'
-      announcement__button_url: '#'
-      announcement__icon: 'icon-light'
-      announcement__variant: 'dark'
-    - announcement__title: 'This is an announcement title'
-      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
-      announcement__icon: 'icon-light'
-      announcement__variant: 'dark'
-    - announcement__title: 'This is an announcement title'
-      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
-      announcement__button_text: 'Go to site'
-      announcement__button_url: '#'
-      announcement__variant: 'dark'
-    - announcement__title: 'This is an announcement title'
-      announcement__content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec vestibulum libero. Curabitur suscipit feugiat ipsum, vel auctor nunc.'
-      announcement__variant: 'dark'
+      description: The surface style in the active theme.
+      enum: [default, tint, null]
+      default: default
+    announcement__ctas:
+      type: [array, 'null']
+      title: Actions
+      description: Up to two calls to action in priority order.
+      maxItems: 2
+      items:
+        type: object
+        required: [content, url]
+        properties:
+          content:
+            type: string
+            title: Label
+            description: Visible text for the action.
+          url:
+            type: string
+            title: Destination
+            description: The link URL for the action.
+          icon:
+            type: [string, 'null']
+            title: Icon
+            description: An optional decorative icon name.
+          icon_position:
+            type: [string, 'null']
+            title: Icon position
+            description: The side on which the icon appears.
+            enum: [left, right, null]
+      default: []
+      examples:
+        - - content: Check opening hours
+            url: /library/hours
+    announcement__dismissible:
+      type: [boolean, 'null']
+      title: Dismissible
+      description: Offer a dismissal button when JavaScript is available.
+      default: false
+    announcement__blockname:
+      type: [string, 'null']
+      title: BEM block name
+      description: Optional parent block name for the announcement.
+    announcement__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers on the announcement wrapper.
+      items:
+        type: string
+    announcement__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: Extra CSS classes on the wrapper.
+      items:
+        type: string
+    announcement__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Extra HTML attributes for the wrapper.
+  required: [announcement__heading, announcement__content]

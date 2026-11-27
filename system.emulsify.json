@@ -186,7 +186,7 @@
         {
           "name": "announcement",
           "structure": "components",
-          "dependency": ["button", "icon", "heading"]
+          "dependency": ["cta", "icon", "heading"]
         },
         {
           "name": "audio-player",
