@@ -14,13 +14,13 @@
 #}
 {%
   set classes = [
-    title_display == 'after' ? 'option',
-    title_display == 'invisible' ? 'visually-hidden',
-    required ? 'js-form-required',
-    required ? 'form-required',
-    'form-item__label',
+    title_display == 'after' ? 'option' : '',
+    title_display == 'invisible' ? 'visually-hidden' : '',
+    required ? 'js-form-required' : '',
+    required ? 'form-required' : '',
+    'form-item__label'
   ]
 %}
 {% if title is not empty or required -%}
-  <label{{ attributes.addClass(classes) }}>{{ title }}</label>
+  <label {{ attributes.addClass(classes) }}>{{ title }}{% if required %} <span class="forms__required">{{ '(required)'|t }}</span>{% endif %}</label>
 {%- endif %}

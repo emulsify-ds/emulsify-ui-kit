@@ -1,45 +1,71 @@
 import { renderTwig } from '@emulsify/core/storybook';
-import { withStorybookPadding } from '../../util/storybookContainer.js';
+import { withStorybookContainer } from '../../util/storybookContainer.js';
+import { createContainerThemeControls } from '../../util/storybookContainerControls.js';
 
+import docs from './forms.docs.js';
+import formsTwig from './forms.twig';
 import checkboxTwig from './checkbox/checkbox.twig';
 import radioTwig from './radio/radio.twig';
 import selectTwig from './select/select.twig';
 import textfieldsTwig from './textfields/textfields.twig';
 
-import formsData from './forms.yml';
+const themeControls = createContainerThemeControls();
 
-const { properties } = formsData.props;
+const renderForm =
+  (fields) =>
+  (args, { viewMode } = {}) =>
+    renderTwig(
+      withStorybookContainer((formArgs) =>
+        formsTwig({
+          ...formArgs,
+          forms__attributes: { method: 'post' },
+          forms__fields_content: fields(formArgs),
+        }),
+      ),
+      { wrapper: viewMode === 'docs' ? 'div' : 'main' },
+    )(args);
 
 export default {
   title: 'Components/Forms',
-  argTypes: {
-    checkboxes: { control: 'object' },
-    radios: { control: 'object' },
-    select: { control: 'object' },
-  },
+  tags: ['autodocs'],
+  parameters: { docs },
+  args: themeControls.args,
+  argTypes: themeControls.argTypes,
 };
 
-export const checkboxes = {
-  render: renderTwig(withStorybookPadding(checkboxTwig)),
+export const Checkboxes = {
+  render: renderForm(checkboxTwig),
   args: {
-    checkboxes: properties.checkboxes.data,
+    checkboxes: [
+      { title: 'Book repair', checked: 'checked' },
+      { title: 'Printmaking' },
+      { title: 'Community archives', disabled: 'disabled' },
+    ],
   },
 };
 
-export const radioButtons = {
-  render: renderTwig(withStorybookPadding(radioTwig)),
+export const RadioButtons = {
+  render: renderForm(radioTwig),
   args: {
-    radios: properties.radios.data,
+    radios: [
+      { title: 'Morning', checked: 'checked' },
+      { title: 'Afternoon' },
+      { title: 'Evening', disabled: 'disabled' },
+    ],
   },
 };
 
-export const selectDropdowns = {
-  render: renderTwig(withStorybookPadding(selectTwig)),
+export const SelectDropdowns = {
+  render: renderForm(selectTwig),
   args: {
-    select: properties.select.data,
+    select: [
+      { value: '', title: 'Choose a location' },
+      { value: 'library', title: 'Library' },
+      { value: 'community-center', title: 'Community center' },
+    ],
   },
 };
 
-export const textfieldsExamples = {
-  render: renderTwig(withStorybookPadding(textfieldsTwig)),
+export const TextfieldsExamples = {
+  render: renderForm(textfieldsTwig),
 };

@@ -1,0 +1,32 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Forms
+description: A native form with shared styles for Drupal Form API fields and groups.
+group: Components
+status: stable
+props:
+  type: object
+  properties:
+    forms__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: An optional BEM parent block.
+    forms__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers applied to the form.
+      items:
+        type: string
+    forms__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: Additional CSS classes applied to the form.
+      items:
+        type: string
+    forms__attributes:
+      type: [object, 'null']
+      title: Form attributes
+      description: Native form attributes such as action, method, id, and class.
+slots:
+  forms__fields_content:
+    title: Form fields and actions
+    description: Rendered form content, including labels, fields, and submit controls.

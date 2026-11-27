@@ -1,1 +1,1 @@
-<option>{{ select_item }}</option>
+<option value="{{ select_item_value is defined ? select_item_value|e('html_attr') : select_item|e('html_attr') }}">{{ select_item|e }}</option>

@@ -233,7 +233,7 @@
           "name": "forms",
           "structure": "components",
           "required": true,
-          "dependency": []
+          "dependency": ["cta"]
         },
         {
           "name": "heading",

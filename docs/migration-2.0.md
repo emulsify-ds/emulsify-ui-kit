@@ -406,4 +406,9 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - Use `search__label` for the input label and `search__toggle_label` for the optional disclosure. The form is visible by default. Set `search__show_toggle: true` and a page-unique `search__id` to enable the disclosure, and use `search__show_label: false` for a visually hidden input label.
 - Set `search__action` and `search__input_name` to the route and query parameter used by your site. Pass a rendered Drupal form to `search__form_content` in place of overriding the old `header__search` block inside Search. The `search_form` Twig variable remains a fallback. Search keeps the form within its landmark at all widths.
 
+### Forms
+
+- `forms.component.yml` defines the Forms SDC. The former `forms.yml` demo data now lives in the stories. Pass fields and actions through the `forms__fields_content` slot when using the native wrapper. Keep the wrapper supplied by Drupal for Form API forms.
+- Compile `forms.scss` to include the five field style groups. Form API and the field partials use native labels, descriptions, required states, and errors. Keep each field's existing `aria-describedby` IDs and append the error ID when adding an inline error. Style theme variations through the inherited color roles.
+
 ## Removed
