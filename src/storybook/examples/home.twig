@@ -1,27 +1,42 @@
 <div class="example">
-	{% include "@examples/examples/assets/_header.twig" %}
-	<main>
-		<section class="hero">
-			<h1>Future of Education</h1>
-			<h2>Innovative Approaches for Tomorrow&rsquo;s Learners</h2>
-		</section>
-		<section class="watch">
-			<h2 class="watch-h2">The Ones to Watch</h2>
-			<p>In an environment where innovation and inspiration are in no short supply, meet the trailblazers.</p>
-			<div class="watch-grid">
-				{% for teaser in teasers %}
-					{{ include('@components/teaser/teaser.twig', teaser|merge({ teaser__style: 'card', teaser__heading_level: 3 }), with_context: false) }}
-				{% endfor %}
-			</div>
-		</section>
-		<section class="celebrating">
-			<h2 class="celebrating-h2">Celebrating Academic Excellence: Top Stories from Our University</h2>
-			<div class="celebrating-grid">
-				{% for teaser in celebratingTeasers %}
-					{{ include('@components/teaser/teaser.twig', teaser|merge({ teaser__style: 'card', teaser__heading_level: 3 }), with_context: false) }}
-				{% endfor %}
-			</div>
-		</section>
-	</main>
-	{% include "@examples/examples/assets/_footer.twig" %}
+  {{ include('@examples/examples/assets/_header.twig', {menu_items: menu_items}, with_context: false) }}
+  <main id="main-content" tabindex="-1">
+    {{ include('@components/hero/hero.twig', {
+      hero__heading: 'Future of Education',
+      hero__heading_level: 1,
+      hero__id: 'home-introduction',
+      hero__text: 'Innovative approaches for tomorrow’s learners.',
+      hero__ctas: [
+        { content: 'Meet the students', url: '#student-stories' },
+        { content: 'Plan a visit', url: '#section-plan-a-visit' },
+      ],
+      hero__media_type: 'image',
+      hero__image__src: 'assets/images/example/hero.jpg',
+      hero__theme__variation: 'dark',
+      hero__bg_color: true,
+      hero__width: 'wide',
+    }, with_context: false) }}
+    <div id="student-stories">
+      {{ include('@components/teaser/examples/_teaser-grid.twig', {
+        heading: 'The Ones to Watch',
+        teasers: teasers,
+        columns: 3,
+        width: 'wide',
+      }, with_context: false) }}
+    </div>
+    {{ include('@components/teaser/examples/_teaser-grid.twig', {
+      heading: 'Celebrating Academic Excellence',
+      teasers: celebratingTeasers,
+      columns: 2,
+      width: 'wide',
+    }, with_context: false) }}
+    {{ include('@components/callout/callout.twig', {
+      callout__id: 'plan-a-visit',
+      callout__width: 'wide',
+      callout__heading: 'Plan a campus visit',
+      callout__text: 'Meet current students and see where you could study.',
+      callout__ctas: [{ content: 'Explore undergraduate courses', url: './?path=/story/examples-basic--basic' }],
+    }, with_context: false) }}
+  </main>
+  {{ include('@examples/examples/assets/_footer.twig', {social_menu_items: social_menu_items}, with_context: false) }}
 </div>
