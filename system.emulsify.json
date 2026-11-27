@@ -181,7 +181,7 @@
         {
           "name": "accordion",
           "structure": "components",
-          "dependency": ["button", "icon", "heading", "text", "list"]
+          "dependency": ["cta"]
         },
         {
           "name": "announcement",
@@ -287,6 +287,11 @@
           "dependency": ["button", "link", "list", "icon"]
         },
         {
+          "name": "offcanvas",
+          "structure": "components",
+          "dependency": ["cta"]
+        },
+        {
           "name": "stats-group",
           "structure": "components",
           "dependency": []
@@ -306,7 +311,7 @@
         {
           "name": "tabs",
           "structure": "components",
-          "dependency": ["button"]
+          "dependency": ["cta", "heading"]
         },
         {
           "name": "tags",

@@ -1,5 +1,6 @@
 {
   "components": [
+    "accordion",
     "announcement",
     "audio-player",
     "banner",
@@ -18,9 +19,11 @@
     "list",
     "logo",
     "media-box",
+    "offcanvas",
     "stats-group",
     "status",
     "table",
+    "tabs",
     "tags",
     "teaser",
     "text",

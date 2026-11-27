@@ -356,4 +356,22 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - Both display variants use CTA anchors. Migrate custom button and link styling to CTA classes. The button variant with a background now uses the shared contained style.
 - Set `link_group__nav_label` when the group should be a named navigation landmark.
 
+### Accordion
+
+- Supply a unique `accordion__id` and an `id` for each entry. Replace the item keys `accordion__item__heading` and `accordion__item__content` with `heading` and `content`. Existing generated IDs change to `accordion-{accordion__id}--{item.id}`; use these IDs for item fragments.
+- Rename the `accordion__items` slot to `accordion__items_content`. For a custom item partial, pass both IDs and use its `accordion__item__body_content` slot. Replace `accordion__block_name` with `accordion__blockname` and use `.accordion__heading` and `.accordion__panel` for styling.
+- Set `accordion__show_controls: true` to offer expand-all and collapse-all controls. Items start expanded in server output and collapse when the Drupal behavior attaches, except for the item referenced by the URL fragment.
+
+### Tabs
+
+- Replace the `tabs` prop with `tabs__items` and map each `tab__label`, `tab__content`, and `tab__icon` item key to `label`, `content`, and `icon`. Add a unique `id` to each item and a page-unique `tabs__id` to the component.
+- Replace the `tab__content` slot with `tabs__panels_content`. Custom panels need an ID of `tabs-{tabs__id}:panel:{id}` and `aria-labelledby="tabs-{tabs__id}:tab:{id}"` to match their controls. Update existing tab fragments to the new panel IDs.
+- Replace `container__component_width` and `tab__component_theme` inputs with `tabs__width` and the shared Tabs theme props. Use the corrected `horizontal-plain` display name. Tabs wrap at narrow widths in place of the old overflow scroll controls. Use `.tabs__tab` and `.tabs__panel` for component styling.
+
+### Offcanvas
+
+- Keep `offcanvas__content` and `offcanvas__suffix` as props. Rename the old `offcanvas__content` and `offcanvas__suffix` slot overrides to `offcanvas__body_content` and `offcanvas__footer_content`. Rename the `offcanvas__trigger` slot to `offcanvas__trigger_content`.
+- Use `offcanvas__heading_level` in place of `offcanvas__heading__level`. Pass a distinct ID for each dialog. Use `offcanvas__theme__variation` to select light or dark.
+- Attach the Offcanvas Drupal behavior with Drupal once. The pane is non-modal and the modal type uses the browser's modal dialog. The trigger and close action use CTA styles.
+
 ## Removed

@@ -1,65 +1,45 @@
 {#
- # Available Variables:
- # - accordion__item__heading
- # - accordion__item__heading__level (passed down by `accordion.twig`)
- #
- # Available Blocks:
- # - accordion__item__content
+ # accordion__id and accordion__item__id form the stable item link.
+ # accordion__item__heading and accordion__item__heading_level set the label.
+ # accordion__item__content is the panel content.
+ # Block: accordion__item__body_content overrides the panel content.
  #}
 
-{% set accordion__item__base_class = 'accordion-item' %}
-{% set accordion__item__attributes = accordion__item__attributes|default([]) %}
-{% set accordion__item__content__attributes = accordion__item__content__attributes|default([]) %}
-
-{% set accordion__item__attributes = accordion__item__attributes|merge({
-  'data-accordion-expanded': 'true',
-  'class': bem(accordion__item__base_class, accordion__item__modifiers, accordion__item__blockname, ['js-accordion-item']),
-}) %}
-
-{% set accordion__item__content__attributes = accordion__item__content__attributes|merge({
-  'class': bem('content', accordion__item__modifiers, accordion__item__base_class),
-}) %}
-
-{% if accordion__anchor %}
-	{% set accordion__item__attributes = accordion__item__attributes|merge({
-		'id': accordion__anchor,
-	}) %}
+{% set id_pattern = '/^[A-Za-z0-9]+(?:[-_][A-Za-z0-9]+)*$/' %}
+{% set level = accordion__item__heading_level in [2, 3, 4, 5, 6] ? accordion__item__heading_level : 2 %}
+{% set item_id = accordion__id|default('') matches id_pattern and accordion__item__id|default('') matches id_pattern ? 'accordion-' ~ accordion__id ~ '--' ~ accordion__item__id : null %}
+{% set panel_id = item_id ? item_id ~ '--panel' : null %}
+{% set item_attrs = { class: bem('item', [], 'accordion'), 'data-accordion-item': 'true' } %}
+{% if item_id %}
+  {% set item_attrs = item_attrs|merge({ id: item_id }) %}
 {% endif %}
 
-{% set accordion__item__cta__content %}
-  {{ accordion__item__heading }}
-  {{ include('@components/icon/icon.twig', {
-    icon__name: 'angle-down',
-    icon__blockname: accordion__item__base_class,
-    icon__decorative: true,
-  }, with_context: false) }}
-{% endset %}
-
-{% set accordion__item__heading__content %}
-  {% include "@components/button/button.twig" with {
-    button__content: accordion__item__cta__content,
-    button__style: 'clean',
-    button__base_class: 'toggle',
-    button__additional_classes: ['js-accordion-item__toggle'],
-    button__blockname: accordion__item__base_class,
-    button__attributes: {
-      'aria-controls': accordion__item__content__id,
-    }
-  } %}
-{% endset %}
-
-<div {{ add_attributes(accordion__item__attributes) }}>
-	{{ include('@components/heading/heading.twig', {
-    heading__level: accordion__item__heading__level|default('2'),
-    heading__blockname: accordion__item__base_class,
-    heading__content: accordion__item__heading__content,
-  }, with_context: false) }}
-	<div {{ add_attributes(accordion__item__content__attributes) }}>
-		{% block accordion__item__content %}
-			{{ include('@components/text/_text.twig', {
-        text__element: 'div',
-        text__content: accordion__item__content,
+<div {{ add_attributes(item_attrs) }}>
+  <h{{ level }} {{ add_attributes({ class: bem('heading', [], 'accordion'), 'data-accordion-static-heading': 'true' }) }}>{{ accordion__item__heading|e('html', null, true) }}</h{{ level }}>
+  {% if panel_id %}
+    <h{{ level }} {{ add_attributes({ class: bem('heading', [], 'accordion') }) }} hidden>
+      {{ include('@components/cta/cta.twig', {
+        cta__element: 'button',
+        cta__button_type: 'button',
+        cta__text: accordion__item__heading,
+        cta__modifiers: ['clean'],
+        cta__icon: 'angle-down',
+        cta__icon_position: 'right',
+        cta__additional_classes: ['accordion__toggle'],
+        cta__attributes: {
+          'aria-controls': panel_id,
+          'aria-expanded': 'true',
+          'data-accordion-toggle': 'true',
+          hidden: 'hidden',
+        },
       }, with_context: false) }}
-		{% endblock %}
-	</div>
+    </h{{ level }}>
+  {% endif %}
+  {% set panel_attrs = { class: bem('panel', [], 'accordion') } %}
+  {% if panel_id %}
+    {% set panel_attrs = panel_attrs|merge({ id: panel_id }) %}
+  {% endif %}
+  <div {{ add_attributes(panel_attrs) }}>
+    {% block accordion__item__body_content %}{{ accordion__item__content }}{% endblock %}
+  </div>
 </div>
