@@ -31,7 +31,7 @@ Coordinate the 16 refinement steps for the single Emulsify UI Kit 2.0.0 release.
 - [x] 7 CTA
 - [x] 8 Wave A: heading, text, blockquote, code, icon, image, list, video
 - [x] 9 Wave B1: teaser, card, media-box, text-with-image, callout
-- [ ] 10 Wave B2: banner, announcement, stats-group, tags, status
+- [x] 10 Wave B2: banner, announcement, stats-group, tags, status
 - [ ] 11 Wave B3: table, embed, audio-player, logo, link-group
 - [ ] 12 Wave C1: accordion, tabs, offcanvas
 - [ ] 13 Wave C2: navigation, search, forms
@@ -131,3 +131,10 @@ The report also found 30 global violations. The `blockquote.component.yml` basen
 - Use `media_box__media_content` for composed media and the responsive image or video props for built-in media. Page Title passes the new image caption and credit fields. Keep checking its media presentation when refining Page Title in Wave D.
 - Text with Image keeps copy first in reading order and uses the shared placement mixins for media alignment. For Text with Image and Callout, use the shared section props and pass up to two CTA items.
 - Callout replaces Call to Action, including its Tokens Studio set name. The [migration guide](../migration-2.0.md#card--teaser) maps the props, slots, theme options, and Storybook entries.
+
+### Step 10 Wave B2 notices and lists
+
+- Banner uses shared container props and CTA items. Use a unique `banner__id` from the caller for the section anchor and heading label. Keep copy before media in source order.
+- Announcement and Status expose native CTA dismiss buttons when their Drupal behaviors attach. Status separates dismiss controls from the live region and keeps severity labels visible.
+- Stats Group keeps each label and value together in a description list. Tags uses list items with native links and theme foregrounds. The green tint contrast was checked in both themes.
+- The [Wave B2 migration entries](../migration-2.0.md#banner) cover the updated props, slots, and styling selectors.

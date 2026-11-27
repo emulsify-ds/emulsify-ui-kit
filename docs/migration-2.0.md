@@ -319,4 +319,10 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - Rename `items` to `tags__items`, the `tags__items` block to `tags__items_content`, and `tags__addition_classes` to `tags__additional_classes`. Use `tags__blockname` or `tags__additional_classes` for custom classes formerly supplied via `tags__base_class`.
 - Items keep `title`, `url`, and `color`. The color tints the background while text uses the active theme foreground. Use `.tags__link` for styling linked and static labels.
 
+### Status
+
+- Pass Drupal's `message_list` as `status__messages` and any translated `status_headings` as `status__labels`. Use an array of messages for each type. The `status` key maps to success and `danger` maps to error.
+- Pass wrapper attributes as `status__attributes`. The `presentational` prop is removed. Update variant selectors from `.status--{type}` to `[data-status-type='{type}']`.
+- To offer a dismiss button per group, set `status__dismissible: true` and attach the component behavior with Drupal once.
+
 ## Removed

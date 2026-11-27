@@ -285,7 +285,7 @@
           "name": "status",
           "structure": "components",
           "required": true,
-          "dependency": []
+          "dependency": ["cta", "icon"]
         },
         {
           "name": "tables",
