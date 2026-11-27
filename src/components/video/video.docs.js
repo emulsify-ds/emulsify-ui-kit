@@ -15,7 +15,7 @@ Use \`video__type: 'html5'\` with \`video__sources\` or \`video__type: 'embed'\`
 
 ## Accessibility
 
-Give each video a title that identifies it. Provide synchronized captions for spoken and meaningful audio. Use a transcript or audio descriptions when visual content conveys essential information. Native controls are available before JavaScript loads. Background video starts muted only when the viewer allows motion and offers a pause control.
+Give each video a title that identifies it. Provide synchronized captions for spoken and meaningful audio. Use a transcript or audio descriptions when visual content conveys essential information. Native controls are available before JavaScript loads. Background video starts muted only when the viewer allows motion and offers a pause control. Set \`video__decorative\` for ambient background footage so assistive technology can skip the footage while the enhanced playback button remains available.
 
 ## Content guidelines
 

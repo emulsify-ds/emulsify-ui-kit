@@ -2,7 +2,7 @@
  # HTML video and titled embeds.
  # Props: video__type, video__title, video__sources, video__tracks,
  # video__poster, video__embed_url, video__aspect_ratio, video__autoplay,
- # video__loop, video__caption, video__credit, video__blockname,
+ # video__loop, video__decorative, video__caption, video__credit, video__blockname,
  # video__modifiers, video__additional_classes, video__attributes.
  #}
 
@@ -28,6 +28,7 @@
     class: bem('video', video__modifiers, video__blockname, video__classes),
     'data-video-player': 'true',
     'data-video-autoplay': video__autoplay and video__type == 'html5' ? 'true' : null,
+    'data-video-decorative': video__decorative is same as(true) and video__autoplay and video__type == 'html5' ? 'true' : null,
   }) %}
   <{{ video__tag }} {{ add_attributes(video__attributes) }}>
     <div {{ bem('wrap', [], 'video') }}{% if video__type == 'embed' %} data-video-ratio="{{ video__aspect_ratio }}"{% endif %}>

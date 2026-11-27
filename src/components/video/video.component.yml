@@ -77,6 +77,11 @@ props:
       title: Loop
       description: Restart native playback at the end of the video.
       default: false
+    video__decorative:
+      type: [boolean, 'null']
+      title: Decorative background video
+      description: Hide decorative HTML video from assistive technology while enhanced background playback controls are available.
+      default: false
     video__caption:
       type: [string, 'null']
       title: Caption

@@ -1,0 +1,73 @@
+@use '../../base' as *;
+
+.hero {
+  display: grid;
+  align-items: center;
+  gap: space(32);
+  color: var(--clr-body);
+
+  @include breakpoint('md') {
+    &[data-hero-height='tall'] {
+      min-block-size: min(60svh, 36rem);
+    }
+
+    &:not([data-hero-media-type='none']) {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: space(48);
+    }
+
+    &[data-hero-media-alignment='left']:not([data-hero-media-type='none']) {
+      .hero__content {
+        grid-area: 1 / 2;
+      }
+
+      .hero__media {
+        grid-area: 1 / 1;
+      }
+    }
+  }
+}
+
+.hero__content {
+  display: grid;
+  justify-items: start;
+  gap: space(20);
+  overflow-wrap: anywhere;
+
+  .hero__text > :first-child {
+    margin-block-start: 0;
+  }
+
+  .hero__text > :last-child {
+    margin-block-end: 0;
+  }
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: space(12);
+}
+
+.hero__media {
+  min-inline-size: 0;
+
+  .image {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+  }
+
+  [data-hero-background-video] {
+    .video__media {
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    .video__placeholder {
+      inset-block: auto space(12);
+      inset-inline: auto space(12);
+      transform: none;
+    }
+  }
+}

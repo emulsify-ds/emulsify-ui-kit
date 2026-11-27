@@ -411,4 +411,10 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - `forms.component.yml` defines the Forms SDC. The former `forms.yml` demo data now lives in the stories. Pass fields and actions through the `forms__fields_content` slot when using the native wrapper. Keep the wrapper supplied by Drupal for Form API forms.
 - Compile `forms.scss` to include the five field style groups. Form API and the field partials use native labels, descriptions, required states, and errors. Keep each field's existing `aria-describedby` IDs and append the error ID when adding an inline error. Style theme variations through the inherited color roles.
 
+### Hero
+
+- Use `@components/hero/hero.twig` for a page introduction. Set `hero__heading_level: 1` when Hero owns the page title. Use levels 2–6 within a page that already has a title. Pass up to two `{ content, url, icon?, icon_position? }` items as `hero__ctas`.
+- Choose `hero__media_type: 'image'`, `'video'`, or `'none'`. Supply a text alternative for a meaningful image, or leave its alt text empty for decoration. Use `hero__media_content` for composed markup and the shared section props for width, spacing, and theme.
+- Use `hero__video__background: true` for decorative, muted looping video. Include the Video behavior to enable motion-aware playback and a visible pause button. Use a regular video with captions and a title for meaningful media.
+
 ## Removed

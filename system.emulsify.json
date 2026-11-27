@@ -242,6 +242,11 @@
           "dependency": []
         },
         {
+          "name": "hero",
+          "structure": "components",
+          "dependency": ["cta", "heading", "image", "text", "video"]
+        },
+        {
           "name": "icon",
           "structure": "components",
           "required": true,

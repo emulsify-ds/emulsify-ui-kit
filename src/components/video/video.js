@@ -17,10 +17,14 @@ Drupal.behaviors.emulsifyVideo = {
 
       const controller = new AbortController();
       const { signal } = controller;
+      const showNativeControls = () => {
+        media.removeAttribute('aria-hidden');
+        media.controls = true;
+      };
       subscriptions.set(wrapper, () => {
         controller.abort();
         button.hidden = true;
-        media.controls = true;
+        showNativeControls();
         wrapper.removeAttribute('data-video-playing');
       });
 
@@ -34,7 +38,7 @@ Drupal.behaviors.emulsifyVideo = {
       const play = () => {
         media.play().catch(() => {
           if (signal.aborted) return;
-          media.controls = true;
+          showNativeControls();
           update();
         });
       };
@@ -52,6 +56,9 @@ Drupal.behaviors.emulsifyVideo = {
 
       if (wrapper.dataset.videoAutoplay === 'true') {
         media.controls = false;
+        if (wrapper.dataset.videoDecorative === 'true') {
+          media.setAttribute('aria-hidden', 'true');
+        }
         const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
         motion.addEventListener(
           'change',
