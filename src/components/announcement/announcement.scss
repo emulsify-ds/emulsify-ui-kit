@@ -1,99 +1,68 @@
-@use '../../base/typography/typography' as *;
-@use '../../base/breakpoints/breakpoints' as *;
+@use '../../base' as *;
 
 .announcement {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  row-gap: var(--spacing-lg);
-  padding: var(--spacing-xl);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  gap: space(16);
+  padding: space(24);
+  border-inline-start: var(--bw-lg) solid
+    var(--announcement-accent, var(--clr-link));
+  background-color: var(--announcement-background, var(--clr-background));
+  color: var(--clr-body);
+  overflow-wrap: anywhere;
+
+  &[data-announcement-variant='tint'] {
+    background-color: var(
+      --announcement-background,
+      color-mix(in srgb, var(--clr-link) 8%, var(--clr-background))
+    );
+  }
+
+  &[hidden] {
+    display: none;
+  }
 
   @include breakpoint('lg') {
-    flex-direction: row;
-    column-gap: var(--spacing-xl);
-    align-items: center;
+    &:has(> .announcement__actions > :not([hidden])) {
+      grid-template-columns: minmax(0, 1fr) fit-content(50%);
+    }
   }
+}
+
+.announcement__body {
+  display: flex;
+  align-items: flex-start;
+  gap: space(16);
+}
+
+.announcement__text {
+  display: grid;
+  gap: space(8);
+  min-inline-size: 0;
+}
+
+.announcement__heading,
+.announcement__content {
+  margin: 0;
 }
 
 .announcement__icon {
-  width: 3.5rem;
-  height: 3.5rem;
+  flex: none;
+  inline-size: space(24);
+  block-size: space(24);
+  color: var(--clr-link);
+  fill: currentColor;
 }
 
-.announcement__content {
-  flex: 1;
+.announcement__actions {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: space(12);
 
-  .heading {
-    @include h4;
-
-    margin: 0 0 var(--spacing-md);
-    color: var(--color-primary-darker);
+  &:not(:has(> :not([hidden]))),
+  > [hidden] {
+    display: none;
   }
-
-  p {
-    margin: 0;
-    color: var(--color-text-body);
-    font-size: var(--font-size-small);
-  }
-}
-
-.announcement__action button {
-  font-size: var(--font-size-small);
-}
-
-/* Variants -- Default style for announcements */
-.announcement--default {
-  background-color: var(--announcement-background-default);
-}
-
-.announcement--default .announcement__icon {
-  fill: var(--announcement-heading-default);
-}
-
-.announcement__content--default .heading {
-  color: var(--announcement-heading-default);
-}
-
-.announcement__content--default p {
-  color: var(--color-text-body);
-}
-
-/* Variants -- Light style for announcements */
-.announcement--light {
-  background-color: var(--announcement-background-light);
-}
-
-.announcement--light .announcement__icon {
-  fill: var(--announcement-heading-dark);
-}
-
-.announcement__content--light .heading {
-  color: var(--announcement-heading-dark);
-}
-
-.announcement__content--light p {
-  color: var(--color-text-body);
-}
-
-/* Variants -- Dark style for announcements */
-.announcement--dark {
-  background-color: var(--announcement-background-dark);
-}
-
-.announcement--dark .announcement__icon {
-  fill: var(--announcement-heading-light);
-}
-
-.announcement__content--dark p,
-.announcement__content--dark .heading {
-  color: var(--announcement-heading-light);
-}
-
-.announcement__action--dark button[data-button-style='primary'],
-.announcement__action--dark button[data-button-style='primary']:hover,
-.announcement__action--dark button[data-button-style='primary']:focus {
-  color: var(--announcement-heading-dark);
-  background-color: var(--announcement-background-light);
 }

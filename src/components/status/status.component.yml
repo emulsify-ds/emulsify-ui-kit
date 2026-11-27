@@ -1,65 +1,56 @@
-$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
-
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: Status
+description: Feedback messages with visible type labels and live-region roles.
 group: Components
 status: stable
+libraryOverrides:
+  dependencies: [core/drupal, core/once]
 props:
   type: object
-  required:
-    - message_list
   properties:
-    presentational:
-      type: boolean
-      title: Presentational
-      description: 'Indicates if the component is purely presentational'
-      data: true
-    attributes:
-      type: string
+    status__messages:
+      type: [object, 'null']
+      title: Messages
+      description: Messages by type. Each group contains text or rendered Drupal content.
+      default: {}
+      additionalProperties:
+        type: array
+        items:
+          type: [string, object, array]
+      examples:
+        - info: ['The library opens at 10 a.m. on Saturday.']
+          success: ['Your workshop reservation is confirmed.']
+          warning: ['Your reservation expires in five minutes.']
+          error: ['The reservation could not be saved. Try again.']
+    status__labels:
+      type: [object, 'null']
+      title: Labels
+      description: Optional translated labels keyed by message type.
+      default: {}
+      additionalProperties:
+        type: string
+    status__dismissible:
+      type: [boolean, 'null']
+      title: Dismissible
+      description: Show a separate dismiss button for each message group when JavaScript is active.
+      default: false
+    status__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Optional parent BEM block name.
+    status__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers for the message wrapper.
+      items:
+        type: string
+    status__additional_classes:
+      type: [array, 'null']
+      title: Classes
+      description: Additional classes for the message wrapper.
+      items:
+        type: string
+    status__attributes:
+      type: [object, 'null']
       title: Attributes
-      description: 'Additional attributes for the component'
-      data: ''
-    message_list:
-      type: object
-      title: Message List
-      description: 'A list of messages with their types'
-      properties:
-        info:
-          type: object
-          title: Info Message
-          description: 'An informational message'
-          properties:
-            message:
-              type: string
-              title: Message
-              description: 'The content of the info message'
-              data: 'This is an info message'
-        danger:
-          type: object
-          title: Danger Message
-          description: 'A danger or error message'
-          properties:
-            message:
-              type: string
-              title: Message
-              description: 'The content of the danger message'
-              data: 'This is a danger message'
-        success:
-          type: object
-          title: Success Message
-          description: 'A success message'
-          properties:
-            message:
-              type: string
-              title: Message
-              description: 'The content of the success message'
-              data: 'This is a success message'
-        warning:
-          type: object
-          title: Warning Message
-          description: 'A warning message'
-          properties:
-            message:
-              type: string
-              title: Message
-              description: 'The content of the warning message'
-              data: 'This is a warning message'
+      description: Attributes for the message wrapper.

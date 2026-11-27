@@ -186,12 +186,17 @@
         {
           "name": "announcement",
           "structure": "components",
-          "dependency": ["button", "icon", "heading"]
+          "dependency": ["cta", "icon", "heading"]
         },
         {
           "name": "audio-player",
           "structure": "components",
           "dependency": []
+        },
+        {
+          "name": "banner",
+          "structure": "components",
+          "dependency": ["cta", "heading", "image", "text", "video"]
         },
         {
           "name": "blockquote",
@@ -272,10 +277,15 @@
           "dependency": ["button", "link", "list", "icon"]
         },
         {
+          "name": "stats-group",
+          "structure": "components",
+          "dependency": []
+        },
+        {
           "name": "status",
           "structure": "components",
           "required": true,
-          "dependency": []
+          "dependency": ["cta", "icon"]
         },
         {
           "name": "tables",
@@ -287,6 +297,11 @@
           "name": "tabs",
           "structure": "components",
           "dependency": ["button"]
+        },
+        {
+          "name": "tags",
+          "structure": "components",
+          "dependency": []
         },
         {
           "name": "teaser",

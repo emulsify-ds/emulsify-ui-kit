@@ -1,16 +1,13 @@
 Drupal.behaviors.tags = {
-  /**
-   * Attaches the tags behavior to the given context.
-   * @param {HTMLElement} context - The context to which the behavior is attached.
-   */
   attach(context) {
-    const tags = context.querySelectorAll('[data-tag-color]');
-    tags.forEach((tag) => {
-      const { dataset } = tag;
-      if (!dataset.scrollProcessed && dataset.tagColor) {
-        dataset.scrollProcessed = true;
+    const selector = '.tags__link[data-tag-custom-color]';
+    const tags = [...context.querySelectorAll(selector)];
+    if (context.matches?.(selector)) tags.unshift(context);
 
-        tag.style.backgroundColor = dataset.tagColor;
+    once('emulsify-tag-color', tags).forEach((tag) => {
+      const color = tag.dataset.tagCustomColor;
+      if (CSS.supports('color', color)) {
+        tag.style.setProperty('--tags-accent', color);
       }
     });
   },

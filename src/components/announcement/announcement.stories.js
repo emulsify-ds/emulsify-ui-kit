@@ -1,72 +1,58 @@
 import { renderTwig } from '@emulsify/core/storybook';
-import { withStorybookPadding } from '../../util/storybookContainer.js';
-import announcementData from './announcement.component.yml';
-import announcementTwig from './announcement.twig';
+import { argsFromSchema } from '../../util/argsFromSchema.js';
+import { withStorybookContainer } from '../../util/storybookContainer.js';
+import {
+  createContainerThemeControls,
+  createContainerWidthControls,
+} from '../../util/storybookContainerControls.js';
+import schema from './announcement.component.yml';
+import docs from './announcement.docs.js';
+import template from './announcement.twig';
+import './announcement.js';
+
+const widthControls = createContainerWidthControls();
+const themeControls = createContainerThemeControls();
 
 export default {
   title: 'Components/Announcement',
-  render: renderTwig(withStorybookPadding(announcementTwig)),
+  tags: ['autodocs'],
+  parameters: { docs },
+  render: renderTwig(withStorybookContainer(template)),
+  args: {
+    ...argsFromSchema(schema.props),
+    ...widthControls.args,
+    ...themeControls.args,
+  },
   argTypes: {
-    announcement__title: {
-      name: 'Title',
-      control: 'text',
-    },
-    announcement__content: {
-      name: 'Content',
-      control: 'text',
-    },
-    announcement__button_text: {
-      name: 'Button Text',
-      control: 'text',
-    },
-    announcement__button_url: {
-      table: {
-        disable: true,
-      },
-    },
-    announcement__icon: {
-      table: {
-        disable: true,
-      },
-    },
+    ...widthControls.argTypes,
+    ...themeControls.argTypes,
     announcement__variant: {
-      table: {
-        disable: true,
-      },
+      control: 'select',
+      options: ['default', 'tint'],
     },
   },
 };
 
-const { properties } = announcementData.props;
+export const Basic = {};
 
-export const basic = {
-  args: {
-    announcement__title: properties.announcement__title.data,
-    announcement__content: properties.announcement__content.data,
-    announcement__button_text: properties.announcement__button_text.data,
-    announcement__button_url: properties.announcement__button_url.data,
-    announcement__icon: properties.announcement__icon.data,
-    announcement__variant: properties.announcement__variant.data,
-  },
+export const Light = {
+  args: { announcement__variant: 'tint' },
 };
 
-export const light = {
-  args: {
-    ...basic.args,
-    announcement__variant: 'light',
-  },
+export const Dark = {
+  args: { announcement__variant: 'tint', themeVariation: 'dark' },
 };
 
-export const dark = {
-  args: {
-    ...basic.args,
-    announcement__variant: 'dark',
-  },
+export const NoIcon = {
+  args: { announcement__icon: null },
 };
 
-export const noIcon = {
+export const Dismissible = {
   args: {
-    ...basic.args,
-    announcement__icon: null,
+    announcement__dismissible: true,
+    announcement__ctas: [
+      { content: 'Check opening hours', url: '/library/hours' },
+      { content: 'Contact the library', url: '/library/contact' },
+    ],
   },
 };

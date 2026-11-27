@@ -288,4 +288,41 @@ The heading carries the destination. Move secondary destinations, including link
 
 Callout forwards the shared container props and supports two CTAs. Its styles use the `.callout` BEM block. In Tokens Studio, sync the renamed `components/callout` token set (formerly `components/cta`).
 
+### Banner
+
+| 1.x input | 2.0 replacement |
+| --- | --- |
+| `banner__link_items` | `banner__ctas` with up to two items containing `content` and `url`, plus optional `icon` and `icon_position`. |
+| `banner__heading__level` | `banner__heading_level` as an integer from 2 to 6. Set it to 4 to keep the old default level. |
+| `banner__image` | `banner__image__src` with meaningful `banner__image__alt`, or `banner__image__decorative: true` for decorative images. |
+| `banner__video` | `banner__video__sources` with `{ src, type? }` objects. Supply `banner__video__title` and caption tracks for meaningful audio. |
+| `banner__media` and `banner__media_caption` blocks | `banner__media_content` and `banner__media_caption_content` slots. An explicit media slot takes priority, followed by video sources and then an image source. |
+| `banner__container_modifiers` | `banner__container__modifiers` |
+| Default narrow width and dark theme | Set `banner__width: 'narrow'` and `banner__theme__variation: 'dark'` to preserve those defaults. The new default is wide and inherits the theme. |
+
+Media stacks below the copy on narrow sections and sits beside it at wider widths. Video starts paused with native controls. Pass a unique `banner__id` for a stable `#section-{id}` anchor and, when a heading is present, its accessible section label.
+
+### Announcement
+
+- Replace `announcement__title` with `announcement__heading` and `announcement__heading__level` with the integer `announcement__heading_level`.
+- Replace `announcement__button_text` and `announcement__button_url` with the `content` and `url` fields in `announcement__ctas`. Replace `additional_attributes` with `announcement__attributes`.
+- Set `announcement__icon` to an icon name, and supply plain text in `announcement__content`. Replace the `light` or `dark` variant with `announcement__variant: 'tint'` inside the corresponding theme wrapper.
+
+### Stats Group
+
+- Use `stats_group__width` in place of `stats_group__container_width`. Set `stats_group__animate` to opt into motion. The old Twig input `stats_group__motion` is replaced.
+- Pass `stats_group__heading_level` and `stats_group__grid_columns` as integers. Each item's `description` is a plain-text label. Statistics now render as description-list terms and values. Use `stats_group__heading_level` for the section heading.
+- Switch the `stats_group__items__block` override to the `stats_group__items_content` slot. Supply complete statistic items in that slot in place of the old `_stats-group-item.twig` partial, and update CSS selectors to `.stats-group__description` and `.stats-group__metric`.
+
+### Tags
+
+- Rename `items` to `tags__items`, the `tags__items` block to `tags__items_content`, and `tags__addition_classes` to `tags__additional_classes`. Use `tags__blockname` or `tags__additional_classes` for custom classes formerly supplied via `tags__base_class`.
+- Items keep `title`, `url`, and `color`. The color tints the background while text uses the active theme foreground. Use `.tags__link` for styling linked and static labels.
+
+### Status
+
+- Pass Drupal's `message_list` as `status__messages` and any translated `status_headings` as `status__labels`. Use an array of messages for each type. The `status` key maps to success and `danger` maps to error.
+- Pass wrapper attributes as `status__attributes`. The `presentational` prop is removed. Update variant selectors from `.status--{type}` to `[data-status-type='{type}']`.
+- To offer a dismiss button per group, set `status__dismissible: true` and attach the component behavior with Drupal once.
+
 ## Removed

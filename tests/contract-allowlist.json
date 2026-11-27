@@ -1,5 +1,7 @@
 {
   "components": [
+    "announcement",
+    "banner",
     "blockquote",
     "callout",
     "code",
@@ -12,6 +14,9 @@
     "layout/placeholder",
     "list",
     "media-box",
+    "stats-group",
+    "status",
+    "tags",
     "teaser",
     "text",
     "text-with-image",
