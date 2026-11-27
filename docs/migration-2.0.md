@@ -308,4 +308,10 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - Replace `announcement__button_text` and `announcement__button_url` with the `content` and `url` fields in `announcement__ctas`. Replace `additional_attributes` with `announcement__attributes`.
 - Set `announcement__icon` to an icon name, and supply plain text in `announcement__content`. Replace the `light` or `dark` variant with `announcement__variant: 'tint'` inside the corresponding theme wrapper.
 
+### Stats Group
+
+- Use `stats_group__width` in place of `stats_group__container_width`. Set `stats_group__animate` to opt into motion. The old Twig input `stats_group__motion` is replaced.
+- Pass `stats_group__heading_level` and `stats_group__grid_columns` as integers. Each item's `description` is a plain-text label. Statistics now render as description-list terms and values. Use `stats_group__heading_level` for the section heading.
+- Switch the `stats_group__items__block` override to the `stats_group__items_content` slot. Supply complete statistic items in that slot in place of the old `_stats-group-item.twig` partial, and update CSS selectors to `.stats-group__description` and `.stats-group__metric`.
+
 ## Removed

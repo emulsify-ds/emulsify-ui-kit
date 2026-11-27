@@ -277,6 +277,11 @@
           "dependency": ["button", "link", "list", "icon"]
         },
         {
+          "name": "stats-group",
+          "structure": "components",
+          "dependency": []
+        },
+        {
           "name": "status",
           "structure": "components",
           "required": true,
