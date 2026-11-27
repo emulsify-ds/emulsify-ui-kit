@@ -31,19 +31,24 @@
   {# Main navigation #}
   <div {{ bem('menu', [], header__base_class) }}>
     {% block header__menu %}
-      {% include "@components/navigation/main/main.twig" with {
-        items: header__menu,
-      } %}
+      {{ include('@components/navigation/main/main.twig', {
+        main__id: 'header-main-navigation',
+        main__items: header__menu,
+      }, with_context: false) }}
     {% endblock %}
   </div>
   {# Search form #}
   {% if header__show_search %}
     <div {{ bem('search', [], header__base_class) }}>
       {% block header__search %}
-        {% include '@components/search/search.twig' with {
+        {{ include('@components/search/search.twig', {
+          search__id: 'header-site-search',
+          search__show_toggle: true,
+          search__show_label: false,
           search__placeholder: header__search__placeholder,
           search__label: header__search__label,
-        } %}
+          search__form_content: search_form,
+        }, with_context: false) }}
       {% endblock %}
   </div>
   {% endif %}

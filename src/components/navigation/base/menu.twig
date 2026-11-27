@@ -1,110 +1,63 @@
 {#
- # Available variables:
- # - menu__base_class - base classname of the wrapper.
- # - menu__blockname - blockname prepended to the base classname of the wrapper(s) and each component.
- # - menu__modifiers - array of modifiers to add to the base classname of the wrapper.
- # - menu__name - name of the menu.
- # - menu__attributes - array of attributes for the nav.
- # - menu__additional_classes - array of classes in addition to bem structure.
- # - menu__level - current menu level number in the hierarchy.
- # - menu__toggle - Boolean value for overall menu toggle.
- # - menu__level_toggle - Boolean value for toggles within each level in the hierarchy.
- # - items: A nested list of menu items. Each menu item contains:
- #   - attributes: HTML attributes for the menu item.
- #   - below: The menu item child items.
- #   - title: The menu link title.
- #   - url: The menu link url, instance of \Drupal\Core\Url
- #   - localized_options: Menu link localized options.
- #   - is_expanded: TRUE if the link has visible children within the current
- *     menu tree.
- #   - is_collapsed: TRUE if the link has children within the current menu tree
- *     that are not currently visible.
- #   - in_active_trail: TRUE if the link is in the active trail.
+ # Shared menu partial. Pass menu__id, menu__name, menu__items, and the
+ # optional menu__base_class, menu__blockname, menu__modifiers,
+ # menu__additional_classes, menu__attributes, menu__list__type, menu__toggle,
+ # menu__level_toggle, menu__toggle_label, or menu__items_content.
  #}
-{% set menu__base_class = menu__base_class|default('menu') %}
-{% set menu__modifiers = menu__modifiers|default([]) %}
-{% set menu__attributes = menu__attributes|default([]) %}
-
-{% if directory is not defined %}
-	{% set attributes = attributes|default([]) %}
+{% import '@components/navigation/base/_menu-list.twig' as menu_list %}
+{% set menu_class = menu__base_class|default('menu') %}
+{% set nav_attributes = menu__attributes|default({}) %}
+{% if nav_attributes.toArray is defined %}
+  {% set nav_attributes = nav_attributes.toArray() %}
 {% endif %}
-
-{% set menu__name = menu__name|default([]) %}
-{% set menu__additional_classes = menu__additional_classes|default([]) %}
-{% set menu__level = menu__level|default(0) %}
-
-{% if menu__toggle is defined or menu__level_toggle is defined %}
-	{% set menu__additional_classes = menu__additional_classes|merge(['menu-with-toggle']) %}
-{% endif %}
-
-{% set menu__attributes = menu__attributes|merge({
-  'id': menu__base_class,
-  'class': bem(menu__base_class, menu__modifiers, menu__blockname, menu__additional_classes),
+{% set nav_id = menu__id|default(nav_attributes.id|default(menu_class)) %}
+{% set nav_label = menu__name|default('Navigation'|t) %}
+{% set panel_id = nav_id ~ '--panel' %}
+{% set nav_items = menu__items|default(items|default([])) %}
+{% set extra_classes = nav_attributes.class|default([]) %}
+{% set extra_classes = extra_classes is iterable ? extra_classes : [extra_classes] %}
+{% set extra_classes = extra_classes|merge(menu__additional_classes|default([]))|merge(['base-menu']) %}
+{% set nav_attributes = nav_attributes|merge({
+  id: nav_id,
+  class: bem(menu_class, menu__modifiers|default([]), menu__blockname|default(''), extra_classes),
+  'aria-label': nav_label,
+  'data-menu': 'true',
 }) %}
+{% set options = {
+  class: menu_class,
+  element: menu__list__type == 'ol' ? 'ol' : 'ul',
+  disclosures: menu__level_toggle is same as(true),
+} %}
 
-{% if menu_is_breadcrumb %}
-    {% set menu__attributes = menu__attributes|merge({
-    'aria-label': menu__name,
-    }) %}
-{% else %}
-    {% set menu__attributes = menu__attributes|merge({
-    'aria-labelledby': menu__base_class ~ '__label',
-    }) %}
-{% endif %}
-
-{# Create a unique ID for each accordion item #}
-{% set unique_id = random('1234567890') ~ random('1234567890') ~ random('1234567890') ~ random('1234567890') %}
-{% set menu__toggle__id = menu__base_class ~ '-' ~ unique_id %}
-
-{% set menu_list %}
-{% block menu_list__content %}
-	{% include "@components/navigation/base/_menu-list.twig" %}
-{% endblock %}
-{% endset %}
-
-{% set menu_toggle %}
-{% block menu_toggle__toggle %}
-	{% include "@components/navigation/base/menu-toggle/menu-toggle.twig" with {
-			menu_toggle__menu__level: 'level-' ~ menu__level,
-			menu_toggle__style: 'primary',
-			menu_toggle__attributes: {
-				'aria-controls': menu__toggle__id,
-			},
-		} %}
-{% endblock %}
-{% endset %}
-
-{% macro menu_links(items, attributes, menu__level, menu__name, menu__base_class, menu_list__modifiers, menu__modifiers, menu__blockname, menu__list__type, menu__toggle, menu__level_toggle, item__base_class, item__modifiers, item__blockname, menu_list__attributes, directory, menu_list, item__parent, menu__toggle__id) %}
-	{% import _self as menus %}
-
-	{% if items %}
-		{% if menu__level > 0 %}
-			{% set menu__modifiers = ['sub', 'level-' ~ menu__level] %}
-		{% endif %}
-		{% if menu__level == 1 and item__parent.title is not empty %}
-			{% set temp_items = items %}
-			{% set items = [item__parent] %}
-			{% set items = items|merge(temp_items) %}
-		{% endif %}
-		{% if menu_list %}
-			{{ menu_list }}
-		{% else %}
-			{% include "@components/navigation/base/_menu-list.twig" %}
-		{% endif %}
-	{% endif %}
-{% endmacro %}
-
-{% import _self as menus %}
-
-<nav {{ add_attributes(menu__attributes) }}>
-    {% if menu_is_breadcrumb != 'true' %}
-       <h2 id="{{ menu__attributes['aria-labelledby'] }}" {{ bem('visually-hidden') }}>{{ menu__name }}</h2>
+{% set list %}
+  {% block menu_list__content %}
+    {% if menu__items_content is not empty %}
+      <{{ options.element }} {{ bem('menu-list', ['level-0'], menu_class, ['base-menu__list']) }}>{{ menu__items_content }}</{{ options.element }}>
+    {% else %}
+      {{ menu_list.render(nav_items, options, nav_id, 0) }}
     {% endif %}
-	{% block menu_prefix %}{% endblock %}
-	{% if menu__toggle is defined %}
-		{{ menu_toggle }}
-	{% endif %}
-	{{ menus.menu_links(items, attributes, menu__level, menu__name, menu__base_class, menu_list__modifiers, menu__modifiers, menu__blockname, menu__list__type, menu__toggle, menu__level_toggle, item__base_class, item__modifiers, item__blockname, menu_list__attributes, directory, menu_list, item__parent, menu__toggle__id) }}
+  {% endblock %}
+{% endset %}
 
-	{% block menu_suffix %}{% endblock %}
-</nav>
+{% if list|trim %}
+  <nav {{ add_attributes(nav_attributes) }}>
+    {% block menu_prefix %}{% endblock %}
+    {% if menu__toggle is same as(true) %}
+      {% block menu_toggle__toggle %}
+        {{ include('@components/navigation/base/menu-toggle/menu-toggle.twig', {
+          menu_toggle__label: menu__toggle_label|default('Menu'|t),
+          menu_toggle__controls: panel_id,
+          menu_toggle__is_root: true,
+          menu_toggle__icon: 'menu',
+          menu__base_class: menu_class,
+        }, with_context: false) }}
+      {% endblock %}
+    {% endif %}
+    <div {{ add_attributes({
+      id: panel_id,
+      class: bem('menu-list-wrapper', ['level-0'], menu_class, ['base-menu__panel']),
+      'data-menu-root-panel': 'true',
+    }) }}>{{ list }}</div>
+    {% block menu_suffix %}{% endblock %}
+  </nav>
+{% endif %}

@@ -374,4 +374,41 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - Use `offcanvas__heading_level` in place of `offcanvas__heading__level`. Pass a distinct ID for each dialog. Use `offcanvas__theme__variation` to select light or dark.
 - Attach the Offcanvas Drupal behavior with Drupal once. The pane is non-modal and the modal type uses the browser's modal dialog. The trigger and close action use CTA styles.
 
+### Navigation Base
+
+- The Emulsify CLI lists `navigation/base`, `navigation/breadcrumbs`, `navigation/main`, `navigation/pager`, and `navigation/social` as separate entries. The default install includes all five.
+- For the Base Menu SDC, pass `base__items` and a page-unique `base__id`. Set `base__label` to name the landmark. Use `base__toggle` for the outer disclosure, `base__disclosures` for submenus, and `base__items_content` to supply complete list items. The shared `menu.twig` partial accepts `menu__items` or the legacy `items` variable, and `menu__id` for the stable menu ID.
+- Supply stable menu item keys or `id` values when possible. The menu derives disclosure IDs from the menu ID and item path. Use `menu_toggle__label` and `menu_toggle__controls` for direct uses of the toggle partial. Update scripts and styles that rely on the old wrapper expansion classes to use the button's `aria-expanded` and the panel's `hidden` state.
+
+### Main Navigation
+
+- Pass `main__items` to `@components/navigation/main/main.twig`. The legacy `items` alias also works. Supply a different `main__id` for each instance on a page, and set `main__label` when the page has multiple navigation landmarks. The shared menu toggle behavior is part of `navigation/base`.
+- Submenus open from separate disclosure buttons. Parent links keep their destinations, and the old repeated parent item is removed from the submenu. Escape closes the open submenu and returns focus to its button.
+- Main switches layouts when its links exceed the available width. Keep the menu in a shrinkable wrapper in a flex header. Use `data-menu-mode` to style the `inline` and `compact` states in place of fixed-breakpoint menu styles.
+
+### Breadcrumbs
+
+- Pass items as `breadcrumbs__items`. The Twig include also accepts `breadcrumbs_items` and Drupal's `breadcrumb` variable. Set `breadcrumbs__label` to customize the navigation landmark name.
+- The breadcrumb trail wraps and the last item is current-page text. Remove the old scroll behavior and custom styles tied to its scroll controls. Wrap the trail in Container at the call site when it needs a section width or theme.
+
+### Pager
+
+- Pass Drupal pager data as `pager__items`, `pager__current`, and `pager__ellipses`. The Twig include still accepts `items`, `current`, and `ellipses`. Set `pager__label` to distinguish multiple pagination landmarks on a page.
+- The current page renders as text with `aria-current="page"`. The directional controls have visually hidden names, which can be customized via the item's `label`. Import the Storybook examples from `pager.component.yml` in place of the four `pager-*.yml` files.
+
+### Social Navigation
+
+- Pass `social__items` with a title and URL per link. The Twig include still accepts `items`. Pass modifiers with `social__modifiers`. Override `social__items_content` with complete list items in place of extending `_social-list.twig` or overriding `menu_list__content`.
+- Icons are decorative. The item title names the link and remains visible when no icon is available. Set `social__label` to distinguish separate landmarks and scope the surrounding theme for contrast.
+
+### Search
+
+- Use `search__label` for the input label and `search__toggle_label` for the optional disclosure. The form is visible by default. Set `search__show_toggle: true` and a page-unique `search__id` to enable the disclosure, and use `search__show_label: false` for a visually hidden input label.
+- Set `search__action` and `search__input_name` to the route and query parameter used by your site. Pass a rendered Drupal form to `search__form_content` in place of overriding the old `header__search` block inside Search. The `search_form` Twig variable remains a fallback. Search keeps the form within its landmark at all widths.
+
+### Forms
+
+- `forms.component.yml` defines the Forms SDC. The former `forms.yml` demo data now lives in the stories. Pass fields and actions through the `forms__fields_content` slot when using the native wrapper. Keep the wrapper supplied by Drupal for Form API forms.
+- Compile `forms.scss` to include the five field style groups. Form API and the field partials use native labels, descriptions, required states, and errors. Keep each field's existing `aria-describedby` IDs and append the error ID when adding an inline error. Style theme variations through the inherited color roles.
+
 ## Removed

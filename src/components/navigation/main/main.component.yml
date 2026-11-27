@@ -1,53 +1,84 @@
-$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
-
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: Main Menu
+description: Primary navigation with keyboard-operated submenus and an overflow-driven compact mode.
 group: Components/Navigation
 status: stable
+libraryOverrides:
+  dependencies: [core/drupal, core/once]
 props:
   type: object
-  required:
-    - items
   properties:
+    main__id:
+      type: [string, 'null']
+      title: Menu ID
+      description: Stable identifier unique to the navigation instance.
+      examples: ['main-nav']
+    main__label:
+      type: [string, 'null']
+      title: Landmark name
+      description: Accessible name for the navigation landmark.
+      default: null
+    main__items:
+      type: [array, object, 'null']
+      title: Menu items
+      description: Primary links and their submenus. Drupal menu items can use title, url and below.
+      examples:
+        - - id: visit
+            title: Plan a visit
+            url: /visit
+            below:
+              - id: hours
+                title: Opening hours
+                url: /visit/hours
+              - id: access
+                title: Accessibility
+                url: /visit/accessibility
+          - id: borrow
+            title: Borrow and renew
+            below:
+              - id: library-card
+                title: Get a library card
+                url: /borrow/card
+              - id: renew
+                title: Renew items
+                url: /borrow/renew
+                below:
+                  - id: loan-periods
+                    title: Loan periods
+                    url: /borrow/renew/loan-periods
+          - id: programs
+            title: Programs and events
+            url: /programs
+          - id: about
+            title: About the library
+            url: /about
     items:
-      type: array
-      title: Main menu items
-      description: The items of the main menu.
-      data:
-        - title: 'Academics'
-          url: '#'
-          below:
-            - title: 'Menu Item 1 Sub 1'
-              url: '#'
-            - title: 'Menu Item 1 Sub 2'
-              url: '#'
-              below:
-                - title: 'Menu Item 1 Sub Sub 1'
-                  url: '#'
-                - title: 'Menu Item 1 Sub Sub 2'
-                  url: '#'
-            - title: 'Menu Item 1 Sub 3'
-              url: '#'
-            - title: 'Menu Item 1 Sub 4'
-              url: '#'
-        - title: 'Admissions'
-          url: '#'
-          below:
-            - title: 'Menu Item 2 Sub 1'
-              url: '#'
-            - title: 'Menu Item 2 Sub 2'
-              url: '#'
-            - title: 'Menu Item 2 Sub 3'
-              url: '#'
-        - title: 'Research'
-          url: '#'
-          below:
-            - title: 'Menu Item 3 Sub 1'
-              url: '#'
-            - title: 'Menu Item 3 Sub 2'
-              url: '#'
-            - title: 'Menu Item 3 Sub 3'
-              url: '#'
-            - title: 'Menu Item 3 Sub 4'
-              url: '#'
-        - title: 'About'
-          url: '#'
+      type: [array, object, 'null']
+      title: Legacy menu items
+      description: Backward-compatible alias for the Drupal items array. Prefer main__items.
+      default: null
+    main__toggle_label:
+      type: [string, 'null']
+      title: Compact menu label
+      description: Visible text for the compact menu toggle.
+      default: null
+    main__blockname:
+      type: [string, 'null']
+      title: BEM parent
+      description: Optional parent block for the navigation landmark.
+    main__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: Optional BEM modifiers for the navigation landmark.
+      items:
+        type: string
+    main__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: Extra classes for the navigation landmark.
+      items:
+        type: string
+    main__attributes:
+      type: [object, 'null']
+      title: HTML attributes
+      description: Additional attributes for the navigation landmark.

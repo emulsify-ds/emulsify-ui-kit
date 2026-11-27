@@ -1,63 +1,40 @@
-{% set item__modifiers = item__modifiers|default([]) %}
-{% set item__modifiers = item__modifiers|default([]) %}
-{% set item__attributes = item__attributes|default({}) %}
+{#
+ # Render one social item. Prefer title and url. Legacy text and href also work.
+ #}
+{% set label = item.title|default(item.text)|default('')|trim %}
+{% set destination = item.href|default(item.url) %}
+{% set drupal_url = destination.options is defined %}
 
-{# Set link component as default #}
-{% set list__item %}
-{% if item.title %}
-	{% set link__content = item.title %}
+{% if not drupal_url %}
+  {% set destination = destination|default('')|trim %}
+  {% set url_prefix = destination|split(':')|first %}
+  {% if ':' in destination and '/' not in url_prefix and '?' not in url_prefix and '#' not in url_prefix and url_prefix|lower not in ['http', 'https', 'mailto', 'tel'] %}
+    {% set destination = '' %}
+  {% endif %}
 {% endif %}
 
-{% if item.text %}
-	{% set link__content = item.text %}
+{% if label %}
+  <li {{ bem('item', [], 'social-nav') }}>
+    {% if destination %}
+      {% set social_icon %}
+        {{ include('@components/icon/icon.twig', {
+          icon__name: item.icon|default(label|lower),
+          icon__blockname: 'social-nav',
+          icon__decorative: true,
+        }, with_context: false) }}
+      {% endset %}
+      {% set social_content %}
+        {{ social_icon }}
+        <span {{ bem('text', [], 'social-nav', social_icon|trim ? ['visually-hidden'] : []) }}>{{ label|e('html', null, true) }}</span>
+      {% endset %}
+      {% set link_attrs = bem('link', [], 'social-nav') %}
+      {% if drupal_url %}
+        {{ link(social_content, destination, link_attrs.toArray())|render }}
+      {% else %}
+        <a {{ add_attributes({class: link_attrs, href: destination}) }}>{{ social_content }}</a>
+      {% endif %}
+    {% else %}
+      <span {{ bem('text', [], 'social-nav') }}>{{ label|e('html', null, true) }}</span>
+    {% endif %}
+  </li>
 {% endif %}
-
-{% if not item.url and not item.href %}
-	{% set link__attributes = link__attributes|merge({
-		'class': bem('placeholder', item__modifiers, menu__base_class),
-	}) %}
-	<span {{ add_attributes(link__attributes) }}>{{- link__content -}}</span>
-{% else %}
-	{# If drupal stringify the url object #}
-	{# See variable passed to menu_links macro #}
-		{% if directory %}
-			{% if item.url %}
-		{% set link__url = item.url|render %}
-		{% endif %}
-			{% if item.href %}
-		{% set link__url = item.href %}
-		{% endif %}
-	{% else %}
-		{% set link__url = item.url %}
-	{% endif %}
-
-	{% if link__url is empty %}
-		{% set link__base_class = 'placeholder' %}
-		{% set link__url = '#' %}
-	{% else %}
-		{% set link__blockname = menu__base_class %}
-	{% endif %}
-	{% embed "@components/link/link.twig" with {
-    link__style: 'icon',
-  } %}
-    {% block link__content %}
-      {{ include('@components/icon/icon.twig', {
-        icon__name: item.title|lower,
-        icon__blockname: menu__base_class,
-      }, with_context: false) }}
-      <span {{ bem('text', [], menu_class, ['visually-hidden']) }}>{{ item.title }}</span>
-    {% endblock %}
-  {% endembed %}
-{% endif %}
-{% endset %}
-
-{% embed "@components/list/_list-item.twig" with {
-  list__item__base_class: 'item',
-  list__item__modifiers: item__modifiers,
-  list__item__blockname: item__blockname,
-  list__item__attributes: item__attributes,
-} %}
-	{% block list__item__content %}
-		{{- list__item -}}
-	{% endblock %}
-{% endembed %}

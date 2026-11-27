@@ -1,4 +1,4 @@
-@use '../../base/typography/typography' as *;
+@use '../../base' as *;
 @use '../../base/utility/utility' as *;
 
 .example {
@@ -11,13 +11,20 @@
 
   .header {
     display: flex;
-    flex-flow: row nowrap;
+    flex-wrap: wrap;
     align-items: center;
+    gap: space(16);
     padding: var(--spacing-lg) var(--spacing-xl);
   }
 
   .logo {
+    max-inline-size: 100%;
     margin-right: auto;
+
+    svg {
+      max-inline-size: 100%;
+      block-size: auto;
+    }
   }
 
   .logo-text {
@@ -28,8 +35,8 @@
     fill: var(--color-primary-default);
   }
 
-  .logo + nav {
-    margin-right: var(--spacing-xl);
+  .header > .main-nav {
+    flex: 1 1 space(96);
   }
 
   .hero {
@@ -128,13 +135,14 @@
     padding: var(--spacing-lg) var(--spacing-xl) var(--spacing-2xl);
     margin-top: auto;
     display: flex;
-    flex-flow: row nowrap;
+    flex-wrap: wrap;
     align-items: flex-start;
+    gap: space(32);
 
     .footer-content {
       margin-right: auto;
       display: flex;
-      flex-flow: row nowrap;
+      flex-wrap: wrap;
       gap: var(--spacing-xl);
       align-items: center;
     }
@@ -147,27 +155,9 @@
       fill: var(--color-white);
     }
 
-    .social-menu--footer {
-      flex-flow: row nowrap;
-      gap: var(--spacing-lg);
-    }
-
-    .social-menu--footer .social-menu__link {
-      color: var(--color-primary-lighter);
-      font-size: var(--font-size-display);
-
-      &:hover {
-        color: var(--color-primary-light);
-      }
-    }
-
-    .social-menu--footer .social-menu__icon {
-      height: 28px;
-      width: 28px;
-    }
-
-    .social-menu--footer .social-menu__text {
-      display: none;
+    .social-nav--footer .social-nav__menu-list {
+      display: flex;
+      flex-wrap: wrap;
     }
 
     .footer-h3 {

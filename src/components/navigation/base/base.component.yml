@@ -1,0 +1,82 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Base Menu
+description: A named navigation list with optional parent and submenu disclosure controls.
+group: Components/Navigation
+status: stable
+libraryOverrides:
+  dependencies: [core/drupal, core/once]
+props:
+  type: object
+  properties:
+    base__id:
+      type: [string, 'null']
+      title: Menu ID
+      description: Stable and unique identifier for the menu instance.
+      examples: ['library-resources']
+    base__label:
+      type: [string, 'null']
+      title: Landmark label
+      description: Name distinguishing the navigation landmark.
+      examples: ['Library resources']
+    base__items:
+      type: [array, object, 'null']
+      title: Menu items
+      description: The navigation tree with labels, destinations, and optional child items.
+      examples:
+        - - id: catalog
+            title: Catalog
+            url: /catalog
+          - id: accounts
+            title: Accounts
+            below:
+              - id: renew
+                title: Renew loans
+                url: /loans/renew
+              - id: card
+                title: Get a library card
+                url: /card
+    base__toggle:
+      type: [boolean, 'null']
+      title: Menu toggle
+      description: Collapse the whole menu behind a disclosure button after attachment.
+      default: false
+    base__toggle_label:
+      type: [string, 'null']
+      title: Toggle label
+      description: Visible text for the overall menu disclosure button.
+      default: null
+    base__disclosures:
+      type: [boolean, 'null']
+      title: Submenu disclosures
+      description: Collapse submenus behind their own disclosure buttons after attachment.
+      default: false
+    base__list_type:
+      type: [string, 'null']
+      title: List type
+      description: Element used for the top-level list.
+      enum: [ul, ol, null]
+      default: ul
+    base__blockname:
+      type: [string, 'null']
+      title: BEM parent
+      description: Optional parent block for the navigation landmark.
+    base__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: Optional BEM modifiers for the navigation landmark.
+      items:
+        type: string
+    base__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: Extra classes for the navigation landmark.
+      items:
+        type: string
+    base__attributes:
+      type: [object, 'null']
+      title: HTML attributes
+      description: Additional attributes for the navigation landmark.
+slots:
+  base__items_content:
+    title: List items
+    description: Supply complete list items instead of rendering the menu item tree.

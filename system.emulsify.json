@@ -233,7 +233,7 @@
           "name": "forms",
           "structure": "components",
           "required": true,
-          "dependency": []
+          "dependency": ["cta"]
         },
         {
           "name": "heading",
@@ -281,13 +281,42 @@
           "dependency": ["image", "video"]
         },
         {
-          "name": "navigation",
+          "name": "navigation/base",
           "structure": "components",
           "required": true,
-          "dependency": ["button", "link", "list", "icon"]
+          "dependency": ["cta"]
+        },
+        {
+          "name": "navigation/breadcrumbs",
+          "structure": "components",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "navigation/main",
+          "structure": "components",
+          "required": true,
+          "dependency": ["navigation/base"]
+        },
+        {
+          "name": "navigation/pager",
+          "structure": "components",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "navigation/social",
+          "structure": "components",
+          "required": true,
+          "dependency": ["icon"]
         },
         {
           "name": "offcanvas",
+          "structure": "components",
+          "dependency": ["cta"]
+        },
+        {
+          "name": "search",
           "structure": "components",
           "dependency": ["cta"]
         },

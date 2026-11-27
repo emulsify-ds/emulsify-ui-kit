@@ -1,71 +1,93 @@
-@use '../../../base/breakpoints/breakpoints' as *;
-@use '../../../base/utility/utility' as *;
+@use '../../../base' as *;
 
-.form-item {
-  @include clearfix;
-
-  & {
-    color: var(--color-text-body);
-    margin-bottom: 1em;
-  }
+:where(.form-item) {
+  min-inline-size: 0;
+  margin-block-end: space(16);
+  color: var(--clr-body);
 }
 
-.form-item__label {
+:where(.form-item__label, .form-item > label) {
   display: block;
-  color: var(--input-color-label);
-  margin-bottom: var(--input-gap);
-  font-size: var(--font-size-small);
-  font-weight: bold;
-  line-height: var(--input-label-lineheight);
+  margin-block-end: space(4);
+  font-weight: font-weight('primary-bold');
 
-  @include breakpoint('md') {
-    display: block;
-    margin-right: 2%;
-    padding: 0.6em 0;
+  &:not(.option) {
+    overflow-wrap: anywhere;
   }
 }
 
-.form-item__textfield {
-  border: var(--border-sm) solid var(--input-border-color);
-  border-radius: var(--input-radius);
-  padding: var(--input-padding-y) var(--input-padding-x);
-  max-width: 100%;
-  width: 100%;
-  box-sizing: border-box;
+:where(.form-item > label.option) {
+  margin: 0;
+}
 
-  &:focus {
-    border-color: clr(accent-high);
-  }
+:where(
+  .form-item__textfield:not([type]),
+  .form-item__textfield:is(
+    [type='text'],
+    [type='email'],
+    [type='password'],
+    [type='search'],
+    [type='number'],
+    [type='url'],
+    [type='tel'],
+    [type='date'],
+    [type='time'],
+    [type='datetime-local']
+  ),
+  .form-text,
+  .form-email,
+  .form-number,
+  .form-search,
+  .form-tel,
+  .form-url,
+  .form-item textarea
+) {
+  @include focus;
+
+  box-sizing: border-box;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  min-block-size: space(48);
+  padding: space(8) space(12);
+  border: var(--bw-sm) solid
+    var(
+      --forms-control-border,
+      color-mix(in srgb, var(--clr-body) 60%, var(--clr-background))
+    );
+  border-radius: var(--r-sm);
+  color: var(--clr-body);
+  background-color: var(--clr-background);
+  font: inherit;
 
   &::placeholder {
-    color: var(--input-color-placeholder);
+    color: color-mix(in srgb, var(--clr-body) 75%, var(--clr-background));
+  }
+
+  &:is([aria-invalid='true'], .error),
+  .form-item--error & {
+    border-color: var(--clr-error);
   }
 }
 
-.form-item__description {
-  color: var(--input-color-help-text);
-  margin: var(--input-gap) 0 0;
-  font-size: var(--font-size-x-small);
+:where(
+  .form-item__description,
+  .form-item .description,
+  .form-item--error-message
+) {
+  margin-block: space(4);
+  font-size: font-size('small');
 }
 
-.form-fieldset {
-  margin-bottom: 2em;
-  border: var(--border-sm) solid var(--fieldset-color-border);
-  border-radius: var(--radius-fieldset);
-  padding: var(--spacing-lg);
-  font-weight: bold;
-
-  .form-item {
-    margin-left: 1em;
-  }
+:where(.form-item--error-message) {
+  padding-inline-start: space(8);
+  border-inline-start: var(--bw-md) solid var(--clr-error);
+  font-weight: font-weight('primary-bold');
 }
 
-legend {
-  color: var(--fieldset-color-label);
+:where(.forms__required) {
+  font-weight: font-weight('primary-regular');
 }
 
-.form-item--warning {
-  --input-color-label: var(--color-warning-default);
-  --input-border-color: var(--color-warning-default);
-  --input-color-help-text: var(--color-warning-default);
+:where(label.form-required, legend.form-required):has(.forms__required)::after {
+  display: none;
 }

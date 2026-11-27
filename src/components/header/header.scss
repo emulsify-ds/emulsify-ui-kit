@@ -41,6 +41,8 @@
 
 /* Main navigation */
 .header__menu {
+  min-inline-size: 0;
+
   @include breakpoint('lg') {
     flex: 1;
     display: flex;
@@ -49,18 +51,15 @@
   }
 }
 
-.main-nav__menu-list-wrapper--level-0 {
-  .header & {
-    top: 100%;
-    padding-right: var(--spacing-lg);
-  }
-}
-
 /* Search form */
 .header__search {
-  display: none;
+  display: flex;
+  align-items: center;
 
-  @include breakpoint('lg') {
-    display: block;
+  [data-search-toggle]:not([hidden]) + [data-search-panel] {
+    position: absolute;
+    z-index: 2;
+    inset-block-start: 100%;
+    inset-inline: 0;
   }
 }

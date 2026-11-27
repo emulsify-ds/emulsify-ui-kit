@@ -1,51 +1,38 @@
 import { renderTwig } from '@emulsify/core/storybook';
+import { argsFromSchema } from '../../../util/argsFromSchema.js';
+import { withStorybookContainer } from '../../../util/storybookContainer.js';
+import { createContainerThemeControls } from '../../../util/storybookContainerControls.js';
+import schema from './pager.component.yml';
+import docs from './pager.docs.js';
+import template from './pager.twig';
 
-import pagerTwig from './pager.twig';
-import { mapDataToTwig } from '../../../util/dataTransformers.js';
+const themeControls = createContainerThemeControls();
+const preview = withStorybookContainer(template);
+const { properties } = schema.props;
 
-import { props as pagerProps } from './pager.component.yml';
-import { props as pagerNextEllipsesProps } from './pager-next-ellipses.yml';
-import { props as pagerPrevEllipsesProps } from './pager-prev-ellipses.yml';
-import { props as pagerBothEllipsesProps } from './pager-both-ellipses.yml';
-import { props as pagerFirstLastProps } from './pager-first-last.yml';
-
-const pagerData = mapDataToTwig(pagerProps.properties);
-const pagerNextEllipsesData = mapDataToTwig(pagerNextEllipsesProps.properties);
-const pagerPrevEllipsesData = mapDataToTwig(pagerPrevEllipsesProps.properties);
-const pagerBothEllipsesData = mapDataToTwig(pagerBothEllipsesProps.properties);
-const pagerFirstLastData = mapDataToTwig(pagerFirstLastProps.properties);
+function example(index) {
+  return Object.fromEntries(
+    ['pager__items', 'pager__current', 'pager__ellipses'].map((prop) => [
+      prop,
+      properties[prop].examples[index],
+    ]),
+  );
+}
 
 export default {
   title: 'Components/Navigation/Pager',
-  render: renderTwig(pagerTwig),
+  tags: ['autodocs'],
+  parameters: { docs },
+  render: (args, { viewMode } = {}) =>
+    renderTwig(preview, { wrapper: viewMode === 'docs' ? 'div' : 'main' })(
+      args,
+    ),
+  args: { ...argsFromSchema(schema.props), ...themeControls.args },
+  argTypes: themeControls.argTypes,
 };
 
-export const basic = {
-  args: {
-    ...pagerData,
-  },
-};
-
-export const withNext = {
-  args: {
-    ...pagerNextEllipsesData,
-  },
-};
-
-export const withPrevious = {
-  args: {
-    ...pagerPrevEllipsesData,
-  },
-};
-
-export const withBoth = {
-  args: {
-    ...pagerBothEllipsesData,
-  },
-};
-
-export const withFirstAndLast = {
-  args: {
-    ...pagerFirstLastData,
-  },
-};
+export const Basic = {};
+export const WithNext = { args: example(1) };
+export const WithPrevious = { args: example(2) };
+export const WithBoth = { args: example(3) };
+export const WithFirstAndLast = { args: example(4) };

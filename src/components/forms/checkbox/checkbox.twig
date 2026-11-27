@@ -1,16 +1,19 @@
 {% if not attributes %}
-	<fieldset class="form-item form-item--checkbox">
-		<legend>Options as Checkboxes</legend>
-		<ul class="form-item--checkboxes">
-		{% endif %}
-		{% for key, checkbox in checkboxes %}
-			{% include "@components/forms/checkbox/_checkbox-item.twig" with {
-      checkbox_item: checkbox.title,
-      checkbox_item_checked: checkbox.checked,
-      checkbox_item_disabled: checkbox.disabled,
-    } %}
-		{% endfor %}
-		{% if not attributes %}
-		</ul>
-	</fieldset>
+  <fieldset class="form-fieldset form-item--checkbox">
+    <legend>{{ 'Workshop topics'|t }}</legend>
+    <ul class="form-item--checkboxes" role="list">
+{% endif %}
+
+{% for key, checkbox in checkboxes %}
+  {{ include('@components/forms/checkbox/_checkbox-item.twig', {
+    key: key,
+    checkbox_item: checkbox.title,
+    checkbox_item_checked: checkbox.checked,
+    checkbox_item_disabled: checkbox.disabled,
+  }, with_context: false) }}
+{% endfor %}
+
+{% if not attributes %}
+    </ul>
+  </fieldset>
 {% endif %}

@@ -1,18 +1,20 @@
 {% if not attributes %}
-	<div class="form-item">
-		<label for="select" class="form-item__label">Select Dropdown</label>
-		<div class="form-item__dropdown">
-			<select class="form-item__select" id="select">
-				<optgroup label="Whatever">
-				{% endif %}
-				{% for selection in select %}
-					{% include "@components/forms/select/_select-item.twig" with {
-            select_item: selection.title
-          } %}
-				{% endfor %}
-				{% if not attributes %}
-				</optgroup>
-			</select>
-		</div>
-	</div>
+  <div class="form-item">
+    <label for="forms-workshop-location" class="form-item__label">{{ 'Workshop location'|t }}</label>
+    <div class="form-item__dropdown">
+      <select class="form-item__select" id="forms-workshop-location" name="location" aria-describedby="forms-workshop-location-description">
+{% endif %}
+
+{% for selection in select %}
+  {{ include('@components/forms/select/_select-item.twig', {
+    select_item: selection.title,
+    select_item_value: selection.value,
+  }, with_context: false) }}
+{% endfor %}
+
+{% if not attributes %}
+      </select>
+    </div>
+    <div id="forms-workshop-location-description" class="description form-item__description">{{ 'Choose where you would like to attend.'|t }}</div>
+  </div>
 {% endif %}

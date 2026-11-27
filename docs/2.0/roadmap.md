@@ -34,7 +34,7 @@ Coordinate the 16 refinement steps for the single Emulsify UI Kit 2.0.0 release.
 - [x] 10 Wave B2: banner, announcement, stats-group, tags, status
 - [x] 11 Wave B3: table, embed, audio-player, logo, link-group
 - [x] 12 Wave C1: accordion, tabs, offcanvas
-- [ ] 13 Wave C2: navigation, search, forms
+- [x] 13 Wave C2: navigation, search, forms
 - [ ] 14 Wave D: hero, header, page-title
 - [ ] 15 Cleanup
 - [ ] 16 Docs, accessibility gate, ready for review
@@ -152,3 +152,10 @@ The report also found 30 global violations. The `blockquote.component.yml` basen
 - Offcanvas uses native modal behavior for the modal type and a nonmodal dialog for panes. Use the separate body, footer, and trigger slots when composing a dialog. Keep trigger focus restoration and Escape handling when integrating with navigation.
 - The Wave C1 accessibility audit ran the repository rules against all six stories. Browser checks also covered the opened panels and dialogs.
 - The [Wave C1 migration entries](../migration-2.0.md#accordion) list the prop, slot, and behavior changes.
+
+### Step 13 Wave C2 navigation, search, and forms
+
+- Pass `main__items` and a stable, page-unique `main__id` from Header. Give Main Navigation a shrinkable wrapper so it can measure overflow and switch to the compact disclosure. Keep the Base menu and Main behaviors available when composing navigation.
+- Use `search__form_content` for a rendered Drupal search form. Set a unique `search__id` when enabling Search's inline disclosure, and keep its input label available at all widths.
+- Load `forms.scss` for the five field style groups. Keep Drupal field descriptions, error attributes, and native select markup when wiring Form API fields.
+- The [Wave C2 migration entries](../migration-2.0.md#navigation-base) list the five CLI navigation entries and the changed props and slots. All seven component contracts are enforced. The repository accessibility audit covered all 16 Wave C2 stories.

@@ -1,48 +1,30 @@
-{% set item__blockname = menu__base_class %}
-
-{% set menu_list__attributes = menu_list__attributes|default([]) %}
-
-{% set menu__modifiers = ['level-' ~ menu__level] %}
-
-{% set menu_list__attributes = menu_list__attributes|merge({
-	'class': bem('menu-list-wrapper', menu__modifiers, menu__base_class),
-}) %}
-
-{% if menu__level == 0 and menu__toggle == true %}
-	{% set menu_list__attributes = menu_list__attributes|merge({
-		'id': [menu__toggle__id],
-	}) %}
-{% endif %}
-
-{% if menu__level > 0 and menu__level_toggle == true %}
-	{% set menu_list__attributes = menu_list__attributes|merge({
-		'aria-hidden': 'true',
-		'id': [menu__toggle__id],
-	}) %}
-{% endif %}
-
-{% if menu__level > 0 %}
-	{% set list__modifiers = ['sub'] %}
-{% endif %}
-
-{% set menu__item %}
-{% block menu__item__content %}
-	{% for item in items %}
-		{% include "@components/navigation/base/_menu-item.twig" %}
-	{% endfor %}
-{% endblock %}
-{% endset %}
-
-<div
-	{{ add_attributes(menu_list__attributes) }}>
-	{# List #}
-	{% embed "@components/list/list.twig" with {
-		list__base_class: 'menu-list',
-		list__blockname: menu__base_class,
-		list__type: menu__list__type,
-	}%}
-		{% block list__content %}
-			{{ menu__item }}
-		{% endblock %}
-	{% endembed %}
-</div>
+{# Recursive list renderer. Each sibling key contributes to its submenu path. #}
+{% macro render(items, options, path, level, panel_id = null) %}
+  {% import _self as lists %}
+  {% if items %}
+    {% set used_keys = [] %}
+    <{{ level == 0 ? options.element : 'ul' }} {{ add_attributes({
+      id: panel_id,
+      class: bem('menu-list', ['level-' ~ level], options.class, ['base-menu__list']),
+    }) }}>
+      {% for key, item in items %}
+        {% set item_key = item.id|default(item.key|default(key)) ~ '' %}
+        {% set stable_key = item_key matches '/^[A-Za-z0-9]+(?:[-_][A-Za-z0-9]+)*$/' and item_key not in used_keys %}
+        {% set used_keys = used_keys|merge([item_key]) %}
+        {% set item_path = path ~ '--' ~ (stable_key ? 'key-' ~ item_key : 'index-' ~ loop.index) %}
+        {% set children = item.children|default(item.below|default([])) %}
+        {% set submenu_id = children and options.disclosures ? item_path ~ '--submenu' : null %}
+        {% set submenu %}
+          {{ lists.render(children, options, item_path, level + 1, submenu_id) }}
+        {% endset %}
+        {{ include('@components/navigation/base/_menu-item.twig', {
+          menu_item: item,
+          menu_item__submenu_id: submenu_id,
+          menu_item__children_content: submenu,
+          menu__base_class: options.class,
+          menu__level: level,
+        }, with_context: false) }}
+      {% endfor %}
+    </{{ level == 0 ? options.element : 'ul' }}>
+  {% endif %}
+{% endmacro %}
