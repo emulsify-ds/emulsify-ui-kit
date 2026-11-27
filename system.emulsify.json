@@ -205,6 +205,11 @@
           "dependency": ["icon"]
         },
         {
+          "name": "callout",
+          "structure": "components",
+          "dependency": ["cta", "heading", "text"]
+        },
+        {
           "name": "code",
           "structure": "components",
           "dependency": []

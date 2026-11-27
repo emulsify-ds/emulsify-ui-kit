@@ -30,7 +30,7 @@ Coordinate the 16 refinement steps for the single Emulsify UI Kit 2.0.0 release.
 - [x] 6 Layout primitives
 - [x] 7 CTA
 - [x] 8 Wave A: heading, text, blockquote, code, icon, image, list, video
-- [ ] 9 Wave B1: teaser, card, media-box, text-with-image, callout
+- [x] 9 Wave B1: teaser, card, media-box, text-with-image, callout
 - [ ] 10 Wave B2: banner, announcement, stats-group, tags, status
 - [ ] 11 Wave B3: table, embed, audio-player, logo, link-group
 - [ ] 12 Wave C1: accordion, tabs, offcanvas
@@ -124,3 +124,10 @@ The report also found 30 global violations. The `blockquote.component.yml` basen
 - Use `image__src`, `image__alt`, and optional responsive or figure props when forwarding images from a section. Video supports titled embeds, caption tracks, and native controls with a motion-aware playback enhancement.
 - The [migration guide](../migration-2.0.md#heading-text-blockquote-and-code) lists the removed paths, renamed props, and updated Storybook entries. Later component waves should reuse these primitives and update their manifest dependencies.
 - Legacy browser findings to revisit include the Tags green label contrast in Wave B2, the Search mobile toggle name in Wave C2, and Page Title's Storybook layout control options in Wave D.
+
+### Step 9 Wave B1 content sections
+
+- Use Teaser with `teaser__style: 'card'` for existing Card compositions. Teaser sits directly in a grid cell and switches to inline layout based on its own width. Keep the heading as its single destination and use CTA labels as visual cues. Examples/Teaser grid shows both themes.
+- Use `media_box__media_content` for composed media and the responsive image or video props for built-in media. Page Title passes the new image caption and credit fields. Keep checking its media presentation when refining Page Title in Wave D.
+- Text with Image keeps copy first in reading order and uses the shared placement mixins for media alignment. For Text with Image and Callout, use the shared section props and pass up to two CTA items.
+- Callout replaces Call to Action, including its Tokens Studio set name. The [migration guide](../migration-2.0.md#card--teaser) maps the props, slots, theme options, and Storybook entries.

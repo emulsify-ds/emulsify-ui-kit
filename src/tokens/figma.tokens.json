@@ -2247,7 +2247,7 @@
       }
     }
   },
-  "components/cta": {
+  "components/callout": {
     "cta": {
       "header": {
         "value": {
@@ -3176,7 +3176,7 @@
         "components/button": "enabled",
         "components/card": "enabled",
         "components/checkbox": "enabled",
-        "components/cta": "enabled",
+        "components/callout": "enabled",
         "components/fieldset": "enabled",
         "components/input": "enabled",
         "components/link": "enabled",
@@ -3473,7 +3473,7 @@
         "components/button": "enabled",
         "components/card": "enabled",
         "components/checkbox": "enabled",
-        "components/cta": "enabled",
+        "components/callout": "enabled",
         "components/fieldset": "enabled",
         "components/input": "enabled",
         "components/link": "enabled",
@@ -3627,7 +3627,7 @@
         "components/button": "enabled",
         "components/card": "enabled",
         "components/checkbox": "enabled",
-        "components/cta": "enabled",
+        "components/callout": "enabled",
         "components/fieldset": "enabled",
         "components/input": "enabled",
         "components/link": "enabled",
@@ -3657,7 +3657,7 @@
         "components/button": "enabled",
         "components/card": "enabled",
         "components/checkbox": "enabled",
-        "components/cta": "enabled",
+        "components/callout": "enabled",
         "components/fieldset": "enabled",
         "components/input": "enabled",
         "components/link": "enabled",
@@ -3713,7 +3713,7 @@
       "components/button",
       "components/card",
       "components/checkbox",
-      "components/cta",
+      "components/callout",
       "components/fieldset",
       "components/footer",
       "components/gallery",

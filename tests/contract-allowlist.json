@@ -1,6 +1,7 @@
 {
   "components": [
     "blockquote",
+    "callout",
     "code",
     "cta",
     "heading",

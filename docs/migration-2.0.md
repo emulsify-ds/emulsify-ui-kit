@@ -31,6 +31,7 @@ Update bookmarks, embeds, and other links to renamed Storybook entries.
 | `component-search--*` | `components-search--*` |
 | `components-cards--card-vertical`, `components-card--card-vertical` | `components-teaser--card` |
 | `components-cards--card-horizontal`, `components-card--card-horizontal` | `components-teaser--inline` |
+| `components-call-to-action--call-to-action` | `components-callout--callout` |
 | `components-headers-page-title--*` | `components-page-title--*` |
 | `components-media-*` | `components-*` |
 | `components-button--*` | `deprecated-button--*` |
@@ -274,5 +275,17 @@ The heading carries the destination. Move secondary destinations, including link
 - Rename the `text_with_image__image` slot to `text_with_image__media_content`, or use the `text_with_image__image__*` props. Move image caption and copyright to `text_with_image__image__caption` and `text_with_image__image__credit`. Omit these values to hide them.
 - Replace `text_with_image__position` with `text_with_image__media_alignment: 'left'` or `'right'`. The `data-media-alignment` attribute controls desktop placement and the copy comes first in source and stacked order. Choose a standard container width. Use `text_with_image__focus` to set the relative column widths.
 - Replace `text_with_image__link__content` and `text_with_image__link__url` with an item in `text_with_image__ctas`, using the keys `content` and `url`.
+
+### Call to Action → Callout
+
+| Call to Action input | Callout input |
+| --- | --- |
+| `call-to-action` SDC, `@components/call-to-action/call-to-action.twig` | `callout` SDC, `@components/callout/callout.twig` |
+| `call_to_action__heading`, `call_to_action__overline`, `call_to_action__text` | Match the suffix under the `callout__` prefix. Set `callout__heading_level` to match the page outline. |
+| `call_to_action__button__text`, `call_to_action__button__url` | `callout__ctas[0].content` and `callout__ctas[0].url` |
+| `call_to_action__theme: 'white-bg'` or `'light-blue-bg'` | Use `callout__theme: 'default'` and `callout__theme__variation`, with `--callout-background` scoped to the panel for a custom fill. |
+| `call_to_action__blockname`, `call_to_action__modifiers` | `callout__blockname`, `callout__modifiers` |
+
+Callout forwards the shared container props and supports two CTAs. Its styles use the `.callout` BEM block. In Tokens Studio, sync the renamed `components/callout` token set (formerly `components/cta`).
 
 ## Removed
