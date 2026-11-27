@@ -20,6 +20,7 @@
     "logo",
     "media-box",
     "navigation/base",
+    "navigation/breadcrumbs",
     "navigation/main",
     "offcanvas",
     "stats-group",

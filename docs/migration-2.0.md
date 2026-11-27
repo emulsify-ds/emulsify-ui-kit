@@ -386,4 +386,9 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - Submenus open from separate disclosure buttons. Parent links keep their destinations, and the old repeated parent item is removed from the submenu. Escape closes the open submenu and returns focus to its button.
 - Main switches layouts when its links exceed the available width. Keep the menu in a shrinkable wrapper in a flex header. Use `data-menu-mode` to style the `inline` and `compact` states in place of fixed-breakpoint menu styles.
 
+### Breadcrumbs
+
+- Pass items as `breadcrumbs__items`. The Twig include also accepts `breadcrumbs_items` and Drupal's `breadcrumb` variable. Set `breadcrumbs__label` to customize the navigation landmark name.
+- The breadcrumb trail wraps and the last item is current-page text. Remove the old scroll behavior and custom styles tied to its scroll controls. Wrap the trail in Container at the call site when it needs a section width or theme.
+
 ## Removed

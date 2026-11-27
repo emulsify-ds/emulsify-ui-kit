@@ -1,7 +1,9 @@
 <div class="example basic">
 	{% include "@examples/examples/assets/_header.twig" %}
 	<main class="basic text-long">
-		{% include "@components/navigation/breadcrumbs/breadcrumbs.twig" %}
+		{{ include('@components/navigation/breadcrumbs/breadcrumbs.twig', {
+      breadcrumbs__items: breadcrumb,
+    }, with_context: false) }}
 		{{ include('@components/heading/heading.twig', {
       heading__content: 'Undergraduate Courses',
       heading__level: '1',
