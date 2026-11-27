@@ -43,8 +43,7 @@ node_modules/
 jspm_packages/
 
 # Drupal compiled components
-components/
-!src/components/
+/components/
 
 # TypeScript v1 declaration files
 typings/
