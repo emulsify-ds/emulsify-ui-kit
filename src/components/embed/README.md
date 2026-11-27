@@ -82,12 +82,8 @@ the UI kit.
 
 ### Responsive behavior
 
-The aspect-ratio box uses CSS `aspect-ratio` exclusively - it does not
-depend on JavaScript removing the iframe's `width`/`height` attributes
-to become responsive (unlike `components/video/video-embed.js`). Leave
-`width`/`height` on your `<iframe>` as intrinsic-dimension hints; this
-component's CSS will still make it fill its container responsively, with
-or without JavaScript enabled.
+The CSS `aspect-ratio` rule sizes the embed responsively with or without
+JavaScript. Keep `width` and `height` on the iframe as intrinsic-dimension hints.
 
 Supported `embed__ratio` presets: `16-9` (default), `4-3`, `1-1`, and
 `custom` (paired with `embed__ratio_custom`, e.g. `21 / 9`).

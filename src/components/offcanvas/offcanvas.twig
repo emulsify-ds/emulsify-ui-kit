@@ -66,11 +66,11 @@
         'data-offcanvas-close': '',
         'aria-label': 'Close ' ~ offcanvas__heading,
       }) }}>
-        {% include "@components/icons/_icon.twig" with {
+        {{ include('@components/icon/icon.twig', {
           icon__name: 'xmark',
           icon__blockname: offcanvas__base_class,
           icon__decorative: true,
-        } %}
+        }, with_context: false) }}
       </button>
     </div>
 

@@ -54,7 +54,7 @@
 {% set page_title__has_link_tertiary = page_title__link_tertiary__label|default('')|trim != '' %}
 {% set page_title__use_text_links = page_title__has_link_primary and page_title__has_link_secondary and page_title__has_link_tertiary %}
 {% set page_title__default_link_style = 'underline' %}
-{% set page_title__default_link_icon__name = 'arrowRight' %}
+{% set page_title__default_link_icon__name = 'arrow-right' %}
 {% set page_title__default_button__icon = {
   right: true,
   name: page_title__default_link_icon__name,
@@ -146,6 +146,11 @@
         media_box__spacing: 'none',
         media_box__bg_color: false,
         media_box__type: 'image',
+        media_box__image__src: image__src,
+        media_box__image__alt: image__alt,
+        media_box__image__decorative: image__decorative,
+        media_box__image__srcset: image__srcset,
+        media_box__image__sizes: image__sizes,
         media_box__show_caption: page_title__media__show_caption|default(false),
         media_box__show_copyright: page_title__media__show_copyright|default(false),
         media_box__caption: page_title__media__caption,
@@ -170,30 +175,30 @@
           <a {{ add_attributes(page_title__overline__link_attributes) }}>{{ page_title__overline|raw }}</a>
         </p>
       {% else %}
-        {% include "@components/typography/text/text.twig" with {
+        {{ include('@components/text/_text.twig', {
           text__element: 'p',
           text__content: page_title__overline,
           text__base_class: 'overline',
           text__blockname: page_title__base_class,
-        } %}
+        }, with_context: false) }}
       {% endif %}
 		{% endif %}
 
 		{# Main H1 for the page #}
-		{% include "@components/typography/heading/heading.twig" with {
+		{{ include('@components/heading/heading.twig', {
 			heading__level: '1',
-			heading: page_title__heading,
+			heading__content: page_title__heading,
 			heading__blockname: page_title__base_class,
-		} %}
+		}, with_context: false) }}
 
 		{# Optional subheading #}
 		{% if page_title__subheading %}
-			{% include "@components/typography/text/text.twig" with {
+			{{ include('@components/text/_text.twig', {
         text__element: 'p',
         text__content: page_title__subheading,
         text__base_class: 'subheading',
         text__blockname: page_title__base_class,
-      } %}
+      }, with_context: false) }}
 		{% endif %}
 
     {# Optional description #}

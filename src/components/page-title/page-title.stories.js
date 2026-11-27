@@ -1,8 +1,11 @@
+import { renderTwig } from '@emulsify/core/storybook';
+
 // Twig templates
 import pageTitleTwig from './page-title.twig';
 
 // Data files
-import imageData from '../image/image.yml';
+import { argsFromSchema } from '../../util/argsFromSchema.js';
+import imageSchema from '../image/image.component.yml';
 import { props } from './page-title.component.yml';
 
 const pageTitleData = props.properties;
@@ -118,7 +121,7 @@ export default {
   },
 };
 
-export const pageTitle = ({
+const renderPageTitle = ({
   pageTitleHeading,
   pageTitleSubHeading,
   pageTitlePrimaryLinkLabel,
@@ -135,9 +138,7 @@ export const pageTitle = ({
   layout,
 }) => {
   const mediaProps = pageTitleShowMedia
-    ? {
-        ...imageData.responsive_images['3x2'],
-      }
+    ? argsFromSchema(imageSchema.props)
     : {};
 
   return pageTitleTwig({
@@ -161,3 +162,5 @@ export const pageTitle = ({
     page_title__layout: layout,
   });
 };
+
+export const pageTitle = { render: renderTwig(renderPageTitle) };

@@ -80,11 +80,10 @@
 
 {% set cta__rendered_icon %}
   {%- if cta__icon -%}
-    {{- include('@components/icons/_icon.twig', {
+    {{- include('@components/icon/icon.twig', {
       icon__name: cta__icon,
       icon__blockname: 'cta',
       icon__decorative: true,
-      directory: directory|default(null),
     }, with_context: false) -}}
   {%- endif -%}
 {% endset %}

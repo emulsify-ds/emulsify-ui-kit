@@ -1,0 +1,46 @@
+{#
+ # - list__items: Text or structured items with optional nested lists.
+ # - list__type: 'ul' or 'ol'.
+ # - list__base_class: Base class for the BEM name.
+ # - list__blockname: Parent block for a BEM element.
+ # - list__modifiers: Modifiers such as 'plain' and 'inline'.
+ # - list__additional_classes: Additional CSS classes.
+ # - list__attributes: Additional attributes for the list.
+ # - list__content: Slot for rendered list items.
+ #}
+{% set list__type = list__type == 'ol' ? 'ol' : 'ul' %}
+{% set list__base_class = list__base_class|default('list') %}
+{% set list__modifiers = list__modifiers|default([]) %}
+{% set list__attributes = list__attributes|default({}) %}
+{% set list__style = 'default' %}
+{% if 'inline' in list__modifiers %}
+  {% set list__style = 'inline' %}
+{% elseif 'plain' in list__modifiers or list__base_class != 'list' or list__blockname %}
+  {% set list__style = 'plain' %}
+{% endif %}
+
+{% set list__rendered_items %}
+  {% block list__content %}
+    {% if list__content is defined and list__content is not null %}
+      {{ list__content }}
+    {% else %}
+      {% for item in list__items|default([]) %}
+        {{ include('@components/list/_list-item.twig', {
+          list__item: item,
+          list__item__blockname: list__base_class,
+          list__type: list__type,
+        }, with_context: false) }}
+      {% endfor %}
+    {% endif %}
+  {% endblock %}
+{% endset %}
+
+{% if list__rendered_items|trim %}
+  {% set attributes = bem(list__base_class, list__modifiers, list__blockname, list__additional_classes|default([])) %}
+  {% set list__attributes = list__attributes|merge({'data-list-style': list__style}) %}
+  {# Explicit list semantics keep marker-free lists exposed in Safari. #}
+  {% if list__style != 'default' and list__attributes.role is empty %}
+    {% set list__attributes = list__attributes|merge({role: 'list'}) %}
+  {% endif %}
+  <{{ list__type }} {{ add_attributes(list__attributes) }}>{{ list__rendered_items }}</{{ list__type }}>
+{% endif %}

@@ -1,0 +1,69 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Icon
+description: Inline SVG drawn from the icon assets.
+group: Components
+status: stable
+props:
+  type: object
+  required: [icon__name]
+  properties:
+    icon__name:
+      type: string
+      title: Icon name
+      description: SVG filename in the icon assets, without the extension.
+      pattern: '^[a-z0-9][a-z0-9_-]*$'
+      examples: [arrow-right]
+    icon__id:
+      type: [string, 'null']
+      title: Instance ID
+      description: Unique prefix for this instance's title and description IDs.
+      examples: [upload-status]
+    icon__title:
+      type: [string, 'null']
+      title: Accessible title
+      description: Accessible name for a meaningful icon. Icons without a name are decorative.
+      examples: [Continue]
+    icon__desc:
+      type: [string, 'null']
+      title: Accessible description
+      description: Additional information about a meaningful icon.
+      default: null
+    icon__decorative:
+      type: [boolean, 'null']
+      title: Decorative
+      description: Hide the icon from assistive technologies even when a title is provided.
+      default: false
+    icon__role:
+      type: [string, 'null']
+      title: Role
+      description: Role for a meaningfully named SVG.
+      default: img
+    icon__base_class:
+      type: [string, 'null']
+      title: Base class
+      description: Element or block name passed to BEM.
+      default: icon
+    icon__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Parent block to use for a BEM element.
+      default: null
+    icon__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers on the SVG.
+      items:
+        type: string
+      default: []
+    icon__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: Additional CSS classes on the SVG.
+      items:
+        type: string
+      default: []
+    icon__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Extra SVG attributes such as data attributes.
+      default: {}

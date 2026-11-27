@@ -21,11 +21,6 @@ props:
       title: Image's alternative text
       description: The image's alternative text of the card.
       data: 'This is the card image alt text'
-    card__image__output_image_tag:
-      type: boolean
-      title: Image's outpot image tag.
-      description: The image's output image tag of the card.
-      data: true
     card__heading:
       type: string
       title: Heading

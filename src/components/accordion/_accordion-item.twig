@@ -28,11 +28,11 @@
 
 {% set accordion__item__cta__content %}
   {{ accordion__item__heading }}
-  {% include "@components/icons/_icon.twig" with {
+  {{ include('@components/icon/icon.twig', {
     icon__name: 'angle-down',
     icon__blockname: accordion__item__base_class,
     icon__decorative: true,
-  } %}
+  }, with_context: false) }}
 {% endset %}
 
 {% set accordion__item__heading__content %}
@@ -49,16 +49,17 @@
 {% endset %}
 
 <div {{ add_attributes(accordion__item__attributes) }}>
-	{% include "@components/typography/heading/heading.twig" with {
+	{{ include('@components/heading/heading.twig', {
     heading__level: accordion__item__heading__level|default('2'),
     heading__blockname: accordion__item__base_class,
-    heading: accordion__item__heading__content,
-  } %}
+    heading__content: accordion__item__heading__content,
+  }, with_context: false) }}
 	<div {{ add_attributes(accordion__item__content__attributes) }}>
 		{% block accordion__item__content %}
-			{% include "@components/typography/text/text.twig" with {
+			{{ include('@components/text/_text.twig', {
+        text__element: 'div',
         text__content: accordion__item__content,
-      } %}
+      }, with_context: false) }}
 		{% endblock %}
 	</div>
 </div>

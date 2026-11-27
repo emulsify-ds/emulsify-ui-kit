@@ -1,0 +1,11 @@
+<ul class="icons-demo">
+  {% for name in icons %}
+    <li class="icons-demo__item">
+      {{ include('@components/icon/icon.twig', {
+        icon__name: name,
+        icon__decorative: true,
+      }, with_context: false) }}
+      <code>{{ name }}</code>
+    </li>
+  {% endfor %}
+</ul>

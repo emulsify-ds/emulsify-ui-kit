@@ -90,13 +90,13 @@
 {% set icon %}
 <span {{ bem('icon', [], button__base_class) }}>
 	{% block button__icon %}
-		{% include "@components/icons/_icon.twig" with {
+		{{ include('@components/icon/icon.twig', {
 			icon__name: button__icon.name,
 			icon__role: button__icon.role,
 			icon__title: button__icon.title,
 			icon__desc: button__icon.desc,
 			icon__decorative: button__icon.decorative,
-		} %}
+		}, with_context: false) }}
 	{% endblock %}
 </span>
 {% endset %}

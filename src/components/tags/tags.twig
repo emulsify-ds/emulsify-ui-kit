@@ -31,7 +31,7 @@
       } %}
     {% endif %}
 
-    {% embed "@components/lists/_list-item.twig" with {
+    {% embed "@components/list/_list-item.twig" with {
       list__item__blockname: tags__base_class,
     } %}
       {% block list__item__content %}
@@ -55,13 +55,13 @@
 {% endset %}
 
 {% if items is not empty %}
-  {% embed "@components/lists/list.twig" with {
+  {% embed "@components/list/list.twig" with {
     list__items: items,
     list__base_class: tags__base_class,
     list__modifiers: tags__list_modifiers,
     list__blockname: tags__blockname,
     list__attributes: tags__attributes,
-    list__addition_classes: tags__addition_classes,
+    list__additional_classes: tags__addition_classes,
   } %}
     {% block list__content %}
       {{ tag_items }}

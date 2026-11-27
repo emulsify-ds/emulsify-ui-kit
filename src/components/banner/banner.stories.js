@@ -1,7 +1,7 @@
 import { renderTwig } from '@emulsify/core/storybook';
 import bannerData from './banner.component.yml';
 import bannerTwig from './banner.twig';
-import '../video/playback';
+import '../video/video.js';
 
 const { properties } = bannerData.props;
 

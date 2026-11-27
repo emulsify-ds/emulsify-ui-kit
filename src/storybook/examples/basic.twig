@@ -2,39 +2,40 @@
 	{% include "@examples/examples/assets/_header.twig" %}
 	<main class="basic text-long">
 		{% include "@components/navigation/breadcrumbs/breadcrumbs.twig" %}
-		{% include "@components/typography/heading/heading.twig" with {
-      heading: 'Undergraduate Courses',
+		{{ include('@components/heading/heading.twig', {
+      heading__content: 'Undergraduate Courses',
       heading__level: '1',
-    } %}
-		{% include "@components/typography/heading/heading.twig" with {
-      heading: 'Unveiling the Rich Tapestry of Film History',
+    }, with_context: false) }}
+		{{ include('@components/heading/heading.twig', {
+      heading__content: 'Unveiling the Rich Tapestry of Film History',
       heading__level: '2',
-    } %}
+    }, with_context: false) }}
 		<p>In the first semester, students embark on a captivating journey through time, exploring the evolution of cinema from its early beginnings to the present day. They delve into the works of influential filmmakers, iconic films, and significant movements, cultivating a deep appreciation for the artistic, cultural, and social impact of cinema.</p>
 		<br>
-		{% include "@components/image/responsive-image.twig" with {
+		{{ include('@components/image/image.twig', {
 			image__src: '/assets/images/example/basic-camera-image.png',
 			image__alt: '',
-		} %}
+			image__decorative: true,
+		}, with_context: false) }}
 		<br>
-		{% include "@components/typography/heading/heading.twig" with {
-      heading: 'Analyzing Films: Unraveling the Layers of Meaning',
+		{{ include('@components/heading/heading.twig', {
+      heading__content: 'Analyzing Films: Unraveling the Layers of Meaning',
       heading__level: '2',
-    } %}
+    }, with_context: false) }}
 		<p>Diving into the realm of film theory, aesthetics, and analysis, students develop the skills to interpret films through multiple lenses. They delve into narrative structures, visual storytelling techniques, and the nuanced role of cinematography, sound, and editing. Through rigorous analysis and thought-provoking discussions, students gain a profound understanding of the intricate layers of meaning embedded within films.</p>
-		{% include "@components/typography/heading/heading.twig" with {
-      heading: 'Hands-On Filmmaking Experience: From Vision to Creation',
+		{{ include('@components/heading/heading.twig', {
+      heading__content: 'Hands-On Filmmaking Experience: From Vision to Creation',
       heading__level: '2',
-    } %}
+    }, with_context: false) }}
 		<p>Empowering students with practical skills, our program offers hands-on production courses where they transform their creative visions into reality. From scriptwriting to directing, cinematography to editing, students master the technical aspects of filmmaking. Collaborating with fellow students, they navigate the complexities of teamwork, effective communication, and project organization.</p>
 		<p>Our program goes beyond the classroom, providing valuable industry insights and connections. Guest lectures, workshops, and internships offer students opportunities to learn from and network with professionals in the field. Through these engagements, students gain real-world perspectives, understand industry trends, and lay the foundation for future career opportunities.</p>
 		<p>In the final semesters, students have the freedom to specialize in areas of interest. Whether it's documentary filmmaking, film criticism, or screenwriting, advanced courses refine their skills and knowledge, empowering them to delve deeper into their chosen field. The program culminates in a capstone project, where students showcase their expertise through a comprehensive film analysis, research paper, or creative work.</p>
 		<p>Led by passionate faculty and supported by state-of-the-art facilities, our Film Studies program offers a transformative educational experience. Students emerge with a profound appreciation for cinema's artistic power, a strong foundation in critical thinking and analysis, and the practical skills required to succeed in the film industry or pursue further academic studies in the field. Join us on this remarkable journey of cinematic exploration and discovery.</p>
 		<section class="faux-form">
-			{% include "@components/typography/heading/heading.twig" with {
-        heading: 'Fill out this form',
+			{{ include('@components/heading/heading.twig', {
+        heading__content: 'Fill out this form',
         heading__level: '2',
-      } %}
+      }, with_context: false) }}
 			<div class="two-col">
 				<div class="form-item">
 					<label for="edit-name" class="form-item__label form-item__label--required form-item__label--textfield">Name</label>

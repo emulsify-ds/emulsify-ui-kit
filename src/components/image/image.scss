@@ -1,21 +1,30 @@
-@mixin image {
+@use '../../base' as *;
+
+.image,
+.image__picture {
   display: block;
-  height: auto;
-  max-width: 100%;
+  max-inline-size: 100%;
 }
 
-img,
-picture {
-  @include image;
+.image {
+  block-size: auto;
 }
 
-figure {
+.image__figure {
   margin: 0;
-
-  /* override normalize */
 }
 
-.figure__caption {
-  font-size: var(--font-size-x-small);
-  margin-top: var(--spacing-md);
+.image__caption {
+  margin-block-start: space(12);
+  font-size: font-size('small');
+  color: var(--clr-body);
+}
+
+.image__credit {
+  display: block;
+}
+
+.image__link {
+  display: inline-block;
+  max-inline-size: 100%;
 }

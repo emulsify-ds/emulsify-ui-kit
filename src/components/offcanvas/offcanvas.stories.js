@@ -1,3 +1,5 @@
+import { renderTwig } from '@emulsify/core/storybook';
+
 import offcanvasTwig from './offcanvas.twig';
 import { mapDataToTwig } from '../../util/dataTransformers.js';
 
@@ -10,6 +12,7 @@ import './offcanvas';
  */
 export default {
   title: 'Components/Offcanvas',
+  render: renderTwig(offcanvasTwig),
   argTypes: {
     offcanvas__type: {
       name: 'Type',
@@ -33,4 +36,4 @@ export default {
   args: mapDataToTwig(props.properties),
 };
 
-export const Offcanvas = (args) => offcanvasTwig(args);
+export const Offcanvas = {};

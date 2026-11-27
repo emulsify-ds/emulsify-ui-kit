@@ -1,0 +1,23 @@
+@use '../' as *;
+
+.icons-demo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr));
+  gap: space(8);
+  margin: 0;
+  padding-inline: space(24);
+}
+
+.icons-demo__item {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: space(8);
+  padding: space(16);
+  border: var(--bw-sm) solid var(--clr-border);
+  color: var(--clr-body);
+  text-align: center;
+  overflow-wrap: anywhere;
+
+  --icon-size: #{space(40)};
+}

@@ -30,30 +30,19 @@
   {% block banner__media %}
     {% if banner__media == 'image' %}
       <img src="{{banner__image}}" alt="This is the banner image alt text"/>
-    {% else %}
-      {% set video_id = 'video-' ~ random('1234567890') ~ random('1234567890') ~ random('1234567890') ~ random('1234567890') %}
-
-      {% include "@components/video/video.twig" with {
+    {% elseif banner__video %}
+      {% set banner__video_sources = [] %}
+      {% for url in (banner__video is iterable ? banner__video : [banner__video]) %}
+        {% set banner__video_sources = banner__video_sources|merge([{ src: url }]) %}
+      {% endfor %}
+      {{ include('@components/video/video.twig', {
         video__type: 'html5',
-        video__urls: banner__video,
-        video__show_placeholder: false,
+        video__title: 'Banner background video'|t,
+        video__sources: banner__video_sources,
+        video__autoplay: true,
+        video__loop: true,
         video__blockname: banner__base_class,
-        video_object__attributes: {
-          'id': video_id,
-          'preload': 'true',
-          'muted': 'true',
-          'playsinline': 'true',
-          'webkit-playsinline': 'true',
-          'aria-hidden': 'true',
-          'loop': 'true',
-          'autoplay': 'true',
-        },
-      } %}
-
-      {% include "@components/video/playback-button.twig" with {
-        playback__blockname: banner__base_class,
-        playback__video_id: video_id,
-      } %}
+      }, with_context: false) }}
     {% endif %}
   {% endblock %}
 </div>
@@ -64,18 +53,19 @@
 <div {{ add_attributes(banner__attributes) }}>
   <div {{ bem('content', [], banner__base_class) }}>
     {% if banner__heading %}
-      {% include "@components/typography/heading/heading.twig" with {
-        heading: banner__heading,
+      {{ include('@components/heading/heading.twig', {
+        heading__content: banner__heading,
         heading__level: banner__heading__level|default('4'),
         heading__blockname: banner__base_class,
-      } %}
+      }, with_context: false) }}
     {% endif %}
 
     {% if banner__text %}
-      {% include "@components/typography/text/text.twig" with {
+      {{ include('@components/text/_text.twig', {
+        text__element: 'div',
         text__content: banner__text,
         text__blockname: banner__base_class,
-      } %}
+      }, with_context: false) }}
     {% endif %}
 
     {% if banner__link_items|length > 0 %}

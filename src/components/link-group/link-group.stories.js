@@ -1,3 +1,5 @@
+import { renderTwig } from '@emulsify/core/storybook';
+
 import linkGroupTwig from './link-group.twig';
 import { mapDataToTwig } from '../../util/dataTransformers.js';
 
@@ -8,6 +10,7 @@ import { props } from './link-group.component.yml';
  */
 export default {
   title: 'Components/Link Group',
+  render: renderTwig(linkGroupTwig),
   argTypes: {
     link_group__display: {
       name: 'Display',
@@ -37,4 +40,4 @@ export default {
   args: mapDataToTwig(props.properties),
 };
 
-export const LinkGroup = (args) => linkGroupTwig(args);
+export const LinkGroup = {};

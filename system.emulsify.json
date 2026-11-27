@@ -145,18 +145,48 @@
           "path": "./assets/icons/x.svg",
           "destinationPath": "./assets/icons/x.svg",
           "description": "Icon - X"
+        },
+        {
+          "name": "icon-close",
+          "path": "./assets/icons/close.svg",
+          "destinationPath": "./assets/icons/close.svg",
+          "description": "Icon - Close"
+        },
+        {
+          "name": "icon-pause",
+          "path": "./assets/icons/pause.svg",
+          "destinationPath": "./assets/icons/pause.svg",
+          "description": "Icon - Pause"
+        },
+        {
+          "name": "icon-play",
+          "path": "./assets/icons/play.svg",
+          "destinationPath": "./assets/icons/play.svg",
+          "description": "Icon - Play"
+        },
+        {
+          "name": "icon-search",
+          "path": "./assets/icons/search.svg",
+          "destinationPath": "./assets/icons/search.svg",
+          "description": "Icon - Search"
+        },
+        {
+          "name": "icon-xmark",
+          "path": "./assets/icons/xmark.svg",
+          "destinationPath": "./assets/icons/xmark.svg",
+          "description": "Icon - Xmark"
         }
       ],
       "components": [
         {
           "name": "accordion",
           "structure": "components",
-          "dependency": ["button", "icons", "typography"]
+          "dependency": ["button", "icon", "heading", "text", "list"]
         },
         {
           "name": "announcement",
           "structure": "components",
-          "dependency": ["button", "icons", "typography"]
+          "dependency": ["button", "icon", "heading"]
         },
         {
           "name": "audio-player",
@@ -166,24 +196,29 @@
         {
           "name": "blockquote",
           "structure": "components",
-          "dependency": ["typography"]
+          "dependency": []
         },
         {
           "name": "button",
           "structure": "components",
           "required": true,
-          "dependency": ["icons"]
+          "dependency": ["icon"]
         },
         {
           "name": "card",
           "structure": "components",
           "required": true,
-          "dependency": ["link", "image", "typography"]
+          "dependency": ["link", "image", "heading", "text"]
+        },
+        {
+          "name": "code",
+          "structure": "components",
+          "dependency": []
         },
         {
           "name": "cta",
           "structure": "components",
-          "dependency": ["icons"]
+          "dependency": ["icon"]
         },
         {
           "name": "forms",
@@ -192,7 +227,13 @@
           "dependency": []
         },
         {
-          "name": "icons",
+          "name": "heading",
+          "structure": "components",
+          "required": true,
+          "dependency": []
+        },
+        {
+          "name": "icon",
           "structure": "components",
           "required": true,
           "dependency": []
@@ -210,7 +251,7 @@
           "dependency": []
         },
         {
-          "name": "lists",
+          "name": "list",
           "structure": "components",
           "required": true,
           "dependency": []
@@ -229,7 +270,7 @@
           "name": "navigation",
           "structure": "components",
           "required": true,
-          "dependency": ["button", "link", "list", "icons"]
+          "dependency": ["button", "link", "list", "icon"]
         },
         {
           "name": "status",
@@ -257,13 +298,7 @@
         {
           "name": "text-with-image",
           "structure": "components",
-          "dependency": ["image", "link", "typography"]
-        },
-        {
-          "name": "typography",
-          "structure": "components",
-          "required": true,
-          "dependency": []
+          "dependency": ["image", "link", "heading", "text"]
         },
         {
           "name": "video",

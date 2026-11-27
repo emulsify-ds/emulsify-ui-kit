@@ -34,6 +34,12 @@ Update bookmarks, embeds, and other links to renamed Storybook entries.
 | `components-media-*` | `components-*` |
 | `components-button--*` | `deprecated-button--*` |
 | `components-typography-links--*` | `deprecated-link--*` |
+| `components-typography--headings` | `components-heading--heading` |
+| `components-typography--random` | `components-text--inline-elements` |
+| `components-typography--blockquote` | `components-blockquote--bar-left` |
+| `components-typography--code`, `components-typography--preformatted` | `components-code--code` |
+| `components-icons--icons` | `base-icons--library` |
+| `components-typography-list--*` | `components-list--*` |
 
 ## Tokens
 
@@ -199,5 +205,46 @@ Use `@components/cta/cta.twig` for calls to action. Use a plain anchor for in-te
 Keep old style-only values such as `filled` out of `cta__button_type`. Set a CTA appearance modifier instead. Use `cta__attributes` for native and ARIA state and the `cta__content` slot for custom label markup. CTA uses the inherited light or dark color roles. Remove inverse or dark appearance modifiers when migrating.
 
 Pass relative URLs or HTTP, HTTPS, email, and telephone URLs in `cta__url`. Use `cta__link` to preserve routed URLs and Drupal link options. Include the new-tab notice in any accessible name you supply through `aria-label` or `aria-labelledby`.
+
+### Heading, Text, Blockquote, and Code
+
+| 1.x template or prop | 2.0 replacement |
+| --- | --- |
+| `@components/typography/heading/heading.twig` | `@components/heading/heading.twig` |
+| `heading`, `heading_url`, `heading_link_*` | `heading__content`, `heading__url`, and `heading__link_*` |
+| `@components/typography/text/text.twig` and `paragraph.twig` | `@components/text/_text.twig`. Pass `text__element: 'div'` for block markup or `p` for a paragraph. Map `paragraph_*` to the corresponding `text__*` props. |
+| `@components/text/text.twig` block `text_content` | `text__formatted_content`. Use processed Drupal markup or a render array in `text__content` for a whole formatted value. |
+| `text_field__heading`, `text_field__container_modifiers` | `text__heading`, `text__container__modifiers` |
+| `@components/typography/text/blockquote.twig` | `@components/blockquote/blockquote.twig` |
+| `blockquote__content` | `blockquote__quote` for the prop and `blockquote__quote_content` for the slot. Use `blockquote__attribution_content` for custom attribution markup. |
+| `blockquote__aria_label` | Pass `aria-label` through `blockquote__attributes` when the quotation needs one. |
+| `@components/typography/text/code.twig` | `@components/code/code.twig` |
+| `code_content` | `code__content` for literal source and `code__snippet_content` for author-controlled markup. Pass raw source text so the escaping preserves HTML tags and indentation. |
+
+Use `heading__level` for the document outline and a modifier such as `h3` or `display` for visual size. Linked headings use the Base anchor treatment. The `typography` component directory and CLI group have been removed.
+
+### Icon and List
+
+- Include `@components/icon/icon.twig` in place of the former `@components/icons/_icon.twig`. Icon inlines the SVG file from `assets/icons/`. Register `assets: assets` under `components.namespaces` in your theme's `.info.yml` if the namespace is missing.
+- For meaningful icons, set `icon__decorative: false` and supply a title. Set a distinct `icon__id` per rendered instance to derive stable title and description IDs. For decorative icons, use `icon__decorative: true`.
+- Change `@components/lists/list.twig` and `@components/lists/_list-item.twig` to `@components/list/list.twig` and `@components/list/_list-item.twig`. Rename `list__addition_classes` to `list__additional_classes`. `list__content` and `list__item__content` remain available for embeds.
+- Pass list entries as `{ content, children? }` objects. A nested list goes in `children` with its own `type`, `items`, and optional `modifiers`. Standalone lists show native markers by default. Scoped navigation lists retain their marker-free treatment.
+
+### Image and Video
+
+| 1.x input | 2.0 replacement |
+| --- | --- |
+| `responsive-image.twig`, `_responsive-image.twig`, `_image.twig`, `_picture.twig`, `_figure.twig` | Include `@components/image/image.twig`. Import Storybook examples from `image.component.yml`. |
+| `output_image_tag`, `card__image__output_image_tag` | Pass `image__sources` for picture candidates. The Image template picks the appropriate element. |
+| `responsive_image_blockname` | `image__blockname` |
+| `image__show_caption`, `image__show_copyright`, `image__copyright` | Pass `image__caption` or `image__credit` to render a figure. Omit each value to hide it. |
+| `video__urls` | `video__sources`, an array of `{ src, type? }` objects. |
+| `video_content` HTML or slot | `video__embed_url` with a `video__title`. Use Embed for an existing trusted iframe fragment. |
+| `video__show_placeholder`, `playback-button.twig` | `video__poster` for the play-button preview. Opt into `video__autoplay` and `video__loop` for muted background playback. |
+| `video_object__attributes` for autoplay and loop | Use the dedicated video props. Use `video__attributes` for the outer element. |
+| `video__show_caption`, `video__show_copyright`, `video__copyright` | Pass `video__caption` and `video__credit` for visible attribution. Pass `video__tracks` for timed captions, subtitles, or descriptions. |
+| `video-html5.yml`, `video-embed.yml`, `playback.js`, `video-embed.js` | Use `video.component.yml` and `video.js`. |
+
+Supply `image__alt` for every image. An empty value requires `image__decorative: true`. Use `image__srcset` and `image__sizes` for responsive candidates. Give videos a descriptive title and supply caption tracks for meaningful audio.
 
 ## Removed

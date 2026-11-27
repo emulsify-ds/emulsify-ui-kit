@@ -1,104 +1,70 @@
-@use '../../base/breakpoints/breakpoints' as *;
-@use '../../base/spacing/spacing' as *;
-@use '../../base/typography/typography' as *;
-@use '../typography/text/text' as *;
-@use '../typography/heading/heading.scss' as *;
-@use '../link/link' as *;
+@use '../../base' as *;
 
 .text,
-.ck {
-  margin: 0;
-  z-index: 1;
-  position: relative;
-  overflow-wrap: break-word;
+.text-long,
+.ck-content {
+  color: var(--formatted-text-color, var(--clr-body));
+  line-height: line-height('normal');
+  overflow-wrap: anywhere;
 
-  &[data-text-position='left'] {
-    margin-right: auto;
+  > * + * {
+    margin-block-start: space(16);
   }
 
-  &[data-text-position='center'] {
-    margin-inline: auto;
+  @each $level in (1, 2, 3, 4, 5) {
+    :where(h#{$level}:not(.heading)) {
+      @include typography('h#{$level}');
+    }
   }
 
-  &[data-text-position='right'] {
-    margin-left: auto;
+  :where(h6:not(.heading)) {
+    @include h5;
   }
 
-  &:last-child {
-    margin-bottom: 0;
+  :where(h1, h2, h3, h4, h5, h6) {
+    &:where(:not(.heading)) {
+      color: var(--clr-heading);
+    }
+
+    &:not(:first-child) {
+      margin-block-start: space(24);
+    }
   }
 
-  &.ck-editor__top.ck-reset_all {
-    position: relative;
-    z-index: 2;
+  :where(ul, ol) {
+    padding-inline-start: space(24);
   }
 
-  // Paragraphs
-  p {
-    margin: 0;
+  :where(li + li) {
+    margin-block-start: space(8);
   }
 
-  p:not(:last-child) {
-    @extend %paragraph;
-  }
-
-  blockquote {
-    @extend %blockquote;
-  }
-
-  hr {
-    @extend %hr;
-  }
-
-  a {
-    @include link;
-  }
-
-  // Headings
-  h1 {
-    @extend %h1;
-  }
-
-  h2 {
-    @extend %h2;
-  }
-
-  h3 {
-    @extend %h3;
-  }
-
-  h4 {
-    @extend %h4;
-  }
-
-  h5 {
-    @extend %h5;
-  }
-
-  h6 {
-    @extend %h6;
-  }
-
-  // Lists
-  ul,
-  ol {
-    margin-bottom: var(--spacing-lg);
-    margin-left: var(--spacing-xl);
-  }
-
-  ul {
+  :where(ul) {
     list-style-type: disc;
   }
 
-  ol {
+  :where(ol) {
     list-style-type: decimal;
   }
 
-  li {
-    margin-bottom: var(--spacing-lg);
+  :where(blockquote:not(.blockquote__quote)) {
+    border-inline-start: space(4) solid var(--clr-border);
+    padding-inline-start: space(16);
+  }
 
-    &:last-child {
-      margin-bottom: 0;
-    }
+  :where(hr) {
+    border: 0;
+    border-block-start: var(--bw-sm) solid var(--clr-border);
+  }
+
+  :where(pre:not(.code)) {
+    max-inline-size: 100%;
+    overflow: auto;
+    background-color: color-mix(
+      in srgb,
+      var(--clr-background) 94%,
+      var(--clr-body)
+    );
+    padding: space(12);
   }
 }

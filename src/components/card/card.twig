@@ -48,12 +48,14 @@
 	{# Image #}
 	{% block card__img %}
 		{% if card__image__src %}
-			{% include "@components/image/responsive-image.twig" with {
+			{{ include('@components/image/image.twig', {
         image__blockname: card__base_class,
-        output_image_tag: card__image__output_image_tag,
         image__src: card__image__src,
-        image__alt: card__image__alt,
-      } %}
+        image__alt: card__image__alt|default(''),
+        image__decorative: card__image__alt|default('') is empty,
+        image__srcset: card__image__srcset,
+        image__sizes: card__image__sizes,
+      }, with_context: false) }}
 		{% endif %}
 	{% endblock %}
 	{# Content #}
@@ -62,40 +64,40 @@
 
 		{# Subheading #}
 		{% if card__subheading %}
-			{% include "@components/typography/heading/heading.twig" with {
+			{{ include('@components/heading/heading.twig', {
         heading__base_class: card__subheading__base_class|default('subheading'),
         heading__modifiers: card__subheading__modifiers,
         heading__blockname: card__base_class,
         heading__level: 3,
-        heading: card__subheading,
-        heading_url: card__subheading__link,
-      } %}
+        heading__content: card__subheading,
+        heading__url: card__subheading__link,
+      }, with_context: false) }}
 		{% endif %}
 
 		{# Heading #}
 		{% if card__heading %}
 			{{ title_prefix }}
-			{% include "@components/typography/heading/heading.twig" with {
+			{{ include('@components/heading/heading.twig', {
         heading__base_class: card__heading__base_class|default('heading'),
         heading__modifiers: card__heading__modifiers,
         heading__blockname: card__base_class,
         heading__level: 2,
-        heading: card__heading,
-        heading_url: card__heading__link|default(card__link__url),
-        heading_link_base_class: card__heading__link_base_class|default('heading-link'),
-        heading_link_blockname: card__base_class,
-      } %}
+        heading__content: card__heading,
+        heading__url: card__heading__link|default(card__link__url),
+        heading__link_base_class: card__heading__link_base_class|default('heading-link'),
+        heading__link_blockname: card__base_class,
+      }, with_context: false) }}
 			{{ title_suffix }}
 		{% endif %}
 
 		{# Body #}
 		{% if card__body %}
-			{% include "@components/typography/text/paragraph.twig" with {
-        paragraph_base_class: card__body__base_class|default('body'),
-        paragraph_modifiers: card__body__modifiers,
-        paragraph_blockname: card__base_class,
-        paragraph_content: card__body,
-      } %}
+			{{ include('@components/text/_text.twig', {
+        text__base_class: card__body__base_class|default('body'),
+        text__modifiers: card__body__modifiers,
+        text__blockname: card__base_class,
+        text__content: card__body,
+      }, with_context: false) }}
 		{% endif %}
 		{# Link #}
 		{% if card__link__url %}

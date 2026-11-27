@@ -33,17 +33,18 @@
     <div {{ bem('content', [], text_with_image__base_class) }}>
       {# Heading #}
       {% if text_with_image__heading %}
-        {% include "@components/typography/heading/heading.twig" with {
-          heading: text_with_image__heading,
+        {{ include('@components/heading/heading.twig', {
+          heading__content: text_with_image__heading,
           heading__level: '2',
           heading__blockname: text_with_image__base_class,
-        } %}
+        }, with_context: false) }}
       {% endif %}
       {# Text #}
-      {% include "@components/typography/text/text.twig" with {
+      {{ include('@components/text/_text.twig', {
+        text__element: 'div',
         text__content: text_with_image__text,
         text__blockname: text_with_image__base_class,
-      } %}
+      }, with_context: false) }}
       {# optional link #}
       {% if text_with_image__link__url %}
         {% include "@components/link/link.twig" with {
@@ -56,21 +57,23 @@
     <div {{ bem('media', text_with_image__modifiers, text_with_image__base_class) }}>
       <div {{ bem('image', text_with_image__modifiers, text_with_image__base_class) }}>
         {% block text_with_image__image %}
-          {% include "@components/image/responsive-image.twig" with {
-            output_image_tag: true,
+          {{ include('@components/image/image.twig', {
+            image__alt: '',
+            image__decorative: true,
             image__sizes: '100vw',
             image__src: 'https://placehold.co/320x213',
             image__srcset: 'https://placehold.co/320x213 320w, https://placehold.co/480x320 480w, https://placehold.co/640x427 640w, https://placehold.co/800x533 800w, https://placehold.co/960x640 960w, https://placehold.co/1120x747 1120w, https://placehold.co/1280x853 1280w, https://placehold.co/1440x960 1440w, https://placehold.co/1600x1067 1600w, https://placehold.co/1760x1173 1760w, https://placehold.co/1920x1280 1920w, https://placehold.co/2080x1387 2080w, https://placehold.co/2240x1493 2240w, https://placehold.co/2400x1600 2400w'
-          } %}
+          }, with_context: false) }}
         {% endblock %}
       </div>
 
       {% if text_with_image__show_captions
         and text_content__image %}
-          {% include "@components/typography/text/text.twig" with {
+          {{ include('@components/text/_text.twig', {
+            text__element: 'div',
             text__content: text_content__image,
             text__base_class: 'caption-credit-wrapper',
-          } %}
+          }, with_context: false) }}
       {% endif %}
     </div>
   </div>

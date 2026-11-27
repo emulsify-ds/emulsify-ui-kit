@@ -1,0 +1,53 @@
+{#
+ # - icon__name: SVG filename without the extension in assets/icons.
+ # - icon__id: Instance ID prefix for the accessible title and description.
+ # - icon__title: Accessible name for a meaningful icon.
+ # - icon__desc: Optional description for a meaningful icon.
+ # - icon__decorative: Explicitly hide the SVG from assistive technologies.
+ # - icon__role: Accessible role for a meaningful icon. Defaults to img.
+ # - icon__base_class: Base class for the BEM name. Defaults to icon.
+ # - icon__blockname: Parent block for a BEM element.
+ # - icon__modifiers: Additional BEM modifiers.
+ # - icon__additional_classes: Additional CSS classes.
+ # - icon__attributes: Additional SVG attributes.
+ #}
+{% set icon__name = icon__name|default('') %}
+{% if icon__name matches '/^[a-z0-9][a-z0-9_-]*$/' %}
+  {% set icon__source = source('@assets/icons/' ~ icon__name ~ '.svg', true)|default('')|trim %}
+  {% if icon__source starts with '<svg' %}
+    {% set icon__parts = icon__source|split('>', 2) %}
+    {% set icon__view_box = icon__parts[0]|split('viewBox="', 2)[1]|default('')|split('"', 2)|first %}
+    {% set icon__attributes = icon__attributes|default({}) %}
+    {% set icon__title = icon__title|default(icon__attributes['aria-label']|default('')) %}
+    {% set icon__decorative = icon__decorative is same as(true) or icon__title is empty %}
+    {% set icon__id = icon__id|default(icon__attributes.id|default('')) %}
+    {% set icon__title_id = icon__id ? icon__id ~ '-title' : null %}
+    {% set icon__desc_id = icon__id ? icon__id ~ '-description' : null %}
+    {% set icon__base_class = icon__base_class|default('icon') %}
+    {% set icon__classes = icon__additional_classes|default([]) %}
+    {% if icon__blockname or icon__base_class != 'icon' %}
+      {% set icon__classes = icon__classes|merge(['icon']) %}
+    {% endif %}
+    {% set attributes = bem(icon__base_class, icon__modifiers|default([]), icon__blockname, icon__classes) %}
+    {% set icon__attributes = icon__attributes|merge({
+      viewBox: icon__view_box,
+      focusable: 'false',
+      role: icon__decorative ? null : icon__role|default('img'),
+      'aria-hidden': icon__decorative ? 'true' : null,
+      'aria-label': not icon__decorative and not icon__title_id ? icon__title : null,
+      'aria-labelledby': not icon__decorative ? icon__title_id : null,
+      'aria-description': not icon__decorative and not icon__desc_id ? icon__desc|default(null) : null,
+      'aria-describedby': not icon__decorative and icon__desc ? icon__desc_id : null,
+    }) %}
+    {# Inline the drawing without copying exporter attributes or IDs from the source root. #}
+    <svg {{ add_attributes(icon__attributes) }}>
+      {% if not icon__decorative %}
+        <title{% if icon__title_id %} id="{{ icon__title_id|e }}"{% endif %}>{{ icon__title|e }}</title>
+        {% if icon__desc %}
+          <desc{% if icon__desc_id %} id="{{ icon__desc_id|e }}"{% endif %}>{{ icon__desc|e }}</desc>
+        {% endif %}
+      {% endif %}
+      {{ icon__parts[1]|split('</svg>', 2)|first|raw }}
+    </svg>
+  {% endif %}
+{% endif %}

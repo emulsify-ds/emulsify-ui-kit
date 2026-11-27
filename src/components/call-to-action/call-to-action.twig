@@ -22,26 +22,28 @@
   <div {{ bem('content', [], call_to_action__base_class) }}>
     {# Text overline #}
     {% if call_to_action__overline %}
-      {% include "@components/typography/text/text.twig" with {
+      {{ include('@components/text/_text.twig', {
+        text__element: 'div',
         text__content: call_to_action__overline,
         text__blockname: call_to_action__base_class,
         text__base_class: 'overline',
-      } %}
+      }, with_context: false) }}
     {% endif %}
     {# Heading #}
     {% if call_to_action__heading %}
-      {% include "@components/typography/heading/heading.twig" with {
-        heading: call_to_action__heading,
+      {{ include('@components/heading/heading.twig', {
+        heading__content: call_to_action__heading,
         heading__level: '2',
         heading__blockname: call_to_action__base_class,
-      } %}
+      }, with_context: false) }}
     {% endif %}
     {# Text #}
     {% if call_to_action__text %}
-      {% include "@components/typography/text/text.twig" with {
+      {{ include('@components/text/_text.twig', {
+        text__element: 'div',
         text__content: call_to_action__text,
         text__blockname: call_to_action__base_class,
-      } %}
+      }, with_context: false) }}
     {% endif %}
     {# optional link #}
     {# Render the action button #}

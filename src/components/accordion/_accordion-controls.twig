@@ -5,30 +5,30 @@
 
 {% set expand_button__content %}
   {{'Expand all'}}
-  {% include "@components/icons/_icon.twig" with {
+  {{ include('@components/icon/icon.twig', {
     icon__name: 'angle-down',
     icon__blockname: accordion__base_class,
     icon__decorative: true,
-  } %}
+  }, with_context: false) }}
 {% endset %}
 
 {% set collapse_button__content %}
   {{'Collapse all'}}
-  {% include "@components/icons/_icon.twig" with {
+  {{ include('@components/icon/icon.twig', {
     icon__name: 'angle-down',
     icon__blockname: accordion__base_class,
     icon__decorative: true,
-  } %}
+  }, with_context: false) }}
 {% endset %}
 
-{% embed "@components/lists/list.twig" with {
+{% embed "@components/list/list.twig" with {
   list__base_class: 'controls',
   list__blockname: accordion__base_class,
-  list__addition_classes: ['js-accordion__controls'],
+  list__additional_classes: ['js-accordion__controls'],
   list__attributes: {'aria-label': 'Controls to Expand or Collapse all accordion items'},
   } %}
 	{% block list__content %}
-		{% embed "@components/lists/_list-item.twig" with {
+		{% embed "@components/list/_list-item.twig" with {
       list__item__base_class: 'controls__item',
       list__item__blockname: accordion__base_class,
       }%}
@@ -43,7 +43,7 @@
           } %}
 			{% endblock %}
 		{% endembed %}
-		{% embed "@components/lists/_list-item.twig" with {
+		{% embed "@components/list/_list-item.twig" with {
       list__item__base_class: 'controls__item',
       list__item__blockname: accordion__base_class,
       }%}

@@ -1,32 +1,78 @@
-/* Responsive Video using CSS only */
-.video {
-  iframe {
-    height: 100%;
-    width: 100%;
-  }
+@use '../../base' as *;
 
-  video {
-    height: auto;
-    width: 100%;
-  }
+.video {
+  margin: 0;
 }
 
 .video__wrap {
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
   position: relative;
+
+  &[data-video-ratio] {
+    aspect-ratio: 16 / 9;
+  }
+
+  &[data-video-ratio='4:3'] {
+    aspect-ratio: 4 / 3;
+  }
+
+  &[data-video-ratio='1:1'] {
+    aspect-ratio: 1;
+  }
+
+  iframe {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    border: 0;
+  }
 }
 
-.playback__button {
-  cursor: pointer;
-  border-radius: 50%;
-  width: var(--spacing-xl);
-  height: var(--spacing-xl);
-  border: 3px solid var(--color-white);
-  background-color: var(--color-primary-lighter);
+.video__media {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+}
 
-  svg {
-    width: 100%;
-    height: 100%;
+.video__placeholder {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+
+  [data-video-playing] & {
+    inset-block-start: space(12);
+    inset-inline-start: space(12);
+    transform: none;
   }
+}
+
+.video__play {
+  @include focus;
+
+  min-inline-size: space(24);
+  min-block-size: space(24);
+  padding: space(8) space(12);
+  border: 1px solid currentcolor;
+  border-radius: var(--r-sm);
+  background: var(--clr-background);
+  color: var(--clr-body);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--clr-link);
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 space(4) var(--clr-background);
+  }
+}
+
+.video__caption {
+  margin-block-start: space(12);
+  font-size: font-size('small');
+  color: var(--clr-body);
+}
+
+.video__credit {
+  display: block;
 }

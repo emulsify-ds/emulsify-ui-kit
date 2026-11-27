@@ -1,0 +1,41 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Code
+description: Displays a literal code sample with its original whitespace.
+group: Components
+status: stable
+props:
+  type: object
+  properties:
+    code__content:
+      type: [string, 'null']
+      title: Source text
+      description: Literal source to display in the code block.
+      examples:
+        - |-
+          <section aria-labelledby="example-heading">
+            <h2 id="example-heading">Example</h2>
+          </section>
+    code__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Optional BEM block name for the code panel.
+    code__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: Additional BEM variants for the code panel.
+      items:
+        type: string
+    code__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: CSS classes appended to the panel.
+      items:
+        type: string
+    code__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Attributes for the preformatted panel, including an optional accessible label.
+slots:
+  code__snippet_content:
+    title: Source markup
+    description: Author-controlled markup for the sample, such as syntax highlighting spans.

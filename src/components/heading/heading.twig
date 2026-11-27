@@ -1,0 +1,63 @@
+{#
+ # Semantic heading with optional linked content.
+ #
+ # Props:
+ # - heading__level: Semantic level 1–6, default 1.
+ # - heading__content: Heading text or rendered phrasing content.
+ # - heading__url: Optional destination for a plain link.
+ # - heading__base_class: BEM base class, default heading.
+ # - heading__blockname: Optional parent BEM block.
+ # - heading__modifiers: BEM modifiers. The first display modifier sets the visual size.
+ # - heading__additional_classes: Extra classes for the heading.
+ # - heading__attributes: Attributes for the heading.
+ # - heading__link_attributes: Attributes for the link.
+ # - heading__link_base_class: BEM base class for the link, default link.
+ # - heading__link_blockname: Parent BEM block for the link.
+ # - heading__link_modifiers: BEM modifiers for the link.
+ #}
+{% set heading__requested_level = heading__level|default(1) ~ '' %}
+{% set heading__level = 1 %}
+{% for level in [1, 2, 3, 4, 5, 6] %}
+  {% if heading__requested_level is same as(level ~ '') %}
+    {% set heading__level = level %}
+  {% endif %}
+{% endfor %}
+{% set heading__base_class = heading__base_class|default('heading') %}
+{% set heading__modifiers = heading__modifiers|default([]) %}
+{% set heading__style = null %}
+{% for modifier in heading__modifiers %}
+  {% if heading__style is null and modifier in ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'display'] %}
+    {% set heading__style = modifier %}
+  {% endif %}
+{% endfor %}
+{% set heading__attributes = heading__attributes|default({}) %}
+{% set heading__classes = heading__additional_classes|default([]) %}
+{% if heading__blockname or heading__base_class != 'heading' %}
+  {% set heading__classes = heading__classes|merge(['heading']) %}
+{% endif %}
+{% set heading__attributes = heading__attributes|merge({
+  class: bem(heading__base_class, heading__modifiers, heading__blockname, heading__classes),
+  'data-heading-style': heading__style|default('h' ~ heading__level),
+}) %}
+
+{% set heading__href = heading__url|default('')|trim %}
+{% set heading__url_prefix = heading__href|split(':')|first %}
+{% if ':' in heading__href and '/' not in heading__url_prefix and '?' not in heading__url_prefix and '#' not in heading__url_prefix and heading__url_prefix|lower not in ['http', 'https', 'mailto', 'tel'] %}
+  {% set heading__href = '' %}
+{% endif %}
+{% set heading__link_blockname = heading__link_blockname|default(heading__blockname ? heading__blockname ~ '__' ~ heading__base_class : heading__base_class) %}
+
+<h{{ heading__level }} {{ add_attributes(heading__attributes) }}>
+  {%- if heading__href -%}
+    {% set heading__link_attributes = heading__link_attributes|default({}) %}
+    {% set heading__link_classes = heading__link_attributes.class|default([]) %}
+    {% set heading__link_classes = heading__link_classes is iterable ? heading__link_classes : [heading__link_classes] %}
+    {% set heading__link_attributes = heading__link_attributes|merge({
+      class: bem(heading__link_base_class|default('link'), heading__link_modifiers, heading__link_blockname, heading__link_classes),
+      href: heading__href,
+    }) %}
+    <a {{ add_attributes(heading__link_attributes) }}>{{ heading__content }}</a>
+  {%- else -%}
+    {{- heading__content -}}
+  {%- endif -%}
+</h{{ heading__level }}>

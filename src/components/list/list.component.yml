@@ -1,0 +1,91 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: List
+description: A semantic list with optional nested items and marker-free variants.
+group: Components
+status: stable
+props:
+  type: object
+  properties:
+    list__items:
+      type: [array, 'null']
+      title: Items
+      description: Text items or objects with content, attributes, classes, modifiers, and a nested list.
+      default: []
+      items:
+        oneOf:
+          - type: string
+          - type: object
+            required: [content]
+            properties:
+              content:
+                type: [string, array, object, 'null']
+              attributes:
+                type: [object, 'null']
+              modifiers:
+                type: [array, 'null']
+                items:
+                  type: string
+              additional_classes:
+                type: [array, 'null']
+                items:
+                  type: string
+              children:
+                type: [object, 'null']
+                properties:
+                  items:
+                    $ref: '#/properties/list__items'
+                  type:
+                    type: [string, 'null']
+                    enum: [ul, ol, null]
+                  modifiers:
+                    type: [array, 'null']
+                    items:
+                      type: string
+      examples:
+        - - Review the meeting agenda
+          - content: Prepare the presentation
+            children:
+              type: ul
+              items:
+                - Check the slides
+                - Test the audio
+          - Share the meeting notes
+    list__type:
+      type: [string, 'null']
+      title: Type
+      description: Use ol when sequence matters and ul for an unordered group.
+      enum: [ul, ol, null]
+      default: ul
+    list__base_class:
+      type: [string, 'null']
+      title: Base class
+      description: Base class passed to BEM when composing a custom list.
+      default: list
+    list__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Parent block for a BEM element.
+      default: null
+    list__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: Use plain to hide markers or inline for an inline list that can wrap.
+      items:
+        type: string
+      default: []
+    list__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: Additional CSS classes applied to the list.
+      items:
+        type: string
+      default: []
+    list__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Additional HTML attributes such as id or aria-label.
+      default: {}
+slots:
+  list__content:
+    title: List item content
+    description: Rendered list items that replace the default loop.

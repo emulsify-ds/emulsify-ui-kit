@@ -1,0 +1,25 @@
+@use '../../base' as *;
+
+:where(.heading) {
+  color: var(--heading-color, var(--clr-heading));
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+@each $size in (h1, h2, h3, h4, h5) {
+  :where(.heading[data-heading-style='#{$size}']) {
+    @include typography($size);
+  }
+}
+
+:where(.heading[data-heading-style='h6']) {
+  @include h5;
+}
+
+:where(.heading[data-heading-style='display']) {
+  @include h1;
+
+  & {
+    font-size: font-size('display');
+  }
+}

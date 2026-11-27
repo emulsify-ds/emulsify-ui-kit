@@ -18,16 +18,19 @@ const readTemplate = (path) =>
   readFileSync(new URL(path, import.meta.url), 'utf8');
 
 twig.extendFilter('t', (value) => value);
+twig.extendFunction('source', (path) =>
+  readTemplate('../../../' + path.replace('@assets/', 'assets/')),
+);
 
 const icon = twig.twig({
-  data: readTemplate('../icons/_icon.twig'),
+  data: readTemplate('../icon/icon.twig'),
   rethrow: true,
 });
 
 twig.extendFunction(
   'include',
   createTwigIncludeFunction((path) => {
-    if (path === '@components/icons/_icon.twig') {
+    if (path === '@components/icon/icon.twig') {
       return (props) => icon.render(props);
     }
     return undefined;
@@ -127,19 +130,25 @@ test.each([
   ['left', 0],
   ['right', 1],
   [null, 1],
-])('uses the legacy decorative sprite icon at %s', (position, index) => {
+])('inlines the decorative SVG at %s', (position, index) => {
   const action = renderCTA({
     cta__text: 'Explore',
     cta__icon: 'arrow-right',
     cta__icon_position: position,
-    directory: 'themes/custom/example',
   });
   const iconElement = action.children[index];
 
   expect(iconElement.matches('.cta__icon')).toBe(true);
   expect(iconElement.getAttribute('aria-hidden')).toBe('true');
-  expect(iconElement.querySelector('use').getAttribute('xlink:href')).toBe(
-    '/themes/custom/example/dist//assets/icons.svg#arrow-right',
+  const artwork = new DOMParser().parseFromString(
+    readTemplate('../../../assets/icons/arrow-right.svg'),
+    'image/svg+xml',
+  );
+  expect(iconElement.getAttribute('viewBox')).toBe(
+    artwork.documentElement.getAttribute('viewBox'),
+  );
+  expect(iconElement.querySelector('path').getAttribute('d')).toBe(
+    artwork.querySelector('path').getAttribute('d'),
   );
 });
 
