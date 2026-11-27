@@ -316,6 +316,11 @@
           "dependency": ["cta"]
         },
         {
+          "name": "search",
+          "structure": "components",
+          "dependency": ["cta"]
+        },
+        {
           "name": "stats-group",
           "structure": "components",
           "dependency": []

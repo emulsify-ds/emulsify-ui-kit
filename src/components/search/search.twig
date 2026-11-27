@@ -1,45 +1,75 @@
 {#
-  # Search Component Template
-  # Available Variables:
-  # - search__placeholder: (string) placeholder text for the search input
-  # - search__label: (string) label for the toggle button
-  #}
+ # Search form with an optional disclosure.
+ #
+ # Props: search__id, search__label, search__placeholder, search__show_label,
+ # search__action, search__input_name, search__submit_label,
+ # search__show_toggle, search__toggle_label, search__landmark_label,
+ # search__blockname, search__modifiers, search__additional_classes,
+ # search__attributes.
+ # Slots: search__form_content.
+ #}
+{% set search__id = search__id|default('')|trim %}
+{% set search__show_toggle = search__show_toggle is same as(true) and search__id %}
+{% set search__action = search__action|default('/search')|trim %}
+{% set action_prefix = search__action|split(':')|first %}
+{% if ':' in search__action and '/' not in action_prefix and '?' not in action_prefix and '#' not in action_prefix and action_prefix|lower not in ['http', 'https'] %}
+  {% set search__action = '/search' %}
+{% endif %}
 
-{% set search__base_class = 'search' %}
-{% set search__label = search__label|default('Search') %}
-{% set search__placeholder = search__placeholder|default('Search') %}
+{% set search__classes = search__attributes.class|default([]) %}
+{% set search__classes = search__classes is iterable ? search__classes : [search__classes] %}
+{% set search__classes = search__classes|merge(search__additional_classes|default([]))|merge(search__blockname ? ['search'] : []) %}
+{% set search__wrapper_attributes = search__attributes|default({})|merge({
+  class: bem('search', search__modifiers, search__blockname, search__classes),
+  'data-search': 'true',
+}) %}
 
-{% set search_form %}
-  <div {{ bem('wrapper', [], search__base_class ~ '__form') }} aria-hidden="true">
-    {% block header__search %}
-      <form {{ bem('form', [], search__base_class) }} action="">
-        <input {{ bem('input', [], search__base_class ~ '__form') }} type="search" placeholder="{{ search__placeholder }}">
-        <div {{ bem('actions', [], search__base_class ~ '__form') }}>
-          <button type="button" {{ bem('submit', [], search__base_class ~ '__form') }}>
-            <span class="visually-hidden">{{ search__label }}</span>
-            {{ include('@components/icon/icon.twig', {
-              icon__name: 'search',
-              icon__decorative: true,
-            }, with_context: false) }}
-          </button>
-          <button type="button" {{ bem('toggle', [], search__base_class) }}>
-            <span class="visually-hidden">{{ header__cancel_label|default('Close') }}</span>
-            {{ include('@components/icon/icon.twig', {
-              icon__name: 'close',
-              icon__decorative: true,
-            }, with_context: false) }}
-          </button>
-        </div>
-      </form>
-    {% endblock %}
-  </div>
+{% set default_form %}
+  <form {{ add_attributes({class: bem('form', [], 'search'), action: search__action, method: 'get'}) }}>
+    <label {{ bem('field', [], 'search') }}>
+      <span {{ bem('label', [], 'search', search__show_label is same as(false) ? ['visually-hidden'] : []) }}>{{ search__label|default('Search this site'|t)|e('html', null, true) }}</span>
+      <input {{ add_attributes({
+        class: bem('input', [], 'search'),
+        type: 'search',
+        name: search__input_name|default('keys'),
+        placeholder: search__placeholder,
+      }) }}>
+    </label>
+    {{ include('@components/cta/cta.twig', {
+      cta__element: 'button',
+      cta__button_type: 'submit',
+      cta__text: search__submit_label|default('Search'|t),
+      cta__icon: 'search',
+      cta__additional_classes: ['search__submit'],
+    }, with_context: false) }}
+  </form>
 {% endset %}
 
-<div {{ bem(search__base_class) }}>
-  <button type="button" {{ bem('toggle', [], search__base_class) }} aria-expanded="false" aria-controls="">
-    <span>{{ search__label }}</span>
-    {{ include('@components/icon/icon.twig', { icon__decorative: true, icon__name: 'search', icon__modifiers: ['search'] }, with_context: false) }}
-    {{ include('@components/icon/icon.twig', { icon__decorative: true, icon__name: 'close', icon__modifiers: ['close'] }, with_context: false) }}
-  </button>
-  {{ search_form }}
+<div {{ add_attributes(search__wrapper_attributes) }}>
+  {% if search__show_toggle %}
+    {{ include('@components/cta/cta.twig', {
+      cta__element: 'button',
+      cta__button_type: 'button',
+      cta__text: search__toggle_label|default('Search'|t),
+      cta__icon: 'search',
+      cta__modifiers: ['clean'],
+      cta__additional_classes: ['search__toggle'],
+      cta__attributes: {
+        'aria-controls': search__id,
+        'aria-expanded': 'true',
+        'data-search-toggle': 'true',
+        hidden: true,
+      },
+    }, with_context: false) }}
+  {% endif %}
+  <search {{ add_attributes({
+    id: search__id ?: null,
+    class: bem('panel', [], 'search'),
+    'aria-label': search__landmark_label|default('Site search'|t),
+    'data-search-panel': 'true',
+  }) }}>
+    {% block search__form_content %}
+      {{ search__form_content ?? search_form ?? default_form }}
+    {% endblock %}
+  </search>
 </div>

@@ -401,4 +401,9 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - Pass `social__items` with a title and URL per link. The Twig include still accepts `items`. Pass modifiers with `social__modifiers`. Override `social__items_content` with complete list items in place of extending `_social-list.twig` or overriding `menu_list__content`.
 - Icons are decorative. The item title names the link and remains visible when no icon is available. Set `social__label` to distinguish separate landmarks and scope the surrounding theme for contrast.
 
+### Search
+
+- Use `search__label` for the input label and `search__toggle_label` for the optional disclosure. The form is visible by default. Set `search__show_toggle: true` and a page-unique `search__id` to enable the disclosure, and use `search__show_label: false` for a visually hidden input label.
+- Set `search__action` and `search__input_name` to the route and query parameter used by your site. Pass a rendered Drupal form to `search__form_content` in place of overriding the old `header__search` block inside Search. The `search_form` Twig variable remains a fallback. Search keeps the form within its landmark at all widths.
+
 ## Removed

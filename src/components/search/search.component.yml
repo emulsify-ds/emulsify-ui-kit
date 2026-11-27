@@ -1,26 +1,87 @@
-$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
-
-name: HeaderSearch
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Search
+description: A labelled search form with a submit button and an optional disclosure.
 group: Components
 status: stable
 libraryOverrides:
-  dependencies:
-    - core/once
+  dependencies: [core/drupal, core/once]
 props:
   type: object
   properties:
-    search__placeholder:
-      type: string
-      title: Search Placeholder
-      description: Placeholder text for search input.
-      data: Search
+    search__id:
+      type: [string, 'null']
+      title: Panel ID
+      description: Stable, unique ID for the landmark controlled by the optional disclosure.
+      pattern: '^\S+$'
+      default: null
     search__label:
-      type: string
-      title: Search Label
-      description: Label for the search toggle button.
-      data: Search
+      type: [string, 'null']
+      title: Field label
+      description: Accessible name of the search input.
+      examples: ['Search this site']
+      default: null
+    search__placeholder:
+      type: [string, 'null']
+      title: Placeholder
+      description: Optional example query for the search input.
+      examples: ['Enter search terms']
+      default: null
+    search__show_label:
+      type: [boolean, 'null']
+      title: Visible label
+      description: Display the field label visually.
+      default: true
+    search__action:
+      type: [string, 'null']
+      title: Form action
+      description: Destination that receives the GET query.
+      default: '/search'
+    search__input_name:
+      type: [string, 'null']
+      title: Query name
+      description: Query parameter used for the search term.
+      default: keys
+    search__submit_label:
+      type: [string, 'null']
+      title: Submit label
+      description: Label shown on the submit button.
+      default: null
+    search__show_toggle:
+      type: [boolean, 'null']
+      title: Collapsible search
+      description: Add a disclosure button for the form when a panel ID is set.
+      default: false
+    search__toggle_label:
+      type: [string, 'null']
+      title: Disclosure label
+      description: Label shown on the disclosure button.
+      default: null
+    search__landmark_label:
+      type: [string, 'null']
+      title: Landmark label
+      description: Name that distinguishes the search landmark.
+      default: null
+    search__blockname:
+      type: [string, 'null']
+      title: BEM block name
+      description: Parent block name used to compose the search class.
+    search__modifiers:
+      type: [array, 'null']
+      title: Search modifiers
+      description: BEM modifiers applied to the wrapper.
+      items:
+        type: string
+    search__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: Additional CSS classes applied to the wrapper.
+      items:
+        type: string
+    search__attributes:
+      type: [object, 'null']
+      title: Search attributes
+      description: HTML attributes applied to the wrapper.
 slots:
-  # Search form markup provided by parent
-  search_form:
-    title: Search Form
-    description: Rendered search form markup.
+  search__form_content:
+    title: Search form
+    description: Replace the default form with a labelled Drupal search form.

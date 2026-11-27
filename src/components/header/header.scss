@@ -53,9 +53,13 @@
 
 /* Search form */
 .header__search {
-  display: none;
+  display: flex;
+  align-items: center;
 
-  @include breakpoint('lg') {
-    display: block;
+  [data-search-toggle]:not([hidden]) + [data-search-panel] {
+    position: absolute;
+    z-index: 2;
+    inset-block-start: 100%;
+    inset-inline: 0;
   }
 }

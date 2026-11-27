@@ -13,7 +13,7 @@ import '../navigation/main/main';
 import '../search/search';
 
 const mainMenuProps = argsFromSchema(mainMenuData.props);
-const searchProps = searchData.props.properties;
+const searchProps = argsFromSchema(searchData.props);
 
 /**
  * Storybook Definition.
@@ -50,7 +50,7 @@ export const header = {
     header__menu: mainMenuProps.main__items,
     header__branding: '<img src="assets/images/logo.svg" alt="Branding">',
     header__show_search: true,
-    header__search__placeholder: searchProps.search__placeholder.data,
-    header__search__label: searchProps.search__label.data,
+    header__search__placeholder: searchProps.search__placeholder,
+    header__search__label: searchProps.search__label,
   },
 };
