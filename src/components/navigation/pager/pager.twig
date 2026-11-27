@@ -1,106 +1,89 @@
 {#
-/**
- * @file
- * Theme override to display a pager.
- *
- * Available variables:
- * - items: List of pager items.
- *   The list is keyed by the following elements:
- *   - first: Item for the first page; not present on the first page of results.
- *   - previous: Item for the previous page; not present on the first page
- *     of results.
- *   - next: Item for the next page; not present on the last page of results.
- *   - last: Item for the last page; not present on the last page of results.
- *   - pages: List of pages, keyed by page number.
- *   Sub-sub elements:
- *   items.first, items.previous, items.next, items.last, and each item inside
- *   items.pages contain the following elements:
- *   - href: URL with appropriate query parameters for the item.
- *   - attributes: A keyed list of HTML attributes for the item.
- *   - text: The visible text used for the item link, such as "‹ Previous"
- *     or "Next ›".
- * - current: The page number of the current page.
- * - ellipses: If there are more pages than the quantity allows, then an
- *   ellipsis before or after the listed pages may be present.
- *   - previous: Present if the currently visible list of pages does not start
- *     at the first page.
- *   - next: Present if the visible list of pages ends before the last page.
- *
- * @see template_preprocess_pager()
- */
-#}
-{% set pager__base_class = 'pager' %}
+ # A labelled pagination landmark for full and mini Drupal pagers.
+ #
+ # Props: pager__items, pager__current, pager__ellipses, pager__label,
+ # pager__blockname, pager__modifiers, pager__additional_classes, pager__attributes.
+ #}
+{% set pager_items = pager__items ?? items ?? {} %}
+{% set pager_current = (pager__current ?? current ?? pager_items.current ?? '') ~ '' %}
+{% set pager_ellipses = pager__ellipses ?? ellipses ?? {} %}
+{% set pages = pager_items.pages|default({}) %}
+{% set page_numbers = pages|keys %}
+{% if page_numbers is empty and pager_current != '' %}
+  {% set page_numbers = [pager_current] %}
+{% endif %}
+{% set controls = {
+  first: {glyph: '«', label: 'First page'|t},
+  previous: {glyph: '‹', label: 'Previous page'|t, rel: 'prev'},
+  next: {glyph: '›', label: 'Next page'|t, rel: 'next'},
+  last: {glyph: '»', label: 'Last page'|t},
+} %}
 
-{% set pager__attributes = pager__attributes|default({
-  'class': bem(pager__base_class, pager__modifiers, pager__blockname),
-  'aria-label': pagination_id|default('Pagination'|t),
-  'role': 'navigation'
-}) %}
-
-{% if items %}
-  <nav {{ add_attributes(pager__attributes) }}>
-    <ul {{ bem('items', [], pager__base_class, ['js-pager__items']) }}>
-      {# Print first item. #}
-      {% if items.first %}
-        <li {{ bem('item', ['first'], pager__base_class) }}>
-          <a {{ bem('link', ['first'], pager__base_class) }} href="{{ items.first.href }}" title="{{ 'Go to first page'|t }}" {{ items.first.attributes|without('href', 'title', 'rel') }}>
-            <span {{ bem('visually-hidden') }}>{{ 'First page'|t }}</span>
-            <span aria-hidden="true">{{ items.first.text|default('First'|t) }}</span>
-          </a>
-        </li>
-      {% endif %}
-      {# Print previous item if we are not on the first page. #}
-      {% if items.previous %}
-        <li {{ bem('item', ['prev'], pager__base_class) }}>
-          <a {{ bem('link', ['prev'], pager__base_class) }} href="{{ items.previous.href }}" title="{{ 'Go to previous page'|t }}" rel="prev"{{ items.previous.attributes|without('href', 'title', 'rel') }}>
-            <span {{ bem('visually-hidden') }}>{{ 'Previous page'|t }}</span>
-            <span aria-hidden="true">{{ items.previous.text|default('Previous'|t) }}</span>
-          </a>
-        </li>
-      {% endif %}
-      {# Add an ellipsis if there are further previous pages. #}
-      {% if ellipses.previous %}
-        <li {{ bem('item', ['ellipsis'], pager__base_class) }} role="presentation">
-          <span aria-hidden="true">&hellip;</span>
-          <span class="sr-only">Previous pages are hidden</span>
-        </li>
-      {% endif %}
-      {# Now generate the actual pager piece. #}
-      {% for key, item in items.pages %}
-        {% set current_class = current == key ? 'is-active' : '' %}
-        {% set aria_current = current == key ? 'aria-current="page"' : '' %}
-        <li {{ bem('item', [], pager__base_class, [current_class]) }}>
-          {% set title = current != key ? 'title="Go to page"' : '' %}
-          <a {{ bem('link', [], pager__base_class, [current_class]) }} href="{{ item.href }}" {{ title }} {{ item.attributes|without('href', 'title') }} {{ aria_current }}>
-            {{- key -}}
-          </a>
-        </li>
+{% if page_numbers is not empty or pager_items.first.href or pager_items.previous.href or pager_items.next.href or pager_items.last.href %}
+  {% set nav_attributes = pager__attributes|default({}) %}
+  {% set classes = nav_attributes.class|default([]) %}
+  {% set classes = classes is iterable ? classes : [classes] %}
+  {% set classes = classes|merge(pager__additional_classes|default([]))|merge(pager__blockname ? ['pager'] : []) %}
+  {% set nav_attributes = nav_attributes|merge({
+    class: bem('pager', pager__modifiers, pager__blockname, classes),
+    'aria-label': pager__label|default(pagination_id|default('Pagination'|t)),
+  }) %}
+  <nav {{ add_attributes(nav_attributes) }}>
+    <ul {{ bem('items', [], 'pager') }} role="list">
+      {% for position in ['first', 'previous', 'pages', 'next', 'last'] %}
+        {% if position == 'pages' %}
+          {% if pager_ellipses.previous or pager_ellipses.prev %}
+            <li {{ bem('item', ['ellipsis'], 'pager') }}>
+              <span aria-hidden="true">…</span>
+              <span class="visually-hidden">{{ 'More previous pages'|t }}</span>
+            </li>
+          {% endif %}
+          {% for number in page_numbers %}
+            {% set page = pages[number]|default({}) %}
+            {% set is_current = pager_current != '' and pager_current == number ~ '' %}
+            {% set item_attributes = page.attributes|default({}) %}
+            {% set item_classes = item_attributes.class|default([]) %}
+            {% set item_classes = item_classes is iterable ? item_classes : [item_classes] %}
+            {% set item_attributes = item_attributes|merge({
+              class: bem('link', is_current ? ['current'] : [], 'pager', item_classes),
+              href: not is_current ? page.href|default(null) : null,
+              'aria-current': is_current ? 'page' : null,
+            }) %}
+            {% set tag = not is_current and page.href ? 'a' : 'span' %}
+            <li {{ bem('item', [], 'pager') }}>
+              <{{ tag }} {{ add_attributes(item_attributes) }}><span class="visually-hidden">{{ 'Page'|t }} </span>{{ number }}</{{ tag }}>
+            </li>
+          {% endfor %}
+          {% if pager_ellipses.next %}
+            <li {{ bem('item', ['ellipsis'], 'pager') }}>
+              <span aria-hidden="true">…</span>
+              <span class="visually-hidden">{{ 'More next pages'|t }}</span>
+            </li>
+          {% endif %}
+        {% elseif pager_items[position].href %}
+          {% set item = pager_items[position] %}
+          {% set control = controls[position] %}
+          {% set item_attributes = item.attributes|default({}) %}
+          {% set item_classes = item_attributes.class|default([]) %}
+          {% set item_classes = item_classes is iterable ? item_classes : [item_classes] %}
+          {% set item_attributes = item_attributes|merge({
+            class: bem('link', [position], 'pager', item_classes),
+            href: item.href,
+            rel: control.rel|default(item_attributes.rel|default(null)),
+            'aria-current': null,
+          }) %}
+          <li {{ bem('item', [position], 'pager') }}>
+            <a {{ add_attributes(item_attributes) }}>
+              {% if item.text %}
+                <span aria-hidden="true">{{ item.text }}</span>
+              {% else %}
+                <span {{ bem('glyph', [], 'pager') }} aria-hidden="true">{{ control.glyph }}</span>
+              {% endif %}
+              <span class="visually-hidden">{{ item.text|default(control.label) }}</span>
+            </a>
+          </li>
+        {% endif %}
       {% endfor %}
-      {# Add an ellipsis if there are further next pages. #}
-      {% if ellipses.next %}
-        <li {{ bem('item', ['ellipsis'], pager__base_class) }} role="presentation">
-          <span aria-hidden="true">&hellip;</span>
-          <span class="sr-only">Next pages are hidden</span>
-        </li>
-      {% endif %}
-      {# Print next item if we are not on the last page. #}
-      {% if items.next %}
-        <li {{ bem('item', ['next'], pager__base_class) }}>
-          <a {{ bem('link', ['next'], pager__base_class) }} href="{{ items.next.href }}" title="{{ 'Go to next page'|t }}" rel="next"{{ items.next.attributes|without('href', 'title', 'rel') }}>
-            <span {{ bem('visually-hidden') }}>{{ 'Next page'|t }}</span>
-            <span aria-hidden="true">{{ items.next.text|default('Next'|t) }}</span>
-          </a>
-        </li>
-      {% endif %}
-      {# Print last item. #}
-      {% if items.last %}
-        <li {{ bem('item', ['last'], pager__base_class) }}>
-          <a {{ bem('link', ['last'], pager__base_class) }} href="{{ items.last.href }}" title="{{ 'Go to last page'|t }}" {{ items.last.attributes|without('href', 'title', 'rel') }}>
-            <span {{ bem('visually-hidden') }}>{{ 'Last page'|t }}</span>
-            <span aria-hidden="true">{{ items.last.text|default('Last'|t) }}</span>
-          </a>
-        </li>
-      {% endif %}
     </ul>
   </nav>
 {% endif %}

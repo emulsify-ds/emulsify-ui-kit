@@ -1,82 +1,84 @@
-$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
-
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: Pager
+description: An accessible full or mini pager with numbered pages and optional edge controls.
 group: Components
 status: stable
 props:
   type: object
-  required:
-    - current
-    - ellipses
-    - items
   properties:
-    current:
-      type: integer
-      title: Current Page
-      description: 'Specifies the current active page number'
-      data: 3
-    ellipses:
-      type: object
-      title: Ellipses Visibility
-      description: 'Specifies whether to display ellipses for next and previous page navigation'
+    pager__items:
+      type: [object, 'null']
+      title: Page items
+      description: Drupal pager links keyed by first, previous, next, last, or page number under pages. A mini pager can supply a nested current number.
+      default: null
+      examples:
+        - pages: &first_pages
+            1: { href: '?page=0' }
+            2: { href: '?page=1' }
+            3: { href: '?page=2' }
+            4: { href: '?page=3' }
+            5: { href: '?page=4' }
+        - pages: *first_pages
+          next: { href: '?page=3' }
+        - pages: &middle_pages
+            6: { href: '?page=5' }
+            7: { href: '?page=6' }
+            8: { href: '?page=7' }
+            9: { href: '?page=8' }
+            10: { href: '?page=9' }
+          previous: { href: '?page=6' }
+        - pages: *middle_pages
+          previous: { href: '?page=6' }
+          next: { href: '?page=8' }
+        - pages: *middle_pages
+          first: { href: '?page=0' }
+          previous: { href: '?page=6' }
+          next: { href: '?page=8' }
+          last: { href: '?page=19' }
+    pager__current:
+      type: [integer, 'null']
+      title: Current page
+      description: Current page number. Defaults to the nested current number for a mini pager.
+      default: null
+      examples: [3, 3, 8, 8, 8]
+    pager__ellipses:
+      type: [object, 'null']
+      title: Ellipses
+      description: Whether to show omitted pages before or after the listed pages.
       properties:
+        previous:
+          type: boolean
         next:
           type: boolean
-          title: Show Next Ellipsis
-          description: 'Determines whether to display an ellipsis for the next page'
-          data: false
-        prev:
-          type: boolean
-          title: Show Previous Ellipsis
-          description: 'Determines whether to display an ellipsis for the previous page'
-          data: false
-    items:
-      type: object
-      title: Pagination Items
-      description: 'Defines the pagination items with their respective links'
-      properties:
-        pages:
-          type: object
-          title: Page Links
-          description: 'Provides the href links for the pagination pages'
-          properties:
-            1:
-              type: object
-              properties:
-                href:
-                  type: string
-                  title: Page 1 Link
-                  description: 'Link for page 1'
-                  data: '#'
-            2:
-              type: object
-              properties:
-                href:
-                  type: string
-                  title: Page 2 Link
-                  description: 'Link for page 2'
-                  data: '#'
-            3:
-              type: object
-              properties:
-                href:
-                  type: string
-                  title: Page 3 Link
-                  description: 'Link for page 3'
-                  data: '#'
-            4:
-              type: object
-              properties:
-                href:
-                  type: string
-                  title: Page 4 Link
-                  description: 'Link for page 4'
-                  data: '#'
-            5:
-              type: object
-              properties:
-                href:
-                  type: string
-                  title: Page 5 Link
-                  description: 'Link for page 5'
-                  data: '#'
+      default: {}
+      examples:
+        - {}
+        - { next: true }
+        - { previous: true }
+        - { previous: true, next: true }
+        - { previous: true, next: true }
+    pager__label:
+      type: [string, 'null']
+      title: Pager label
+      description: Landmark name. Choose a distinct name when several pagers share a page.
+      examples: [Pagination]
+    pager__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Optional BEM parent block.
+    pager__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers for the pager wrapper.
+      items:
+        type: string
+    pager__additional_classes:
+      type: [array, 'null']
+      title: Extra classes
+      description: Additional classes for the pager wrapper.
+      items:
+        type: string
+    pager__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: HTML attributes for the pager wrapper.

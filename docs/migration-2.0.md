@@ -391,4 +391,9 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - Pass items as `breadcrumbs__items`. The Twig include also accepts `breadcrumbs_items` and Drupal's `breadcrumb` variable. Set `breadcrumbs__label` to customize the navigation landmark name.
 - The breadcrumb trail wraps and the last item is current-page text. Remove the old scroll behavior and custom styles tied to its scroll controls. Wrap the trail in Container at the call site when it needs a section width or theme.
 
+### Pager
+
+- Pass Drupal pager data as `pager__items`, `pager__current`, and `pager__ellipses`. The Twig include still accepts `items`, `current`, and `ellipses`. Set `pager__label` to distinguish multiple pagination landmarks on a page.
+- The current page renders as text with `aria-current="page"`. The directional controls have visually hidden names, which can be customized via the item's `label`. Import the Storybook examples from `pager.component.yml` in place of the four `pager-*.yml` files.
+
 ## Removed

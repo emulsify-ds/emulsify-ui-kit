@@ -22,6 +22,7 @@
     "navigation/base",
     "navigation/breadcrumbs",
     "navigation/main",
+    "navigation/pager",
     "offcanvas",
     "stats-group",
     "status",
