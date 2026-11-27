@@ -1,0 +1,18 @@
+{#
+ # Native form wrapper.
+ #
+ # Props: forms__blockname, forms__modifiers, forms__additional_classes,
+ # forms__attributes.
+ # Slot: forms__fields_content contains rendered fields and actions.
+ #}
+{% set form_attrs = forms__attributes|default({}) %}
+{% set form_classes = form_attrs.class|default([]) %}
+{% set form_classes = form_classes is iterable ? form_classes : [form_classes] %}
+{% set form_classes = form_classes|merge(forms__additional_classes|default([]))|merge(forms__blockname ? ['forms'] : []) %}
+{% set form_attrs = form_attrs|merge({
+  class: bem('forms', forms__modifiers, forms__blockname, form_classes),
+}) %}
+
+<form {{ add_attributes(form_attrs) }}>
+  {% block forms__fields_content %}{{ forms__fields_content }}{% endblock %}
+</form>

@@ -1,0 +1,34 @@
+{
+  "manifest": {
+    "name": "fixture-system",
+    "variants": [
+      {
+        "platform": "drupal",
+        "structureImplementations": [
+          { "name": "components", "directory": "./src/components/" }
+        ],
+        "directories": [
+          { "name": "base", "path": "./src/base" },
+          { "name": "layout", "path": "./src/layout" },
+          { "name": "util", "path": "./src/util" },
+          { "name": "tokens", "path": "./src/tokens" }
+        ],
+        "files": [{ "name": "example", "path": "./assets/example.svg" }],
+        "components": [
+          { "name": "first", "structure": "components", "dependency": [] },
+          {
+            "name": "second",
+            "structure": "components",
+            "dependency": ["first"]
+          }
+        ]
+      }
+    ]
+  },
+  "packageJson": {
+    "dependencies": {
+      "swiper": "^11.2.0",
+      "@example/library": "^3.2.0"
+    }
+  }
+}

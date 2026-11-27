@@ -1,0 +1,10 @@
+{# Shared header for the composed page examples. #}
+{{ include('@components/header/header.twig', {
+  header__id: 'example-header',
+  header__items: menu_items,
+  header__logo__src: 'assets/images/logo-text.svg',
+  header__logo__alt: 'Emulsify UI Kit home',
+  header__logo__url: './?path=/story/examples-home--home',
+  header__skip_target: 'main-content',
+  header__show_search: true,
+}, with_context: false) }}

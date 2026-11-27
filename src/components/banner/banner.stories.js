@@ -1,55 +1,78 @@
 import { renderTwig } from '@emulsify/core/storybook';
-import bannerData from './banner.component.yml';
-import bannerTwig from './banner.twig';
-import '../video/playback';
 
-const { properties } = bannerData.props;
+import { argsFromSchema } from '../../util/argsFromSchema.js';
+import {
+  createContainerThemeControls,
+  createContainerWidthControls,
+} from '../../util/storybookContainerControls.js';
+import '../video/video.js';
+import schema from './banner.component.yml';
+import docs from './banner.docs.js';
+import template from './banner.twig';
+
+const widthControls = createContainerWidthControls();
+const themeControls = createContainerThemeControls();
+const captions = encodeURIComponent(
+  'WEBVTT\n\n00:00:00.000 --> 00:00:05.000\nA bee moves across a flower.\n',
+);
 
 export default {
   title: 'Components/Banner',
-  render: renderTwig(bannerTwig),
+  tags: ['autodocs'],
+  parameters: { docs },
+  render: renderTwig(template),
+  args: {
+    ...argsFromSchema(schema.props),
+    banner__theme: themeControls.args.theme,
+    banner__theme__variation: themeControls.args.themeVariation,
+    banner__image__src: 'assets/images/example/basic-camera-image.png',
+    banner__image__alt: 'A film camera on a tripod',
+    banner__image__width: 847,
+    banner__image__height: 451,
+  },
   argTypes: {
-    banner__media: {
-      name: 'Media Type',
-      control: 'select',
-      options: ['image', 'video'],
-    },
-    banner__alignment: {
-      name: 'Banner Alignment',
-      control: 'select',
-      options: properties.banner__alignment.enum || ['left', 'center'],
-    },
-    banner__heading: {
-      name: 'Banner Heading',
-      control: 'text',
-    },
-    banner__text: {
-      name: 'Banner Text',
-      control: 'text',
-    },
-    banner__link_items: {
-      table: {
-        disable: true,
-      },
-    },
-    banner__image: { table: { disable: true } },
-    banner__video: { table: { disable: true } },
+    banner__width: widthControls.argTypes.width,
+    banner__theme: themeControls.argTypes.theme,
+    banner__theme__variation: themeControls.argTypes.themeVariation,
   },
 };
 
-export const banner = {
+export const Banner = {};
+
+export const Video = {
   args: {
-    banner__image: properties.banner__image.data,
-    banner__video: properties.banner__video.data,
-    banner__media: 'image',
-    banner__alignment: properties.banner__alignment.data,
-    banner__heading: properties.banner__heading.data,
-    banner__text: properties.banner__text.data,
-    banner__link_items: [
+    banner__overline: 'From the garden',
+    banner__heading: 'Watch pollinators up close',
+    banner__text: 'See how a bee moves across a flower.',
+    banner__theme__variation: 'dark',
+    banner__media_alignment: 'left',
+    banner__image__src: null,
+    banner__video__title: 'A bee on a flower',
+    banner__video__sources: [
       {
-        url: '#',
-        content: properties.banner__link?.data || 'Read more',
+        src: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
+        type: 'video/mp4',
       },
     ],
+    banner__video__tracks: [
+      {
+        src: `data:text/vtt,${captions}`,
+        kind: 'captions',
+        srclang: 'en',
+        label: 'English',
+      },
+    ],
+    banner__ctas: [
+      { content: 'Plan a visit', url: '/visit' },
+      { content: 'Find garden resources', url: '/garden-resources' },
+    ],
+  },
+};
+
+export const CopyOnly = {
+  args: {
+    banner__image__src: null,
+    banner__alignment: 'center',
+    banner__width: 'narrow',
   },
 };

@@ -1,55 +1,53 @@
-// Markup.
 import { renderTwig } from '@emulsify/core/storybook';
-import headerTwig from './header.twig';
+import { argsFromSchema } from '../../util/argsFromSchema.js';
+import { withStorybookContainer } from '../../util/storybookContainer.js';
+import {
+  createContainerThemeControls,
+  createContainerWidthControls,
+} from '../../util/storybookContainerControls.js';
+import schema from './header.component.yml';
+import docs from './header.docs.js';
+import template from './header.twig';
+import '../navigation/base/menu-toggle/menu-toggle.js';
+import '../navigation/main/main.js';
+import '../offcanvas/offcanvas.js';
+import '../search/search.js';
+import './header.js';
 
-// Data.
-import mainMenuData from '../navigation/main/main.component.yml';
-import searchData from '../search/search.component.yml';
+const theme = createContainerThemeControls();
+const width = createContainerWidthControls();
+const preview = withStorybookContainer((args) => {
+  const target = String(args.header__skip_target ?? '').replace(
+    /[^\w:.-]/g,
+    '',
+  );
+  return `${template({ ...args, header__skip_target: target })}
+    <main id="${target || 'header-story-content'}" tabindex="-1">
+      <h1>Library resources</h1>
+      <p>Explore the collection or plan a visit.</p>
+    </main>`;
+});
 
-// JavaScript.
-import '../navigation/base/menu-toggle/menu-toggle';
-import '../navigation/main/main';
-import '../search/search';
-
-const mainMenuProps = mainMenuData.props.properties;
-const searchProps = searchData.props.properties;
-
-/**
- * Storybook Definition.
- */
 export default {
   title: 'Components/Header',
-  render: renderTwig(headerTwig),
-  argTypes: {
-    header__menu: {
-      name: 'Menu Items',
-      control: { type: 'object' },
-    },
-    header__search__placeholder: {
-      name: 'Search Placeholder',
-      control: { type: 'text' },
-    },
-    header__search__label: {
-      name: 'Search Label',
-      control: { type: 'text' },
-    },
-    header__show_search: {
-      name: 'Show Search',
-      control: { type: 'boolean' },
-    },
-    header__branding: {
-      name: 'Branding HTML',
-      control: { type: 'text' },
-    },
+  tags: ['autodocs'],
+  parameters: { docs, layout: 'fullscreen' },
+  args: {
+    ...argsFromSchema(schema.props),
+    ...theme.args,
+    ...width.args,
+    width: 'wide',
   },
+  argTypes: { ...theme.argTypes, ...width.argTypes },
+  render: renderTwig(preview),
 };
 
-export const header = {
+export const Header = {};
+
+export const Compact = {
   args: {
-    header__menu: mainMenuProps.items.data,
-    header__branding: '<img src="assets/images/logo.svg" alt="Branding">',
-    header__show_search: true,
-    header__search__placeholder: searchProps.search__placeholder.data,
-    header__search__label: searchProps.search__label.data,
+    header__id: 'compact-header',
+    header__skip_target: 'compact-main-content',
+    width: 'narrow',
   },
 };

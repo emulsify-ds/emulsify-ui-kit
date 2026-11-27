@@ -1,37 +1,49 @@
 {#
- # Available Props:
- # - pull_quote__style: bar-left, bar-right, or quote-left
+ # Quotation with an optional attribution caption.
  #
- # Available Variables:
- # - blockquote__quote (required)
- # - blockquote__attribution
- # - blockquote__aria_label
+ # Props:
+ # - blockquote__quote: Quoted text or rendered formatted content.
+ # - blockquote__attribution: Optional primary attribution.
+ # - blockquote__attribution_secondary: Optional secondary attribution.
+ # - blockquote__style: bar-left, bar-right, or quote-left.
+ # - blockquote__blockname: Optional parent BEM block.
+ # - blockquote__modifiers: BEM modifiers for the figure.
+ # - blockquote__additional_classes: Additional classes for the figure.
+ # - blockquote__attributes: Additional attributes for the figure.
+ #
+ # Slots:
+ # - blockquote__quote_content: Replaces the quote prop.
+ # - blockquote__attribution_content: Replaces the attribution props.
  #}
-
-{% set blockquote__base_class = 'blockquote' %}
-{% set blockquote__style = blockquote__style|default('bar-left') %}
-{% set blockquote__aria_label = blockquote__aria_label|default('Blockquote Element by Lorem Ipsum') %}
-{# If blockquote__attributes is not defined, set it to an empty object by default #}
-{% set blockquote__attributes = blockquote__attributes|default({}) %}
-
-{% set blockquote__attributes = blockquote__attributes|merge({
-  'data-component-width': 'content',
+{% set blockquote__style = blockquote__style in ['bar-left', 'bar-right', 'quote-left'] ? blockquote__style : 'bar-left' %}
+{% set blockquote__classes = blockquote__additional_classes|default([])|merge(blockquote__blockname ? ['blockquote'] : []) %}
+{% set blockquote__attributes = blockquote__attributes|default({})|merge({
+  class: bem('blockquote', blockquote__modifiers, blockquote__blockname, blockquote__classes),
   'data-blockquote-style': blockquote__style,
-  'aria-label': blockquote__aria_label,
-  class: bem(blockquote__base_class, blockquote__modifiers, blockquote__blockname),
 }) %}
 
-<aside {{ add_attributes(blockquote__attributes) }}>
-  <div {{ bem('inner', [], blockquote__base_class) }}>
-    <blockquote {{ bem('blockquote', [], blockquote__base_class) }}>
-      {% include "@components/typography/text/blockquote.twig" with {
-        blockquote__content: blockquote__quote,
-        blockquote__blockname: blockquote__base_class,
-        blockquote__base_class: 'quote',
-      } %}
+{% set blockquote__rendered_attribution %}
+  {%- block blockquote__attribution_content -%}
+    {% if blockquote__attribution_content is defined and blockquote__attribution_content is not empty %}
+      {{ blockquote__attribution_content }}
+    {% else %}
       {% if blockquote__attribution %}
-        <cite {{ bem('attribution', [], blockquote__base_class) }}>—{{ blockquote__attribution }}</cite>
+        <span {{ bem('attribution', [], 'blockquote') }}>{{ blockquote__attribution|e('html', null, true) }}</span>
       {% endif %}
-    </blockquote>
-  </div>
-</aside>
+      {% if blockquote__attribution_secondary %}
+        <span {{ bem('attribution-secondary', [], 'blockquote') }}>{{ blockquote__attribution_secondary|e('html', null, true) }}</span>
+      {% endif %}
+    {% endif %}
+  {%- endblock -%}
+{% endset %}
+
+<figure {{ add_attributes(blockquote__attributes) }}>
+  <blockquote {{ bem('quote', [], 'blockquote') }}>
+    {%- block blockquote__quote_content -%}
+      {{- blockquote__quote_content|default(blockquote__quote) -}}
+    {%- endblock -%}
+  </blockquote>
+  {% if blockquote__rendered_attribution|trim is not empty %}
+    <figcaption {{ bem('caption', [], 'blockquote') }}>{{ blockquote__rendered_attribution }}</figcaption>
+  {% endif %}
+</figure>

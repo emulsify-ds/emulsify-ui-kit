@@ -1,0 +1,149 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Callout
+description: A section for a prominent next step with up to two calls to action.
+group: Components
+status: stable
+props:
+  type: object
+  properties:
+    callout__overline:
+      type: [string, 'null']
+      title: Overline
+      description: Short label that appears above the heading.
+      examples: ['Library programs']
+    callout__heading:
+      type: [string, 'null']
+      title: Heading
+      description: The title that introduces the actions.
+      examples: ['Make something at the library']
+    callout__heading_level:
+      type: [integer, 'null']
+      title: Heading level
+      description: Semantic heading level in the surrounding page.
+      enum: [2, 3, 4, 5, 6, null]
+      default: 2
+    callout__text:
+      type: [string, object, array, 'null']
+      title: Text
+      description: Supporting copy or processed Drupal content.
+      examples: ['Join a free workshop and learn a skill from a local maker.']
+    callout__ctas:
+      type: [array, 'null']
+      title: Actions
+      description: Up to two destinations, ordered by priority.
+      default: []
+      maxItems: 2
+      items:
+        type: object
+        properties:
+          content:
+            type: string
+            title: Label
+            description: Visible link text describing the destination.
+          url:
+            type: string
+            title: URL
+            description: The destination of the action.
+          icon:
+            type: [string, 'null']
+            title: Icon
+            description: Optional decorative icon name.
+          icon_position:
+            type: [string, 'null']
+            title: Icon position
+            description: The side of the label to place the icon.
+            enum: [left, right, null]
+        required: [content, url]
+      examples:
+        - - content: Find a workshop
+            url: /workshops
+            icon: arrow-right
+          - content: About the makerspace
+            url: /makerspace
+    callout__width:
+      type: [string, 'null']
+      title: Width
+      description: Maximum width of the layout container.
+      enum: [narrow, content, wide, full, null]
+      default: content
+    callout__alignment:
+      type: [string, 'null']
+      title: Alignment
+      description: Placement of the layout container.
+      enum: [left, center, right, null]
+      default: center
+    callout__theme:
+      type: [string, 'null']
+      title: Theme
+      description: Container theme name. Omit to inherit.
+      enum: [default, null]
+    callout__theme__variation:
+      type: [string, 'null']
+      title: Theme variation
+      description: Container variation. Omit to inherit.
+      enum: [light, dark, null]
+    callout__bg_color:
+      type: [boolean, 'null']
+      title: Section background
+      description: Paint the surrounding section with the active theme background.
+      default: false
+    callout__spacing:
+      type: [string, 'null']
+      title: Section spacing
+      description: Spacing token for the layout container.
+      enum:
+        [
+          none,
+          quarter,
+          half,
+          one,
+          two,
+          three,
+          four,
+          quarter-top,
+          half-top,
+          one-top,
+          two-top,
+          three-top,
+          four-top,
+          quarter-bottom,
+          half-bottom,
+          one-bottom,
+          two-bottom,
+          three-bottom,
+          four-bottom,
+          null,
+        ]
+      default: one
+    callout__id:
+      type: [string, 'null']
+      title: Section ID
+      description: Stable suffix for the section anchor.
+      default: null
+    callout__container__modifiers:
+      type: [array, 'null']
+      title: Container modifiers
+      description: BEM modifiers for the container.
+      items:
+        type: string
+      default: []
+    callout__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Optional parent BEM block name.
+    callout__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers for the callout panel.
+      items:
+        type: string
+    callout__additional_classes:
+      type: [array, 'null']
+      title: Classes
+      description: Additional classes for the callout panel.
+      items:
+        type: string
+    callout__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Additional attributes for the callout panel.

@@ -1,123 +1,141 @@
 {#
-/**
- * @file
- * Theme override to display primary and tabs local tasks.
- *
- * Available variables:
- * - primary: HTML list items representing primary tasks.
- * - tabs: HTML list items representing primary tasks.
- * - field_heading: Optional heading for the tabs component.
- * - field_tabs: The collection of tabs with title and content.
- * - field_tabs_display: Defines how the tabs will visually display.
- *
- */
-#}
-{% set tabs__base_class = 'tabs' %}
-{% set tabs__modifiers = tabs__modifiers|default([]) %}
-{% set tabs__display = tabs__display|default('horiztonal-plain') %}
+ # A labelled tab list with readable panels before behavior attachment.
+ #
+ # Props:
+ # - tabs__id: Stable, unique suffix for the component and its IDs.
+ # - tabs__items: Items with id, label, content, and optional icon.
+ # - tabs__active: Item ID to select initially.
+ # - tabs__label: Accessible list name when the heading is absent.
+ # - tabs__heading, tabs__heading_level, tabs__text: Section introduction.
+ # - tabs__display: Horizontal presentation.
+ # - tabs__width, tabs__alignment, tabs__theme, tabs__theme__variation,
+ #   tabs__bg_color, tabs__spacing, tabs__container__modifiers: Container props.
+ # - tabs__blockname, tabs__modifiers, tabs__additional_classes,
+ #   tabs__attributes: Wrapper classes and attributes.
+ #
+ # Slots:
+ # - tabs__panels_content: Replace the generated tab panels.
+ #}
 
-{# Create unique tab ids #}
-{% set tab_keys = tab_keys|default([]) %}
-{% if tab_keys|length == 0 %}
-	{% for key, tab in tab_items %}
-		{% set unique_id = random('1234567890') ~ random('1234567890') ~ random('1234567890') ~ random('1234567890') %}
-		{% set tab__id = 'tab' ~ '-' ~ unique_id %}
-		{% set tab_keys = tab_keys|merge({(loop.index - 1) : tab__id}) %}
-	{% endfor %}
-{% endif %}
+{% set tabs_id = tabs__id|default('')|trim %}
+{% set widget_id = 'tabs-' ~ tabs_id %}
+{% set heading_id = widget_id ~ ':heading' %}
+{% set id_pattern = '/^[A-Za-z0-9][A-Za-z0-9_-]*$/' %}
+{% set valid_instance = tabs_id matches id_pattern %}
+{% set valid_items = valid_instance %}
+{% set heading = tabs__heading|default('')|trim %}
+{% set heading_level = tabs__heading_level in [2, 3, 4, 5, 6] ? tabs__heading_level : 2 %}
+{% set panel_heading_level = heading and heading_level < 6 ? heading_level + 1 : heading_level %}
+{% set items = tabs__items|default([]) %}
+{% set item_ids = [] %}
+{% for item in items %}
+  {% if not (item.id|default('') matches id_pattern) or item.id in item_ids or not item.label|default('')|trim %}
+    {% set valid_items = false %}
+  {% endif %}
+  {% set item_ids = item_ids|merge([item.id]) %}
+{% endfor %}
+{% set active_id = tabs__active in item_ids ? tabs__active : item_ids|first %}
+{% set wrapper_attributes = tabs__attributes|default({}) %}
+{% set wrapper_classes = wrapper_attributes.class|default([]) %}
+{% set wrapper_classes = wrapper_classes is iterable ? wrapper_classes : [wrapper_classes] %}
+{% set wrapper_classes = wrapper_classes|merge(tabs__additional_classes|default([]))|merge(tabs__blockname ? ['tabs'] : []) %}
+{% set wrapper_attributes = wrapper_attributes|merge({
+  class: bem('tabs', tabs__modifiers, tabs__blockname, wrapper_classes),
+  id: valid_instance ? widget_id : null,
+  'data-tabs-display': tabs__display|default('horizontal-plain'),
+}) %}
 
-{% set scroll_left %}
-{% embed "@components/button/button.twig" with {
-    button__content: true,
-    button__base_class: 'scroll',
-    button__blockname: tabs__base_class,
-    button__modifiers: ['left'],
-    button__attributes: {
-      'aria-hidden': 'true',
-      'tabindex': '-1',
-    },
-    button__icon: {
-      left: true,
-      name: 'chevron-left',
-      decorative: true,
-    },
+{% set navigation %}
+  {% if valid_items and items %}
+    {% set list_attributes = {
+      class: bem('nav', [], 'tabs'),
+      role: 'tablist',
     } %}
-	{% block button__content %}
-		<span {{ bem('visually-hidden') }}>Scroll Left</span>
-	{% endblock %}
-{% endembed %}
+    {% set list_attributes = list_attributes|merge(heading ? {
+      'aria-labelledby': heading_id,
+    } : {
+      'aria-label': tabs__label|default('')|trim|default('Tabbed content'|t),
+    }) %}
+    <ul {{ add_attributes(list_attributes) }} hidden>
+      {% for item in items %}
+        {% set tab_id = widget_id ~ ':tab:' ~ item.id %}
+        {% set selected = item.id is same as(active_id) %}
+        <li {{ bem('item', [], 'tabs') }} role="presentation">
+          {{ include('@components/cta/cta.twig', {
+            cta__element: 'button',
+            cta__button_type: 'button',
+            cta__text: item.label,
+            cta__icon: item.icon|default(null),
+            cta__icon_position: 'left',
+            cta__modifiers: ['clean'],
+            cta__additional_classes: ['tabs__tab'],
+            cta__attributes: {
+              id: tab_id,
+              role: 'tab',
+              'aria-selected': selected ? 'true' : 'false',
+              'aria-controls': widget_id ~ ':panel:' ~ item.id,
+              tabindex: selected ? '0' : '-1',
+            },
+          }, with_context: false) }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
 {% endset %}
 
-{% set scroll_right %}
-{% embed "@components/button/button.twig" with {
-    button__content: true,
-    button__base_class: 'scroll',
-    button__blockname: tabs__base_class,
-    button__type: 'filled',
-    button__modifiers: ['right'],
-    button__attributes: {
-      'aria-hidden': 'true',
-      'tabindex': '-1',
-    },
-    button__icon: {
-      right: true,
-      name: 'chevron-right',
-      decorative: true,
-    },
-    } %}
-	{% block button__content %}
-		<span {{ bem('visually-hidden') }}>Scroll Right</span>
-	{% endblock %}
-{% endembed %}
+{% set default_panels %}
+  {% for item in items %}
+    {% set panel_attributes = { class: bem('panel', [], 'tabs') } %}
+    {% if valid_items %}
+      {% set panel_attributes = panel_attributes|merge({
+        id: widget_id ~ ':panel:' ~ item.id,
+        role: 'tabpanel',
+        'aria-labelledby': widget_id ~ ':tab:' ~ item.id,
+        tabindex: '0',
+      }) %}
+    {% endif %}
+    <div {{ add_attributes(panel_attributes) }}>
+      <h{{ panel_heading_level }} {{ bem('panel-heading', [], 'tabs') }}>{{ item.label|e('html', null, true) }}</h{{ panel_heading_level }}>
+      {{ item.content }}
+    </div>
+  {% endfor %}
 {% endset %}
 
-{% set tabs %}
-<div {{ bem(tabs__base_class, tabs__modifiers, tabs__blockname, ['no-js']) }} data-tabs-display="{{ tabs__display }}">
-	<div {{ bem('wrapper', tabs__modifiers, tabs__base_class) }}>
-		{{ scroll_left }}
-		<ul {{ bem('nav', [], tabs__base_class) }} role="tablist">
-			{% for key, tab in tabs %}
-				{% set tab__name = tab.tab__label|lower|replace({' ': '-', '&': 'and'}) ~ '-' ~ key %}
-				{% include "@components/tabs/_tab-label.twig" with {
-					tab__base_class: 'tab',
-					tab__blockname: tabs__base_class,
-					tab__link: '#' ~ tab__name,
-					tab__id: tab__name ~ '-tab',
-					tab__label: tab.tab__label,
-					tab__icon: tab.tab__icon,
-				} %}
-			{% endfor %}
-		</ul>
-		{{ scroll_right }}
-	</div>
-	<div {{ bem('content', [], tabs__base_class)}}>
-		{% block tab__content %}
-			{% for key, tab in tabs %}
-				{% set tab__name = tab.tab__label|lower|replace({' ': '-', '&': 'and'}) ~ '-' ~ key %}
-				{% set current_class = key == 0 ? ' is-active' : '' %}
-				{% include "@components/tabs/_tab-content.twig" with {
-					tab__content__base_class: 'tab__content',
-					tab__content__blockname: tabs__base_class,
-					tab__base_class: 'tab',
-					tab__blockname: tabs__base_class,
-					tab__content__id: '#' ~ tab__name,
-					tab__content: tab.tab__content,
-					tab__id: tab__name ~ '-tab',
-				} %}
-			{% endfor %}
-		{% endblock %}
-	</div>
-</div>
+{% set panels %}
+  {% block tabs__panels_content %}
+    {{ tabs__panels_content ?? default_panels }}
+  {% endblock %}
 {% endset %}
 
-{% embed "@layout/container/container.twig" with {
-  container__component_width: container__component_width|default('extended'),
-  container__component_alignment: 'center',
-  container__heading: tabs__heading,
-  container__text: tabs__text,
-	container__theme: tab__component_theme,
-}%}
-	{% block container__content %}
-		{{ tabs }}
-	{% endblock %}
+{% set markup %}
+  <div {{ add_attributes(wrapper_attributes) }}>
+    {% if heading %}
+      {{ include('@components/heading/heading.twig', {
+        heading__content: heading,
+        heading__level: heading_level,
+        heading__blockname: 'tabs',
+        heading__attributes: valid_instance ? { id: heading_id } : {},
+      }, with_context: false) }}
+    {% endif %}
+    {% if tabs__text %}
+      <div {{ bem('intro', [], 'tabs') }}>{{ tabs__text }}</div>
+    {% endif %}
+    {{ navigation }}
+    <div {{ bem('panels', [], 'tabs') }}>{{ panels }}</div>
+  </div>
+{% endset %}
+
+{% embed '@layout/container/container.twig' with {
+  container__width: tabs__width|default('wide'),
+  container__alignment: tabs__alignment|default('center'),
+  container__theme: tabs__theme,
+  container__theme__variation: tabs__theme__variation,
+  container__bg_color: tabs__bg_color,
+  container__spacing: tabs__spacing,
+  container__id: valid_instance ? tabs_id : null,
+  container__modifiers: tabs__container__modifiers,
+  tabs__id: tabs__id,
+  markup: markup,
+} only %}
+  {% block container__content %}{{ markup }}{% endblock %}
 {% endembed %}

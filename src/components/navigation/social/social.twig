@@ -1,8 +1,35 @@
-{% embed "@components/navigation/base/menu.twig" with {
-  menu__name: 'Social Navigation',
-  menu__base_class: 'social-nav',
-} %}
-  {% block menu_list__content %}
-    {% include "@components/navigation/social/_social-list.twig" %}
+{#
+ # Social media navigation with named links and decorative icons.
+ #
+ # Props: social__items, social__label, social__blockname, social__modifiers,
+ # social__additional_classes, social__attributes.
+ # Slots: social__items_content.
+ #}
+{% set social__classes = social__attributes.class|default([]) %}
+{% set social__classes = social__classes is iterable ? social__classes : [social__classes] %}
+{% set social__classes = social__classes|merge(social__additional_classes|default([]))|merge(social__blockname ? ['social-nav'] : []) %}
+{% set social__nav_attributes = social__attributes|default({})|merge({
+  class: bem('social-nav', social__modifiers|default([]), social__blockname, social__classes),
+  'aria-label': social__label|default('Social media'|t),
+}) %}
+
+{% set default_items %}
+  {% for social_item in social__items ?? items ?? [] %}
+    {{ include('@components/navigation/social/_social-item.twig', {
+      item: social_item,
+    }, with_context: false) }}
+  {% endfor %}
+{% endset %}
+{% set rendered_items %}
+  {% block social__items_content %}
+    {{ social__items_content ?? default_items }}
   {% endblock %}
-{% endembed %}
+{% endset %}
+
+{% if rendered_items|trim %}
+  <nav {{ add_attributes(social__nav_attributes) }}>
+    <ul {{ bem('menu-list', [], 'social-nav') }} role="list">
+      {{ rendered_items }}
+    </ul>
+  </nav>
+{% endif %}

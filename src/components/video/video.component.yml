@@ -1,0 +1,114 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Video
+description: Renders native HTML video with tracks or a titled and responsive embed.
+group: Components
+status: stable
+props:
+  type: object
+  required: [video__title]
+  properties:
+    video__type:
+      type: [string, 'null']
+      title: Player
+      description: Select HTML video sources or an embedded player.
+      enum: [html5, embed, null]
+      default: html5
+    video__title:
+      type: string
+      title: Title
+      description: Accessible name describing the video.
+      minLength: 1
+      examples: ['A sample video']
+    video__sources:
+      type: [array, 'null']
+      title: Video sources
+      description: Ordered HTML video source URLs and optional media types.
+      default: []
+      items:
+        type: object
+        required: [src]
+        properties:
+          src:
+            type: string
+          type:
+            type: [string, 'null']
+    video__tracks:
+      type: [array, 'null']
+      title: Text tracks
+      description: WebVTT captions, subtitles, descriptions, chapters, or metadata.
+      default: []
+      items:
+        type: object
+        required: [src]
+        properties:
+          src:
+            type: string
+          kind:
+            enum: [captions, subtitles, descriptions, chapters, metadata, null]
+          srclang:
+            type: [string, 'null']
+          label:
+            type: [string, 'null']
+          default:
+            type: [boolean, 'null']
+    video__poster:
+      type: [string, 'null']
+      title: Poster URL
+      description: Native poster image to show before a video plays.
+      default: null
+    video__embed_url:
+      type: [string, 'null']
+      title: Embed URL
+      description: Relative or HTTP URL for a trusted video player.
+      default: null
+    video__aspect_ratio:
+      type: [string, 'null']
+      title: Embed aspect ratio
+      description: Ratio of the responsive embedded player.
+      enum: ['16:9', '4:3', '1:1', null]
+      default: '16:9'
+    video__autoplay:
+      type: [boolean, 'null']
+      title: Background playback
+      description: Play muted HTML video when the viewer allows automatic motion.
+      default: false
+    video__loop:
+      type: [boolean, 'null']
+      title: Loop
+      description: Restart native playback at the end of the video.
+      default: false
+    video__decorative:
+      type: [boolean, 'null']
+      title: Decorative background video
+      description: Hide decorative HTML video from assistive technology while enhanced background playback controls are available.
+      default: false
+    video__caption:
+      type: [string, 'null']
+      title: Caption
+      description: Visible caption below the player. A caption or credit creates a figure.
+      default: null
+    video__credit:
+      type: [string, 'null']
+      title: Credit
+      description: Visible attribution or copyright notice.
+      default: null
+    video__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Parent block for the BEM video class.
+    video__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers for the video.
+      items:
+        type: string
+    video__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: Extra classes applied to the video wrapper.
+      items:
+        type: string
+    video__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Extra attributes applied to the video wrapper.

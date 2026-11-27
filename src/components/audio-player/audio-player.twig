@@ -1,34 +1,57 @@
 {#
-/**
- * Available Variables:
- * audio_content - An array with the audio file(s) to be played. This is an array
-   to support multiple formats.
- * preload - Determines if the audio file should be loaded on page load. This is the
-   audio equivilant of lazy load. Defaults to 'none'.
- * autoplay - Whether the audio should automatically play. Defaults to false.
- * loop - Plays the audio in a loop. Defaults to false.
- * muted - Mutes audio. Defaults to false.
- * no_download - Disallows users from downloading the audio file.
- */
-#}
+ # Native audio with user-controlled playback and an optional transcript link.
+ #
+ # Props: audio_player__sources, audio_player__label, audio_player__preload,
+ # audio_player__loop, audio_player__muted, audio_player__no_download,
+ # audio_player__transcript_url, audio_player__transcript_label,
+ # audio_player__blockname, audio_player__modifiers,
+ # audio_player__additional_classes, audio_player__attributes.
+ #}
+{% set sources = [] %}
+{% for source in audio_player__sources|default([]) %}
+  {% set source_url = (source is iterable ? source.src : source)|default('')|trim %}
+  {% set source_prefix = source_url|split(':')|first %}
+  {% if source_url and (':' not in source_url or '/' in source_prefix or '?' in source_prefix or '#' in source_prefix or source_prefix|lower in ['http', 'https']) %}
+    {% set sources = sources|merge([{src: source_url, type: source.type|default(null)}]) %}
+  {% endif %}
+{% endfor %}
 
-{% set audio_player__base_class = 'audio-player' %}
-{% set audio_player__modifiers = audio_player__modifiers|default([]) %}
-{% set additional_attributes = additional_attributes|default() %}
+{% set transcript_url = audio_player__transcript_url|default('')|trim %}
+{% set transcript_prefix = transcript_url|split(':')|first %}
+{% if ':' in transcript_url and '/' not in transcript_prefix and '?' not in transcript_prefix and '#' not in transcript_prefix and transcript_prefix|lower not in ['http', 'https'] %}
+  {% set transcript_url = '' %}
+{% endif %}
 
-<div {{ bem(audio_player__base_class, audio_player__blockname, audio_player__modifiers)}} {{ add_attributes(additional_attributes) }}>
-  <audio {{ bem('player', [], audio_player__base_class) }} controls 
-    preload="{{preload|default('none')}}" 
-    {{ (autoplay) ? 'autoplay' : ''}}
-    {{ (loop) ? 'loop' : ''}}
-    {{ (muted) ? 'muted' : ''}}
-    {% if no_download %} controlsList="nodownload"{% endif %}>
-    {% for audio_file in audio_content %}
-      <source src="{{ audio_file }}" type="audio/{{ audio_file|split('.')|last }}">
-    {% endfor %}
-    <p>Your browser doesn't support HTML5 audio.</p> 
-    {% if not no_download %}
-      <p>Here is a <a href={{ audio_content|first }}>link to the audio</a> instead.</p>
+{% if sources or transcript_url %}
+  {% set wrapper_attributes = audio_player__attributes|default({}) %}
+  {% set wrapper_classes = wrapper_attributes.class|default([]) %}
+  {% set wrapper_classes = wrapper_classes is iterable ? wrapper_classes : [wrapper_classes] %}
+  {% set wrapper_classes = wrapper_classes|merge(audio_player__additional_classes|default([]))|merge(audio_player__blockname ? ['audio-player'] : []) %}
+  {% set wrapper_attributes = wrapper_attributes|merge({
+    class: bem('audio-player', audio_player__modifiers, audio_player__blockname, wrapper_classes),
+  }) %}
+
+  <div {{ add_attributes(wrapper_attributes) }}>
+    {% if sources %}
+      <audio {{ add_attributes({
+        class: bem('player', [], 'audio-player'),
+        'aria-label': audio_player__label|default('Audio player'|t),
+        preload: audio_player__preload in ['none', 'metadata', 'auto'] ? audio_player__preload : 'none',
+      }) }} controls{% if audio_player__loop is same as(true) %} loop{% endif %}{% if audio_player__muted is same as(true) %} muted{% endif %}{% if audio_player__no_download is same as(true) %} controlslist="nodownload"{% endif %}>
+        {% for source in sources %}
+          <source {{ add_attributes(source.type ? { src: source.src, type: source.type } : { src: source.src }) }}>
+        {% endfor %}
+        <p>{{ 'Your browser does not support audio playback.'|t }}</p>
+        {% if audio_player__no_download is not same as(true) %}
+          <a {{ add_attributes({ href: sources[0].src }) }}>{{ 'Open the audio file'|t }}</a>
+        {% endif %}
+      </audio>
     {% endif %}
-  </audio>
-</div>
+    {% if transcript_url %}
+      <a {{ add_attributes({
+        class: bem('transcript', [], 'audio-player'),
+        href: transcript_url,
+      }) }}>{{ audio_player__transcript_label|default('Read the transcript'|t) }}</a>
+    {% endif %}
+  </div>
+{% endif %}

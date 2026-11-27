@@ -1,0 +1,8 @@
+@use '../typography/typography' as *;
+
+// Base styles for Storybook previews.
+.sb-show-main {
+  background: var(--clr-background);
+  height: 100vh;
+  font-family: font-family('body'), serif !important;
+}

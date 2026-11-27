@@ -1,9 +1,16 @@
 {
-  "extends": [
-    "../../node_modules/@emulsify/core/config/.stylelintrc.json"
-  ],
+  "extends": ["../../node_modules/@emulsify/core/config/.stylelintrc.json"],
   "rules": {
+    "at-rule-empty-line-before": null,
     "no-duplicate-selectors": null,
     "block-no-redundant-nested-style-rules": null
-  }
+  },
+  "overrides": [
+    {
+      "files": ["../../src/components/**/*.scss"],
+      "rules": {
+        "color-no-hex": true
+      }
+    }
+  ]
 }

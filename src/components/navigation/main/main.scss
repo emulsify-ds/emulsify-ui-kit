@@ -1,15 +1,65 @@
-@forward './main-wrapper';
-@forward './main-list';
-@forward './main-item';
-@forward './main-link';
-@forward './main-toggle';
-
-@use '../../../foundation/breakpoints/breakpoints' as *;
+@use '../../../base' as *;
+@use './main-link';
 
 .main-nav {
-  display: flex;
+  position: relative;
+  inline-size: 100%;
+  min-inline-size: 0;
 
-  @include breakpoint('medium') {
-    align-self: center;
+  > .main-nav__toggle {
+    margin-block-end: space(8);
+  }
+
+  > .main-nav__menu-list-wrapper > .main-nav__menu-list {
+    gap: space(8);
+  }
+
+  &[data-menu-mode='inline'],
+  &[data-menu-measuring='true'] {
+    > .main-nav__menu-list-wrapper > .main-nav__menu-list {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+
+      > .main-nav__item {
+        flex: none;
+      }
+    }
+  }
+
+  &[data-menu-mode='inline'] .main-nav__item--level-0 > .main-nav__menu-list {
+    position: absolute;
+    z-index: 2;
+    inset-block-start: 100%;
+    inset-inline-start: 0;
+    box-sizing: border-box;
+    inline-size: min(24rem, 100%);
+    margin: space(4) 0 0;
+    padding: space(8);
+    border: var(--bw-sm) solid var(--clr-border);
+    border-radius: var(--r-sm);
+    background: var(--main-nav-panel-background, var(--clr-background));
+    white-space: normal;
+  }
+
+  &[data-menu-measuring='true'] > .main-nav__menu-list-wrapper {
+    position: absolute;
+    display: block;
+    inline-size: max-content;
+    visibility: hidden;
+
+    > .main-nav__menu-list {
+      inline-size: max-content;
+    }
+
+    .main-nav__item > .main-nav__menu-list {
+      display: none;
+    }
+  }
+
+  // Disclosures form a vertical list until there is room for the inline menu.
+  &:not([data-menu-mode='inline']) .main-nav__menu-list .main-nav__menu-list {
+    padding-inline-start: space(8);
+    border-inline-start: var(--bw-sm) solid var(--clr-border);
   }
 }

@@ -1,35 +1,63 @@
-$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
-
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: Tags
+description: A short list of topic labels and links to related content.
 group: Components
 status: stable
+libraryOverrides:
+  dependencies: [core/drupal, core/once]
 props:
   type: object
   properties:
-    items:
-      type: array
-      title: Tag items
-      description: >
-        Array of tag items. Each item may include:
-          - title (required): Visible tag label.
-          - url (optional): If present, the tag renders as a link.
-          - color (optional): Named variant (primary | dark | yellow | green)
-            or any valid CSS color value (e.g. rgb(0, 55, 103), #ca4b0c).
-            Omit to render the default outlined pill style.
-            When using arbitrary colors, a minimum contrast ratio of 4.5:1
-            against the tag text is required (WCAG 2.1 AA) — the implementer
-            is responsible for validating that.
-      data:
-        - title: General Public
-        - title: Major
-          url: '#'
-          color: 'rgb(0, 0, 0)'
-        - title: Minor
-          url: '#'
-          color: 'rgb(0, 55, 103)'
-        - title: Masters
-          url: '#'
-          color: 'rgb(202, 75, 12)'
-        - title: Graduate Certificate
-          url: '#'
-          color: 'rgb(120, 157, 74)'
+    tags__items:
+      type: [array, 'null']
+      title: Tags
+      description: Tags in reading order, with optional destinations and color accents.
+      default: []
+      examples:
+        - - title: Community
+          - title: Photography
+            url: /topics/photography
+            color: primary
+          - title: Outdoors
+            url: /topics/outdoors
+            color: green
+      items:
+        type: object
+        properties:
+          title:
+            type: string
+            title: Label
+            description: The visible tag name.
+          url:
+            type: [string, 'null']
+            title: URL
+            description: Destination for the tag link. Omit for a static label.
+          color:
+            type: [string, 'null']
+            title: Color accent
+            description: One of primary, dark, yellow, green, or a CSS color for a custom tint.
+        required: [title]
+    tags__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Optional parent BEM block name.
+    tags__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers for the list.
+      items:
+        type: string
+    tags__additional_classes:
+      type: [array, 'null']
+      title: Classes
+      description: Additional classes for the list.
+      items:
+        type: string
+    tags__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Additional attributes for the list.
+slots:
+  tags__items_content:
+    title: Composed list items
+    description: Replace the generated items with list-item markup.

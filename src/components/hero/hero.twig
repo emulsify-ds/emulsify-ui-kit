@@ -1,0 +1,133 @@
+{#
+ # Page introduction with copy, up to two actions, and optional media.
+ # Content: hero__heading, hero__heading_level, hero__text, hero__ctas,
+ # hero__height, hero__media_type, hero__media_alignment.
+ # Image: hero__image__src, hero__image__alt, hero__image__decorative,
+ # hero__image__srcset, hero__image__sizes, hero__image__sources,
+ # hero__image__width, hero__image__height, hero__image__caption, hero__image__credit.
+ # Video: hero__video__type, hero__video__title, hero__video__sources,
+ # hero__video__tracks, hero__video__poster, hero__video__embed_url,
+ # hero__video__aspect_ratio, hero__video__background, hero__video__caption,
+ # hero__video__credit.
+ # Section: hero__width, hero__theme, hero__theme__variation, hero__bg_color,
+ # hero__spacing, hero__id, hero__container__modifiers.
+ # Wrapper: hero__blockname, hero__modifiers, hero__additional_classes,
+ # hero__attributes.
+ # Slot: hero__media_content.
+ #}
+
+{% set media_type = hero__media_type in ['video', 'none'] ? hero__media_type : 'image' %}
+{% set hero_heading_id = hero__id ? 'hero-heading-' ~ hero__id : null %}
+{% set hero_attributes = hero__attributes|default({}) %}
+{% if hero_attributes.toArray is defined %}
+  {% set hero_attributes = hero_attributes.toArray() %}
+{% endif %}
+{% set attribute_classes = hero_attributes.class|default([]) %}
+{% set attribute_classes = attribute_classes is iterable ? attribute_classes : [attribute_classes] %}
+{% set hero_classes = hero__additional_classes|default([])|merge(attribute_classes)|merge(hero__blockname ? ['hero'] : []) %}
+
+{% set media %}
+  {% block hero__media_content %}
+    {% if media_type != 'none' %}
+      {% if hero__media_content is not empty %}
+        {{ hero__media_content }}
+      {% elseif media_type == 'image' %}
+        {% set decorative_image = hero__image__decorative is defined and hero__image__decorative is not same as(null) ? hero__image__decorative : hero__image__alt|default('')|trim is empty %}
+        {{ include('@components/image/image.twig', {
+          image__src: hero__image__src,
+          image__alt: hero__image__alt|default(''),
+          image__decorative: decorative_image,
+          image__srcset: hero__image__srcset,
+          image__sizes: hero__image__sizes,
+          image__sources: hero__image__sources,
+          image__width: hero__image__width,
+          image__height: hero__image__height,
+          image__caption: hero__image__caption,
+          image__credit: hero__image__credit,
+          image__loading: 'eager',
+        }, with_context: false) }}
+      {% elseif media_type == 'video' %}
+        {% set background_video = hero__video__background is same as(true) and hero__video__type != 'embed' %}
+        {{ include('@components/video/video.twig', {
+          video__type: hero__video__type,
+          video__title: hero__video__title|default(background_video ? ('Background video'|t) : ('Hero video'|t)),
+          video__sources: hero__video__sources,
+          video__tracks: background_video ? [] : hero__video__tracks,
+          video__poster: hero__video__poster,
+          video__embed_url: hero__video__embed_url,
+          video__aspect_ratio: hero__video__aspect_ratio,
+          video__autoplay: background_video,
+          video__loop: background_video,
+          video__decorative: background_video,
+          video__caption: hero__video__caption,
+          video__credit: hero__video__credit,
+          video__attributes: background_video ? { 'data-hero-background-video': 'true' } : {},
+        }, with_context: false) }}
+      {% endif %}
+    {% endif %}
+  {% endblock %}
+{% endset %}
+
+{% set actions %}
+  {% set action_count = 0 %}
+  {% for action in hero__ctas|default([])|slice(0, 2) %}
+    {% if action.content|default('')|trim and action.url|default('')|trim %}
+      {{ include('@components/cta/cta.twig', {
+        cta__text: action.content,
+        cta__url: action.url,
+        cta__icon: action.icon,
+        cta__icon_position: action.icon_position,
+        cta__modifiers: [action_count == 0 ? 'primary' : 'secondary'],
+      }, with_context: false) }}
+      {% set action_count = action_count + 1 %}
+    {% endif %}
+  {% endfor %}
+{% endset %}
+
+{% set content %}
+  <div {{ add_attributes(hero_attributes|merge({
+    class: bem('hero', hero__modifiers, hero__blockname, hero_classes),
+    'data-hero-height': hero__height == 'tall' ? 'tall' : 'auto',
+    'data-hero-media-type': media_type != 'none' and media|trim ? media_type : 'none',
+    'data-hero-media-alignment': hero__media_alignment == 'left' ? 'left' : 'right',
+  })) }}>
+    <div {{ bem('content', [], 'hero') }}>
+      {{ include('@components/heading/heading.twig', {
+        heading__content: hero__heading,
+        heading__level: hero__heading_level,
+        heading__blockname: 'hero',
+        heading__modifiers: ['display'],
+        heading__attributes: hero_heading_id ? { id: hero_heading_id } : {},
+      }, with_context: false) }}
+      {% if hero__text %}
+        {{ include('@components/text/_text.twig', {
+          text__element: 'div',
+          text__content: hero__text,
+          text__blockname: 'hero',
+        }, with_context: false) }}
+      {% endif %}
+      {% if actions|trim %}
+        <div {{ bem('actions', [], 'hero') }}>{{ actions }}</div>
+      {% endif %}
+    </div>
+    {% if media_type != 'none' and media|trim %}
+      <div {{ bem('media', [], 'hero') }}>{{ media }}</div>
+    {% endif %}
+  </div>
+{% endset %}
+
+{% embed '@layout/container/container.twig' with {
+  container__element: 'section',
+  container__width: hero__width|default('wide'),
+  container__theme: hero__theme,
+  container__theme__variation: hero__theme__variation,
+  container__bg_color: hero__bg_color is defined and hero__bg_color is not same as(null) ? hero__bg_color : true,
+  container__spacing: hero__spacing|default('two'),
+  container__id: hero__id,
+  container__modifiers: hero__container__modifiers,
+  container__attributes: hero_heading_id ? { 'aria-labelledby': hero_heading_id } : {},
+  hero__heading: hero__heading,
+  content: content,
+} only %}
+  {% block container__content %}{{ content }}{% endblock %}
+{% endembed %}

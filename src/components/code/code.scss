@@ -1,0 +1,19 @@
+@use '../../base' as *;
+
+.code {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  padding: space(16);
+  margin-block: 0;
+  border: thin solid var(--clr-border);
+  border-radius: var(--r-sm);
+  background-color: color-mix(
+    in srgb,
+    var(--clr-border) 20%,
+    var(--clr-background)
+  );
+  color: var(--clr-body);
+  line-height: line-height('normal');
+
+  @include focus;
+}

@@ -1,0 +1,20 @@
+{#
+ # Table cell supplied by table.twig.
+ #}
+{% set cell = table_cell.content is defined ? table_cell : { content: table_cell } %}
+{% set cell_attributes = cell.attributes|default({}) %}
+{% set cell_classes = cell_attributes.class|default([]) %}
+{% set cell_classes = cell_classes is iterable ? cell_classes : [cell_classes] %}
+{% set header = cell.tag in ['td', 'th'] ? cell.tag == 'th' : default_scope == 'col' %}
+{% if cell.header is defined and cell.header is not null %}
+  {% set header = cell.header %}
+{% endif %}
+{% set tag = header ? 'th' : 'td' %}
+{% set scope = cell.scope|default(cell_attributes.scope|default('')) ~ '' %}
+{% set scope = scope in ['row', 'col', 'rowgroup', 'colgroup'] ? scope : default_scope %}
+{% set cell_attributes = cell_attributes|merge({
+  class: bem('cell', [], 'table', cell_classes),
+  colspan: cell.colspan|default(cell_attributes.colspan),
+  scope: header ? scope : null,
+}) %}
+<{{ tag }} {{ add_attributes(cell_attributes) }}>{{- cell.content -}}</{{ tag }}>

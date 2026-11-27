@@ -1,0 +1,92 @@
+{#
+ # A section that introduces a next step and offers up to two actions.
+ #
+ # Props:
+ # - callout__overline: Short label above the heading.
+ # - callout__heading: Section heading.
+ # - callout__heading_level: Heading level from 2 to 6.
+ # - callout__text: Supporting text or processed Drupal content.
+ # - callout__ctas: Up to two actions with content, url, icon, and icon_position.
+ # - callout__width: Container width.
+ # - callout__alignment: Container alignment.
+ # - callout__theme: Container theme name.
+ # - callout__theme__variation: Light or dark container theme variation.
+ # - callout__bg_color: Paint the surrounding section with the theme background.
+ # - callout__spacing: Container spacing.
+ # - callout__id: Anchor suffix rendered as section-{id}.
+ # - callout__container__modifiers: Modifiers for the container.
+ # - callout__blockname: Optional parent BEM block.
+ # - callout__modifiers: Modifiers for the callout panel.
+ # - callout__additional_classes: Additional classes for the panel.
+ # - callout__attributes: Additional attributes for the panel.
+ #}
+
+{% set panel_attributes = callout__attributes|default({}) %}
+{% set attribute_classes = panel_attributes.class|default([]) %}
+{% set panel_classes = callout__additional_classes|default([])|merge(attribute_classes is iterable ? attribute_classes : [attribute_classes]) %}
+{% if callout__blockname %}
+  {% set panel_classes = panel_classes|merge(['callout']) %}
+{% endif %}
+{% set panel_attributes = panel_attributes|merge({
+  class: bem('callout', callout__modifiers, callout__blockname, panel_classes),
+}) %}
+
+{% set actions %}
+  {% set action_count = 0 %}
+  {% for action in callout__ctas|default([])|slice(0, 2) %}
+    {% if action.content|default('')|trim and action.url|default('')|trim %}
+      {{ include('@components/cta/cta.twig', {
+        cta__text: action.content,
+        cta__url: action.url,
+        cta__icon: action.icon,
+        cta__icon_position: action.icon_position,
+        cta__modifiers: [action_count == 0 ? 'primary' : 'secondary'],
+      }, with_context: false) }}
+      {% set action_count = action_count + 1 %}
+    {% endif %}
+  {% endfor %}
+{% endset %}
+
+{% set panel %}
+  <div {{ add_attributes(panel_attributes) }}>
+    {% if callout__overline or callout__heading or callout__text %}
+      <div {{ bem('copy', [], 'callout') }}>
+        {% if callout__overline %}
+          <p {{ bem('overline', [], 'callout') }}>{{ callout__overline }}</p>
+        {% endif %}
+        {% if callout__heading %}
+          {{ include('@components/heading/heading.twig', {
+            heading__content: callout__heading,
+            heading__level: callout__heading_level in [2, 3, 4, 5, 6] ? callout__heading_level : 2,
+            heading__blockname: 'callout',
+          }, with_context: false) }}
+        {% endif %}
+        {% if callout__text %}
+          {{ include('@components/text/_text.twig', {
+            text__element: 'div',
+            text__content: callout__text,
+            text__blockname: 'callout',
+          }, with_context: false) }}
+        {% endif %}
+      </div>
+    {% endif %}
+    {% if actions|trim %}
+      <div {{ bem('actions', [], 'callout') }}>{{ actions }}</div>
+    {% endif %}
+  </div>
+{% endset %}
+
+{% embed '@layout/container/container.twig' with {
+  container__element: 'section',
+  container__width: callout__width,
+  container__alignment: callout__alignment,
+  container__theme: callout__theme,
+  container__theme__variation: callout__theme__variation,
+  container__bg_color: callout__bg_color,
+  container__spacing: callout__spacing,
+  container__id: callout__id,
+  container__modifiers: callout__container__modifiers,
+  panel: panel,
+} only %}
+  {% block container__content %}{{ panel }}{% endblock %}
+{% endembed %}

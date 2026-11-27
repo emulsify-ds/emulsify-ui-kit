@@ -1,114 +1,128 @@
 {#
- # Available Variables:
- # - banner__heading: The title of the banner.
- # - banner__text: The main content of the banner.
- # - banner__link_items: links or buttons below the main content.
+ # Banner section with introductory copy, actions, and optional media.
  #
- # - banner__image: Decorative background image.
- # - banner__video: The URL of the video to be displayed. If provided, background_image will be ignored.
- #
- # - banner__alignment: Specifies the alignment of the content within the banner. Options include 'left', 'center'.
- # - banner__variant: Specifies the style variant for the banner component (e.g., default, light, dark).
- # - banner__attributes: HTML attributes for the banner container.
- #
- # Available Blocks:
- # - banner_media
- # - banner__media_caption
-#}
+ # Content: banner__overline, banner__heading, banner__heading_level,
+ # banner__text, banner__ctas, banner__alignment.
+ # Media: banner__media_alignment, banner__image__src, banner__image__alt,
+ # banner__image__decorative, banner__image__srcset, banner__image__sizes,
+ # banner__image__width, banner__image__height, banner__video__sources,
+ # banner__video__title, banner__video__tracks, banner__video__poster.
+ # Section: banner__id, banner__width, banner__theme, banner__theme__variation,
+ # banner__bg_color, banner__spacing, banner__container__modifiers.
+ # Wrapper: banner__blockname, banner__modifiers, banner__additional_classes,
+ # banner__attributes.
+ # Slots: banner__media_content, banner__media_caption_content.
+ #}
 
-{% set banner__base_class = 'banner' %}
-{% set banner__modifiers = banner__modifiers|default([]) %}
-{% set banner__attributes = banner__attributes|default({}) %}
-
-{% set banner__attributes = banner__attributes|merge({
-  'class': bem(banner__base_class, banner__modifiers, banner__blockname),
-  'data-banner-alignment': banner__alignment|default('left'),
+{% set banner_alignment = banner__alignment in ['center', 'right'] ? banner__alignment : 'left' %}
+{% set banner_heading_level = banner__heading_level in [2, 3, 4, 5, 6] ? banner__heading_level : 2 %}
+{% set banner_heading_id = banner__id is not empty and banner__heading ? 'banner-heading-' ~ banner__id : null %}
+{% set banner_attributes = banner__attributes|default({}) %}
+{% set attribute_classes = banner_attributes.class|default([]) %}
+{% set attribute_classes = attribute_classes is iterable ? attribute_classes : [attribute_classes] %}
+{% set banner_classes = banner__additional_classes|default([])|merge(attribute_classes)|merge(banner__blockname ? ['banner'] : []) %}
+{% set banner_attributes = banner_attributes|merge({
+  class: bem('banner', banner__modifiers, banner__blockname, banner_classes),
+  'data-banner-alignment': banner_alignment,
+  'data-banner-media-alignment': banner__media_alignment == 'left' ? 'left' : 'right',
 }) %}
 
 {% set banner_media %}
-<div {{ bem('media', [], banner__base_class) }}>
-  {% block banner__media %}
-    {% if banner__media == 'image' %}
-      <img src="{{banner__image}}" alt="This is the banner image alt text"/>
-    {% else %}
-      {% set video_id = 'video-' ~ random('1234567890') ~ random('1234567890') ~ random('1234567890') ~ random('1234567890') %}
-
-      {% include "@components/video/video.twig" with {
-        video__type: 'html5',
-        video__urls: banner__video,
-        video__show_placeholder: false,
-        video__blockname: banner__base_class,
-        video_object__attributes: {
-          'id': video_id,
-          'preload': 'true',
-          'muted': 'true',
-          'playsinline': 'true',
-          'webkit-playsinline': 'true',
-          'aria-hidden': 'true',
-          'loop': 'true',
-          'autoplay': 'true',
-        },
-      } %}
-
-      {% include "@components/video/playback-button.twig" with {
-        playback__blockname: banner__base_class,
-        playback__video_id: video_id,
-      } %}
+  {% block banner__media_content %}
+    {% if banner__media_content is not empty %}
+      {{ banner__media_content }}
+    {% elseif banner__video__sources is not empty %}
+      {{ include('@components/video/video.twig', {
+        video__sources: banner__video__sources,
+        video__title: banner__video__title|default('Banner video'|t),
+        video__tracks: banner__video__tracks|default([]),
+        video__poster: banner__video__poster|default(null),
+      }, with_context: false) }}
+    {% elseif banner__image__src %}
+      {{ include('@components/image/image.twig', {
+        image__src: banner__image__src,
+        image__alt: banner__image__alt|default(''),
+        image__decorative: banner__image__decorative is same as(true),
+        image__srcset: banner__image__srcset|default(null),
+        image__sizes: banner__image__sizes|default(null),
+        image__width: banner__image__width|default(null),
+        image__height: banner__image__height|default(null),
+        image__loading: 'eager',
+      }, with_context: false) }}
     {% endif %}
   {% endblock %}
-</div>
-{% block banner__media_caption %}{% endblock %}
+{% endset %}
+{% set banner_caption %}
+  {% block banner__media_caption_content %}
+    {{ banner__media_caption_content }}
+  {% endblock %}
 {% endset %}
 
-{% set banner %}
-<div {{ add_attributes(banner__attributes) }}>
-  <div {{ bem('content', [], banner__base_class) }}>
-    {% if banner__heading %}
-      {% include "@components/typography/heading/heading.twig" with {
-        heading: banner__heading,
-        heading__level: banner__heading__level|default('4'),
-        heading__blockname: banner__base_class,
-      } %}
+{% set banner_actions %}
+  {% set action_count = 0 %}
+  {% for action in banner__ctas|default([])|slice(0, 2) %}
+    {% if action.content|default('')|trim and action.url|default('')|trim %}
+      {{ include('@components/cta/cta.twig', {
+        cta__text: action.content,
+        cta__url: action.url,
+        cta__icon: action.icon|default(null),
+        cta__icon_position: action.icon_position|default(null),
+        cta__modifiers: [action_count == 0 ? 'primary' : 'secondary'],
+      }, with_context: false) }}
+      {% set action_count = action_count + 1 %}
     {% endif %}
+  {% endfor %}
+{% endset %}
 
-    {% if banner__text %}
-      {% include "@components/typography/text/text.twig" with {
-        text__content: banner__text,
-        text__blockname: banner__base_class,
-      } %}
-    {% endif %}
-
-    {% if banner__link_items|length > 0 %}
-      <div {{ bem('links', [], banner__base_class) }}>
-        {% for item in banner__link_items %}
-          {% include "@components/button/button.twig" with {
-            button__element: 'a',
-            button__style: 'primary',
-            button__content: item.content,
-            button__attributes: {
-              'href': item.url,
-            }
-          } %}
-        {% endfor %}
-      </div>
+{% set banner_panel %}
+  <div {{ add_attributes(banner_attributes) }}>
+    <div {{ bem('content', [], 'banner') }}>
+      {% if banner__overline %}
+        <p {{ bem('overline', [], 'banner') }}>{{ banner__overline }}</p>
+      {% endif %}
+      {% if banner__heading %}
+        {{ include('@components/heading/heading.twig', {
+          heading__content: banner__heading,
+          heading__level: banner_heading_level,
+          heading__blockname: 'banner',
+          heading__modifiers: ['h2'],
+          heading__attributes: banner_heading_id ? { id: banner_heading_id } : {},
+        }, with_context: false) }}
+      {% endif %}
+      {% if banner__text %}
+        {{ include('@components/text/_text.twig', {
+          text__element: 'div',
+          text__content: banner__text,
+          text__blockname: 'banner',
+        }, with_context: false) }}
+      {% endif %}
+      {% if banner_actions|trim %}
+        <div {{ bem('actions', [], 'banner') }}>{{ banner_actions }}</div>
+      {% endif %}
+    </div>
+    {% if banner_media|trim %}
+      {% set media_element = banner_caption|trim ? 'figure' : 'div' %}
+      <{{ media_element }} {{ bem('media', [], 'banner') }}>
+        {{ banner_media }}
+        {% if banner_caption|trim %}
+          <figcaption {{ bem('caption', [], 'banner') }}>{{ banner_caption }}</figcaption>
+        {% endif %}
+      </{{ media_element }}>
     {% endif %}
   </div>
-</div>
 {% endset %}
 
-{# Render the banner within a generic container #}
-{% embed "@layout/container/container.twig" with {
-  container__component_width: banner__width|default('compact'),
-	container__modifiers: banner__container_modifiers,
-  container__component_alignment: 'center',
-  container__theme: banner__theme|default('inverse'),
-}%}
-	{% block container__content %}
-		{{ banner }}
-	{% endblock %}
-
-  {% block container__suffix %}
-    {{ banner_media }}
-  {% endblock %}
+{% embed '@layout/container/container.twig' with {
+  container__element: 'section',
+  container__width: banner__width|default('wide'),
+  container__theme: banner__theme,
+  container__theme__variation: banner__theme__variation,
+  container__bg_color: banner__bg_color is defined and banner__bg_color is not same as(null) ? banner__bg_color : true,
+  container__spacing: banner__spacing,
+  container__id: banner__id,
+  container__modifiers: banner__container__modifiers,
+  container__attributes: banner_heading_id ? { 'aria-labelledby': banner_heading_id } : {},
+  banner_panel: banner_panel,
+} only %}
+  {% block container__content %}{{ banner_panel }}{% endblock %}
 {% endembed %}
-

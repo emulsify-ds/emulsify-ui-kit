@@ -1,0 +1,16 @@
+{#
+ # Props: code__content, code__blockname, code__modifiers,
+ # code__additional_classes, code__attributes.
+ # Slot: code__snippet_content.
+ #}
+{% set code__classes = code__additional_classes|default([])|merge(code__blockname ? ['code'] : []) %}
+{% set attributes = bem('code', code__modifiers, code__blockname, code__classes) %}
+{% set code__attributes = {
+  tabindex: '0',
+  role: 'region',
+  'aria-label': 'Code sample'|t,
+}|merge(code__attributes|default({})) %}
+
+<pre {{ add_attributes(code__attributes) }}><code>{%- block code__snippet_content -%}
+  {{- code__content|default('')|e -}}
+{%- endblock -%}</code></pre>

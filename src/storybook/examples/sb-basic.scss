@@ -1,0 +1,15 @@
+@use '../../base' as *;
+
+.example__prose,
+.example__application {
+  display: grid;
+  gap: space(16);
+}
+
+.example__application .cta {
+  justify-self: start;
+}
+
+.example__prose p {
+  margin: 0;
+}

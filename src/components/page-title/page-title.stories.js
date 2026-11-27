@@ -1,168 +1,102 @@
-// Twig templates
-import pageTitleTwig from './page-title.twig';
+import { renderTwig } from '@emulsify/core/storybook';
+import { argsFromSchema } from '../../util/argsFromSchema.js';
+import {
+  createContainerThemeControls,
+  createContainerWidthControls,
+} from '../../util/storybookContainerControls.js';
+import imageSchema from '../image/image.component.yml';
+import image from '../image/image.twig';
+import breadcrumbs from '../navigation/breadcrumbs/breadcrumbs.twig';
+import schema from './page-title.component.yml';
+import docs from './page-title.docs.js';
+import template from './page-title.twig';
 
-// Data files
-import imageData from '../image/image.yml';
-import { props } from './page-title.component.yml';
+const widthControls = createContainerWidthControls();
+const themeControls = createContainerThemeControls();
 
-const pageTitleData = props.properties;
+function preview({
+  width,
+  theme,
+  themeVariation,
+  breadcrumbsItems,
+  mediaImage,
+  ...args
+}) {
+  return template({
+    ...args,
+    page_title__width: width,
+    page_title__theme: theme,
+    page_title__theme__variation: themeVariation,
+    page_title__breadcrumbs_content: breadcrumbsItems
+      ? breadcrumbs({ breadcrumbs__items: breadcrumbsItems })
+      : null,
+    page_title__media_content: mediaImage ? image(mediaImage) : null,
+  });
+}
 
-/**
- * Storybook Definition.
- */
 export default {
-  title: 'Components/Headers/Page Title',
-  argTypes: {
-    pageTitleHeading: {
-      name: 'Heading',
-      type: 'string',
-    },
-    pageTitleSubHeading: {
-      name: 'Subheading',
-      type: 'string',
-    },
-    pageTitlePrimaryLinkLabel: {
-      name: 'Primary Link Label',
-      type: 'string',
-    },
-    pageTitleSecondaryLinkLabel: {
-      name: 'Secondary Link Label',
-      type: 'string',
-    },
-    pageTitleTertiaryLinkLabel: {
-      name: 'Tertiary Link Label',
-      type: 'string',
-    },
-    pageTitleOverline: {
-      name: 'Content',
-      type: 'string',
-    },
-    pageTitleShowMedia: {
-      name: 'Show Media',
-      type: 'boolean',
-    },
-    pageTitleMediaShowCaption: {
-      name: 'Show Media Caption',
-      type: 'boolean',
-      if: {
-        arg: 'pageTitleShowMedia',
-        truthy: true,
-      },
-    },
-    pageTitleMediaCaption: {
-      name: 'Media Caption',
-      type: 'string',
-      if: {
-        arg: 'pageTitleMediaShowCaption',
-        truthy: true,
-      },
-    },
-    pageTitleMediaShowCopyright: {
-      name: 'Show Media Copyright',
-      type: 'boolean',
-      if: {
-        arg: 'pageTitleShowMedia',
-        truthy: true,
-      },
-    },
-    pageTitleMediaCopyright: {
-      name: 'Media Copyright',
-      type: 'string',
-      if: {
-        arg: 'pageTitleMediaShowCopyright',
-        truthy: true,
-      },
-    },
-    backgroundColor: {
-      name: 'Background Color',
-      control: {
-        type: 'boolean',
-      },
-      defaultValue: false,
-    },
-    spacing: {
-      name: 'Container Spacing',
-      control: { type: 'select' },
-      options: {
-        '0x Spacing': 'no-spacing',
-        '1x Spacing': '',
-        '2x Spacing': 'two-spacing',
-        '3x Spacing': 'three-spacing',
-      },
-      table: {
-        category: 'Container Controls',
-      },
-    },
-    layout: {
-      name: 'Container Layout',
-      control: { type: 'select' },
-      options: {
-        Stacked: 'stacked',
-        Inline: 'inline',
-      },
-      table: {
-        category: 'Container Controls',
-      },
-    },
-  },
+  title: 'Components/Page Title',
+  tags: ['autodocs'],
+  parameters: { docs },
   args: {
-    pageTitleHeading: pageTitleData.page_title__heading.data,
-    pageTitleSubHeading: pageTitleData.page_title__subheading.data,
-    pageTitlePrimaryLinkLabel: '',
-    pageTitleSecondaryLinkLabel: '',
-    pageTitleTertiaryLinkLabel: '',
-    pageTitleOverline: pageTitleData.page_title__overline.data,
-    pageTitleShowMedia: false,
-    pageTitleMediaShowCaption: false,
-    pageTitleMediaCaption: pageTitleData.page_title__media__caption.data,
-    pageTitleMediaShowCopyright: false,
-    pageTitleMediaCopyright: pageTitleData.page_title__media__copyright.data,
-    backgroundColor: false,
-    spacing: 'two-spacing',
-    layout: 'stacked',
+    ...argsFromSchema(schema.props),
+    ...themeControls.args,
+    width: 'wide',
+    page_title__bg_color: true,
+  },
+  argTypes: {
+    ...widthControls.argTypes,
+    ...themeControls.argTypes,
+    page_title__layout: {
+      name: 'Media layout',
+      control: 'select',
+      options: ['inline', 'stacked'],
+    },
+    page_title__media_alignment: {
+      name: 'Inline media placement',
+      control: 'select',
+      options: ['left', 'right'],
+    },
+    breadcrumbsItems: { control: false },
+    mediaImage: { control: false },
+  },
+  render: (args, { viewMode } = {}) =>
+    renderTwig(preview, { wrapper: viewMode === 'docs' ? 'div' : 'main' })(
+      args,
+    ),
+};
+
+export const PageTitle = {
+  args: {
+    page_title__overline: 'Collections',
+    page_title__overline__url: '/collections',
+    page_title__subheading: 'Find films, recordings, and production materials.',
+    page_title__ctas: [
+      { content: 'Browse titles', url: '/collections/film/titles' },
+      { content: 'Plan a visit', url: '/visit' },
+    ],
   },
 };
 
-export const pageTitle = ({
-  pageTitleHeading,
-  pageTitleSubHeading,
-  pageTitlePrimaryLinkLabel,
-  pageTitleSecondaryLinkLabel,
-  pageTitleTertiaryLinkLabel,
-  pageTitleOverline,
-  pageTitleShowMedia,
-  pageTitleMediaShowCaption,
-  pageTitleMediaCaption,
-  pageTitleMediaShowCopyright,
-  pageTitleMediaCopyright,
-  backgroundColor,
-  spacing,
-  layout,
-}) => {
-  const mediaProps = pageTitleShowMedia
-    ? {
-        ...imageData.responsive_images['3x2'],
-      }
-    : {};
+export const WithBreadcrumbs = {
+  args: {
+    breadcrumbsItems: [
+      { text: 'Home', url: '/' },
+      { text: 'Collections', url: '/collections' },
+      { text: 'Explore the film collection' },
+    ],
+  },
+};
 
-  return pageTitleTwig({
-    ...mediaProps,
-    page_title__heading: pageTitleHeading,
-    page_title__subheading: pageTitleSubHeading,
-    page_title__link_primary__label: pageTitlePrimaryLinkLabel,
-    page_title__link_primary__url: '#',
-    page_title__link_secondary__label: pageTitleSecondaryLinkLabel,
-    page_title__link_secondary__url: '#',
-    page_title__link_tertiary__label: pageTitleTertiaryLinkLabel,
-    page_title__link_tertiary__url: '#',
-    page_title__overline: pageTitleOverline,
-    page_title__show_media: pageTitleShowMedia,
-    page_title__media__show_caption: pageTitleMediaShowCaption,
-    page_title__media__caption: pageTitleMediaCaption,
-    page_title__media__show_copyright: pageTitleMediaShowCopyright,
-    page_title__media__copyright: pageTitleMediaCopyright,
-    page_title__bg_color: backgroundColor,
-    page_title__container__modifiers: spacing ? [spacing] : [],
-    page_title__layout: layout,
-  });
+export const WithMedia = {
+  args: {
+    page_title__subheading: 'Discover how recording technology has changed.',
+    page_title__description_content:
+      '<p>The collection includes equipment from the first century of filmmaking.</p>',
+    mediaImage: {
+      ...argsFromSchema(imageSchema.props),
+      image__caption: 'A camera from the collection.',
+    },
+    themeVariation: 'dark',
+  },
 };

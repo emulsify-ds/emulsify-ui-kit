@@ -1,0 +1,20 @@
+{% for section in sections %}
+  {% if section.title is defined %}
+    <h2>{{ section.title }}</h2>
+  {% endif %}
+  <ul class="sb-token-grid" role="list">
+    {% for row in section.rows %}
+      <li class="sb-token-card">
+        <strong>{{ row.name }}</strong>
+        <code>{{ row.value }}</code>
+        {% if row.sample %}
+          <span class="sb-token-preview sb-token-preview--{{ row.sample }}" style="--sb-token-value: {{ row.usage }}" aria-hidden="true"></span>
+        {% endif %}
+        {% if row.contrast is defined %}
+          <span>{{ row.contrast }}:1 contrast</span>
+        {% endif %}
+        {% include './_copy-usage.twig' with { usage: row.usage } only %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endfor %}

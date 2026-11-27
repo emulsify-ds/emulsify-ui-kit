@@ -1,0 +1,41 @@
+@use '../../base' as *;
+
+.example {
+  background-color: var(--clr-background);
+  color: var(--clr-body);
+}
+
+.example__footer {
+  background-color: var(--clr-background);
+  color: var(--clr-body);
+}
+
+.example__footer-inner {
+  box-sizing: border-box;
+  max-inline-size: var(--content-width-wide, 80rem);
+  margin-inline: auto;
+  padding: space(32);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: space(24);
+}
+
+.example__footer .social-nav__menu-list,
+.example__quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: space(8) space(16);
+}
+
+.example__quick-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: space(24);
+  }
+}

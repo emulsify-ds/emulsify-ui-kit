@@ -1,0 +1,73 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Heading
+description: Renders a semantic heading with an independently chosen display size and an optional link.
+group: Components
+status: stable
+props:
+  type: object
+  required: [heading__content]
+  properties:
+    heading__content:
+      type: [string, object]
+      title: Content
+      description: Heading text or rendered phrasing content.
+      examples: ['Explore the component library']
+    heading__level:
+      type: [integer, 'null']
+      title: Heading level
+      description: Selects the semantic rank in the page outline.
+      enum: [1, 2, 3, 4, 5, 6, null]
+      default: 1
+    heading__url:
+      type: [string, 'null']
+      title: Link destination
+      description: Optional URL to make the heading a plain link.
+      examples: ['/components']
+    heading__base_class:
+      type: [string, 'null']
+      title: Heading base class
+      description: Optional BEM base class for the heading element.
+      default: heading
+    heading__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers. The first h1–h6 or display modifier sets the visual size.
+      items:
+        type: string
+      default: []
+    heading__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Optional parent BEM block for the heading.
+    heading__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: Extra classes for the heading element.
+      items:
+        type: string
+    heading__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Additional attributes for the heading element.
+    heading__link_attributes:
+      type: [object, 'null']
+      title: Link attributes
+      description: Additional attributes for the optional anchor.
+      default: null
+    heading__link_base_class:
+      type: [string, 'null']
+      title: Link base class
+      description: Optional BEM base class for the anchor.
+      default: link
+    heading__link_blockname:
+      type: [string, 'null']
+      title: Link parent block
+      description: Optional parent BEM block for the anchor.
+      default: null
+    heading__link_modifiers:
+      type: [array, 'null']
+      title: Link modifiers
+      description: BEM modifiers for the optional anchor.
+      items:
+        type: string
+      default: []

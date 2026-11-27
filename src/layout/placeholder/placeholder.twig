@@ -1,7 +1,16 @@
-{% set place_holder__base_class = 'place-holder' %}
+{#
+  Placeholder
+  - placeholder__text: Visible text for the sample area.
+  - placeholder__modifiers: BEM modifiers for the root.
+  - placeholder__additional_classes: Additional classes for the root.
+  - placeholder__attributes: Attributes for the root.
+#}
+{% set placeholder__attributes = placeholder__attributes|default({})|merge({
+  class: bem('placeholder', placeholder__modifiers|default([]), '', placeholder__additional_classes|default([])),
+}) %}
 
-<section {{ bem(place_holder__base_class) }}>
-  <div {{ bem('content', place_holder__modifiers, place_holder__base_class) }}>
-    {{ place_holder|default('Place holder'|t) }}
-  </div>
-</section>
+<div {{ add_attributes(placeholder__attributes) }}>
+  <span {{ bem('content', [], 'placeholder') }}>
+    {{ placeholder__text|default('Placeholder'|t)|escape }}
+  </span>
+</div>

@@ -1,0 +1,6 @@
+breadcrumb:
+  - url: './?path=/story/examples-home--home'
+    text: 'Home'
+  - url: '#'
+    text: 'Your Education'
+  - text: 'Undergraduate Courses'

@@ -1,0 +1,22 @@
+@use '../breakpoints/breakpoints' as *;
+@use '../spacing/space' as *;
+
+@mixin grid-tracks($tracks: 12) {
+  display: grid;
+  gap: var(--grid-spacing, #{space(40)});
+  grid-template-columns: 1fr;
+
+  @include breakpoint('md') {
+    grid-template-columns: repeat($tracks, 1fr);
+  }
+}
+
+@mixin grid-column($span, $start: auto, $from: 'md') {
+  @if $from == none {
+    grid-column: #{$start} / span #{$span};
+  } @else {
+    @include breakpoint($from) {
+      grid-column: #{$start} / span #{$span};
+    }
+  }
+}

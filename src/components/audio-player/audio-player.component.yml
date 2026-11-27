@@ -1,18 +1,85 @@
-# ball audio file by marini24 under CC 3.0
-$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
-
+# Sample ball audio by marini24 under CC 3.0.
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: Audio Player
-group: Components/Media
+description: Native audio playback with an optional link to a transcript.
+group: Components
 status: stable
 props:
   type: object
-  required:
-    - audio_content
   properties:
-    audio_content:
-      type: array
-      title: Audio player content
-      description: The content of the audio players.
-      data:
-        - '/assets/audio/ball.ogg'
-        - '/assets/audio/ball.mp3'
+    audio_player__sources:
+      type: [array, 'null']
+      title: Audio sources
+      description: Ordered audio URLs or source objects for different formats.
+      default: []
+      items:
+        type: [string, object]
+        required: [src]
+        properties:
+          src:
+            type: string
+            format: uri-reference
+          type:
+            type: [string, 'null']
+      examples:
+        - - src: assets/audio/ball.ogg
+            type: audio/ogg
+          - src: assets/audio/ball.mp3
+            type: audio/mpeg
+    audio_player__label:
+      type: [string, 'null']
+      title: Player label
+      description: Accessible name distinguishing this audio player.
+      examples: ['Bouncing ball sound']
+    audio_player__preload:
+      type: [string, 'null']
+      title: Preload
+      description: Browser loading hint for the audio file.
+      enum: [none, metadata, auto, null]
+      default: none
+    audio_player__loop:
+      type: [boolean, 'null']
+      title: Loop
+      description: Repeat playback after a listener starts it.
+      default: false
+    audio_player__muted:
+      type: [boolean, 'null']
+      title: Muted
+      description: Start with the audio muted.
+      default: false
+    audio_player__no_download:
+      type: [boolean, 'null']
+      title: Hide download control
+      description: Hide the download option where the browser supports it and omit the fallback file link.
+      default: false
+    audio_player__transcript_url:
+      type: [string, 'null']
+      title: Transcript URL
+      description: Link to an equivalent written description or transcript.
+      format: uri-reference
+      default: null
+    audio_player__transcript_label:
+      type: [string, 'null']
+      title: Transcript link text
+      description: Optional specific label for the transcript link.
+      default: null
+    audio_player__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Optional parent BEM block name.
+    audio_player__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers for the player wrapper.
+      items:
+        type: string
+    audio_player__additional_classes:
+      type: [array, 'null']
+      title: Classes
+      description: Additional classes for the player wrapper.
+      items:
+        type: string
+    audio_player__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Attributes for the player wrapper.

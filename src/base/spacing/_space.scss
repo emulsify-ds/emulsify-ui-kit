@@ -1,0 +1,10 @@
+@use 'sass:map';
+@use '../tokens/maps' as *;
+
+@function space($px) {
+  @if not map.has-key($spacings, $px) {
+    @error 'Unknown spacing "#{$px}". Available steps: #{map.keys($spacings)}.';
+  }
+
+  @return var(--space-#{$px}, map.get($spacings, $px));
+}

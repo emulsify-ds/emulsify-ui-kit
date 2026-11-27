@@ -1,0 +1,199 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Container
+description: Constrains section content and applies a theme and vertical spacing.
+group: Layout
+status: stable
+props:
+  type: object
+  properties:
+    container__element:
+      type: [string, 'null']
+      title: Wrapper element
+      description: Semantic HTML element for the outer wrapper.
+      enum: [div, section, article, aside, header, footer, main, nav, null]
+      default: div
+    container__id:
+      type: [string, integer, 'null']
+      title: Anchor suffix
+      description: Stable page-unique suffix for the section anchor.
+      default: null
+    container__width:
+      type: [string, 'null']
+      title: Width
+      description: Maximum inline size of the inner wrapper.
+      enum: [narrow, content, wide, full, null]
+      default: content
+    container__alignment:
+      type: [string, 'null']
+      title: Alignment
+      description: Horizontal placement of the inner wrapper.
+      enum: [left, center, right, null]
+      default: center
+    container__theme:
+      type: [string, 'null']
+      title: Theme
+      description: Theme name. Leaving both theme props unset inherits the surrounding theme.
+      default: null
+    container__theme__variation:
+      type: [string, 'null']
+      title: Theme variation
+      description: Color variation for the chosen theme. Defaults to light when a theme is set.
+      enum: [light, dark, null]
+      default: null
+    container__bg_color:
+      type: [boolean, 'null']
+      title: Background
+      description: Paint the active theme background on the outer wrapper.
+      default: false
+    container__spacing:
+      type: [string, 'null']
+      title: Spacing
+      description: Section padding multiplier. An edge variant applies that multiplier to the named edge, with normal padding on the opposite edge.
+      default: one
+      enum:
+        - none
+        - quarter
+        - half
+        - one
+        - two
+        - three
+        - four
+        - none-top
+        - quarter-top
+        - half-top
+        - one-top
+        - two-top
+        - three-top
+        - four-top
+        - none-bottom
+        - quarter-bottom
+        - half-bottom
+        - one-bottom
+        - two-bottom
+        - three-bottom
+        - four-bottom
+        - null
+    container__layout:
+      type: [string, 'null']
+      title: Intro layout
+      description: Stack the introduction and content or lay them out side by side at the medium container breakpoint.
+      enum: [stacked, inline, null]
+      default: stacked
+    container__style:
+      type: [string, 'null']
+      title: Style
+      description: The contained style gives the inner wrapper a themed background and inset padding.
+      enum: [none, contained, null]
+      default: none
+    container__align_intro:
+      type: [string, 'null']
+      title: Intro alignment
+      description: Text alignment inside the introduction.
+      enum: [left, center, right, null]
+      default: left
+    container__overline:
+      type: [string, 'null']
+      title: Overline
+      description: Short lead-in above the heading.
+      examples: ['Field guide']
+    container__heading:
+      type: [string, object, 'null']
+      title: Heading
+      description: Heading text or a render array.
+      examples: ['Plan a community workshop']
+    container__heading_level:
+      type: [integer, string, 'null']
+      title: Heading level
+      description: Level of the heading in the page outline.
+      enum: [2, 3, 4, 5, 6, '2', '3', '4', '5', '6', null]
+      default: 2
+    container__subheading:
+      type: [string, object, 'null']
+      title: Subheading
+      description: Supporting text or a render array placed below the heading.
+      examples: ['Set a goal, invite your neighbors, and share the plan.']
+    container__text:
+      type: [string, object, 'null']
+      title: Intro text
+      description: Trusted rich text or a render array for the introduction.
+      examples:
+        [
+          'The checklist covers everything from choosing a venue to planning follow-up.',
+        ]
+    container__link__url:
+      type: [string, 'null']
+      title: Intro link URL
+      description: Destination for the optional introduction link.
+      examples: ['?id=layout-grid--grid&viewMode=story']
+    container__link__content:
+      type: [string, 'null']
+      title: Intro link label
+      description: Descriptive label for the optional introduction link.
+      examples: ['Explore the grid layout']
+    container__intro__after:
+      type: [boolean, 'null']
+      title: Intro follows content
+      description: Place the introduction after the main content in reading order.
+      default: false
+    container__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Parent BEM block name for the wrapper class.
+    container__modifiers:
+      type: [array, 'null']
+      title: Wrapper modifiers
+      description: BEM modifier names for the container.
+      items:
+        type: string
+    container__additional_classes:
+      type: [array, 'null']
+      title: Wrapper classes
+      description: Extra class names on the wrapper.
+      items:
+        type: string
+    container__attributes:
+      type: [object, 'null']
+      title: Wrapper attributes
+      description: Additional HTML attributes on the outer wrapper.
+    container__inner_modifiers:
+      type: [array, 'null']
+      title: Inner modifiers
+      description: BEM modifier names for the inner wrapper.
+      items:
+        type: string
+      default: []
+    container__inner__additional_classes:
+      type: [array, 'null']
+      title: Inner classes
+      description: Extra class names on the inner wrapper.
+      items:
+        type: string
+    container__inner__attributes:
+      type: [object, 'null']
+      title: Inner attributes
+      description: Additional HTML attributes on the inner wrapper.
+    container__heading__modifiers:
+      type: [array, 'null']
+      title: Heading modifiers
+      description: BEM modifier names for the intro heading.
+      items:
+        type: string
+    container__heading__additional_classes:
+      type: [array, 'null']
+      title: Heading classes
+      description: Extra class names on the intro heading.
+      items:
+        type: string
+slots:
+  container__prefix:
+    title: Prefix
+    description: Content before the inner wrapper.
+  container__content:
+    title: Content
+    description: Main content inside the inner wrapper.
+  container__suffix:
+    title: Suffix
+    description: Content after the inner wrapper.
+  container__intro__link:
+    title: Intro link
+    description: Custom link markup inside the introduction.

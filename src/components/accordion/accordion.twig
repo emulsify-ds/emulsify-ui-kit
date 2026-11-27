@@ -1,54 +1,77 @@
 {#
- # Available Variables:
- # - accordion__heading: (string)
- # - accordion__items: (array)
- # - accordion__show_controls: (boolean)
- #
- # Available Blocks:
- # - accordion__items
+ # Section props: accordion__id, accordion__heading, accordion__heading_level,
+ # accordion__text, accordion__width, accordion__alignment, accordion__theme,
+ # accordion__theme__variation, accordion__bg_color, accordion__spacing,
+ # accordion__container__modifiers.
+ # Disclosure props: accordion__items, accordion__item__heading_level.
+ # Bulk controls: accordion__show_controls, accordion__controls_label,
+ # accordion__expand_all_label, accordion__collapse_all_label.
+ # Wrapper props: accordion__blockname, accordion__modifiers,
+ # accordion__additional_classes, accordion__attributes.
+ # Slot: accordion__items_content overrides the generated items.
  #}
 
-{% set accordion__base_class = 'accordion' %}
+{% set accordion_level = accordion__heading_level in [2, 3, 4, 5, 6] ? accordion__heading_level : 2 %}
+{% set item_level = accordion__item__heading_level in [2, 3, 4, 5, 6] ? accordion__item__heading_level : (accordion__heading ? min(accordion_level + 1, 6) : 2) %}
+{% set wrapper_attrs = accordion__attributes|default({}) %}
+{% set wrapper_classes = wrapper_attrs.class|default([]) %}
+{% set wrapper_classes = wrapper_classes is iterable ? wrapper_classes : [wrapper_classes] %}
+{% set wrapper_classes = wrapper_classes|merge(accordion__additional_classes|default([]))|merge(accordion__blockname ? ['accordion'] : []) %}
+{% set wrapper_attrs = wrapper_attrs|merge({
+  class: bem('accordion', accordion__modifiers, accordion__blockname, wrapper_classes),
+  'data-accordion': 'true',
+}) %}
 
-{% set accordion__attibutes = {
-  'class': bem(accordion__base_class, accordion__modifiers, accordion__block_name),
-} %}
-
-{% if accordion__items|length >= 2 %}
-  {% set accordion__show_controls = true %}
-{% endif %}
-
-{% set accordion %}
-<div {{ add_attributes(accordion__attibutes) }}>
-	{% if accordion__show_controls %}
-		{% include "@components/accordion/_accordion-controls.twig" %}
-	{% endif %}
-	{% block accordion__items %}
-		{% for item in accordion__items %}
-			{# Create a unique ID for each accordion item #}
-			{% set unique_id = random('1234567890') ~ random('1234567890') ~ random('1234567890') ~ random('1234567890') %}
-			{% set accordion__item__content__id = 'accordion__item-' ~ unique_id ~ '-' ~ loop.index %}
-      {% include "@components/accordion/_accordion-item.twig" with {
-        accordion__item__heading: item.accordion__item__heading,
-        accordion__item__content: item.accordion__item__content,
-        accordion__item__heading__level: accordion__heading ? '3' : '2',
-        accordion__item__content__attributes: {
-          'id': accordion__item__content__id,
-        }
-      } %}
-		{% endfor %}
-	{% endblock %}
-</div>
+{# Prepare Twig component output before entering the slot blocks. #}
+{% set controls_markup %}
+  {% if accordion__show_controls is same as(true) %}
+    {{ include('@components/accordion/_accordion-controls.twig', {
+      accordion__controls_label: accordion__controls_label,
+      accordion__expand_all_label: accordion__expand_all_label,
+      accordion__collapse_all_label: accordion__collapse_all_label,
+    }, with_context: false) }}
+  {% endif %}
 {% endset %}
 
-{# Render the accordion within a generic container #}
-{% embed "@layout/container/container.twig" with {
-  container__component_width: accordion__width|default('compact'),
-  container__component_alignment: accordion__alignment|default('center'),
+{% set items_markup %}
+  {% set used_ids = [] %}
+  {% for item in accordion__items|default([]) %}
+    {% set item_id = item.id|default('') %}
+    {{ include('@components/accordion/_accordion-item.twig', {
+      accordion__id: accordion__id,
+      accordion__item__id: item_id in used_ids ? '' : item_id,
+      accordion__item__heading: item.heading,
+      accordion__item__heading_level: item_level,
+      accordion__item__content: item.content,
+    }, with_context: false) }}
+    {% set used_ids = used_ids|merge([item_id]) %}
+  {% endfor %}
+{% endset %}
+
+{% set accordion_markup %}
+  <div {{ add_attributes(wrapper_attrs) }}>
+    {{ controls_markup }}
+    {% block accordion__items_content %}
+      {{ accordion__items_content|default(items_markup) }}
+    {% endblock %}
+  </div>
+{% endset %}
+
+{% embed '@layout/container/container.twig' with {
+  container__element: 'section',
+  container__id: accordion__id,
+  container__modifiers: accordion__container__modifiers,
   container__heading: accordion__heading,
+  container__heading_level: accordion_level,
   container__text: accordion__text,
-}%}
-	{% block container__content %}
-		{{ accordion }}
-	{% endblock %}
+  container__width: accordion__width|default('narrow'),
+  container__alignment: accordion__alignment|default('center'),
+  container__theme: accordion__theme,
+  container__theme__variation: accordion__theme__variation,
+  container__bg_color: accordion__bg_color,
+  container__spacing: accordion__spacing,
+  accordion__id: accordion__id,
+  accordion_markup: accordion_markup,
+} only %}
+  {% block container__content %}{{ accordion_markup }}{% endblock %}
 {% endembed %}

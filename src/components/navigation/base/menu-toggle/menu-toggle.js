@@ -1,249 +1,158 @@
-Drupal.behaviors.menuToggle = {
-  attach(context) {
-    // Selectors
-    const menu = context.querySelectorAll('.menu-with-toggle');
+Drupal.behaviors.menuToggle = (() => {
+  const menuSelector = '[data-menu]';
+  const toggleSelector = 'button[data-menu-toggle]';
+  const behaviorId = 'emulsify-menu';
+  const toggleId = 'emulsify-menu-toggle';
+  const listeners = new WeakMap();
 
-    // Close submenu when keyboard focus leaves it (Tab past last item
-    // or Shift+Tab before first item). This follows the WAI-ARIA
-    // disclosure navigation pattern instead of trapping focus.
-    function trapKeyboard(menuItem) {
-      if (menuItem.nextElementSibling) {
-        const submenu = menuItem.nextElementSibling;
-        const focusableElements = submenu.querySelectorAll(
-          'button, [href], [tabindex]',
+  function menusIn(context) {
+    const menus = new Set(context.querySelectorAll(menuSelector));
+    const owner = context.closest?.(menuSelector);
+    if (owner) menus.add(owner);
+    return menus;
+  }
+
+  function togglesFor(menu) {
+    return [...menu.querySelectorAll(toggleSelector)].filter(
+      (toggle) => toggle.closest(menuSelector) === menu,
+    );
+  }
+
+  function panelFor(menu, toggle) {
+    const panel = menu.ownerDocument.getElementById(
+      toggle.getAttribute('aria-controls'),
+    );
+    return panel?.closest(menuSelector) === menu ? panel : null;
+  }
+
+  function setExpanded(menu, toggle, expanded) {
+    const panel = panelFor(menu, toggle);
+    if (!panel) return;
+
+    toggle.setAttribute('aria-expanded', String(expanded));
+    panel.hidden = !expanded;
+    if (!expanded) {
+      for (const child of togglesFor(menu)) {
+        if (panel.contains(child)) {
+          child.setAttribute('aria-expanded', 'false');
+          const childPanel = panelFor(menu, child);
+          if (childPanel) childPanel.hidden = true;
+        }
+      }
+    }
+  }
+
+  function close(menu, type) {
+    return (toggle) => {
+      if (toggle.dataset.menuToggle === type && !toggle.hidden) {
+        setExpanded(menu, toggle, false);
+      }
+    };
+  }
+
+  function attachListeners(menu) {
+    const controller = new AbortController();
+    listeners.set(menu, controller);
+    const options = { signal: controller.signal };
+
+    menu.addEventListener(
+      'click',
+      (event) => {
+        const toggle = event.target.closest?.(toggleSelector);
+        if (!toggle || toggle.hidden || toggle.closest(menuSelector) !== menu) {
+          return;
+        }
+        setExpanded(
+          menu,
+          toggle,
+          toggle.getAttribute('aria-expanded') !== 'true',
         );
-        const firstFocusableElement = focusableElements[0];
-        const lastFocusableElement =
-          focusableElements[focusableElements.length - 1];
+      },
+      options,
+    );
 
-        submenu.addEventListener('keydown', (e) => {
-          const isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+    menu.addEventListener(
+      'keydown',
+      (event) => {
+        if (event.key !== 'Escape' || event.defaultPrevented) return;
+        if (event.target.closest?.(menuSelector) !== menu) return;
 
-          if (!isTabPressed) {
+        // Iterate in reverse document order to close the innermost panel first.
+        const openToggle = togglesFor(menu)
+          .reverse()
+          .find((toggle) => {
+            if (
+              toggle.hidden ||
+              toggle.getAttribute('aria-expanded') !== 'true'
+            ) {
+              return false;
+            }
+            return (
+              toggle === event.target ||
+              panelFor(menu, toggle)?.contains(event.target)
+            );
+          });
+        if (!openToggle) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+        setExpanded(menu, openToggle, false);
+        openToggle.focus();
+      },
+      options,
+    );
+
+    menu.addEventListener(
+      'focusout',
+      (event) => {
+        if (!event.relatedTarget || menu.contains(event.relatedTarget)) return;
+        const toggles = togglesFor(menu);
+        toggles.forEach(close(menu, 'submenu'));
+        toggles.forEach(close(menu, 'root'));
+      },
+      options,
+    );
+  }
+
+  function fallbackLabelFor(toggle) {
+    return toggle.parentElement.querySelector('[data-menu-fallback-label]');
+  }
+
+  return {
+    attach(context) {
+      menusIn(context).forEach((menu) => {
+        once(behaviorId, [menu]).forEach(attachListeners);
+        once(toggleId, togglesFor(menu)).forEach((toggle) => {
+          if (!panelFor(menu, toggle)) return;
+          if (
+            toggle.dataset.menuToggle === 'root' &&
+            menu.hasAttribute('data-menu-collapse-on-overflow')
+          ) {
             return;
           }
-
-          // When focus leaves the submenu, close it and let focus flow naturally.
-          if (e.shiftKey) {
-            if (document.activeElement === firstFocusableElement) {
-              menuItem.parentElement.classList.remove('sub--open');
-              menuItem.setAttribute('aria-expanded', 'false');
-            }
-          } else if (document.activeElement === lastFocusableElement) {
-            menuItem.parentElement.classList.remove('sub--open');
-            menuItem.setAttribute('aria-expanded', 'false');
-          }
+          setExpanded(menu, toggle, false);
+          toggle.hidden = false;
+          const label = fallbackLabelFor(toggle);
+          if (label) label.hidden = true;
         });
-      }
-    }
+      });
+    },
 
-    // Toggle aria-expanded attribute.
-    function toggleAria(el) {
-      // el may be a placeholder <span> so we need to target the button
-      const button = el.parentElement.querySelector('[class*="__toggle"]');
-      const list = el.parentElement.querySelector(
-        '[class*="__menu-list-wrapper"]',
+    detach(context, settings, trigger) {
+      if (trigger !== 'unload') return;
+      const menus = [...menusIn(context)].filter((menu) =>
+        context.contains(menu),
       );
-
-      // reset all existing items
-      Array.prototype.forEach.call(menu, (m) => {
-        Array.prototype.forEach.call(
-          m
-            .querySelector('[class*="__menu-list-wrapper"]')
-            .querySelectorAll('[class*="__toggle"]'),
-          (i) => {
-            if (i.outerHTML !== button.outerHTML && i.nextElementSibling) {
-              i.setAttribute('aria-expanded', 'false');
-              i.nextElementSibling.setAttribute('aria-hidden', 'true');
-            }
-          },
-        );
-      });
-
-      button.setAttribute(
-        'aria-expanded',
-        button.getAttribute('aria-expanded') === 'true' ? 'false' : 'true',
-      );
-
-      if (button.getAttribute('aria-expanded') === 'false') {
-        list.setAttribute('aria-hidden', 'true');
-      } else {
-        list.setAttribute('aria-hidden', 'false');
-      }
-    }
-
-    function toggleMenu(el, menuName) {
-      const menuItems = context.querySelectorAll(`.${menuName}__item`);
-
-      // Tell global nav what level is active.
-      let menuLevel = '';
-      if (el.getAttribute('data-menu-level')) {
-        menuLevel = el.getAttribute('data-menu-level');
-      } else {
-        menuLevel = el.nextElementSibling.getAttribute('data-menu-level');
-      }
-      // Reset any open levels.
-      Array.prototype.forEach.call(menu, (m) => {
-        m.setAttribute('data-menu-level', menuLevel);
-      });
-
-      // Primary toggle for the whole menu tree.
-      if (el.parentElement.hasAttribute('aria-labelledby')) {
-        el.parentElement.classList.toggle('menu--open');
-        // Reset any open levels.
-        Array.prototype.forEach.call(menuItems, (item) => {
-          item.classList.remove('sub--open');
-        });
-        // Toggle the button label.
-        const label = el.lastElementChild;
-        if (el.getAttribute('aria-expanded') === 'true') {
-          label.innerText = 'Close';
-        } else {
-          label.innerText = el.getAttribute('aria-label');
-        }
-      }
-      // Expand/arrow navigation.
-      else if (
-        el.nextElementSibling &&
-        el.nextElementSibling.classList.contains(
-          `${menuName}__menu-list-wrapper`,
-        )
-      ) {
-        Array.prototype.forEach.call(menuItems, (item) => {
-          if (
-            item.innerText !== el.parentElement.innerText &&
-            item.classList.contains('sub--open') &&
-            !item.contains(el)
-          ) {
-            item.classList.remove('sub--open');
-          }
-        });
-        el.parentElement.classList.toggle('sub--open');
-      }
-      // Expand/placeholder navigation.
-      else if (
-        el.nextElementSibling &&
-        el.nextElementSibling.nextElementSibling &&
-        el.nextElementSibling.nextElementSibling.classList.contains(
-          `${menuName}__menu-list-wrapper`,
-        )
-      ) {
-        Array.prototype.forEach.call(menuItems, (item) => {
-          if (
-            item.innerText !== el.parentElement.innerText &&
-            item.classList.contains('sub--open')
-          ) {
-            item.classList.remove('sub--open');
-          }
-        });
-        el.parentElement.classList.toggle('sub--open');
-      }
-      // Back to [level] toggle.
-      else {
-        Array.prototype.forEach.call(menuItems, (item) => {
-          if (
-            item.innerText !== el.parentElement.innerText &&
-            item.classList.contains('sub--open')
-          ) {
-            item.classList.remove('sub--open');
-          }
-        });
-        el.parentElement.classList.toggle('sub--open');
-      }
-    }
-
-    const observer = new MutationObserver(function (mutations) {
-      mutations.forEach(function (mutation) {
-        if (
-          mutation.type === 'attributes' &&
-          mutation.attributeName === 'class'
-        ) {
-          const placeholder = mutation.target.querySelector(
-            '[class*="__placeholder"]',
-          );
-          const submenu = mutation.target.querySelector(
-            '[class*="__menu-list-wrapper"]',
-          );
-          if (submenu && placeholder) {
-            if (mutation.target.classList.contains('sub--open')) {
-              // Check if the menus are cut off on right side of page.
-              const rect = submenu.getBoundingClientRect();
-              const diff = window.innerWidth - rect.right;
-              if (diff < 0) {
-                submenu.style.transform = `translateX(${diff}px)`;
-                placeholder.classList.add('cut');
-              }
-            } else {
-              submenu.style.transform = 'translateX(0)';
-              placeholder.classList.remove('cut');
-            }
-          }
-        }
-      });
-    });
-
-    // Toggle mobile menu classes when clicked.
-    if (menu) {
-      Array.prototype.forEach.call(menu, (m) => {
-        const toggleExpand = m.querySelectorAll('[class*="__toggle"]');
-        Array.prototype.forEach.call(toggleExpand, (item) => {
-          item.addEventListener('click', () => {
-            toggleAria(item);
-            trapKeyboard(item);
-            toggleMenu(item, m.id);
-          });
-        });
-
-        const placeholderItem = m.querySelectorAll('[class*="__placeholder"]');
-        Array.prototype.forEach.call(placeholderItem, (item) => {
-          item.addEventListener('keypress', (event) => {
-            if (event.key === 'Enter' || event.key === 'Escape') {
-              event.preventDefault();
-              item.click();
-            }
-          });
-          item.addEventListener('click', () => {
-            toggleAria(item);
-            trapKeyboard(item);
-            toggleMenu(item, m.id);
-          });
-        });
-
-        const menuItem = m.querySelectorAll('[class*="__item--with-sub"]');
-        Array.prototype.forEach.call(menuItem, (item) => {
-          observer.observe(item, {
-            attributes: true,
-          });
+      once.remove(behaviorId, menus).forEach((menu) => {
+        listeners.get(menu)?.abort();
+        listeners.delete(menu);
+        once.remove(toggleId, togglesFor(menu)).forEach((toggle) => {
+          setExpanded(menu, toggle, true);
+          toggle.hidden = true;
+          const label = fallbackLabelFor(toggle);
+          if (label) label.hidden = false;
         });
       });
-      document.onkeydown = (evt) => {
-        if (evt.key === 'Escape') {
-          // Reset any open levels.
-          Array.from(context.querySelectorAll('[class*="__item"]')).forEach(
-            (g) => g.classList.remove('sub--open'),
-          );
-          context.querySelector('body').removeAttribute('data-body-frozen');
-          // Reset all aria-expanded.
-          Array.prototype.forEach.call(menu, (m) => {
-            m.classList.remove('menu--open');
-            Array.prototype.forEach.call(
-              m.querySelectorAll('button, [href], [tabindex]'),
-              (i) => {
-                i.setAttribute('aria-expanded', 'false');
-              },
-            );
-
-            Array.prototype.forEach.call(
-              m
-                .querySelector('[class*="__menu-list-wrapper"]')
-                .querySelectorAll('[class*="__menu-list-wrapper"]'),
-              (i) => {
-                i.setAttribute('aria-hidden', 'true');
-              },
-            );
-          });
-        }
-      };
-    }
-  },
-};
+    },
+  };
+})();

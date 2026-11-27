@@ -1,11 +1,10 @@
 {
-  "name": "Emulsify UI Kit",
-  "version": "1.12.0",
+  "name": "emulsify-ui-kit",
+  "version": "2.0.0",
   "description": "Emulsify UI Kit is the default Emulsify system that include design token integration with Figma.",
-  "main": "index.js",
   "type": "module",
   "engines": {
-    "node": ">=24"
+    "node": ">=24.13.0"
   },
   "scripts": {
     "a11y": "npm run storybook-build && node_modules/@emulsify/core/scripts/a11y.js -r",
@@ -15,25 +14,28 @@
     "coverage": "npm run test && open-cli .coverage/lcov-report/index.html",
     "develop": "npm run ensure-dist && concurrently --raw --no-shell npm:vite npm:storybook",
     "ensure-dist": "rm -rf components dist && mkdir -p components dist",
-    "format": "npm run lint-fix; npm run prettier-fix",
+    "format": "npm run lint-fix && npm run prettier-fix",
     "husky:commit-msg": "commitlint --edit $1",
     "husky:pre-commit": "lint-staged",
-    "lint": "npm run lint-js; npm run lint-styles",
-    "lint-fix": "npm run lint-js -- --fix; npm run lint-styles -- --fix",
-    "lint-js": "eslint --config config/emulsify-core/eslint.config.js --no-error-on-unmatched-pattern ./config ./src ./components",
+    "inspect:components": "emulsify-inspect-components",
+    "lint": "npm run lint-js && npm run lint-styles",
+    "lint-fix": "npm run lint-js -- --fix && npm run lint-styles -- --fix",
+    "lint-js": "eslint --config config/emulsify-core/eslint.config.js --no-error-on-unmatched-pattern ./config ./src ./components ./tests/components ./tests/layout",
     "lint-staged": "lint-staged",
     "lint-styles": "stylelint --config ./config/emulsify-core/stylelintrc.config.json './src/**/*.scss'",
-    "prettier": "prettier --config ./config/emulsify-core/prettierrc.config.json --ignore-path ./config/emulsify-core/.prettierignore --ignore-unknown \"./src/**/*.{js,yml,scss,md}\"",
-    "prettier-fix": "prettier --config ./config/emulsify-core/prettierrc.config.json --ignore-path ./config/emulsify-core/.prettierignore --write --ignore-unknown \"./src/**/*.{js,yml,scss,md}\"",
+    "prettier": "prettier --config ./config/emulsify-core/prettierrc.config.json --ignore-path ./config/emulsify-core/.prettierignore --ignore-unknown \"./src/**/*.{js,yml,scss,md}\" \"./tests/{components,layout}/**/*.js\"",
+    "prettier-fix": "prettier --config ./config/emulsify-core/prettierrc.config.json --ignore-path ./config/emulsify-core/.prettierignore --write --ignore-unknown \"./src/**/*.{js,yml,scss,md}\" \"./tests/{components,layout}/**/*.js\"",
     "semantic-release": "semantic-release",
     "storybook": "storybook dev -c node_modules/@emulsify/core/.storybook --ci -p 6006",
     "storybook-build": "npm run build && storybook build -c node_modules/@emulsify/core/.storybook -o .out",
     "storybook-deploy": "storybook-to-ghpages -o .out",
-    "style-dictionary:build": "node ./src/tokens/tokensTransform.mjs",
-    "test": "jest --coverage  --config ./config/jest.config.js",
-    "tokens:build": "npm run tokens:transform && npm run style-dictionary:build",
-    "tokens:transform": "token-transformer ./src/tokens/figma.tokens.json ./src/tokens/transformed.tokens.json",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --config ./config/jest.config.js",
+    "test:contract": "node --test tests/contract.test.mjs tests/npm-package-imports.test.mjs tests/npm-package-policy.test.mjs",
+    "test:release": "node --test tests/release.test.mjs",
+    "test:sass": "node --test tests/sass.test.mjs",
+    "tokens:build": "node ./src/tokens/build-tokens.mjs",
     "twatch": "jest --no-coverage --watch --verbose",
+    "validate": "npm run lint && npm run test:contract && npm run test:release && npm run test:sass && npm test",
     "visreg": "percy storybook http://localhost:6006",
     "visreg-ci": "percy storybook .out",
     "vite": "vite build --watch --config node_modules/@emulsify/core/config/vite/vite.config.js"
@@ -50,39 +52,48 @@
   },
   "homepage": "https://github.com/emulsify-ds/emulsify-ui-kit#readme",
   "lint-staged": {
-    "src/**/*.js": [
+    "{src,tests}/**/*.js": [
       "npm run lint-js -- --fix"
     ],
     "src/**/*.scss": [
       "npm run lint-styles -- --fix"
     ],
-    "src/**/*.{js,scss}": [
+    "{src,tests}/**/*.{js,scss}": [
       "npm run prettier-fix"
     ]
   },
   "dependencies": {
-    "@emulsify/core": "^4.1.1",
-    "@percy/cli": "^1.30.1",
-    "@percy/storybook": "^6.0.2"
+    "@emulsify/core": "^4.5.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.5.0",
-    "@commitlint/config-conventional": "^19.5.0",
-    "@semantic-release/changelog": "^6.0.2",
-    "@semantic-release/commit-analyzer": "^13.0.0",
+    "@babel/parser": "^7.29.15",
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
+    "@drupal/once": "1.0.1",
+    "@percy/cli": "^1.33.1",
+    "@percy/storybook": "^10.0.4",
+    "@semantic-release/commit-analyzer": "^13.0.1",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^11.0.0",
-    "@semantic-release/npm": "^13.1.5",
-    "@semantic-release/release-notes-generator": "^14.0.0",
+    "@semantic-release/github": "^12.0.11",
+    "@semantic-release/npm": "^13.2.0",
+    "@semantic-release/release-notes-generator": "^14.1.1",
+    "@storybook/addon-docs": "10.6.5",
     "@storybook/storybook-deployer": "2.8.16",
-    "husky": "^9.1.6",
-    "lint-staged": "^15.2.10",
-    "semantic-release": "^24.1.2",
-    "style-dictionary": "^5.5.0",
-    "token-transformer": "^0.0.33"
+    "@tokens-studio/sd-transforms": "^2.0.3",
+    "conventional-changelog-conventionalcommits": "^10.4.1",
+    "husky": "^9.1.7",
+    "js-yaml": "^5.5.0",
+    "lint-staged": "^17.6.1",
+    "postcss-scss": "^4.0.9",
+    "postcss-value-parser": "^4.2.0",
+    "sass": "^1.108.2",
+    "sass-true": "^10.1.0",
+    "semantic-release": "^25.0.9",
+    "semver": "^7",
+    "style-dictionary": "^5.8.0"
   },
   "overrides": {
-    "glob": "^13.0.6",
+    "glob": "^14.0.6",
     "locutus": "^3.0.36",
     "minimatch@3.0.x": "^3.1.5"
   }

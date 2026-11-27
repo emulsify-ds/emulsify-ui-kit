@@ -1,0 +1,136 @@
+{#
+ # A standalone preview of one destination.
+ #
+ # Content props: teaser__heading, teaser__heading_level, teaser__url,
+ # teaser__overline, teaser__subheading, teaser__content, teaser__meta,
+ # teaser__ctas.
+ # Media props: teaser__show_media, teaser__media__shape,
+ # teaser__media__alignment, teaser__image__src, teaser__image__alt,
+ # teaser__image__decorative, teaser__image__srcset, teaser__image__sizes,
+ # teaser__image__sources, teaser__image__width, teaser__image__height,
+ # teaser__image__loading, teaser__image__title, teaser__image__caption,
+ # teaser__image__credit.
+ # Wrapper props: teaser__element, teaser__id, teaser__layout, teaser__style,
+ # teaser__blockname, teaser__modifiers, teaser__additional_classes,
+ # teaser__attributes.
+ # Slots: teaser__media_content, teaser__summary_content.
+ #}
+{% set element = teaser__element == 'div' ? 'div' : 'article' %}
+{% set heading_level = teaser__heading_level in [2, 3, 4, 5, 6] ? teaser__heading_level : 3 %}
+{% set ctas = teaser__ctas|default([])|slice(0, 2) %}
+{% set heading_url = teaser__url|default('')|trim %}
+{% set heading_url = heading_url|default(ctas[0].url|default('')|trim) %}
+{% set show_media = teaser__show_media is defined and teaser__show_media is not same as(null) ? teaser__show_media : true %}
+
+{% set teaser_attributes = teaser__attributes|default({}) %}
+{% set attribute_classes = teaser_attributes.class|default([]) %}
+{% set attribute_classes = attribute_classes is iterable ? attribute_classes : [attribute_classes] %}
+{% set classes = teaser__additional_classes|default([])|merge(attribute_classes)|merge(teaser__blockname ? ['teaser'] : []) %}
+{% set teaser_attributes = teaser_attributes|merge({
+  class: bem('teaser', teaser__modifiers, teaser__blockname, classes),
+  'data-teaser-layout': teaser__layout|default('stacked'),
+  'data-teaser-style': teaser__style|default('minimal'),
+  'data-teaser-media-alignment': teaser__media__alignment|default('right'),
+  'data-teaser-media-shape': teaser__media__shape|default('landscape'),
+}) %}
+{% if teaser__id %}
+  {% set teaser_attributes = teaser_attributes|merge({ id: 'teaser-' ~ teaser__id }) %}
+{% endif %}
+
+{% set media %}
+  {%- if show_media -%}
+    {%- block teaser__media_content -%}
+      {%- if teaser__media_content is not empty -%}
+        {{- teaser__media_content -}}
+      {%- elseif teaser__image__src -%}
+        {{- include('@components/image/image.twig', {
+          image__src: teaser__image__src,
+          image__alt: teaser__image__alt|default(''),
+          image__decorative: teaser__image__decorative is same as(true),
+          image__srcset: teaser__image__srcset|default(null),
+          image__sizes: teaser__image__sizes|default(null),
+          image__sources: teaser__image__sources|default(null),
+          image__width: teaser__image__width|default(null),
+          image__height: teaser__image__height|default(null),
+          image__loading: teaser__image__loading|default('lazy'),
+          image__title: teaser__image__title|default(null),
+          image__caption: teaser__image__caption|default(null),
+          image__credit: teaser__image__credit|default(null),
+          image__blockname: 'teaser',
+        }, with_context: false) -}}
+      {%- endif -%}
+    {%- endblock -%}
+  {%- endif -%}
+{% endset %}
+{% set summary %}
+  {%- block teaser__summary_content -%}
+    {%- if teaser__summary_content is not empty -%}
+      {{- teaser__summary_content -}}
+    {%- elseif teaser__content -%}
+      {{- include('@components/text/_text.twig', {
+        text__element: 'p',
+        text__content: teaser__content|e('html', null, true),
+        text__base_class: 'summary',
+        text__blockname: 'teaser',
+      }, with_context: false) -}}
+    {%- endif -%}
+  {%- endblock -%}
+{% endset %}
+{% set labels %}
+  {%- if heading_url -%}
+    {%- for cta in ctas -%}
+      {%- if cta.content and cta.url|default('')|trim|default(heading_url) == heading_url -%}
+        {{- include('@components/cta/cta.twig', {
+          cta__element: 'span',
+          cta__blockname: 'teaser',
+          cta__modifiers: ['clean'],
+          cta__text: cta.content,
+          cta__icon: cta.icon|default(null),
+          cta__icon_position: cta.icon_position|default('right'),
+          cta__attributes: { 'aria-hidden': 'true' },
+        }, with_context: false) -}}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+{% endset %}
+
+<{{ element }} {{ add_attributes(teaser_attributes) }}>
+  <div {{ bem('inner', [], 'teaser') }}>
+    {% if media|trim %}
+      <div {{ bem('media', [], 'teaser') }}>{{ media }}</div>
+    {% endif %}
+    <div {{ bem('content', [], 'teaser') }}>
+      {% if teaser__overline %}
+        <p {{ bem('overline', [], 'teaser') }}>{{ teaser__overline|e('html', null, true) }}</p>
+      {% endif %}
+      {{ include('@components/heading/heading.twig', {
+        heading__level: heading_level,
+        heading__content: teaser__heading|e('html', null, true),
+        heading__url: heading_url,
+        heading__blockname: 'teaser',
+        heading__link_base_class: 'heading-link',
+        heading__link_blockname: 'teaser',
+        heading__modifiers: ['h4'],
+      }, with_context: false) }}
+      {% if teaser__subheading %}
+        <p {{ bem('subheading', [], 'teaser') }}>{{ teaser__subheading|e('html', null, true) }}</p>
+      {% endif %}
+      {% if summary|trim %}
+        <div {{ bem('summary-wrapper', [], 'teaser') }}>{{ summary }}</div>
+      {% endif %}
+      {% if teaser__meta %}
+        <dl {{ bem('meta', [], 'teaser') }}>
+          {% for item in teaser__meta %}
+            <div {{ bem('meta-item', [], 'teaser') }}>
+              <dt>{{ item.label|e('html', null, true) }}</dt>
+              <dd>{{ item.value|e('html', null, true) }}</dd>
+            </div>
+          {% endfor %}
+        </dl>
+      {% endif %}
+      {% if labels|trim %}
+        <div {{ bem('labels', [], 'teaser') }}>{{ labels }}</div>
+      {% endif %}
+    </div>
+  </div>
+</{{ element }}>

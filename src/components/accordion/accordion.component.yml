@@ -1,38 +1,151 @@
-$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
-
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: Accordion
+description: A group of independently expandable panels with optional bulk controls.
 group: Components
 status: stable
+libraryOverrides:
+  dependencies: [core/drupal, core/once]
 props:
   type: object
-  required:
-    - accordion__item__heading
-    - accordion__item__content
+  required: [accordion__id]
   properties:
+    accordion__id:
+      type: string
+      title: Accordion ID
+      description: Unique instance ID formed from letters and digits separated by single hyphens or underscores.
+      pattern: '^[A-Za-z0-9]+(?:[-_][A-Za-z0-9]+)*$'
+      examples: [library-services]
     accordion__heading:
-      type: string
+      type: [string, 'null']
       title: Heading
-      description: The heading of the accordion item.
-      data: This is the heading for the entire accordion.
+      description: Optional heading above the accordion.
+      examples: [Library services]
+    accordion__heading_level:
+      type: [integer, 'null']
+      title: Section heading level
+      description: Level for the introductory heading in the page outline.
+      enum: [2, 3, 4, 5, 6, null]
+      default: 2
     accordion__text:
-      type: string
-      title: Accordion item content
-      description: The content of the accordion item.
-      data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a condimentum justo, a consectetur lacus. Nullam sagittis dignissim tincidunt. Quisque et sodales erat.'
+      type: [string, array, object, 'null']
+      title: Introduction
+      description: Optional introductory content above the panels.
+      examples: [Find out how to use the library.]
     accordion__items:
-      type: array
-      title: Accordion Items
-      description: The content of the accordion items.
-      data:
-        - accordion__item__heading: Header label text
-          accordion__item__content: 'Enim eget nec sit scelerisque lacus. Porttitor senectus vulputate mattis tortor odio vitae. Dui et, ut ipsum aliquet sit tempor. Amet consectetur purus justo feugiat mattis sit ultricies odio.  Pellentesque pellentesque sit sed porttitor duis interdum. Bibendum nisl, eu, ornare non. Enim consequat in quisque vestibulum facilisi odio. Elementum elit est, vitae feugiat enim odio cursus. Enim cum dictum gravida amet id eget. Ut ac velit sed nulla leo id. Ante duis pellentesque aliquam massa amet, neque cum. Vitae mi purus placerat nibh purus faucibus imperdiet quisque diam. Elementum urna feugiat rhoncus purus. Consectetur neque auctor eite commodo consequat.'
-        - accordion__item__heading: Header label text
-          accordion__item__content: 'Enim eget nec sit scelerisque lacus. Porttitor senectus vulputate mattis tortor odio vitae. Dui et, ut ipsum aliquet sit tempor. Amet consectetur purus justo feugiat mattis sit ultricies odio.  Pellentesque pellentesque sit sed porttitor duis interdum. Bibendum nisl, eu, ornare non. Enim consequat in quisque vestibulum facilisi odio. Elementum elit est, vitae feugiat enim odio cursus. Enim cum dictum gravida amet id eget. Ut ac velit sed nulla leo id. Ante duis pellentesque aliquam massa amet, neque cum. Vitae mi purus placerat nibh purus faucibus imperdiet quisque diam. Elementum urna feugiat rhoncus purus. Consectetur neque auctor eite commodo consequat.'
-        - accordion__item__heading: Header label text
-          accordion__item__content: 'Enim eget nec sit scelerisque lacus. Porttitor senectus vulputate mattis tortor odio vitae. Dui et, ut ipsum aliquet sit tempor. Amet consectetur purus justo feugiat mattis sit ultricies odio.  Pellentesque pellentesque sit sed porttitor duis interdum. Bibendum nisl, eu, ornare non. Enim consequat in quisque vestibulum facilisi odio. Elementum elit est, vitae feugiat enim odio cursus. Enim cum dictum gravida amet id eget. Ut ac velit sed nulla leo id. Ante duis pellentesque aliquam massa amet, neque cum. Vitae mi purus placerat nibh purus faucibus imperdiet quisque diam. Elementum urna feugiat rhoncus purus. Consectetur neque auctor eite commodo consequat.'
-
+      type: [array, 'null']
+      title: Disclosure items
+      description: Labels and panel content, each with an ID unique within the accordion.
+      items:
+        type: object
+        required: [id, heading, content]
+        properties:
+          id:
+            type: string
+            title: Item ID
+            pattern: '^[A-Za-z0-9]+(?:[-_][A-Za-z0-9]+)*$'
+          heading:
+            type: string
+            title: Item heading
+          content:
+            type: [string, array, object, 'null']
+            title: Panel content
+      default: []
+      examples:
+        - - id: library-card
+            heading: How do I get a library card?
+            content: Bring your identification and proof of address to the front desk.
+          - id: meeting-rooms
+            heading: Can I reserve a meeting room?
+            content: You can reserve a room for up to two hours at a time.
+          - id: returns
+            heading: Where can I return books?
+            content: Use the returns desk or the book drop by the entrance.
+    accordion__item__heading_level:
+      type: [integer, 'null']
+      title: Item heading level
+      description: Heading level for each disclosure. Defaults to one below the section heading, or level 2 without a section heading.
+      enum: [2, 3, 4, 5, 6, null]
+      default: null
+    accordion__show_controls:
+      type: [boolean, 'null']
+      title: Show bulk controls
+      description: Enable the optional controls for expanding or collapsing every panel.
+      default: false
+    accordion__controls_label:
+      type: [string, 'null']
+      title: Bulk controls group label
+      description: Accessible name for the group of bulk controls.
+      default: null
+    accordion__expand_all_label:
+      type: [string, 'null']
+      title: Expand all label
+      description: Visible label for the button that opens all panels.
+      default: null
+    accordion__collapse_all_label:
+      type: [string, 'null']
+      title: Collapse all label
+      description: Visible label for the button that closes all panels.
+      default: null
+    accordion__width:
+      type: [string, 'null']
+      title: Width
+      description: Width of the shared layout container.
+      enum: [narrow, content, wide, full, null]
+      default: narrow
+    accordion__alignment:
+      type: [string, 'null']
+      title: Section alignment
+      description: Horizontal alignment of the layout container.
+      enum: [left, center, right, null]
+      default: center
+    accordion__theme:
+      type: [string, 'null']
+      title: Theme
+      description: Theme for the section. Omit to inherit.
+      enum: [default, null]
+    accordion__theme__variation:
+      type: [string, 'null']
+      title: Theme variation
+      description: Light or dark variation of the theme.
+      enum: [light, dark, null]
+    accordion__bg_color:
+      type: [boolean, 'null']
+      title: Paint theme background
+      description: Paint the shared container's theme background.
+      default: false
+    accordion__spacing:
+      type: [string, 'null']
+      title: Section spacing
+      description: Vertical spacing around the section.
+      default: one
+    accordion__container__modifiers:
+      type: [array, 'null']
+      title: Container modifiers
+      description: BEM modifiers applied to the container.
+      items:
+        type: string
+      default: []
+    accordion__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Optional parent BEM block name.
+    accordion__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers applied to the accordion wrapper.
+      items:
+        type: string
+    accordion__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: Extra CSS classes for the accordion wrapper.
+      items:
+        type: string
+    accordion__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Additional HTML attributes for the accordion wrapper.
 slots:
-  accordion__items:
-    title: Accordion Items
-    description: Override the default accordion items rendering
-    data: ''
+  accordion__items_content:
+    title: Items content
+    description: Composed disclosures, typically rendered through the Accordion item partial.

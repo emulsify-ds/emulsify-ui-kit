@@ -1,41 +1,300 @@
-$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
-
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: Media Box
+description: Composes an image, video, or supplied media inside a section with an optional introduction.
 group: Components
 status: stable
 props:
   type: object
-  required:
-    - media_box__media
   properties:
-    media_box__heading:
-      type: string
-      title: Media Box heading
-      description: The main title/heading of the media box.
-      data: 'This is the card image alt text'
-    media_box__text:
-      type: string
-      title: Media Box text
-      description: The longer description area associated with the media box.
-      data: '<p>Lorem ipsum dolor sit amet, <strong>consectetur adipiscing</strong> elit. Curabitur purus velit, luctus id scelerisque id, gravida vitae ante. Aenean condimentum, velit sed dignissim varius, libero metus auctor eros, vitae vulputate libero leo sit amet nunc. Duis ultricies massa ante, eget ornare turpis <a href="#">facilisis</a>.</p>'
+    media_box__type:
+      type: [string, 'null']
+      title: Media type
+      description: Select an image or a video when rendering media from props.
+      enum: [image, video, null]
+      default: image
     media_box__media:
-      type: string
-      title: Media Box media
-      description: The image's source of the media box.
-      data: 'https://placehold.co/400'
+      type: [string, 'null']
+      title: Legacy image source
+      description: Fallback image URL for consumers of the original Media Box schema.
+      default: null
+    media_box__id:
+      type: [string, integer, 'null']
+      title: Anchor suffix
+      description: Stable page-unique suffix for the section anchor.
+      default: null
+    media_box__width:
+      type: [string, 'null']
+      title: Width
+      description: Maximum inline size of the inner wrapper.
+      enum: [narrow, content, wide, full, null]
+      default: content
+    media_box__theme:
+      type: [string, 'null']
+      title: Theme
+      description: Theme name. Leaving both theme props unset inherits the surrounding theme.
+      default: null
+    media_box__theme__variation:
+      type: [string, 'null']
+      title: Theme variation
+      description: Color variation for the chosen theme. Defaults to light when a theme is set.
+      enum: [light, dark, null]
+      default: null
+    media_box__bg_color:
+      type: [boolean, 'null']
+      title: Background
+      description: Paint the active theme background on the outer wrapper.
+      default: false
+    media_box__spacing:
+      type: [string, 'null']
+      title: Spacing
+      description: Section padding multiplier. An edge variant applies that multiplier to the named edge, with normal padding on the opposite edge.
+      default: one
+      enum:
+        - none
+        - quarter
+        - half
+        - one
+        - two
+        - three
+        - four
+        - none-top
+        - quarter-top
+        - half-top
+        - one-top
+        - two-top
+        - three-top
+        - four-top
+        - none-bottom
+        - quarter-bottom
+        - half-bottom
+        - one-bottom
+        - two-bottom
+        - three-bottom
+        - four-bottom
+        - null
+    media_box__heading:
+      type: [string, object, 'null']
+      title: Heading
+      description: Heading text or a render array.
+      examples: ['Behind the lens']
+    media_box__heading_level:
+      type: [integer, string, 'null']
+      title: Heading level
+      description: Level of the heading in the page outline.
+      enum: [2, 3, 4, 5, 6, '2', '3', '4', '5', '6', null]
+      default: 2
+    media_box__subheading:
+      type: [string, object, 'null']
+      title: Subheading
+      description: Supporting text or a render array placed below the heading.
+      default: null
+    media_box__text:
+      type: [string, object, 'null']
+      title: Intro text
+      description: Trusted rich text or a render array for the introduction.
+      examples: ['See the equipment used to make this photograph.']
+    media_box__container__modifiers:
+      type: [array, 'null']
+      title: Container modifiers
+      description: BEM modifiers for the outer section wrapper.
+      items:
+        type: string
+    media_box__image__src:
+      type: [string, 'null']
+      title: Image source
+      description: URL of the fallback image.
+      minLength: 1
+      examples: [assets/images/example/basic-camera-image.png]
+    media_box__image__alt:
+      type: [string, 'null']
+      title: Alternative text
+      description: Describe the meaningful content or link purpose. Use an empty string for a decorative image.
+      examples: ['A film camera on a tripod']
+    media_box__image__decorative:
+      type: [boolean, 'null']
+      title: Decorative image
+      description: Use empty alternative text and render the image without a link.
+      default: false
+    media_box__image__srcset:
+      type: [string, 'null']
+      title: Source set
+      description: Comma-separated candidates and their widths or pixel densities.
+      default: null
+    media_box__image__sizes:
+      type: [string, 'null']
+      title: Sizes
+      description: Browser slot sizes for width-based responsive candidates.
+      default: null
+    media_box__image__sources:
+      type: [array, 'null']
+      title: Picture sources
+      description: Ordered art-direction or format alternatives for a picture element.
+      default: []
+      items:
+        type: object
+        required: [srcset]
+        properties:
+          srcset:
+            type: string
+          sizes:
+            type: [string, 'null']
+          media:
+            type: [string, 'null']
+          type:
+            type: [string, 'null']
+    media_box__image__width:
+      type: [integer, 'null']
+      title: Width
+      description: Intrinsic width of the fallback image in pixels.
+      minimum: 1
+      default: null
+    media_box__image__height:
+      type: [integer, 'null']
+      title: Height
+      description: Intrinsic height of the fallback image in pixels.
+      minimum: 1
+      default: null
+    media_box__image__loading:
+      type: [string, 'null']
+      title: Loading behavior
+      description: Use eager for an image above the fold.
+      enum: [lazy, eager, null]
+      default: lazy
+    media_box__image__url:
+      type: [string, 'null']
+      title: Destination URL
+      description: Relative or HTTP destination for an image that serves as a link.
+      default: null
+    media_box__image__caption:
+      type: [string, 'null']
+      title: Caption
+      description: Visible caption. A caption or credit creates a figure.
+      default: null
+    media_box__image__credit:
+      type: [string, 'null']
+      title: Credit
+      description: Visible attribution or copyright notice.
+      default: null
+    media_box__video__type:
+      type: [string, 'null']
+      title: Player
+      description: Select HTML video sources or an embedded player.
+      enum: [html5, embed, null]
+      default: html5
+    media_box__video__title:
+      type: [string, 'null']
+      title: Video title
+      description: Accessible name describing the video.
+      default: null
+    media_box__video__sources:
+      type: [array, 'null']
+      title: Video sources
+      description: Ordered HTML video source URLs and optional media types.
+      default: []
+      items:
+        type: object
+        required: [src]
+        properties:
+          src:
+            type: string
+          type:
+            type: [string, 'null']
+    media_box__video__tracks:
+      type: [array, 'null']
+      title: Text tracks
+      description: WebVTT captions, subtitles, descriptions, chapters, or metadata.
+      default: []
+      items:
+        type: object
+        required: [src]
+        properties:
+          src:
+            type: string
+          kind:
+            enum: [captions, subtitles, descriptions, chapters, metadata, null]
+          srclang:
+            type: [string, 'null']
+          label:
+            type: [string, 'null']
+          default:
+            type: [boolean, 'null']
+    media_box__video__poster:
+      type: [string, 'null']
+      title: Poster URL
+      description: Native poster image to show before a video plays.
+      default: null
+    media_box__video__embed_url:
+      type: [string, 'null']
+      title: Embed URL
+      description: Relative or HTTP URL for a trusted video player.
+      default: null
+    media_box__video__aspect_ratio:
+      type: [string, 'null']
+      title: Embed aspect ratio
+      description: Ratio of the responsive embedded player.
+      enum: ['16:9', '4:3', '1:1', null]
+      default: '16:9'
+    media_box__video__autoplay:
+      type: [boolean, 'null']
+      title: Background playback
+      description: Play muted HTML video when the viewer allows automatic motion.
+      default: false
+    media_box__video__loop:
+      type: [boolean, 'null']
+      title: Loop
+      description: Restart native playback at the end of the video.
+      default: false
+    media_box__video__caption:
+      type: [string, 'null']
+      title: Caption
+      description: Visible caption below the player. A caption or credit creates a figure.
+      default: null
+    media_box__video__credit:
+      type: [string, 'null']
+      title: Credit
+      description: Visible attribution or copyright notice.
+      default: null
     media_box__caption:
-      type: string
-      title: Media Box caption
-      description: The caption associated with the media box.
-      data: 'This is a sample caption associated with the media box.'
+      type: [string, 'null']
+      title: Shared caption
+      description: Caption when the selected media has no caption of its own.
+      default: null
     media_box__copyright:
-      type: string
-      title: Media Box copyright
-      description: The copyright associated with the media box.
-      data: 'Photo taken by John Doe'
-
+      type: [string, 'null']
+      title: Shared credit
+      description: Attribution when the selected media has no credit of its own.
+      default: null
+    media_box__show_caption:
+      type: [boolean, 'null']
+      title: Show the caption
+      description: Set false to suppress the generated media caption.
+      default: true
+    media_box__show_copyright:
+      type: [boolean, 'null']
+      title: Show the credit
+      description: Set false to suppress the generated media credit.
+      default: true
+    media_box__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Parent block for the BEM media wrapper class.
+    media_box__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers for the media wrapper.
+      items:
+        type: string
+    media_box__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: Additional classes on the media wrapper.
+      items:
+        type: string
+    media_box__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Additional HTML attributes on the media wrapper.
 slots:
-  media_box__media:
-    title: Media-Box Media
-    description: Override the default media-box media rendering
-    data: ''
+  media_box__media_content:
+    title: Media content
+    description: Complete media markup, including any caption and credit, to replace the image or video generated from props.

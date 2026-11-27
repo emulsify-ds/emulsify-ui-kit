@@ -1,12 +1,29 @@
+@use '../../base' as *;
+
 .logo {
-  width: 100%;
-  max-width: auto;
+  inline-size: 100%;
+  max-inline-size: var(--logo-max-width, 100%);
 }
 
 .logo--header {
-  max-width: 20rem;
+  --logo-max-width: 20rem;
 }
 
 .logo--footer {
-  max-width: 10rem;
+  --logo-max-width: 10rem;
+}
+
+.logo__link {
+  @include focus;
+
+  display: inline-flex;
+  align-items: center;
+  min-inline-size: space(24);
+  min-block-size: space(24);
+  max-inline-size: 100%;
+}
+
+.logo__image {
+  max-block-size: 100%;
+  object-fit: contain;
 }

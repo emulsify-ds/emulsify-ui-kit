@@ -28,7 +28,20 @@ The Emulsify UI Kit has two distinct building blocks: the Figma and the code rep
 
 ### Use the Emulsify CLI
 
-Instructions to come. TKTK
+Use Node.js 24.13.0 or newer and run these commands from the directory where you want to create the Drupal starter.
+
+```sh
+npm install -g @emulsify/cli@2.4.1
+emulsify init "Emulsify Drupal Starter" . --platform drupal --yes
+cd emulsify_drupal_starter
+emulsify system install \
+  --repository https://github.com/emulsify-ds/emulsify-ui-kit.git \
+  --checkout release-2.x --all --yes
+```
+
+Replace `release-2.x` with the tag or branch you want to install.
+
+Emulsify CLI 2.5.0 or later installs the npm packages a component declares. The 2.0 kit has no component package declarations and uses CLI 2.4.1 in CI. [Component npm package guide](docs/component-npm-packages.md)
 
 ### Deploy to Netlify
 
@@ -44,56 +57,36 @@ The strength of this UI kit leans on its connection with Figma via [Tokens Studi
 
 To connect the Figma file with your code, [see the instructions in the Tokens Studio documentation](https://docs.tokens.studio/sync/github).
 
+### Rebuild tokens in an installed theme
+
+The token directory's build script uses `style-dictionary` and `@tokens-studio/sd-transforms`. The CLI supports package declarations on components. For the shared token directory, install these development dependencies in the theme root.
+
+```sh
+npm install -D 'style-dictionary@^5.8.0' '@tokens-studio/sd-transforms@^2.0.3'
+```
+
+Add `"tokens:build": "node ./src/tokens/build-tokens.mjs"` to `scripts` in the theme's `package.json`. Update `src/tokens/figma.tokens.json` and run `npm run tokens:build` to regenerate the Base token files.
+
 ## Creating a component
 
 A complete component meets the following criteria:
 
 1. Design tokens are defined as their own set in Figma, in the Token Studio plugin, and they use references to values defined in `semantic` as much as possible.
 2. The component has an independent frame in Figma.
-3. The component's CSS file uses the generated design tokens as much as possible. See button example below.
-4. A component's story connects to the corresponding Figma frame, defined in `.storybook/configma.json`.
-5. The component passes WCAG 2 AA.
+3. Use the generated Base tokens and expose component custom properties for local overrides. See the CTA example below.
+4. A component's story connects to the corresponding Figma frame, defined in `config/configma.json`.
+5. The component passes WCAG 2.2 AA.
 
 ## Example component
 
-The [button component](https://emulsify-ds.github.io/emulsify-ui-kit/?path=/story/components-button--button) serves as an example of how variables are used to connect Figma with the code.
+CTA inherits the active theme. Set its local properties on an ancestor to customize the actions within that section. [CTA documentation](https://emulsify-ds.github.io/emulsify-ui-kit/?path=/docs/components-cta--docs)
 
 ```css
-.button {
-  background-color: var(--button-color-bkg);
-  padding: var(--button-padding-y) var(--button-padding-x);
-  color: var(--button-color-label);
-  border-radius: var(--button-radius);
-  border: var(--button-border-width-border) solid var(--button-border-color);
-  font-size: var(--font-size-small);
-  font-weight: var(--button-font-weight-label);
-  text-transform: var(--button-text-case);
-  text-decoration: none;
-
-  &:hover,
-  &.button--hover {
-    background-color: var(--button-color-bkg-hover);
-    padding: var(--button-padding-y-hover) var(--button-padding-x-hover);
-    border: var(--button-border-width-border-hover) solid var(
-        --button-border-color-hover
-      );
-    color: var(--button-color-label-hover);
-    text-decoration: underline;
-    text-transform: var(--button-text-case);
-  }
-
-  &:focus,
-  &.button--focus {
-    padding: var(--button-padding-y-focus) var(--button-padding-x-focus);
-    color: var(--button-color-label-focus);
-    border: var(--button-border-width-border-focus) solid var(
-        --button-border-color-focus
-      );
-    outline: var(--button-border-width-outline-focus) solid var(
-        --button-color-outline-focus
-      );
-    text-transform: var(--button-text-case);
-  }
+.newsletter-actions {
+  --cta-background-color: var(--clr-body);
+  --cta-color: var(--clr-background);
+  --cta-background-color-hover: var(--clr-link);
+  --cta-color-hover: var(--clr-background);
 }
 ```
 
@@ -105,7 +98,7 @@ See [this whiteboard](https://www.figma.com/file/l6MIPQCewbIJoKvZpxhAwr/Token-Na
 
 1. In Figma, select the frame to share and activate the Share button (in the upper right hand corner).
 2. In the share modal make sure that "Link to selected frame" is checked and activate "Copy link".
-3. Open `.storybook/configma.json` and confirm the following:
+3. Open `config/configma.json` and confirm the following:
 4. Using this example: `https://www.figma.com/file/[FIGMA_FILE_ID]/[FIGMA_FILE_NAME]?node-id=[NODE_ID]`
 5. Confirm that `url` has the correct `FIGMA_FILE_ID` and `FIGMA_FILE_NAME`.
 6. Add your component name to the file as a key with the `NODE_ID` being the value.
@@ -113,17 +106,55 @@ See [this whiteboard](https://www.figma.com/file/l6MIPQCewbIJoKvZpxhAwr/Token-Na
 8. In the parameters of your story, include `figma.$KEY` as shown below.
 
 ```js
-Button.parameters = {
+Spacing.parameters = {
   design: {
     type: 'figma',
-    url: figma.url + figma.button,
+    url: figma.url + figma.spacing,
   },
 };
 ```
 
 ## Contributing to this UI Kit
 
-To come. TKTK
+Use Node.js 24 LTS (`.nvmrc`), version 24.13.0 or newer, and install the locked dependencies:
+
+```sh
+nvm use
+npm ci
+npm run develop
+```
+
+Before opening a pull request, run `npm run validate` and `npm run storybook-build`.
+Validation includes lint, the component contract, release tests, Sass tests, and Jest.
+
+### Releases
+
+The Release workflow runs when changes are pushed or merged into `main`.
+Conventional commits determine the next version: `fix:` creates a patch,
+`feat:` creates a minor release, and `feat!:` or a `BREAKING CHANGE:` footer
+creates a major release. Other commit types do not create a release by themselves.
+For squash merges, use a conventional commit as the pull request title and keep
+any breaking change footer in the squash commit message.
+
+The `release-2.x` rollout intentionally creates `2.0.0`, regardless of its merge
+commit title. Its one-time release plugin requests a major release while the last
+tag is below 2.0.0 and verifies that the result is exactly `2.0.0`. Once that tag
+exists, subsequent releases follow conventional commits normally. The bootstrap
+plugin can then be removed from `release.config.cjs`.
+
+Before tagging, semantic-release updates `package.json` and `package-lock.json`
+and commits any version changes to `main` as `chore(release): VERSION [skip ci]`.
+The GitHub release, tag, and both package versions agree, including when the
+merged branch already contains the calculated version.
+This project publishes GitHub releases; npm registry publishing is disabled.
+
+Configure a repository Actions secret named `RELEASE_TOKEN` with repository
+contents, issues, and pull requests write access and permission to bypass `main`'s
+required pull request review. The existing branch protection exempts
+administrators, so a token owned
+by an administrator can push the version commit. The workflow uses this token
+for checkout, the version commit, tags, and the GitHub release; it falls back to
+`GITHUB_TOKEN` for repositories whose rules already permit the workflow token.
 
 ### Contributors
 

@@ -1,9 +1,18 @@
-fieldset {
-  border: var(--border-sm) solid var(--color-fieldset-border);
-  border-radius: var(--radius-fieldset);
-  padding: var(--spacing-lg);
-}
+@use '../../base' as *;
 
-legend {
-  color: var(--color-fieldset-label);
+:where(.form-fieldset, fieldset.form-wrapper) {
+  box-sizing: border-box;
+  min-inline-size: 0;
+  margin: 0 0 space(24);
+  padding: space(16);
+  border: var(--bw-sm) solid var(--clr-border);
+  border-radius: var(--r-sm);
+
+  > legend {
+    max-inline-size: 100%;
+    padding-inline: space(4);
+    color: var(--clr-body);
+    font-weight: font-weight('primary-bold');
+    overflow-wrap: anywhere;
+  }
 }

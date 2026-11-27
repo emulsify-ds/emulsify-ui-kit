@@ -1,52 +1,57 @@
 import { renderTwig } from '@emulsify/core/storybook';
 
+import { argsFromSchema } from '../../util/argsFromSchema.js';
+import {
+  createContainerThemeControls,
+  createContainerWidthControls,
+} from '../../util/storybookContainerControls.js';
+import schema from './text-with-image.component.yml';
+import docs from './text-with-image.docs.js';
 import textWithImageTwig from './text-with-image.twig';
-import { props } from './text-with-image.component.yml';
 
-const textWithImageData = props.properties;
+const themeControls = createContainerThemeControls();
+const widthControls = createContainerWidthControls();
 
 export default {
-  title: 'Components/Text With Image',
+  title: 'Components/Text with Image',
+  tags: ['autodocs'],
+  parameters: { docs },
   render: renderTwig(textWithImageTwig),
+  args: {
+    ...argsFromSchema(schema.props),
+    text_with_image__theme: themeControls.args.theme,
+    text_with_image__theme__variation: themeControls.args.themeVariation,
+    text_with_image__bg_color: true,
+    text_with_image__ctas: [
+      { content: 'View workshop dates', url: '/workshops/dates' },
+      { content: 'Read the equipment guide', url: '/workshops/equipment' },
+    ],
+  },
   argTypes: {
-    text_with_image__position: {
-      name: 'Image Position',
+    text_with_image__text: { control: 'text' },
+    text_with_image__width: widthControls.argTypes.width,
+    text_with_image__theme: themeControls.argTypes.theme,
+    text_with_image__theme__variation: themeControls.argTypes.themeVariation,
+    text_with_image__media_alignment: {
       control: 'select',
       options: ['left', 'right'],
+      table: { category: 'Appearance' },
     },
     text_with_image__focus: {
-      name: 'Component Focus',
       control: 'select',
       options: ['equal', 'image', 'text'],
-    },
-    text_with_image__heading: {
-      name: 'Heading',
-      control: 'text',
-    },
-    text_with_image__text: {
-      name: 'Text',
-      control: 'text',
-    },
-    text_with_image__link__content: {
-      name: 'Link Content (optional)',
-      control: 'text',
-    },
-    text_with_image__link__url: {
-      name: 'Link URL',
-      control: 'text',
+      table: { category: 'Appearance' },
     },
   },
 };
 
-export const textWithImage = {
+export const TextWithImage = {};
+
+export const ImageRight = {
   args: {
-    text_with_image__position: 'left',
-    text_with_image__focus: 'equal',
-    text_with_image__heading: textWithImageData.text_with_image__heading.data,
-    text_with_image__text: textWithImageData.text_with_image__text.data,
-    text_with_image__link__content:
-      textWithImageData.text_with_image__link__content.data,
-    text_with_image__link__url:
-      textWithImageData.text_with_image__link__url.data,
+    text_with_image__media_alignment: 'right',
+    text_with_image__focus: 'image',
+    text_with_image__image__caption: 'A camera set up for a location shoot.',
+    text_with_image__theme__variation: 'dark',
   },
 };

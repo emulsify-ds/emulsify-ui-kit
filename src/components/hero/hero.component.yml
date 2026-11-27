@@ -1,0 +1,269 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Hero
+description: A page introduction with a display heading, links, and optional image or video.
+group: Components
+status: stable
+props:
+  type: object
+  required: [hero__heading]
+  properties:
+    hero__heading:
+      type: string
+      title: Heading
+      description: The title of the page or section.
+      minLength: 1
+      examples: ['Make something new']
+    hero__heading_level:
+      type: [integer, 'null']
+      title: Heading level
+      description: Semantic heading level, independent of the display size.
+      enum: [1, 2, 3, 4, 5, 6, null]
+      default: 1
+    hero__text:
+      type: [string, 'null']
+      title: Supporting text
+      description: A short introduction using text or formatted markup.
+      examples:
+        ['Discover tools, classes, and open studio time for every skill level.']
+    hero__ctas:
+      type: [array, 'null']
+      title: Actions
+      description: Up to two links to the next steps, ordered by priority.
+      maxItems: 2
+      examples:
+        - - content: Explore workshops
+            url: /workshops
+            icon: arrow-right
+          - content: Plan a visit
+            url: /visit
+      items:
+        type: object
+        required: [content, url]
+        properties:
+          content:
+            type: string
+          url:
+            type: string
+          icon:
+            type: [string, 'null']
+          icon_position:
+            enum: [left, right, null]
+    hero__height:
+      type: [string, 'null']
+      title: Height
+      description: Tall adds a minimum height when there is room for the full layout.
+      enum: [auto, tall, null]
+      default: auto
+    hero__media_type:
+      type: [string, 'null']
+      title: Media type
+      description: Show an image, video, or no media.
+      enum: [image, video, none, null]
+      default: image
+    hero__media_alignment:
+      type: [string, 'null']
+      title: Media alignment
+      description: Side occupied by the media when placed beside the copy.
+      enum: [left, right, null]
+      default: right
+    hero__image__src:
+      type: [string, 'null']
+      title: Image URL
+      description: URL of the main image.
+      default: null
+    hero__image__alt:
+      type: [string, 'null']
+      title: Alternative text
+      description: Text describing what a meaningful image adds to the introduction.
+      default: null
+    hero__image__decorative:
+      type: [boolean, 'null']
+      title: Decorative image
+      description: An unset value treats an image without alternative text as decorative.
+      default: null
+    hero__image__srcset:
+      type: [string, 'null']
+      title: Responsive image candidates
+      description: Image source candidates and descriptors for srcset.
+      default: null
+    hero__image__sizes:
+      type: [string, 'null']
+      title: Responsive image sizes
+      description: Expected image slot sizes for choosing responsive candidates.
+      default: null
+    hero__image__sources:
+      type: [array, 'null']
+      title: Picture sources
+      description: Optional alternatives with srcset and optional media, sizes, or type.
+      default: []
+      items:
+        type: object
+        required: [srcset]
+        properties:
+          srcset:
+            type: string
+          media:
+            type: [string, 'null']
+          sizes:
+            type: [string, 'null']
+          type:
+            type: [string, 'null']
+    hero__image__width:
+      type: [integer, 'null']
+      title: Image width
+      description: Intrinsic width in pixels.
+      minimum: 1
+      default: null
+    hero__image__height:
+      type: [integer, 'null']
+      title: Image height
+      description: Intrinsic height in pixels.
+      minimum: 1
+      default: null
+    hero__image__caption:
+      type: [string, 'null']
+      title: Image caption
+      description: Optional visible description under the image.
+      default: null
+    hero__image__credit:
+      type: [string, 'null']
+      title: Image credit
+      description: Optional attribution displayed under the image.
+      default: null
+    hero__video__type:
+      type: [string, 'null']
+      title: Video player
+      description: Use HTML video sources or a trusted embedded player.
+      enum: [html5, embed, null]
+      default: html5
+    hero__video__title:
+      type: [string, 'null']
+      title: Video title
+      description: Accessible name describing the video or embed.
+      default: null
+    hero__video__sources:
+      type: [array, 'null']
+      title: Video sources
+      description: Ordered URLs for native video and their optional media types.
+      default: []
+      items:
+        type: object
+        required: [src]
+        properties:
+          src:
+            type: string
+          type:
+            type: [string, 'null']
+    hero__video__tracks:
+      type: [array, 'null']
+      title: Video tracks
+      description: WebVTT captions, descriptions, or other tracks for informative video.
+      default: []
+      items:
+        type: object
+        required: [src]
+        properties:
+          src:
+            type: string
+          kind:
+            enum: [captions, subtitles, descriptions, chapters, metadata, null]
+          srclang:
+            type: [string, 'null']
+          label:
+            type: [string, 'null']
+          default:
+            type: [boolean, 'null']
+    hero__video__poster:
+      type: [string, 'null']
+      title: Video poster
+      description: Still image shown before the native video plays.
+      default: null
+    hero__video__embed_url:
+      type: [string, 'null']
+      title: Embed URL
+      description: A trusted video embed URL.
+      default: null
+    hero__video__aspect_ratio:
+      type: [string, 'null']
+      title: Embed aspect ratio
+      description: Width-to-height ratio for the embedded player.
+      enum: ['16:9', '4:3', '1:1', null]
+      default: '16:9'
+    hero__video__background:
+      type: [boolean, 'null']
+      title: Background video
+      description: Play decorative HTML video muted and looped when motion is allowed.
+      default: false
+    hero__video__caption:
+      type: [string, 'null']
+      title: Video caption
+      description: Optional visible description below the video.
+      default: null
+    hero__video__credit:
+      type: [string, 'null']
+      title: Video credit
+      description: Optional attribution displayed below the video.
+      default: null
+    hero__width:
+      type: [string, 'null']
+      title: Container width
+      description: Maximum width of the section content.
+      enum: [narrow, content, wide, full, null]
+      default: wide
+    hero__theme:
+      type: [string, 'null']
+      title: Container theme
+      description: Theme applied to the section. Omit it to inherit the surrounding theme.
+      default: null
+    hero__theme__variation:
+      type: [string, 'null']
+      title: Theme variation
+      description: Light or dark variation for the section.
+      enum: [light, dark, null]
+      default: null
+    hero__bg_color:
+      type: [boolean, 'null']
+      title: Paint background
+      description: Paint the active theme background across the section.
+      default: true
+    hero__spacing:
+      type: [string, 'null']
+      title: Section spacing
+      description: Vertical spacing from the shared Container scale.
+      default: two
+    hero__id:
+      type: [string, 'null']
+      title: Hero ID
+      description: Page-unique suffix for the section anchor and heading ID.
+      examples: ['introducing-the-studio']
+    hero__container__modifiers:
+      type: [array, 'null']
+      title: Container modifiers
+      description: BEM modifiers for the section container.
+      default: []
+      items:
+        type: string
+    hero__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Parent block for the Hero BEM class.
+    hero__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers for the Hero wrapper.
+      items:
+        type: string
+    hero__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: Extra classes for the Hero wrapper.
+      items:
+        type: string
+    hero__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Extra HTML attributes for the Hero wrapper.
+slots:
+  hero__media_content:
+    title: Media content
+    description: Composed media replacing the built-in image or video.

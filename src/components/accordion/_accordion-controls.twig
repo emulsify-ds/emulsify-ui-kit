@@ -1,62 +1,26 @@
 {#
- # Available Variables:
- # - none
+ # Props: accordion__controls_label, accordion__expand_all_label,
+ # accordion__collapse_all_label.
  #}
 
-{% set expand_button__content %}
-  {{'Expand all'}}
-  {% include "@components/icons/_icon.twig" with {
-    icon__name: 'angle-down',
-    icon__blockname: accordion__base_class,
-    icon__decorative: true,
-  } %}
-{% endset %}
-
-{% set collapse_button__content %}
-  {{'Collapse all'}}
-  {% include "@components/icons/_icon.twig" with {
-    icon__name: 'angle-down',
-    icon__blockname: accordion__base_class,
-    icon__decorative: true,
-  } %}
-{% endset %}
-
-{% embed "@components/lists/list.twig" with {
-  list__base_class: 'controls',
-  list__blockname: accordion__base_class,
-  list__addition_classes: ['js-accordion__controls'],
-  list__attributes: {'aria-label': 'Controls to Expand or Collapse all accordion items'},
-  } %}
-	{% block list__content %}
-		{% embed "@components/lists/_list-item.twig" with {
-      list__item__base_class: 'controls__item',
-      list__item__blockname: accordion__base_class,
-      }%}
-			{% block list__item__content %}
-				{% include "@components/button/button.twig" with {
-          button__content: expand_button__content,
-          button__base_class: 'toggle-all',
-          button__modifiers: ['expand'],
-          button__style: 'clean',
-          button__blockname: accordion__base_class,
-          button__additional_classes: ['button', 'js-accordion-item__toggle_all', 'js-accordion__toggle-all--expand'],
-          } %}
-			{% endblock %}
-		{% endembed %}
-		{% embed "@components/lists/_list-item.twig" with {
-      list__item__base_class: 'controls__item',
-      list__item__blockname: accordion__base_class,
-      }%}
-			{% block list__item__content %}
-				{% include "@components/button/button.twig" with {
-          button__content: collapse_button__content,
-          button__base_class: 'toggle-all',
-          button__modifiers: ['collapse'],
-          button__style: 'clean',
-          button__blockname: accordion__base_class,
-          button__additional_classes: ['button', 'js-accordion-item__toggle_all', 'js-accordion__toggle-all--collapse'],
-          } %}
-			{% endblock %}
-		{% endembed %}
-	{% endblock %}
-{% endembed %}
+<div {{ add_attributes({
+  class: bem('controls', [], 'accordion'),
+  role: 'group',
+  'aria-label': accordion__controls_label|default('Accordion controls'|t),
+  'data-accordion-controls': 'true',
+}) }} hidden>
+  {{ include('@components/cta/cta.twig', {
+    cta__element: 'button',
+    cta__button_type: 'button',
+    cta__text: accordion__expand_all_label|default('Expand all'|t),
+    cta__modifiers: ['clean'],
+    cta__attributes: { 'data-accordion-bulk': 'expand' },
+  }, with_context: false) }}
+  {{ include('@components/cta/cta.twig', {
+    cta__element: 'button',
+    cta__button_type: 'button',
+    cta__text: accordion__collapse_all_label|default('Collapse all'|t),
+    cta__modifiers: ['clean'],
+    cta__attributes: { 'data-accordion-bulk': 'collapse' },
+  }, with_context: false) }}
+</div>

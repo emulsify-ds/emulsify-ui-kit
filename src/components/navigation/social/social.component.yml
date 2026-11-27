@@ -1,27 +1,64 @@
-$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
-
-name: Social Menu
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Social Navigation
+description: A named list of links to social media profiles.
 group: Components/Navigation
 status: stable
 props:
   type: object
-  required:
-    - items
   properties:
-    items:
-      type: array
-      title: Social menu items
-      description: The items of the social menu.
-      data:
-        - title: 'X'
-          url: '#'
-          icon: 'x'
-        - title: 'Facebook'
-          url: '#'
-          icon: 'facebook'
-        - title: 'Instagram'
-          url: '#'
-          icon: 'instagram'
-        - title: 'LinkedIn'
-          url: '#'
-          icon: 'linkedin'
+    social__items:
+      type: [array, 'null']
+      title: Links
+      description: Social media links with a title, a URL, and an optional icon name.
+      default: null
+      items:
+        type: object
+        properties:
+          title:
+            type: string
+            title: Link title
+            description: Accessible name, presented as text when the icon is unavailable.
+          url:
+            type: [string, object, 'null']
+            title: Destination
+            description: URL or Drupal URL object for the link.
+          icon:
+            type: [string, 'null']
+            title: Icon
+            description: Decorative icon name from the icon assets.
+      examples:
+        - - title: Instagram
+            url: 'https://www.instagram.com/'
+            icon: instagram
+          - title: LinkedIn
+            url: 'https://www.linkedin.com/'
+            icon: linkedin
+    social__label:
+      type: [string, 'null']
+      title: Landmark label
+      description: Accessible name for this navigation landmark.
+      default: null
+    social__blockname:
+      type: [string, 'null']
+      title: BEM block name
+      description: Parent block name used to compose the navigation class.
+    social__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers applied to the navigation wrapper.
+      items:
+        type: string
+    social__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: Additional CSS classes applied to the navigation wrapper.
+      items:
+        type: string
+    social__attributes:
+      type: [object, 'null']
+      title: Navigation attributes
+      description: HTML attributes applied to the navigation wrapper.
+slots:
+  social__items_content:
+    title: List content
+    description: Replace the rendered list items with accessible list items.

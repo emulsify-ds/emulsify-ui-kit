@@ -1,45 +1,46 @@
 import { renderTwig } from '@emulsify/core/storybook';
-import accordionData from './accordion.component.yml';
-import accordionTwig from './accordion.twig';
-import './accordion';
+import { argsFromSchema } from '../../util/argsFromSchema.js';
+import {
+  createContainerThemeControls,
+  createContainerWidthControls,
+} from '../../util/storybookContainerControls.js';
+import schema from './accordion.component.yml';
+import docs from './accordion.docs.js';
+import template from './accordion.twig';
+import './accordion.js';
+
+const widthControls = createContainerWidthControls();
+const themeControls = createContainerThemeControls();
 
 export default {
   title: 'Components/Accordion',
-  render: renderTwig(accordionTwig),
-  argTypes: {
-    width: {
-      name: 'Container Width',
-      control: { type: 'select' },
-      options: {
-        Small: 'compact',
-        Medium: 'standard',
-        Large: 'extended',
-        Max: 'max',
-        Full: 'full',
-      },
-    },
-    heading: {
-      name: 'Heading',
-      control: 'text',
-    },
-    accordion__text: {
-      name: 'Intro Text',
-      control: 'text',
-    },
-    accordion__items: {
-      table: {
-        disable: true,
-      },
-    },
+  tags: ['autodocs'],
+  parameters: { docs },
+  args: {
+    ...argsFromSchema(schema.props),
+    ...widthControls.args,
+    ...themeControls.args,
+    accordion__bg_color: true,
   },
+  argTypes: {
+    ...widthControls.argTypes,
+    ...themeControls.argTypes,
+  },
+  render: renderTwig(({ width, theme, themeVariation, ...args }) =>
+    template({
+      ...args,
+      accordion__width: width,
+      accordion__theme: theme,
+      accordion__theme__variation: themeVariation,
+    }),
+  ),
 };
 
-const { properties } = accordionData.props;
+export const Accordion = {};
 
-export const accordion = {
+export const BulkControls = {
   args: {
-    accordion__heading: properties.accordion__heading.data,
-    accordion__text: properties.accordion__text.data,
-    accordion__items: properties.accordion__items.data,
+    accordion__id: 'library-services-with-controls',
+    accordion__show_controls: true,
   },
 };

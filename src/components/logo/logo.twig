@@ -1,29 +1,43 @@
 {#
- # Available variables:
- # - logo__url
- # - output_image_tag: Whether or not to output an <img> tag instead of a <picture> tag.
- # - image_src: path to image file
- # - image_alt: alt text on image
-#}
+ # A logo image with required alternative text and an optional link.
+ #
+ # Props: logo__src, logo__alt, logo__url, logo__width, logo__height,
+ # logo__blockname, logo__modifiers, logo__additional_classes,
+ # logo__attributes.
+ #}
+{% set logo_src = logo__src|default('')|trim %}
+{% set logo_alt = logo__alt|default('')|trim %}
+{% if logo_src and logo_alt %}
+  {% set logo_url = logo__url|default('')|trim %}
+  {% set url_prefix = logo_url|split(':')|first %}
+  {% if ':' in logo_url and '/' not in url_prefix and '?' not in url_prefix and '#' not in url_prefix and url_prefix|lower not in ['http', 'https'] %}
+    {% set logo_url = '' %}
+  {% endif %}
 
-{% set logo__base_class = logo__base_class|default('logo') %}
+  {% set logo_attributes = logo__attributes|default({}) %}
+  {% set logo_classes = logo_attributes.class|default([]) %}
+  {% set logo_classes = logo_classes is iterable ? logo_classes : [logo_classes] %}
+  {% set logo_classes = logo_classes|merge(logo__additional_classes|default([]))|merge(logo__blockname ? ['logo'] : []) %}
+  {% set logo_attributes = logo_attributes|merge({
+    class: bem('logo', logo__modifiers, logo__blockname, logo_classes),
+  }) %}
 
-{% set logo__attributes = {
-  class: bem(logo__base_class, logo__modifiers, logo__blockname),
-} %}
+  {% set logo_image %}
+    {{ include('@components/image/image.twig', {
+      image__src: logo_src,
+      image__alt: logo_alt,
+      image__width: logo__width|default(null),
+      image__height: logo__height|default(null),
+      image__loading: 'eager',
+      image__blockname: 'logo',
+    }, with_context: false) }}
+  {% endset %}
 
-<div {{ add_attributes(logo__attributes) }}>
-	{% embed "@components/link/link.twig" with {
-    link__base_class: 'logo__link',
-    link__url: logo__url|default('/'),
-  } %}
-		{% block link__content %}
-			{% include "@components/image/responsive-image.twig" with {
-        output_image_tag: true,
-        image__src: image_src|default(directory ? '/' ~ directory ~ '/assets/images/logo.png' : 'logo.png'),
-        image__alt: image_alt|default('Logo'),
-        responsive_image_blockname: 'logo',
-      } %}
-		{% endblock %}
-	{% endembed %}
-</div>
+  <div {{ add_attributes(logo_attributes) }}>
+    {% if logo_url %}
+      <a {{ add_attributes({ class: bem('link', [], 'logo'), href: logo_url }) }}>{{ logo_image }}</a>
+    {% else %}
+      {{ logo_image }}
+    {% endif %}
+  </div>
+{% endif %}

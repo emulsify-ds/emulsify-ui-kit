@@ -1,0 +1,8 @@
+<button {{ add_attributes({
+  'type': 'button',
+  'class': ['sb-copy-trigger', 'js-copy-trigger'],
+  'data-usage': usage,
+  'aria-label': ('Copy'|t) ~ ' ' ~ usage,
+}) }}>
+  <code class="sb-custom-property-name">{{ usage|e }}</code>
+</button>

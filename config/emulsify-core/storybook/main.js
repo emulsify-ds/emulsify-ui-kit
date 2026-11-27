@@ -1,23 +1,31 @@
-// Pass an empty configOverrides by default.
-const configOverrides = {};
+import { fileURLToPath } from 'node:url';
 
-// Uncomment the following section to override the default Emulsify Core configuration.
-// Doing so is a complete override so no configuration from Emulsify Core's main.js will be inherited.
-// See https://storybook.js.org/docs/7/configure for details.
-// const configOverrides = {
-//   stories: [
-//     '../../../../src/**/*.stories.@(js|jsx|ts|tsx)',
-//   ],
-//   addons: [
-//     '../../../@storybook/addon-a11y',
-//     '../../../@storybook/addon-links',
-//     '../../../@storybook/addon-essentials',
-//     '../../../@storybook/addon-themes',
-//     '../../../@storybook/addon-styling-webpack'
-//   ],
-//   docs: {
-//     autodocs: true,
-//   },
-// };
+export default {
+  addons: ['@storybook/addon-docs'],
+};
 
-export { configOverrides };
+const sourcePath = fileURLToPath(
+  new URL('../../../src/', import.meta.url),
+).replaceAll('\\', '/');
+const orderedRoots = ['base/', 'layout/', 'components/', 'storybook/'];
+
+function storyRootOrder(glob) {
+  const index = orderedRoots.findIndex(
+    (directory) =>
+      typeof glob === 'string' && glob.startsWith(`${sourcePath}${directory}`),
+  );
+  return index === -1 ? orderedRoots.length : index;
+}
+
+export function extendConfig(config) {
+  return {
+    ...config,
+    stories: [
+      // Welcome and guides are MDX pages. Example stories come last.
+      `${sourcePath}storybook/**/*.mdx`,
+      ...config.stories.toSorted(
+        (a, b) => storyRootOrder(a) - storyRootOrder(b),
+      ),
+    ],
+  };
+}

@@ -1,92 +1,88 @@
 {#
- # Available variables:
- # - link_group__heading - optional section heading.
- # - link_group__heading_level - heading level, defaults to 2.
- # - link_group__text - optional intro text.
- # - link_group__items - (required) array of items:
- #   - label - (required) link text.
- #   - url - (required) link destination.
- #   - icon - optional UI kit icon name, decorative by default (button display only; boxes show an arrow).
- #   - icon_label - optional text that makes the icon meaningful for assistive technology.
- # - link_group__display - button (default) or boxes. Buttons only look like buttons; they stay links.
- # - link_group__width - container width, defaults to standard.
- # - link_group__alignment - container alignment, defaults to left.
- # - link_group__bg_color - adds the container background.
+ # Props:
+ # - link_group__heading, link_group__heading_level, link_group__text: Section introduction.
+ # - link_group__items: Links with label, url, optional icon, and optional icon_label.
+ # - link_group__display: Button or box styling for the links.
+ # - link_group__nav_label: Name for the optional navigation landmark.
+ # - link_group__width, link_group__alignment, link_group__theme,
+ #   link_group__theme__variation, link_group__bg_color, link_group__spacing,
+ #   link_group__id, link_group__container__modifiers: Shared container controls.
+ # - link_group__blockname, link_group__modifiers, link_group__additional_classes,
+ #   link_group__attributes: Overrides for the list wrapper.
  #
- # Available blocks:
- # - link_group__items - replace the default item rendering.
+ # Slot: link_group__items_content replaces the generated list items.
  #}
 
-{% set link_group__base_class = 'link-group' %}
-{% set link_group__display = link_group__display|default('button') %}
+{% set display = link_group__display == 'boxes' ? 'boxes' : 'button' %}
+{% set nav_label = link_group__nav_label|default('')|trim %}
+{% set group_element = nav_label ? 'nav' : 'div' %}
+{% set group_attributes = link_group__attributes|default({}) %}
+{% set group_classes = group_attributes.class|default([]) %}
+{% set group_classes = group_classes is iterable ? group_classes : [group_classes] %}
+{% set group_classes = group_classes|merge(link_group__additional_classes|default([]))|merge(link_group__blockname ? ['link-group'] : []) %}
+{% set group_attributes = group_attributes|merge({
+  class: bem('link-group', link_group__modifiers, link_group__blockname, group_classes),
+}) %}
+{% if nav_label %}
+  {% set group_attributes = group_attributes|merge({'aria-label': nav_label}) %}
+{% endif %}
 
-{% set link_group__list %}
-  {% block link_group__items %}
-    {% embed "@components/lists/list.twig" with {
-      list__blockname: link_group__base_class,
-    } %}
-      {% block list__content %}
-        {% for item in link_group__items %}
-          {% set link_group__item__content %}
-            {% if item.icon and link_group__display != 'boxes' %}
-              {% include "@components/icons/_icon.twig" with {
-                icon__name: item.icon,
-                icon__blockname: link_group__base_class,
-                icon__decorative: true,
-              } %}
-              {% if item.icon_label %}
-                <span class="visually-hidden">{{ item.icon_label }}</span>
-              {% endif %}
-            {% endif %}
-            <span {{ bem('label', [], link_group__base_class) }}>{{ item.label }}</span>
-          {% endset %}
+{# Capture CTA output before entering the slot block for Twig.js. #}
+{% set default_items %}
+  {% for item in link_group__items|default([]) %}
+    {% set label = item.label|default('')|trim %}
+    {% set url = item.url|default('')|trim %}
+    {% if label and url %}
+      {% set icon_label = item.icon_label|default('')|trim %}
+      <li {{ bem('item', [], 'link-group') }}>
+        {{ include('@components/cta/cta.twig', {
+          cta__text: label,
+          cta__url: url,
+          cta__modifiers: [display == 'boxes' ? 'clean' : 'primary'],
+          cta__icon: display == 'boxes' ? 'arrow-right' : item.icon|default(null),
+          cta__icon_position: display == 'boxes' ? 'right' : 'left',
+          cta__additional_classes: ['link-group__link'],
+          cta__attributes: display == 'button' and item.icon and icon_label ? {
+            'aria-label': label ~ ' ' ~ icon_label,
+          } : {},
+        }, with_context: false) }}
+      </li>
+    {% endif %}
+  {% endfor %}
+{% endset %}
 
-          {% embed "@components/lists/_list-item.twig" with {
-            list__item__blockname: link_group__base_class,
-          } %}
-            {% block list__item__content %}
-              {% if link_group__display == 'boxes' %}
-                {% embed "@components/link/link.twig" with {
-                  link__url: item.url,
-                  link__blockname: link_group__base_class,
-                } %}
-                  {% block link__content %}
-                    {{ link_group__item__content }}
-                    {% include "@components/icons/_icon.twig" with {
-                      icon__name: 'arrowRight',
-                      icon__base_class: 'arrow',
-                      icon__blockname: link_group__base_class,
-                      icon__decorative: true,
-                    } %}
-                  {% endblock %}
-                {% endembed %}
-              {% else %}
-                {% include "@components/button/button.twig" with {
-                  button__element: 'a',
-                  button__href: item.url,
-                  button__content: link_group__item__content,
-                  button__style: 'primary',
-                } %}
-              {% endif %}
-            {% endblock %}
-          {% endembed %}
-        {% endfor %}
-      {% endblock %}
-    {% endembed %}
+{% set items_markup %}
+  {% block link_group__items_content %}
+    {{ link_group__items_content ?? default_items }}
   {% endblock %}
 {% endset %}
 
-{% embed "@layout/container/container.twig" with {
-  container__modifiers: [link_group__base_class],
-  container__attributes: { 'data-link-group-display': link_group__display },
-  container__heading: link_group__heading,
-  container__heading_level: link_group__heading_level|default('2'),
-  container__text: link_group__text,
-  container__component_width: link_group__width|default('standard'),
-  container__component_alignment: link_group__alignment|default('left'),
-  container__bg_color: link_group__bg_color,
-} %}
-  {% block container__content %}
-    {{ link_group__list }}
-  {% endblock %}
-{% endembed %}
+{% set group_markup %}
+  {% if items_markup|trim %}
+    <{{ group_element }} {{ add_attributes(group_attributes) }}>
+      {# Keep list semantics in Safari when markers are hidden. #}
+      <ul {{ bem('list', [], 'link-group') }} role="list">{{ items_markup }}</ul>
+    </{{ group_element }}>
+  {% endif %}
+{% endset %}
+
+{% if group_markup|trim or link_group__heading or link_group__text %}
+  {% embed '@layout/container/container.twig' with {
+    container__modifiers: link_group__container__modifiers|default([])|merge(['link-group']),
+    container__attributes: { 'data-link-group-display': display },
+    container__heading: link_group__heading,
+    container__heading_level: link_group__heading_level,
+    container__text: link_group__text,
+    container__width: link_group__width,
+    container__alignment: link_group__alignment|default('left'),
+    container__theme: link_group__theme,
+    container__theme__variation: link_group__theme__variation,
+    container__bg_color: link_group__bg_color,
+    container__style: link_group__bg_color is same as(true) and display == 'button' ? 'contained' : 'none',
+    container__spacing: link_group__spacing,
+    container__id: link_group__id,
+    group_markup: group_markup,
+  } only %}
+    {% block container__content %}{{ group_markup }}{% endblock %}
+  {% endembed %}
+{% endif %}

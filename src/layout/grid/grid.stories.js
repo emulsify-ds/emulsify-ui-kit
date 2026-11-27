@@ -1,36 +1,61 @@
 import { renderTwig } from '@emulsify/core/storybook';
 
+import { argsFromSchema } from '../../util/argsFromSchema.js';
+import { withStorybookContainer } from '../../util/storybookContainer.js';
+import {
+  createContainerThemeControls,
+  createContainerWidthControls,
+} from '../../util/storybookContainerControls.js';
+import gridDocs from './grid.docs.js';
+import schema from './grid.yml';
 import gridTwig from './grid.twig';
-import gridData from './grid.yml';
+
+const widthControls = createContainerWidthControls();
+const themeControls = createContainerThemeControls();
+
+const layoutControls = Object.fromEntries(
+  Object.entries(schema.props.properties)
+    .filter(([, prop]) => prop.enum)
+    .map(([name, prop]) => [
+      name,
+      {
+        name: prop.title,
+        description: prop.description,
+        control: 'select',
+        options: prop.enum,
+        table: { category: 'Layout' },
+      },
+    ]),
+);
 
 export default {
   title: 'Layout/Grid',
-  render: renderTwig(gridTwig),
-  decorators: [
-    (Story) => (
-      <div className="cl-container">
-        <Story />
-      </div>
-    ),
-  ],
+  tags: ['autodocs'],
+  render: renderTwig(withStorybookContainer(gridTwig)),
+  parameters: { docs: gridDocs, layout: 'fullscreen' },
   argTypes: {
-    grid__columns: {
-      name: 'Column Number',
-      control: 'select',
-      options: ['1', '2', '3', '4'],
+    ...widthControls.argTypes,
+    ...themeControls.argTypes,
+    ...layoutControls,
+    grid__column_focus: {
+      ...layoutControls.grid__column_focus,
+      if: { arg: 'grid__type', eq: 'focus' },
     },
-    grid__spacing: {
-      name: 'Grid Spacing',
-      control: 'select',
-      options: ['no-spacing', '', 'two-spacing'],
-    },
+  },
+  args: {
+    ...argsFromSchema(schema.props),
+    ...widthControls.args,
+    ...themeControls.args,
+    width: 'wide',
   },
 };
 
-export const grid = {
+export const Grid = {};
+
+export const Focus = {
   args: {
-    ...gridData,
-    grid__columns: '3',
-    grid__spacing: '',
+    grid__type: 'focus',
+    grid__column_focus: 2,
+    grid__alignment: 'center',
   },
 };

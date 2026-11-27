@@ -1,0 +1,26 @@
+@use '../spacing/space' as *;
+
+@mixin visually-hidden {
+  position: absolute !important;
+  clip-path: inset(50%);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  overflow-wrap: normal;
+}
+
+@mixin focus-styles {
+  outline: space(2) dotted var(--clr-focus) !important;
+  outline-offset: space(2);
+}
+
+@mixin focus {
+  &:focus-visible {
+    @include focus-styles;
+  }
+
+  // Browsers without :focus-visible retain their default focus indicator.
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}

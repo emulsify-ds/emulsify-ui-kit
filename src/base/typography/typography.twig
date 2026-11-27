@@ -1,0 +1,14 @@
+<section class="sb-token-story" data-component-theme="default light">
+  <h1>Typography</h1>
+  <h2>Type styles</h2>
+  <ul class="sb-token-grid" role="list">
+    {% for name, properties in styles %}
+      <li class="sb-token-card">
+        <h3>{{ name }}</h3>
+        <p style="{% for property, value in properties %}{{ property }}: {{ value }}; {% endfor %}">Emulsify UI Kit</p>
+        {% include '../../util/_copy-usage.twig' with { usage: "@include typography('" ~ name ~ "');" } only %}
+      </li>
+    {% endfor %}
+  </ul>
+  {% include '../../util/_token-groups.twig' with { sections: sections } only %}
+</section>

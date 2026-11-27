@@ -1,0 +1,7 @@
+<section class="sb-token-story" data-component-theme="default {{ theme|default('light') }}">
+  <h1>{{ heading }}</h1>
+  {% if description is defined %}
+    <p>{{ description }}</p>
+  {% endif %}
+  {% include './_token-groups.twig' with { sections: sections } only %}
+</section>

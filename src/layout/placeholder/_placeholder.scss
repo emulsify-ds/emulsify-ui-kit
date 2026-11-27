@@ -1,15 +1,14 @@
-.place-holder {
-  color: var(--color-text-body);
-  border: 4px dashed var(--colors-sb-visualization);
-  padding: 50px;
+@use '../../base' as *;
+
+.placeholder {
+  color: var(--clr-body);
+  border: var(--bw-md) dashed currentColor;
+  padding: clamp(#{space(16)}, 5cqi, #{space(48)});
+  text-align: center;
 
   &__content {
-    font-size: 3.2rem;
-    line-height: 1.4;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    font-size: font-size('h4');
+    line-height: line-height('normal');
+    overflow-wrap: anywhere;
   }
 }

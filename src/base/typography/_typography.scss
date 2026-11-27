@@ -1,0 +1,90 @@
+@use '../tokens/maps' as *;
+@use '../utility/safe-map-get' as *;
+
+@function font-size($size) {
+  @return var(
+    --fs-#{$size},
+    safe-map-get($font-sizes, $size, 'font size', 'font-size')
+  );
+}
+
+@function font-family($family) {
+  @return var(
+    --ff-#{$family},
+    safe-map-get($font-families, $family, 'font family', 'font-family')
+  );
+}
+
+@function font-weight($weight) {
+  @return var(
+    --fw-#{$weight},
+    safe-map-get($font-weights, $weight, 'font weight', 'font-weight')
+  );
+}
+
+@function line-height($height) {
+  @return var(
+    --lh-#{$height},
+    safe-map-get($line-heights, $height, 'line height', 'line-height')
+  );
+}
+
+@function letter-spacing($spacing) {
+  @return var(
+    --ls-#{$spacing},
+    safe-map-get($letter-spacings, $spacing, 'letter spacing', 'letter-spacing')
+  );
+}
+
+// Composite styles carry typography only. Resolve color in the caller's theme.
+@mixin typography($style) {
+  $properties: safe-map-get($typography, $style, 'type style', 'typography');
+
+  @each $property, $value in $properties {
+    #{$property}: $value;
+  }
+}
+
+@mixin h1 {
+  @include typography(h1);
+}
+
+@mixin h2 {
+  @include typography(h2);
+}
+
+@mixin h3 {
+  @include typography(h3);
+}
+
+@mixin h4 {
+  @include typography(h4);
+}
+
+@mixin h5 {
+  @include typography(h5);
+}
+
+@mixin body-xl {
+  @include typography(body-xl);
+}
+
+@mixin body-l {
+  @include typography(body-l);
+}
+
+@mixin body {
+  @include typography(body);
+}
+
+@mixin body-s {
+  @include typography(body-s);
+}
+
+@mixin body-xs {
+  @include typography(body-xs);
+}
+
+@mixin overline {
+  @include typography(overline);
+}

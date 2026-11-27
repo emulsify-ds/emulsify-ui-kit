@@ -1,0 +1,10 @@
+@use '../../base' as *;
+
+:where(.icon) {
+  display: inline-block;
+  inline-size: var(--icon-size, #{space(24)});
+  block-size: var(--icon-size, #{space(24)});
+  flex: none;
+  fill: currentcolor;
+  vertical-align: middle;
+}

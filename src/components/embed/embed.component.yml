@@ -1,76 +1,130 @@
-$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
-
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: Embed
+description: A responsive iframe or composed widget with optional introduction and caption.
 group: Components
 status: stable
 props:
   type: object
-  required:
-    - embed_content
   properties:
+    embed__src:
+      type: [string, 'null']
+      title: Iframe URL
+      description: A web URL for a generated iframe. Supply a descriptive title alongside it.
+      examples: ['https://www.youtube-nocookie.com/embed/M7lc1UVf-VE']
+    embed__title:
+      type: [string, 'null']
+      title: Iframe title
+      description: Required accessible title when generating an iframe from a URL.
+      examples: ['Tour of the makerspace']
+    embed__iframe:
+      type: [string, 'null']
+      title: Iframe markup
+      description: Trusted or pre-sanitized widget markup. Every iframe needs a nonempty title.
+      default: null
     embed__heading:
-      type: string
+      type: [string, 'null']
       title: Heading
-      description: 'Optional heading rendered above the embed by the shared container component. Omit to render no heading and no empty wrapper.'
-      data: 'Watch the highlight reel'
+      description: Optional section heading displayed above the media.
+      examples: ['Visit the makerspace']
     embed__heading_level:
-      type: string
+      type: [integer, 'null']
       title: Heading level
-      description: 'Heading level (1-6) used for embed__heading. Defaults to 2.'
-      data: '2'
+      description: Semantic section heading level.
+      enum: [2, 3, 4, 5, 6, null]
+      default: 2
     embed__text:
-      type: string
-      title: Introductory text
-      description: 'Optional introductory copy rendered with the heading. Expected to already be CMS-sanitized; rendered raw.'
-      data: '<p>A short recap of this quarter, hosted on our video platform.</p>'
-    embed_content:
-      type: string
-      title: Embed content
-      description: >-
-        Raw embed markup, typically an <iframe>. Rendered with the Twig
-        "raw" filter and NOT sanitized by this component - only pass
-        markup that is trusted or has already been sanitized by the
-        consuming application. The markup must include a descriptive
-        iframe "title" attribute.
-      data: '<iframe title="Sample embed video" src="https://www.youtube-nocookie.com/embed/M7lc1UVf-VE" width="854" height="480" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+      type: [string, object, array, 'null']
+      title: Introduction
+      description: Optional introductory copy or processed content.
+      examples: ['Watch a short tour before your visit.']
     embed__caption:
-      type: string
+      type: [string, 'null']
       title: Caption
-      description: 'Optional caption or supporting text displayed below the embed, inside a figcaption.'
-      data: 'Recorded live at the 2026 Emulsify Summit.'
+      description: Optional visible description displayed below the media.
+      examples: ['Recorded during the spring open house.']
     embed__ratio:
-      type: string
+      type: [string, 'null']
       title: Aspect ratio
-      description: 'One of 16-9 (default), 4-3, 1-1, or custom.'
-      data: '16-9'
+      description: Responsive aspect ratio preset.
+      enum: ['16-9', '4-3', '1-1', custom, null]
+      default: '16-9'
     embed__ratio_custom:
-      type: string
+      type: [string, 'null']
       title: Custom aspect ratio
-      description: 'CSS aspect-ratio value used when embed__ratio is "custom", e.g. "21 / 9".'
-      data: '21 / 9'
+      description: Positive number or ratio used with the custom preset.
+      examples: ['21 / 9']
     embed__width:
-      type: string
-      title: Container width
-      description: 'Passed through to the shared container component: compressed, standard, extended, max, or full.'
-      data: 'standard'
+      type: [string, 'null']
+      title: Width
+      description: Maximum width of the layout container.
+      enum: [narrow, content, wide, full, null]
+      default: content
     embed__alignment:
-      type: string
-      title: Container alignment
-      description: 'Passed through to the shared container component: left, center, or right.'
-      data: 'center'
+      type: [string, 'null']
+      title: Alignment
+      description: Placement of the layout container.
+      enum: [left, center, right, null]
+      default: center
     embed__theme:
-      type: string
-      title: Container theme
-      description: 'Passed through to the shared container component, e.g. "inverse".'
-      data: ''
+      type: [string, 'null']
+      title: Theme
+      description: Section theme name. Omit to inherit.
+      enum: [default, null]
+    embed__theme__variation:
+      type: [string, 'null']
+      title: Theme variation
+      description: Section theme variation. Omit to inherit.
+      enum: [light, dark, null]
     embed__bg_color:
-      type: boolean
-      title: Container background
-      description: 'Passed through to the shared container component to enable its background treatment.'
-      data: false
-
+      type: [boolean, 'null']
+      title: Section background
+      description: Paint the section with the active theme background.
+      default: false
+    embed__spacing:
+      type: [string, 'null']
+      title: Section spacing
+      description: Vertical space around the section using the Container spacing scale.
+      default: one
+    embed__id:
+      type: [string, 'null']
+      title: Section ID
+      description: Stable suffix for the section anchor.
+      default: null
+    embed__container__modifiers:
+      type: [array, 'null']
+      title: Container modifiers
+      description: BEM modifiers for the layout container.
+      items:
+        type: string
+      default: []
+    embed__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Optional parent BEM block name.
+    embed__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers for the media wrapper.
+      items:
+        type: string
+    embed__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: Additional classes for the media wrapper.
+      items:
+        type: string
+    embed__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Attributes for the media wrapper.
+    embed__media_modifiers:
+      type: [array, 'null']
+      title: Media modifiers
+      description: Additional BEM modifiers for the responsive media box.
+      default: []
+      items:
+        type: string
 slots:
-  embed_content:
+  embed__content:
     title: Embed content
-    description: 'Override the default embed content rendering with trusted, template-authored markup.'
-    data: ''
+    description: Trusted composed markup that takes precedence over the iframe props. Every iframe needs a nonempty title.

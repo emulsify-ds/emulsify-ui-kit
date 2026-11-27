@@ -1,164 +1,76 @@
-@use '../../foundation/breakpoints/breakpoints' as *;
-@use '../../foundation/typography/typography' as *;
+@use '../../base' as *;
 
 .text-with-image {
-  display: flex;
+  @include grid-tracks;
 
-  @include breakpoint('large') {
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
+  align-items: center;
+  overflow-wrap: anywhere;
+
+  > * {
+    min-inline-size: 0;
   }
 
-  &[data-image-position='left'] {
-    &[data-component-focus='image'] {
-      flex-direction: column-reverse;
-
-      @include breakpoint('large') {
-        flex-direction: row-reverse;
-      }
-    }
-
-    &[data-component-focus='equal'] {
-      flex-direction: column-reverse;
-
-      @include breakpoint('small') {
-        flex-direction: row-reverse;
-      }
-    }
-
-    &[data-component-focus='text'] {
-      flex-direction: column-reverse;
-
-      @include breakpoint('small') {
-        flex-direction: row-reverse;
-      }
+  @include breakpoint('md') {
+    > * {
+      grid-row: 1;
     }
   }
+}
 
-  &[data-image-position='right'] {
-    &[data-component-focus='image'] {
-      flex-direction: column-reverse;
-
-      @include breakpoint('large') {
-        flex-flow: row nowrap;
-      }
+// Media alignment changes the grid starts without changing the source order.
+@each $focus, $media-span, $content-span in (equal, 6, 6), (image, 7, 5),
+  (text, 5, 7)
+{
+  .text-with-image[data-component-focus='#{$focus}'] {
+    > .text-with-image__media {
+      @include grid-column($media-span, 1);
     }
 
-    &[data-component-focus='equal'] {
-      flex-direction: column-reverse;
-
-      @include breakpoint('small') {
-        flex-flow: row nowrap;
-      }
+    > .text-with-image__content:not(:only-child) {
+      @include grid-column($content-span, $media-span + 1);
     }
 
-    &[data-component-focus='text'] {
-      flex-direction: column-reverse;
+    &[data-media-alignment='right'] {
+      > .text-with-image__media {
+        @include grid-column($media-span, $content-span + 1);
+      }
 
-      @include breakpoint('small') {
-        flex-flow: row nowrap;
+      > .text-with-image__content:not(:only-child) {
+        @include grid-column($content-span, 1);
       }
     }
   }
 }
 
-.text-with-image__content {
-  flex: 1 1 auto;
-  overflow-wrap: break-word;
-  align-self: flex-start;
-  margin-left: auto;
+.text-with-image > .text-with-image__content {
+  display: grid;
+  gap: space(16);
 
-  @include breakpoint('large') {
-    flex: 1 50%;
-    margin: 0;
-  }
-
-  [data-image-position='left'] & {
-    @include breakpoint('small') {
-      padding-left: var(--spacing-xl);
-    }
-  }
-
-  [data-image-position='right'] & {
-    @include breakpoint('small') {
-      padding-right: var(--spacing-xl);
-    }
-  }
-
-  [data-component-focus='equal'] & {
-    flex: 1 1 50%;
-    width: 90%;
-
-    @include breakpoint('medium') {
-      width: 100%;
-    }
-  }
-
-  [data-component-focus='image'] & {
-    flex: 1 1 40%;
-    width: 90%;
-
-    @include breakpoint('large') {
-      width: 100%;
-    }
-  }
-
-  [data-component-focus='text'] & {
-    flex: 1 1 60%;
-    width: 90%;
-
-    @include breakpoint('large') {
-      width: 100%;
-    }
+  &:only-child {
+    @include grid-column(12, 1);
   }
 }
 
-.text-with-image__media {
-  flex: 1 auto;
-  margin-bottom: var(--spacing-xl);
-  position: relative;
-  margin-right: auto;
-
-  @include breakpoint('large') {
-    margin-bottom: 0;
-    margin-right: 0;
-  }
-
-  [data-component-focus='equal'] & {
-    flex: 1 1 50%;
-    width: 80%;
-
-    @include breakpoint('medium') {
-      width: 50%;
-    }
-  }
-
-  [data-component-focus='image'] & {
-    flex: 1 1 60%;
-    width: 80%;
-
-    @include breakpoint('large') {
-      width: 100%;
-    }
-  }
-
-  [data-component-focus='text'] & {
-    flex: 1 1 40%;
-    width: 80%;
-
-    @include breakpoint('xsmall') {
-      width: 50%;
-    }
-  }
+.text-with-image__overline {
+  @include typography('overline');
 }
 
 .text-with-image__heading {
-  @include h2;
-
-  margin-bottom: var(--spacing-lg);
+  margin: 0;
 }
 
 .text-with-image__text {
-  margin-bottom: var(--spacing-lg);
+  > :first-child {
+    margin-block-start: 0;
+  }
+
+  > :last-child {
+    margin-block-end: 0;
+  }
+}
+
+.text-with-image__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: space(16);
 }

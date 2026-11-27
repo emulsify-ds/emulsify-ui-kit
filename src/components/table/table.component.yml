@@ -1,0 +1,80 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Table
+description: Native data table with header associations and keyboard scrolling when needed.
+group: Components
+status: stable
+libraryOverrides:
+  dependencies: [core/drupal, core/once]
+props:
+  type: object
+  properties:
+    table__caption:
+      type: [string, 'null']
+      title: Caption
+      description: Brief description of the table.
+      examples: ['Community center hours']
+    table__header:
+      type: [array, 'null']
+      title: Column headers
+      description: A list of cells or of rows with cells. Cells in the head default to column headers.
+      examples:
+        - - Room
+          - Weekdays
+          - Weekends
+    table__rows:
+      type: [array, 'null']
+      title: Rows
+      description: Rows with cells and optional attributes. A cell can be text or an object with content, tag, header, scope, colspan, and attributes.
+      examples:
+        - - cells:
+              - tag: th
+                content: Studio
+              - 9 a.m. to 5 p.m.
+              - 10 a.m. to 3 p.m.
+          - cells:
+              - tag: th
+                content: Workshop
+              - 10 a.m. to 6 p.m.
+              - Closed
+    table__footer:
+      type: [array, 'null']
+      title: Footer
+      description: Footer cells or rows with cells. Cells default to data cells.
+      default: []
+    table__colgroups:
+      type: [array, 'null']
+      title: Column groups
+      description: Each group has optional attributes and a list of columns with attributes.
+      default: []
+    table__empty:
+      type: [string, 'null']
+      title: Empty message
+      description: Optional message when no rows are present.
+      default: null
+    table__header_columns:
+      type: [integer, 'null']
+      title: Column count
+      description: Optional column count for the empty row. Defaults to the total span of the first header row.
+      minimum: 1
+      default: null
+    table__scroll_label:
+      type: [string, 'null']
+      title: Scroll region label
+      description: Accessible name for the scroll region. Defaults to the caption when present.
+      default: null
+    table__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Optional BEM block for the table.
+    table__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: Additional BEM modifiers for the table.
+    table__additional_classes:
+      type: [array, 'null']
+      title: Classes
+      description: Classes to add to the table.
+    table__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Attributes to add to the table.

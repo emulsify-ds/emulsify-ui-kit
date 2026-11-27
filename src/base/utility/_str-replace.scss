@@ -1,0 +1,17 @@
+@use 'sass:string';
+
+@function str-replace($string, $search, $replace: '') {
+  @if $search == '' {
+    @return $string;
+  }
+
+  $result: string.slice($string, 1, 0);
+  $separator: '';
+
+  @each $part in string.split($string, $search) {
+    $result: $result + $separator + $part;
+    $separator: $replace;
+  }
+
+  @return $result;
+}

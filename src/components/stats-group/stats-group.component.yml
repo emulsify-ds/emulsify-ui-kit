@@ -1,71 +1,127 @@
-$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
-
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: Stats Group
+description: A responsive group of statistics with a label for each metric.
 group: Components
 status: stable
 props:
   type: object
-  required:
-    - stats_group__items
   properties:
     stats_group__heading:
-      type: string
+      type: [string, 'null']
       title: Heading
-      description: Optional heading shown above the stat grid.
-      data: ''
-    stats_group__content:
-      type: string
-      title: Intro text
-      description: Optional intro copy shown below the heading.
-      data: ''
-    stats_group__id:
-      type: string
-      title: Section id
-      description: Optional id suffix passed to the container wrapper.
-      data: ''
+      description: Optional title above the statistics.
+      examples: ['The library in numbers']
     stats_group__heading_level:
-      type: string
+      type: [integer, 'null']
       title: Heading level
-      description: Configurable heading level for the section title and statistics.
-      data: '2'
-    stats_group__container_width:
-      type: string
-      title: Container width
-      description: Controls the outer container width (content, wide, or full).
-      data: 'wide'
-    stats_group__alignment:
-      type: string
-      title: Alignment
-      description: Controls the alignment of the container content.
-      data: 'left'
-    stats_group__theme:
-      type: string
-      title: Theme
-      description: Theme applied to the wrapping container.
-      data: 'option-1 light'
-    stats_group__bg_color:
-      type: boolean
-      title: Background color
-      description: Enables a background treatment on the container when supported.
-      data: false
-    stats_group__animate:
-      type: boolean
-      title: Animate entries
-      description: Enables optional entrance animation. Content stays visible if animation is disabled or reduced motion is preferred.
-      data: false
-    stats_group__grid_columns:
-      type: string
-      title: Grid columns
-      description: Optional override for the responsive column count. Leave blank to let the component auto-select based on item count.
-      data: ''
+      description: Semantic level of the group heading.
+      enum: [2, 3, 4, 5, 6, null]
+      default: 2
+    stats_group__content:
+      type: [string, object, array, 'null']
+      title: Introduction
+      description: Supporting text or processed content shown above the statistics.
+      examples: ['Here is what our community made possible this year.']
     stats_group__items:
-      type: array
-      title: Statistic
-      description: Required collection of stat items. Each item should include a metric and supporting description; additional item-level overrides can be passed when needed.
-      data:
-        - metric: '$29,587'
-          description: 'For Texas residents'
-        - metric: '$30,333'
-          description: 'Border-state residents'
-        - metric: '$34,432'
-          description: 'Out-of-State residents'
+      type: [array, 'null']
+      title: Statistics
+      description: Metrics with concise labels that explain what each number measures.
+      default: []
+      items:
+        type: object
+        properties:
+          metric:
+            type: [string, number]
+            title: Metric
+            description: The value to display, including its unit if needed.
+          description:
+            type: string
+            title: Label
+            description: Short plain-text label for the value.
+        required: [metric, description]
+      examples:
+        - - metric: '1,240'
+            description: Workshop participants
+          - metric: 36
+            description: Community events
+          - metric: '92%'
+            description: Participant satisfaction
+    stats_group__grid_columns:
+      type: [integer, 'null']
+      title: Columns
+      description: Maximum number of columns in the responsive grid.
+      enum: [1, 2, 3, 4, 5, 6, null]
+      default: 3
+    stats_group__animate:
+      type: [boolean, 'null']
+      title: Animate
+      description: Apply a short entrance motion when reduced motion is off.
+      default: false
+    stats_group__width:
+      type: [string, 'null']
+      title: Width
+      description: Maximum width of the layout container.
+      enum: [narrow, content, wide, full, null]
+      default: narrow
+    stats_group__alignment:
+      type: [string, 'null']
+      title: Alignment
+      description: Placement of the layout container.
+      enum: [left, center, right, null]
+      default: left
+    stats_group__theme:
+      type: [string, 'null']
+      title: Theme
+      description: Section theme name. Omit to inherit.
+      enum: [default, null]
+    stats_group__theme__variation:
+      type: [string, 'null']
+      title: Theme variation
+      description: Section theme variation. Omit to inherit.
+      enum: [light, dark, null]
+    stats_group__bg_color:
+      type: [boolean, 'null']
+      title: Background
+      description: Paint the section with the active theme background.
+      default: false
+    stats_group__spacing:
+      type: [string, 'null']
+      title: Spacing
+      description: Vertical space around the section, using the container spacing scale.
+      default: two
+    stats_group__id:
+      type: [string, 'null']
+      title: Section ID
+      description: Stable suffix for the section anchor.
+      default: null
+    stats_group__container__modifiers:
+      type: [array, 'null']
+      title: Container modifiers
+      description: BEM modifiers for the layout container.
+      items:
+        type: string
+      default: []
+    stats_group__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Optional parent BEM block name.
+    stats_group__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers for the statistics wrapper.
+      items:
+        type: string
+    stats_group__additional_classes:
+      type: [array, 'null']
+      title: Classes
+      description: Additional classes for the statistics wrapper.
+      items:
+        type: string
+    stats_group__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Attributes for the statistics wrapper.
+slots:
+  stats_group__items_content:
+    title: Statistics content
+    description: Replace the generated items with complete statistic groups.

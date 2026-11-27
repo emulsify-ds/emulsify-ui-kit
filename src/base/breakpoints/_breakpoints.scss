@@ -1,0 +1,23 @@
+@use 'sass:map';
+@use '../tokens/maps' as *;
+
+// Container queries need a size container ancestor. Use $media for viewport rules.
+@mixin breakpoint($breakpoint, $media: false) {
+  @if not map.has-key($breakpoints, $breakpoint) {
+    @error 'Unknown breakpoint "#{$breakpoint}". Available breakpoints: #{map.keys($breakpoints)}.';
+  }
+
+  $query: map.get($breakpoints, $breakpoint);
+  $feature: map.keys($query);
+  $width: map.values($query);
+
+  @if $media {
+    @media (#{$feature}: #{$width}) {
+      @content;
+    }
+  } @else {
+    @container (#{$feature}: #{$width}) {
+      @content;
+    }
+  }
+}

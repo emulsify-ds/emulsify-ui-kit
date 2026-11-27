@@ -1,24 +1,57 @@
-$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
-
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: Breadcrumbs
-group: Components/Navigation
+description: An ordered trail of links that ends at the current page.
+group: Components
 status: stable
 props:
   type: object
-  required:
-    - breadcrumb
   properties:
-    breadcrumb:
-      type: array
+    breadcrumbs__items:
+      type: [array, 'null']
       title: Breadcrumb items
-      description: The items of the breadcrumb.
-      data:
-        - url: '#'
-          text: 'Home'
-        - url: '#'
-          text: 'Second Level Page'
-        - url: '#'
-          text: 'Third Level Page'
-        - url: '#'
-          text: 'Fourth Level Page'
-        - text: 'Current Page'
+      description: Drupal breadcrumb items in ancestor-to-current-page order, with text and an optional URL.
+      items:
+        type: object
+        properties:
+          text:
+            type: [string, 'null']
+          url:
+            type: [string, 'null']
+            format: uri-reference
+          title:
+            type: [string, 'null']
+          href:
+            type: [string, 'null']
+      examples:
+        - - url: /
+            text: Home
+          - url: /library
+            text: Library
+          - url: /library/events
+            text: Events
+          - text: Community workshops
+    breadcrumbs__label:
+      type: [string, 'null']
+      title: Navigation label
+      description: Accessible name for the breadcrumb landmark.
+      examples: [Breadcrumb]
+    breadcrumbs__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Optional parent BEM block.
+    breadcrumbs__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: Additional BEM modifiers for the breadcrumb landmark.
+      items:
+        type: string
+    breadcrumbs__additional_classes:
+      type: [array, 'null']
+      title: Extra classes
+      description: Additional classes for the breadcrumb landmark.
+      items:
+        type: string
+    breadcrumbs__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: HTML attributes for the breadcrumb landmark.

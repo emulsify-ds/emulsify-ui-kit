@@ -1,60 +1,65 @@
 import { renderTwig } from '@emulsify/core/storybook';
-
+import { argsFromSchema } from '../../util/argsFromSchema.js';
+import {
+  createContainerThemeControls,
+  createContainerWidthControls,
+} from '../../util/storybookContainerControls.js';
+import docs from './container.docs.js';
+import schema from './container.yml';
 import containerTwig from './container.twig';
+
+const { argTypes: widthOptions, args: widthDefaults } =
+  createContainerWidthControls();
+const { argTypes: themeOptions, args: themeDefaults } =
+  createContainerThemeControls();
 
 export default {
   title: 'Layout/Container',
+  tags: ['autodocs'],
+  parameters: { docs },
   render: renderTwig(containerTwig),
   argTypes: {
-    container__bg_color: {
-      name: 'Background Color',
-      control: 'boolean',
-    },
-    container__component_width: {
-      name: 'Container Width',
+    container__width: widthOptions.width,
+    container__theme: themeOptions.theme,
+    container__theme__variation: themeOptions.themeVariation,
+    container__spacing: {
       control: 'select',
-      options: ['content', 'compressed', 'standard', 'extended', 'max', 'full'],
+      options: schema.props.properties.container__spacing.enum.filter(Boolean),
+      table: { category: 'Appearance' },
     },
-    container__modifiers: {
-      name: 'Container Spacing',
+    container__alignment: {
       control: 'select',
-      options: ['no-spacing', '', 'two-spacing'],
-      mapping: {
-        'no-spacing': ['no-spacing'],
-        '': [],
-        'two-spacing': ['two-spacing'],
-      },
-    },
-    container__component_alignment: {
-      name: 'Component Alignment',
-      control: 'select',
-      options: ['left', 'center', 'right'],
+      options:
+        schema.props.properties.container__alignment.enum.filter(Boolean),
+      table: { category: 'Appearance' },
     },
     container__layout: {
-      name: 'Component Layout',
-      options: ['inline', 'stacked'],
       control: 'select',
+      options: schema.props.properties.container__layout.enum.filter(Boolean),
+      table: { category: 'Appearance' },
     },
-    container__heading: {
-      name: 'Container Heading',
-      control: 'text',
+    container__style: {
+      control: 'select',
+      options: schema.props.properties.container__style.enum.filter(Boolean),
+      table: { category: 'Appearance' },
     },
-    container__text: {
-      name: 'Container Text',
-      control: 'text',
-    },
+  },
+  args: {
+    ...argsFromSchema(schema.props),
+    container__width: widthDefaults.width,
+    container__theme: themeDefaults.theme,
+    container__theme__variation: themeDefaults.themeVariation,
+    container__bg_color: true,
   },
 };
 
-export const container = {
+export const Container = {};
+
+export const Contained = {
   args: {
-    container__bg_color: false,
-    container__component_width: 'content',
-    container__modifiers: '',
-    container__component_alignment: 'center',
     container__layout: 'inline',
-    container__heading: 'This is an example container heading',
-    container__text:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget eleifend ex, non ullamcorper tellus. Nullam in lectus a nulla feugiat ultricies in sed lectus. Maecenas tincidunt eu massa sit amet molestie.',
+    container__style: 'contained',
+    container__theme__variation: 'dark',
+    container__width: 'wide',
   },
 };

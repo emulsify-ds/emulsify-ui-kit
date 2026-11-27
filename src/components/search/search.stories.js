@@ -1,27 +1,38 @@
+import { renderTwig } from '@emulsify/core/storybook';
+
+import { argsFromSchema } from '../../util/argsFromSchema.js';
+import { withStorybookContainer } from '../../util/storybookContainer.js';
+import { createContainerThemeControls } from '../../util/storybookContainerControls.js';
+import schema from './search.component.yml';
+import docs from './search.docs.js';
 import template from './search.twig';
-import { props } from './search.component.yml';
+import './search.js';
 
-import './search';
+const themeControls = createContainerThemeControls();
 
-/**
- * Storybook definition for Search component.
- */
 export default {
-  title: 'Component/Search',
-  argTypes: {
-    header__search_placeholder: {
-      name: 'Placeholder',
-      control: { type: 'text' },
-    },
-    header__search_label: {
-      name: 'Search Button Label',
-      control: { type: 'text' },
-    },
-  },
+  title: 'Components/Search',
+  tags: ['autodocs'],
+  parameters: { docs },
+  render: (args, { viewMode } = {}) =>
+    renderTwig(withStorybookContainer(template), {
+      wrapper: viewMode === 'docs' ? 'div' : 'main',
+    })(args),
   args: {
-    search__placeholder: props.properties.search__placeholder.data,
-    search__label: props.properties.search__label.data,
+    ...argsFromSchema(schema.props),
+    ...themeControls.args,
+  },
+  argTypes: {
+    ...themeControls.argTypes,
   },
 };
 
-export const Search = (args) => template(args);
+export const Search = {};
+
+export const Disclosure = {
+  args: {
+    search__id: 'search-disclosure-story',
+    search__show_toggle: true,
+    search__show_label: false,
+  },
+};

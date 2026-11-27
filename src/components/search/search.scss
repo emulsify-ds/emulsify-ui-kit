@@ -1,169 +1,54 @@
-@use '../../foundation/utility/rem-calc' as *;
-@use '../../foundation/breakpoints/breakpoints' as *;
+@use '../../base' as *;
 
-.search {
+.search__panel {
   display: block;
-  height: 100%;
+  padding: space(12);
+  color: var(--clr-body);
+  background: var(--clr-background);
 }
 
-/* Search form */
-.search__form__wrapper {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  max-height: 0;
-  overflow: hidden;
-  visibility: hidden;
-  z-index: 1;
-  transition:
-    max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    visibility 0.4s;
-
-  @include breakpoint('medium') {
-    top: 0;
-    right: 0;
-    left: auto;
-    height: 100%;
-    max-height: none;
-    max-width: 0;
-    transition:
-      max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-      visibility 0.4s;
-  }
-
-  &[aria-hidden='false'] {
-    max-height: rem-calc(100);
-    visibility: visible;
-
-    @include breakpoint('medium') {
-      max-width: rem-calc(560);
-    }
-  }
+.search__panel[hidden],
+.search__toggle[hidden] {
+  display: none;
 }
 
 .search__form {
   display: flex;
-  width: 100%;
-  height: initial;
-  align-items: center;
-  padding-block: var(--spacing-lg) var(--spacing-xl);
-  padding-inline: 0;
-  background-color: var(--color-white);
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: space(8);
+}
 
-  @include breakpoint('medium') {
-    position: absolute;
-    right: 0;
-    width: auto;
-    height: 100%;
-    padding-block: var(--spacing-lg);
-    padding-inline: var(--spacing-xl) calc(var(--spacing-lg));
-    background-color: var(--color-primary-darker);
+.search__field {
+  display: grid;
+  flex: 1 1 space(120);
+  gap: space(4);
+  min-inline-size: 0;
+}
+
+.search__label {
+  font-weight: font-weight('primary-bold');
+}
+
+.search__input {
+  @include focus;
+
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-block-size: space(48);
+  padding: space(8) space(12);
+  border: space(2) solid var(--clr-body);
+  border-radius: var(--r-sm);
+  color: var(--clr-body);
+  background: var(--clr-background);
+  font: inherit;
+
+  &::placeholder {
+    color: var(--clr-body);
+    opacity: 1;
   }
 }
 
-.search__form__input {
-  flex: 1;
-  border: none;
-  min-height: 2.25rem;
-  color: var(--color-text-body);
-  font-size: var(--font-size-body);
-  background-color: transparent;
-  margin-right: var(--spacing-lg);
-  padding-left: var(--spacing-lg);
-  border-bottom: 1px solid var(--color-primary-darker);
-
-  @include breakpoint('medium') {
-    border-bottom: 1px solid var(--color-white);
-    color: var(--color-white);
-  }
-}
-
-.search__form__input::placeholder {
-  opacity: 1;
-  color: var(--color-primary-dark);
-
-  @include breakpoint('medium') {
-    color: var(--color-white);
-  }
-}
-
-.search__form__actions {
-  display: flex;
-  align-items: center;
-
-  button {
-    cursor: pointer;
-    border: none;
-    width: 2.25rem;
-    height: 2.25rem;
-    padding: var(--spacing-md);
-    background-color: transparent;
-
-    @include breakpoint('medium') {
-      display: flex;
-    }
-
-    &.search__toggle {
-      display: none;
-
-      @include breakpoint('medium') {
-        display: flex;
-      }
-    }
-
-    svg {
-      width: 100%;
-      height: 100%;
-      padding: 0;
-      user-select: none;
-      color: var(--color-primary-dark);
-
-      @include breakpoint('medium') {
-        color: var(--color-white);
-      }
-    }
-  }
-}
-
-/* Search toggle button */
-.search__toggle {
-  cursor: pointer;
-  font-weight: 700;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: var(--color-primary-dark);
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-lg);
-  height: 100%;
-  background-color: transparent;
-  border: none;
-  padding: 0 var(--spacing-md);
-  margin-inline: auto var(--spacing-md);
-
-  @include breakpoint('medium') {
-    background-color: var(--color-primary-dark);
-    padding: 0 var(--spacing-xl);
-    color: var(--color-white);
-    margin-inline: 0;
-  }
-
-  span {
-    display: none;
-
-    @include breakpoint('medium') {
-      display: block;
-    }
-  }
-
-  svg {
-    width: rem-calc(24);
-    height: rem-calc(24);
-    user-select: none;
-
-    &.icon--close {
-      display: none;
-    }
-  }
+.search__toggle.cta {
+  min-block-size: space(48);
 }
