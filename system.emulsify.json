@@ -260,6 +260,11 @@
           "dependency": []
         },
         {
+          "name": "link-group",
+          "structure": "components",
+          "dependency": ["cta"]
+        },
+        {
           "name": "list",
           "structure": "components",
           "required": true,

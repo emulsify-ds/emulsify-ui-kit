@@ -14,6 +14,7 @@
     "layout/container",
     "layout/grid",
     "layout/placeholder",
+    "link-group",
     "list",
     "logo",
     "media-box",

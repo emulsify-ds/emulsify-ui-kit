@@ -32,7 +32,7 @@ Coordinate the 16 refinement steps for the single Emulsify UI Kit 2.0.0 release.
 - [x] 8 Wave A: heading, text, blockquote, code, icon, image, list, video
 - [x] 9 Wave B1: teaser, card, media-box, text-with-image, callout
 - [x] 10 Wave B2: banner, announcement, stats-group, tags, status
-- [ ] 11 Wave B3: table, embed, audio-player, logo, link-group
+- [x] 11 Wave B3: table, embed, audio-player, logo, link-group
 - [ ] 12 Wave C1: accordion, tabs, offcanvas
 - [ ] 13 Wave C2: navigation, search, forms
 - [ ] 14 Wave D: hero, header, page-title
@@ -138,3 +138,10 @@ The report also found 30 global violations. The `blockquote.component.yml` basen
 - Announcement and Status expose native CTA dismiss buttons when their Drupal behaviors attach. Status separates dismiss controls from the live region and keeps severity labels visible.
 - Stats Group keeps each label and value together in a description list. Tags uses list items with native links and theme foregrounds. The green tint contrast was checked in both themes.
 - The [Wave B2 migration entries](../migration-2.0.md#banner) cover the updated props, slots, and styling selectors.
+
+### Step 11 Wave B3 tables, media, and links
+
+- Use the singular Table SDC and `@components/table/table.twig`. Supply a caption or a distinct scroll label. Drupal once activates the labelled keyboard scroll region when the table overflows.
+- Use `embed__src` with `embed__title` for generated iframes. Trusted markup belongs in `embed__iframe` or `embed__content` and needs a title on every frame. Audio Player uses native playback controls and accepts a transcript link.
+- Logo requires an explicit source and text alternative. Header uses the updated call. Link Group uses CTA anchors in a list, with a named navigation landmark when requested.
+- The [Wave B3 migration entries](../migration-2.0.md#table) cover the new paths, prop names, and slot overrides.

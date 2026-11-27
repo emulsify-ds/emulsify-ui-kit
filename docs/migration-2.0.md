@@ -350,4 +350,10 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - Pass `logo__src` and `logo__alt` in place of `image_src` and `image_alt`. Both are required, including in Header branding overrides. Use the shared block name or class props in place of `logo__base_class`.
 - Supply `logo__url: '/'` to keep the former default home link. Omit the URL for a static logo. Logo renders its image directly through Image, and the image alt names the link when present.
 
+### Link Group
+
+- Rename the `link_group__items` slot to `link_group__items_content` and pass complete list items. The `link_group__items` prop remains available and becomes optional.
+- Both display variants use CTA anchors. Migrate custom button and link styling to CTA classes. The button variant with a background now uses the shared contained style.
+- Set `link_group__nav_label` when the group should be a named navigation landmark.
+
 ## Removed
