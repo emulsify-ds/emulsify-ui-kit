@@ -29,7 +29,8 @@ Update bookmarks, embeds, and other links to renamed Storybook entries.
 | `base-border-radius--border-radius`, `base-borders--borders` | `base-radius--radius` |
 | `base-sizes--sizes` | `base-spacing--spacing` |
 | `component-search--*` | `components-search--*` |
-| `components-cards--*` | `components-card--*` |
+| `components-cards--card-vertical`, `components-card--card-vertical` | `components-teaser--card` |
+| `components-cards--card-horizontal`, `components-card--card-horizontal` | `components-teaser--inline` |
 | `components-headers-page-title--*` | `components-page-title--*` |
 | `components-media-*` | `components-*` |
 | `components-button--*` | `deprecated-button--*` |
@@ -246,5 +247,22 @@ Use `heading__level` for the document outline and a modifier such as `h3` or `di
 | `video-html5.yml`, `video-embed.yml`, `playback.js`, `video-embed.js` | Use `video.component.yml` and `video.js`. |
 
 Supply `image__alt` for every image. An empty value requires `image__decorative: true`. Use `image__srcset` and `image__sizes` for responsive candidates. Give videos a descriptive title and supply caption tracks for meaningful audio.
+
+### Card → Teaser
+
+Replace the `card` SDC or `@components/card/card.twig` include with `teaser` or `@components/teaser/teaser.twig`. Set `teaser__style: 'card'`.
+
+| Card input | Teaser input |
+| --- | --- |
+| `card__heading`, `card__subheading` | `teaser__heading`, `teaser__subheading`. Set `teaser__heading_level` to match the page outline. |
+| `card__body` | `teaser__content` for plain text, or the `teaser__summary_content` slot for formatted copy. |
+| `card__heading__link`, `card__link__url` | `teaser__url`. Use the heading destination when both were set. |
+| `card__link__text` | `teaser__ctas: [{ content: 'Read more' }]` for a visible cue to the heading link. |
+| `card__image__src`, `card__image__alt`, responsive candidates | Use the matching `teaser__image__*` props. For decorative media, use `teaser__image__decorative: true` and an empty alt. |
+| `card__img` block | `teaser__media_content` slot. |
+| `horizontal` modifier | `teaser__layout: 'inline'`, with `teaser__media__alignment` to place the media. |
+| `card__blockname`, `card__modifiers`, `card__extra_classes` | `teaser__blockname`, `teaser__modifiers`, `teaser__additional_classes`. |
+
+The heading carries the destination. Move secondary destinations, including links from the old Card subheading, outside the teaser. Omit the media source or set `teaser__show_media: false` to hide the media. Replace custom Card element classes with Teaser selectors and its local theme properties.
 
 ## Removed

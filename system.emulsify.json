@@ -205,12 +205,6 @@
           "dependency": ["icon"]
         },
         {
-          "name": "card",
-          "structure": "components",
-          "required": true,
-          "dependency": ["link", "image", "heading", "text"]
-        },
-        {
           "name": "code",
           "structure": "components",
           "dependency": []
