@@ -299,6 +299,11 @@
           "dependency": ["button"]
         },
         {
+          "name": "tags",
+          "structure": "components",
+          "dependency": []
+        },
+        {
           "name": "teaser",
           "structure": "components",
           "required": true,

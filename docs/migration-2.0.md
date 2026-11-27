@@ -314,4 +314,9 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - Pass `stats_group__heading_level` and `stats_group__grid_columns` as integers. Each item's `description` is a plain-text label. Statistics now render as description-list terms and values. Use `stats_group__heading_level` for the section heading.
 - Switch the `stats_group__items__block` override to the `stats_group__items_content` slot. Supply complete statistic items in that slot in place of the old `_stats-group-item.twig` partial, and update CSS selectors to `.stats-group__description` and `.stats-group__metric`.
 
+### Tags
+
+- Rename `items` to `tags__items`, the `tags__items` block to `tags__items_content`, and `tags__addition_classes` to `tags__additional_classes`. Use `tags__blockname` or `tags__additional_classes` for custom classes formerly supplied via `tags__base_class`.
+- Items keep `title`, `url`, and `color`. The color tints the background while text uses the active theme foreground. Use `.tags__link` for styling linked and static labels.
+
 ## Removed
