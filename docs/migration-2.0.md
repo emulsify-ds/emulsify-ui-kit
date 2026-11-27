@@ -184,6 +184,8 @@ Keep grid items as direct children of `grid__content`. The heading, prefix, and 
 
 Update Placeholder story links from `layout-place-holder--place-holder` to `layout-placeholder--placeholder`. Use the Base/Placement guide for `grid-tracks()` and `grid-column()` examples.
 
+The updated Emulsify system installs and registers `./src/base/` and `./src/layout/` as build roots. If you upgrade without running the CLI, update `structureImplementations` in your `project.emulsify.json` to keep the Base assets and layout templates discoverable.
+
 `withStorybookContainer()` now paints the active theme background. Pass `{ bgColor: false }` as its options to keep the story canvas background.
 
 ## Components

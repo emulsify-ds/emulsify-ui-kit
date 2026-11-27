@@ -6,6 +6,14 @@
     {
       "name": "components",
       "description": "Components commonly used in higher-level components"
+    },
+    {
+      "name": "base",
+      "description": "Global styles, generated tokens, and shared Sass utilities."
+    },
+    {
+      "name": "layout",
+      "description": "Container, grid, and placeholder layout primitives."
     }
   ],
   "variants": [
@@ -15,6 +23,14 @@
         {
           "name": "components",
           "directory": "./src/components/"
+        },
+        {
+          "name": "base",
+          "directory": "./src/base/"
+        },
+        {
+          "name": "layout",
+          "directory": "./src/layout/"
         }
       ],
       "directories": [
@@ -40,7 +56,13 @@
           "name": "util",
           "path": "./src/util",
           "destinationPath": "./src/util",
-          "description": "Various helper scripts for constructing stories"
+          "description": "Shared Storybook helpers."
+        },
+        {
+          "name": "fonts",
+          "path": "./assets/fonts",
+          "destinationPath": "./assets/fonts",
+          "description": "Local fonts referenced by the Base styles."
         }
       ],
       "files": [
@@ -55,6 +77,36 @@
           "path": "./config/sd.config.json",
           "destinationPath": "./config/sd.config.json",
           "description": "Style Dictionary settings for generating the Base tokens."
+        },
+        {
+          "name": "example-audio-mp3",
+          "path": "./assets/audio/ball.mp3",
+          "destinationPath": "./assets/audio/ball.mp3",
+          "description": "MP3 source for the Audio Player example."
+        },
+        {
+          "name": "example-audio-ogg",
+          "path": "./assets/audio/ball.ogg",
+          "destinationPath": "./assets/audio/ball.ogg",
+          "description": "Ogg source for the Audio Player example."
+        },
+        {
+          "name": "example-camera-image",
+          "path": "./assets/images/example/basic-camera-image.png",
+          "destinationPath": "./assets/images/example/basic-camera-image.png",
+          "description": "Camera image for media examples."
+        },
+        {
+          "name": "example-hero-image",
+          "path": "./assets/images/example/hero.jpg",
+          "destinationPath": "./assets/images/example/hero.jpg",
+          "description": "Image and video poster for Hero examples."
+        },
+        {
+          "name": "example-logo",
+          "path": "./assets/images/logo-text.svg",
+          "destinationPath": "./assets/images/logo-text.svg",
+          "description": "Default artwork for the Logo and Header examples."
         },
         {
           "name": "icon-angle-down",
@@ -232,7 +284,7 @@
         {
           "name": "header",
           "structure": "components",
-          "dependency": ["cta", "logo", "navigation/main", "offcanvas", "search"]
+          "dependency": ["cta", "logo", "navigation/base", "navigation/main", "offcanvas", "search"]
         },
         {
           "name": "heading",

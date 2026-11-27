@@ -36,7 +36,7 @@ Coordinate the 16 refinement steps for the single Emulsify UI Kit 2.0.0 release.
 - [x] 12 Wave C1: accordion, tabs, offcanvas
 - [x] 13 Wave C2: navigation, search, forms
 - [x] 14 Wave D: hero, header, page-title
-- [ ] 15 Cleanup
+- [x] 15 Cleanup
 - [ ] 16 Docs, accessibility gate, ready for review
 
 ## Notes for later steps
@@ -78,7 +78,7 @@ Coordinate the 16 refinement steps for the single Emulsify UI Kit 2.0.0 release.
 | `typography/heading` | 11 |
 | `typography/text` | 21 |
 
-The report also found 30 global violations. The `blockquote.component.yml` basename appears twice. The manifest lists seven entries without component metadata, omits 16 component directories, and has six dependency references to absent entries (`container` and `list`). Step 15 enables `enforceGlobal` and makes hex colors a Stylelint error.
+The report also found 30 global violations. The `blockquote.component.yml` basename appears twice. The manifest lists seven entries without component metadata, omits 16 component directories, and has six dependency references to absent entries (`container` and `list`). Step 15 makes the global checks unconditional and makes hex colors a Stylelint error.
 
 ### Step 3 Storybook infrastructure
 
@@ -166,3 +166,9 @@ The report also found 30 global violations. The `blockquote.component.yml` basen
 - Header derives its dialog, navigation, and search IDs from `header__id`. Set `header__skip_target` to a focusable main landmark. On small containers Header moves the existing navigation into Offcanvas and keeps an inline fallback for browsers without JavaScript.
 - Page Title owns one h1 and accepts rendered breadcrumbs, description, and media in separate slots. Supply secondary destinations through the CTA array or the page body.
 - Examples/Home composes Hero, Teaser grids, and Callout. Examples/Basic pairs Header, Page Title, Breadcrumbs, Forms, and Callout. The accessibility audit covered the eight component stories and both composed pages. See the [Wave D migration entries](../migration-2.0.md#hero) for the changed props and slots.
+
+### Step 15 Cleanup
+
+- Button, Link, and the transitional token stylesheet are removed. Welcome uses CTA. The [migration guide](../migration-2.0.md#removed) covers the replacement tokens, components, and preview helpers.
+- The contract checks all 36 SDCs, three layout primitives, and the manifest on every run. Its frozen fixture preserves all 394 removed properties for regression checks. Stylelint rejects hex colors in component SCSS.
+- The CLI manifest registers the Base and Layout build roots and copies the shared helpers and local assets. Use `npm run inspect:components` to check the packaged namespaces and `npm run validate` before the final accessibility gate.
