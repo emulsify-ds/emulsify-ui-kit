@@ -19,6 +19,7 @@
     "list",
     "logo",
     "media-box",
+    "navigation/base",
     "offcanvas",
     "stats-group",
     "status",

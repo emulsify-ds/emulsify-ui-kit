@@ -1,156 +1,65 @@
-{% set item__modifiers = [] %}
-{% set item__modifiers = item__modifiers|merge(['level-' ~ menu__level]) %}
-{% set item__attributes = item__attributes|default({}) %}
-{% set item__parent = item__parent|default([]) %}
-
-{# Link attributes #}
-{% set link__attributes = link__attributes|default({
-  'data-menu-level': 'level-' ~ (menu__level + 1),
-}) %}
-
-{# Item Modifiers #}
-{% if item.in_active_trail == TRUE %}
-	{% set item__modifiers = item__modifiers|merge(['active']) %}
+{# One menu item and the nested list prepared by its parent. #}
+{% set item_label = menu_item.title|default(menu_item.text|default('')) %}
+{% set item_url = menu_item.url|default(menu_item.href|default('')) %}
+{% set item_attributes = menu_item.attributes|default({}) %}
+{% if item_attributes.toArray is defined %}
+  {% set item_attributes = item_attributes.toArray() %}
 {% endif %}
-{% if menu__level > 0 %}
-	{% set item__modifiers = item__modifiers|merge(['sub']) %}
-{% endif %}
-{% if item.below %}
-	{% set item__modifiers = item__modifiers|merge(['with-sub']) %}
-{% endif %}
-{% if item.parent %}
-	{% set item__modifiers = item__modifiers|merge(['parent']) %}
-{% endif %}
-
-{% set site_url = path("<current>") %}
-{% if site_url|render == item.url|render or item.is_active or item.url is empty %}
-	{% set link__attributes = link__attributes|merge({
-    'aria-current': 'page',
-  }) %}
-{% endif %}
-
-{# Create a unique ID for each accordion item #}
-{% set item_unique_id = random('1234567890') ~ random('1234567890') ~ random('1234567890') ~ random('1234567890') %}
-{% set menu__toggle__id = 'menu__item-' ~ item_unique_id ~ '-' ~ loop.index %}
-
-{# Set link component as default #}
-{% set list__item %}
-{% if item.title %}
-	{% set link__content = item.title %}
-{% endif %}
-{% if item.text %}
-	{% set link__content = item.text %}
-{% endif %}
-{% if not item.url and not item.href %}
-	{% set link__attributes = link__attributes|merge({
-			'class': bem('placeholder', item__modifiers, menu__base_class),
-			'tabindex': '0',
-		}) %}
-	<span tabindex="0" {{ add_attributes(link__attributes) }}>{{- link__content -}}</span>
+{% set link_attributes = menu_item.link_attributes|default({}) %}
+{% set is_current = menu_item.current|default(menu_item.is_active|default(false)) %}
+{% set drupal_url = item_url.isRouted is defined %}
+{% set has_destination = item_url and (item_url != '#' or not menu_item__submenu_id) %}
+{% if drupal_url %}
+  {% set has_destination = not (item_url.isRouted() and item_url.getRouteName() in ['<nolink>', '<button>']) %}
 {% else %}
-
-	{# If drupal stringify the url object #}
-	{# See variable passed to menu_links macro #}
-		{% if directory %}
-			{% if item.url %}
-		{% set link__url = item.url|render %}
-		{% endif %}
-			{% if item.href %}
-		{% set link__url = item.href %}
-		{% endif %}
-	{% else %}
-		{% set link__url = item.url %}
-	{% endif %}
-
-	{% if link__url is empty or menu__level == 0 and item.entity.field_description.value is not empty %}
-		{% set link__attributes = link__attributes|merge({
-				'class': bem('placeholder', item__modifiers, menu__base_class),
-			}) %}
-		<span tabindex="0" {{ add_attributes(link__attributes) }}>{{- link__content -}}</span>
-	{% else %}
-		{% set link__base_class = 'link' %}
-			{% include "@components/link/link.twig" with {
-				link__blockname: menu__base_class,
-				link__modifiers: item__modifiers,
-				link__attributes: link__attributes,
-				aria_label: item.aria_label,
-			} %}
-	{% endif %}
+  {% set item_url = item_url|trim %}
+  {% set scheme = item_url|split(':')|first %}
+  {% if ':' in item_url and '/' not in scheme and '?' not in scheme and '#' not in scheme and scheme|lower not in ['https', 'http', 'mailto', 'tel'] %}
+    {% set has_destination = false %}
+  {% endif %}
 {% endif %}
-{% endset %}
-
-{# Item is array of items - Pager logic #}
-{% if item|keys|first matches '/^\\d+$/' %}
-	{% for subitem in item %}
-		{% if not loop.last %}
-			{% embed "@components/list/_list-item.twig" with {
-				list__item__base_class: 'item',
-				list__item__modifiers: item__modifiers,
-				list__item__blockname: item__blockname,
-				list__item__attributes: item__attributes,
-			} %}
-				{% block list__item__content %}
-					{% include "@components/link/link.twig" with {
-						link__blockname: menu__base_class,
-						link__modifiers: item__modifiers,
-						link__attributes: link__attributes,
-						aria_label: 'Go to page' ~ loop.index,
-						link__url: subitem.href,
-						link__content: loop.index,
-					} %}
-				{% endblock %}
-			{% endembed %}
-		{% endif %}
-	{% endfor %}
+{% set item_classes = item_attributes.class|default([]) %}
+{% set item_classes = item_classes is iterable ? item_classes : [item_classes] %}
+{% set item_modifiers = menu_item.modifiers|default([])|merge(['level-' ~ menu__level]) %}
+{% if menu_item.in_active_trail %}
+  {% set item_modifiers = item_modifiers|merge(['active-trail']) %}
 {% endif %}
-
-{% set menu_toggle__content %}
-<span class="visually-hidden">{{ item.title ~ ' Menu' }}</span>
-{% endset %}
-
-{% embed "@components/list/_list-item.twig" with {
-  list__item__base_class: 'item',
-  list__item__modifiers: item__modifiers,
-  list__item__blockname: item__blockname,
-  list__item__attributes: item__attributes,
-} %}
-	{% block list__item__content %}
-		{# This import needs to be inside the block for it to work in Drupal #}
-		{% import "@components/navigation/base/menu.twig" as menus %}
-		{{- list__item -}}
-		{% if 'active' in item__modifiers %}
-			{# The following filter is preferred but no twig.js support #}
-			{# {% set item__modifiers = item__modifiers|filter(v => v != 'active') %} #}
-			{# unset the active modifier before looping through children #}
-			{% set new_mods = new_mods|default([]) %}
-			{% for item in item__modifiers %}
-				{% if item != 'active' %}
-					{% set new_mods = new_mods|merge([item]) %}
-				{% endif %}
-			{% endfor %}
-			{% set item__modifiers = new_mods %}
-		{% endif %}
-		{% if item.below %}
-			{% if menu__level_toggle is defined %}
-				{% set menu_toggle__attributes = menu_toggle__attributes|default({
-					'aria-controls': menu__toggle__id,
-				}) %}
-				{% if link__url is empty or item.entity.field_description.value is not empty %}
-					{% set menu_toggle__attributes = menu_toggle__attributes|merge({
-						'tabindex': '-1',
-					}) %}
-				{% endif %}
-				{% include "@components/navigation/base/menu-toggle/menu-toggle.twig" with {
-					menu_toggle__menu__level: 'level-' ~ (menu__level + 1),
-					menu_toggle__icon: {
-						name: 'chevron-down',
-						right: true,
-					},
-					menu_toggle__menu__label: item.title ~ ' Menu' ,
-				} %}
-			{% endif %}
-			{% set item__parent = item__parent|merge({'title' : (item.entity.field_description.value), 'url' : (item.url|render), 'parent' : true }) %}
-			{{ menus.menu_links(item.below, attributes, menu__level + 1, menu__name, menu__base_class, menu_list__modifiers, menu__modifiers, menu__blockname, menu__list__type, menu__toggle, menu__level_toggle, item__base_class, item__modifiers, item__blockname, menu_list__attributes, directory, menu_list, item__parent, menu__toggle__id) }}
-		{% endif %}
-	{% endblock %}
-{% endembed %}
+{% set link_classes = link_attributes.class|default([]) %}
+{% set link_classes = link_classes is iterable ? link_classes : [link_classes] %}
+{% set link_attributes = link_attributes|merge({
+  class: bem('link', [], menu__base_class, link_classes|merge(['base-menu__link'])),
+}) %}
+{% if is_current %}
+  {% set link_attributes = link_attributes|merge({'aria-current': 'page'}) %}
+{% endif %}
+{% if menu_item.aria_label %}
+  {% set link_attributes = link_attributes|merge({'aria-label': menu_item.aria_label}) %}
+{% endif %}
+<li {{ add_attributes(item_attributes|merge({
+  class: bem('item', item_modifiers, menu__base_class, item_classes|merge(['base-menu__item'])),
+})) }}>
+  <div {{ bem('item-label', [], menu__base_class, ['base-menu__item-label']) }}>
+    {% if has_destination %}
+      {% if drupal_url %}
+        {{ link(item_label, item_url, link_attributes) }}
+      {% else %}
+        <a {{ add_attributes(link_attributes|merge({href: item_url})) }}>{{ item_label|e }}</a>
+      {% endif %}
+    {% else %}
+      <span {{ add_attributes({
+        class: bem('placeholder', [], menu__base_class, ['base-menu__label']),
+        'data-menu-fallback-label': 'true',
+      }) }}>{{ item_label|e }}</span>
+    {% endif %}
+    {% if menu_item__submenu_id %}
+      {{ include('@components/navigation/base/menu-toggle/menu-toggle.twig', {
+        menu_toggle__label: has_destination ? menu_item.submenu_label|default(item_label ~ ' ' ~ ('submenu'|t)) : item_label,
+        menu_toggle__controls: menu_item__submenu_id,
+        menu_toggle__icon: 'chevron-down',
+        menu_toggle__icon_only: has_destination,
+        menu__base_class: menu__base_class,
+      }, with_context: false) }}
+    {% endif %}
+  </div>
+  {{ menu_item__children_content }}
+</li>

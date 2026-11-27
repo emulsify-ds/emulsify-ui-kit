@@ -1,0 +1,23 @@
+{#
+ # Props: base__id, base__label, base__items, base__toggle,
+ # base__toggle_label, base__disclosures, base__list_type, base__blockname,
+ # base__modifiers, base__additional_classes, and base__attributes.
+ # Slot: base__items_content supplies the top-level list items.
+ #}
+{% set items_content %}
+  {% block base__items_content %}{{ base__items_content }}{% endblock %}
+{% endset %}
+{{ include('@components/navigation/base/menu.twig', {
+  menu__id: base__id,
+  menu__name: base__label,
+  menu__items: base__items,
+  menu__items_content: items_content|trim ? items_content : null,
+  menu__toggle: base__toggle,
+  menu__toggle_label: base__toggle_label,
+  menu__level_toggle: base__disclosures,
+  menu__list__type: base__list_type,
+  menu__blockname: base__blockname,
+  menu__modifiers: base__modifiers,
+  menu__additional_classes: base__additional_classes,
+  menu__attributes: base__attributes,
+}, with_context: false) }}

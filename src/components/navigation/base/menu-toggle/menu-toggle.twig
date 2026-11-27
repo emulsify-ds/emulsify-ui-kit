@@ -1,32 +1,24 @@
-{% set menu_toggle__base_class = menu__base_class ~ '__toggle' %}
-{% set menu_toggle__menu__label = menu_toggle__menu__label|default('Menu') %}
-{% set menu_toggle__style = menu_toggle__style|default('clean') %}
-{% set menu_toggle__attributes = menu_toggle__attributes|default([]) %}
-{% set menu_toggle__attributes = menu_toggle__attributes|merge({
-  'data-menu-level': menu_toggle__menu__level,
-  'aria-label': menu_toggle__menu__label,
-}) %}
-
-{# Default menu_toggle label/icon #}
-{% set menu_toggle__content_default %}
-  <span {{ bem('bars', [], menu_toggle__base_class) }}>
-    <span {{ bem('bar', [], menu_toggle__base_class) }}></span>
-    <span {{ bem('bar', [], menu_toggle__base_class) }}></span>
-    <span {{ bem('bar', [], menu_toggle__base_class) }}></span>
-  </span>
-  <span {{ bem('text', [], menu_toggle__base_class) }}>{{ menu_toggle__menu__label }}</span>
-{% endset %}
-{% set menu_toggle__content = menu_toggle__content|default(menu_toggle__content_default) %}
-
-{% embed "@components/button/button.twig" with {
-  button__content: true,
-  button__additional_classes: [menu_toggle__base_class],
-  button__style: menu_toggle__style,
-  button__icon: menu_toggle__icon,
-  aria_expanded: 'false',
-  button__attributes: menu_toggle__attributes,
-} %}
-	{% block button__content %}
-		{{ menu_toggle__content }}
-	{% endblock %}
-{% endembed %}
+{#
+ # Disclosure button shared by the compact menu and submenu controls.
+ # Pass menu_toggle__label, menu_toggle__controls, optional menu_toggle__icon,
+ # menu_toggle__icon_only, menu_toggle__is_root, and menu__base_class.
+ #}
+{{ include('@components/cta/cta.twig', {
+  cta__element: 'button',
+  cta__button_type: 'button',
+  cta__text: menu_toggle__label,
+  cta__icon: menu_toggle__icon|default(null),
+  cta__icon_position: menu_toggle__is_root ? 'left' : 'right',
+  cta__modifiers: ['clean'],
+  cta__additional_classes: [
+    menu__base_class|default('menu') ~ '__toggle',
+    'base-menu__toggle',
+  ],
+  cta__attributes: {
+    'aria-controls': menu_toggle__controls,
+    'aria-expanded': 'true',
+    'data-menu-toggle': menu_toggle__is_root ? 'root' : 'submenu',
+    'data-menu-icon-only': menu_toggle__icon_only ? 'true' : null,
+    hidden: true,
+  },
+}, with_context: false) }}

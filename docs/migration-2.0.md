@@ -374,4 +374,10 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - Use `offcanvas__heading_level` in place of `offcanvas__heading__level`. Pass a distinct ID for each dialog. Use `offcanvas__theme__variation` to select light or dark.
 - Attach the Offcanvas Drupal behavior with Drupal once. The pane is non-modal and the modal type uses the browser's modal dialog. The trigger and close action use CTA styles.
 
+### Navigation Base
+
+- The Emulsify CLI lists `navigation/base`, `navigation/breadcrumbs`, `navigation/main`, `navigation/pager`, and `navigation/social` as separate entries. The default install includes all five.
+- For the Base Menu SDC, pass `base__items` and a page-unique `base__id`. Set `base__label` to name the landmark. Use `base__toggle` for the outer disclosure, `base__disclosures` for submenus, and `base__items_content` to supply complete list items. The shared `menu.twig` partial accepts `menu__items` or the legacy `items` variable, and `menu__id` for the stable menu ID.
+- Supply stable menu item keys or `id` values when possible. The menu derives disclosure IDs from the menu ID and item path. Use `menu_toggle__label` and `menu_toggle__controls` for direct uses of the toggle partial. Update scripts and styles that rely on the old wrapper expansion classes to use the button's `aria-expanded` and the panel's `hidden` state.
+
 ## Removed
