@@ -11,6 +11,7 @@
 **Component contract**
 
 - [ ] Changed components follow the component contract in `AGENTS.md`.
+- [ ] Any new component npm package uses the same range in `system.emulsify.json` and `package.json`, appears in the component's Drupal usage docs, and is called out for consumers.
 
 **How to review this PR**
 <!-- Provide step-by-step instructions to functionally test this PR. -->

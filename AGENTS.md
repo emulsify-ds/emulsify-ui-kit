@@ -51,8 +51,8 @@ Edit source files and regenerate output with the appropriate build. Leave `compo
 | Twig | Start with a `{# … #}` doc comment that names every prop and slot. Use stable IDs and omit `random()`. |
 | Stories | Include the `autodocs` tag and set `parameters.docs` from the sibling `.docs.js` module. Write stories without JSX. |
 | Docs | Use this heading order. `## Overview`, `## Anatomy & composition`, `## Variants`, `## Accessibility`, `## Content guidelines`, `## Drupal usage`, `## Theming`, `## Changes from 1.x`. Keep Twig imports out of `.docs.js`. |
-| Behavior JS | Call `once()` for JavaScript outside stories, docs, and tests. Use Drupal-provided or local code and omit npm package imports. |
-| SCSS | Use color roles and omit hex colors and 1.x token custom properties. |
+| Behavior JS | Call `once()` for JavaScript outside stories, docs, and tests. Declare each npm import in `npmDependencies` on every manifest entry whose install directory contains the file. |
+| SCSS | Use color roles and omit hex colors and 1.x token custom properties. Declare package imports using the same rules as behavior JavaScript. |
 | Global | Each `*.component.yml` has a unique basename. `system.emulsify.json` lists exactly the component directories and names only dependencies that exist. |
 
 `npm run test:contract` enforces every component and layout contract, including global metadata and manifest checks. The fixture at `tests/fixtures/1x-token-names.json` preserves the removed property names for the SCSS check.
@@ -61,11 +61,18 @@ Edit source files and regenerate output with the appropriate build. Leave `compo
 
 1. Bring its component YAML, Twig, SCSS, JavaScript, docs, and stories up to the contract.
 2. Check accessibility against the baseline below and fix failures.
-3. Add a Jest test for any logic.
+3. Add a Jest test for any logic. Keep tests that need repository-only tools under `tests/components/` or `tests/layout/`.
 4. Replace button and link includes with `cta`.
 5. If it is a section, forward the container props using the shared contract below.
-6. Update `system.emulsify.json` and [the migration guide](docs/migration-2.0.md) for the change.
-7. Run `npm run test:contract` and make one commit per component.
+6. If it needs an npm package, follow [the component npm package guide](docs/component-npm-packages.md).
+7. Update `system.emulsify.json` and [the migration guide](docs/migration-2.0.md) for the change.
+8. Run `npm run test:contract` and make one commit per component.
+
+## Components with npm packages
+
+- Declare packages on component entries and match the effective range in the root `package.json` dependencies. Name each package in the component's Drupal usage documentation. The contract limits a runtime package to one importing component directory.
+- Installed stories, docs, and tests can import local files, Emulsify Core, and packages their component declares. Tests can also import Node built-ins. Keep Base and Layout runtime imports local. Shared helpers can import Emulsify Core.
+- Follow the installation, review, and build instructions in the [component npm package guide](docs/component-npm-packages.md).
 
 ## Storybook conventions
 
@@ -149,6 +156,7 @@ The generated token maps supply spacing, breakpoints, and typography. The global
 - Drupal validates props, applies component YAML defaults, and passes `NULL` for empty fields. Storybook skips validation and default application. Type optional props as nullable and normalize them before passing them to strictly typed children.
 - Restart Storybook after adding a component because it discovers CSS at startup.
 - `breakpoint()` emits `@container` queries. Give the component an ancestor with `container-type` because queries never match the element that establishes the container. Pass `$media: true` for viewport rules.
+- The first `npmDependencies` entry requires Emulsify CLI 2.5.0 or later everywhere this system is installed.
 
 ## Accessibility baseline
 

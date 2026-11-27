@@ -4,6 +4,10 @@
 
 Use Node.js 24.13.0 or newer.
 
+The 2.0 kit installs with Emulsify CLI 2.4.1. A system with component `npmDependencies` requires Emulsify CLI 2.5.0 or later. The kit's 2.0 manifest has no package declarations. [Component npm package guide](component-npm-packages.md)
+
+To rebuild tokens in an installed theme, add `style-dictionary` and `@tokens-studio/sd-transforms` as development dependencies. [Theme token setup](../README.md#rebuild-tokens-in-an-installed-theme)
+
 ## Paths and namespaces
 
 Move shared style imports from `src/foundation/` to `src/base/`. Use `@use '../../base' as *;` for the public Sass API and adjust the relative path to match the component's depth. The stylesheet entry is `src/base/base.scss`, which builds to `dist/css/src/base/base.css`.
@@ -11,6 +15,8 @@ Move shared style imports from `src/foundation/` to `src/base/`. Use `@use '../.
 Change Twig includes from `@foundation/...` to `@base/...`. Update the project structure implementation and CLI system directory to `base` when adapting an existing theme configuration.
 
 ### Storybook
+
+Repository Jest suites that use Twig or other test tools now live under `tests/components/` and `tests/layout/`. Run them from the kit repository with `npm test`.
 
 Replace JSX decorators in `.stories.js` with Twig render callbacks. For themed previews, pass a `withStorybookContainer()` callback to `renderTwig()`, and map component args inside that callback. See the [Storybook conventions](../AGENTS.md#storybook-conventions).
 
