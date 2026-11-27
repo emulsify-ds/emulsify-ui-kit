@@ -298,7 +298,7 @@
         {
           "name": "text-with-image",
           "structure": "components",
-          "dependency": ["image", "link", "heading", "text"]
+          "dependency": ["cta", "heading", "image", "text"]
         },
         {
           "name": "video",

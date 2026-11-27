@@ -1,90 +1,114 @@
 {#
- # Available Props:
- # - text_with_image__width: feature (default) or highlight
- # - text_with_image__position: image-left (default) or image-right
- # - text_with_image__focus: equal (default), image, or text
+ # Section pairing formatted copy with an image or composed media.
  #
- # Available variables:
- # - text_with_image__heading
- # - text_with_image__subheading (optional)
- # - text_with_image__text
+ # Props:
+ # - text_with_image__overline: Short label above the heading.
+ # - text_with_image__heading, text_with_image__heading_level: Title and level.
+ # - text_with_image__text: Formatted body copy.
+ # - text_with_image__ctas: Up to two linked actions.
+ # - text_with_image__media_alignment, text_with_image__focus: Grid placement.
+ # - text_with_image__image__src, text_with_image__image__alt,
+ #   text_with_image__image__decorative: Image source and accessible name.
+ # - text_with_image__image__srcset, text_with_image__image__sizes,
+ #   text_with_image__image__width, text_with_image__image__height:
+ #   Responsive image sources, sizes and intrinsic dimensions.
+ # - text_with_image__image__caption, text_with_image__image__credit:
+ #   Optional notes below the image.
+ # - text_with_image__width, text_with_image__theme,
+ #   text_with_image__theme__variation, text_with_image__bg_color,
+ #   text_with_image__spacing, text_with_image__id,
+ #   text_with_image__container__modifiers: Shared container settings.
+ # - text_with_image__blockname, text_with_image__modifiers,
+ #   text_with_image__additional_classes, text_with_image__attributes:
+ #   BEM classes and attributes for the component wrapper.
  #
- # Available blocks:
- # - text_with_image__image
+ # Slots:
+ # - text_with_image__media_content: Replaces the image with composed media.
  #}
+{% set text_with_image__attributes = text_with_image__attributes|default({}) %}
+{% set extra_classes = text_with_image__attributes.class|default([]) %}
+{% set extra_classes = extra_classes is iterable ? extra_classes : [extra_classes] %}
+{% set extra_classes = extra_classes|merge(text_with_image__additional_classes|default([])) %}
+{% set extra_classes = extra_classes|merge(text_with_image__blockname ? ['text-with-image'] : []) %}
+{% set text_with_image__attributes = text_with_image__attributes|merge({
+  'class': bem('text-with-image', text_with_image__modifiers, text_with_image__blockname, extra_classes),
+  'data-media-alignment': text_with_image__media_alignment == 'right' ? 'right' : 'left',
+  'data-component-focus': text_with_image__focus in ['image', 'text'] ? text_with_image__focus : 'equal',
+}) %}
+{% set text_with_image__heading_level = text_with_image__heading_level in [2, 3, 4, 5, 6, '2', '3', '4', '5', '6'] ? text_with_image__heading_level : 2 %}
 
-{% set text_with_image__base_class = 'text-with-image' %}
+{% set media %}
+  {% block text_with_image__media_content %}
+    {% if text_with_image__media_content is not empty %}
+      {{ text_with_image__media_content }}
+    {% else %}
+      {{ include('@components/image/image.twig', {
+        image__src: text_with_image__image__src,
+        image__alt: text_with_image__image__alt,
+        image__decorative: text_with_image__image__decorative,
+        image__srcset: text_with_image__image__srcset,
+        image__sizes: text_with_image__image__sizes,
+        image__width: text_with_image__image__width,
+        image__height: text_with_image__image__height,
+        image__caption: text_with_image__image__caption,
+        image__credit: text_with_image__image__credit,
+      }, with_context: false) }}
+    {% endif %}
+  {% endblock %}
+{% endset %}
 
-{% set text_with_image__attributes = {
-  'data-image-position': text_with_image__position|default('left'),
-  'data-component-focus': text_with_image__focus|default('equal'),
-  'class': bem(text_with_image__base_class, text_with_image__modifiers, text_with_image__blockname)
-} %}
+{% set actions %}
+  {% for action in text_with_image__ctas|default([])|slice(0, 2) %}
+    {% if action.content|default('')|trim and action.url|default('')|trim %}
+      {{ include('@components/cta/cta.twig', {
+        cta__text: action.content,
+        cta__url: action.url,
+        cta__icon: action.icon,
+        cta__icon_position: action.icon_position,
+        cta__modifiers: loop.first ? ['primary'] : ['secondary'],
+      }, with_context: false) }}
+    {% endif %}
+  {% endfor %}
+{% endset %}
 
-{% if text_with_image__copyright %}
-  {% set text_with_image__copyright_credit = '<p>' ~ text_with_image__copyright ~ '</p>'%}
-{% endif %}
-
-{% set text_content__image = text_with_image__caption ~ text_with_image__copyright_credit %}
-
-{% set text_with_image %}
+{% set content %}
   <div {{ add_attributes(text_with_image__attributes) }}>
-    {# Content #}
-    <div {{ bem('content', [], text_with_image__base_class) }}>
-      {# Heading #}
-      {% if text_with_image__heading %}
-        {{ include('@components/heading/heading.twig', {
-          heading__content: text_with_image__heading,
-          heading__level: '2',
-          heading__blockname: text_with_image__base_class,
-        }, with_context: false) }}
+    <div {{ bem('content', [], 'text-with-image') }}>
+      {% if text_with_image__overline %}
+        <div {{ bem('overline', [], 'text-with-image') }}>{{ text_with_image__overline }}</div>
       {% endif %}
-      {# Text #}
+      {{ include('@components/heading/heading.twig', {
+        heading__content: text_with_image__heading,
+        heading__level: text_with_image__heading_level,
+        heading__blockname: 'text-with-image',
+        heading__modifiers: ['h2'],
+      }, with_context: false) }}
       {{ include('@components/text/_text.twig', {
         text__element: 'div',
         text__content: text_with_image__text,
-        text__blockname: text_with_image__base_class,
+        text__blockname: 'text-with-image',
       }, with_context: false) }}
-      {# optional link #}
-      {% if text_with_image__link__url %}
-        {% include "@components/link/link.twig" with {
-          link__content: text_with_image__link__content,
-          link__url: text_with_image__link__url,
-        } %}
+      {% if actions|trim is not empty %}
+        <div {{ bem('actions', [], 'text-with-image') }}>{{ actions }}</div>
       {% endif %}
     </div>
-    {# Image #}
-    <div {{ bem('media', text_with_image__modifiers, text_with_image__base_class) }}>
-      <div {{ bem('image', text_with_image__modifiers, text_with_image__base_class) }}>
-        {% block text_with_image__image %}
-          {{ include('@components/image/image.twig', {
-            image__alt: '',
-            image__decorative: true,
-            image__sizes: '100vw',
-            image__src: 'https://placehold.co/320x213',
-            image__srcset: 'https://placehold.co/320x213 320w, https://placehold.co/480x320 480w, https://placehold.co/640x427 640w, https://placehold.co/800x533 800w, https://placehold.co/960x640 960w, https://placehold.co/1120x747 1120w, https://placehold.co/1280x853 1280w, https://placehold.co/1440x960 1440w, https://placehold.co/1600x1067 1600w, https://placehold.co/1760x1173 1760w, https://placehold.co/1920x1280 1920w, https://placehold.co/2080x1387 2080w, https://placehold.co/2240x1493 2240w, https://placehold.co/2400x1600 2400w'
-          }, with_context: false) }}
-        {% endblock %}
-      </div>
-
-      {% if text_with_image__show_captions
-        and text_content__image %}
-          {{ include('@components/text/_text.twig', {
-            text__element: 'div',
-            text__content: text_content__image,
-            text__base_class: 'caption-credit-wrapper',
-          }, with_context: false) }}
-      {% endif %}
-    </div>
+    {% if media|trim is not empty %}
+      <div {{ bem('media', [], 'text-with-image') }}>{{ media }}</div>
+    {% endif %}
   </div>
 {% endset %}
 
-{# Render the accordion within a generic container #}
-{% embed "@layout/container/container.twig" with {
-  container__width: 'content',
-  container__alignment: 'center',
-}%}
-	{% block container__content %}
-		{{ text_with_image }}
-	{% endblock %}
+{% embed '@layout/container/container.twig' with {
+  container__width: text_with_image__width,
+  container__theme: text_with_image__theme,
+  container__theme__variation: text_with_image__theme__variation,
+  container__bg_color: text_with_image__bg_color,
+  container__spacing: text_with_image__spacing,
+  container__id: text_with_image__id,
+  container__modifiers: text_with_image__container__modifiers,
+  text_with_image__heading: text_with_image__heading,
+  text_with_image__text: text_with_image__text,
+  content: content,
+} only %}
+  {% block container__content %}{{ content }}{% endblock %}
 {% endembed %}

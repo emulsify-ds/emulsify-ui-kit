@@ -269,4 +269,10 @@ The heading carries the destination. Move secondary destinations, including link
 
 - Rename the `media_box__media` slot to `media_box__media_content`. Use `media_box__image__src` and `media_box__image__alt` for images, or `media_box__video__sources` or `media_box__video__embed_url` with `media_box__video__title` for video. Supply real sources in place of the old demo placeholders. For built-in media, prefer `media_box__image__caption` and `media_box__image__credit` or the corresponding `__video__*` fields. Include attribution in custom slot markup when overriding the media.
 
+### Text with Image
+
+- Rename the `text_with_image__image` slot to `text_with_image__media_content`, or use the `text_with_image__image__*` props. Move image caption and copyright to `text_with_image__image__caption` and `text_with_image__image__credit`. Omit these values to hide them.
+- Replace `text_with_image__position` with `text_with_image__media_alignment: 'left'` or `'right'`. The `data-media-alignment` attribute controls desktop placement and the copy comes first in source and stacked order. Choose a standard container width. Use `text_with_image__focus` to set the relative column widths.
+- Replace `text_with_image__link__content` and `text_with_image__link__url` with an item in `text_with_image__ctas`, using the keys `content` and `url`.
+
 ## Removed

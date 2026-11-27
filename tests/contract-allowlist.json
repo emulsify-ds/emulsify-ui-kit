@@ -13,6 +13,7 @@
     "media-box",
     "teaser",
     "text",
+    "text-with-image",
     "video"
   ],
   "enforceGlobal": false
