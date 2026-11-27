@@ -41,6 +41,7 @@ Update bookmarks, embeds, and other links to renamed Storybook entries.
 | `components-typography--blockquote` | `components-blockquote--bar-left` |
 | `components-typography--code`, `components-typography--preformatted` | `components-code--code` |
 | `components-icons--icons` | `base-icons--library` |
+| `components-typography--tables` | `components-table--table` |
 | `components-typography-list--*` | `components-list--*` |
 
 ## Tokens
@@ -324,5 +325,12 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - Pass Drupal's `message_list` as `status__messages` and any translated `status_headings` as `status__labels`. Use an array of messages for each type. The `status` key maps to success and `danger` maps to error.
 - Pass wrapper attributes as `status__attributes`. The `presentational` prop is removed. Update variant selectors from `.status--{type}` to `[data-status-type='{type}']`.
 - To offer a dismiss button per group, set `status__dismissible: true` and attach the component behavior with Drupal once.
+
+### Table
+
+- Replace the `tables` SDC and `@components/tables/tables.twig` with `table` and `@components/table/table.twig`.
+- Prefix `caption`, `header`, `rows`, `footer`, `empty`, `header_columns`, and `colgroups` with `table__`. Pass HTML attributes as `table__attributes` and use `table__blockname` or `table__additional_classes` in place of `table__base_class`.
+- Use `tag: 'th'` for row headings. The template sets column scope in the header and row scope for other heading cells. Set `scope` explicitly for grouped headers. Use `.table__cell` for cell styling.
+- Attach the Table behavior with Drupal once to enable named keyboard scrolling when the table overflows. Its label defaults to the caption. Set `table__scroll_label` for a distinct name when the table has no caption.
 
 ## Removed

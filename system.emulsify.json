@@ -288,7 +288,7 @@
           "dependency": ["cta", "icon"]
         },
         {
-          "name": "tables",
+          "name": "table",
           "structure": "components",
           "required": true,
           "dependency": []

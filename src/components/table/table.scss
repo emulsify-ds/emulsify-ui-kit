@@ -1,0 +1,57 @@
+@use '../../base' as *;
+
+.table__scroll {
+  @include focus;
+
+  max-inline-size: 100%;
+  min-inline-size: 0;
+  overflow-x: auto;
+  scroll-padding-inline: space(8);
+}
+
+.table,
+.text-field table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  color: var(--clr-body);
+  text-align: start;
+
+  caption {
+    caption-side: bottom;
+    padding-block: space(8);
+    text-align: start;
+  }
+
+  :is(td, th) {
+    padding: space(12);
+    border: var(--bw-sm) solid var(--clr-border);
+    vertical-align: top;
+    text-align: start;
+  }
+
+  th {
+    font-weight: font-weight('primary-bold');
+  }
+
+  thead {
+    background-color: var(
+      --table-header-background,
+      color-mix(in srgb, var(--clr-primary) 12%, var(--clr-background))
+    );
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: var(
+      --table-stripe-background,
+      color-mix(in srgb, var(--clr-primary) 6%, var(--clr-background))
+    );
+  }
+
+  tfoot {
+    border-block-start: space(2) solid var(--clr-border);
+  }
+
+  .table__cell--empty {
+    text-align: center;
+  }
+}
