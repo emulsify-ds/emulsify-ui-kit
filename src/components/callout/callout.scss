@@ -1,0 +1,43 @@
+@use '../../base' as *;
+
+.callout {
+  display: flex;
+  flex-direction: column;
+  gap: space(24);
+  padding: space(24);
+  border-radius: var(--callout-radius, var(--r-md));
+  background: var(
+    --callout-background,
+    color-mix(in srgb, var(--clr-link) 5%, var(--clr-background))
+  );
+  color: var(--clr-body);
+
+  @include breakpoint('md') {
+    flex-flow: row wrap;
+    align-items: center;
+    padding: space(40);
+  }
+}
+
+.callout__copy {
+  display: grid;
+  flex: 1 1 55%;
+  gap: space(8);
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+
+.callout__overline {
+  @include overline;
+}
+
+.callout__overline,
+.callout__heading {
+  margin: 0;
+}
+
+.callout__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: space(12);
+}

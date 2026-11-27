@@ -1,6 +1,7 @@
 {
   "components": [
     "blockquote",
+    "callout",
     "code",
     "cta",
     "heading",
@@ -10,7 +11,10 @@
     "layout/grid",
     "layout/placeholder",
     "list",
+    "media-box",
+    "teaser",
     "text",
+    "text-with-image",
     "video"
   ],
   "enforceGlobal": false

@@ -1,0 +1,227 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Teaser
+description: A compact summary that links to one destination from its heading.
+group: Components
+status: stable
+props:
+  type: object
+  required: [teaser__heading]
+  properties:
+    teaser__heading:
+      type: string
+      title: Heading
+      description: Short, descriptive heading and link label.
+      minLength: 1
+      examples: ['Explore the workshop program']
+    teaser__heading_level:
+      type: [integer, 'null']
+      title: Heading level
+      description: Heading level that fits the surrounding content.
+      enum: [2, 3, 4, 5, 6, null]
+      default: 3
+    teaser__url:
+      type: [string, 'null']
+      title: Destination
+      description: Location linked from the heading. The first CTA URL can supply this when it is omitted.
+      default: null
+      examples: ['#workshops']
+    teaser__overline:
+      type: [string, 'null']
+      title: Overline
+      description: Short category or label above the heading.
+      default: null
+      examples: ['Learning']
+    teaser__subheading:
+      type: [string, 'null']
+      title: Subheading
+      description: Supporting text immediately below the heading.
+      default: null
+    teaser__content:
+      type: [string, 'null']
+      title: Summary
+      description: Plain-text summary of the destination.
+      default: null
+      examples: ['Find hands-on sessions for every experience level.']
+    teaser__meta:
+      type: [array, 'null']
+      title: Metadata
+      description: Pairs of descriptive labels and values.
+      default: []
+      items:
+        type: object
+        required: [label, value]
+        properties:
+          label:
+            type: string
+          value:
+            type: string
+      examples:
+        - - label: 'Format'
+            value: 'In person'
+    teaser__ctas:
+      type: [array, 'null']
+      title: CTA labels
+      description: Up to two optional visual labels for the heading destination.
+      default: []
+      maxItems: 2
+      items:
+        type: object
+        required: [content]
+        properties:
+          content:
+            type: string
+          url:
+            type: [string, 'null']
+            description: The heading destination, or omit it to inherit the heading URL.
+          icon:
+            type: [string, 'null']
+          icon_position:
+            type: [string, 'null']
+            enum: [left, right, null]
+      examples:
+        - - content: 'View workshops'
+            icon: 'arrow-right'
+    teaser__element:
+      type: [string, 'null']
+      title: Wrapper element
+      description: Use an article for a standalone summary or a div for generic grouping.
+      enum: [article, div, null]
+      default: article
+    teaser__id:
+      type: [string, 'null']
+      title: Teaser ID
+      description: Unique suffix used for the teaser wrapper ID.
+      default: null
+    teaser__layout:
+      type: [string, 'null']
+      title: Layout
+      description: Arrange media and text vertically or alongside one another when space permits.
+      enum: [stacked, inline, null]
+      default: stacked
+    teaser__style:
+      type: [string, 'null']
+      title: Style
+      description: Visual treatment for the teaser and its media.
+      enum: [minimal, framed, card, postcard, spotlight, null]
+      default: minimal
+    teaser__show_media:
+      type: [boolean, 'null']
+      title: Show media
+      description: Render the image or media slot when available.
+      default: true
+    teaser__media__shape:
+      type: [string, 'null']
+      title: Media shape
+      description: Crop applied to the image.
+      enum: [landscape, portrait, square, circle, null]
+      default: landscape
+    teaser__media__alignment:
+      type: [string, 'null']
+      title: Media alignment
+      description: Side occupied by media in the inline layout.
+      enum: [left, right, null]
+      default: right
+    teaser__image__src:
+      type: [string, 'null']
+      title: Image source
+      description: URL of the fallback image.
+      default: null
+      examples: [assets/images/example/basic-camera-image.png]
+    teaser__image__alt:
+      type: [string, 'null']
+      title: Alternative text
+      description: Description of meaningful media. Use an empty string for a decorative image.
+      default: null
+      examples: ['A film camera on a tripod']
+    teaser__image__decorative:
+      type: [boolean, 'null']
+      title: Decorative image
+      description: Use empty alternative text for an image that adds no information.
+      default: false
+    teaser__image__srcset:
+      type: [string, 'null']
+      title: Image source set
+      description: Comma-separated image candidates and their widths or pixel densities.
+      default: null
+    teaser__image__sizes:
+      type: [string, 'null']
+      title: Image sizes
+      description: Browser slot sizes for width-based responsive images.
+      default: null
+    teaser__image__sources:
+      type: [array, 'null']
+      title: Picture sources
+      description: Ordered art direction or format alternatives for the main image.
+      default: null
+      items:
+        type: object
+        required: [srcset]
+        properties:
+          srcset:
+            type: string
+          sizes:
+            type: [string, 'null']
+          media:
+            type: [string, 'null']
+          type:
+            type: [string, 'null']
+    teaser__image__width:
+      type: [integer, 'null']
+      title: Image width
+      description: Intrinsic width of the fallback image in pixels.
+      minimum: 1
+      default: null
+    teaser__image__height:
+      type: [integer, 'null']
+      title: Image height
+      description: Intrinsic height of the fallback image in pixels.
+      minimum: 1
+      default: null
+    teaser__image__loading:
+      type: [string, 'null']
+      title: Image loading
+      description: Use eager loading for an image above the fold.
+      enum: [lazy, eager, null]
+      default: lazy
+    teaser__image__title:
+      type: [string, 'null']
+      title: Image title
+      description: Optional supplementary title for the image.
+      default: null
+    teaser__image__caption:
+      type: [string, 'null']
+      title: Image caption
+      description: Visible caption below the image.
+      default: null
+    teaser__image__credit:
+      type: [string, 'null']
+      title: Image credit
+      description: Visible attribution below the image.
+      default: null
+    teaser__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Parent block for the teaser BEM class.
+    teaser__modifiers:
+      type: [array, 'null']
+      title: BEM modifiers
+      description: Optional modifier classes for the wrapper.
+      items:
+        type: string
+    teaser__additional_classes:
+      type: [array, 'null']
+      title: Additional classes
+      description: Extra classes for the wrapper.
+      items:
+        type: string
+    teaser__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Additional wrapper attributes.
+slots:
+  teaser__media_content:
+    title: Media
+    description: Unlinked media that replaces the default image.
+  teaser__summary_content:
+    title: Summary
+    description: Formatted content without additional links that replaces the default summary.

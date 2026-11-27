@@ -29,7 +29,9 @@ Update bookmarks, embeds, and other links to renamed Storybook entries.
 | `base-border-radius--border-radius`, `base-borders--borders` | `base-radius--radius` |
 | `base-sizes--sizes` | `base-spacing--spacing` |
 | `component-search--*` | `components-search--*` |
-| `components-cards--*` | `components-card--*` |
+| `components-cards--card-vertical`, `components-card--card-vertical` | `components-teaser--card` |
+| `components-cards--card-horizontal`, `components-card--card-horizontal` | `components-teaser--inline` |
+| `components-call-to-action--call-to-action` | `components-callout--callout` |
 | `components-headers-page-title--*` | `components-page-title--*` |
 | `components-media-*` | `components-*` |
 | `components-button--*` | `deprecated-button--*` |
@@ -246,5 +248,44 @@ Use `heading__level` for the document outline and a modifier such as `h3` or `di
 | `video-html5.yml`, `video-embed.yml`, `playback.js`, `video-embed.js` | Use `video.component.yml` and `video.js`. |
 
 Supply `image__alt` for every image. An empty value requires `image__decorative: true`. Use `image__srcset` and `image__sizes` for responsive candidates. Give videos a descriptive title and supply caption tracks for meaningful audio.
+
+### Card → Teaser
+
+Replace the `card` SDC or `@components/card/card.twig` include with `teaser` or `@components/teaser/teaser.twig`. Set `teaser__style: 'card'`.
+
+| Card input | Teaser input |
+| --- | --- |
+| `card__heading`, `card__subheading` | `teaser__heading`, `teaser__subheading`. Set `teaser__heading_level` to match the page outline. |
+| `card__body` | `teaser__content` for plain text, or the `teaser__summary_content` slot for formatted copy. |
+| `card__heading__link`, `card__link__url` | `teaser__url`. Use the heading destination when both were set. |
+| `card__link__text` | `teaser__ctas: [{ content: 'Read more' }]` for a visible cue to the heading link. |
+| `card__image__src`, `card__image__alt`, responsive candidates | Use the matching `teaser__image__*` props. For decorative media, use `teaser__image__decorative: true` and an empty alt. |
+| `card__img` block | `teaser__media_content` slot. |
+| `horizontal` modifier | `teaser__layout: 'inline'`, with `teaser__media__alignment` to place the media. |
+| `card__blockname`, `card__modifiers`, `card__extra_classes` | `teaser__blockname`, `teaser__modifiers`, `teaser__additional_classes`. |
+
+The heading carries the destination. Move secondary destinations, including links from the old Card subheading, outside the teaser. Omit the media source or set `teaser__show_media: false` to hide the media. Replace custom Card element classes with Teaser selectors and its local theme properties.
+
+### Media Box
+
+- Rename the `media_box__media` slot to `media_box__media_content`. Use `media_box__image__src` and `media_box__image__alt` for images, or `media_box__video__sources` or `media_box__video__embed_url` with `media_box__video__title` for video. Supply real sources in place of the old demo placeholders. For built-in media, prefer `media_box__image__caption` and `media_box__image__credit` or the corresponding `__video__*` fields. Include attribution in custom slot markup when overriding the media.
+
+### Text with Image
+
+- Rename the `text_with_image__image` slot to `text_with_image__media_content`, or use the `text_with_image__image__*` props. Move image caption and copyright to `text_with_image__image__caption` and `text_with_image__image__credit`. Omit these values to hide them.
+- Replace `text_with_image__position` with `text_with_image__media_alignment: 'left'` or `'right'`. The `data-media-alignment` attribute controls desktop placement and the copy comes first in source and stacked order. Choose a standard container width. Use `text_with_image__focus` to set the relative column widths.
+- Replace `text_with_image__link__content` and `text_with_image__link__url` with an item in `text_with_image__ctas`, using the keys `content` and `url`.
+
+### Call to Action → Callout
+
+| Call to Action input | Callout input |
+| --- | --- |
+| `call-to-action` SDC, `@components/call-to-action/call-to-action.twig` | `callout` SDC, `@components/callout/callout.twig` |
+| `call_to_action__heading`, `call_to_action__overline`, `call_to_action__text` | Match the suffix under the `callout__` prefix. Set `callout__heading_level` to match the page outline. |
+| `call_to_action__button__text`, `call_to_action__button__url` | `callout__ctas[0].content` and `callout__ctas[0].url` |
+| `call_to_action__theme: 'white-bg'` or `'light-blue-bg'` | Use `callout__theme: 'default'` and `callout__theme__variation`, with `--callout-background` scoped to the panel for a custom fill. |
+| `call_to_action__blockname`, `call_to_action__modifiers` | `callout__blockname`, `callout__modifiers` |
+
+Callout forwards the shared container props and supports two CTAs. Its styles use the `.callout` BEM block. In Tokens Studio, sync the renamed `components/callout` token set (formerly `components/cta`).
 
 ## Removed

@@ -205,10 +205,9 @@
           "dependency": ["icon"]
         },
         {
-          "name": "card",
+          "name": "callout",
           "structure": "components",
-          "required": true,
-          "dependency": ["link", "image", "heading", "text"]
+          "dependency": ["cta", "heading", "text"]
         },
         {
           "name": "code",
@@ -290,6 +289,12 @@
           "dependency": ["button"]
         },
         {
+          "name": "teaser",
+          "structure": "components",
+          "required": true,
+          "dependency": ["cta", "heading", "image", "text"]
+        },
+        {
           "name": "text",
           "structure": "components",
           "required": true,
@@ -298,7 +303,7 @@
         {
           "name": "text-with-image",
           "structure": "components",
-          "dependency": ["image", "link", "heading", "text"]
+          "dependency": ["cta", "heading", "image", "text"]
         },
         {
           "name": "video",
