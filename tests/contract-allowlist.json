@@ -10,6 +10,7 @@
     "layout/grid",
     "layout/placeholder",
     "list",
+    "teaser",
     "text",
     "video"
   ],

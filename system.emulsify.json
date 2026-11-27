@@ -290,6 +290,12 @@
           "dependency": ["button"]
         },
         {
+          "name": "teaser",
+          "structure": "components",
+          "required": true,
+          "dependency": ["cta", "heading", "image", "text"]
+        },
+        {
           "name": "text",
           "structure": "components",
           "required": true,

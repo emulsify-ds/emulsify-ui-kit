@@ -1,0 +1,26 @@
+{# A group of teasers composed in a grid inside a page section. #}
+{% set grid %}
+  {% embed '@layout/grid/grid.twig' with {
+    grid__columns: columns,
+    grid__spacing: 'one',
+    teasers: teasers,
+  } only %}
+    {% block grid__content %}
+      {% for teaser in teasers %}
+        {{ include('@components/teaser/teaser.twig', teaser, with_context: false) }}
+      {% endfor %}
+    {% endblock %}
+  {% endembed %}
+{% endset %}
+
+{% embed '@layout/container/container.twig' with {
+  container__element: 'section',
+  container__heading: heading,
+  container__width: width,
+  container__theme: theme,
+  container__theme__variation: themeVariation,
+  container__bg_color: true,
+  grid: grid,
+} only %}
+  {% block container__content %}{{ grid }}{% endblock %}
+{% endembed %}
