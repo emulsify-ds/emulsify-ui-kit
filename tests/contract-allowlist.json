@@ -23,6 +23,7 @@
     "navigation/breadcrumbs",
     "navigation/main",
     "navigation/pager",
+    "navigation/social",
     "offcanvas",
     "stats-group",
     "status",

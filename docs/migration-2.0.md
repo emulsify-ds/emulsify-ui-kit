@@ -396,4 +396,9 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - Pass Drupal pager data as `pager__items`, `pager__current`, and `pager__ellipses`. The Twig include still accepts `items`, `current`, and `ellipses`. Set `pager__label` to distinguish multiple pagination landmarks on a page.
 - The current page renders as text with `aria-current="page"`. The directional controls have visually hidden names, which can be customized via the item's `label`. Import the Storybook examples from `pager.component.yml` in place of the four `pager-*.yml` files.
 
+### Social Navigation
+
+- Pass `social__items` with a title and URL per link. The Twig include still accepts `items`. Pass modifiers with `social__modifiers`. Override `social__items_content` with complete list items in place of extending `_social-list.twig` or overriding `menu_list__content`.
+- Icons are decorative. The item title names the link and remains visible when no icon is available. Set `social__label` to distinguish separate landmarks and scope the surrounding theme for contrast.
+
 ## Removed

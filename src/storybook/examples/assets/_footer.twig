@@ -1,15 +1,11 @@
 <footer class="footer">
 	<div class="footer-content">
 		{% include "@examples/examples/assets/_logo.twig" %}
-		{% embed "@components/navigation/social/social.twig" with {
-			menu_modifiers: ['footer']	
-		}%}
-			{% block list__content %}
-				{% for item in data.social_menu_items %}
-					{% include "@components/navigation/social/_social-item.twig" %}
-				{% endfor %}
-			{% endblock %}
-		{% endembed %}
+		{{ include('@components/navigation/social/social.twig', {
+      social__items: social_menu_items|default([]),
+      social__modifiers: ['footer'],
+      social__attributes: {'data-component-theme': 'default dark'},
+    }, with_context: false) }}
 	</div>
 	<nav>
 		<h3 class="footer-h3">QUICK LINKS & RESOURCES</h3>

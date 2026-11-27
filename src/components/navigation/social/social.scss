@@ -1,35 +1,36 @@
-@use '../../../base/utility/utility' as *;
-@use '../../link/link.scss' as *;
+@use '../../../base' as *;
 
 .social-nav__menu-list {
-  @include list-reset;
-
-  & {
-    display: flex;
-    flex-flow: row nowrap;
-    gap: var(--spacing-md);
-  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: space(8);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .social-nav__link {
-  @include link;
+  @include focus;
 
-  & {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    gap: var(--spacing-sm);
-    text-decoration: none;
-  }
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: space(40);
+  min-block-size: space(40);
+  max-inline-size: 100%;
+  padding: space(8);
+  border-radius: var(--r-sm);
+  color: var(--clr-link);
 
-  &:focus,
   &:hover {
-    text-decoration: underline;
+    color: var(--clr-link-hover);
+    background: color-mix(in srgb, var(--clr-link) 12%, var(--clr-background));
   }
 }
 
 .social-nav__icon {
-  height: var(--size-xl);
-  width: var(--size-xl);
-  fill: currentColor;
+  display: block;
+  inline-size: space(24);
+  block-size: space(24);
+  fill: currentcolor;
 }
