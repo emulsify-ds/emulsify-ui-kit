@@ -1,107 +1,140 @@
-$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
-
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: Link Group
+description: A list of related links with optional introductory content and a named navigation landmark.
 group: Components
 status: stable
-description: A list of related links shown as buttons or boxes. The button display only looks like a button; every item stays a link.
 props:
   type: object
-  required:
-    - link_group__items
   properties:
     link_group__heading:
-      type: string
+      type: [string, object, 'null']
       title: Heading
-      description: Optional section heading.
-      data: 'Quick links'
+      description: Optional section heading text or Drupal render array.
+      examples: ['Plan your library visit']
     link_group__heading_level:
-      type: integer
+      type: [integer, 'null']
       title: Heading level
-      enum: [2, 3, 4, 5, 6]
-      data: 2
+      description: Semantic level of the heading in the page outline.
+      enum: [2, 3, 4, 5, 6, null]
+      default: 2
     link_group__text:
-      type: string
+      type: [string, object, 'null']
       title: Intro text
-      description: Optional introductory text.
-      data: 'Find the resources you need to get started.'
-    link_group__display:
-      type: string
-      title: Display
-      enum:
-        - button
-        - boxes
-      data: button
-    link_group__width:
-      type: string
-      title: Width
-      enum:
-        - narrow
-        - content
-        - wide
-        - full
-      data: content
-    link_group__alignment:
-      type: string
-      title: Alignment
-      enum:
-        - left
-        - center
-        - right
-      data: left
-    link_group__bg_color:
-      type: boolean
-      title: Background color
-      description: Adds the container background; with the button display it floats the links in a white box.
-      data: true
+      description: Trusted rich text or Drupal render array for the introduction.
+      examples:
+        ['Check opening hours, find a room, or browse upcoming workshops.']
     link_group__items:
-      type: array
+      type: [array, 'null']
       title: Items
+      description: Links to related destinations.
+      default: []
       items:
         type: object
-        required:
-          - label
-          - url
+        required: [label, url]
         properties:
           label:
             type: string
             title: Label
+            description: Visible link text describing the destination.
           url:
             type: string
             title: URL
+            description: Link destination.
           icon:
-            type: string
+            type: [string, 'null']
             title: Icon
-            description: UI kit icon name. Decorative unless icon_label is set.
+            description: Optional UI kit icon for the button display.
           icon_label:
-            type: string
+            type: [string, 'null']
             title: Icon label
-            description: Accessible text for a meaningful icon.
-      data:
-        - label: 'Admissions'
-          url: '#'
-          icon: 'circle-info'
-        - label: 'Featured programs'
-          url: '#'
-          icon: 'star-solid'
-        - label: 'Virtual tour'
-          url: '#'
-          icon: 'play'
-        - label: 'Campus alerts'
-          url: '#'
-          icon: 'triangle-exclamation'
-        - label: 'Financial aid'
-          url: '#'
-        - label: 'Student life'
-          url: '#'
-          icon: 'instagram'
-        - label: 'Library'
-          url: '#'
-        - label: 'Follow us'
-          url: '#'
-          icon: 'linkedin'
-          icon_label: 'LinkedIn:'
-
+            description: Additional accessible text appended to the visible button label when the icon adds meaning.
+      examples:
+        - - label: Opening hours
+            url: /library/hours
+            icon: circle-info
+          - label: Reserve a room
+            url: /library/rooms
+          - label: Upcoming workshops
+            url: /library/workshops
+            icon: arrow-right
+    link_group__display:
+      type: [string, 'null']
+      title: Display
+      description: Show the links as button-styled CTAs or as boxes.
+      enum: [button, boxes, null]
+      default: button
+    link_group__nav_label:
+      type: [string, 'null']
+      title: Navigation label
+      description: A distinct label that turns the list wrapper into a navigation landmark.
+      default: null
+    link_group__width:
+      type: [string, 'null']
+      title: Width
+      description: Maximum width of the layout container.
+      enum: [narrow, content, wide, full, null]
+      default: content
+    link_group__alignment:
+      type: [string, 'null']
+      title: Alignment
+      description: Horizontal placement of the inner container.
+      enum: [left, center, right, null]
+      default: left
+    link_group__theme:
+      type: [string, 'null']
+      title: Theme
+      description: Theme name. Omit to inherit the surrounding theme.
+      enum: [default, null]
+      default: null
+    link_group__theme__variation:
+      type: [string, 'null']
+      title: Theme variation
+      description: Theme variation controlling the foreground and background roles.
+      enum: [light, dark, null]
+      default: null
+    link_group__bg_color:
+      type: [boolean, 'null']
+      title: Background
+      description: Enable the theme background for the links.
+      default: false
+    link_group__spacing:
+      type: [string, 'null']
+      title: Section spacing
+      description: Vertical spacing from the shared container scale.
+      default: one
+    link_group__id:
+      type: [string, integer, 'null']
+      title: Section anchor
+      description: Stable unique suffix for the section ID.
+      default: null
+    link_group__container__modifiers:
+      type: [array, 'null']
+      title: Container modifiers
+      description: BEM modifier names for the shared container.
+      items:
+        type: string
+      default: []
+    link_group__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Optional parent BEM block name.
+    link_group__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers for the list wrapper.
+      items:
+        type: string
+    link_group__additional_classes:
+      type: [array, 'null']
+      title: Classes
+      description: Additional classes for the list wrapper.
+      items:
+        type: string
+    link_group__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Additional HTML attributes for the list wrapper.
 slots:
-  link_group__items:
-    title: Items
-    description: Replace the default list for advanced item rendering.
+  link_group__items_content:
+    title: List items
+    description: Replace the generated items with complete list item markup.

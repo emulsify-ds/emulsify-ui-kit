@@ -225,6 +225,11 @@
           "dependency": ["icon"]
         },
         {
+          "name": "embed",
+          "structure": "components",
+          "dependency": []
+        },
+        {
           "name": "forms",
           "structure": "components",
           "required": true,
@@ -255,6 +260,11 @@
           "dependency": []
         },
         {
+          "name": "link-group",
+          "structure": "components",
+          "dependency": ["cta"]
+        },
+        {
           "name": "list",
           "structure": "components",
           "required": true,
@@ -263,7 +273,7 @@
         {
           "name": "logo",
           "structure": "components",
-          "dependency": ["link", "image"]
+          "dependency": ["image"]
         },
         {
           "name": "media-box",
@@ -288,7 +298,7 @@
           "dependency": ["cta", "icon"]
         },
         {
-          "name": "tables",
+          "name": "table",
           "structure": "components",
           "required": true,
           "dependency": []

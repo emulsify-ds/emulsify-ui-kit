@@ -1,0 +1,60 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Logo
+description: A logo image with a text alternative and an optional destination.
+group: Components
+status: stable
+props:
+  type: object
+  required: [logo__src, logo__alt]
+  properties:
+    logo__src:
+      type: string
+      title: Logo source
+      description: Public image URL for the logo.
+      format: uri-reference
+      pattern: '\S'
+      examples: [assets/images/logo-text.svg]
+    logo__alt:
+      type: string
+      title: Alternative text
+      description: Brand name for a static logo or destination name for a linked logo.
+      pattern: '\S'
+      examples: ['Emulsify UI Kit']
+    logo__url:
+      type: [string, 'null']
+      title: Destination
+      description: URL of the page the logo links to, when present.
+      format: uri-reference
+      default: null
+    logo__width:
+      type: [integer, 'null']
+      title: Width
+      description: Intrinsic image width in pixels.
+      minimum: 1
+      default: null
+    logo__height:
+      type: [integer, 'null']
+      title: Height
+      description: Intrinsic image height in pixels.
+      minimum: 1
+      default: null
+    logo__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Optional parent BEM block name.
+    logo__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers for the logo wrapper.
+      items:
+        type: string
+    logo__additional_classes:
+      type: [array, 'null']
+      title: Classes
+      description: Additional classes for the logo wrapper.
+      items:
+        type: string
+    logo__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Attributes for the logo wrapper.

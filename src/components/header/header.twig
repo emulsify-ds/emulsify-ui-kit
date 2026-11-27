@@ -19,9 +19,13 @@
   {# Branding #}
   <div {{ bem('branding', [], header__base_class) }}>
     {% block header__branding %}
-      {% include "@components/logo/logo.twig" with {
-        image_src: '/assets/images/logo-text.svg',
-      } %}
+      {{ include('@components/logo/logo.twig', {
+        logo__src: '/assets/images/logo-text.svg',
+        logo__alt: 'Emulsify UI Kit home'|t,
+        logo__url: '/',
+        logo__width: 175,
+        logo__height: 60,
+      }, with_context: false) }}
     {% endblock %}
   </div>
   {# Main navigation #}

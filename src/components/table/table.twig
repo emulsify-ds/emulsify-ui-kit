@@ -1,0 +1,70 @@
+{#
+ # Data: table__caption, table__header, table__rows, table__footer,
+ # table__colgroups, table__empty, table__header_columns.
+ # Scroll region: table__scroll_label.
+ # Table element: table__blockname, table__modifiers,
+ # table__additional_classes, table__attributes.
+ #}
+{% set table_attributes = table__attributes|default({}) %}
+{% set table_classes = table_attributes.class|default([]) %}
+{% set table_classes = table_classes is iterable ? table_classes : [table_classes] %}
+{% set table_classes = table_classes|merge(table__additional_classes|default([]))|merge(table__blockname ? ['table'] : []) %}
+{% set table_attributes = table_attributes|merge({
+  class: bem('table', table__modifiers, table__blockname, table_classes),
+}) %}
+{% set scroll_label = table__scroll_label|default('')|trim ?: table__caption|default('')|striptags|trim ?: 'Scrollable table'|t %}
+
+{% set header_rows = table__header|default([]) %}
+{% set footer_rows = table__footer|default([]) %}
+{% if header_rows and (header_rows|first).cells is not defined %}
+  {% set header_rows = [{ cells: header_rows }] %}
+{% endif %}
+{% if footer_rows and (footer_rows|first).cells is not defined %}
+  {% set footer_rows = [{ cells: footer_rows }] %}
+{% endif %}
+{% set body_rows = table__rows|default([]) %}
+{% if body_rows is empty and table__empty is not empty %}
+  {% set column_count = 0 %}
+  {% for cell in (header_rows|first).cells|default([]) %}
+    {% set column_count = column_count + cell.colspan|default(cell.attributes.colspan|default(1)) %}
+  {% endfor %}
+  {% set body_rows = [{ cells: [{
+    content: table__empty,
+    colspan: table__header_columns|default(column_count ?: 1),
+    attributes: { class: ['table__cell--empty'] },
+  }] }] %}
+{% endif %}
+
+<div {{ add_attributes({
+  class: bem('scroll', [], 'table'),
+  'data-table-scroll-label': scroll_label,
+}) }}>
+  <table {{ add_attributes(table_attributes) }}>
+    {% if table__caption|default('')|trim %}
+      <caption>{{ table__caption|e('html', null, true) }}</caption>
+    {% endif %}
+    {% for group in table__colgroups|default([]) %}
+      <colgroup {{ add_attributes(group.attributes|default({})) }}>
+        {% for column in group.cols|default([]) %}
+          <col {{ add_attributes(column.attributes|default({})) }}>
+        {% endfor %}
+      </colgroup>
+    {% endfor %}
+    {% for section, rows in { thead: header_rows, tbody: body_rows, tfoot: footer_rows } %}
+      {% if rows %}
+        <{{ section }}>
+          {% for row in rows %}
+            <tr {{ add_attributes(row.attributes|default({})) }}>
+              {% for cell in row.cells|default([]) %}
+                {{ include('@components/table/_table-cell.twig', {
+                  table_cell: cell,
+                  default_scope: section == 'thead' ? 'col' : 'row',
+                }, with_context: false) }}
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </{{ section }}>
+      {% endif %}
+    {% endfor %}
+  </table>
+</div>

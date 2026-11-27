@@ -41,6 +41,7 @@ Update bookmarks, embeds, and other links to renamed Storybook entries.
 | `components-typography--blockquote` | `components-blockquote--bar-left` |
 | `components-typography--code`, `components-typography--preformatted` | `components-code--code` |
 | `components-icons--icons` | `base-icons--library` |
+| `components-typography--tables` | `components-table--table` |
 | `components-typography-list--*` | `components-list--*` |
 
 ## Tokens
@@ -324,5 +325,35 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - Pass Drupal's `message_list` as `status__messages` and any translated `status_headings` as `status__labels`. Use an array of messages for each type. The `status` key maps to success and `danger` maps to error.
 - Pass wrapper attributes as `status__attributes`. The `presentational` prop is removed. Update variant selectors from `.status--{type}` to `[data-status-type='{type}']`.
 - To offer a dismiss button per group, set `status__dismissible: true` and attach the component behavior with Drupal once.
+
+### Table
+
+- Replace the `tables` SDC and `@components/tables/tables.twig` with `table` and `@components/table/table.twig`.
+- Prefix `caption`, `header`, `rows`, `footer`, `empty`, `header_columns`, and `colgroups` with `table__`. Pass HTML attributes as `table__attributes` and use `table__blockname` or `table__additional_classes` in place of `table__base_class`.
+- Use `tag: 'th'` for row headings. The template sets column scope in the header and row scope for other heading cells. Set `scope` explicitly for grouped headers. Use `.table__cell` for cell styling.
+- Attach the Table behavior with Drupal once to enable named keyboard scrolling when the table overflows. Its label defaults to the caption. Set `table__scroll_label` for a distinct name when the table has no caption.
+
+### Embed
+
+- Replace the `embed_content` prop with `embed__iframe` for trusted markup. Rename the `embed_content` slot to `embed__content`. Every iframe needs a descriptive, nonempty `title`; markup containing untitled iframes is omitted.
+- Use `embed__src` and `embed__title` to generate an iframe from a URL. Use `embed__container__modifiers` for Container modifiers and the shared `embed__blockname` or `embed__additional_classes` in place of `embed__base_class`.
+- Pass `embed__heading_level` as an integer from 2 to 6. Custom aspect ratios take a positive number or two positive numbers separated by a slash, such as `21 / 9`.
+
+### Audio Player
+
+- Rename `audio_content` to `audio_player__sources`. Pass media URLs or `{ src, type? }` objects in playback preference order.
+- Replace `preload`, `loop`, `muted`, and `no_download` with their `audio_player__` equivalents. Pass `additional_attributes` as `audio_player__attributes`. Remove `autoplay`; playback starts with the listener.
+- Add `audio_player__transcript_url` and an optional `audio_player__transcript_label` to point to the transcript.
+
+### Logo
+
+- Pass `logo__src` and `logo__alt` in place of `image_src` and `image_alt`. Both are required, including in Header branding overrides. Use the shared block name or class props in place of `logo__base_class`.
+- Supply `logo__url: '/'` to keep the former default home link. Omit the URL for a static logo. Logo renders its image directly through Image, and the image alt names the link when present.
+
+### Link Group
+
+- Rename the `link_group__items` slot to `link_group__items_content` and pass complete list items. The `link_group__items` prop remains available and becomes optional.
+- Both display variants use CTA anchors. Migrate custom button and link styling to CTA classes. The button variant with a background now uses the shared contained style.
+- Set `link_group__nav_label` when the group should be a named navigation landmark.
 
 ## Removed

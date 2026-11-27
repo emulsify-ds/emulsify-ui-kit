@@ -1,43 +1,45 @@
 import { renderTwig } from '@emulsify/core/storybook';
+import { argsFromSchema } from '../../util/argsFromSchema.js';
+import {
+  createContainerThemeControls,
+  createContainerWidthControls,
+} from '../../util/storybookContainerControls.js';
+import schema from './link-group.component.yml';
+import docs from './link-group.docs.js';
+import template from './link-group.twig';
 
-import linkGroupTwig from './link-group.twig';
-import { mapDataToTwig } from '../../util/dataTransformers.js';
+const widthControls = createContainerWidthControls();
+const themeControls = createContainerThemeControls();
 
-import { props } from './link-group.component.yml';
-
-/**
- * Storybook Definition.
- */
 export default {
   title: 'Components/Link Group',
-  render: renderTwig(linkGroupTwig),
-  argTypes: {
-    link_group__display: {
-      name: 'Display',
-      control: { type: 'select' },
-      options: props.properties.link_group__display.enum,
-    },
-    link_group__width: {
-      name: 'Width',
-      control: { type: 'select' },
-      options: props.properties.link_group__width.enum,
-    },
-    link_group__alignment: {
-      name: 'Alignment',
-      control: { type: 'select' },
-      options: props.properties.link_group__alignment.enum,
-    },
-    link_group__heading_level: {
-      name: 'Heading level',
-      control: { type: 'select' },
-      options: props.properties.link_group__heading_level.enum,
-    },
-    link_group__heading: { name: 'Heading', type: 'string' },
-    link_group__text: { name: 'Intro text', type: 'string' },
-    link_group__bg_color: { name: 'Background color', type: 'boolean' },
-    link_group__items: { table: { disable: true } },
+  tags: ['autodocs'],
+  parameters: { docs },
+  render: renderTwig(template),
+  args: {
+    ...argsFromSchema(schema.props),
+    link_group__width: widthControls.args.width,
+    link_group__theme: themeControls.args.theme,
+    link_group__theme__variation: themeControls.args.themeVariation,
+    link_group__bg_color: true,
   },
-  args: mapDataToTwig(props.properties),
+  argTypes: {
+    link_group__width: widthControls.argTypes.width,
+    link_group__theme: themeControls.argTypes.theme,
+    link_group__theme__variation: themeControls.argTypes.themeVariation,
+    link_group__display: {
+      control: 'select',
+      options: ['button', 'boxes'],
+    },
+  },
 };
 
 export const LinkGroup = {};
+
+export const Boxes = {
+  args: {
+    link_group__display: 'boxes',
+    link_group__width: 'wide',
+    link_group__nav_label: 'Library resources',
+  },
+};
