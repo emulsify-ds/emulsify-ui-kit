@@ -33,7 +33,7 @@ Coordinate the 16 refinement steps for the single Emulsify UI Kit 2.0.0 release.
 - [x] 9 Wave B1: teaser, card, media-box, text-with-image, callout
 - [x] 10 Wave B2: banner, announcement, stats-group, tags, status
 - [x] 11 Wave B3: table, embed, audio-player, logo, link-group
-- [ ] 12 Wave C1: accordion, tabs, offcanvas
+- [x] 12 Wave C1: accordion, tabs, offcanvas
 - [ ] 13 Wave C2: navigation, search, forms
 - [ ] 14 Wave D: hero, header, page-title
 - [ ] 15 Cleanup
@@ -145,3 +145,10 @@ The report also found 30 global violations. The `blockquote.component.yml` basen
 - Use `embed__src` with `embed__title` for generated iframes. Trusted markup belongs in `embed__iframe` or `embed__content` and needs a title on every frame. Audio Player uses native playback controls and accepts a transcript link.
 - Logo requires an explicit source and text alternative. Header uses the updated call. Link Group uses CTA anchors in a list, with a named navigation landmark when requested.
 - The [Wave B3 migration entries](../migration-2.0.md#table) cover the new paths, prop names, and slot overrides.
+
+### Step 12 Wave C1 interactive patterns
+
+- Accordion and Tabs expose their content in server markup. Keep the Drupal behavior scoped to each instance and use caller-supplied IDs for relationships and fragments.
+- Offcanvas uses native modal behavior for the modal type and a nonmodal dialog for panes. Use the separate body, footer, and trigger slots when composing a dialog. Keep trigger focus restoration and Escape handling when integrating with navigation.
+- The Wave C1 accessibility audit ran the repository rules against all six stories. Browser checks also covered the opened panels and dialogs.
+- The [Wave C1 migration entries](../migration-2.0.md#accordion) list the prop, slot, and behavior changes.

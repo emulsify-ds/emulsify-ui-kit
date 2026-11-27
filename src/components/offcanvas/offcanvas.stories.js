@@ -1,39 +1,50 @@
 import { renderTwig } from '@emulsify/core/storybook';
 
-import offcanvasTwig from './offcanvas.twig';
-import { mapDataToTwig } from '../../util/dataTransformers.js';
+import { argsFromSchema } from '../../util/argsFromSchema.js';
+import { withStorybookContainer } from '../../util/storybookContainer.js';
+import { createContainerThemeControls } from '../../util/storybookContainerControls.js';
+import schema from './offcanvas.component.yml';
+import docs from './offcanvas.docs.js';
+import template from './offcanvas.twig';
+import './offcanvas.js';
 
-import { props } from './offcanvas.component.yml';
+const themeControls = createContainerThemeControls();
 
-import './offcanvas';
-
-/**
- * Storybook Definition.
- */
 export default {
   title: 'Components/Offcanvas',
-  render: renderTwig(offcanvasTwig),
+  tags: ['autodocs'],
+  parameters: { docs },
+  render: (args, { viewMode } = {}) =>
+    renderTwig(withStorybookContainer(template), {
+      wrapper: viewMode === 'docs' ? 'div' : 'main',
+    })(args),
+  args: {
+    ...argsFromSchema(schema.props),
+    ...themeControls.args,
+  },
   argTypes: {
-    offcanvas__type: {
-      name: 'Type',
-      control: { type: 'select' },
-      options: props.properties.offcanvas__type.enum,
-    },
+    ...themeControls.argTypes,
+    offcanvas__type: { options: ['pane', 'modal'], control: 'select' },
     offcanvas__direction: {
-      name: 'Pane direction',
-      control: { type: 'select' },
-      options: props.properties.offcanvas__direction.enum,
+      options: ['top', 'right', 'bottom', 'left'],
+      control: 'select',
       if: { arg: 'offcanvas__type', eq: 'pane' },
     },
-    offcanvas__theme: {
-      name: 'Theme',
-      control: { type: 'select' },
-      options: props.properties.offcanvas__theme.enum,
-    },
-    offcanvas__heading: { name: 'Heading', type: 'string' },
-    offcanvas__show_heading: { name: 'Show heading', type: 'boolean' },
   },
-  args: mapDataToTwig(props.properties),
 };
 
-export const Offcanvas = {};
+export const Offcanvas = {
+  args: { offcanvas__id: 'workshop-details' },
+};
+
+export const Modal = {
+  args: {
+    offcanvas__id: 'registration-details',
+    offcanvas__heading: 'Registration details',
+    offcanvas__trigger__text: 'View registration details',
+    offcanvas__type: 'modal',
+    offcanvas__content:
+      '<p>Registration closes the day before the workshop.</p><p><a href="/registration">Review the registration form</a></p>',
+    offcanvas__suffix: '<p>Check your email after registering.</p>',
+  },
+};

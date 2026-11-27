@@ -287,6 +287,11 @@
           "dependency": ["button", "link", "list", "icon"]
         },
         {
+          "name": "offcanvas",
+          "structure": "components",
+          "dependency": ["cta"]
+        },
+        {
           "name": "stats-group",
           "structure": "components",
           "dependency": []

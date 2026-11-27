@@ -368,4 +368,10 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - Replace the `tab__content` slot with `tabs__panels_content`. Custom panels need an ID of `tabs-{tabs__id}:panel:{id}` and `aria-labelledby="tabs-{tabs__id}:tab:{id}"` to match their controls. Update existing tab fragments to the new panel IDs.
 - Replace `container__component_width` and `tab__component_theme` inputs with `tabs__width` and the shared Tabs theme props. Use the corrected `horizontal-plain` display name. Tabs wrap at narrow widths in place of the old overflow scroll controls. Use `.tabs__tab` and `.tabs__panel` for component styling.
 
+### Offcanvas
+
+- Keep `offcanvas__content` and `offcanvas__suffix` as props. Rename the old `offcanvas__content` and `offcanvas__suffix` slot overrides to `offcanvas__body_content` and `offcanvas__footer_content`. Rename the `offcanvas__trigger` slot to `offcanvas__trigger_content`.
+- Use `offcanvas__heading_level` in place of `offcanvas__heading__level`. Pass a distinct ID for each dialog. Use `offcanvas__theme__variation` to select light or dark.
+- Attach the Offcanvas Drupal behavior with Drupal once. The pane is non-modal and the modal type uses the browser's modal dialog. The trigger and close action use CTA styles.
+
 ## Removed
