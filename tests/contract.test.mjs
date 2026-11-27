@@ -25,9 +25,6 @@ const docsHeadings = [
 ];
 const read = (path) => readFileSync(path, 'utf8');
 const readJson = (path) => JSON.parse(read(path));
-const { components: allowlist, enforceGlobal } = readJson(
-  join(import.meta.dirname, 'contract-allowlist.json'),
-);
 const legacyProperties = new Set(
   readJson(join(import.meta.dirname, 'fixtures/1x-token-names.json')),
 );
@@ -499,12 +496,8 @@ function checkGlobals(schemas, componentDirectories) {
   return issues;
 }
 
-function report(t, name, issues, enforce) {
-  if (!issues.length) return;
-  const summary = `${name}: ${issues.length} violation${issues.length === 1 ? '' : 's'}`;
-  const details = issues.map((issue) => `  - ${issue}`).join('\n');
-  if (enforce) assert.fail(`${summary}\n${details}`);
-  t.diagnostic(`WARN ${summary}\n${details}`);
+function assertNoIssues(issues) {
+  assert.equal(issues.length, 0, issues.join('\n'));
 }
 
 const schemas = globSync(`**/*${schemaSuffix}`, { cwd: componentRoot }).sort();
@@ -519,57 +512,33 @@ const contractDirectories = new Set([
 ]);
 const layoutName = (directory) => `layout/${posixPath(directory)}`;
 
-test('contract allowlist entries identify existing component or layout directories', () => {
-  assert.ok(Array.isArray(allowlist), 'components must be an array');
-  assert.equal(
-    typeof enforceGlobal,
-    'boolean',
-    'enforceGlobal must be a boolean',
-  );
-  const knownDirectories = new Set([
-    ...[...componentDirectories].map(posixPath),
-    ...layoutDirectories.map(layoutName),
-  ]);
-  for (const name of allowlist) {
-    assert.ok(
-      knownDirectories.has(name),
-      `unknown contract directory ${JSON.stringify(name)}`,
-    );
-  }
-});
-
 for (const [directory, files] of components) {
   const name = posixPath(directory);
-  test(`component contract: ${name}`, (t) => {
+  test(`component contract: ${name}`, () => {
     const issues = checkComponent(
       join(componentRoot, directory),
       files.map((file) => basename(file)),
       `${basename(directory)}${schemaSuffix}`,
       contractDirectories,
     );
-    report(t, name, issues, allowlist.includes(name));
+    assertNoIssues(issues);
   });
 }
 
 for (const directory of layoutDirectories) {
   const name = layoutName(directory);
   const path = join(layoutRoot, directory);
-  test(`layout contract: ${name}`, (t) => {
+  test(`layout contract: ${name}`, () => {
     const issues = checkComponent(
       path,
       globSync('*.yml', { cwd: path }).sort(),
       `${directory}.yml`,
       contractDirectories,
     );
-    report(t, name, issues, allowlist.includes(name));
+    assertNoIssues(issues);
   });
 }
 
-test('global component contract', (t) => {
-  report(
-    t,
-    'global',
-    checkGlobals(schemas, componentDirectories),
-    enforceGlobal,
-  );
+test('global component contract', () => {
+  assertNoIssues(checkGlobals(schemas, componentDirectories));
 });

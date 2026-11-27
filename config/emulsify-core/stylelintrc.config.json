@@ -9,7 +9,7 @@
     {
       "files": ["../../src/components/**/*.scss"],
       "rules": {
-        "color-no-hex": [true, { "severity": "warning" }]
+        "color-no-hex": true
       }
     }
   ]

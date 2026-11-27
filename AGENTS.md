@@ -40,7 +40,7 @@ The Tests workflow runs `npm ci` and `npm run validate` on pull requests. It run
 | `tests/` | Repository-wide contract and release checks. |
 | `docs/` | The [2.0 roadmap](docs/2.0/roadmap.md) and [migration guide](docs/migration-2.0.md). |
 
-Edit source files and regenerate output with the appropriate build. Leave `components/` and the generated `dist/` and `.out/` directories untouched by hand. Edit `src/tokens/figma.tokens.json` and run `npm run tokens:build` to update `_maps.scss`, `_custom-properties.scss`, and `tokens.json` in `src/base/tokens/`. Keep `legacy-1x.scss` frozen until step 15.
+Edit source files and regenerate output with the appropriate build. Leave `components/` and the generated `dist/` and `.out/` directories untouched by hand. Edit `src/tokens/figma.tokens.json` and run `npm run tokens:build` to update `_maps.scss`, `_custom-properties.scss`, and `tokens.json` in `src/base/tokens/`.
 
 ## Component contract
 
@@ -55,7 +55,7 @@ Edit source files and regenerate output with the appropriate build. Leave `compo
 | SCSS | Use color roles and omit hex colors and 1.x token custom properties. |
 | Global | Each `*.component.yml` has a unique basename. `system.emulsify.json` lists exactly the component directories and names only dependencies that exist. |
 
-List enforced components in `tests/contract-allowlist.json` by path relative to `src/components/`, for example `heading`. Use `layout/<name>` for layout primitives. Violations fail the contract test for those entries. The test reports warnings for the other components. Global SDC violations are warnings until step 15 enables `enforceGlobal`.
+`npm run test:contract` enforces every component and layout contract, including global metadata and manifest checks. The fixture at `tests/fixtures/1x-token-names.json` preserves the removed property names for the SCSS check.
 
 ## Refining a component
 
@@ -64,9 +64,8 @@ List enforced components in `tests/contract-allowlist.json` by path relative to 
 3. Add a Jest test for any logic.
 4. Replace button and link includes with `cta`.
 5. If it is a section, forward the container props using the shared contract below.
-6. Add the component to `tests/contract-allowlist.json` once it passes the contract.
-7. Update `system.emulsify.json` and [the migration guide](docs/migration-2.0.md) for the change.
-8. Make one commit per component.
+6. Update `system.emulsify.json` and [the migration guide](docs/migration-2.0.md) for the change.
+7. Run `npm run test:contract` and make one commit per component.
 
 ## Storybook conventions
 
@@ -74,7 +73,7 @@ List enforced components in `tests/contract-allowlist.json` by path relative to 
 - Build Base token previews from `src/base/tokens/tokens.json` and use the copy controls in `src/util/_copy-usage.twig` for token examples.
 - Use `tags: ['autodocs']` and source `parameters.docs` from the sibling `.docs.js` file. Put standalone MDX pages under `src/storybook/` and prefix their stylesheets with `sb-` for Storybook-only output.
 - Use `argsFromSchema(component.props)` from `src/util/argsFromSchema.js` to seed args from each prop's first example or default. Merge the `args` and `argTypes` from `createContainerWidthControls()` and `createContainerThemeControls()` in `src/util/storybookContainerControls.js` when the story needs appearance controls.
-- Wrap Twig rendering with `withStorybookContainer()` from `src/util/storybookContainer.js`. Use `renderTwig()` with its default context and map story args inside the wrapper's callback so width and theme reach it. Use `withStorybookPadding()` to retain the existing padding when migrating a legacy preview.
+- Wrap Twig rendering with `withStorybookContainer()` from `src/util/storybookContainer.js`. Use `renderTwig()` with its default context and map story args inside the wrapper's callback so width and theme reach it.
 
 ```js
 render: renderTwig(
