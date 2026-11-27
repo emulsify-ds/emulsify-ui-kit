@@ -339,4 +339,10 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - Use `embed__src` and `embed__title` to generate an iframe from a URL. Use `embed__container__modifiers` for Container modifiers and the shared `embed__blockname` or `embed__additional_classes` in place of `embed__base_class`.
 - Pass `embed__heading_level` as an integer from 2 to 6. Custom aspect ratios take a positive number or two positive numbers separated by a slash, such as `21 / 9`.
 
+### Audio Player
+
+- Rename `audio_content` to `audio_player__sources`. Pass media URLs or `{ src, type? }` objects in playback preference order.
+- Replace `preload`, `loop`, `muted`, and `no_download` with their `audio_player__` equivalents. Pass `additional_attributes` as `audio_player__attributes`. Remove `autoplay`; playback starts with the listener.
+- Add `audio_player__transcript_url` and an optional `audio_player__transcript_label` to point to the transcript.
+
 ## Removed

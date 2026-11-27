@@ -1,3 +1,24 @@
+@use '../../base' as *;
+
+.audio-player {
+  display: grid;
+  gap: space(8);
+}
+
 .audio-player__player {
-  width: 100%;
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.audio-player__player,
+.audio-player__transcript {
+  @include focus;
+}
+
+.audio-player__transcript {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  min-block-size: space(24);
+  min-inline-size: space(24);
 }

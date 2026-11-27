@@ -1,6 +1,7 @@
 {
   "components": [
     "announcement",
+    "audio-player",
     "banner",
     "blockquote",
     "callout",
