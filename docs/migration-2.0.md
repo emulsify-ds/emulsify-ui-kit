@@ -345,4 +345,9 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - Replace `preload`, `loop`, `muted`, and `no_download` with their `audio_player__` equivalents. Pass `additional_attributes` as `audio_player__attributes`. Remove `autoplay`; playback starts with the listener.
 - Add `audio_player__transcript_url` and an optional `audio_player__transcript_label` to point to the transcript.
 
+### Logo
+
+- Pass `logo__src` and `logo__alt` in place of `image_src` and `image_alt`. Both are required, including in Header branding overrides. Use the shared block name or class props in place of `logo__base_class`.
+- Supply `logo__url: '/'` to keep the former default home link. Omit the URL for a static logo. Logo renders its image directly through Image, and the image alt names the link when present.
+
 ## Removed

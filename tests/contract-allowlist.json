@@ -15,6 +15,7 @@
     "layout/grid",
     "layout/placeholder",
     "list",
+    "logo",
     "media-box",
     "stats-group",
     "status",

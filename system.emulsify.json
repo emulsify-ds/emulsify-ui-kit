@@ -268,7 +268,7 @@
         {
           "name": "logo",
           "structure": "components",
-          "dependency": ["link", "image"]
+          "dependency": ["image"]
         },
         {
           "name": "media-box",
