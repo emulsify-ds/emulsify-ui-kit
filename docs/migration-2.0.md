@@ -417,4 +417,16 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - Choose `hero__media_type: 'image'`, `'video'`, or `'none'`. Supply a text alternative for a meaningful image, or leave its alt text empty for decoration. Use `hero__media_content` for composed markup and the shared section props for width, spacing, and theme.
 - Use `hero__video__background: true` for decorative, muted looping video. Include the Video behavior to enable motion-aware playback and a visible pause button. Use a regular video with captions and a title for meaningful media.
 
+### Header
+
+| Earlier input | 2.0 input |
+| --- | --- |
+| `header__branding` slot | `header__branding_content` or the `header__logo__*` props. Supply an image source and a text alternative for the default Logo composition. |
+| `header__menu` slot | `header__navigation_content`. Pass the menu tree in `header__items`. Twig still accepts the `header__menu` data alias. |
+| `header__search` slot | `header__search_content` for the entire search region, or `header__search_form_content` for a rendered form inside Search. Twig still accepts the `search_form` variable. |
+| `additional_attributes` | `header__attributes`. Use `header__id` for the instance ID. |
+| Custom selectors on `.header__menu` | Use `.header__navigation` for the inline placement. Offcanvas contains the same navigation at smaller container widths. |
+
+Load the Header, Main Navigation, shared menu toggle, Offcanvas, and Search behaviors. Give each Header a stable `header__id`. To enable the skip link, point `header__skip_target` to the bare ID of a `<main>` with `tabindex="-1"`.
+
 ## Removed

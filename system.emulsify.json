@@ -236,6 +236,11 @@
           "dependency": ["cta"]
         },
         {
+          "name": "header",
+          "structure": "components",
+          "dependency": ["cta", "logo", "navigation/main", "offcanvas", "search"]
+        },
+        {
           "name": "heading",
           "structure": "components",
           "required": true,
