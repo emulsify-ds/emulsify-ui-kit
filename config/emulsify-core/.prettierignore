@@ -4,5 +4,4 @@ dist
 *.min.js
 ../../src/base/tokens/_maps.scss
 ../../src/base/tokens/_custom-properties.scss
-../../src/base/tokens/legacy-1x.scss
 ../../src/base/tokens/tokens.json

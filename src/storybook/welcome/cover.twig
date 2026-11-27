@@ -1,25 +1,17 @@
-<div class="sb-cover">
-	<h1 class="sb-cover__title">
-		Emulsify UI Kit
-	</h1>
-	<div class="sb-cover__links">
-		{% include "@components/button/button.twig" with {
-			button__content: 'Figma UI Kit',
-			button__element: 'a',
-			button__style: 'primary',
-			button__attributes: {
-				'href': 'https://www.figma.com/community/file/1141071510618977331',
-				'target': '_blank',
-			},
-		} %}
-		{% include "@components/button/button.twig" with {
-			button__content: 'GitHub',
-			button__element: 'a',
-			button__style: 'primary',
-			button__attributes: {
-				'href': 'https://github.com/emulsify-ds/emulsify-ui-kit',
-				'target': '_blank',
-			},
-		} %}
-	</div>
+<div class="sb-cover" data-component-theme="default dark">
+  <h1 class="sb-cover__title">Emulsify UI Kit</h1>
+  <div class="sb-cover__links">
+    {{ include('@components/cta/cta.twig', {
+      cta__text: 'Figma UI Kit',
+      cta__url: 'https://www.figma.com/community/file/1141071510618977331',
+      cta__modifiers: ['primary'],
+      cta__new_tab: true,
+    }, with_context: false) }}
+    {{ include('@components/cta/cta.twig', {
+      cta__text: 'GitHub',
+      cta__url: 'https://github.com/emulsify-ds/emulsify-ui-kit',
+      cta__modifiers: ['primary'],
+      cta__new_tab: true,
+    }, with_context: false) }}
+  </div>
 </div>

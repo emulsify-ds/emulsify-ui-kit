@@ -48,7 +48,7 @@ Update bookmarks, embeds, and other links to renamed Storybook entries.
 
 Sync `src/tokens/figma.tokens.json` with Tokens Studio and regenerate Sass maps, theme properties, and preview data with `npm run tokens:build`. The former `tokens:transform` and `style-dictionary:build` commands are replaced by this command.
 
-The former `src/tokens/tokens.scss` ships temporarily as `src/base/tokens/legacy-1x.scss`, which builds to `dist/css/src/base/tokens/legacy-1x.css`. Step 15 removes this transitional stylesheet. Use the new API and role properties for component refinements.
+Remove loads of the former `src/tokens/tokens.scss` or transitional `src/base/tokens/legacy-1x.scss` stylesheet. Load `src/base/base.scss` for the generated properties and update style references with the tables below.
 
 ### Spacing
 
@@ -184,13 +184,15 @@ Keep grid items as direct children of `grid__content`. The heading, prefix, and 
 
 Update Placeholder story links from `layout-place-holder--place-holder` to `layout-placeholder--placeholder`. Use the Base/Placement guide for `grid-tracks()` and `grid-column()` examples.
 
+The updated Emulsify system installs and registers `./src/base/` and `./src/layout/` as build roots. If you upgrade without running the CLI, update `structureImplementations` in your `project.emulsify.json` to keep the Base assets and layout templates discoverable.
+
 `withStorybookContainer()` now paints the active theme background. Pass `{ bgColor: false }` as its options to keep the story canvas background.
 
 ## Components
 
 ### Button and Link → CTA
 
-Use `@components/cta/cta.twig` for calls to action. Use a plain anchor for in-text links and let the Base stylesheet supply the themed underline, hover, and focus styles. Button and Link remain available during the component waves. Their Storybook examples are under Deprecated.
+Use `@components/cta/cta.twig` for calls to action. Use a plain anchor for in-text links and let the Base stylesheet supply the themed underline, hover, and focus styles. Update Storybook links to Components → CTA.
 
 | Button or Link input | CTA input |
 | --- | --- |
@@ -443,3 +445,7 @@ Load the Header, Main Navigation, shared menu toggle, Offcanvas, and Search beha
 Supply one `page_title__heading` for the page's h1. Pass a rendered navigation trail through `page_title__breadcrumbs_content` when needed. Update styles targeting `.page-title__links`, `.page-title__overline-link`, or the automatic `.container--page-title` class to target the new action wrapper, overline CTA, or explicit Container modifiers.
 
 ## Removed
+
+- Replace the Button and Link SDCs, Twig includes, and Sass imports with CTA or the Base link styles. The Deprecated stories are removed. [CTA prop mappings](#button-and-link--cta)
+- Replace 1.x token custom properties with Base role properties, `space()`, or local component hooks. Remove imports of the transitional token and motion styles. [Token migration tables](#tokens)
+- Seed Storybook controls with `argsFromSchema()` and wrap previews with `withStorybookContainer()`. These replace `mapDataToTwig()`, `controlData.yml`, and `withStorybookPadding()`.

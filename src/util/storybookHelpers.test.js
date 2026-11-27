@@ -1,8 +1,5 @@
 import { argsFromSchema } from './argsFromSchema.js';
-import {
-  withStorybookContainer,
-  withStorybookPadding,
-} from './storybookContainer.js';
+import { withStorybookContainer } from './storybookContainer.js';
 import {
   createContainerThemeControls,
   createContainerWidthControls,
@@ -85,18 +82,6 @@ describe('Storybook containers', () => {
       componentSpacing: 'compact" & tight',
     });
     expect(dataset.componentBg).toBeUndefined();
-  });
-
-  test('preserves the classes, nested wrapper and theme of legacy previews', () => {
-    const template = withStorybookPadding(() => '<p>Preview</p>', {
-      className: 'cl-container text',
-      innerClass: 'text-long',
-      theme: 'inverse',
-    });
-
-    expect(template()).toBe(
-      '<div class="cl-container text" data-component-theme="inverse"><div class="text-long"><p>Preview</p></div></div>',
-    );
   });
 });
 

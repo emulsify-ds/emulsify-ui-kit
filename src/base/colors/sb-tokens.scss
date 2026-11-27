@@ -13,11 +13,17 @@
   }
 
   .sb-copy-trigger {
+    min-inline-size: space(24);
     min-block-size: space(24);
     max-inline-size: 100%;
     justify-self: start;
+    padding: 0;
+    border: var(--bw-sm) solid currentcolor;
     border-radius: var(--r-sm);
+    background-color: transparent;
+    color: inherit;
     text-align: start;
+    cursor: copy;
 
     &:focus-visible {
       outline-color: var(--clr-focus);
