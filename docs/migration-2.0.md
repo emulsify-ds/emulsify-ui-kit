@@ -333,4 +333,10 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - Use `tag: 'th'` for row headings. The template sets column scope in the header and row scope for other heading cells. Set `scope` explicitly for grouped headers. Use `.table__cell` for cell styling.
 - Attach the Table behavior with Drupal once to enable named keyboard scrolling when the table overflows. Its label defaults to the caption. Set `table__scroll_label` for a distinct name when the table has no caption.
 
+### Embed
+
+- Replace the `embed_content` prop with `embed__iframe` for trusted markup. Rename the `embed_content` slot to `embed__content`. Every iframe needs a descriptive, nonempty `title`; markup containing untitled iframes is omitted.
+- Use `embed__src` and `embed__title` to generate an iframe from a URL. Use `embed__container__modifiers` for Container modifiers and the shared `embed__blockname` or `embed__additional_classes` in place of `embed__base_class`.
+- Pass `embed__heading_level` as an integer from 2 to 6. Custom aspect ratios take a positive number or two positive numbers separated by a slash, such as `21 / 9`.
+
 ## Removed

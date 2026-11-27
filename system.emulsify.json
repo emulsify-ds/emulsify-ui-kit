@@ -225,6 +225,11 @@
           "dependency": ["icon"]
         },
         {
+          "name": "embed",
+          "structure": "components",
+          "dependency": []
+        },
+        {
           "name": "forms",
           "structure": "components",
           "required": true,
