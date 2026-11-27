@@ -1,0 +1,14 @@
+@use 'container/container';
+@use 'literal.sass';
+@forward 'collection';
+@use 'plain.css';
+@use 'sass:map';
+@use 'pkg:swiper/css';
+@use 'pkg:@vendor/styles/theme';
+@use 'blocks/*';
+@import 'legacy', 'another-package';
+@import url('browser.css');
+@import 'https://example.invalid/styles';
+@import 'remote.css';
+@import 'conditional.css' screen;
+@import 'screen-only' screen, 'theme-package';

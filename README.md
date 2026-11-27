@@ -41,6 +41,8 @@ emulsify system install \
 
 Replace `release-2.x` with the tag or branch you want to install.
 
+Emulsify CLI 2.5.0 or later installs the npm packages a component declares. The 2.0 kit has no component package declarations and uses CLI 2.4.1 in CI. [Component npm package guide](docs/component-npm-packages.md)
+
 ### Deploy to Netlify
 
 This will make your own copy of the repo and push the code to Netlify, where you can review the UI kit.
@@ -54,6 +56,16 @@ First, get your own copy of the [Emulsify UI kit](https://www.figma.com/communit
 The strength of this UI kit leans on its connection with Figma via [Tokens Studio](https://tokens.studio/).
 
 To connect the Figma file with your code, [see the instructions in the Tokens Studio documentation](https://docs.tokens.studio/sync/github).
+
+### Rebuild tokens in an installed theme
+
+The token directory's build script uses `style-dictionary` and `@tokens-studio/sd-transforms`. The CLI supports package declarations on components. For the shared token directory, install these development dependencies in the theme root.
+
+```sh
+npm install -D 'style-dictionary@^5.8.0' '@tokens-studio/sd-transforms@^2.0.3'
+```
+
+Add `"tokens:build": "node ./src/tokens/build-tokens.mjs"` to `scripts` in the theme's `package.json`. Update `src/tokens/figma.tokens.json` and run `npm run tokens:build` to regenerate the Base token files.
 
 ## Creating a component
 

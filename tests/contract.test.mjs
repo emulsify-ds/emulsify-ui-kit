@@ -2,10 +2,23 @@ import assert from 'node:assert/strict';
 import { globSync, readFileSync } from 'node:fs';
 import { basename, dirname, join, relative, resolve, sep } from 'node:path';
 import test from 'node:test';
-import { parse as parseJavaScript } from '@babel/parser';
 import { load as parseYaml } from 'js-yaml';
 import scss from 'postcss-scss';
 import parseValue from 'postcss-value-parser';
+import {
+  docStrings,
+  javascriptPattern,
+  moduleSources,
+  parseJavaScript,
+  scanJavaScriptImports,
+  scanSassImports,
+  stylesheetPattern,
+  walkJavaScript,
+} from './npm-package-imports.mjs';
+import {
+  checkNpmPackagePolicy,
+  getComponentEntries,
+} from './npm-package-policy.mjs';
 
 const root = resolve(import.meta.dirname, '..');
 const componentRoot = join(root, 'src/components');
@@ -142,46 +155,12 @@ function checkTwig(source, names, issue) {
   }
 }
 
-function* walkJavaScript(node, parent) {
-  if (!node || typeof node.type !== 'string') return;
-  yield [node, parent];
-  for (const value of Object.values(node)) {
-    if (Array.isArray(value)) {
-      for (const child of value) yield* walkJavaScript(child, node);
-    } else {
-      yield* walkJavaScript(value, node);
-    }
-  }
-}
-
-function parseProgram(source, issue) {
+function parseProgram(source, file, issue) {
   try {
-    return parseJavaScript(source, {
-      sourceType: 'unambiguous',
-      plugins: ['jsx'],
-      createImportExpressions: true,
-    }).program;
+    return parseJavaScript(source, file);
   } catch (error) {
     issue(`invalid JavaScript (${error.message})`);
     return null;
-  }
-}
-
-function* moduleSources(program) {
-  for (const [node] of walkJavaScript(program)) {
-    if (
-      node.type === 'ImportDeclaration' ||
-      node.type === 'ImportExpression' ||
-      node.type === 'ExportAllDeclaration' ||
-      (node.type === 'ExportNamedDeclaration' && node.source)
-    ) {
-      yield node.source?.value;
-    } else if (
-      node.type === 'CallExpression' &&
-      node.callee.name === 'require'
-    ) {
-      yield node.arguments[0]?.value;
-    }
   }
 }
 
@@ -261,17 +240,7 @@ function checkStories(program, docsFile, issue) {
 }
 
 function checkDocs(program, issue) {
-  const strings = [];
-  for (const [node] of walkJavaScript(program)) {
-    const text =
-      node.type === 'TemplateElement'
-        ? node.value.cooked
-        : node.type === 'StringLiteral'
-          ? node.value
-          : null;
-    if (text) strings.push({ text, start: node.start });
-  }
-  const headings = strings
+  const headings = docStrings(program)
     .sort((a, b) => a.start - b.start)
     .flatMap(({ text }) =>
       [...text.matchAll(/^[ \t]*##[ \t]+(.+?)[ \t]*$/gm)].map(
@@ -304,17 +273,6 @@ function checkBehavior(program, issue) {
     );
   });
   if (!callsOnce) issue('use once() to initialize behaviors');
-
-  for (const source of moduleSources(program)) {
-    if (typeof source !== 'string') {
-      issue('use a literal module path so npm imports can be checked');
-    } else if (
-      !/^(?:\.{1,2}\/|\/(?!\/))/.test(source) ||
-      /(?:^|\/)node_modules\//.test(source)
-    ) {
-      issue(`remove the non-local module import ${source}`);
-    }
-  }
 }
 
 function checkScss(source, file, issue) {
@@ -395,7 +353,7 @@ function checkComponent(path, schemas, expectedSchema, componentDirectories) {
       file === docs ||
       !/\.(?:stories|docs|test|spec)\.js$/.test(file)
     ) {
-      const program = parseProgram(source, issue);
+      const program = parseProgram(source, file, issue);
       if (!program) continue;
       if (file === stories) checkStories(program, docs, issue);
       else if (file === docs) checkDocs(program, issue);
@@ -500,6 +458,73 @@ function assertNoIssues(issues) {
   assert.equal(issues.length, 0, issues.join('\n'));
 }
 
+function checkInstalledImports(manifest, packageJson) {
+  const directories = new Set(
+    manifest.variants
+      .flatMap((variant) => [
+        ...getComponentEntries(variant).map(({ directory }) => directory),
+        ...(variant.directories ?? []).map(({ path }) => path),
+      ])
+      .filter(isText),
+  );
+  const files = new Set();
+  const issues = [];
+  for (const directory of directories) {
+    const absolute = resolve(root, directory);
+    const local = posixPath(relative(root, absolute));
+    if (local === '..' || local.startsWith('../')) {
+      issues.push(
+        `${directory}: installed paths must stay within the repository`,
+      );
+      continue;
+    }
+    for (const file of globSync(
+      '**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,scss,sass,css}',
+      {
+        cwd: absolute,
+        exclude: ['**/node_modules/**'],
+      },
+    )) {
+      files.add(posixPath(join(local, file)));
+    }
+  }
+
+  const imports = [];
+  const docsUsage = new Map();
+  for (const file of [...files].sort()) {
+    const source = read(join(root, file));
+    if (javascriptPattern.test(file)) {
+      const program = parseProgram(source, file, (issue) =>
+        issues.push(`${file}: ${issue}`),
+      );
+      if (!program) continue;
+      imports.push(...scanJavaScriptImports(program, file));
+      if (file.endsWith('.docs.js')) {
+        const text = docStrings(program)
+          .sort((a, b) => a.start - b.start)
+          .map(({ text }) => text)
+          .join('\n');
+        const usage = text
+          .split(/^##[ \t]+/m)
+          .find((section) => /^Drupal usage[ \t]*\r?\n/.test(section));
+        if (usage) docsUsage.set(file, usage.slice(usage.indexOf('\n') + 1));
+      }
+    } else if (stylesheetPattern.test(file)) {
+      try {
+        imports.push(...scanSassImports(source, file, { root }));
+      } catch (error) {
+        issues.push(
+          `${file}: invalid stylesheet (${error.reason ?? error.message})`,
+        );
+      }
+    }
+  }
+  return [
+    ...issues,
+    ...checkNpmPackagePolicy(manifest, packageJson, imports, { docsUsage }),
+  ];
+}
+
 const schemas = globSync(`**/*${schemaSuffix}`, { cwd: componentRoot }).sort();
 const components = Map.groupBy(schemas, (file) => dirname(file));
 const componentDirectories = new Set(components.keys());
@@ -541,4 +566,13 @@ for (const directory of layoutDirectories) {
 
 test('global component contract', () => {
   assertNoIssues(checkGlobals(schemas, componentDirectories));
+});
+
+test('npm package imports are portable across CLI installs', () => {
+  assertNoIssues(
+    checkInstalledImports(
+      readJson(join(root, 'system.emulsify.json')),
+      readJson(join(root, 'package.json')),
+    ),
+  );
 });

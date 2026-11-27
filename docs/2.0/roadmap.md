@@ -1,6 +1,6 @@
 # Emulsify UI Kit 2.0 roadmap
 
-Coordinate the 16 refinement steps for the single Emulsify UI Kit 2.0.0 release.
+Coordinate the 17 refinement steps for the single Emulsify UI Kit 2.0.0 release.
 
 ## Decisions
 
@@ -13,7 +13,7 @@ Coordinate the 16 refinement steps for the single Emulsify UI Kit 2.0.0 release.
 - 1.x token custom properties are removed with no aliases. Figma component token sets stop generating global custom properties; components expose local custom-property hooks instead.
 - button and link merge into one cta component. Plain links are styled globally in base.
 - call-to-action is renamed callout. card folds into the new teaser (teaser__style: card).
-- New components: hero and teaser. No slider. Components never import npm packages at runtime.
+- New components: hero and teaser. No slider. Components may import an npm package only when their system.emulsify.json entry declares it in npmDependencies, which Emulsify CLI 2.5.0 or later installs. No 2.0 component needs one.
 - Component names are singular when the component is one thing (icon, list, table). Groups keep plural names (tags, forms, stats-group, link-group).
 - Layout primitives (container, grid, placeholder) stay in src/layout and are included by path, not as SDCs.
 - Storybook-only helpers live in src/util and are never bundled into Drupal assets.
@@ -37,7 +37,8 @@ Coordinate the 16 refinement steps for the single Emulsify UI Kit 2.0.0 release.
 - [x] 13 Wave C2: navigation, search, forms
 - [x] 14 Wave D: hero, header, page-title
 - [x] 15 Cleanup
-- [ ] 16 Docs, accessibility gate, ready for review
+- [x] 16 Component npm packages (Emulsify CLI 2.5)
+- [ ] 17 Docs, accessibility gate, ready for review
 
 ## Notes for later steps
 
@@ -172,3 +173,9 @@ The report also found 30 global violations. The `blockquote.component.yml` basen
 - Button, Link, and the transitional token stylesheet are removed. Welcome uses CTA. The [migration guide](../migration-2.0.md#removed) covers the replacement tokens, components, and preview helpers.
 - The contract checks all 36 SDCs, three layout primitives, and the manifest on every run. Its frozen fixture preserves all 394 removed properties for regression checks. Stylelint rejects hex colors in component SCSS.
 - The CLI manifest registers the Base and Layout build roots and copies the shared helpers and local assets. Use `npm run inspect:components` to check the packaged namespaces and `npm run validate` before the final accessibility gate.
+
+### Step 16 Component npm packages
+
+- The installed component and layout source has no runtime npm imports. The Base reset uses a local copy of Normalize.css, and the Jest suites that need repository-only tools run from `tests/`. The manifest has no package declarations.
+- The contract limits each package to one runtime component directory. The Core 4.5.2 probe produced shared ES module imports for two components, which Drupal's default SDC script attachment cannot load. Bare Sass `@use 'swiper/css'` bundled into the component stylesheet. See the [component npm package guide](../component-npm-packages.md) for the full build results.
+- npm still publishes CLI 2.4.1 as the current version. In step 17, recheck availability. When CLI 2.5.0 or later is published, pin the same exact version in CI and the README, then add a post-install check for all declared packages in the starter's `package.json`.
