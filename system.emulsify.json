@@ -181,7 +181,7 @@
         {
           "name": "accordion",
           "structure": "components",
-          "dependency": ["button", "icon", "heading", "text", "list"]
+          "dependency": ["cta"]
         },
         {
           "name": "announcement",

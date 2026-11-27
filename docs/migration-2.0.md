@@ -356,4 +356,10 @@ Media stacks below the copy on narrow sections and sits beside it at wider width
 - Both display variants use CTA anchors. Migrate custom button and link styling to CTA classes. The button variant with a background now uses the shared contained style.
 - Set `link_group__nav_label` when the group should be a named navigation landmark.
 
+### Accordion
+
+- Supply a unique `accordion__id` and an `id` for each entry. Replace the item keys `accordion__item__heading` and `accordion__item__content` with `heading` and `content`. Existing generated IDs change to `accordion-{accordion__id}--{item.id}`; use these IDs for item fragments.
+- Rename the `accordion__items` slot to `accordion__items_content`. For a custom item partial, pass both IDs and use its `accordion__item__body_content` slot. Replace `accordion__block_name` with `accordion__blockname` and use `.accordion__heading` and `.accordion__panel` for styling.
+- Set `accordion__show_controls: true` to offer expand-all and collapse-all controls. Items start expanded in server output and collapse when the Drupal behavior attaches, except for the item referenced by the URL fragment.
+
 ## Removed

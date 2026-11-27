@@ -1,168 +1,128 @@
-Drupal.behaviors.accordion = {
-  attach(context) {
-    const items = context.querySelectorAll('.js-accordion-item');
-    const controls = context.querySelectorAll('.accordion__controls__item');
-    const itemToggle = '.js-accordion-item__toggle';
-    const itemContent = '.accordion-item__content';
-    const itemState = 'data-accordion-expanded';
-    const buttonState = 'aria-expanded';
-    const contentState = 'aria-hidden';
+Drupal.behaviors.accordion = (() => {
+  const rootSelector = '[data-accordion]';
+  const itemSelector = '[data-accordion-item]';
+  const toggleSelector = 'button[data-accordion-toggle]';
+  const bulkSelector = 'button[data-accordion-bulk]';
 
-    const expand = (item, button, content) => {
-      item.setAttribute(itemState, 'true');
-      button.setAttribute(buttonState, 'true');
-      if (content) content.setAttribute(contentState, 'false');
-    };
+  const within = (context, selector) => [
+    ...(context.matches?.(selector) ? [context] : []),
+    ...context.querySelectorAll(selector),
+  ];
 
-    const collapse = (item, button, content) => {
-      item.setAttribute(itemState, 'false');
-      button.setAttribute(buttonState, 'false');
-      if (content) content.setAttribute(contentState, 'true');
-    };
+  const owned = (root, selector) =>
+    [...root.querySelectorAll(selector)].filter(
+      (element) => element.closest(rootSelector) === root,
+    );
 
-    // Get base URL and anchor (unchanged)
-    function getUrl() {
-      return (
-        window.location.protocol +
-        '//' +
-        window.location.host +
-        window.location.pathname
-      );
+  function panelFor(toggle) {
+    const item = toggle.closest(itemSelector);
+    const panel = toggle.ownerDocument.getElementById(
+      toggle.getAttribute('aria-controls'),
+    );
+    if (item && panel?.closest(itemSelector) === item) {
+      return panel;
     }
+    return null;
+  }
 
-    function getAnchor() {
-      return document.URL.split('#').length > 1
-        ? document.URL.split('#')[1]
-        : null;
+  function setExpanded(toggle, expanded) {
+    const panel = panelFor(toggle);
+    if (panel) {
+      panel.hidden = !expanded;
+      toggle.setAttribute('aria-expanded', String(expanded));
     }
+  }
 
-    // Utility to update aria-disabled on "Expand all" / "Collapse all"
-    const updateControlStates = (accordionRoot) => {
-      if (!accordionRoot) return;
-      const expandButton = accordionRoot.querySelector(
-        '.js-accordion__toggle-all--expand',
+  function updateControls(root) {
+    const toggles = owned(root, toggleSelector).filter(
+      (toggle) => !toggle.hidden,
+    );
+    const controls = owned(root, '[data-accordion-controls]')[0];
+    if (controls) controls.hidden = !toggles.length;
+    owned(root, bulkSelector).forEach((button) => {
+      const expanded = button.dataset.accordionBulk === 'expand';
+      button.setAttribute(
+        'aria-disabled',
+        String(
+          toggles.every(
+            (toggle) =>
+              (toggle.getAttribute('aria-expanded') === 'true') === expanded,
+          ),
+        ),
       );
-      const collapseButton = accordionRoot.querySelector(
-        '.js-accordion__toggle-all--collapse',
-      );
-      const allItems = accordionRoot.querySelectorAll('.js-accordion-item');
-
-      const allExpanded = Array.from(allItems).every(
-        (item) => item.getAttribute(itemState) === 'true',
-      );
-      const allCollapsed = Array.from(allItems).every(
-        (item) => item.getAttribute(itemState) === 'false',
-      );
-
-      // Set aria-disabled accordingly
-      if (expandButton) {
-        expandButton.setAttribute(
-          'aria-disabled',
-          allExpanded ? 'true' : 'false',
-        );
-      }
-      if (collapseButton) {
-        collapseButton.setAttribute(
-          'aria-disabled',
-          allCollapsed ? 'true' : 'false',
-        );
-      }
-    };
-
-    // Initialize accordion items
-    items.forEach((item) => {
-      const button = item.querySelector(itemToggle);
-      const content =
-        item.querySelector(itemContent) ||
-        item.querySelector('.accordion-item > div:last-child');
-      const accordionRoot = item.closest('.accordion');
-
-      if (!button) return;
-
-      collapse(item, button, content);
-
-      if (item.getAttribute('id') && item.getAttribute('id') === getAnchor()) {
-        expand(item, button, content);
-      }
-
-      button.removeEventListener('click', button._accordionHandler);
-
-      button._accordionHandler = () => {
-        const anchor = item.id;
-        const newUrl = `${getUrl()}#${anchor}`;
-
-        // Update URL hash
-        if (window.location.href !== newUrl) {
-          window.history.replaceState('', '', newUrl);
-        } else {
-          window.history.replaceState(
-            '',
-            '',
-            window.location.origin + window.location.pathname,
-          );
-        }
-
-        // Toggle state
-        if (button.getAttribute(buttonState) === 'true') {
-          collapse(item, button, content);
-        } else {
-          expand(item, button, content);
-        }
-
-        // Update control buttons state after toggling
-        updateControlStates(accordionRoot);
-      };
-
-      button.addEventListener('click', button._accordionHandler);
     });
+  }
 
-    // Initialize control buttons (Expand All / Collapse All)
-    controls.forEach((control) => {
-      const accordionRoot = control.closest('.accordion');
-      if (!accordionRoot) return;
+  function handleClick(event) {
+    const root = event.currentTarget;
+    const button = event.target.closest?.(`${toggleSelector}, ${bulkSelector}`);
+    if (!button || button.closest(rootSelector) !== root || button.hidden)
+      return;
+    if (button.getAttribute('aria-disabled') === 'true') return;
 
-      const allItems = accordionRoot.querySelectorAll('.js-accordion-item');
-      const toggleAllButton = control.querySelector(
-        '.js-accordion-item__toggle_all',
-      );
+    if (button.matches(toggleSelector)) {
+      setExpanded(button, button.getAttribute('aria-expanded') !== 'true');
+    } else {
+      const expanded = button.dataset.accordionBulk === 'expand';
+      owned(root, toggleSelector)
+        .filter((toggle) => !toggle.hidden)
+        .forEach((toggle) => setExpanded(toggle, expanded));
+    }
+    updateControls(root);
+  }
 
-      if (!toggleAllButton) return;
+  function openFragment(doc) {
+    const hash = doc.defaultView.location.hash.slice(1);
+    let id = hash;
+    try {
+      id = decodeURIComponent(hash);
+    } catch {
+      // An invalid escape should not interrupt behavior attachment.
+    }
+    const target = id ? doc.getElementById(id) : null;
+    let item = target?.closest(itemSelector);
+    let opened = false;
+    while (item) {
+      const toggle = item.querySelector(toggleSelector);
+      if (toggle?.closest(itemSelector) === item && !toggle.hidden) {
+        opened ||= toggle.getAttribute('aria-expanded') !== 'true';
+        setExpanded(toggle, true);
+        updateControls(toggle.closest(rootSelector));
+      }
+      item = item.parentElement?.closest(itemSelector);
+    }
+    if (opened) target.scrollIntoView?.();
+  }
 
-      toggleAllButton.removeEventListener(
-        'click',
-        toggleAllButton._toggleAllHandler,
-      );
+  return {
+    attach(context) {
+      const doc = context.ownerDocument ?? context;
+      const roots = new Set(within(context, rootSelector));
+      const parent = context.closest?.(rootSelector);
+      if (parent) roots.add(parent);
+      if (!roots.size) return;
 
-      toggleAllButton._toggleAllHandler = (e) => {
-        const action = e.target.classList.contains(
-          'js-accordion__toggle-all--expand',
-        );
-
-        allItems.forEach((item) => {
-          const button = item.querySelector(itemToggle);
-          const content =
-            item.querySelector(itemContent) ||
-            item.querySelector('.accordion-item > div:last-child');
-          if (button) {
-            if (action) {
-              expand(item, button, content);
-            } else {
-              collapse(item, button, content);
-            }
-          }
+      once('accordion-fragment', [doc.documentElement]).forEach(() => {
+        doc.defaultView.addEventListener('hashchange', () => openFragment(doc));
+      });
+      let enhanced = false;
+      roots.forEach((root) => {
+        once('accordion', [root]).forEach((accordion) => {
+          accordion.addEventListener('click', handleClick);
         });
-
-        // Refresh aria-disabled states after bulk toggle
-        updateControlStates(accordionRoot);
-      };
-
-      toggleAllButton.addEventListener(
-        'click',
-        toggleAllButton._toggleAllHandler,
-      );
-
-      // Initialize on page load
-      updateControlStates(accordionRoot);
-    });
-  },
-};
+        const toggles = owned(root, toggleSelector).filter(panelFor);
+        once('accordion-toggle', toggles).forEach((toggle) => {
+          enhanced = true;
+          toggle.hidden = false;
+          toggle.parentElement.hidden = false;
+          const fallback = toggle.parentElement.previousElementSibling;
+          if (fallback?.matches('[data-accordion-static-heading]'))
+            fallback.hidden = true;
+          setExpanded(toggle, false);
+        });
+        updateControls(root);
+      });
+      if (enhanced) openFragment(doc);
+    },
+  };
+})();

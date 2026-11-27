@@ -1,5 +1,6 @@
 {
   "components": [
+    "accordion",
     "announcement",
     "audio-player",
     "banner",
