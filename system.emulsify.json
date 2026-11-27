@@ -194,6 +194,11 @@
           "dependency": []
         },
         {
+          "name": "banner",
+          "structure": "components",
+          "dependency": ["cta", "heading", "image", "text", "video"]
+        },
+        {
           "name": "blockquote",
           "structure": "components",
           "dependency": []

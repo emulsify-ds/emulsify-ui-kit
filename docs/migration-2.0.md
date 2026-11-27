@@ -288,4 +288,18 @@ The heading carries the destination. Move secondary destinations, including link
 
 Callout forwards the shared container props and supports two CTAs. Its styles use the `.callout` BEM block. In Tokens Studio, sync the renamed `components/callout` token set (formerly `components/cta`).
 
+### Banner
+
+| 1.x input | 2.0 replacement |
+| --- | --- |
+| `banner__link_items` | `banner__ctas` with up to two items containing `content` and `url`, plus optional `icon` and `icon_position`. |
+| `banner__heading__level` | `banner__heading_level` as an integer from 2 to 6. Set it to 4 to keep the old default level. |
+| `banner__image` | `banner__image__src` with meaningful `banner__image__alt`, or `banner__image__decorative: true` for decorative images. |
+| `banner__video` | `banner__video__sources` with `{ src, type? }` objects. Supply `banner__video__title` and caption tracks for meaningful audio. |
+| `banner__media` and `banner__media_caption` blocks | `banner__media_content` and `banner__media_caption_content` slots. An explicit media slot takes priority, followed by video sources and then an image source. |
+| `banner__container_modifiers` | `banner__container__modifiers` |
+| Default narrow width and dark theme | Set `banner__width: 'narrow'` and `banner__theme__variation: 'dark'` to preserve those defaults. The new default is wide and inherits the theme. |
+
+Media stacks below the copy on narrow sections and sits beside it at wider widths. Video starts paused with native controls. Pass a unique `banner__id` for a stable `#section-{id}` anchor and, when a heading is present, its accessible section label.
+
 ## Removed

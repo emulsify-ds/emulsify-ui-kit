@@ -1,53 +1,208 @@
-$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
-
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
 name: Banner
+description: Introduces a section with copy, actions, and optional responsive media.
 group: Components
 status: stable
 props:
   type: object
-  required:
-    - banner__heading
-    - banner__text
   properties:
+    banner__overline:
+      type: [string, 'null']
+      title: Overline
+      description: Short label above the heading.
+      examples: ['Library programs']
     banner__heading:
-      type: string
-      title: Title
-      description: 'Specifies the title of the banner'
-      data: 'THIS IS A BANNER HEADING'
+      type: [string, 'null']
+      title: Heading
+      description: Main heading for the section.
+      examples: ['Make room for creativity']
+    banner__heading_level:
+      type: [integer, 'null']
+      title: Heading level
+      description: Semantic level of the heading in the page outline.
+      enum: [2, 3, 4, 5, 6, null]
+      default: 2
     banner__text:
-      type: string
-      title: Content
-      description: 'Specifies the main content of the banner'
-      data: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>'
-    banner__link:
-      type: string
-      title: Link Content
-      description: 'Specifies the text displayed on the link'
-      data: 'this is a link'
-    banner__image:
-      type: string
-      title: Image's source
-      description: The image's source of the banner.
-      data: 'https://placehold.co/1480x360'
-    banner__video:
-      type: string
-      title: Video URL
-      description: 'Specifies the URL of the video to be displayed. Either this or banner__image should be provided.'
-      data:
-        - 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4'
-        - 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-webm-file.webm'
+      type: [string, object, array, 'null']
+      title: Text
+      description: Supporting copy or processed Drupal content.
+      examples:
+        [
+          'Try a hands-on activity and learn to use equipment in the library workshop.',
+        ]
+    banner__ctas:
+      type: [array, 'null']
+      title: Actions
+      description: Up to two destinations in order of priority.
+      default: []
+      maxItems: 2
+      examples:
+        - - content: Explore workshops
+            url: /workshops
+            icon: arrow-right
+      items:
+        type: object
+        required: [content, url]
+        properties:
+          content:
+            type: string
+          url:
+            type: string
+          icon:
+            type: [string, 'null']
+          icon_position:
+            enum: [left, right, null]
     banner__alignment:
-      type: string
-      title: Alignment
-      description: 'Specifies the alignment of the content within the banner. Options include: left, center, right.'
-      data: 'left'
-
+      type: [string, 'null']
+      title: Copy alignment
+      description: Alignment of the copy and actions.
+      enum: [left, center, right, null]
+      default: left
+    banner__media_alignment:
+      type: [string, 'null']
+      title: Media alignment
+      description: Side of the copy on which the media is placed in the wider layout.
+      enum: [left, right, null]
+      default: right
+    banner__image__src:
+      type: [string, 'null']
+      title: Image URL
+      description: Source of the image with an optional responsive source set.
+      default: null
+    banner__image__alt:
+      type: [string, 'null']
+      title: Alternative text
+      description: Text alternative to a meaningful image.
+      default: null
+    banner__image__decorative:
+      type: [boolean, 'null']
+      title: Decorative image
+      description: Use an empty alt attribute when the image adds no information.
+      default: false
+    banner__image__srcset:
+      type: [string, 'null']
+      title: Image source set
+      description: Responsive image candidates for the native srcset attribute.
+      default: null
+    banner__image__sizes:
+      type: [string, 'null']
+      title: Image sizes
+      description: Slot widths for the responsive image candidates.
+      default: null
+    banner__image__width:
+      type: [integer, 'null']
+      title: Image width
+      description: Intrinsic image width in pixels.
+      default: null
+    banner__image__height:
+      type: [integer, 'null']
+      title: Image height
+      description: Intrinsic image height in pixels.
+      default: null
+    banner__video__sources:
+      type: [array, 'null']
+      title: Video sources
+      description: Ordered HTML video source URLs with optional media types.
+      default: []
+      items:
+        type: object
+        required: [src]
+        properties:
+          src:
+            type: string
+          type:
+            type: [string, 'null']
+    banner__video__title:
+      type: [string, 'null']
+      title: Video title
+      description: Accessible name of the video player.
+      default: null
+    banner__video__tracks:
+      type: [array, 'null']
+      title: Video tracks
+      description: Captions, subtitles, or other WebVTT tracks for the video.
+      default: []
+      items:
+        type: object
+        required: [src]
+        properties:
+          src:
+            type: string
+          kind:
+            enum: [captions, subtitles, descriptions, chapters, metadata, null]
+          srclang:
+            type: [string, 'null']
+          label:
+            type: [string, 'null']
+          default:
+            type: [boolean, 'null']
+    banner__video__poster:
+      type: [string, 'null']
+      title: Video poster
+      description: Native image shown before playback.
+      default: null
+    banner__id:
+      type: [string, integer, 'null']
+      title: Anchor suffix
+      description: Unique stable suffix for the section and heading IDs.
+      default: null
+    banner__width:
+      type: [string, 'null']
+      title: Width
+      description: Maximum width of the section content.
+      enum: [narrow, content, wide, full, null]
+      default: wide
+    banner__theme:
+      type: [string, 'null']
+      title: Theme
+      description: Theme for the section. Omit both theme fields to inherit.
+      enum: [default, null]
+    banner__theme__variation:
+      type: [string, 'null']
+      title: Theme variation
+      description: Light or dark color roles for the section.
+      enum: [light, dark, null]
+    banner__bg_color:
+      type: [boolean, 'null']
+      title: Section background
+      description: Paint the section with the current theme background.
+      default: true
+    banner__spacing:
+      type: [string, 'null']
+      title: Spacing
+      description: Section spacing preset from Container.
+      default: one
+    banner__container__modifiers:
+      type: [array, 'null']
+      title: Container modifiers
+      description: BEM modifiers applied to the section.
+      items:
+        type: string
+      default: []
+    banner__blockname:
+      type: [string, 'null']
+      title: Parent block
+      description: Optional parent BEM block name.
+    banner__modifiers:
+      type: [array, 'null']
+      title: Modifiers
+      description: BEM modifiers applied to the banner.
+      items:
+        type: string
+    banner__additional_classes:
+      type: [array, 'null']
+      title: Classes
+      description: Additional classes for the banner wrapper.
+      items:
+        type: string
+    banner__attributes:
+      type: [object, 'null']
+      title: Attributes
+      description: Additional attributes for the banner wrapper.
 slots:
-  banner__media:
-    title: Banner Media
-    description: Override the default banner media rendering
-    data: ''
-  banner__media_caption:
-    title: Banner Media Caption
-    description: Override the default banner media caption rendering
-    data: ''
+  banner__media_content:
+    title: Media content
+    description: Media markup that replaces the built-in image or video.
+  banner__media_caption_content:
+    title: Media caption
+    description: Optional visible caption related to the rendered media.
